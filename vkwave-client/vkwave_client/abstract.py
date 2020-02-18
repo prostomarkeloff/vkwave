@@ -4,7 +4,6 @@ from typing_extensions import Final
 import typing
 
 MethodName = typing.NewType("MethodName", str)
-VkResponse = typing.NewType("VkResponse", dict)
 
 
 class AbstractHTTPClient(ABC):
@@ -12,9 +11,7 @@ class AbstractHTTPClient(ABC):
     API_URL: Final = "https://api.vk.com/method/{method_name}"
 
     @abstractmethod
-    async def request(
-        self, method_name: MethodName, **kwargs
-    ) -> typing.Union[VkResponse, typing.NoReturn]:
+    async def request(self, method_name: MethodName, **kwargs) -> dict:
         """
         Sends request to VK.
         Returns dict even if it contains error.
