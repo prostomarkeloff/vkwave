@@ -1,0 +1,4 @@
+poetry
+mypy
+black
+pytest
