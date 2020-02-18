@@ -7,6 +7,7 @@ authors = ["prostomarkeloff"]
 [tool.poetry.dependencies]
 python = "^3.7"
 typing_extensions = "^3.7.4"
+aiohttp = "^3.6.2"
 
 [tool.poetry.dev-dependencies]
 

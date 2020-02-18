@@ -16,4 +16,11 @@ class AbstractHTTPClient(ABC):
         Sends request to VK.
         Returns dict even if it contains error.
         """
-        # TODO: custom errors for this kind of errors (connection errors, timeout, etc.)
+
+    # TODO: custom errors for this kind of errors (connection errors, timeout, etc.)
+
+    @abstractmethod
+    async def close(self) -> None:
+        """
+        Closes resources.
+        """
