@@ -2,3 +2,5 @@ poetry
 mypy
 black
 pytest
+mypy_extensions
+typing_extensions

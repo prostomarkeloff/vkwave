@@ -1,12 +1,14 @@
 from abc import abstractmethod, ABC
+from typing_extensions import Final
 
 import typing
 
 MethodName = typing.NewType("MethodName", str)
 
+
 class AbstractHTTPClient(ABC):
 
-    API_URL = "https://api.vk.com/method/{method_name}"
+    API_URL: Final = "https://api.vk.com/method/{method_name}"
 
     @abstractmethod
     async def request(self, method_name: MethodName, **kwargs) -> dict:
