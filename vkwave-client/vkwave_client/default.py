@@ -14,7 +14,6 @@ from logging import getLogger
 logger = getLogger(__name__)
 
 
-
 class AIOHTTPClient(AbstractHTTPClient):
     def __init__(
         self,
@@ -25,7 +24,9 @@ class AIOHTTPClient(AbstractHTTPClient):
         self._session = session or ClientSession(loop=self._loop)
 
     async def request(self, method_name: MethodName, **kwargs) -> dict:
-        logger.debug(f"Doing request to '{method_name}' method with these params: {kwargs}")
+        logger.debug(
+            f"Doing request to '{method_name}' method with these params: {kwargs}"
+        )
         async with self._session.post(
             self.API_URL.format(method_name=method_name), data=kwargs
         ) as resp:
