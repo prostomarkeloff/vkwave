@@ -45,8 +45,8 @@ class JsonReference(pydantic.BaseModel):
 
 
 class ParameterArray(pydantic.BaseModel):
-    items: typing.Optional[typing.List[str]] = pydantic.Field(
-        None, description="",
+    items: typing.Optional[typing.List[typing.Any]] = pydantic.Field(
+        None, description="Bred",
     )
 
 
@@ -108,7 +108,7 @@ class Parameter(pydantic.BaseModel):
     enum: typing.Optional[list] = pydantic.Field(
         None, description="",
     )
-    enumNames: typing.Optional[list] = pydantic.Field(
+    enumNames: typing.Optional[typing.List[str]] = pydantic.Field(
         None, description="",
     )
     default: typing.Optional[list] = pydantic.Field(
@@ -204,10 +204,10 @@ class Method(pydantic.BaseModel):
     from_version: typing.Optional[str] = pydantic.Field(
         None, description="",
     )
-    access_token_type: typing.Optional[list] = pydantic.Field(
+    access_token_type: typing.Optional[typing.List[str]] = pydantic.Field(
         None, description="Input parameters for method",
     )
-    parameters: typing.Optional[list] = pydantic.Field(
+    parameters: typing.Optional[typing.List["Parameter"]] = pydantic.Field(
         None, description="Input parameters for method",
     )
     responses: typing.Optional[dict] = pydantic.Field(
