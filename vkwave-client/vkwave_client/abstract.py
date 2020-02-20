@@ -1,26 +1,24 @@
-from abc import abstractmethod, ABC
-from typing_extensions import Final
-
 import typing
+from abc import abstractmethod, ABC
 
-MethodName = typing.NewType("MethodName", str)
+from typing_extensions import final
+
+from .types import MethodName
+from .context import RequestContext
 
 
-class AbstractHTTPClient(ABC):
-
-    API_URL: Final = "https://api.vk.com/method/{method_name}"
+class AbstractAPIClient(ABC):
+    @abstractmethod
+    def request(self, method_name: MethodName, **params) -> RequestContext:
+        ...
 
     @abstractmethod
-    async def request(self, method_name: MethodName, **kwargs) -> dict:
+    async def request_callback(self, method_name: MethodName, params: dict) -> dict:
         """
-        Sends request to VK.
-        Returns dict even if it contains error.
+        Send request to something and return dict.
+        Can raise exceptions.
         """
-
-    # TODO: custom errors for this kind of errors (connection errors, timeout, etc.)
 
     @abstractmethod
     async def close(self) -> None:
-        """
-        Closes resources.
-        """
+        """Close resources."""

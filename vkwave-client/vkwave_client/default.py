@@ -2,19 +2,24 @@
 Default implementation of HTTPClient for vkwave-client.
 """
 
-from aiohttp import ClientSession
 from asyncio import get_event_loop, AbstractEventLoop
-
-from .abstract import AbstractHTTPClient, MethodName
-
 from typing import Optional
-
 from logging import getLogger
+
+from typing_extensions import Final
+from aiohttp import ClientSession
+
+from .abstract import AbstractAPIClient
+from .types import MethodName
+from .context import RequestContext
 
 logger = getLogger(__name__)
 
 
-class AIOHTTPClient(AbstractHTTPClient):
+class AIOHTTPClient(AbstractAPIClient):
+
+    API_URL: Final = "https://api.vk.com/method/{method_name}"
+
     def __init__(
         self,
         session: Optional[ClientSession] = None,
@@ -23,12 +28,21 @@ class AIOHTTPClient(AbstractHTTPClient):
         self._loop = loop or get_event_loop()
         self._session = session or ClientSession(loop=self._loop)
 
-    async def request(self, method_name: MethodName, **kwargs) -> dict:
+    def request(self, method_name: MethodName, **kwargs) -> RequestContext:
         logger.debug(
             f"Doing request to '{method_name}' method with these params: {kwargs}"
         )
+        return RequestContext(
+            request_callback=self.request_callback,
+            method_name=method_name,
+            request_params=kwargs,
+            exceptions={},
+        )
+        # TODO: exceptions for this client
+
+    async def request_callback(self, method_name: MethodName, params: dict) -> dict:
         async with self._session.post(
-            self.API_URL.format(method_name=method_name), data=kwargs
+            self.API_URL.format(method_name=method_name), data=params
         ) as resp:
             return await resp.json()
 
