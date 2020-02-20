@@ -17,11 +17,15 @@ In this 'article' I'll show you how to create a `fake` client. In reality it can
 **Note**: I omitted type hints in this example.
 
 ```python
-from vkwave_client.abstract import AbstractHTTPClient
+from vkwave_client.abstract import AbstractAPIClient
+from vkwave_client.context import RequestContext
+
+async def callback(method_name, **kwargs):
+    return {"response": {"text": "it's fake!"}}
 
 class FakeClient(AbstractHTTPClient):
     async def request(self, method_name, **kwargs):
-        return {"response": {"text": "it's fake!"}}
+        return RequestContext(exceptions={}, method_name=method_name, request_callback=callback, request_params=kwargs)
 
     async def close(self):
         print("closing nothing...")

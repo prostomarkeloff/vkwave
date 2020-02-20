@@ -10,6 +10,7 @@ It's easy.
 
 ```python
 from vkwave_client.default import AIOHTTPClient
+from vkwave_client.context import ResultState
 import asyncio
 
 async def main():
@@ -17,10 +18,13 @@ async def main():
 
     client = AIOHTTPClient()
 
-    status = await client.request("status.get", **base_params)
+    ctx = client.create_request("status.get", **base_params)
+    await ctx.send_request()
 
-    print(status["response"]["text"])
-    
+    if ctx.result.state is ResultState.SUCCESS:
+        print(ctx.result.data["response"]["text"])
+    else:
+        print(ctx.result.exception)
     await client.close()
 
 asyncio.run(main())
