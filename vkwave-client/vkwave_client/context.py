@@ -61,7 +61,7 @@ class RequestContext:
         self._exception_handlers[exception] = handler
 
     @final
-    async def send(self) -> None:
+    async def send_request(self) -> None:
         try:
             result = await self._request_callback(
                 self._method_name, self._request_params

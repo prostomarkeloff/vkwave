@@ -28,7 +28,7 @@ class AIOHTTPClient(AbstractAPIClient):
         self._loop = loop or get_event_loop()
         self._session = session or ClientSession(loop=self._loop)
 
-    def request(self, method_name: MethodName, **kwargs) -> RequestContext:
+    def create_request(self, method_name: MethodName, **kwargs) -> RequestContext:
         logger.debug(
             f"Doing request to '{method_name}' method with these params: {kwargs}"
         )
