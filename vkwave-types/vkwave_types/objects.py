@@ -3750,7 +3750,7 @@ class AdsAd(pydantic.BaseModel):
     ad_format: typing.Optional[int] = pydantic.Field(
         None, description="Ad format",
     )
-    ad_platform: typing.Optional[("typing.Union[int, str]",)] = pydantic.Field(
+    ad_platform: typing.Optional[typing.Union[int, str,]] = pydantic.Field(
         None, description="Ad platform",
     )
     all_limit: typing.Optional[int] = pydantic.Field(
@@ -3837,7 +3837,7 @@ class AdsAdLayout(pydantic.BaseModel):
     link_url: typing.Optional[str] = pydantic.Field(
         None, description="URL of advertised object",
     )
-    preview_link: typing.Optional[("typing.Union[int, str]",)] = pydantic.Field(
+    preview_link: typing.Optional[typing.Union[int, str,]] = pydantic.Field(
         None, description="link to preview an ad as it is shown on the website",
     )
     title: typing.Optional[str] = pydantic.Field(
