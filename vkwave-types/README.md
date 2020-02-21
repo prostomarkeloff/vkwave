@@ -21,7 +21,7 @@ from vkwave_types.responses import StatusGetResponse
 def get_my_status(token: str) -> StatusGetResponse:
     resp = requests.get(
         "https://api.vk.com/method/status.get",
-        params={"v": "5.92", "access_token": token},
+        params={"v": "5.103", "access_token": token},
     )
     return StatusGetResponse(**resp.json())
 
