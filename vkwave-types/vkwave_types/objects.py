@@ -3578,30 +3578,22 @@ class AccountInfo(pydantic.BaseModel):
         None, description="Two factor authentication is enabled", alias="2fa_required"
     )
     country: typing.Optional[str] = pydantic.Field(
-        None, description="Country code", alias="2fa_required"
+        None, description="Country code",
     )
     https_required: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None,
-        description="Information whether HTTPS-only is enabled",
-        alias="2fa_required",
+        None, description="Information whether HTTPS-only is enabled",
     )
     intro: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None,
-        description="Information whether user has been processed intro",
-        alias="2fa_required",
+        None, description="Information whether user has been processed intro",
     )
     lang: typing.Optional[int] = pydantic.Field(
-        None, description="Language ID", alias="2fa_required"
+        None, description="Language ID",
     )
     no_wall_replies: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None,
-        description="Information whether wall comments should be hidden",
-        alias="2fa_required",
+        None, description="Information whether wall comments should be hidden",
     )
     own_posts_default: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None,
-        description="Information whether only owners posts should be shown",
-        alias="2fa_required",
+        None, description="Information whether only owners posts should be shown",
     )
 
 
@@ -5088,10 +5080,10 @@ class FriendsRequests(pydantic.BaseModel):
         alias="from",
     )
     mutual: typing.Optional["FriendsRequestsMutual"] = pydantic.Field(
-        None, description="", alias="from"
+        None, description="",
     )
     user_id: typing.Optional[int] = pydantic.Field(
-        None, description="User ID", alias="from"
+        None, description="User ID",
     )
 
 
@@ -5102,13 +5094,13 @@ class FriendsRequestsXtrMessage(pydantic.BaseModel):
         alias="from",
     )
     message: typing.Optional[str] = pydantic.Field(
-        None, description="Message sent with a request", alias="from"
+        None, description="Message sent with a request",
     )
     mutual: typing.Optional["FriendsRequestsMutual"] = pydantic.Field(
-        None, description="", alias="from"
+        None, description="",
     )
     user_id: typing.Optional[int] = pydantic.Field(
-        None, description="User ID", alias="from"
+        None, description="User ID",
     )
 
 
@@ -7594,16 +7586,16 @@ class SearchHint(pydantic.BaseModel):
         alias="global",
     )
     group: typing.Optional["GroupsGroup"] = pydantic.Field(
-        None, description="", alias="global"
+        None, description="",
     )
     profile: typing.Optional["UsersUserMin"] = pydantic.Field(
-        None, description="", alias="global"
+        None, description="",
     )
     section: typing.Optional["SearchHintSection"] = pydantic.Field(
-        None, description="", alias="global"
+        None, description="",
     )
     type: typing.Optional["SearchHintType"] = pydantic.Field(
-        None, description="", alias="global"
+        None, description="",
     )
 
 
@@ -7848,16 +7840,16 @@ class UsersCareer(pydantic.BaseModel):
         None, description="From year", alias="from"
     )
     group_id: typing.Optional[int] = pydantic.Field(
-        None, description="Community ID", alias="from"
+        None, description="Community ID",
     )
     id: typing.Optional[int] = pydantic.Field(
-        None, description="Career ID", alias="from"
+        None, description="Career ID",
     )
     position: typing.Optional[str] = pydantic.Field(
-        None, description="Position", alias="from"
+        None, description="Position",
     )
     until: typing.Optional[int] = pydantic.Field(
-        None, description="Till year", alias="from"
+        None, description="Till year",
     )
 
 
@@ -7978,16 +7970,16 @@ class UsersMilitary(pydantic.BaseModel):
         None, description="From year", alias="from"
     )
     id: typing.Optional[int] = pydantic.Field(
-        None, description="Military ID", alias="from"
+        None, description="Military ID",
     )
     unit: typing.Optional[str] = pydantic.Field(
-        None, description="Unit name", alias="from"
+        None, description="Unit name",
     )
     unit_id: typing.Optional[int] = pydantic.Field(
-        None, description="Unit ID", alias="from"
+        None, description="Unit ID",
     )
     until: typing.Optional[int] = pydantic.Field(
-        None, description="Till year", alias="from"
+        None, description="Till year",
     )
 
 
@@ -8026,28 +8018,28 @@ class UsersSchool(pydantic.BaseModel):
         None, description="School class letter", alias="class"
     )
     country: typing.Optional[int] = pydantic.Field(
-        None, description="Country ID", alias="class"
+        None, description="Country ID",
     )
     id: typing.Optional[str] = pydantic.Field(
-        None, description="School ID", alias="class"
+        None, description="School ID",
     )
     name: typing.Optional[str] = pydantic.Field(
-        None, description="School name", alias="class"
+        None, description="School name",
     )
     type: typing.Optional[int] = pydantic.Field(
-        None, description="School type ID", alias="class"
+        None, description="School type ID",
     )
     type_str: typing.Optional[str] = pydantic.Field(
-        None, description="School type name", alias="class"
+        None, description="School type name",
     )
     year_from: typing.Optional[int] = pydantic.Field(
-        None, description="Year the user started to study", alias="class"
+        None, description="Year the user started to study",
     )
     year_graduated: typing.Optional[int] = pydantic.Field(
-        None, description="Graduation year", alias="class"
+        None, description="Graduation year",
     )
     year_to: typing.Optional[int] = pydantic.Field(
-        None, description="Year the user finished to study", alias="class"
+        None, description="Year the user finished to study",
     )
 
 

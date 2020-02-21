@@ -3213,7 +3213,7 @@ class StorageGetKeysResponse(pydantic.BaseModel):
     )
 
 
-class StorageGetKeysResponse(pydantic.BaseModel):
+class StorageGetKeysResponseStorageValue(pydantic.BaseModel):
     response: typing.Optional[typing.List["StorageValue"]] = pydantic.Field(
         None, description="",
     )
