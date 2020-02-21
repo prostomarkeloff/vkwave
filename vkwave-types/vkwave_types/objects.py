@@ -22,11 +22,11 @@ class AccountNameRequest(pydantic.BaseModel):
 
 
 class AccountNameRequestStatusEnum(str, Enum):
-    success = "success"
-    processing = "processing"
-    declined = "declined"
-    was_accepted = "was_accepted"
-    was_declined = "was_declined"
+    SUCCESS = "success"
+    PROCESSING = "processing"
+    DECLINED = "declined"
+    WAS_ACCEPTED = "was_accepted"
+    WAS_DECLINED = "was_declined"
 
 
 class AccountNameRequestStatus(pydantic.BaseModel):
@@ -158,9 +158,9 @@ class AccountUserSettingsInterests(pydantic.BaseModel):
 
 
 class AdsAccessRoleEnum(str, Enum):
-    admin = "admin"
-    manager = "manager"
-    reports = "reports"
+    ADMIN = "admin"
+    MANAGER = "manager"
+    REPORTS = "reports"
 
 
 class AdsAccessRole(pydantic.BaseModel):
@@ -170,8 +170,8 @@ class AdsAccessRole(pydantic.BaseModel):
 
 
 class AdsAccountTypeEnum(str, Enum):
-    general = "general"
-    agency = "agency"
+    GENERAL = "general"
+    AGENCY = "agency"
 
 
 class AdsAccountType(pydantic.BaseModel):
@@ -230,10 +230,10 @@ class AdsCampaignStatus(pydantic.BaseModel):
 
 
 class AdsCampaignTypeEnum(str, Enum):
-    normal = "normal"
-    vk_apps_managed = "vk_apps_managed"
-    mobile_apps = "mobile_apps"
-    promoted_posts = "promoted_posts"
+    NORMAL = "normal"
+    VK_APPS_MANAGED = "vk_apps_managed"
+    MOBILE_APPS = "mobile_apps"
+    PROMOTED_POSTS = "promoted_posts"
 
 
 class AdsCampaignType(pydantic.BaseModel):
@@ -279,10 +279,10 @@ class AdsDemostatsFormat(pydantic.BaseModel):
 
 
 class AdsObjectTypeEnum(str, Enum):
-    ad = "ad"
-    campaign = "campaign"
-    client = "client"
-    office = "office"
+    AD = "ad"
+    CAMPAIGN = "campaign"
+    CLIENT = "client"
+    OFFICE = "office"
 
 
 class AdsObjectType(pydantic.BaseModel):
@@ -331,8 +331,8 @@ class AdsStatsFormat(pydantic.BaseModel):
 
 
 class AdsStatsSexValueEnum(str, Enum):
-    f = "f"
-    m = "m"
+    F = "f"
+    M = "m"
 
 
 class AdsStatsSexValue(pydantic.BaseModel):
@@ -342,10 +342,10 @@ class AdsStatsSexValue(pydantic.BaseModel):
 
 
 class AdsTargSuggestionsSchoolsTypeEnum(str, Enum):
-    school = "school"
-    university = "university"
-    faculty = "faculty"
-    chair = "chair"
+    SCHOOL = "school"
+    UNIVERSITY = "university"
+    FACULTY = "faculty"
+    CHAIR = "chair"
 
 
 class AdsTargSuggestionsSchoolsType(pydantic.BaseModel):
@@ -415,13 +415,13 @@ class AppsApp(pydantic.BaseModel):
 
 
 class AppsAppTypeEnum(str, Enum):
-    app = "app"
-    game = "game"
-    site = "site"
-    standalone = "standalone"
-    vk_app = "vk_app"
-    community_app = "community_app"
-    html5_game = "html5_game"
+    APP = "app"
+    GAME = "game"
+    SITE = "site"
+    STANDALONE = "standalone"
+    VK_APP = "vk_app"
+    COMMUNITY_APP = "community_app"
+    HTML5_GAME = "html5_game"
 
 
 class AppsAppType(pydantic.BaseModel):
@@ -628,7 +628,7 @@ class BaseLinkButtonAction(pydantic.BaseModel):
 
 
 class BaseLinkButtonActionTypeEnum(str, Enum):
-    open_url = "open_url"
+    OPEN_URL = "open_url"
 
 
 class BaseLinkButtonActionType(pydantic.BaseModel):
@@ -786,12 +786,12 @@ class BoardTopic(pydantic.BaseModel):
     )
 
 
-class CallbackGroupJoinTypeEnum(Enum):
-    join = "join"
-    unsure = "unsure"
-    accepted = "accepted"
-    approved = "approved"
-    request = "request"
+class CallbackGroupJoinTypeEnum(str, Enum):
+    JOIN = "join"
+    UNSURE = "unsure"
+    ACCEPTED = "accepted"
+    APPROVED = "approved"
+    REQUEST = "request"
 
 
 class CallbackGroupJoinType(pydantic.BaseModel):
@@ -825,32 +825,32 @@ class CallbackGroupOfficerRole(pydantic.BaseModel):
 
 
 class CallbackMessageTypeEnum(str, Enum):
-    confirmation = "confirmation"
-    group_change_photo = "group_change_photo"
-    group_change_settings = "group_change_settings"
-    group_officers_edit = "group_officers_edit"
-    lead_forms_new = "lead_forms_new"
-    market_comment_delete = "market_comment_delete"
-    market_comment_edit = "market_comment_edit"
-    market_comment_restore = "market_comment_restore"
-    message_allow = "message_allow"
-    message_deny = "message_deny"
-    message_read = "message_read"
-    message_reply = "message_reply"
-    message_typing_state = "message_typing_state"
-    messages_edit = "messages_edit"
-    photo_comment_delete = "photo_comment_delete"
-    photo_comment_edit = "photo_comment_edit"
-    photo_comment_restore = "photo_comment_restore"
-    poll_vote_new = "poll_vote_new"
-    user_block = "user_block"
-    user_unblock = "user_unblock"
-    video_comment_delete = "video_comment_delete"
-    video_comment_edit = "video_comment_edit"
-    video_comment_restore = "video_comment_restore"
-    wall_reply_delete = "wall_reply_delete"
-    wall_reply_restore = "wall_reply_restore"
-    wall_repost = "wall_repost"
+    CONFIRMATION = "confirmation"
+    GROUP_CHANGE_PHOTO = "group_change_photo"
+    GROUP_CHANGE_SETTINGS = "group_change_settings"
+    GROUP_OFFICERS_EDIT = "group_officers_edit"
+    LEAD_FORMS_NEW = "lead_forms_new"
+    MARKET_COMMENT_DELETE = "market_comment_delete"
+    MARKET_COMMENT_EDIT = "market_comment_edit"
+    MARKET_COMMENT_RESTORE = "market_comment_restore"
+    MESSAGE_ALLOW = "message_allow"
+    MESSAGE_DENY = "message_deny"
+    MESSAGE_READ = "message_read"
+    MESSAGE_REPLY = "message_reply"
+    MESSAGE_TYPING_STATE = "message_typing_state"
+    MESSAGES_EDIT = "messages_edit"
+    PHOTO_COMMENT_DELETE = "photo_comment_delete"
+    PHOTO_COMMENT_EDIT = "photo_comment_edit"
+    PHOTO_COMMENT_RESTORE = "photo_comment_restore"
+    POLL_VOTE_NEW = "poll_vote_new"
+    USER_BLOCK = "user_block"
+    USER_UNBLOCK = "user_unblock"
+    VIDEO_COMMENT_DELETE = "video_comment_delete"
+    VIDEO_COMMENT_EDIT = "video_comment_edit"
+    VIDEO_COMMENT_RESTORE = "video_comment_restore"
+    WALL_REPLY_DELETE = "wall_reply_delete"
+    WALL_REPLY_RESTORE = "wall_reply_restore"
+    WALL_REPOST = "wall_repost"
 
 
 class CallbackMessageType(pydantic.BaseModel):
@@ -971,11 +971,11 @@ class EventsEventAttach(pydantic.BaseModel):
 
 
 class FaveBookmarkTypeEnum(str, Enum):
-    post = "post"
-    video = "video"
-    product = "product"
-    article = "article"
-    link = "link"
+    POST = "post"
+    VIDEO = "video"
+    PRODUCT = "product"
+    ARTICLE = "article"
+    LINK = "link"
 
 
 class FaveBookmarkType(pydantic.BaseModel):
@@ -985,9 +985,9 @@ class FaveBookmarkType(pydantic.BaseModel):
 
 
 class FavePageTypeEnum(str, Enum):
-    user = "user"
-    group = "group"
-    hints = "hints"
+    USER = "user"
+    GROUP = "group"
+    HINTS = "hints"
 
 
 class FavePageType(pydantic.BaseModel):
@@ -1085,11 +1085,11 @@ class GroupsAddressTimetableDay(pydantic.BaseModel):
 
 
 class GroupsAddressWorkInfoStatusEnum(str, Enum):
-    no_information = "no_information"
-    temporarily_closed = "temporarily_closed"
-    always_opened = "always_opened"
-    timetable = "timetable"
-    forever_closed = "forever_closed"
+    NO_INFORMATION = "no_information"
+    TEMPORARILY_CLOSED = "temporarily_closed"
+    ALWAYS_OPENED = "always_opened"
+    TIMETABLE = "timetable"
+    FOREVER_CLOSED = "forever_closed"
 
 
 class GroupsAddressWorkInfoStatus(pydantic.BaseModel):
@@ -1383,9 +1383,9 @@ class GroupsGroupPhotos(pydantic.BaseModel):
 
 
 class GroupsGroupTypeEnum(str, Enum):
-    group = "group"
-    page = "page"
-    event = "event"
+    GROUP = "group"
+    PAGE = "page"
+    EVENT = "event"
 
 
 class GroupsGroupType(pydantic.BaseModel):
@@ -1432,9 +1432,9 @@ class GroupsGroupXtrInvitedByAdminLevel(pydantic.BaseModel):
 
 
 class GroupsGroupXtrInvitedByTypeEnum(str, Enum):
-    group = "group"
-    page = "page"
-    event = "event"
+    GROUP = "group"
+    PAGE = "page"
+    EVENT = "event"
 
 
 class GroupsGroupXtrInvitedByType(pydantic.BaseModel):
@@ -1570,10 +1570,10 @@ class GroupsLongPollEvents(pydantic.BaseModel):
 
 
 class GroupsMemberRoleStatusEnum(str, Enum):
-    moderator = "moderator"
-    editor = "editor"
-    administrator = "administrator"
-    creator = "creator"
+    MODERATOR = "moderator"
+    EDITOR = "editor"
+    ADMINISTRATOR = "administrator"
+    CREATOR = "creator"
 
 
 class GroupsMemberRoleStatus(pydantic.BaseModel):
@@ -1583,9 +1583,9 @@ class GroupsMemberRoleStatus(pydantic.BaseModel):
 
 
 class GroupsOnlineStatusTypeEnum(str, Enum):
-    none = "none"
-    online = "online"
-    answer_mark = "answer_mark"
+    NONE = "none"
+    ONLINE = "online"
+    ANSWER_MARK = "answer_mark"
 
 
 class GroupsOnlineStatusType(pydantic.BaseModel):
@@ -1595,8 +1595,8 @@ class GroupsOnlineStatusType(pydantic.BaseModel):
 
 
 class GroupsOwnerXtrBanInfoTypeEnum(str, Enum):
-    group = "group"
-    profile = "profile"
+    GROUP = "group"
+    PROFILE = "profile"
 
 
 class GroupsOwnerXtrBanInfoType(pydantic.BaseModel):
@@ -1606,8 +1606,8 @@ class GroupsOwnerXtrBanInfoType(pydantic.BaseModel):
 
 
 class LeadsCheckedResultEnum(str, Enum):
-    true = "true"
-    false = "false"
+    TRUE = "true"
+    FALSE = "false"
 
 
 class LeadsCheckedResult(pydantic.BaseModel):
@@ -1839,10 +1839,10 @@ class MessagesConversationPeer(pydantic.BaseModel):
 
 
 class MessagesConversationPeerTypeEnum(str, Enum):
-    chat = "chat"
-    email = "email"
-    user = "user"
-    group = "group"
+    CHAT = "chat"
+    EMAIL = "email"
+    USER = "user"
+    GROUP = "group"
 
 
 class MessagesConversationPeerType(pydantic.BaseModel):
@@ -1949,16 +1949,16 @@ class MessagesHistoryMessageAttachment(pydantic.BaseModel):
 
 
 class MessagesHistoryMessageAttachmentTypeEnum(str, Enum):
-    photo = "photo"
-    video = "video"
-    audio = "audio"
-    doc = "doc"
-    link = "link"
-    market = "market"
-    wall = "wall"
-    share = "share"
-    graffiti = "graffiti"
-    audio_message = "audio_message"
+    PHOTO = "photo"
+    VIDEO = "video"
+    AUDIO = "audio"
+    DOC = "doc"
+    LINK = "link"
+    MARKET = "market"
+    WALL = "wall"
+    SHARE = "share"
+    GRAFFITI = "graffiti"
+    AUDIO_MESSAGE = "audio_message"
 
 
 class MessagesHistoryMessageAttachmentType(pydantic.BaseModel):
@@ -2127,15 +2127,15 @@ class MessagesMessageActionPhoto(pydantic.BaseModel):
 
 
 class MessagesMessageActionStatusEnum(str, Enum):
-    chat_photo_update = "chat_photo_update"
-    chat_photo_remove = "chat_photo_remove"
-    chat_create = "chat_create"
-    chat_title_update = "chat_title_update"
-    chat_invite_user = "chat_invite_user"
-    chat_kick_user = "chat_kick_user"
-    chat_pin_message = "chat_pin_message"
-    chat_unpin_message = "chat_unpin_message"
-    chat_invite_user_by_link = "chat_invite_user_by_link"
+    CHAT_PHOTO_UPDATE = "chat_photo_update"
+    CHAT_PHOTO_REMOVE = "chat_photo_remove"
+    CHAT_CREATE = "chat_create"
+    CHAT_TITLE_UPDATE = "chat_title_update"
+    CHAT_INVITE_USER = "chat_invite_user"
+    CHAT_KICK_USER = "chat_kick_user"
+    CHAT_PIN_MESSAGE = "chat_pin_message"
+    CHAT_UNPIN_MESSAGE = "chat_unpin_message"
+    CHAT_INVITE_USER_BY_LINK = "chat_invite_user_by_link"
 
 
 class MessagesMessageActionStatus(pydantic.BaseModel):
@@ -2145,20 +2145,20 @@ class MessagesMessageActionStatus(pydantic.BaseModel):
 
 
 class MessagesMessageAttachmentTypeEnum(str, Enum):
-    photo = "photo"
-    audio = "audio"
-    video = "video"
-    doc = "doc"
-    link = "link"
-    market = "market"
-    market_album = "market_album"
-    gift = "gift"
-    sticker = "sticker"
-    wall = "wall"
-    wall_reply = "wall_reply"
-    article = "article"
-    graffiti = "graffiti"
-    audio_message = "audio_message"
+    PHOTO = "photo"
+    AUDIO = "audio"
+    VIDEO = "video"
+    DOC = "doc"
+    LINK = "link"
+    MARKET = "market"
+    MARKET_ALBUM = "market_album"
+    GIFT = "gift"
+    STICKER = "sticker"
+    WALL = "wall"
+    WALL_REPLY = "wall_reply"
+    ARTICLE = "article"
+    GRAFFITI = "graffiti"
+    AUDIO_MESSAGE = "audio_message"
 
 
 class MessagesMessageAttachmentType(pydantic.BaseModel):
@@ -2168,17 +2168,17 @@ class MessagesMessageAttachmentType(pydantic.BaseModel):
 
 
 class NewsfeedNewsfeedItemTypeEnum(str, Enum):
-    post = "post"
-    photo = "photo"
-    photo_tag = "photo_tag"
-    wall_photo = "wall_photo"
-    friend = "friend"
-    note = "note"
-    audio = "audio"
-    video = "video"
-    topic = "topic"
-    digest = "digest"
-    stories = "stories"
+    POST = "post"
+    PHOTO = "photo"
+    PHOTO_TAG = "photo_tag"
+    WALL_PHOTO = "wall_photo"
+    FRIEND = "friend"
+    NOTE = "note"
+    AUDIO = "audio"
+    VIDEO = "video"
+    TOPIC = "topic"
+    DIGEST = "digest"
+    STORIES = "stories"
 
 
 class NewsfeedNewsfeedItemType(pydantic.BaseModel):
@@ -2316,16 +2316,16 @@ class PagesWikipageFull(pydantic.BaseModel):
 
 
 class PhotosImageTypeEnum(str, Enum):
-    s = "s"
-    m = "m"
-    x = "x"
-    o = "o"
-    p = "p"
-    q = "q"
-    r = "r"
-    y = "y"
-    z = "z"
-    w = "w"
+    S = "s"
+    M = "m"
+    X = "x"
+    O = "o"
+    P = "p"
+    Q = "q"
+    R = "r"
+    Y = "y"
+    Z = "z"
+    W = "w"
 
 
 class PhotosImageType(pydantic.BaseModel):
@@ -2407,16 +2407,16 @@ class PhotosPhotoAlbum(pydantic.BaseModel):
 
 
 class PhotosPhotoSizesTypeEnum(str, Enum):
-    s = "s"
-    m = "m"
-    x = "x"
-    o = "o"
-    p = "p"
-    q = "q"
-    r = "r"
-    y = "y"
-    z = "z"
-    w = "w"
+    S = "s"
+    M = "m"
+    X = "x"
+    O = "o"
+    P = "p"
+    Q = "q"
+    R = "r"
+    Y = "y"
+    Z = "z"
+    W = "w"
 
 
 class PhotosPhotoSizesType(pydantic.BaseModel):
@@ -2462,13 +2462,13 @@ class PollsVotersUsers(pydantic.BaseModel):
 
 
 class SearchHintSectionEnum(str, Enum):
-    groups = "groups"
-    events = "events"
-    publics = "publics"
-    correspondents = "correspondents"
-    people = "people"
-    friends = "friends"
-    mutual_friends = "mutual_friends"
+    GROUPS = "groups"
+    EVENTS = "events"
+    PUBLICS = "publics"
+    CORRESPONDENTS = "correspondents"
+    PEOPLE = "people"
+    FRIENDS = "friends"
+    MUTUAL_FRIENDS = "mutual_friends"
 
 
 class SearchHintSection(pydantic.BaseModel):
@@ -2478,9 +2478,9 @@ class SearchHintSection(pydantic.BaseModel):
 
 
 class SearchHintTypeEnum(str, Enum):
-    group = "group"
-    profile = "profile"
-    vk_app = "vk_app"
+    GROUP = "group"
+    PROFILE = "profile"
+    VK_APP = "vk_app"
 
 
 class SearchHintType(pydantic.BaseModel):
@@ -2685,9 +2685,9 @@ class StoriesStoryStatsStat(pydantic.BaseModel):
 
 
 class StoriesStoryStatsStateEnum(str, Enum):
-    on = "on"
-    off = "off"
-    hidden = "hidden"
+    ON = "on"
+    OFF = "off"
+    HIDDEN = "hidden"
 
 
 class StoriesStoryStatsState(pydantic.BaseModel):
@@ -2697,8 +2697,8 @@ class StoriesStoryStatsState(pydantic.BaseModel):
 
 
 class StoriesStoryTypeEnum(str, Enum):
-    photo = "photo"
-    video = "video"
+    PHOTO = "photo"
+    VIDEO = "video"
 
 
 class StoriesStoryType(pydantic.BaseModel):
@@ -3063,10 +3063,10 @@ class UsersUserRelation(pydantic.BaseModel):
 
 
 class UtilsDomainResolvedTypeEnum(str, Enum):
-    user = "user"
-    group = "group"
-    application = "application"
-    page = "page"
+    USER = "user"
+    GROUP = "group"
+    APPLICATION = "application"
+    PAGE = "page"
 
 
 class UtilsDomainResolvedType(pydantic.BaseModel):
@@ -3076,9 +3076,9 @@ class UtilsDomainResolvedType(pydantic.BaseModel):
 
 
 class UtilsLinkCheckedStatusEnum(str, Enum):
-    not_banned = "not_banned"
-    banned = "banned"
-    processing = "processing"
+    NOT_BANNED = "not_banned"
+    BANNED = "banned"
+    PROCESSING = "processing"
 
 
 class UtilsLinkCheckedStatus(pydantic.BaseModel):
@@ -3227,16 +3227,16 @@ class WallAttachedNote(pydantic.BaseModel):
 
 
 class WallCommentAttachmentTypeEnum(str, Enum):
-    photo = "photo"
-    audio = "audio"
-    video = "video"
-    doc = "doc"
-    link = "link"
-    note = "note"
-    page = "page"
-    market_market_album = "market_market_album"
-    market = "market"
-    sticker = "sticker"
+    PHOTO = "photo"
+    AUDIO = "audio"
+    VIDEO = "video"
+    DOC = "doc"
+    LINK = "link"
+    NOTE = "note"
+    PAGE = "page"
+    MARKET_MARKET_ALBUM = "market_market_album"
+    MARKET = "market"
+    STICKER = "sticker"
 
 
 class WallCommentAttachmentType(pydantic.BaseModel):
@@ -3291,11 +3291,11 @@ class WallPostSource(pydantic.BaseModel):
 
 
 class WallPostSourceTypeEnum(str, Enum):
-    vk = "vk"
-    widget = "widget"
-    api = "api"
-    rss = "rss"
-    sms = "sms"
+    VK = "vk"
+    WIDGET = "widget"
+    API = "api"
+    RSS = "rss"
+    SMS = "sms"
 
 
 class WallPostSourceType(pydantic.BaseModel):
@@ -3305,11 +3305,11 @@ class WallPostSourceType(pydantic.BaseModel):
 
 
 class WallPostTypeEnum(str, Enum):
-    post = "post"
-    copy = "copy"
-    reply = "reply"
-    postpone = "postpone"
-    suggest = "suggest"
+    POST = "post"
+    COPY = "copy"
+    REPLY = "reply"
+    POSTPONE = "postpone"
+    SUGGEST = "suggest"
 
 
 class WallPostType(pydantic.BaseModel):
@@ -3441,22 +3441,22 @@ class WallWallpost(pydantic.BaseModel):
 
 
 class WallWallpostAttachmentTypeEnum(str, Enum):
-    photo = "photo"
-    posted_photo = "posted_photo"
-    audio = "audio"
-    video = "video"
-    doc = "doc"
-    link = "link"
-    graffiti = "graffiti"
-    note = "note"
-    app = "app"
-    poll = "poll"
-    page = "page"
-    album = "album"
-    photos_list = "photos_list"
-    market_market_album = "market_market_album"
-    market = "market"
-    event = "event"
+    PHOTO = "photo"
+    POSTED_PHOTO = "posted_photo"
+    AUDIO = "audio"
+    VIDEO = "video"
+    DOC = "doc"
+    LINK = "link"
+    GRAFFITI = "graffiti"
+    NOTE = "note"
+    APP = "app"
+    POLL = "poll"
+    PAGE = "page"
+    ALBUM = "album"
+    PHOTOS_LIST = "photos_list"
+    MARKET_MARKET_ALBUM = "market_market_album"
+    MARKET = "market"
+    EVENT = "event"
 
 
 class WallWallpostAttachmentType(pydantic.BaseModel):
@@ -3511,9 +3511,9 @@ class WidgetsCommentMedia(pydantic.BaseModel):
 
 
 class WidgetsCommentMediaTypeEnum(str, Enum):
-    audio = "audio"
-    photo = "photo"
-    video = "video"
+    AUDIO = "audio"
+    PHOTO = "photo"
+    VIDEO = "video"
 
 
 class WidgetsCommentMediaType(pydantic.BaseModel):
@@ -3640,10 +3640,10 @@ class AccountPushConversationsItem(pydantic.BaseModel):
 
 
 class AccountPushParamsModeEnum(str, Enum):
-    on = "on"
-    off = "off"
-    no_sound = "no_sound"
-    no_text = "no_text"
+    ON = "on"
+    OFF = "off"
+    NO_SOUND = "no_sound"
+    NO_TEXT = "no_text"
 
 
 class AccountPushParamsMode(pydantic.BaseModel):
@@ -3653,8 +3653,8 @@ class AccountPushParamsMode(pydantic.BaseModel):
 
 
 class AccountPushParamsOnoffEnum(str, Enum):
-    on = "on"
-    off = "off"
+    ON = "on"
+    OFF = "off"
 
 
 class AccountPushParamsOnoff(pydantic.BaseModel):
@@ -3664,9 +3664,9 @@ class AccountPushParamsOnoff(pydantic.BaseModel):
 
 
 class AccountPushParamsSettingsEnum(str, Enum):
-    on = "on"
-    off = "off"
-    fr_of_fr = "fr_of_fr"
+    ON = "on"
+    OFF = "off"
+    FR_OF_FR = "fr_of_fr"
 
 
 class AccountPushParamsSettings(pydantic.BaseModel):
@@ -3699,21 +3699,21 @@ class AccountUserSettings(pydantic.BaseModel):
     )
 
 
-class AddressesFieldsEnum(Enum):
-    id = "id"
-    title = "title"
-    address = "address"
-    additional_address = "additional_address"
-    country_id = "country_id"
-    city_id = "city_id"
-    metro_station_id = "metro_station_id"
-    latitude = "latitude"
-    longitude = "longitude"
-    distance = "distance"
-    work_info_status = "work_info_status"
-    timetable = "timetable"
-    phone = "phone"
-    time_offset = "time_offset"
+class AddressesFieldsEnum(str, Enum):
+    ID = "id"
+    TITLE = "title"
+    ADDRESS = "address"
+    ADDITIONAL_ADDRESS = "additional_address"
+    COUNTRY_ID = "country_id"
+    CITY_ID = "city_id"
+    METRO_STATION_ID = "metro_station_id"
+    LATITUDE = "latitude"
+    LONGITUDE = "longitude"
+    DISTANCE = "distance"
+    WORK_INFO_STATUS = "work_info_status"
+    TIMETABLE = "timetable"
+    PHONE = "phone"
+    TIME_OFFSET = "time_offset"
 
 
 class AddressesFields(pydantic.BaseModel):
@@ -4399,106 +4399,106 @@ class BaseUploadServer(pydantic.BaseModel):
 
 
 class BaseUserGroupFieldsEnum(str, Enum):
-    about = "about"
-    action_button = "action_button"
-    activities = "activities"
-    activity = "activity"
-    addresses = "addresses"
-    admin_level = "admin_level"
-    age_limits = "age_limits"
-    author_id = "author_id"
-    ban_info = "ban_info"
-    bdate = "bdate"
-    blacklisted = "blacklisted"
-    blacklisted_by_me = "blacklisted_by_me"
-    books = "books"
-    can_create_topic = "can_create_topic"
-    can_message = "can_message"
-    can_post = "can_post"
-    can_see_all_posts = "can_see_all_posts"
-    can_see_audio = "can_see_audio"
-    can_send_friend_request = "can_send_friend_request"
-    can_upload_video = "can_upload_video"
-    can_write_private_message = "can_write_private_message"
-    career = "career"
-    city = "city"
-    common_count = "common_count"
-    connections = "connections"
-    contacts = "contacts"
-    counters = "counters"
-    country = "country"
-    cover = "cover"
-    crop_photo = "crop_photo"
-    deactivated = "deactivated"
-    description = "description"
-    domain = "domain"
-    education = "education"
-    exports = "exports"
-    finish_date = "finish_date"
-    fixed_post = "fixed_post"
-    followers_count = "followers_count"
-    friend_status = "friend_status"
-    games = "games"
-    has_market_app = "has_market_app"
-    has_mobile = "has_mobile"
-    has_photo = "has_photo"
-    home_town = "home_town"
-    id = "id"
-    interests = "interests"
-    is_admin = "is_admin"
-    is_closed = "is_closed"
-    is_favorite = "is_favorite"
-    is_friend = "is_friend"
-    is_hidden_from_feed = "is_hidden_from_feed"
-    is_member = "is_member"
-    is_messages_blocked = "is_messages_blocked"
-    can_send_notify = "can_send_notify"
-    is_subscribed = "is_subscribed"
-    last_seen = "last_seen"
-    links = "links"
-    lists = "lists"
-    maiden_name = "maiden_name"
-    main_album_id = "main_album_id"
-    main_section = "main_section"
-    market = "market"
-    member_status = "member_status"
-    members_count = "members_count"
-    military = "military"
-    movies = "movies"
-    music = "music"
-    name = "name"
-    nickname = "nickname"
-    occupation = "occupation"
-    online = "online"
-    online_status = "online_status"
-    personal = "personal"
-    phone = "phone"
-    photo_100 = "photo_100"
-    photo_200 = "photo_200"
-    photo_200_orig = "photo_200_orig"
-    photo_400_orig = "photo_400_orig"
-    photo_50 = "photo_50"
-    photo_id = "photo_id"
-    photo_max = "photo_max"
-    photo_max_orig = "photo_max_orig"
-    quotes = "quotes"
-    relation = "relation"
-    relatives = "relatives"
-    schools = "schools"
-    screen_name = "screen_name"
-    sex = "sex"
-    site = "site"
-    start_date = "start_date"
-    status = "status"
-    timezone = "timezone"
-    trending = "trending"
-    tv = "tv"
-    type = "type"
-    universities = "universities"
-    verified = "verified"
-    wall_comments = "wall_comments"
-    wiki_page = "wiki_page"
-    vk_admin_status = "vk_admin_status"
+    ABOUT = "about"
+    ACTION_BUTTON = "action_button"
+    ACTIVITIES = "activities"
+    ACTIVITY = "activity"
+    ADDRESSES = "addresses"
+    ADMIN_LEVEL = "admin_level"
+    AGE_LIMITS = "age_limits"
+    AUTHOR_ID = "author_id"
+    BAN_INFO = "ban_info"
+    BDATE = "bdate"
+    BLACKLISTED = "blacklisted"
+    BLACKLISTED_BY_ME = "blacklisted_by_me"
+    BOOKS = "books"
+    CAN_CREATE_TOPIC = "can_create_topic"
+    CAN_MESSAGE = "can_message"
+    CAN_POST = "can_post"
+    CAN_SEE_ALL_POSTS = "can_see_all_posts"
+    CAN_SEE_AUDIO = "can_see_audio"
+    CAN_SEND_FRIEND_REQUEST = "can_send_friend_request"
+    CAN_UPLOAD_VIDEO = "can_upload_video"
+    CAN_WRITE_PRIVATE_MESSAGE = "can_write_private_message"
+    CAREER = "career"
+    CITY = "city"
+    COMMON_COUNT = "common_count"
+    CONNECTIONS = "connections"
+    CONTACTS = "contacts"
+    COUNTERS = "counters"
+    COUNTRY = "country"
+    COVER = "cover"
+    CROP_PHOTO = "crop_photo"
+    DEACTIVATED = "deactivated"
+    DESCRIPTION = "description"
+    DOMAIN = "domain"
+    EDUCATION = "education"
+    EXPORTS = "exports"
+    FINISH_DATE = "finish_date"
+    FIXED_POST = "fixed_post"
+    FOLLOWERS_COUNT = "followers_count"
+    FRIEND_STATUS = "friend_status"
+    GAMES = "games"
+    HAS_MARKET_APP = "has_market_app"
+    HAS_MOBILE = "has_mobile"
+    HAS_PHOTO = "has_photo"
+    HOME_TOWN = "home_town"
+    ID = "id"
+    INTERESTS = "interests"
+    IS_ADMIN = "is_admin"
+    IS_CLOSED = "is_closed"
+    IS_FAVORITE = "is_favorite"
+    IS_FRIEND = "is_friend"
+    IS_HIDDEN_FROM_FEED = "is_hidden_from_feed"
+    IS_MEMBER = "is_member"
+    IS_MESSAGES_BLOCKED = "is_messages_blocked"
+    CAN_SEND_NOTIFY = "can_send_notify"
+    IS_SUBSCRIBED = "is_subscribed"
+    LAST_SEEN = "last_seen"
+    LINKS = "links"
+    LISTS = "lists"
+    MAIDEN_NAME = "maiden_name"
+    MAIN_ALBUM_ID = "main_album_id"
+    MAIN_SECTION = "main_section"
+    MARKET = "market"
+    MEMBER_STATUS = "member_status"
+    MEMBERS_COUNT = "members_count"
+    MILITARY = "military"
+    MOVIES = "movies"
+    MUSIC = "music"
+    NAME = "name"
+    NICKNAME = "nickname"
+    OCCUPATION = "occupation"
+    ONLINE = "online"
+    ONLINE_STATUS = "online_status"
+    PERSONAL = "personal"
+    PHONE = "phone"
+    PHOTO_100 = "photo_100"
+    PHOTO_200 = "photo_200"
+    PHOTO_200_ORIG = "photo_200_orig"
+    PHOTO_400_ORIG = "photo_400_orig"
+    PHOTO_50 = "photo_50"
+    PHOTO_ID = "photo_id"
+    PHOTO_MAX = "photo_max"
+    PHOTO_MAX_ORIG = "photo_max_orig"
+    QUOTES = "quotes"
+    RELATION = "relation"
+    RELATIVES = "relatives"
+    SCHOOLS = "schools"
+    SCREEN_NAME = "screen_name"
+    SEX = "sex"
+    SITE = "site"
+    START_DATE = "start_date"
+    STATUS = "status"
+    TIMEZONE = "timezone"
+    TRENDING = "trending"
+    TV = "tv"
+    TYPE = "type"
+    UNIVERSITIES = "universities"
+    VERIFIED = "verified"
+    WALL_COMMENTS = "wall_comments"
+    WIKI_PAGE = "wiki_page"
+    VK_ADMIN_STATUS = "vk_admin_status"
 
 
 class BaseUserGroupFields(pydantic.BaseModel):
@@ -4948,9 +4948,9 @@ class DatabaseUniversity(pydantic.BaseModel):
 
 
 class DocsDocAttachmentTypeEnum(str, Enum):
-    doc = "doc"
-    graffiti = "graffiti"
-    audio_message = "audio_message"
+    DOC = "doc"
+    GRAFFITI = "graffiti"
+    AUDIO_MESSAGE = "audio_message"
 
 
 class DocsDocAttachmentType(pydantic.BaseModel):
@@ -5290,50 +5290,50 @@ class GroupsCover(pydantic.BaseModel):
 
 
 class GroupsFieldsEnum(str, Enum):
-    market = "market"
-    member_status = "member_status"
-    is_favorite = "is_favorite"
-    is_subscribed = "is_subscribed"
-    city = "city"
-    country = "country"
-    verified = "verified"
-    description = "description"
-    wiki_page = "wiki_page"
-    members_count = "members_count"
-    counters = "counters"
-    cover = "cover"
-    can_post = "can_post"
-    can_see_all_posts = "can_see_all_posts"
-    activity = "activity"
-    fixed_post = "fixed_post"
-    can_create_topic = "can_create_topic"
-    can_upload_video = "can_upload_video"
-    has_photo = "has_photo"
-    status = "status"
-    main_album_id = "main_album_id"
-    links = "links"
-    contacts = "contacts"
-    site = "site"
-    main_section = "main_section"
-    trending = "trending"
-    can_message = "can_message"
-    is_market_cart_enabled = "is_market_cart_enabled"
-    is_messages_blocked = "is_messages_blocked"
-    can_send_notify = "can_send_notify"
-    online_status = "online_status"
-    start_date = "start_date"
-    finish_date = "finish_date"
-    age_limits = "age_limits"
-    ban_info = "ban_info"
-    action_button = "action_button"
-    author_id = "author_id"
-    phone = "phone"
-    has_market_app = "has_market_app"
-    addresses = "addresses"
-    live_covers = "live_covers"
-    is_adult = "is_adult"
-    can_subscribe_posts = "can_subscribe_posts"
-    warning_notification = "warning_notification"
+    MARKET = "market"
+    MEMBER_STATUS = "member_status"
+    IS_FAVORITE = "is_favorite"
+    IS_SUBSCRIBED = "is_subscribed"
+    CITY = "city"
+    COUNTRY = "country"
+    VERIFIED = "verified"
+    DESCRIPTION = "description"
+    WIKI_PAGE = "wiki_page"
+    MEMBERS_COUNT = "members_count"
+    COUNTERS = "counters"
+    COVER = "cover"
+    CAN_POST = "can_post"
+    CAN_SEE_ALL_POSTS = "can_see_all_posts"
+    ACTIVITY = "activity"
+    FIXED_POST = "fixed_post"
+    CAN_CREATE_TOPIC = "can_create_topic"
+    CAN_UPLOAD_VIDEO = "can_upload_video"
+    HAS_PHOTO = "has_photo"
+    STATUS = "status"
+    MAIN_ALBUM_ID = "main_album_id"
+    LINKS = "links"
+    CONTACTS = "contacts"
+    SITE = "site"
+    MAIN_SECTION = "main_section"
+    TRENDING = "trending"
+    CAN_MESSAGE = "can_message"
+    IS_MARKET_CART_ENABLED = "is_market_cart_enabled"
+    IS_MESSAGES_BLOCKED = "is_messages_blocked"
+    CAN_SEND_NOTIFY = "can_send_notify"
+    ONLINE_STATUS = "online_status"
+    START_DATE = "start_date"
+    FINISH_DATE = "finish_date"
+    AGE_LIMITS = "age_limits"
+    BAN_INFO = "ban_info"
+    ACTION_BUTTON = "action_button"
+    AUTHOR_ID = "author_id"
+    PHONE = "phone"
+    HAS_MARKET_APP = "has_market_app"
+    ADDRESSES = "addresses"
+    LIVE_COVERS = "live_covers"
+    IS_ADULT = "is_adult"
+    CAN_SUBSCRIBE_POSTS = "can_subscribe_posts"
+    WARNING_NOTIFICATION = "warning_notification"
 
 
 class GroupsFields(pydantic.BaseModel):
@@ -5343,13 +5343,13 @@ class GroupsFields(pydantic.BaseModel):
 
 
 class GroupsFilterEnum(str, Enum):
-    admin = "admin"
-    editor = "editor"
-    moder = "moder"
-    groups = "groups"
-    publics = "publics"
-    events = "events"
-    has_addresses = "has_addresses"
+    ADMIN = "admin"
+    EDITOR = "editor"
+    MODER = "moder"
+    GROUPS = "groups"
+    PUBLICS = "publics"
+    EVENTS = "events"
+    HAS_ADDRESSES = "has_addresses"
 
 
 class GroupsFilter(pydantic.BaseModel):
@@ -5507,9 +5507,9 @@ class GroupsGroupPublicCategoryList(pydantic.BaseModel):
 
 
 class GroupsGroupRoleEnum(str, Enum):
-    moderator = "moderator"
-    editor = "editor"
-    administrator = "administrator"
+    MODERATOR = "moderator"
+    EDITOR = "editor"
+    ADMINISTRATOR = "administrator"
 
 
 class GroupsGroupRole(pydantic.BaseModel):
@@ -5802,7 +5802,7 @@ class GroupsMemberRole(pydantic.BaseModel):
 
 
 class GroupsMemberRolePermissionEnum(str, Enum):
-    ads = "ads"
+    ADS = "ads"
 
 
 class GroupsMemberRolePermission(pydantic.BaseModel):
@@ -5867,10 +5867,10 @@ class GroupsOwnerXtrBanInfo(pydantic.BaseModel):
 
 
 class GroupsRoleOptionsEnum(str, Enum):
-    moderator = "moderator"
-    editor = "editor"
-    administrator = "administrator"
-    creator = "creator"
+    MODERATOR = "moderator"
+    EDITOR = "editor"
+    ADMINISTRATOR = "administrator"
+    CREATOR = "creator"
 
 
 class GroupsRoleOptions(pydantic.BaseModel):
@@ -6000,18 +6000,18 @@ class LeadsStart(pydantic.BaseModel):
 
 
 class LikesTypeEnum(str, Enum):
-    post = "post"
-    comment = "comment"
-    photo = "photo"
-    audio = "audio"
-    video = "video"
-    note = "note"
-    market = "market"
-    photo_comment = "photo_comment"
-    video_comment = "video_comment"
-    topic_comment = "topic_comment"
-    market_comment = "market_comment"
-    sitepage = "sitepage"
+    POST = "post"
+    COMMENT = "comment"
+    PHOTO = "photo"
+    AUDIO = "audio"
+    VIDEO = "video"
+    NOTE = "note"
+    MARKET = "market"
+    PHOTO_COMMENT = "photo_comment"
+    VIDEO_COMMENT = "video_comment"
+    TOPIC_COMMENT = "topic_comment"
+    MARKET_COMMENT = "market_comment"
+    SITEPAGE = "sitepage"
 
 
 class LikesType(pydantic.BaseModel):
@@ -6344,11 +6344,11 @@ class MessagesUserXtrInvitedBy(pydantic.BaseModel):
 
 
 class NewsfeedCommentsFiltersEnum(str, Enum):
-    post = "post"
-    photo = "photo"
-    video = "video"
-    topic = "topic"
-    note = "note"
+    POST = "post"
+    PHOTO = "photo"
+    VIDEO = "video"
+    TOPIC = "topic"
+    NOTE = "note"
 
 
 class NewsfeedCommentsFilters(pydantic.BaseModel):
@@ -6379,14 +6379,14 @@ class NewsfeedEventActivity(pydantic.BaseModel):
 
 
 class NewsfeedFiltersEnum(str, Enum):
-    post = "post"
-    photo = "photo"
-    photo_tag = "photo_tag"
-    wall_photo = "wall_photo"
-    friend = "friend"
-    note = "note"
-    audio = "audio"
-    video = "video"
+    POST = "post"
+    PHOTO = "photo"
+    PHOTO_TAG = "photo_tag"
+    WALL_PHOTO = "wall_photo"
+    FRIEND = "friend"
+    NOTE = "note"
+    AUDIO = "audio"
+    VIDEO = "video"
 
 
 class NewsfeedFilters(pydantic.BaseModel):
@@ -6396,12 +6396,12 @@ class NewsfeedFilters(pydantic.BaseModel):
 
 
 class NewsfeedIgnoreItemTypeEnum(str, Enum):
-    wall = "wall"
-    tag = "tag"
-    profilephoto = "profilephoto"
-    video = "video"
-    photo = "photo"
-    audio = "audio"
+    WALL = "wall"
+    TAG = "tag"
+    PROFILEPHOTO = "profilephoto"
+    VIDEO = "video"
+    PHOTO = "photo"
+    AUDIO = "audio"
 
 
 class NewsfeedIgnoreItemType(pydantic.BaseModel):
@@ -6644,9 +6644,9 @@ class NewsfeedItemWallpost(pydantic.BaseModel):
 
 
 class NewsfeedItemWallpostTypeEnum(str, Enum):
-    post = "post"
-    copy = "copy"
-    reply = "reply"
+    POST = "post"
+    COPY = "copy"
+    REPLY = "reply"
 
 
 class NewsfeedItemWallpostType(pydantic.BaseModel):
@@ -7798,26 +7798,26 @@ class StoriesStoryStats(pydantic.BaseModel):
 
 
 class StoriesUploadLinkTextEnum(str, Enum):
-    to_store = "to_store"
-    vote = "vote"
-    more = "more"
-    book = "book"
-    order = "order"
-    enroll = "enroll"
-    fill = "fill"
-    signup = "signup"
-    buy = "buy"
-    ticket = "ticket"
-    write = "write"
-    open = "open"
-    learn_more = "learn_more"
-    view = "view"
-    go_to = "go_to"
-    contact = "contact"
-    watch = "watch"
-    play = "play"
-    install = "install"
-    read = "read"
+    TO_STORE = "to_store"
+    VOTE = "vote"
+    MORE = "more"
+    BOOK = "book"
+    ORDER = "order"
+    ENROLL = "enroll"
+    FILL = "fill"
+    SIGNUP = "signup"
+    BUY = "buy"
+    TICKET = "ticket"
+    WRITE = "write"
+    OPEN = "open"
+    LEARN_MORE = "learn_more"
+    VIEW = "view"
+    GO_TO = "go_to"
+    CONTACT = "contact"
+    WATCH = "watch"
+    PLAY = "play"
+    INSTALL = "install"
+    READ = "read"
 
 
 class StoriesUploadLinkText(pydantic.BaseModel):
@@ -7878,73 +7878,73 @@ class UsersExports(pydantic.BaseModel):
 
 
 class UsersFieldsEnum(str, Enum):
-    photo_id = "photo_id"
-    verified = "verified"
-    sex = "sex"
-    bdate = "bdate"
-    city = "city"
-    country = "country"
-    home_town = "home_town"
-    has_photo = "has_photo"
-    photo_50 = "photo_50"
-    photo_100 = "photo_100"
-    photo_200_orig = "photo_200_orig"
-    photo_200 = "photo_200"
-    photo_400_orig = "photo_400_orig"
-    photo_max = "photo_max"
-    photo_max_orig = "photo_max_orig"
-    online = "online"
-    lists = "lists"
-    domain = "domain"
-    has_mobile = "has_mobile"
-    contacts = "contacts"
-    site = "site"
-    education = "education"
-    universities = "universities"
-    schools = "schools"
-    status = "status"
-    last_seen = "last_seen"
-    followers_count = "followers_count"
-    counters = "counters"
-    common_count = "common_count"
-    occupation = "occupation"
-    nickname = "nickname"
-    relatives = "relatives"
-    relation = "relation"
-    personal = "personal"
-    connections = "connections"
-    exports = "exports"
-    wall_comments = "wall_comments"
-    activities = "activities"
-    interests = "interests"
-    music = "music"
-    movies = "movies"
-    tv = "tv"
-    books = "books"
-    games = "games"
-    about = "about"
-    quotes = "quotes"
-    can_post = "can_post"
-    can_see_all_posts = "can_see_all_posts"
-    can_see_audio = "can_see_audio"
-    can_write_private_message = "can_write_private_message"
-    can_send_friend_request = "can_send_friend_request"
-    is_favorite = "is_favorite"
-    is_hidden_from_feed = "is_hidden_from_feed"
-    timezone = "timezone"
-    screen_name = "screen_name"
-    maiden_name = "maiden_name"
-    crop_photo = "crop_photo"
-    is_friend = "is_friend"
-    friend_status = "friend_status"
-    career = "career"
-    military = "military"
-    blacklisted = "blacklisted"
-    blacklisted_by_me = "blacklisted_by_me"
-    can_subscribe_posts = "can_subscribe_posts"
-    descriptions = "descriptions"
-    trending = "trending"
-    mutual = "mutual"
+    PHOTO_ID = "photo_id"
+    VERIFIED = "verified"
+    SEX = "sex"
+    BDATE = "bdate"
+    CITY = "city"
+    COUNTRY = "country"
+    HOME_TOWN = "home_town"
+    HAS_PHOTO = "has_photo"
+    PHOTO_50 = "photo_50"
+    PHOTO_100 = "photo_100"
+    PHOTO_200_ORIG = "photo_200_orig"
+    PHOTO_200 = "photo_200"
+    PHOTO_400_ORIG = "photo_400_orig"
+    PHOTO_MAX = "photo_max"
+    PHOTO_MAX_ORIG = "photo_max_orig"
+    ONLINE = "online"
+    LISTS = "lists"
+    DOMAIN = "domain"
+    HAS_MOBILE = "has_mobile"
+    CONTACTS = "contacts"
+    SITE = "site"
+    EDUCATION = "education"
+    UNIVERSITIES = "universities"
+    SCHOOLS = "schools"
+    STATUS = "status"
+    LAST_SEEN = "last_seen"
+    FOLLOWERS_COUNT = "followers_count"
+    COUNTERS = "counters"
+    COMMON_COUNT = "common_count"
+    OCCUPATION = "occupation"
+    NICKNAME = "nickname"
+    RELATIVES = "relatives"
+    RELATION = "relation"
+    PERSONAL = "personal"
+    CONNECTIONS = "connections"
+    EXPORTS = "exports"
+    WALL_COMMENTS = "wall_comments"
+    ACTIVITIES = "activities"
+    INTERESTS = "interests"
+    MUSIC = "music"
+    MOVIES = "movies"
+    TV = "tv"
+    BOOKS = "books"
+    GAMES = "games"
+    ABOUT = "about"
+    QUOTES = "quotes"
+    CAN_POST = "can_post"
+    CAN_SEE_ALL_POSTS = "can_see_all_posts"
+    CAN_SEE_AUDIO = "can_see_audio"
+    CAN_WRITE_PRIVATE_MESSAGE = "can_write_private_message"
+    CAN_SEND_FRIEND_REQUEST = "can_send_friend_request"
+    IS_FAVORITE = "is_favorite"
+    IS_HIDDEN_FROM_FEED = "is_hidden_from_feed"
+    TIMEZONE = "timezone"
+    SCREEN_NAME = "screen_name"
+    MAIDEN_NAME = "maiden_name"
+    CROP_PHOTO = "crop_photo"
+    IS_FRIEND = "is_friend"
+    FRIEND_STATUS = "friend_status"
+    CAREER = "career"
+    MILITARY = "military"
+    BLACKLISTED = "blacklisted"
+    BLACKLISTED_BY_ME = "blacklisted_by_me"
+    CAN_SUBSCRIBE_POSTS = "can_subscribe_posts"
+    DESCRIPTIONS = "descriptions"
+    TRENDING = "trending"
+    MUTUAL = "mutual"
 
 
 class UsersFields(pydantic.BaseModel):
@@ -8202,7 +8202,7 @@ class UsersUserSettingsXtr(pydantic.BaseModel):
 
 
 class UsersUserTypeEnum(str, Enum):
-    profile = "profile"
+    PROFILE = "profile"
 
 
 class UsersUserType(pydantic.BaseModel):

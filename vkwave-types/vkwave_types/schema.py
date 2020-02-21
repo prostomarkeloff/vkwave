@@ -4,11 +4,11 @@ from enum import Enum
 
 
 class ParameterTypesEnum(str, Enum):
-    array = "array"
-    boolean = "boolean"
-    integer = "integer"
-    number = "number"
-    string = "string"
+    ARRAY = "array"
+    BOOLEAN = "boolean"
+    INTEGER = "integer"
+    NUMBER = "number"
+    STRING = "string"
 
 
 class ParameterTypes(pydantic.BaseModel):
@@ -18,12 +18,12 @@ class ParameterTypes(pydantic.BaseModel):
 
 
 class ResponseTypesEnum(str, Enum):
-    array = "array"
-    boolean = "boolean"
-    integer = "integer"
-    number = "number"
-    string = "string"
-    object = "object"
+    ARRAY = "array"
+    BOOLEAN = "boolean"
+    INTEGER = "integer"
+    NUMBER = "number"
+    STRING = "string"
+    OBJECT = "object"
 
 
 class ResponseTypes(pydantic.BaseModel):
@@ -51,11 +51,11 @@ class ParameterArray(pydantic.BaseModel):
 
 
 class ResponsePropertyTypesEnum(str, Enum):
-    array = "array"
-    boolean = "boolean"
-    integer = "integer"
-    number = "number"
-    string = "string"
+    ARRAY = "array"
+    BOOLEAN = "boolean"
+    INTEGER = "integer"
+    NUMBER = "number"
+    STRING = "string"
 
 
 class ResponsePropertyTypes(pydantic.BaseModel):
@@ -65,10 +65,10 @@ class ResponsePropertyTypes(pydantic.BaseModel):
 
 
 class ItemTypesEnum(str, Enum):
-    boolean = "boolean"
-    integer = "integer"
-    number = "number"
-    string = "string"
+    BOOLEAN = "boolean"
+    INTEGER = "integer"
+    NUMBER = "number"
+    STRING = "string"
 
 
 class ItemTypes(pydantic.BaseModel):
