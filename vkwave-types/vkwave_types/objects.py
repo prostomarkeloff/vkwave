@@ -786,7 +786,7 @@ class BoardTopic(pydantic.BaseModel):
     )
 
 
-class CallbackGroupJoinTypeEnum(str, Enum):
+class CallbackGroupJoinTypeEnum(Enum):
     join = "join"
     unsure = "unsure"
     accepted = "accepted"
@@ -3699,7 +3699,7 @@ class AccountUserSettings(pydantic.BaseModel):
     )
 
 
-class AddressesFieldsEnum(str, Enum):
+class AddressesFieldsEnum(Enum):
     id = "id"
     title = "title"
     address = "address"

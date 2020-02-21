@@ -1,4 +1,5 @@
 from .objects import *
+from typing_extensions import Literal
 
 
 class ClientInfo(pydantic.BaseModel):
@@ -215,7 +216,7 @@ class MarketCommentDelete(pydantic.BaseModel):
 
 class GroupLeaveObject(pydantic.BaseModel):
     user_id: int = pydantic.Field(None, description="")
-    self: typing.Literal[0, 1] = pydantic.Field(None, description="")
+    self: Literal[0, 1] = pydantic.Field(None, description="")
 
 
 class GroupLeave(pydantic.BaseModel):
@@ -224,7 +225,7 @@ class GroupLeave(pydantic.BaseModel):
 
 class GroupJoinObject(pydantic.BaseModel):
     user_id: int = pydantic.Field(None, description="")
-    join_type: typing.Literal[
+    join_type: Literal[
         "join", "unsure", "accepted", "approved", "request"
     ] = pydantic.Field(None, description="")
 
@@ -237,7 +238,7 @@ class UserBlockObject(pydantic.BaseModel):
     admin_id: int = pydantic.Field(None, description="")
     user_id: int = pydantic.Field(None, description="")
     unblock_date: int = pydantic.Field(None, description="")
-    reason: typing.Literal[0, 1, 2, 3, 4] = pydantic.Field(None, description="")
+    reason: Literal[0, 1, 2, 3, 4] = pydantic.Field(None, description="")
     comment: str = pydantic.Field(None, description="")
 
 
@@ -248,7 +249,7 @@ class UserBlock(pydantic.BaseModel):
 class UserUnblockObject(pydantic.BaseModel):
     admin_id: int = pydantic.Field(None, description="")
     user_id: int = pydantic.Field(None, description="")
-    by_end_date: typing.Literal[0, 1] = pydantic.Field(None, description="")
+    by_end_date: Literal[0, 1] = pydantic.Field(None, description="")
 
 
 class UserUnblock(pydantic.BaseModel):
@@ -268,8 +269,8 @@ class PollVoteNew(pydantic.BaseModel):
 
 class GroupOfficersEditObject(pydantic.BaseModel):
     admin_id: int = pydantic.Field(None, description="")
-    level_old: typing.Literal[0, 1, 2, 3] = pydantic.Field(None, description="")
-    level_new: typing.Literal[0, 1, 2, 3] = pydantic.Field(None, description="")
+    level_old: Literal[0, 1, 2, 3] = pydantic.Field(None, description="")
+    level_new: Literal[0, 1, 2, 3] = pydantic.Field(None, description="")
     user_id: int = pydantic.Field(None, description="")
 
 
@@ -278,7 +279,7 @@ class GroupOfficersEdit(pydantic.BaseModel):
 
 
 class ChangesModel(pydantic.BaseModel):
-    field: typing.Literal[
+    field: Literal[
         "title",
         "description",
         "access",
