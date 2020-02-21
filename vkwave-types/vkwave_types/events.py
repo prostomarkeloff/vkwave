@@ -227,7 +227,7 @@ class GroupLeave(pydantic.BaseModel):
     object: GroupLeaveObject = pydantic.Field(None, description="")
 
 
-class JoinTypeEnum(Enum):
+class JoinTypeEnum(str, Enum):
     JOIN = "join"
     UNSURE = "unsure"
     ACCEPTED = "accepted"
@@ -308,7 +308,7 @@ class GroupOfficersEdit(pydantic.BaseModel):
     object: GroupOfficersEditObject = pydantic.Field(None, description="")
 
 
-class ChangedSettingEnum(Enum):
+class ChangedSettingEnum(str, Enum):
     TITLE = "title"
     DESCRIPTION = "description"
     ACCESS = "access"
