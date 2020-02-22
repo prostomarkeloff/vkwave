@@ -6,15 +6,18 @@ import typing
 
 
 async def _noop_error_handler(err: Exception, ctx: "ResultContext") -> None:
+    """This handler does nothing. You should replace that."""
     pass
 
 
 class RequestState(Enum):
+    """State of request. Probably maybe useless in a lot of situtations but sometimes..."""
     NOT_SENT = auto()
     SENT = auto()
 
 
 class ResultState(Enum):
+    """State of result. You must check this before operating with values in (data, exception_data, exception)"""
     NOTHING = auto()
     SUCCESS = auto()
     HANDLED_EXCEPTION = auto()
@@ -22,6 +25,7 @@ class ResultState(Enum):
 
 
 class RequestContext:
+    """Context of request. It is being returned from `create_request` function. Needed to work with request specified things."""
     def __init__(
         self,
         request_callback: RequestCallbackCallable,
@@ -29,6 +33,13 @@ class RequestContext:
         request_params: dict,
         exceptions: typing.Optional[typing.Dict[typing.Type[Exception], None,]] = None,
     ):
+        """
+        :param request_callback: callable thing that will be called on `ctx.send_request`.
+        :param method_name: name of method
+        :param request_params: request params
+        :param exceptions: possible exceptions while calling `request_callback`. There are should be only client specified exceptions.
+
+        """
         self.state: RequestState = RequestState.NOT_SENT
 
         self._request_callback = request_callback
@@ -40,8 +51,11 @@ class RequestContext:
             typing.Type[Exception], ErrorHandlerCallable
         ] = {}
 
+
         if exceptions is None:
             exceptions = {}
+
+        # set default handlers
         for exception in exceptions:
             self._exception_handlers[exception] = _noop_error_handler
 
@@ -86,6 +100,7 @@ class ResultContext:
 
     @property
     def exception(self) -> typing.Optional[Exception]:
+        """Exception raised during calling `request_callback`"""
         return self._exception
 
     @exception.setter
@@ -94,6 +109,7 @@ class ResultContext:
 
     @property
     def exception_data(self) -> typing.Optional[dict]:
+        """Data is set by exception handler."""
         return self._exception_data
 
     @exception_data.setter
@@ -102,6 +118,7 @@ class ResultContext:
 
     @property
     def data(self) -> typing.Optional[dict]:
+        """Result of `request_callback`."""
         return self._data
 
     @data.setter
