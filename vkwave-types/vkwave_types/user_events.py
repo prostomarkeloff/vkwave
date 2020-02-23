@@ -336,8 +336,6 @@ def get_event_object(raw_event: list):
             event[
                 _events_dict[EventId.MESSAGE_EVENT][event_number]
             ] = event_param
-
-        print(event)
         return MessageEventModel(object=MessageEventObject(**event))
     elif event_type == EventId.SET_FLAGS:
         for event_number, event_param in enumerate(raw_event):
