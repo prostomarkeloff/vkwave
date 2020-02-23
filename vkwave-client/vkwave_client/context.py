@@ -1,5 +1,6 @@
 from enum import auto, Enum
 from .types import MethodName, ErrorHandlerCallable, RequestCallbackCallable
+from .types import SignalCallbackCallable
 from typing_extensions import final
 
 import typing
@@ -26,6 +27,15 @@ class ResultState(Enum):
     UNHANDLED_EXCEPTION = auto()
 
 
+class Signal(Enum):
+    # when any exception is occurred (but after exception handlers)
+    ON_EXCEPTION = auto()
+    # when we are preparing to send request
+    BEFORE_REQUEST = auto()
+    # when we sent request and ran exception handler (if exception occurred)
+    AFTER_REQUEST = auto()
+
+
 class RequestContext:
     """Context of request. It is being returned from `create_request` function. Needed to work with request specified things."""
 
@@ -50,6 +60,12 @@ class RequestContext:
         self._method_name = method_name
         self.result = ResultContext()
 
+        self._signals: typing.Dict[Signal, typing.List[SignalCallbackCallable]] = {
+            Signal.ON_EXCEPTION: [],
+            Signal.BEFORE_REQUEST: [],
+            Signal.AFTER_REQUEST: [],
+        }
+
         self._exception_handlers: typing.Dict[
             typing.Type[Exception], ErrorHandlerCallable
         ] = {}
@@ -69,6 +85,13 @@ class RequestContext:
             return True
         return False
 
+    def signal(self, signal: Signal, callback: SignalCallbackCallable) -> None:
+        self._signals[signal].append(callback)
+
+    async def _push_signal(self, signal: Signal) -> None:
+        for callback in self._signals[signal]:
+            await callback(self)
+
     def set_exception_handler(
         self, exception: typing.Type[Exception], handler: ErrorHandlerCallable,
     ) -> None:
@@ -78,6 +101,8 @@ class RequestContext:
 
     @final
     async def send_request(self) -> None:
+        await self._push_signal(Signal.BEFORE_REQUEST)
+
         try:
             result = await self._request_callback(
                 self._method_name, self._request_params
@@ -90,7 +115,10 @@ class RequestContext:
                 self.result.state = ResultState.HANDLED_EXCEPTION
             else:
                 self.result.state = ResultState.UNHANDLED_EXCEPTION
+            await self._push_signal(Signal.ON_EXCEPTION)
+
         self.state = RequestState.SENT
+        await self._push_signal(Signal.AFTER_REQUEST)
 
 
 class ResultContext:
