@@ -8,6 +8,9 @@ It's built over asyncio and Python's type hints. Minimal required version is`3.7
 
 This repostitory contains only `core` parts of VKWave. It means that code introduced in this repository is probably `low-level` and shouldn't be used directly unless otherwise specified.
 
+## Performance
+
+VKWave is a most fast library for Python for working with VK's API.
 
 ## Community
 
