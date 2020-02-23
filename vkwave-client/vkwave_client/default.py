@@ -40,7 +40,6 @@ class AIOHTTPClient(AbstractAPIClient):
             request_params=kwargs,
             exceptions={ClientConnectionError: None, JSONDecodeError: None},
         )
-        # TODO: exceptions for this client
 
     async def request_callback(self, method_name: MethodName, params: dict) -> dict:
         async with self._session.post(
