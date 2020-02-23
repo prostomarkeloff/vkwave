@@ -12,12 +12,14 @@ async def _noop_error_handler(err: Exception, ctx: "ResultContext") -> None:
 
 class RequestState(Enum):
     """State of request. Probably maybe useless in a lot of situtations but sometimes..."""
+
     NOT_SENT = auto()
     SENT = auto()
 
 
 class ResultState(Enum):
     """State of result. You must check this before operating with values in (data, exception_data, exception)"""
+
     NOTHING = auto()
     SUCCESS = auto()
     HANDLED_EXCEPTION = auto()
@@ -26,6 +28,7 @@ class ResultState(Enum):
 
 class RequestContext:
     """Context of request. It is being returned from `create_request` function. Needed to work with request specified things."""
+
     def __init__(
         self,
         request_callback: RequestCallbackCallable,
@@ -50,7 +53,6 @@ class RequestContext:
         self._exception_handlers: typing.Dict[
             typing.Type[Exception], ErrorHandlerCallable
         ] = {}
-
 
         if exceptions is None:
             exceptions = {}

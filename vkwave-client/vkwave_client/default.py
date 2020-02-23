@@ -8,6 +8,8 @@ from logging import getLogger
 
 from typing_extensions import Final
 from aiohttp import ClientSession
+from json import JSONDecodeError
+from aiohttp import ClientConnectionError
 
 from .abstract import AbstractAPIClient
 from .types import MethodName
@@ -36,7 +38,7 @@ class AIOHTTPClient(AbstractAPIClient):
             request_callback=self.request_callback,
             method_name=method_name,
             request_params=kwargs,
-            exceptions={},
+            exceptions={ClientConnectionError: None, JSONDecodeError: None},
         )
         # TODO: exceptions for this client
 

@@ -9,4 +9,3 @@ ErrorHandlerCallable = typing.Callable[
 
 MethodName = typing.NewType("MethodName", str)
 RequestCallbackCallable = typing.Callable[[MethodName, dict], typing.Awaitable[dict]]
-
