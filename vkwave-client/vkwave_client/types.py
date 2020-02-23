@@ -5,7 +5,7 @@ if typing.TYPE_CHECKING:
     from .context import RequestContext
 
 ErrorHandlerCallable = typing.Callable[
-    [Exception, "ResultContext"], typing.Awaitable[None]
+    ["RequestContext"], typing.Awaitable[None]
 ]
 
 MethodName = typing.NewType("MethodName", str)

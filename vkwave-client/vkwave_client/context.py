@@ -6,7 +6,7 @@ from typing_extensions import final
 import typing
 
 
-async def _noop_error_handler(err: Exception, ctx: "ResultContext") -> None:
+async def _noop_error_handler(ctx: "RequestContext") -> None:
     """This handler does nothing. You should replace that."""
     pass
 
@@ -79,9 +79,9 @@ class RequestContext:
 
     @final
     async def _handle_exception(self, exception: Exception) -> bool:
-        handler = self._exception_handlers[type(exception)]
-        if handler is not _noop_error_handler:
-            await handler(exception, self.result)
+        handler = self._exception_handlers.get(type(exception))
+        if handler and handler is not _noop_error_handler:
+            await handler(self)
             return True
         return False
 
