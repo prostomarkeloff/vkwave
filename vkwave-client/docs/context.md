@@ -11,9 +11,9 @@ One exception can have the only one exception handler.
 
 ```python
 # ...
-async def timeout_handler(err: Exception, ctx: ResultContext) -> None:
+async def timeout_handler(ctx: RequestContext) -> None:
     # it must be dict!
-    ctx.exception_data = {"data": "Exception was occurred.."}
+    ctx.result.exception_data = {"data": "Exception was occurred.."}
 
 # ...
 ctx.set_exception_handler(TimeoutException, timeout_handler)  # here we are handling timeout error
