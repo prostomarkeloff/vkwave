@@ -21,18 +21,12 @@ class AccountNameRequest(pydantic.BaseModel):
     )
 
 
-class AccountNameRequestStatusEnum(str, Enum):
+class AccountNameRequestStatus(str, Enum):
     SUCCESS = "success"
     PROCESSING = "processing"
     DECLINED = "declined"
     WAS_ACCEPTED = "was_accepted"
     WAS_DECLINED = "was_declined"
-
-
-class AccountNameRequestStatus(pydantic.BaseModel):
-    enum: typing.Optional[AccountNameRequestStatusEnum] = pydantic.Field(
-        None, description="Request status",
-    )
 
 
 class AccountPushConversations(pydantic.BaseModel):
@@ -157,101 +151,53 @@ class AccountUserSettingsInterests(pydantic.BaseModel):
     )
 
 
-class AdsAccessRoleEnum(str, Enum):
+class AdsAccessRole(str, Enum):
     ADMIN = "admin"
     MANAGER = "manager"
     REPORTS = "reports"
 
 
-class AdsAccessRole(pydantic.BaseModel):
-    enum: typing.Optional[AdsAccessRoleEnum] = pydantic.Field(
-        None, description="Current user's role",
-    )
-
-
-class AdsAccountTypeEnum(str, Enum):
+class AdsAccountType(str, Enum):
     GENERAL = "general"
     AGENCY = "agency"
 
 
-class AdsAccountType(pydantic.BaseModel):
-    enum: typing.Optional[AdsAccountTypeEnum] = pydantic.Field(
-        None, description="Account type",
-    )
-
-
-class AdsAdApprovedEnum(int, Enum):
+class AdsAdApproved(int, Enum):
     enum_0 = 0
     enum_1 = 1
     enum_2 = 2
     enum_3 = 3
 
 
-class AdsAdApproved(pydantic.BaseModel):
-    enum: typing.Optional[AdsAdApprovedEnum] = pydantic.Field(
-        None, description="Review status",
-    )
-
-
-class AdsAdCostTypeEnum(int, Enum):
+class AdsAdCostType(int, Enum):
     enum_0 = 0
     enum_1 = 1
     enum_2 = 2
 
 
-class AdsAdCostType(pydantic.BaseModel):
-    enum: typing.Optional[AdsAdCostTypeEnum] = pydantic.Field(
-        None, description="Cost type",
-    )
-
-
-class AdsAdStatusEnum(int, Enum):
+class AdsAdStatus(int, Enum):
     enum_0 = 0
     enum_1 = 1
     enum_2 = 2
 
 
-class AdsAdStatus(pydantic.BaseModel):
-    enum: typing.Optional[AdsAdStatusEnum] = pydantic.Field(
-        None, description="Ad atatus",
-    )
-
-
-class AdsCampaignStatusEnum(int, Enum):
+class AdsCampaignStatus(int, Enum):
     enum_0 = 0
     enum_1 = 1
     enum_2 = 2
 
 
-class AdsCampaignStatus(pydantic.BaseModel):
-    enum: typing.Optional[AdsCampaignStatusEnum] = pydantic.Field(
-        None, description="Campaign status",
-    )
-
-
-class AdsCampaignTypeEnum(str, Enum):
+class AdsCampaignType(str, Enum):
     NORMAL = "normal"
     VK_APPS_MANAGED = "vk_apps_managed"
     MOBILE_APPS = "mobile_apps"
     PROMOTED_POSTS = "promoted_posts"
 
 
-class AdsCampaignType(pydantic.BaseModel):
-    enum: typing.Optional[AdsCampaignTypeEnum] = pydantic.Field(
-        None, description="Campaign type",
-    )
-
-
-class AdsCriteriaSexEnum(int, Enum):
+class AdsCriteriaSex(int, Enum):
     enum_0 = 0
     enum_1 = 1
     enum_2 = 2
-
-
-class AdsCriteriaSex(pydantic.BaseModel):
-    enum: typing.Optional[AdsCriteriaSexEnum] = pydantic.Field(
-        None, description="Sex",
-    )
 
 
 class AdsDemostatsFormat(pydantic.BaseModel):
@@ -278,17 +224,11 @@ class AdsDemostatsFormat(pydantic.BaseModel):
     )
 
 
-class AdsObjectTypeEnum(str, Enum):
+class AdsObjectType(str, Enum):
     AD = "ad"
     CAMPAIGN = "campaign"
     CLIENT = "client"
     OFFICE = "office"
-
-
-class AdsObjectType(pydantic.BaseModel):
-    enum: typing.Optional[AdsObjectTypeEnum] = pydantic.Field(
-        None, description="Object type",
-    )
 
 
 class AdsStatsFormat(pydantic.BaseModel):
@@ -330,28 +270,16 @@ class AdsStatsFormat(pydantic.BaseModel):
     )
 
 
-class AdsStatsSexValueEnum(str, Enum):
+class AdsStatsSexValue(str, Enum):
     F = "f"
     M = "m"
 
 
-class AdsStatsSexValue(pydantic.BaseModel):
-    enum: typing.Optional[AdsStatsSexValueEnum] = pydantic.Field(
-        None, description="Sex",
-    )
-
-
-class AdsTargSuggestionsSchoolsTypeEnum(str, Enum):
+class AdsTargSuggestionsSchoolsType(str, Enum):
     SCHOOL = "school"
     UNIVERSITY = "university"
     FACULTY = "faculty"
     CHAIR = "chair"
-
-
-class AdsTargSuggestionsSchoolsType(pydantic.BaseModel):
-    enum: typing.Optional[AdsTargSuggestionsSchoolsTypeEnum] = pydantic.Field(
-        None, description="School type",
-    )
 
 
 class AppsApp(pydantic.BaseModel):
@@ -414,7 +342,7 @@ class AppsApp(pydantic.BaseModel):
     )
 
 
-class AppsAppTypeEnum(str, Enum):
+class AppsAppType(str, Enum):
     APP = "app"
     GAME = "game"
     SITE = "site"
@@ -422,12 +350,6 @@ class AppsAppTypeEnum(str, Enum):
     VK_APP = "vk_app"
     COMMUNITY_APP = "community_app"
     HTML5_GAME = "html5_game"
-
-
-class AppsAppType(pydantic.BaseModel):
-    enum: typing.Optional[AppsAppTypeEnum] = pydantic.Field(
-        None, description="Application type",
-    )
 
 
 class AudioAudio(pydantic.BaseModel):
@@ -461,8 +383,8 @@ class AudioAudio(pydantic.BaseModel):
 
 
 class BaseBoolInt(int, Enum):
-    NO = 0
-    YES = 1
+    enum_0 = 0
+    enum_1 = 1
 
 
 class BaseCity(pydantic.BaseModel):
@@ -621,14 +543,8 @@ class BaseLinkButtonAction(pydantic.BaseModel):
     )
 
 
-class BaseLinkButtonActionTypeEnum(str, Enum):
+class BaseLinkButtonActionType(str, Enum):
     OPEN_URL = "open_url"
-
-
-class BaseLinkButtonActionType(pydantic.BaseModel):
-    enum: typing.Optional[BaseLinkButtonActionTypeEnum] = pydantic.Field(
-        None, description="Action type",
-    )
 
 
 class BaseLinkProduct(pydantic.BaseModel):
@@ -658,14 +574,8 @@ class BaseObjectCount(pydantic.BaseModel):
     )
 
 
-class BaseOkResponseEnum(int, Enum):
+class BaseOkResponse(int, Enum):
     enum_1 = 1
-
-
-class BaseOkResponse(pydantic.BaseModel):
-    enum: typing.Optional[BaseOkResponseEnum] = pydantic.Field(
-        None, description="Returns 1 if request has been processed successfully",
-    )
 
 
 class BasePlace(pydantic.BaseModel):
@@ -704,14 +614,8 @@ class BasePlace(pydantic.BaseModel):
     )
 
 
-class BasePropertyExistsEnum(int, Enum):
+class BasePropertyExists(int, Enum):
     enum_1 = 1
-
-
-class BasePropertyExists(pydantic.BaseModel):
-    enum: typing.Optional[BasePropertyExistsEnum] = pydantic.Field(
-        None, description="",
-    )
 
 
 class BaseRepostsInfo(pydantic.BaseModel):
@@ -723,16 +627,10 @@ class BaseRepostsInfo(pydantic.BaseModel):
     )
 
 
-class BaseSexEnum(int, Enum):
+class BaseSex(int, Enum):
     enum_0 = 0
     enum_1 = 1
     enum_2 = 2
-
-
-class BaseSex(pydantic.BaseModel):
-    enum: typing.Optional[BaseSexEnum] = pydantic.Field(
-        None, description="",
-    )
 
 
 class BaseSticker(pydantic.BaseModel):
@@ -780,7 +678,7 @@ class BoardTopic(pydantic.BaseModel):
     )
 
 
-class CallbackGroupJoinTypeEnum(str, Enum):
+class CallbackGroupJoinType(str, Enum):
     JOIN = "join"
     UNSURE = "unsure"
     ACCEPTED = "accepted"
@@ -788,37 +686,19 @@ class CallbackGroupJoinTypeEnum(str, Enum):
     REQUEST = "request"
 
 
-class CallbackGroupJoinType(pydantic.BaseModel):
-    enum: typing.Optional[CallbackGroupJoinTypeEnum] = pydantic.Field(
-        None, description="",
-    )
-
-
-class CallbackGroupMarketEnum(int, Enum):
+class CallbackGroupMarket(int, Enum):
     enum_0 = 0
     enum_1 = 1
 
 
-class CallbackGroupMarket(pydantic.BaseModel):
-    enum: typing.Optional[CallbackGroupMarketEnum] = pydantic.Field(
-        None, description="",
-    )
-
-
-class CallbackGroupOfficerRoleEnum(int, Enum):
+class CallbackGroupOfficerRole(int, Enum):
     enum_0 = 0
     enum_1 = 1
     enum_2 = 2
     enum_3 = 3
 
 
-class CallbackGroupOfficerRole(pydantic.BaseModel):
-    enum: typing.Optional[CallbackGroupOfficerRoleEnum] = pydantic.Field(
-        None, description="",
-    )
-
-
-class CallbackMessageTypeEnum(str, Enum):
+class CallbackMessageType(str, Enum):
     CONFIRMATION = "confirmation"
     GROUP_CHANGE_PHOTO = "group_change_photo"
     GROUP_CHANGE_SETTINGS = "group_change_settings"
@@ -845,12 +725,6 @@ class CallbackMessageTypeEnum(str, Enum):
     WALL_REPLY_DELETE = "wall_reply_delete"
     WALL_REPLY_RESTORE = "wall_reply_restore"
     WALL_REPOST = "wall_repost"
-
-
-class CallbackMessageType(pydantic.BaseModel):
-    enum: typing.Optional[CallbackMessageTypeEnum] = pydantic.Field(
-        None, description="",
-    )
 
 
 class CommentThread(pydantic.BaseModel):
@@ -964,7 +838,7 @@ class EventsEventAttach(pydantic.BaseModel):
     )
 
 
-class FaveBookmarkTypeEnum(str, Enum):
+class FaveBookmarkType(str, Enum):
     POST = "post"
     VIDEO = "video"
     PRODUCT = "product"
@@ -972,35 +846,17 @@ class FaveBookmarkTypeEnum(str, Enum):
     LINK = "link"
 
 
-class FaveBookmarkType(pydantic.BaseModel):
-    enum: typing.Optional[FaveBookmarkTypeEnum] = pydantic.Field(
-        None, description="",
-    )
-
-
-class FavePageTypeEnum(str, Enum):
+class FavePageType(str, Enum):
     USER = "user"
     GROUP = "group"
     HINTS = "hints"
 
 
-class FavePageType(pydantic.BaseModel):
-    enum: typing.Optional[FavePageTypeEnum] = pydantic.Field(
-        None, description="",
-    )
-
-
-class FriendsFriendStatusStatusEnum(int, Enum):
+class FriendsFriendStatusStatus(int, Enum):
     enum_0 = 0
     enum_1 = 1
     enum_2 = 2
     enum_3 = 3
-
-
-class FriendsFriendStatusStatus(pydantic.BaseModel):
-    enum: typing.Optional[FriendsFriendStatusStatusEnum] = pydantic.Field(
-        None, description="Friend status with the user",
-    )
 
 
 class FriendsRequestsMutual(pydantic.BaseModel):
@@ -1012,16 +868,10 @@ class FriendsRequestsMutual(pydantic.BaseModel):
     )
 
 
-class GiftsGiftPrivacyEnum(int, Enum):
+class GiftsGiftPrivacy(int, Enum):
     enum_0 = 0
     enum_1 = 1
     enum_2 = 2
-
-
-class GiftsGiftPrivacy(pydantic.BaseModel):
-    enum: typing.Optional[GiftsGiftPrivacyEnum] = pydantic.Field(
-        None, description="Gift privacy",
-    )
 
 
 class GiftsLayout(pydantic.BaseModel):
@@ -1078,18 +928,12 @@ class GroupsAddressTimetableDay(pydantic.BaseModel):
     )
 
 
-class GroupsAddressWorkInfoStatusEnum(str, Enum):
+class GroupsAddressWorkInfoStatus(str, Enum):
     NO_INFORMATION = "no_information"
     TEMPORARILY_CLOSED = "temporarily_closed"
     ALWAYS_OPENED = "always_opened"
     TIMETABLE = "timetable"
     FOREVER_CLOSED = "forever_closed"
-
-
-class GroupsAddressWorkInfoStatus(pydantic.BaseModel):
-    enum: typing.Optional[GroupsAddressWorkInfoStatusEnum] = pydantic.Field(
-        None, description="Status of information about timetable",
-    )
 
 
 class GroupsBanInfo(pydantic.BaseModel):
@@ -1116,18 +960,12 @@ class GroupsBanInfo(pydantic.BaseModel):
     )
 
 
-class GroupsBanInfoReasonEnum(int, Enum):
+class GroupsBanInfoReason(int, Enum):
     enum_0 = 0
     enum_1 = 1
     enum_2 = 2
     enum_3 = 3
     enum_4 = 4
-
-
-class GroupsBanInfoReason(pydantic.BaseModel):
-    enum: typing.Optional[GroupsBanInfoReasonEnum] = pydantic.Field(
-        None, description="Ban reason",
-    )
 
 
 class GroupsGroup(pydantic.BaseModel):
@@ -1181,28 +1019,16 @@ class GroupsGroup(pydantic.BaseModel):
     )
 
 
-class GroupsGroupAdminLevelEnum(int, Enum):
+class GroupsGroupAdminLevel(int, Enum):
     enum_1 = 1
     enum_2 = 2
     enum_3 = 3
 
 
-class GroupsGroupAdminLevel(pydantic.BaseModel):
-    enum: typing.Optional[GroupsGroupAdminLevelEnum] = pydantic.Field(
-        None, description="Level of current user's credentials as manager",
-    )
-
-
-class GroupsGroupAudioEnum(int, Enum):
+class GroupsGroupAudio(int, Enum):
     enum_0 = 0
     enum_1 = 1
     enum_2 = 2
-
-
-class GroupsGroupAudio(pydantic.BaseModel):
-    enum: typing.Optional[GroupsGroupAudioEnum] = pydantic.Field(
-        None, description="",
-    )
 
 
 class GroupsGroupFull(pydantic.BaseModel):
@@ -1325,19 +1151,13 @@ class GroupsGroupFull(pydantic.BaseModel):
     )
 
 
-class GroupsGroupFullAgeLimitsEnum(int, Enum):
+class GroupsGroupFullAgeLimits(int, Enum):
     enum_1 = 1
     enum_2 = 2
     enum_3 = 3
 
 
-class GroupsGroupFullAgeLimits(pydantic.BaseModel):
-    enum: typing.Optional[GroupsGroupFullAgeLimitsEnum] = pydantic.Field(
-        None, description="",
-    )
-
-
-class GroupsGroupFullMemberStatusEnum(int, Enum):
+class GroupsGroupFullMemberStatus(int, Enum):
     enum_0 = 0
     enum_1 = 1
     enum_2 = 2
@@ -1346,95 +1166,47 @@ class GroupsGroupFullMemberStatusEnum(int, Enum):
     enum_5 = 5
 
 
-class GroupsGroupFullMemberStatus(pydantic.BaseModel):
-    enum: typing.Optional[GroupsGroupFullMemberStatusEnum] = pydantic.Field(
-        None, description="",
-    )
-
-
-class GroupsGroupIsClosedEnum(int, Enum):
+class GroupsGroupIsClosed(int, Enum):
     enum_0 = 0
     enum_1 = 1
     enum_2 = 2
 
 
-class GroupsGroupIsClosed(pydantic.BaseModel):
-    enum: typing.Optional[GroupsGroupIsClosedEnum] = pydantic.Field(
-        None, description="Information whether community is closed",
-    )
-
-
-class GroupsGroupPhotosEnum(int, Enum):
+class GroupsGroupPhotos(int, Enum):
     enum_0 = 0
     enum_1 = 1
     enum_2 = 2
 
 
-class GroupsGroupPhotos(pydantic.BaseModel):
-    enum: typing.Optional[GroupsGroupPhotosEnum] = pydantic.Field(
-        None, description="",
-    )
-
-
-class GroupsGroupTypeEnum(str, Enum):
+class GroupsGroupType(str, Enum):
     GROUP = "group"
     PAGE = "page"
     EVENT = "event"
 
 
-class GroupsGroupType(pydantic.BaseModel):
-    enum: typing.Optional[GroupsGroupTypeEnum] = pydantic.Field(
-        None, description="Community type",
-    )
-
-
-class GroupsGroupVideoEnum(int, Enum):
+class GroupsGroupVideo(int, Enum):
     enum_0 = 0
     enum_1 = 1
     enum_2 = 2
 
 
-class GroupsGroupVideo(pydantic.BaseModel):
-    enum: typing.Optional[GroupsGroupVideoEnum] = pydantic.Field(
-        None, description="",
-    )
-
-
-class GroupsGroupWallEnum(int, Enum):
+class GroupsGroupWall(int, Enum):
     enum_0 = 0
     enum_1 = 1
     enum_2 = 2
     enum_3 = 3
 
 
-class GroupsGroupWall(pydantic.BaseModel):
-    enum: typing.Optional[GroupsGroupWallEnum] = pydantic.Field(
-        None, description="",
-    )
-
-
-class GroupsGroupXtrInvitedByAdminLevelEnum(int, Enum):
+class GroupsGroupXtrInvitedByAdminLevel(int, Enum):
     enum_1 = 1
     enum_2 = 2
     enum_3 = 3
 
 
-class GroupsGroupXtrInvitedByAdminLevel(pydantic.BaseModel):
-    enum: typing.Optional[GroupsGroupXtrInvitedByAdminLevelEnum] = pydantic.Field(
-        None, description="Level of current user's credentials as manager",
-    )
-
-
-class GroupsGroupXtrInvitedByTypeEnum(str, Enum):
+class GroupsGroupXtrInvitedByType(str, Enum):
     GROUP = "group"
     PAGE = "page"
     EVENT = "event"
-
-
-class GroupsGroupXtrInvitedByType(pydantic.BaseModel):
-    enum: typing.Optional[GroupsGroupXtrInvitedByTypeEnum] = pydantic.Field(
-        None, description="Community type",
-    )
 
 
 class GroupsLongPollEvents(pydantic.BaseModel):
@@ -1563,51 +1335,27 @@ class GroupsLongPollEvents(pydantic.BaseModel):
     )
 
 
-class GroupsMemberRoleStatusEnum(str, Enum):
+class GroupsMemberRoleStatus(str, Enum):
     MODERATOR = "moderator"
     EDITOR = "editor"
     ADMINISTRATOR = "administrator"
     CREATOR = "creator"
 
 
-class GroupsMemberRoleStatus(pydantic.BaseModel):
-    enum: typing.Optional[GroupsMemberRoleStatusEnum] = pydantic.Field(
-        None, description="User's credentials as community admin",
-    )
-
-
-class GroupsOnlineStatusTypeEnum(str, Enum):
+class GroupsOnlineStatusType(str, Enum):
     NONE = "none"
     ONLINE = "online"
     ANSWER_MARK = "answer_mark"
 
 
-class GroupsOnlineStatusType(pydantic.BaseModel):
-    enum: typing.Optional[GroupsOnlineStatusTypeEnum] = pydantic.Field(
-        None, description="Type of online status of group",
-    )
-
-
-class GroupsOwnerXtrBanInfoTypeEnum(str, Enum):
+class GroupsOwnerXtrBanInfoType(str, Enum):
     GROUP = "group"
     PROFILE = "profile"
 
 
-class GroupsOwnerXtrBanInfoType(pydantic.BaseModel):
-    enum: typing.Optional[GroupsOwnerXtrBanInfoTypeEnum] = pydantic.Field(
-        None, description="Owner type",
-    )
-
-
-class LeadsCheckedResultEnum(str, Enum):
+class LeadsCheckedResult(str, Enum):
     TRUE = "true"
     FALSE = "false"
-
-
-class LeadsCheckedResult(pydantic.BaseModel):
-    enum: typing.Optional[LeadsCheckedResultEnum] = pydantic.Field(
-        None, description="Information whether user can start the lead",
-    )
 
 
 class LeadsLeadDays(pydantic.BaseModel):
@@ -1712,16 +1460,10 @@ class MarketMarketItem(pydantic.BaseModel):
     )
 
 
-class MarketMarketItemAvailabilityEnum(int, Enum):
+class MarketMarketItemAvailability(int, Enum):
     enum_0 = 0
     enum_1 = 1
     enum_2 = 2
-
-
-class MarketMarketItemAvailability(pydantic.BaseModel):
-    enum: typing.Optional[MarketMarketItemAvailabilityEnum] = pydantic.Field(
-        None, description="Information whether the item is available",
-    )
 
 
 class MarketPrice(pydantic.BaseModel):
@@ -1832,17 +1574,11 @@ class MessagesConversationPeer(pydantic.BaseModel):
     )
 
 
-class MessagesConversationPeerTypeEnum(str, Enum):
+class MessagesConversationPeerType(str, Enum):
     CHAT = "chat"
     EMAIL = "email"
     USER = "user"
     GROUP = "group"
-
-
-class MessagesConversationPeerType(pydantic.BaseModel):
-    enum: typing.Optional[MessagesConversationPeerTypeEnum] = pydantic.Field(
-        None, description="Peer type",
-    )
 
 
 class MessagesForeignMessage(pydantic.BaseModel):
@@ -1942,7 +1678,7 @@ class MessagesHistoryMessageAttachment(pydantic.BaseModel):
     )
 
 
-class MessagesHistoryMessageAttachmentTypeEnum(str, Enum):
+class MessagesHistoryMessageAttachmentType(str, Enum):
     PHOTO = "photo"
     VIDEO = "video"
     AUDIO = "audio"
@@ -1953,12 +1689,6 @@ class MessagesHistoryMessageAttachmentTypeEnum(str, Enum):
     SHARE = "share"
     GRAFFITI = "graffiti"
     AUDIO_MESSAGE = "audio_message"
-
-
-class MessagesHistoryMessageAttachmentType(pydantic.BaseModel):
-    enum: typing.Optional[MessagesHistoryMessageAttachmentTypeEnum] = pydantic.Field(
-        None, description="Attachments type",
-    )
 
 
 class MessagesKeyboard(pydantic.BaseModel):
@@ -2120,7 +1850,7 @@ class MessagesMessageActionPhoto(pydantic.BaseModel):
     )
 
 
-class MessagesMessageActionStatusEnum(str, Enum):
+class MessagesMessageActionStatus(str, Enum):
     CHAT_PHOTO_UPDATE = "chat_photo_update"
     CHAT_PHOTO_REMOVE = "chat_photo_remove"
     CHAT_CREATE = "chat_create"
@@ -2130,12 +1860,6 @@ class MessagesMessageActionStatusEnum(str, Enum):
     CHAT_PIN_MESSAGE = "chat_pin_message"
     CHAT_UNPIN_MESSAGE = "chat_unpin_message"
     CHAT_INVITE_USER_BY_LINK = "chat_invite_user_by_link"
-
-
-class MessagesMessageActionStatus(pydantic.BaseModel):
-    enum: typing.Optional[MessagesMessageActionStatusEnum] = pydantic.Field(
-        None, description="Action status",
-    )
 
 
 class MessagesMessageAttachmentType(str, Enum):
@@ -2155,7 +1879,7 @@ class MessagesMessageAttachmentType(str, Enum):
     AUDIO_MESSAGE = "audio_message"
 
 
-class NewsfeedNewsfeedItemTypeEnum(str, Enum):
+class NewsfeedNewsfeedItemType(str, Enum):
     POST = "post"
     PHOTO = "photo"
     PHOTO_TAG = "photo_tag"
@@ -2167,12 +1891,6 @@ class NewsfeedNewsfeedItemTypeEnum(str, Enum):
     TOPIC = "topic"
     DIGEST = "digest"
     STORIES = "stories"
-
-
-class NewsfeedNewsfeedItemType(pydantic.BaseModel):
-    enum: typing.Optional[NewsfeedNewsfeedItemTypeEnum] = pydantic.Field(
-        None, description="Item type",
-    )
 
 
 class NotificationsFeedback(pydantic.BaseModel):
@@ -2242,16 +1960,10 @@ class NotificationsSendMessageError(pydantic.BaseModel):
     )
 
 
-class PagesPrivacySettingsEnum(int, Enum):
+class PagesPrivacySettings(int, Enum):
     enum_0 = 0
     enum_1 = 1
     enum_2 = 2
-
-
-class PagesPrivacySettings(pydantic.BaseModel):
-    enum: typing.Optional[PagesPrivacySettingsEnum] = pydantic.Field(
-        None, description="",
-    )
 
 
 class PagesWikipageFull(pydantic.BaseModel):
@@ -2303,7 +2015,7 @@ class PagesWikipageFull(pydantic.BaseModel):
     )
 
 
-class PhotosImageTypeEnum(str, Enum):
+class PhotosImageType(str, Enum):
     S = "s"
     M = "m"
     X = "x"
@@ -2314,12 +2026,6 @@ class PhotosImageTypeEnum(str, Enum):
     Y = "y"
     Z = "z"
     W = "w"
-
-
-class PhotosImageType(pydantic.BaseModel):
-    enum: typing.Optional[PhotosImageTypeEnum] = pydantic.Field(
-        None, description="Photo's type.",
-    )
 
 
 class PhotosPhoto(pydantic.BaseModel):
@@ -2443,7 +2149,7 @@ class PollsVotersUsers(pydantic.BaseModel):
     )
 
 
-class SearchHintSectionEnum(str, Enum):
+class SearchHintSection(str, Enum):
     GROUPS = "groups"
     EVENTS = "events"
     PUBLICS = "publics"
@@ -2453,22 +2159,10 @@ class SearchHintSectionEnum(str, Enum):
     MUTUAL_FRIENDS = "mutual_friends"
 
 
-class SearchHintSection(pydantic.BaseModel):
-    enum: typing.Optional[SearchHintSectionEnum] = pydantic.Field(
-        None, description="Section title",
-    )
-
-
-class SearchHintTypeEnum(str, Enum):
+class SearchHintType(str, Enum):
     GROUP = "group"
     PROFILE = "profile"
     VK_APP = "vk_app"
-
-
-class SearchHintType(pydantic.BaseModel):
-    enum: typing.Optional[SearchHintTypeEnum] = pydantic.Field(
-        None, description="Object type",
-    )
 
 
 class StatsActivity(pydantic.BaseModel):
@@ -2666,27 +2360,15 @@ class StoriesStoryStatsStat(pydantic.BaseModel):
     )
 
 
-class StoriesStoryStatsStateEnum(str, Enum):
+class StoriesStoryStatsState(str, Enum):
     ON = "on"
     OFF = "off"
     HIDDEN = "hidden"
 
 
-class StoriesStoryStatsState(pydantic.BaseModel):
-    enum: typing.Optional[StoriesStoryStatsStateEnum] = pydantic.Field(
-        None, description="Statistic state",
-    )
-
-
-class StoriesStoryTypeEnum(str, Enum):
+class StoriesStoryType(str, Enum):
     PHOTO = "photo"
     VIDEO = "video"
-
-
-class StoriesStoryType(pydantic.BaseModel):
-    enum: typing.Optional[StoriesStoryTypeEnum] = pydantic.Field(
-        None, description="Story type.",
-    )
 
 
 class StoriesStoryVideo(pydantic.BaseModel):
@@ -3026,7 +2708,7 @@ class UsersUserMin(pydantic.BaseModel):
     )
 
 
-class UsersUserRelationEnum(int, Enum):
+class UsersUserRelation(int, Enum):
     enum_0 = 0
     enum_1 = 1
     enum_2 = 2
@@ -3038,35 +2720,17 @@ class UsersUserRelationEnum(int, Enum):
     enum_8 = 8
 
 
-class UsersUserRelation(pydantic.BaseModel):
-    enum: typing.Optional[UsersUserRelationEnum] = pydantic.Field(
-        None, description="",
-    )
-
-
-class UtilsDomainResolvedTypeEnum(str, Enum):
+class UtilsDomainResolvedType(str, Enum):
     USER = "user"
     GROUP = "group"
     APPLICATION = "application"
     PAGE = "page"
 
 
-class UtilsDomainResolvedType(pydantic.BaseModel):
-    enum: typing.Optional[UtilsDomainResolvedTypeEnum] = pydantic.Field(
-        None, description="Object type",
-    )
-
-
-class UtilsLinkCheckedStatusEnum(str, Enum):
+class UtilsLinkCheckedStatus(str, Enum):
     NOT_BANNED = "not_banned"
     BANNED = "banned"
     PROCESSING = "processing"
-
-
-class UtilsLinkCheckedStatus(pydantic.BaseModel):
-    enum: typing.Optional[UtilsLinkCheckedStatusEnum] = pydantic.Field(
-        None, description="Link status",
-    )
 
 
 class VideoVideo(pydantic.BaseModel):
@@ -3208,7 +2872,7 @@ class WallAttachedNote(pydantic.BaseModel):
     )
 
 
-class WallCommentAttachmentTypeEnum(str, Enum):
+class WallCommentAttachmentType(str, Enum):
     PHOTO = "photo"
     AUDIO = "audio"
     VIDEO = "video"
@@ -3219,12 +2883,6 @@ class WallCommentAttachmentTypeEnum(str, Enum):
     MARKET_MARKET_ALBUM = "market_market_album"
     MARKET = "market"
     STICKER = "sticker"
-
-
-class WallCommentAttachmentType(pydantic.BaseModel):
-    enum: typing.Optional[WallCommentAttachmentTypeEnum] = pydantic.Field(
-        None, description="Attachment type",
-    )
 
 
 class WallGeo(pydantic.BaseModel):
@@ -3272,7 +2930,7 @@ class WallPostSource(pydantic.BaseModel):
     )
 
 
-class WallPostSourceTypeEnum(str, Enum):
+class WallPostSourceType(str, Enum):
     VK = "vk"
     WIDGET = "widget"
     API = "api"
@@ -3280,24 +2938,12 @@ class WallPostSourceTypeEnum(str, Enum):
     SMS = "sms"
 
 
-class WallPostSourceType(pydantic.BaseModel):
-    enum: typing.Optional[WallPostSourceTypeEnum] = pydantic.Field(
-        None, description="Type of post source",
-    )
-
-
-class WallPostTypeEnum(str, Enum):
+class WallPostType(str, Enum):
     POST = "post"
     COPY = "copy"
     REPLY = "reply"
     POSTPONE = "postpone"
     SUGGEST = "suggest"
-
-
-class WallPostType(pydantic.BaseModel):
-    enum: typing.Optional[WallPostTypeEnum] = pydantic.Field(
-        None, description="Post type",
-    )
 
 
 class WallPostedPhoto(pydantic.BaseModel):
@@ -3422,7 +3068,7 @@ class WallWallpost(pydantic.BaseModel):
     )
 
 
-class WallWallpostAttachmentTypeEnum(str, Enum):
+class WallWallpostAttachmentType(str, Enum):
     PHOTO = "photo"
     POSTED_PHOTO = "posted_photo"
     AUDIO = "audio"
@@ -3439,12 +3085,6 @@ class WallWallpostAttachmentTypeEnum(str, Enum):
     MARKET_MARKET_ALBUM = "market_market_album"
     MARKET = "market"
     EVENT = "event"
-
-
-class WallWallpostAttachmentType(pydantic.BaseModel):
-    enum: typing.Optional[WallWallpostAttachmentTypeEnum] = pydantic.Field(
-        None, description="Attachment type",
-    )
 
 
 class WallWallpostFull(pydantic.BaseModel):
@@ -3492,16 +3132,10 @@ class WidgetsCommentMedia(pydantic.BaseModel):
     )
 
 
-class WidgetsCommentMediaTypeEnum(str, Enum):
+class WidgetsCommentMediaType(str, Enum):
     AUDIO = "audio"
     PHOTO = "photo"
     VIDEO = "video"
-
-
-class WidgetsCommentMediaType(pydantic.BaseModel):
-    enum: typing.Optional[WidgetsCommentMediaTypeEnum] = pydantic.Field(
-        None, description="Media type",
-    )
 
 
 class WidgetsCommentReplies(pydantic.BaseModel):
@@ -3621,40 +3255,22 @@ class AccountPushConversationsItem(pydantic.BaseModel):
     )
 
 
-class AccountPushParamsModeEnum(str, Enum):
+class AccountPushParamsMode(str, Enum):
     ON = "on"
     OFF = "off"
     NO_SOUND = "no_sound"
     NO_TEXT = "no_text"
 
 
-class AccountPushParamsMode(pydantic.BaseModel):
-    enum: typing.Optional[AccountPushParamsModeEnum] = pydantic.Field(
-        None, description="Settings parameters",
-    )
-
-
-class AccountPushParamsOnoffEnum(str, Enum):
+class AccountPushParamsOnoff(str, Enum):
     ON = "on"
     OFF = "off"
 
 
-class AccountPushParamsOnoff(pydantic.BaseModel):
-    enum: typing.Optional[AccountPushParamsOnoffEnum] = pydantic.Field(
-        None, description="Settings parameters",
-    )
-
-
-class AccountPushParamsSettingsEnum(str, Enum):
+class AccountPushParamsSettings(str, Enum):
     ON = "on"
     OFF = "off"
     FR_OF_FR = "fr_of_fr"
-
-
-class AccountPushParamsSettings(pydantic.BaseModel):
-    enum: typing.Optional[AccountPushParamsSettingsEnum] = pydantic.Field(
-        None, description="Settings parameters",
-    )
 
 
 class AccountPushSettings(pydantic.BaseModel):
@@ -3681,7 +3297,7 @@ class AccountUserSettings(pydantic.BaseModel):
     )
 
 
-class AddressesFieldsEnum(str, Enum):
+class AddressesFields(str, Enum):
     ID = "id"
     TITLE = "title"
     ADDRESS = "address"
@@ -3696,12 +3312,6 @@ class AddressesFieldsEnum(str, Enum):
     TIMETABLE = "timetable"
     PHONE = "phone"
     TIME_OFFSET = "time_offset"
-
-
-class AddressesFields(pydantic.BaseModel):
-    enum: typing.Optional[AddressesFieldsEnum] = pydantic.Field(
-        None, description="",
-    )
 
 
 class AdsAccesses(pydantic.BaseModel):
@@ -4251,16 +3861,10 @@ class AdsUsers(pydantic.BaseModel):
     )
 
 
-class AppsAppLeaderboardTypeEnum(int, Enum):
+class AppsAppLeaderboardType(int, Enum):
     enum_0 = 0
     enum_1 = 1
     enum_2 = 2
-
-
-class AppsAppLeaderboardType(pydantic.BaseModel):
-    enum: typing.Optional[AppsAppLeaderboardTypeEnum] = pydantic.Field(
-        None, description="Leaderboard type",
-    )
 
 
 class AppsAppMin(pydantic.BaseModel):
@@ -4380,7 +3984,7 @@ class BaseUploadServer(pydantic.BaseModel):
     )
 
 
-class BaseUserGroupFieldsEnum(str, Enum):
+class BaseUserGroupFields(str, Enum):
     ABOUT = "about"
     ACTION_BUTTON = "action_button"
     ACTIVITIES = "activities"
@@ -4483,29 +4087,17 @@ class BaseUserGroupFieldsEnum(str, Enum):
     VK_ADMIN_STATUS = "vk_admin_status"
 
 
-class BaseUserGroupFields(pydantic.BaseModel):
-    enum: typing.Optional[BaseUserGroupFieldsEnum] = pydantic.Field(
-        None, description="",
-    )
-
-
 class BaseUserId(pydantic.BaseModel):
     user_id: typing.Optional[int] = pydantic.Field(
         None, description="User ID",
     )
 
 
-class BoardDefaultOrderEnum(int, Enum):
+class BoardDefaultOrder(int, Enum):
     enum_1 = 1
     enum_2 = 2
     enum_minus_1 = -1
     enum_minus_2 = -2
-
-
-class BoardDefaultOrder(pydantic.BaseModel):
-    enum: typing.Optional[BoardDefaultOrderEnum] = pydantic.Field(
-        None, description="Sort type",
-    )
 
 
 class BoardTopicComment(pydantic.BaseModel):
@@ -4929,16 +4521,10 @@ class DatabaseUniversity(pydantic.BaseModel):
     )
 
 
-class DocsDocAttachmentTypeEnum(str, Enum):
+class DocsDocAttachmentType(str, Enum):
     DOC = "doc"
     GRAFFITI = "graffiti"
     AUDIO_MESSAGE = "audio_message"
-
-
-class DocsDocAttachmentType(pydantic.BaseModel):
-    enum: typing.Optional[DocsDocAttachmentTypeEnum] = pydantic.Field(
-        None, description="Doc attachment type",
-    )
 
 
 class DocsDocTypes(pydantic.BaseModel):
@@ -5271,7 +4857,7 @@ class GroupsCover(pydantic.BaseModel):
     )
 
 
-class GroupsFieldsEnum(str, Enum):
+class GroupsFields(str, Enum):
     MARKET = "market"
     MEMBER_STATUS = "member_status"
     IS_FAVORITE = "is_favorite"
@@ -5318,13 +4904,7 @@ class GroupsFieldsEnum(str, Enum):
     WARNING_NOTIFICATION = "warning_notification"
 
 
-class GroupsFields(pydantic.BaseModel):
-    enum: typing.Optional[GroupsFieldsEnum] = pydantic.Field(
-        None, description="",
-    )
-
-
-class GroupsFilterEnum(str, Enum):
+class GroupsFilter(str, Enum):
     ADMIN = "admin"
     EDITOR = "editor"
     MODER = "moder"
@@ -5334,34 +4914,16 @@ class GroupsFilterEnum(str, Enum):
     HAS_ADDRESSES = "has_addresses"
 
 
-class GroupsFilter(pydantic.BaseModel):
-    enum: typing.Optional[GroupsFilterEnum] = pydantic.Field(
-        None, description="",
-    )
-
-
-class GroupsGroupAccessEnum(int, Enum):
+class GroupsGroupAccess(int, Enum):
     enum_0 = 0
     enum_1 = 1
     enum_2 = 2
 
 
-class GroupsGroupAccess(pydantic.BaseModel):
-    enum: typing.Optional[GroupsGroupAccessEnum] = pydantic.Field(
-        None, description="",
-    )
-
-
-class GroupsGroupAgeLimitsEnum(int, Enum):
+class GroupsGroupAgeLimits(int, Enum):
     enum_1 = 1
     enum_2 = 2
     enum_3 = 3
-
-
-class GroupsGroupAgeLimits(pydantic.BaseModel):
-    enum: typing.Optional[GroupsGroupAgeLimitsEnum] = pydantic.Field(
-        None, description="",
-    )
 
 
 class GroupsGroupBanInfo(pydantic.BaseModel):
@@ -5412,31 +4974,19 @@ class GroupsGroupCategoryType(pydantic.BaseModel):
     )
 
 
-class GroupsGroupDocsEnum(int, Enum):
+class GroupsGroupDocs(int, Enum):
     enum_0 = 0
     enum_1 = 1
     enum_2 = 2
 
 
-class GroupsGroupDocs(pydantic.BaseModel):
-    enum: typing.Optional[GroupsGroupDocsEnum] = pydantic.Field(
-        None, description="",
-    )
-
-
-class GroupsGroupFullMainSectionEnum(int, Enum):
+class GroupsGroupFullMainSection(int, Enum):
     enum_0 = 0
     enum_1 = 1
     enum_2 = 2
     enum_3 = 3
     enum_4 = 4
     enum_5 = 5
-
-
-class GroupsGroupFullMainSection(pydantic.BaseModel):
-    enum: typing.Optional[GroupsGroupFullMainSectionEnum] = pydantic.Field(
-        None, description="Main section of community",
-    )
 
 
 class GroupsGroupLink(pydantic.BaseModel):
@@ -5460,18 +5010,12 @@ class GroupsGroupLink(pydantic.BaseModel):
     )
 
 
-class GroupsGroupMarketCurrencyEnum(int, Enum):
+class GroupsGroupMarketCurrency(int, Enum):
     enum_643 = 643
     enum_980 = 980
     enum_398 = 398
     enum_978 = 978
     enum_840 = 840
-
-
-class GroupsGroupMarketCurrency(pydantic.BaseModel):
-    enum: typing.Optional[GroupsGroupMarketCurrencyEnum] = pydantic.Field(
-        None, description="",
-    )
 
 
 class GroupsGroupPublicCategoryList(pydantic.BaseModel):
@@ -5488,16 +5032,10 @@ class GroupsGroupPublicCategoryList(pydantic.BaseModel):
     )
 
 
-class GroupsGroupRoleEnum(str, Enum):
+class GroupsGroupRole(str, Enum):
     MODERATOR = "moderator"
     EDITOR = "editor"
     ADMINISTRATOR = "administrator"
-
-
-class GroupsGroupRole(pydantic.BaseModel):
-    enum: typing.Optional[GroupsGroupRoleEnum] = pydantic.Field(
-        None, description="",
-    )
 
 
 class GroupsGroupSettings(pydantic.BaseModel):
@@ -5568,7 +5106,7 @@ class GroupsGroupSettings(pydantic.BaseModel):
     )
 
 
-class GroupsGroupSubjectEnum(str, Enum):
+class GroupsGroupSubject(str, Enum):
     enum_1 = 1
     enum_2 = 2
     enum_3 = 3
@@ -5613,34 +5151,16 @@ class GroupsGroupSubjectEnum(str, Enum):
     enum_42 = 42
 
 
-class GroupsGroupSubject(pydantic.BaseModel):
-    enum: typing.Optional[GroupsGroupSubjectEnum] = pydantic.Field(
-        None, description="",
-    )
-
-
-class GroupsGroupTopicsEnum(int, Enum):
+class GroupsGroupTopics(int, Enum):
     enum_0 = 0
     enum_1 = 1
     enum_2 = 2
 
 
-class GroupsGroupTopics(pydantic.BaseModel):
-    enum: typing.Optional[GroupsGroupTopicsEnum] = pydantic.Field(
-        None, description="",
-    )
-
-
-class GroupsGroupWikiEnum(int, Enum):
+class GroupsGroupWiki(int, Enum):
     enum_0 = 0
     enum_1 = 1
     enum_2 = 2
-
-
-class GroupsGroupWiki(pydantic.BaseModel):
-    enum: typing.Optional[GroupsGroupWikiEnum] = pydantic.Field(
-        None, description="",
-    )
 
 
 class GroupsGroupXtrInvitedBy(pydantic.BaseModel):
@@ -5783,14 +5303,8 @@ class GroupsMemberRole(pydantic.BaseModel):
     )
 
 
-class GroupsMemberRolePermissionEnum(str, Enum):
+class GroupsMemberRolePermission(str, Enum):
     ADS = "ads"
-
-
-class GroupsMemberRolePermission(pydantic.BaseModel):
-    enum: typing.Optional[GroupsMemberRolePermissionEnum] = pydantic.Field(
-        None, description="",
-    )
 
 
 class GroupsMemberStatus(pydantic.BaseModel):
@@ -5848,17 +5362,11 @@ class GroupsOwnerXtrBanInfo(pydantic.BaseModel):
     )
 
 
-class GroupsRoleOptionsEnum(str, Enum):
+class GroupsRoleOptions(str, Enum):
     MODERATOR = "moderator"
     EDITOR = "editor"
     ADMINISTRATOR = "administrator"
     CREATOR = "creator"
-
-
-class GroupsRoleOptions(pydantic.BaseModel):
-    enum: typing.Optional[GroupsRoleOptionsEnum] = pydantic.Field(
-        None, description="User's credentials as community admin",
-    )
 
 
 class GroupsSubjectItem(pydantic.BaseModel):
@@ -5981,7 +5489,7 @@ class LeadsStart(pydantic.BaseModel):
     )
 
 
-class LikesTypeEnum(str, Enum):
+class LikesType(str, Enum):
     POST = "post"
     COMMENT = "comment"
     PHOTO = "photo"
@@ -5994,12 +5502,6 @@ class LikesTypeEnum(str, Enum):
     TOPIC_COMMENT = "topic_comment"
     MARKET_COMMENT = "market_comment"
     SITEPAGE = "sitepage"
-
-
-class LikesType(pydantic.BaseModel):
-    enum: typing.Optional[LikesTypeEnum] = pydantic.Field(
-        None, description="",
-    )
 
 
 class MarketMarketItemFull(pydantic.BaseModel):
@@ -6325,18 +5827,12 @@ class MessagesUserXtrInvitedBy(pydantic.BaseModel):
     )
 
 
-class NewsfeedCommentsFiltersEnum(str, Enum):
+class NewsfeedCommentsFilters(str, Enum):
     POST = "post"
     PHOTO = "photo"
     VIDEO = "video"
     TOPIC = "topic"
     NOTE = "note"
-
-
-class NewsfeedCommentsFilters(pydantic.BaseModel):
-    enum: typing.Optional[NewsfeedCommentsFiltersEnum] = pydantic.Field(
-        None, description="",
-    )
 
 
 class NewsfeedEventActivity(pydantic.BaseModel):
@@ -6360,7 +5856,7 @@ class NewsfeedEventActivity(pydantic.BaseModel):
     )
 
 
-class NewsfeedFiltersEnum(str, Enum):
+class NewsfeedFilters(str, Enum):
     POST = "post"
     PHOTO = "photo"
     PHOTO_TAG = "photo_tag"
@@ -6371,25 +5867,13 @@ class NewsfeedFiltersEnum(str, Enum):
     VIDEO = "video"
 
 
-class NewsfeedFilters(pydantic.BaseModel):
-    enum: typing.Optional[NewsfeedFiltersEnum] = pydantic.Field(
-        None, description="",
-    )
-
-
-class NewsfeedIgnoreItemTypeEnum(str, Enum):
+class NewsfeedIgnoreItemType(str, Enum):
     WALL = "wall"
     TAG = "tag"
     PROFILEPHOTO = "profilephoto"
     VIDEO = "video"
     PHOTO = "photo"
     AUDIO = "audio"
-
-
-class NewsfeedIgnoreItemType(pydantic.BaseModel):
-    enum: typing.Optional[NewsfeedIgnoreItemTypeEnum] = pydantic.Field(
-        None, description="",
-    )
 
 
 class NewsfeedItemAudio(pydantic.BaseModel):
@@ -6625,16 +6109,10 @@ class NewsfeedItemWallpost(pydantic.BaseModel):
     )
 
 
-class NewsfeedItemWallpostTypeEnum(str, Enum):
+class NewsfeedItemWallpostType(str, Enum):
     POST = "post"
     COPY = "copy"
     REPLY = "reply"
-
-
-class NewsfeedItemWallpostType(pydantic.BaseModel):
-    enum: typing.Optional[NewsfeedItemWallpostTypeEnum] = pydantic.Field(
-        None, description="Post type",
-    )
 
 
 class NewsfeedList(pydantic.BaseModel):
@@ -7779,7 +7257,7 @@ class StoriesStoryStats(pydantic.BaseModel):
     )
 
 
-class StoriesUploadLinkTextEnum(str, Enum):
+class StoriesUploadLinkText(str, Enum):
     TO_STORE = "to_store"
     VOTE = "vote"
     MORE = "more"
@@ -7800,12 +7278,6 @@ class StoriesUploadLinkTextEnum(str, Enum):
     PLAY = "play"
     INSTALL = "install"
     READ = "read"
-
-
-class StoriesUploadLinkText(pydantic.BaseModel):
-    enum: typing.Optional[StoriesUploadLinkTextEnum] = pydantic.Field(
-        None, description="",
-    )
 
 
 class UsersCareer(pydantic.BaseModel):
@@ -7859,7 +7331,7 @@ class UsersExports(pydantic.BaseModel):
     )
 
 
-class UsersFieldsEnum(str, Enum):
+class UsersFields(str, Enum):
     PHOTO_ID = "photo_id"
     VERIFIED = "verified"
     SEX = "sex"
@@ -7927,12 +7399,6 @@ class UsersFieldsEnum(str, Enum):
     DESCRIPTIONS = "descriptions"
     TRENDING = "trending"
     MUTUAL = "mutual"
-
-
-class UsersFields(pydantic.BaseModel):
-    enum: typing.Optional[UsersFieldsEnum] = pydantic.Field(
-        None, description="",
-    )
 
 
 class UsersLastSeen(pydantic.BaseModel):
@@ -8183,14 +7649,8 @@ class UsersUserSettingsXtr(pydantic.BaseModel):
     )
 
 
-class UsersUserTypeEnum(str, Enum):
+class UsersUserType(str, Enum):
     PROFILE = "profile"
-
-
-class UsersUserType(pydantic.BaseModel):
-    enum: typing.Optional[UsersUserTypeEnum] = pydantic.Field(
-        None, description="Object type",
-    )
 
 
 class UsersUserXtrCounters(pydantic.BaseModel):
@@ -8726,6 +8186,343 @@ class WidgetsWidgetPage(pydantic.BaseModel):
     )
 
 
-MessagesMessage.update_forward_refs()
-PhotosPhoto.update_forward_refs()
+AccountNameRequest.update_forward_refs()
+AccountPushConversations.update_forward_refs()
+AccountPushParams.update_forward_refs()
+AccountUserSettingsInterest.update_forward_refs()
+AccountUserSettingsInterests.update_forward_refs()
+AdsDemostatsFormat.update_forward_refs()
+AdsStatsFormat.update_forward_refs()
+AppsApp.update_forward_refs()
+AudioAudio.update_forward_refs()
+BaseCity.update_forward_refs()
+BaseCommentsInfo.update_forward_refs()
+BaseCountry.update_forward_refs()
+BaseGeo.update_forward_refs()
+BaseGeoCoordinates.update_forward_refs()
+BaseLikes.update_forward_refs()
+BaseLikesInfo.update_forward_refs()
+BaseLink.update_forward_refs()
+BaseLinkApplication.update_forward_refs()
+BaseLinkApplicationStore.update_forward_refs()
+BaseLinkButton.update_forward_refs()
+BaseLinkButtonAction.update_forward_refs()
+BaseLinkProduct.update_forward_refs()
+BaseLinkRating.update_forward_refs()
+BaseObjectCount.update_forward_refs()
+BasePlace.update_forward_refs()
+BaseRepostsInfo.update_forward_refs()
+BaseSticker.update_forward_refs()
+BoardTopic.update_forward_refs()
+CommentThread.update_forward_refs()
+DocsDoc.update_forward_refs()
+DocsDocPreview.update_forward_refs()
+DocsDocPreviewPhoto.update_forward_refs()
+DocsDocPreviewVideo.update_forward_refs()
+EventsEventAttach.update_forward_refs()
+FriendsRequestsMutual.update_forward_refs()
+GiftsLayout.update_forward_refs()
+GroupsAddressTimetable.update_forward_refs()
+GroupsAddressTimetableDay.update_forward_refs()
+GroupsBanInfo.update_forward_refs()
+GroupsGroup.update_forward_refs()
+GroupsGroupFull.update_forward_refs()
+GroupsLongPollEvents.update_forward_refs()
+LeadsLeadDays.update_forward_refs()
+MarketCurrency.update_forward_refs()
+MarketMarketAlbum.update_forward_refs()
+MarketMarketCategory.update_forward_refs()
+MarketMarketItem.update_forward_refs()
+MarketPrice.update_forward_refs()
+MarketSection.update_forward_refs()
+MessagesAudioMessage.update_forward_refs()
+MessagesChatPushSettings.update_forward_refs()
+MessagesConversation.update_forward_refs()
+MessagesConversationPeer.update_forward_refs()
 MessagesForeignMessage.update_forward_refs()
+MessagesGraffiti.update_forward_refs()
+MessagesHistoryMessageAttachment.update_forward_refs()
+MessagesKeyboard.update_forward_refs()
+MessagesKeyboardButtonAction.update_forward_refs()
+MessagesMessage.update_forward_refs()
+MessagesMessageAction.update_forward_refs()
+MessagesMessageActionPhoto.update_forward_refs()
+NotificationsFeedback.update_forward_refs()
+NotificationsNotificationParent.update_forward_refs()
+NotificationsReply.update_forward_refs()
+NotificationsSendMessageError.update_forward_refs()
+PagesWikipageFull.update_forward_refs()
+PhotosPhoto.update_forward_refs()
+PhotosPhotoAlbum.update_forward_refs()
+PollsPoll.update_forward_refs()
+PollsVotersUsers.update_forward_refs()
+StatsActivity.update_forward_refs()
+StatsReach.update_forward_refs()
+StatsViews.update_forward_refs()
+StoriesReplies.update_forward_refs()
+StoriesStory.update_forward_refs()
+StoriesStoryLink.update_forward_refs()
+StoriesStoryStatsStat.update_forward_refs()
+StoriesStoryVideo.update_forward_refs()
+UsersCropPhotoCrop.update_forward_refs()
+UsersCropPhotoRect.update_forward_refs()
+UsersPersonal.update_forward_refs()
+UsersUser.update_forward_refs()
+UsersUserConnections.update_forward_refs()
+UsersUserFull.update_forward_refs()
+UsersUserMin.update_forward_refs()
+VideoVideo.update_forward_refs()
+VideoVideoFiles.update_forward_refs()
+WallAppPost.update_forward_refs()
+WallAttachedNote.update_forward_refs()
+WallGeo.update_forward_refs()
+WallGraffiti.update_forward_refs()
+WallPostSource.update_forward_refs()
+WallPostedPhoto.update_forward_refs()
+WallViews.update_forward_refs()
+WallWallComment.update_forward_refs()
+WallWallpost.update_forward_refs()
+WallWallpostFull.update_forward_refs()
+WidgetsCommentMedia.update_forward_refs()
+WidgetsCommentReplies.update_forward_refs()
+WidgetsWidgetLikes.update_forward_refs()
+AccountAccountCounters.update_forward_refs()
+AccountInfo.update_forward_refs()
+AccountOffer.update_forward_refs()
+AccountPushConversationsItem.update_forward_refs()
+AccountPushSettings.update_forward_refs()
+AccountUserSettings.update_forward_refs()
+AdsAccesses.update_forward_refs()
+AdsAccount.update_forward_refs()
+AdsAd.update_forward_refs()
+AdsAdLayout.update_forward_refs()
+AdsCampaign.update_forward_refs()
+AdsCategory.update_forward_refs()
+AdsClient.update_forward_refs()
+AdsCriteria.update_forward_refs()
+AdsDemoStats.update_forward_refs()
+AdsFloodStats.update_forward_refs()
+AdsLinkStatus.update_forward_refs()
+AdsParagraphs.update_forward_refs()
+AdsPromotedPostReach.update_forward_refs()
+AdsRejectReason.update_forward_refs()
+AdsRules.update_forward_refs()
+AdsStats.update_forward_refs()
+AdsStatsAge.update_forward_refs()
+AdsStatsCities.update_forward_refs()
+AdsStatsSex.update_forward_refs()
+AdsStatsSexAge.update_forward_refs()
+AdsTargSettings.update_forward_refs()
+AdsTargStats.update_forward_refs()
+AdsTargSuggestions.update_forward_refs()
+AdsTargSuggestionsCities.update_forward_refs()
+AdsTargSuggestionsRegions.update_forward_refs()
+AdsTargSuggestionsSchools.update_forward_refs()
+AdsTargetGroup.update_forward_refs()
+AdsUsers.update_forward_refs()
+AppsAppMin.update_forward_refs()
+AppsLeaderboard.update_forward_refs()
+AppsScope.update_forward_refs()
+BaseError.update_forward_refs()
+BaseImage.update_forward_refs()
+BaseMessageError.update_forward_refs()
+BaseObject.update_forward_refs()
+BaseObjectWithName.update_forward_refs()
+BaseRequestParam.update_forward_refs()
+BaseUploadServer.update_forward_refs()
+BaseUserId.update_forward_refs()
+BoardTopicComment.update_forward_refs()
+BoardTopicPoll.update_forward_refs()
+CallbackBoardPostDelete.update_forward_refs()
+CallbackConfirmationMessage.update_forward_refs()
+CallbackGroupChangePhoto.update_forward_refs()
+CallbackGroupChangeSettings.update_forward_refs()
+CallbackGroupJoin.update_forward_refs()
+CallbackGroupLeave.update_forward_refs()
+CallbackGroupOfficersEdit.update_forward_refs()
+CallbackGroupSettingsChanges.update_forward_refs()
+CallbackMarketComment.update_forward_refs()
+CallbackMarketCommentDelete.update_forward_refs()
+CallbackMessageAllow.update_forward_refs()
+CallbackMessageBase.update_forward_refs()
+CallbackMessageDeny.update_forward_refs()
+CallbackPhotoComment.update_forward_refs()
+CallbackPhotoCommentDelete.update_forward_refs()
+CallbackPollVoteNew.update_forward_refs()
+CallbackUserBlock.update_forward_refs()
+CallbackUserUnblock.update_forward_refs()
+CallbackVideoComment.update_forward_refs()
+CallbackVideoCommentDelete.update_forward_refs()
+CallbackWallCommentDelete.update_forward_refs()
+DatabaseCity.update_forward_refs()
+DatabaseFaculty.update_forward_refs()
+DatabaseRegion.update_forward_refs()
+DatabaseSchool.update_forward_refs()
+DatabaseStation.update_forward_refs()
+DatabaseUniversity.update_forward_refs()
+DocsDocTypes.update_forward_refs()
+DocsDocUploadResponse.update_forward_refs()
+FaveBookmark.update_forward_refs()
+FavePage.update_forward_refs()
+FaveTag.update_forward_refs()
+FriendsFriendStatus.update_forward_refs()
+FriendsFriendsList.update_forward_refs()
+FriendsMutualFriend.update_forward_refs()
+FriendsRequests.update_forward_refs()
+FriendsRequestsXtrMessage.update_forward_refs()
+FriendsUserXtrLists.update_forward_refs()
+FriendsUserXtrPhone.update_forward_refs()
+GiftsGift.update_forward_refs()
+GroupsAddress.update_forward_refs()
+GroupsAddressesInfo.update_forward_refs()
+GroupsBannedItem.update_forward_refs()
+GroupsCallbackServer.update_forward_refs()
+GroupsCallbackSettings.update_forward_refs()
+GroupsContactsItem.update_forward_refs()
+GroupsCountersGroup.update_forward_refs()
+GroupsCover.update_forward_refs()
+GroupsGroupBanInfo.update_forward_refs()
+GroupsGroupCategory.update_forward_refs()
+GroupsGroupCategoryFull.update_forward_refs()
+GroupsGroupCategoryType.update_forward_refs()
+GroupsGroupLink.update_forward_refs()
+GroupsGroupPublicCategoryList.update_forward_refs()
+GroupsGroupSettings.update_forward_refs()
+GroupsGroupXtrInvitedBy.update_forward_refs()
+GroupsGroupsArray.update_forward_refs()
+GroupsLinksItem.update_forward_refs()
+GroupsLongPollServer.update_forward_refs()
+GroupsLongPollSettings.update_forward_refs()
+GroupsMarketInfo.update_forward_refs()
+GroupsMemberRole.update_forward_refs()
+GroupsMemberStatus.update_forward_refs()
+GroupsMemberStatusFull.update_forward_refs()
+GroupsOnlineStatus.update_forward_refs()
+GroupsOwnerXtrBanInfo.update_forward_refs()
+GroupsSubjectItem.update_forward_refs()
+GroupsTokenPermissionSetting.update_forward_refs()
+GroupsUserXtrRole.update_forward_refs()
+LeadsChecked.update_forward_refs()
+LeadsComplete.update_forward_refs()
+LeadsEntry.update_forward_refs()
+LeadsLead.update_forward_refs()
+LeadsStart.update_forward_refs()
+MarketMarketItemFull.update_forward_refs()
+MessageChatPreview.update_forward_refs()
+MessagesChat.update_forward_refs()
+MessagesChatFull.update_forward_refs()
+MessagesChatRestrictions.update_forward_refs()
+MessagesConversationMember.update_forward_refs()
+MessagesConversationWithMessage.update_forward_refs()
+MessagesHistoryAttachment.update_forward_refs()
+MessagesKeyboardButton.update_forward_refs()
+MessagesLastActivity.update_forward_refs()
+MessagesLongpollMessages.update_forward_refs()
+MessagesLongpollParams.update_forward_refs()
+MessagesMessageAttachment.update_forward_refs()
+MessagesPinnedMessage.update_forward_refs()
+MessagesUserXtrInvitedBy.update_forward_refs()
+NewsfeedEventActivity.update_forward_refs()
+NewsfeedItemAudio.update_forward_refs()
+NewsfeedItemAudioAudio.update_forward_refs()
+NewsfeedItemBase.update_forward_refs()
+NewsfeedItemDigest.update_forward_refs()
+NewsfeedItemFriend.update_forward_refs()
+NewsfeedItemFriendFriends.update_forward_refs()
+NewsfeedItemNote.update_forward_refs()
+NewsfeedItemNoteNotes.update_forward_refs()
+NewsfeedItemPhoto.update_forward_refs()
+NewsfeedItemPhotoPhotos.update_forward_refs()
+NewsfeedItemPhotoTag.update_forward_refs()
+NewsfeedItemPhotoTagPhotoTags.update_forward_refs()
+NewsfeedItemStoriesBlock.update_forward_refs()
+NewsfeedItemTopic.update_forward_refs()
+NewsfeedItemVideo.update_forward_refs()
+NewsfeedItemVideoVideo.update_forward_refs()
+NewsfeedItemWallpost.update_forward_refs()
+NewsfeedList.update_forward_refs()
+NewsfeedListFull.update_forward_refs()
+NewsfeedNewsfeedItem.update_forward_refs()
+NewsfeedNewsfeedNote.update_forward_refs()
+NewsfeedNewsfeedPhoto.update_forward_refs()
+NotesNote.update_forward_refs()
+NotesNoteComment.update_forward_refs()
+NotificationsNotification.update_forward_refs()
+NotificationsNotificationsComment.update_forward_refs()
+NotificationsSendMessageItem.update_forward_refs()
+OauthError.update_forward_refs()
+OrdersAmount.update_forward_refs()
+OrdersAmountItem.update_forward_refs()
+OrdersOrder.update_forward_refs()
+OrdersSubscription.update_forward_refs()
+PagesWikipage.update_forward_refs()
+PagesWikipageHistory.update_forward_refs()
+PhotosCommentXtrPid.update_forward_refs()
+PhotosImage.update_forward_refs()
+PhotosMarketAlbumUploadResponse.update_forward_refs()
+PhotosMarketUploadResponse.update_forward_refs()
+PhotosMessageUploadResponse.update_forward_refs()
+PhotosOwnerUploadResponse.update_forward_refs()
+PhotosPhotoAlbumFull.update_forward_refs()
+PhotosPhotoFull.update_forward_refs()
+PhotosPhotoFullXtrRealOffset.update_forward_refs()
+PhotosPhotoSizes.update_forward_refs()
+PhotosPhotoTag.update_forward_refs()
+PhotosPhotoUpload.update_forward_refs()
+PhotosPhotoUploadResponse.update_forward_refs()
+PhotosPhotoXtrRealOffset.update_forward_refs()
+PhotosPhotoXtrTagInfo.update_forward_refs()
+PhotosWallUploadResponse.update_forward_refs()
+PollsAnswer.update_forward_refs()
+PollsVoters.update_forward_refs()
+PrettyCardsPrettyCard.update_forward_refs()
+SearchHint.update_forward_refs()
+SecureLevel.update_forward_refs()
+SecureSmsNotification.update_forward_refs()
+SecureTokenChecked.update_forward_refs()
+SecureTransaction.update_forward_refs()
+StatsCity.update_forward_refs()
+StatsCountry.update_forward_refs()
+StatsPeriod.update_forward_refs()
+StatsSexAge.update_forward_refs()
+StatsWallpostStat.update_forward_refs()
+StatusStatus.update_forward_refs()
+StorageValue.update_forward_refs()
+StoriesPromoBlock.update_forward_refs()
+StoriesStoryStats.update_forward_refs()
+UsersCareer.update_forward_refs()
+UsersCropPhoto.update_forward_refs()
+UsersExports.update_forward_refs()
+UsersLastSeen.update_forward_refs()
+UsersMilitary.update_forward_refs()
+UsersOccupation.update_forward_refs()
+UsersRelative.update_forward_refs()
+UsersSchool.update_forward_refs()
+UsersSubscriptionsItem.update_forward_refs()
+UsersUniversity.update_forward_refs()
+UsersUserCounters.update_forward_refs()
+UsersUserSettingsXtr.update_forward_refs()
+UsersUserXtrCounters.update_forward_refs()
+UsersUserXtrType.update_forward_refs()
+UsersUsersArray.update_forward_refs()
+UtilsDomainResolved.update_forward_refs()
+UtilsLastShortenedLink.update_forward_refs()
+UtilsLinkChecked.update_forward_refs()
+UtilsLinkStats.update_forward_refs()
+UtilsLinkStatsExtended.update_forward_refs()
+UtilsShortLink.update_forward_refs()
+UtilsStats.update_forward_refs()
+UtilsStatsCity.update_forward_refs()
+UtilsStatsCountry.update_forward_refs()
+UtilsStatsExtended.update_forward_refs()
+UtilsStatsSexAge.update_forward_refs()
+VideoSaveResult.update_forward_refs()
+VideoVideoAlbumFull.update_forward_refs()
+VideoVideoFull.update_forward_refs()
+VideoVideoImage.update_forward_refs()
+WallCommentAttachment.update_forward_refs()
+WallWallpostAttachment.update_forward_refs()
+WallWallpostToId.update_forward_refs()
+WidgetsCommentRepliesItem.update_forward_refs()
+WidgetsWidgetComment.update_forward_refs()
+WidgetsWidgetPage.update_forward_refs()
