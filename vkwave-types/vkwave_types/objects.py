@@ -460,15 +460,9 @@ class AudioAudio(pydantic.BaseModel):
     )
 
 
-class BaseBoolIntEnum(int, Enum):
-    enum_0 = 0
-    enum_1 = 1
-
-
-class BaseBoolInt(pydantic.BaseModel):
-    enum: typing.Optional[BaseBoolIntEnum] = pydantic.Field(
-        None, description="",
-    )
+class BaseBoolInt(int, Enum):
+    NO = 0
+    YES = 1
 
 
 class BaseCity(pydantic.BaseModel):
@@ -2144,7 +2138,7 @@ class MessagesMessageActionStatus(pydantic.BaseModel):
     )
 
 
-class MessagesMessageAttachmentTypeEnum(str, Enum):
+class MessagesMessageAttachmentType(str, Enum):
     PHOTO = "photo"
     AUDIO = "audio"
     VIDEO = "video"
@@ -2159,12 +2153,6 @@ class MessagesMessageAttachmentTypeEnum(str, Enum):
     ARTICLE = "article"
     GRAFFITI = "graffiti"
     AUDIO_MESSAGE = "audio_message"
-
-
-class MessagesMessageAttachmentType(pydantic.BaseModel):
-    enum: typing.Optional[MessagesMessageAttachmentTypeEnum] = pydantic.Field(
-        None, description="Attachment type",
-    )
 
 
 class NewsfeedNewsfeedItemTypeEnum(str, Enum):
@@ -2406,7 +2394,7 @@ class PhotosPhotoAlbum(pydantic.BaseModel):
     )
 
 
-class PhotosPhotoSizesTypeEnum(str, Enum):
+class PhotosPhotoSizesType(str, Enum):
     S = "s"
     M = "m"
     X = "x"
@@ -2417,12 +2405,6 @@ class PhotosPhotoSizesTypeEnum(str, Enum):
     Y = "y"
     Z = "z"
     W = "w"
-
-
-class PhotosPhotoSizesType(pydantic.BaseModel):
-    enum: typing.Optional[PhotosPhotoSizesTypeEnum] = pydantic.Field(
-        None, description="Size type",
-    )
 
 
 class PollsPoll(pydantic.BaseModel):
@@ -8742,3 +8724,8 @@ class WidgetsWidgetPage(pydantic.BaseModel):
     url: typing.Optional[str] = pydantic.Field(
         None, description="Page absolute URL",
     )
+
+
+MessagesMessage.update_forward_refs()
+PhotosPhoto.update_forward_refs()
+MessagesForeignMessage.update_forward_refs()
