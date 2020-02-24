@@ -15,14 +15,20 @@ class MessageNewObject(pydantic.BaseModel):
 
 
 class MessageNew(pydantic.BaseModel):
+    type: str
+    group_id: int
     object: MessageNewObject = pydantic.Field(None, description="")
 
 
 class MessageReply(pydantic.BaseModel):
+    type: str
+    group_id: int
     object: MessagesMessage = pydantic.Field(None, description="")
 
 
 class MessageEdit(pydantic.BaseModel):
+    type: str
+    group_id: int
     object: MessagesMessage = pydantic.Field(None, description="")
 
 
@@ -32,6 +38,8 @@ class MessageAllowObject(pydantic.BaseModel):
 
 
 class MessageAllow(pydantic.BaseModel):
+    type: str
+    group_id: int
     object: MessageAllowObject = pydantic.Field(None, description="")
 
 
@@ -40,10 +48,14 @@ class MessageDenyObject(pydantic.BaseModel):
 
 
 class MessageDeny(pydantic.BaseModel):
+    type: str
+    group_id: int
     object: MessageDenyObject = pydantic.Field(None, description="")
 
 
 class PhotoNew(pydantic.BaseModel):
+    type: str
+    group_id: int
     object: PhotosPhoto = pydantic.Field(None, description="")
 
 
@@ -53,14 +65,20 @@ class PhotoCommentObject(pydantic.BaseModel):
 
 
 class PhotoCommentNew(pydantic.BaseModel):
+    type: str
+    group_id: int
     object: PhotoCommentObject = pydantic.Field(None, description="")
 
 
 class PhotoCommentEdit(pydantic.BaseModel):
+    type: str
+    group_id: int
     object: PhotoCommentObject = pydantic.Field(None, description="")
 
 
 class PhotoCommentRestore(pydantic.BaseModel):
+    type: str
+    group_id: int
     object: PhotoCommentObject = pydantic.Field(None, description="")
 
 
@@ -73,14 +91,20 @@ class PhotoCommentDeleteObject(pydantic.BaseModel):
 
 
 class PhotoCommentDelete(pydantic.BaseModel):
+    type: str
+    group_id: int
     object: PhotoCommentDeleteObject = pydantic.Field(None, description="")
 
 
 class AudioNew(pydantic.BaseModel):
+    type: str
+    group_id: int
     object: AudioAudio = pydantic.Field(None, description="")
 
 
 class VideoNew(pydantic.BaseModel):
+    type: str
+    group_id: int
     object: VideoVideo = pydantic.Field(None, description="")
 
 
@@ -90,14 +114,20 @@ class VideoCommentObject(pydantic.BaseModel):
 
 
 class VideoCommentNew(pydantic.BaseModel):
+    type: str
+    group_id: int
     object: VideoCommentObject = pydantic.Field(None, description="")
 
 
 class VideoCommentEdit(pydantic.BaseModel):
+    type: str
+    group_id: int
     object: VideoCommentObject = pydantic.Field(None, description="")
 
 
 class VideoCommentRestore(pydantic.BaseModel):
+    type: str
+    group_id: int
     object: VideoCommentObject = pydantic.Field(None, description="")
 
 
@@ -110,6 +140,8 @@ class VideoCommentDeleteObject(pydantic.BaseModel):
 
 
 class VideoCommentDelete(pydantic.BaseModel):
+    type: str
+    group_id: int
     object: VideoCommentDeleteObject = pydantic.Field(None, description="")
 
 
@@ -119,10 +151,14 @@ class WallPostObject(pydantic.BaseModel):
 
 
 class WallPostNew(pydantic.BaseModel):
+    type: str
+    group_id: int
     object: WallPostObject = pydantic.Field(None, description="")
 
 
 class WallRepost(pydantic.BaseModel):
+    type: str
+    group_id: int
     object: WallPostObject = pydantic.Field(None, description="")
 
 
@@ -132,15 +168,21 @@ class WallReplyObject(pydantic.BaseModel):
     post_owner_id: int = pydantic.Field(None, description="")
 
 
-class WallReply(pydantic.BaseModel):
+class WallReplyNew(pydantic.BaseModel):
+    type: str
+    group_id: int
     object: WallReplyObject = pydantic.Field(None, description="")
 
 
 class WallReplyEdit(pydantic.BaseModel):
+    type: str
+    group_id: int
     object: WallReplyObject = pydantic.Field(None, description="")
 
 
 class WallReplyRestore(pydantic.BaseModel):
+    type: str
+    group_id: int
     object: WallReplyObject = pydantic.Field(None, description="")
 
 
@@ -152,6 +194,8 @@ class WallReplyDeleteObject(pydantic.BaseModel):
 
 
 class WallReplyDelete(pydantic.BaseModel):
+    type: str
+    group_id: int
     object: WallReplyDeleteObject = pydantic.Field(None, description="")
 
 
@@ -162,14 +206,20 @@ class BoardPostObject(pydantic.BaseModel):
 
 
 class BoardPostNew(pydantic.BaseModel):
+    type: str
+    group_id: int
     object: BoardPostObject = pydantic.Field(None, description="")
 
 
 class BoardPostEdit(pydantic.BaseModel):
+    type: str
+    group_id: int
     object: BoardPostObject = pydantic.Field(None, description="")
 
 
 class BoardPostRestore(pydantic.BaseModel):
+    type: str
+    group_id: int
     object: BoardPostObject = pydantic.Field(None, description="")
 
 
@@ -180,6 +230,8 @@ class BoardPostDeleteObject(pydantic.BaseModel):
 
 
 class BoardPostDelete(pydantic.BaseModel):
+    type: str
+    group_id: int
     object: BoardPostDeleteObject = pydantic.Field(None, description="")
 
 
@@ -190,14 +242,20 @@ class MarketCommentObject(pydantic.BaseModel):
 
 
 class MarketCommentNew(pydantic.BaseModel):
+    type: str
+    group_id: int
     object: MarketCommentObject = pydantic.Field(None, description="")
 
 
 class MarketCommentEdit(pydantic.BaseModel):
+    type: str
+    group_id: int
     object: MarketCommentObject = pydantic.Field(None, description="")
 
 
 class MarketCommentRestore(pydantic.BaseModel):
+    type: str
+    group_id: int
     object: MarketCommentObject = pydantic.Field(None, description="")
 
 
@@ -210,6 +268,8 @@ class MarketCommentDeleteObject(pydantic.BaseModel):
 
 
 class MarketCommentDelete(pydantic.BaseModel):
+    type: str
+    group_id: int
     object: MarketCommentDeleteObject = pydantic.Field(None, description="")
 
 
@@ -224,6 +284,8 @@ class GroupLeaveObject(pydantic.BaseModel):
 
 
 class GroupLeave(pydantic.BaseModel):
+    type: str
+    group_id: int
     object: GroupLeaveObject = pydantic.Field(None, description="")
 
 
@@ -241,6 +303,8 @@ class GroupJoinObject(pydantic.BaseModel):
 
 
 class GroupJoin(pydantic.BaseModel):
+    type: str
+    group_id: int
     object: GroupJoinObject = pydantic.Field(None, description="")
 
 
@@ -261,6 +325,8 @@ class UserBlockObject(pydantic.BaseModel):
 
 
 class UserBlock(pydantic.BaseModel):
+    type: str
+    group_id: int
     object: UserBlockObject = pydantic.Field(None, description="")
 
 
@@ -276,6 +342,8 @@ class UserUnblockObject(pydantic.BaseModel):
 
 
 class UserUnblock(pydantic.BaseModel):
+    type: str
+    group_id: int
     object: UserUnblockObject = pydantic.Field(None, description="")
 
 
@@ -287,6 +355,8 @@ class PollVoteNewObject(pydantic.BaseModel):
 
 
 class PollVoteNew(pydantic.BaseModel):
+    type: str
+    group_id: int
     object: PollVoteNewObject = pydantic.Field(None, description="")
 
 
@@ -305,6 +375,8 @@ class GroupOfficersEditObject(pydantic.BaseModel):
 
 
 class GroupOfficersEdit(pydantic.BaseModel):
+    type: str
+    group_id: int
     object: GroupOfficersEditObject = pydantic.Field(None, description="")
 
 
@@ -336,6 +408,8 @@ class GroupChangeSettingsObject(pydantic.BaseModel):
 
 
 class GroupChangeSettings(pydantic.BaseModel):
+    type: str
+    group_id: int
     object: GroupChangeSettingsObject = pydantic.Field(None, description="")
 
 
@@ -345,6 +419,8 @@ class GroupChangePhotoObject(pydantic.BaseModel):
 
 
 class GroupChangePhoto(pydantic.BaseModel):
+    type: str
+    group_id: int
     object: GroupChangePhotoObject = pydantic.Field(None, description="")
 
 
@@ -356,6 +432,8 @@ class VkpayTransactionObject(pydantic.BaseModel):
 
 
 class VkpayTransaction(pydantic.BaseModel):
+    type: str
+    group_id: int
     object: VkpayTransactionObject = pydantic.Field(None, description="")
 
 
@@ -367,4 +445,61 @@ class AppPayloadObject(pydantic.BaseModel):
 
 
 class AppPayload(pydantic.BaseModel):
+    type: str
+    group_id: int
     object: AppPayloadObject = pydantic.Field(None, description="")
+
+
+class CallBackConfirmation(pydantic.BaseModel):
+    type: str
+    group_id: int
+
+
+_event_dict = {
+    "message_new": MessageNew,
+    "message_reply": MessageReply,
+    "message_edit": MessageEdit,
+    "message_allow": MessageAllow,
+    "message_deny": MessageDeny,
+    "photo_new": PhotoNew,
+    "photo_comment_new": PhotoCommentNew,
+    "photo_comment_edit": PhotoCommentEdit,
+    "photo_comment_restore": PhotoCommentRestore,
+    "photo_comment_delete": PhotoCommentDelete,
+    "audio_new": AudioNew,
+    "video_new": VideoNew,
+    "video_comment_new": VideoCommentNew,
+    "video_comment_edit": VideoCommentEdit,
+    "video_comment_restore": VideoCommentRestore,
+    "video_comment_delete": VideoCommentDelete,
+    "wall_post_new": WallPostNew,
+    "wall_repost": WallRepost,
+    "wall_reply_new": WallReplyNew,
+    "wall_reply_edit": WallReplyEdit,
+    "wall_reply_restore": WallReplyRestore,
+    "wall_reply_delete": WallReplyDelete,
+    "board_post_new": BoardPostNew,
+    "board_post_edit": BoardPostEdit,
+    "board_post_restore": BoardPostRestore,
+    "board_post_delete": BoardPostDelete,
+    "market_comment_new": MarketCommentNew,
+    "market_comment_edit": MarketCommentEdit,
+    "market_comment_restore": MarketCommentRestore,
+    "market_comment_delete": MarketCommentDelete,
+    "group_leave": GroupLeave,
+    "group_join": GroupJoin,
+    "user_block": UserBlock,
+    "user_unblock": UserUnblock,
+    "poll_vote_new": PollVoteNew,
+    "group_officers_edit": GroupOfficersEdit,
+    "group_change_settings": GroupChangeSettings,
+    "group_change_photo": GroupChangePhoto,
+    "vkpay_transaction": VkpayTransaction,
+    "app_payload": AppPayload,
+    "confirmation": CallBackConfirmation,
+}
+
+
+def get_event_object(raw_event: dict):
+    event_type = raw_event["type"]
+    return _event_dict[event_type](**raw_event)
