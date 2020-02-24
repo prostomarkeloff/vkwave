@@ -1,4 +1,18 @@
-from .objects import *
+import typing
+from enum import Enum
+
+import pydantic
+
+from .objects import (
+    CallbackGroupJoinType,
+    MessagesMessage,
+    PhotosPhoto,
+    AudioAudio,
+    WallWallComment,
+    WallWallpost,
+    VideoVideo,
+    BoardTopicComment,
+)
 
 
 class BaseEvent(pydantic.BaseModel):
@@ -233,17 +247,9 @@ class GroupLeave(BaseEvent):
     object: GroupLeaveObject = pydantic.Field(None, description="")
 
 
-class JoinTypeEnum(str, Enum):
-    JOIN = "join"
-    UNSURE = "unsure"
-    ACCEPTED = "accepted"
-    APPROVED = "approved"
-    REQUEST = "request"
-
-
 class GroupJoinObject(pydantic.BaseModel):
     user_id: int = pydantic.Field(None, description="")
-    join_type: JoinTypeEnum = pydantic.Field(None, description="")
+    join_type: CallbackGroupJoinType = pydantic.Field(None, description="")
 
 
 class GroupJoin(BaseEvent):

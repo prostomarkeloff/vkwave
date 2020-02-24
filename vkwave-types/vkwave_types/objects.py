@@ -1,6 +1,7 @@
 import typing
-import pydantic
 from enum import Enum
+
+import pydantic
 
 
 class AccountNameRequest(pydantic.BaseModel):
