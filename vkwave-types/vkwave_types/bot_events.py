@@ -4,6 +4,7 @@ from .objects import *
 class BaseEvent(pydantic.BaseModel):
     type: str
     group_id: int
+    object: typing.Optional[typing.Any]
 
 
 class ClientInfo(pydantic.BaseModel):
@@ -379,7 +380,7 @@ class CallBackConfirmation(BaseEvent):
     pass
 
 
-_event_dict: typing.Dict[str, typing.Type[BaseEvent]] = {
+_event_dict = {
     "message_new": MessageNew,
     "message_reply": MessageReply,
     "message_edit": MessageEdit,
@@ -424,6 +425,50 @@ _event_dict: typing.Dict[str, typing.Type[BaseEvent]] = {
 }
 
 
-def get_event_object(raw_event: dict):
+def get_event_object(
+    raw_event: dict,
+) -> typing.Union[
+    MessageNew,
+    MessageReply,
+    MessageEdit,
+    MessageAllow,
+    MessageDeny,
+    PhotoNew,
+    PhotoCommentNew,
+    PhotoCommentEdit,
+    PhotoCommentRestore,
+    PhotoCommentDelete,
+    AudioNew,
+    VideoNew,
+    VideoCommentNew,
+    VideoCommentEdit,
+    VideoCommentRestore,
+    VideoCommentDelete,
+    WallPostNew,
+    WallRepost,
+    WallReplyNew,
+    WallReplyEdit,
+    WallReplyRestore,
+    WallReplyDelete,
+    BoardPostNew,
+    BoardPostEdit,
+    BoardPostRestore,
+    BoardPostDelete,
+    MarketCommentNew,
+    MarketCommentEdit,
+    MarketCommentRestore,
+    MarketCommentDelete,
+    GroupLeave,
+    GroupJoin,
+    UserBlock,
+    UserUnblock,
+    PollVoteNew,
+    GroupOfficersEdit,
+    GroupChangeSettings,
+    GroupChangePhoto,
+    VkpayTransaction,
+    AppPayload,
+    CallBackConfirmation,
+]:
     event_type = raw_event["type"]
     return _event_dict[event_type](**raw_event)
