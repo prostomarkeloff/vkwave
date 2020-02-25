@@ -1,6 +1,8 @@
-import pydantic
 import typing
 import enum
+
+import pydantic
+
 from .objects import MessagesKeyboard
 
 
@@ -337,12 +339,12 @@ def get_event_object(raw_event: list):
                 _events_dict[EventId.MESSAGE_EVENT][event_number]
             ] = event_param
         return MessageEventModel(object=MessageEventObject(**event))
-    elif event_type == EventId.SET_FLAGS:
+    if event_type == EventId.SET_FLAGS:
         for event_number, event_param in enumerate(raw_event):
             event[_events_dict[EventId.SET_FLAGS][
                 event_number]] = event_param
         return SetFlagsEventModel(object=(SetFlagsEventObject(**event)))
-    elif event_type == EventId.READ_INCOMING_MESSAGES:
+    if event_type == EventId.READ_INCOMING_MESSAGES:
         for event_number, event_param in enumerate(raw_event):
             event[
                 _events_dict[EventId.READ_INCOMING_MESSAGES][event_number]
@@ -350,7 +352,7 @@ def get_event_object(raw_event: list):
         return ReadIncomingMessagesModel(
             object=(ReadIncomingMessagesEventObject(**event))
         )
-    elif event_type == EventId.READ_OUTGOING_MESSAGES:
+    if event_type == EventId.READ_OUTGOING_MESSAGES:
         for event_number, event_param in enumerate(raw_event):
             event[
                 _events_dict[EventId.READ_OUTGOING_MESSAGES][event_number]
@@ -358,19 +360,19 @@ def get_event_object(raw_event: list):
         return ReadOutgoingMessagesModel(
             object=(ReadOutgoingMessagesEventObject(**event))
         )
-    elif event_type == EventId.FRIEND_ONLINE:
+    if event_type == EventId.FRIEND_ONLINE:
         for event_number, event_param in enumerate(raw_event):
             event[
                 _events_dict[EventId.FRIEND_ONLINE][event_number]
             ] = event_param
         return FriendOnlineModel(object=(FriendOnlineEventObject(**event)))
-    elif event_type == EventId.FRIEND_OFFLINE:
+    if event_type == EventId.FRIEND_OFFLINE:
         for event_number, event_param in enumerate(raw_event):
             event[
                 _events_dict[EventId.FRIEND_OFFLINE][event_number]
             ] = event_param
         return FriendOfflineModel(object=(FriendOfflineEventObject(**event)))
-    elif event_type == EventId.SEEN_MENTION_IN_CHAT:
+    if event_type == EventId.SEEN_MENTION_IN_CHAT:
         for event_number, event_param in enumerate(raw_event):
             event[
                _events_dict[EventId.SEEN_MENTION_IN_CHAT][event_number]
@@ -378,14 +380,14 @@ def get_event_object(raw_event: list):
         return SeenMentionInChatModel(
             object=(SeenMentionInChatEventObject(**event))
         )
-    elif event_type == EventId.NEW_MENTION_IN_CHAT:
+    if event_type == EventId.NEW_MENTION_IN_CHAT:
         for event_number, event_param in enumerate(raw_event):
             event[
                 _events_dict[EventId.NEW_MENTION_IN_CHAT][event_number]
             ] = event_param
         return NewMentionInChatModel(
             object=(NewMentionInChatEventObject(**event)))
-    elif event_type == EventId.DELETED_ALL_MESSAGES_IN_DIALOG:
+    if event_type == EventId.DELETED_ALL_MESSAGES_IN_DIALOG:
         for event_number, event_param in enumerate(raw_event):
             event[
                 _events_dict[EventId.DELETED_ALL_MESSAGES_IN_DIALOG][
@@ -395,14 +397,14 @@ def get_event_object(raw_event: list):
         return DeletedAllMessagesInDialogModel(
             object=(DeletedAllMessagesInDialogEventObject(**event))
         )
-    elif event_type == EventId.DROP_MESSAGE_CACHE:
+    if event_type == EventId.DROP_MESSAGE_CACHE:
         for event_number, event_param in enumerate(raw_event):
             event[
                 _events_dict[EventId.DROP_MESSAGE_CACHE][event_number]
             ] = event_param
         return DropMessageCacheModel(
             object=(DropMessageCacheEventObject(**event)))
-    elif event_type == EventId.CHANGE_CHAT_SETTINGS:
+    if event_type == EventId.CHANGE_CHAT_SETTINGS:
         for event_number, event_param in enumerate(raw_event):
             event[
                 _events_dict[EventId.CHANGE_CHAT_SETTINGS][event_number]
@@ -410,7 +412,7 @@ def get_event_object(raw_event: list):
         return ChangedChatSettingsModel(
             object=(ChangedChatSettingsEventObject(**event))
         )
-    elif event_type in EventId.USER_TYPING_OR_MAKING_VOICE_MESSAGE:
+    if event_type in EventId.USER_TYPING_OR_MAKING_VOICE_MESSAGE:
         for event_number, event_param in enumerate(raw_event):
             event[
                _events_dict[EventId.USER_TYPING_OR_MAKING_VOICE_MESSAGE][
@@ -418,7 +420,7 @@ def get_event_object(raw_event: list):
                 ]
             ] = event_param
         return TypingOrVoiceModel(object=(TypingOrVoiceEventObject(**event)))
-    elif event_type == EventId.CHANGED_UNREAD_DIALOGS_COUNT:
+    if event_type == EventId.CHANGED_UNREAD_DIALOGS_COUNT:
         for event_number, event_param in enumerate(raw_event):
             event[
                 _events_dict[EventId.CHANGED_UNREAD_DIALOGS_COUNT][
@@ -427,3 +429,4 @@ def get_event_object(raw_event: list):
         return ChangedUnreadDialogsCountModel(
             object=(ChangedUnreadDialogsCountEventObject(**event))
         )
+    return None
