@@ -2,5 +2,6 @@ poetry
 mypy
 black
 pytest
+pytest-asyncio
 mypy_extensions
 typing_extensions
