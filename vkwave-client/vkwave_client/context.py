@@ -104,9 +104,7 @@ class RequestContext:
         await self._push_signal(Signal.BEFORE_REQUEST)
 
         try:
-            result = await self._request_callback(
-                self._method_name, self._request_params
-            )
+            result = await self.request_callback(self.method_name, self.request_params)
             self.result.state = ResultState.SUCCESS
             self.result.data = result
         except Exception as exc:
