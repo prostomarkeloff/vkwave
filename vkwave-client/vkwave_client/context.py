@@ -55,9 +55,9 @@ class RequestContext:
         """
         self.state: RequestState = RequestState.NOT_SENT
 
-        self._request_callback = request_callback
-        self._request_params = request_params
-        self._method_name = method_name
+        self.request_callback = request_callback
+        self.request_params = request_params
+        self.method_name = method_name
         self.result = ResultContext()
 
         self._signals: typing.Dict[Signal, typing.List[SignalCallbackCallable]] = {
