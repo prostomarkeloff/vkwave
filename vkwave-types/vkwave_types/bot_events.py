@@ -46,6 +46,16 @@ class MessageEdit(BaseEvent):
     object: MessagesMessage = pydantic.Field(None, description="")
 
 
+class MessageTypingStateObject(pydantic.BaseModel):
+    state: str = pydantic.Field(None, description="")
+    from_id: int = pydantic.Field(None, description="")
+    to_id: int = pydantic.Field(None, description="")
+
+
+class MessageTypingState(BaseEvent):
+    object: MessageTypingStateObject = pydantic.Field(None, description="")
+
+
 class MessageAllowObject(pydantic.BaseModel):
     user_id: int = pydantic.Field(None, description="")
     key: str = pydantic.Field(None, description="")
@@ -67,9 +77,19 @@ class PhotoNew(BaseEvent):
     object: PhotosPhoto = pydantic.Field(None, description="")
 
 
+class PhotoCommentThreadModel(pydantic.BaseModel):
+    count: int = pydantic.Field(None, description="")
+
+
 class PhotoCommentObject(pydantic.BaseModel):
+    id: int = pydantic.Field(None, description="")
     photo_id: int = pydantic.Field(None, description="")
     photo_owner_id: int = pydantic.Field(None, description="")
+    text: str = pydantic.Field(None, description="")
+    date: int = pydantic.Field(None, description="")
+    from_id: int = pydantic.Field(None, description="")
+    thread: PhotoCommentThreadModel = pydantic.Field(None, description="")
+    parents_stack: list = pydantic.Field(None, description="")
 
 
 class PhotoCommentNew(BaseEvent):
@@ -320,31 +340,14 @@ class GroupOfficersEdit(BaseEvent):
     object: GroupOfficersEditObject = pydantic.Field(None, description="")
 
 
-class ChangedSettingEnum(str, Enum):
-    TITLE = "title"
-    DESCRIPTION = "description"
-    ACCESS = "access"
-    SCREEN_NAME = "screen_name"
-    PUBLIC_CATEGORY = "public_category"
-    PUBLIC_SUBCATEGORY = "public_subcategory"
-    AGE_LIMITS = "age_limits"
-    WEBSITE = "website"
-    ENABLE_STATUS_DEFAULT = "enable_status_default"
-    ENABLE_PHOTO = "enable_photo"
-    ENABLE_AUDIO = "enable_audio"
-    ENABLE_VIDEO = "enable_video"
-    ENABLE_MARKET = "enable_market"
-
-
 class ChangesSettingsModel(pydantic.BaseModel):
-    field: ChangedSettingEnum = pydantic.Field(None, description="")
     old_value: int = pydantic.Field(None, description="")
     new_value: int = pydantic.Field(None, description="")
 
 
 class GroupChangeSettingsObject(pydantic.BaseModel):
     user_id: int = pydantic.Field(None, description="")
-    changes: ChangesSettingsModel = pydantic.Field(None, description="")
+    changes: typing.Dict[str, ChangesSettingsModel] = pydantic.Field(None, description="")
 
 
 class GroupChangeSettings(BaseEvent):
@@ -428,11 +431,12 @@ _event_dict = {
     "vkpay_transaction": VkpayTransaction,
     "app_payload": AppPayload,
     "confirmation": CallBackConfirmation,
+    "message_typing_state": MessageTypingState,
 }
 
 
 def get_event_object(
-    raw_event: dict,
+        raw_event: dict,
 ) -> typing.Union[
     MessageNew,
     MessageReply,
@@ -475,6 +479,7 @@ def get_event_object(
     VkpayTransaction,
     AppPayload,
     CallBackConfirmation,
+    MessageTypingState,
 ]:
     event_type = raw_event["type"]
     return _event_dict[event_type](**raw_event)
