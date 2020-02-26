@@ -9,6 +9,12 @@ class AbstractAPIClient(ABC):
     def create_request(self, method_name: MethodName, **params) -> RequestContext:
         ...
 
+    async def __aenter__(self):
+        return self
+
+    async def __aexit__(self, *args, **kwargs):
+        await self.close()
+
     @abstractmethod
     async def close(self) -> None:
         """Close resources."""

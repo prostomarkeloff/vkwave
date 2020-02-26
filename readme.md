@@ -1,3 +1,6 @@
+![vkwave](https://user-images.githubusercontent.com/28061158/75329873-7f738200-5891-11ea-9565-fd117ea4fc9e.jpg)
+
+
 # What is it?
 
 VKWave - is a set of tools for appliations that interact with VK's API.

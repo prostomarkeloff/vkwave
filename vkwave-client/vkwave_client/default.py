@@ -13,9 +13,15 @@ from aiohttp import ClientConnectionError
 
 from .abstract import AbstractAPIClient
 from .types import MethodName
-from .context import RequestContext
+from .context import RequestContext, Signal
 
 logger = getLogger(__name__)
+
+
+async def _logging_signal_before_request(ctx: RequestContext):
+    logger.debug(
+        f"Doing request to '{ctx.method_name}' method with these params: {ctx.request_params}"
+    )
 
 
 class AIOHTTPClient(AbstractAPIClient):
@@ -31,15 +37,14 @@ class AIOHTTPClient(AbstractAPIClient):
         self._session = session or ClientSession(loop=self._loop)
 
     def create_request(self, method_name: MethodName, **kwargs) -> RequestContext:
-        logger.debug(
-            f"Doing request to '{method_name}' method with these params: {kwargs}"
-        )
-        return RequestContext(
+        ctx = RequestContext(
             request_callback=self.request_callback,
             method_name=method_name,
             request_params=kwargs,
             exceptions={ClientConnectionError: None, JSONDecodeError: None},
         )
+        ctx.signal(Signal.BEFORE_REQUEST, _logging_signal_before_request)
+        return ctx
 
     async def request_callback(self, method_name: MethodName, params: dict) -> dict:
         async with self._session.post(
