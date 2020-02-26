@@ -6,12 +6,6 @@ import pydantic
 from .objects import MessagesKeyboard
 
 
-class KeyboardData(pydantic.BaseModel):
-    one_time: typing.Optional[bool]
-    inline: typing.Optional[bool]
-    buttons: typing.Optional[MessagesKeyboard]
-
-
 class ServiceMessageData(pydantic.BaseModel):
     source_act: typing.Optional[str]
     source_mid: typing.Optional[str]
@@ -27,7 +21,7 @@ class MessageData(pydantic.BaseModel):
     has_template: typing.Optional[str]
     mentions: typing.Optional[list]
     marked_users: typing.Optional[list]  # useless
-    keyboard: typing.Optional[KeyboardData]
+    keyboard: typing.Optional[MessagesKeyboard]
     service_message: typing.Optional[ServiceMessageData]
 
 
@@ -170,13 +164,15 @@ class ChangedChatSettingsType(int, enum.Enum):
     LEAVE_FROM_CHAT = 7
     KICK_FROM_CHAT = 8
     REMOVED_ADMINISTRATOR = 9
-    SHOW_OR_REMOVED_KEYBOARD = 10
+    SHOW_OR_REMOVED_KEYBOARD = 11
 
 
 class ChangedChatSettingsEventObject(pydantic.BaseModel):
     event_id: typing.Optional[int]
     type: typing.Optional[ChangedChatSettingsType]
     peer_id: typing.Optional[int]
+
+    # some id, which may be in event
     extra: typing.Optional[
         int
     ]  # https://github.com/danyadev/longpoll-doc#%D1%81%D0%BE%D0%B1%D1%8B%D1%82%D0%B8%D0%B5-52-%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85-%D1%87%D0%B0%D1%82%D0%B0
