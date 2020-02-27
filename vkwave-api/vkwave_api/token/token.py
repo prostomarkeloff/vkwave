@@ -14,7 +14,7 @@ class TokenType(Enum):
     USER = auto()
     BOT = auto()
 
-
+# TODO: to consider about `get_token_async`.
 class ABCToken(ABC):
     """
     This class represents abstract token subject.
@@ -28,3 +28,13 @@ class ABCToken(ABC):
         """
         Return the 'str' representation of token.
         """
+
+class SingleUserToken(ABCToken):
+
+    typeof = TokenType.USER
+
+    def __init__(self, token: Token):
+        self._token = token
+
+    def get_token(self, *args, **kwargs) -> Token:
+        return self._token
