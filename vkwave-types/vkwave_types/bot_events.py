@@ -19,7 +19,7 @@ class BaseEvent(pydantic.BaseModel):
     type: str
     group_id: int
     object: typing.Optional[typing.Any]
-
+    event_id: str
 
 class ClientInfo(pydantic.BaseModel):
     button_actions: list = pydantic.Field(None, description="")
