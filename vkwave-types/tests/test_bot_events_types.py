@@ -370,5 +370,6 @@ def test_photo_comment_delete():
         }
     )
 
+    assert event.event_id == "ed2ab84413adebeec1921c0c85fe7dc276810d9d"
     assert event.object.deleter_id == 578716413
     assert event.object.photo_id == 457239017

@@ -480,6 +480,8 @@ def get_event_object(
     AppPayload,
     CallBackConfirmation,
     MessageTypingState,
+    BaseEvent,
 ]:
-    event_type = raw_event["type"]
-    return _event_dict[event_type](**raw_event)
+    event_type: str = raw_event["type"]
+    event_model: typing.Type[BaseEvent] = _event_dict[event_type]
+    return event_model(**raw_event)
