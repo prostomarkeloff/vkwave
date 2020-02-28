@@ -1,40 +1,68 @@
 """
 Working with API tokens.
 """
-import random
-
 from enum import Enum, auto
-from abc import ABC, abstractmethod
-from typing import NewType
+from typing import NewType, Callable, Awaitable, Union, ClassVar
 
 Token = NewType("Token", str)
-
+GetTokenSync = Callable[..., Token]
+GetTokenAsync = Callable[..., Awaitable[Token]]
 
 class TokenType(Enum):
     USER = auto()
     BOT = auto()
 
-# TODO: to consider about `get_token_async`.
-class ABCToken(ABC):
+class GetTokenType(Enum):
+    SYNC = auto()
+    ASYNC = auto()
+
+
+class ABCToken:
     """
     This class represents abstract token subject.
     You should inherit from it if you want to create own abstraction over token.
     """
 
-    typeof: TokenType
+    typeof: ClassVar[TokenType]
+    get_token_type: ClassVar[GetTokenType]
+    get_token: Union[GetTokenSync, GetTokenAsync]
 
-    @abstractmethod
-    def get_token(self, *args, **kwargs) -> Token:
-        """
-        Return the 'str' representation of token.
-        """
+class ABCSyncToken(ABCToken):
+    get_token_type = GetTokenType.SYNC
 
-class SingleUserToken(ABCToken):
+class ABCAsyncToken(ABCToken):
+    get_token_type = GetTokenType.ASYNC
 
+class ABCUserToken(ABCToken):
     typeof = TokenType.USER
+    
+class ABCUserSyncToken(ABCUserToken, ABCSyncToken):
+    pass
 
+class ABCUserAsyncToken(ABCUserToken, ABCAsyncToken):
+    pass
+
+class ABCBotToken(ABCToken):
+    typeof = TokenType.BOT
+
+class ABCBotSyncToken(ABCBotToken, ABCSyncToken):
+    pass
+
+class ABCBotAsyncToken(ABCBotToken, ABCAsyncToken):
+    pass
+
+class UserSyncSingleToken(ABCUserSyncToken):
     def __init__(self, token: Token):
-        self._token = token
+        self._token: Token = token
+        self.get_token = self._get_token
 
-    def get_token(self, *args, **kwargs) -> Token:
+    def _get_token(self, *args, **kwargs) -> Token:
+        return self._token
+
+class BotSyncSingleToken(ABCBotSyncToken):
+    def __init__(self, token: Token):
+        self._token: Token = token
+        self.get_token = self._get_token
+
+    def _get_token(self, *args, **kwargs) -> Token:
         return self._token
