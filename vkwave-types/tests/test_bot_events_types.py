@@ -1,4 +1,4 @@
-from vkwave_types.bot_events import get_event_object
+from vkwave_types.bot_events import get_event_object, WallPostNew
 
 
 def test_group_join_event():
@@ -7,6 +7,7 @@ def test_group_join_event():
             "type": "group_join",
             "object": {"user_id": 1, "join_type": "approved"},
             "group_id": 123,
+            "event_id": "2a01ffba5838ff2016ae555327fd77c8633bbef6",
         }
     )
     assert event.object.join_type == "approved"
@@ -370,5 +371,160 @@ def test_photo_comment_delete():
         }
     )
 
+    assert event.event_id == "ed2ab84413adebeec1921c0c85fe7dc276810d9d"
     assert event.object.deleter_id == 578716413
     assert event.object.photo_id == 457239017
+
+
+def test_wall_post_new():
+    event: WallPostNew = get_event_object(
+        {
+            "type": "wall_post_new",
+            "object": {
+                "id": 1,
+                "from_id": -191949777,
+                "owner_id": -191949777,
+                "date": 1582832507,
+                "marked_as_ads": 0,
+                "post_type": "post",
+                "text": "hello its poll",
+                "can_edit": 1,
+                "created_by": 578716413,
+                "can_delete": 1,
+                "attachments": [
+                    {
+                        "type": "poll",
+                        "poll": {
+                            "id": 364694272,
+                            "owner_id": -191949777,
+                            "created": 1582832507,
+                            "question": "how are you?",
+                            "votes": 0,
+                            "answers": [
+                                {
+                                    "id": 1220489985,
+                                    "text": "first",
+                                    "votes": 0,
+                                    "rate": 0.0,
+                                },
+                                {
+                                    "id": 1220489986,
+                                    "text": "second",
+                                    "votes": 0,
+                                    "rate": 0.0,
+                                },
+                            ],
+                            "anonymous": False,
+                            "multiple": False,
+                            "answer_ids": [],
+                            "end_date": 0,
+                            "closed": False,
+                            "is_board": False,
+                            "can_edit": True,
+                            "can_vote": True,
+                            "can_report": False,
+                            "can_share": True,
+                            "author_id": -191949777,
+                            "background": {
+                                "angle": 180,
+                                "color": "4b8642",
+                                "id": 2,
+                                "name": "зелёный фон",
+                                "points": [
+                                    {"color": "679945", "position": 0.0},
+                                    {"color": "2f733f", "position": 1.0},
+                                ],
+                                "type": "gradient",
+                            },
+                        },
+                    }
+                ],
+                "comments": {"count": 0},
+                "is_favorite": False,
+            },
+            "group_id": 191949777,
+            "event_id": "2f1a52299ff093eade7c52b46a2cff9b7af11ec1",
+        }
+    )
+
+    assert event.object.from_id == -191949777
+    assert event.object.attachments[0].type == "poll"
+    assert not event.object.attachments[0].poll.anonymous
+    assert event.object.attachments[0].poll.answers[0].id == 1220489985
+    assert event.object.attachments[0].poll.answers[0].text == "first"
+    assert event.object.attachments[0].poll.answers[1].votes == 0
+    assert event.object.attachments[0].poll.question == "how are you?"
+
+
+def test_poll_vote_new():
+    event = get_event_object(
+        {
+            "type": "poll_vote_new",
+            "object": {
+                "owner_id": -191949777,
+                "poll_id": 364694272,
+                "option_id": 1220489985,
+                "user_id": 578716413,
+            },
+            "group_id": 191949777,
+            "event_id": "5f4ee3420044c3459922b36832c24d0d545af232",
+        }
+    )
+
+    assert event.object.poll_id == 364694272
+    assert event.object.option_id == 1220489985
+
+
+def test_group_officers_edit():
+    event = get_event_object(
+        {
+            "type": "group_officers_edit",
+            "object": {
+                "admin_id": 578716413,
+                "user_id": 580903823,
+                "level_old": 1,
+                "level_new": 1,
+            },
+            "group_id": 191949777,
+            "event_id": "395e8b8466ac37ef7ab981831e38ca2e1d5415fc",
+        }
+    )
+
+    assert event.object.level_old == 1
+    assert event.object.user_id == 580903823
+    assert event.object.admin_id == 578716413
+
+
+def test_user_unblock():
+    event = get_event_object(
+        {
+            "type": "user_unblock",
+            "object": {"admin_id": 578716413, "user_id": 580903823, "by_end_date": 0},
+            "group_id": 191949777,
+            "event_id": "3344fa8f1d38fcafd19f6d7eb5357e787dd4fc04",
+        }
+    )
+
+    assert event.object.by_end_date == 0
+    assert event.object.admin_id == 578716413
+
+
+def test_user_block():
+    event = get_event_object(
+        {
+            "type": "user_block",
+            "object": {
+                "admin_id": 578716413,
+                "user_id": 349964901,
+                "unblock_date": 1583437741,
+                "reason": 2,
+                "comment": "BAN",
+            },
+            "group_id": 191949777,
+            "event_id": "300e2ce7ce7b7328e89ee284f8fb14a0722e4b50",
+        }
+    )
+
+    assert event.object.unblock_date == 1583437741
+    assert event.object.comment == "BAN"
+    assert event.object.reason == 2

@@ -384,8 +384,8 @@ class AudioAudio(pydantic.BaseModel):
 
 
 class BaseBoolInt(int, Enum):
-    enum_0 = 0
-    enum_1 = 1
+    NO = 0
+    YES = 1
 
 
 class BaseCity(pydantic.BaseModel):

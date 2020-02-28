@@ -19,7 +19,8 @@ class BaseEvent(pydantic.BaseModel):
     type: str
     group_id: int
     object: typing.Optional[typing.Any]
-    event_id: str
+    event_id: typing.Optional[str]
+
 
 class ClientInfo(pydantic.BaseModel):
     button_actions: list = pydantic.Field(None, description="")
@@ -153,8 +154,7 @@ class VideoCommentDelete(BaseEvent):
     object: VideoCommentDeleteObject = pydantic.Field(None, description="")
 
 
-class WallPostObject(pydantic.BaseModel):
-    post: WallWallpost = pydantic.Field(None, description="")
+class WallPostObject(WallWallpost):
     postponed_id: int = pydantic.Field(None, description="")
 
 
@@ -480,6 +480,8 @@ def get_event_object(
     AppPayload,
     CallBackConfirmation,
     MessageTypingState,
+    BaseEvent,
 ]:
-    event_type = raw_event["type"]
-    return _event_dict[event_type](**raw_event)
+    event_type: str = raw_event["type"]
+    event_model: typing.Type[BaseEvent] = _event_dict[event_type]
+    return event_model(**raw_event)
