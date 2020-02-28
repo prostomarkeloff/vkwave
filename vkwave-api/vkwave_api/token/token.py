@@ -8,9 +8,11 @@ Token = NewType("Token", str)
 GetTokenSync = Callable[..., Token]
 GetTokenAsync = Callable[..., Awaitable[Token]]
 
+
 class TokenType(Enum):
     USER = auto()
     BOT = auto()
+
 
 class GetTokenType(Enum):
     SYNC = auto()
@@ -27,29 +29,38 @@ class ABCToken:
     get_token_type: ClassVar[GetTokenType]
     get_token: Union[GetTokenSync, GetTokenAsync]
 
+
 class ABCSyncToken(ABCToken):
     get_token_type = GetTokenType.SYNC
+
 
 class ABCAsyncToken(ABCToken):
     get_token_type = GetTokenType.ASYNC
 
+
 class ABCUserToken(ABCToken):
     typeof = TokenType.USER
-    
+
+
 class ABCUserSyncToken(ABCUserToken, ABCSyncToken):
     pass
+
 
 class ABCUserAsyncToken(ABCUserToken, ABCAsyncToken):
     pass
 
+
 class ABCBotToken(ABCToken):
     typeof = TokenType.BOT
+
 
 class ABCBotSyncToken(ABCBotToken, ABCSyncToken):
     pass
 
+
 class ABCBotAsyncToken(ABCBotToken, ABCAsyncToken):
     pass
+
 
 class UserSyncSingleToken(ABCUserSyncToken):
     def __init__(self, token: Token):
@@ -58,6 +69,7 @@ class UserSyncSingleToken(ABCUserSyncToken):
 
     def _get_token(self, *args, **kwargs) -> Token:
         return self._token
+
 
 class BotSyncSingleToken(ABCBotSyncToken):
     def __init__(self, token: Token):
