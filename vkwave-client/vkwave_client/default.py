@@ -36,11 +36,11 @@ class AIOHTTPClient(AbstractAPIClient):
         self._loop = loop or get_event_loop()
         self._session = session or ClientSession(loop=self._loop)
 
-    def create_request(self, method_name: MethodName, **kwargs) -> RequestContext:
+    def create_request(self, method_name: MethodName, params: dict) -> RequestContext:
         ctx = RequestContext(
             request_callback=self.request_callback,
             method_name=method_name,
-            request_params=kwargs,
+            request_params=params,
             exceptions={ClientConnectionError: None, JSONDecodeError: None},
         )
         ctx.signal(Signal.BEFORE_REQUEST, _logging_signal_before_request)

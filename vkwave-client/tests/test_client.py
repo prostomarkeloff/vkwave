@@ -17,7 +17,7 @@ async def callback(method_name: MethodName, params: dict) -> dict:
 @pytest.fixture
 def client():
     class TestAPIClient(AbstractAPIClient):
-        def create_request(self, method_name: MethodName, **params) -> RequestContext:
+        def create_request(self, method_name: MethodName, params: dict) -> RequestContext:
             ctx = RequestContext(exceptions={SomeAPIException: None}, request_callback=callback, request_params=params, method_name=method_name)
             return ctx
 
@@ -33,7 +33,7 @@ async def test_with_exception(client):
         assert 1 
         ctx.result.exception_data = {"me": "alive"}
 
-    ctx = client.create_request("anymethod", **{"raise_exception": True, "something": "yes, of course"})
+    ctx = client.create_request("anymethod", {"raise_exception": True, "something": "yes, of course"})
 
     # we can't set exception handler(s) for unknown exceptions
     with pytest.raises(ValueError):
@@ -49,7 +49,7 @@ async def test_with_exception(client):
 
 @pytest.mark.asyncio
 async def test_without_exception(client):
-    ctx = client.create_request("anymethod", **{"raise_exception": False, "hi": "there"})
+    ctx = client.create_request("anymethod", {"raise_exception": False, "hi": "there"})
 
     await ctx.send_request()
 
@@ -63,7 +63,7 @@ async def test_signals(client):
         assert 1
         ctx.result.exception_data = {"captured": "by signal"}
 
-    ctx = client.create_request("anymethod", **{"raise_exception": True})
+    ctx = client.create_request("anymethod", {"raise_exception": True})
     ctx.signal(Signal.ON_EXCEPTION, signal)
 
     await ctx.send_request()
