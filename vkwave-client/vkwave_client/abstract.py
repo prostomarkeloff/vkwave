@@ -4,8 +4,8 @@ from .types import MethodName
 from .context import RequestContext
 from .factory import AbstractFactory
 
-class AbstractAPIClient(ABC):
 
+class AbstractAPIClient(ABC):
     @abstractmethod
     def set_context_factory(self, factory: AbstractFactory) -> None:
         ...
