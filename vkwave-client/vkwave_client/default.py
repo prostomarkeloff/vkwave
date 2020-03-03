@@ -14,6 +14,7 @@ from aiohttp import ClientConnectionError
 from .abstract import AbstractAPIClient
 from .types import MethodName
 from .context import RequestContext, Signal
+from .factory import AbstractFactory, DefaultFactory
 
 logger = getLogger(__name__)
 
@@ -35,9 +36,17 @@ class AIOHTTPClient(AbstractAPIClient):
     ):
         self._loop = loop or get_event_loop()
         self._session = session or ClientSession(loop=self._loop)
+        self._factory: AbstractFactory = DefaultFactory()
+
+    @property
+    def context_factory(self) -> AbstractFactory:
+        return self._factory
+
+    def set_context_factory(self, factory: AbstractFactory) -> None:
+        self._factory = factory
 
     def create_request(self, method_name: MethodName, params: dict) -> RequestContext:
-        ctx = RequestContext(
+        ctx = self.context_factory.create_context(
             request_callback=self.request_callback,
             method_name=method_name,
             request_params=params,

@@ -1,6 +1,7 @@
 from vkwave_client.abstract import AbstractAPIClient
 from vkwave_client.context import RequestContext, Signal
 from vkwave_client.types import MethodName
+from vkwave_client.factory import AbstractFactory, DefaultFactory
 
 import pytest
 
@@ -17,8 +18,18 @@ async def callback(method_name: MethodName, params: dict) -> dict:
 @pytest.fixture
 def client():
     class TestAPIClient(AbstractAPIClient):
+        def __init__(self):
+            self._factory = DefaultFactory()
+
+        @property
+        def context_factory(self) -> AbstractFactory:
+            return self._factory
+
+        def set_context_factory(self, factory: AbstractFactory) -> None:
+            self._factory = factory
+
         def create_request(self, method_name: MethodName, params: dict) -> RequestContext:
-            ctx = RequestContext(exceptions={SomeAPIException: None}, request_callback=callback, request_params=params, method_name=method_name)
+            ctx = self.context_factory.create_context(exceptions={SomeAPIException: None}, request_callback=callback, request_params=params, method_name=method_name)
             return ctx
 
         async def close(self):
