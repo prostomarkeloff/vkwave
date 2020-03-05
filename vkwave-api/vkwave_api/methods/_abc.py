@@ -2,7 +2,7 @@ from vkwave_client.abstract import AbstractAPIClient
 from vkwave_client.types import MethodName
 from vkwave_client.context import ResultState
 from vkwave_api.token.token import ABCToken
-from typing import Optional
+from typing import Optional, cast
 
 class TemporaryException(Exception):
     """It means nothing."""
@@ -25,7 +25,7 @@ class Category:
             raise TemporaryException()
 
         result = ctx.result.data
-
+        result = cast(dict, result)
         return result
 
 class RequestOptions:
