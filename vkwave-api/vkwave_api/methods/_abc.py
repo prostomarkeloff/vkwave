@@ -3,6 +3,7 @@ from vkwave_client.types import MethodName
 from vkwave_client.context import ResultState
 from vkwave_api.token.token import AnyABCToken, Token
 from vkwave_api.token.strategy import ABCGetTokenStrategy, RandomGetTokenStrategy
+from vkwave_api.methods._error import ErrorDispatcher, Error
 from typing import Optional, cast, Tuple, List, Union
 
 import copy
@@ -36,6 +37,12 @@ class Category:
 
         result = ctx.result.data
         result = cast(dict, result)
+        
+        if "error" in result:
+            err_handler_result = await self.__api.handle_error(result["error"])
+            if err_handler_result:
+                result = err_handler_result
+
         return result
 
 
@@ -50,11 +57,13 @@ class APIOptions:
         clients: ClientsInput,
         get_token_strategy: ABCGetTokenStrategy,
         api_version: str,
+        error_dispatcher: ErrorDispatcher,
     ):
         self.tokens = tokens if isinstance(tokens, list) else [tokens]
         self.clients = clients if isinstance(clients, list) else [clients]
         self.get_token_strategy = get_token_strategy
         self.api_version: str = api_version
+        self.error_dispatcher = error_dispatcher
 
 
 class APIOptionsRequestContext:
@@ -62,6 +71,11 @@ class APIOptionsRequestContext:
         self.api_options = api_options
 
         self.messages = Category("messages", self)
+
+    async def handle_error(self, error: Error) -> Optional[dict]:
+        dispatcher = self.api_options.error_dispatcher
+        result = await dispatcher.process_error(error, self)
+        return result
 
     async def _get_token(self) -> Token:
         return await self.api_options.get_token_strategy.get_token(
@@ -87,12 +101,14 @@ class API:
         clients: ClientsInput,
         get_token_strategy: Optional[ABCGetTokenStrategy] = None,
         api_version: Optional[str] = None,
+        error_dispatcher: Optional[ErrorDispatcher] = None,
     ):
         self.default_api_options = APIOptions(
             tokens,
             clients,
             get_token_strategy or RandomGetTokenStrategy(),
             api_version or "5.103",
+            error_dispatcher or ErrorDispatcher()
         )
 
     def get_context(self) -> APIOptionsRequestContext:
