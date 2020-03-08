@@ -4,7 +4,9 @@ from ._category import Category
 
 class Status(Category):
     def get(
-        self, user_id: typing.Optional[int], group_id: typing.Optional[int],
+        self,
+        user_id: typing.Optional[int] = None,
+        group_id: typing.Optional[int] = None,
     ) -> StatusGetResponse:
         """
         :param user_id: - User ID or community ID. Use a negative value to designate a community ID.
@@ -18,7 +20,7 @@ class Status(Category):
         return result
 
     def set(
-        self, text: typing.Optional[str], group_id: typing.Optional[int],
+        self, text: typing.Optional[str] = None, group_id: typing.Optional[int] = None,
     ) -> OkResponse:
         """
         :param text: - Text of the new status.

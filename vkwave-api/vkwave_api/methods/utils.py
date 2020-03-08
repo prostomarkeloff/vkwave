@@ -3,7 +3,7 @@ from ._category import Category
 
 
 class Utils(Category):
-    def check_link(self, url: typing.Optional[str],) -> UtilsCheckLinkResponse:
+    def check_link(self, url: typing.Optional[str] = None,) -> UtilsCheckLinkResponse:
         """
         :param url: - Link to check (e.g., 'http://google.com').
         :return:
@@ -14,7 +14,9 @@ class Utils(Category):
         result = UtilsCheckLinkResponse(**raw_result)
         return result
 
-    def delete_from_last_shortened(self, key: typing.Optional[str],) -> OkResponse:
+    def delete_from_last_shortened(
+        self, key: typing.Optional[str] = None,
+    ) -> OkResponse:
         """
         :param key: - Link key (characters after vk.cc/).
         :return:
@@ -26,7 +28,7 @@ class Utils(Category):
         return result
 
     def get_last_shortened_links(
-        self, count: typing.Optional[int], offset: typing.Optional[int],
+        self, count: typing.Optional[int] = None, offset: typing.Optional[int] = None,
     ) -> UtilsGetLastShortenedLinksResponse:
         """
         :param count: - Number of links to return.
@@ -41,12 +43,12 @@ class Utils(Category):
 
     def get_link_stats(
         self,
-        key: typing.Optional[str],
-        source: typing.Optional[str],
-        access_key: typing.Optional[str],
-        interval: typing.Optional[str],
-        intervals_count: typing.Optional[int],
-        extended: typing.Optional[bool],
+        key: typing.Optional[str] = None,
+        source: typing.Optional[str] = None,
+        access_key: typing.Optional[str] = None,
+        interval: typing.Optional[str] = None,
+        intervals_count: typing.Optional[int] = None,
+        extended: typing.Optional[bool] = None,
     ) -> UtilsGetLinkStatsResponse:
         """
         :param key: - Link key (characters after vk.cc/).
@@ -74,7 +76,7 @@ class Utils(Category):
         return result
 
     def get_short_link(
-        self, url: typing.Optional[str], private: typing.Optional[bool],
+        self, url: typing.Optional[str] = None, private: typing.Optional[bool] = None,
     ) -> UtilsGetShortLinkResponse:
         """
         :param url: - URL to be shortened.
@@ -88,7 +90,7 @@ class Utils(Category):
         return result
 
     def resolve_screen_name(
-        self, screen_name: typing.Optional[str],
+        self, screen_name: typing.Optional[str] = None,
     ) -> UtilsResolveScreenNameResponse:
         """
         :param screen_name: - Screen name of the user, community (e.g., 'apiclub,' 'andrew', or 'rules_of_war'), or application.

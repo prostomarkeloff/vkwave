@@ -4,7 +4,7 @@ from ._category import Category
 
 class App(Category):
     def widgets_update(
-        self, code: typing.Optional[str], type: typing.Optional[str],
+        self, code: typing.Optional[str] = None, type: typing.Optional[str] = None,
     ) -> BaseOkResponse:
         """
         :param code:

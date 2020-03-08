@@ -5,9 +5,9 @@ from ._category import Category
 class Docs(Category):
     def add(
         self,
-        owner_id: typing.Optional[int],
-        doc_id: typing.Optional[int],
-        access_key: typing.Optional[str],
+        owner_id: typing.Optional[int] = None,
+        doc_id: typing.Optional[int] = None,
+        access_key: typing.Optional[str] = None,
     ) -> DocsAddResponse:
         """
         :param owner_id: - ID of the user or community that owns the document. Use a negative value to designate a community ID.
@@ -22,7 +22,9 @@ class Docs(Category):
         return result
 
     def delete(
-        self, owner_id: typing.Optional[int], doc_id: typing.Optional[int],
+        self,
+        owner_id: typing.Optional[int] = None,
+        doc_id: typing.Optional[int] = None,
     ) -> OkResponse:
         """
         :param owner_id: - ID of the user or community that owns the document. Use a negative value to designate a community ID.
@@ -37,10 +39,10 @@ class Docs(Category):
 
     def edit(
         self,
-        owner_id: typing.Optional[int],
-        doc_id: typing.Optional[int],
-        title: typing.Optional[str],
-        tags: typing.Optional[typing.List[str]],
+        owner_id: typing.Optional[int] = None,
+        doc_id: typing.Optional[int] = None,
+        title: typing.Optional[str] = None,
+        tags: typing.Optional[typing.List[str]] = None,
     ) -> OkResponse:
         """
         :param owner_id: - User ID or community ID. Use a negative value to designate a community ID.
@@ -57,10 +59,10 @@ class Docs(Category):
 
     def get(
         self,
-        count: typing.Optional[int],
-        offset: typing.Optional[int],
-        type: typing.Optional[int],
-        owner_id: typing.Optional[int],
+        count: typing.Optional[int] = None,
+        offset: typing.Optional[int] = None,
+        type: typing.Optional[int] = None,
+        owner_id: typing.Optional[int] = None,
     ) -> DocsGetResponse:
         """
         :param count: - Number of documents to return. By default, all documents.
@@ -76,7 +78,7 @@ class Docs(Category):
         return result
 
     def get_by_id(
-        self, docs: typing.Optional[typing.List[str]],
+        self, docs: typing.Optional[typing.List[str]] = None,
     ) -> DocsGetByIdResponse:
         """
         :param docs: - Document IDs. Example: , "66748_91488,66748_91455",
@@ -89,7 +91,7 @@ class Docs(Category):
         return result
 
     def get_messages_upload_server(
-        self, type: typing.Optional[str], peer_id: typing.Optional[int],
+        self, type: typing.Optional[str] = None, peer_id: typing.Optional[int] = None,
     ) -> BaseGetUploadServerResponse:
         """
         :param type: - Document type.
@@ -102,7 +104,7 @@ class Docs(Category):
         result = BaseGetUploadServerResponse(**raw_result)
         return result
 
-    def get_types(self, owner_id: typing.Optional[int],) -> DocsGetTypesResponse:
+    def get_types(self, owner_id: typing.Optional[int] = None,) -> DocsGetTypesResponse:
         """
         :param owner_id: - ID of the user or community that owns the documents. Use a negative value to designate a community ID.
         :return:
@@ -113,7 +115,9 @@ class Docs(Category):
         result = DocsGetTypesResponse(**raw_result)
         return result
 
-    def get_upload_server(self, group_id: typing.Optional[int],) -> DocsGetUploadServer:
+    def get_upload_server(
+        self, group_id: typing.Optional[int] = None,
+    ) -> DocsGetUploadServer:
         """
         :param group_id: - Community ID (if the document will be uploaded to the community).
         :return:
@@ -125,7 +129,7 @@ class Docs(Category):
         return result
 
     def get_wall_upload_server(
-        self, group_id: typing.Optional[int],
+        self, group_id: typing.Optional[int] = None,
     ) -> BaseGetUploadServerResponse:
         """
         :param group_id: - Community ID (if the document will be uploaded to the community).
@@ -139,9 +143,9 @@ class Docs(Category):
 
     def save(
         self,
-        file: typing.Optional[str],
-        title: typing.Optional[str],
-        tags: typing.Optional[str],
+        file: typing.Optional[str] = None,
+        title: typing.Optional[str] = None,
+        tags: typing.Optional[str] = None,
     ) -> DocsSaveResponse:
         """
         :param file: - This parameter is returned when the file is [vk.com/dev/upload_files_2|uploaded to the server].
@@ -157,10 +161,10 @@ class Docs(Category):
 
     def search(
         self,
-        q: typing.Optional[str],
-        search_own: typing.Optional[bool],
-        count: typing.Optional[int],
-        offset: typing.Optional[int],
+        q: typing.Optional[str] = None,
+        search_own: typing.Optional[bool] = None,
+        count: typing.Optional[int] = None,
+        offset: typing.Optional[int] = None,
     ) -> DocsSearchResponse:
         """
         :param q: - Search query string.

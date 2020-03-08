@@ -5,16 +5,16 @@ from ._category import Category
 class Market(Category):
     def add(
         self,
-        owner_id: typing.Optional[int],
-        name: typing.Optional[str],
-        description: typing.Optional[str],
-        category_id: typing.Optional[int],
-        price: typing.Optional[int],
-        old_price: typing.Optional[int],
-        deleted: typing.Optional[bool],
-        main_photo_id: typing.Optional[int],
-        photo_ids: typing.Optional[typing.List[int]],
-        url: typing.Optional[str],
+        owner_id: typing.Optional[int] = None,
+        name: typing.Optional[str] = None,
+        description: typing.Optional[str] = None,
+        category_id: typing.Optional[int] = None,
+        price: typing.Optional[int] = None,
+        old_price: typing.Optional[int] = None,
+        deleted: typing.Optional[bool] = None,
+        main_photo_id: typing.Optional[int] = None,
+        photo_ids: typing.Optional[typing.List[int]] = None,
+        url: typing.Optional[str] = None,
     ) -> MarketAddResponse:
         """
         :param owner_id: - ID of an item owner community.
@@ -37,10 +37,10 @@ class Market(Category):
 
     def add_album(
         self,
-        owner_id: typing.Optional[int],
-        title: typing.Optional[str],
-        photo_id: typing.Optional[int],
-        main_album: typing.Optional[bool],
+        owner_id: typing.Optional[int] = None,
+        title: typing.Optional[str] = None,
+        photo_id: typing.Optional[int] = None,
+        main_album: typing.Optional[bool] = None,
     ) -> MarketAddAlbumResponse:
         """
         :param owner_id: - ID of an item owner community.
@@ -57,9 +57,9 @@ class Market(Category):
 
     def add_to_album(
         self,
-        owner_id: typing.Optional[int],
-        item_id: typing.Optional[int],
-        album_ids: typing.Optional[typing.List[int]],
+        owner_id: typing.Optional[int] = None,
+        item_id: typing.Optional[int] = None,
+        album_ids: typing.Optional[typing.List[int]] = None,
     ) -> OkResponse:
         """
         :param owner_id: - ID of an item owner community.
@@ -75,14 +75,14 @@ class Market(Category):
 
     def create_comment(
         self,
-        owner_id: typing.Optional[int],
-        item_id: typing.Optional[int],
-        message: typing.Optional[str],
-        attachments: typing.Optional[typing.List[str]],
-        from_group: typing.Optional[bool],
-        reply_to_comment: typing.Optional[int],
-        sticker_id: typing.Optional[int],
-        guid: typing.Optional[str],
+        owner_id: typing.Optional[int] = None,
+        item_id: typing.Optional[int] = None,
+        message: typing.Optional[str] = None,
+        attachments: typing.Optional[typing.List[str]] = None,
+        from_group: typing.Optional[bool] = None,
+        reply_to_comment: typing.Optional[int] = None,
+        sticker_id: typing.Optional[int] = None,
+        guid: typing.Optional[str] = None,
     ) -> MarketCreateCommentResponse:
         """
         :param owner_id: - ID of an item owner community.
@@ -102,7 +102,9 @@ class Market(Category):
         return result
 
     def delete(
-        self, owner_id: typing.Optional[int], item_id: typing.Optional[int],
+        self,
+        owner_id: typing.Optional[int] = None,
+        item_id: typing.Optional[int] = None,
     ) -> OkResponse:
         """
         :param owner_id: - ID of an item owner community.
@@ -116,7 +118,9 @@ class Market(Category):
         return result
 
     def delete_album(
-        self, owner_id: typing.Optional[int], album_id: typing.Optional[int],
+        self,
+        owner_id: typing.Optional[int] = None,
+        album_id: typing.Optional[int] = None,
     ) -> OkResponse:
         """
         :param owner_id: - ID of an collection owner community.
@@ -130,7 +134,9 @@ class Market(Category):
         return result
 
     def delete_comment(
-        self, owner_id: typing.Optional[int], comment_id: typing.Optional[int],
+        self,
+        owner_id: typing.Optional[int] = None,
+        comment_id: typing.Optional[int] = None,
     ) -> MarketDeleteCommentResponse:
         """
         :param owner_id: - identifier of an item owner community, "Note that community id in the 'owner_id' parameter should be negative number. For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community "
@@ -145,16 +151,16 @@ class Market(Category):
 
     def edit(
         self,
-        owner_id: typing.Optional[int],
-        item_id: typing.Optional[int],
-        name: typing.Optional[str],
-        description: typing.Optional[str],
-        category_id: typing.Optional[int],
-        price: typing.Optional[int],
-        deleted: typing.Optional[bool],
-        main_photo_id: typing.Optional[int],
-        photo_ids: typing.Optional[typing.List[int]],
-        url: typing.Optional[str],
+        owner_id: typing.Optional[int] = None,
+        item_id: typing.Optional[int] = None,
+        name: typing.Optional[str] = None,
+        description: typing.Optional[str] = None,
+        category_id: typing.Optional[int] = None,
+        price: typing.Optional[int] = None,
+        deleted: typing.Optional[bool] = None,
+        main_photo_id: typing.Optional[int] = None,
+        photo_ids: typing.Optional[typing.List[int]] = None,
+        url: typing.Optional[str] = None,
     ) -> OkResponse:
         """
         :param owner_id: - ID of an item owner community.
@@ -177,11 +183,11 @@ class Market(Category):
 
     def edit_album(
         self,
-        owner_id: typing.Optional[int],
-        album_id: typing.Optional[int],
-        title: typing.Optional[str],
-        photo_id: typing.Optional[int],
-        main_album: typing.Optional[bool],
+        owner_id: typing.Optional[int] = None,
+        album_id: typing.Optional[int] = None,
+        title: typing.Optional[str] = None,
+        photo_id: typing.Optional[int] = None,
+        main_album: typing.Optional[bool] = None,
     ) -> OkResponse:
         """
         :param owner_id: - ID of an collection owner community.
@@ -199,10 +205,10 @@ class Market(Category):
 
     def edit_comment(
         self,
-        owner_id: typing.Optional[int],
-        comment_id: typing.Optional[int],
-        message: typing.Optional[str],
-        attachments: typing.Optional[typing.List[str]],
+        owner_id: typing.Optional[int] = None,
+        comment_id: typing.Optional[int] = None,
+        message: typing.Optional[str] = None,
+        attachments: typing.Optional[typing.List[str]] = None,
     ) -> OkResponse:
         """
         :param owner_id: - ID of an item owner community.
@@ -219,11 +225,11 @@ class Market(Category):
 
     def get(
         self,
-        owner_id: typing.Optional[int],
-        album_id: typing.Optional[int],
-        count: typing.Optional[int],
-        offset: typing.Optional[int],
-        extended: typing.Optional[bool],
+        owner_id: typing.Optional[int] = None,
+        album_id: typing.Optional[int] = None,
+        count: typing.Optional[int] = None,
+        offset: typing.Optional[int] = None,
+        extended: typing.Optional[bool] = None,
     ) -> MarketGetResponse:
         """
         :param owner_id: - ID of an item owner community, "Note that community id in the 'owner_id' parameter should be negative number. For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community "
@@ -241,8 +247,8 @@ class Market(Category):
 
     def get_album_by_id(
         self,
-        owner_id: typing.Optional[int],
-        album_ids: typing.Optional[typing.List[int]],
+        owner_id: typing.Optional[int] = None,
+        album_ids: typing.Optional[typing.List[int]] = None,
     ) -> MarketGetAlbumByIdResponse:
         """
         :param owner_id: - identifier of an album owner community, "Note that community id in the 'owner_id' parameter should be negative number. For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community "
@@ -257,9 +263,9 @@ class Market(Category):
 
     def get_albums(
         self,
-        owner_id: typing.Optional[int],
-        offset: typing.Optional[int],
-        count: typing.Optional[int],
+        owner_id: typing.Optional[int] = None,
+        offset: typing.Optional[int] = None,
+        count: typing.Optional[int] = None,
     ) -> MarketGetAlbumsResponse:
         """
         :param owner_id: - ID of an items owner community.
@@ -275,8 +281,8 @@ class Market(Category):
 
     def get_by_id(
         self,
-        item_ids: typing.Optional[typing.List[str]],
-        extended: typing.Optional[bool],
+        item_ids: typing.Optional[typing.List[str]] = None,
+        extended: typing.Optional[bool] = None,
     ) -> MarketGetByIdResponse:
         """
         :param item_ids: - Comma-separated ids list: {user id}_{item id}. If an item belongs to a community -{community id} is used. " 'Videos' value example: , '-4363_136089719,13245770_137352259'"
@@ -290,7 +296,7 @@ class Market(Category):
         return result
 
     def get_categories(
-        self, count: typing.Optional[int], offset: typing.Optional[int],
+        self, count: typing.Optional[int] = None, offset: typing.Optional[int] = None,
     ) -> MarketGetCategoriesResponse:
         """
         :param count: - Number of results to return.
@@ -305,15 +311,15 @@ class Market(Category):
 
     def get_comments(
         self,
-        owner_id: typing.Optional[int],
-        item_id: typing.Optional[int],
-        need_likes: typing.Optional[bool],
-        start_comment_id: typing.Optional[int],
-        offset: typing.Optional[int],
-        count: typing.Optional[int],
-        sort: typing.Optional[str],
-        extended: typing.Optional[bool],
-        fields: typing.Optional[typing.List[UsersFields]],
+        owner_id: typing.Optional[int] = None,
+        item_id: typing.Optional[int] = None,
+        need_likes: typing.Optional[bool] = None,
+        start_comment_id: typing.Optional[int] = None,
+        offset: typing.Optional[int] = None,
+        count: typing.Optional[int] = None,
+        sort: typing.Optional[str] = None,
+        extended: typing.Optional[bool] = None,
+        fields: typing.Optional[typing.List[UsersFields]] = None,
     ) -> MarketGetCommentsResponse:
         """
         :param owner_id: - ID of an item owner community
@@ -335,9 +341,9 @@ class Market(Category):
 
     def remove_from_album(
         self,
-        owner_id: typing.Optional[int],
-        item_id: typing.Optional[int],
-        album_ids: typing.Optional[typing.List[int]],
+        owner_id: typing.Optional[int] = None,
+        item_id: typing.Optional[int] = None,
+        album_ids: typing.Optional[typing.List[int]] = None,
     ) -> OkResponse:
         """
         :param owner_id: - ID of an item owner community.
@@ -353,10 +359,10 @@ class Market(Category):
 
     def reorder_albums(
         self,
-        owner_id: typing.Optional[int],
-        album_id: typing.Optional[int],
-        before: typing.Optional[int],
-        after: typing.Optional[int],
+        owner_id: typing.Optional[int] = None,
+        album_id: typing.Optional[int] = None,
+        before: typing.Optional[int] = None,
+        after: typing.Optional[int] = None,
     ) -> OkResponse:
         """
         :param owner_id: - ID of an item owner community.
@@ -373,11 +379,11 @@ class Market(Category):
 
     def reorder_items(
         self,
-        owner_id: typing.Optional[int],
-        album_id: typing.Optional[int],
-        item_id: typing.Optional[int],
-        before: typing.Optional[int],
-        after: typing.Optional[int],
+        owner_id: typing.Optional[int] = None,
+        album_id: typing.Optional[int] = None,
+        item_id: typing.Optional[int] = None,
+        before: typing.Optional[int] = None,
+        after: typing.Optional[int] = None,
     ) -> OkResponse:
         """
         :param owner_id: - ID of an item owner community.
@@ -395,9 +401,9 @@ class Market(Category):
 
     def report(
         self,
-        owner_id: typing.Optional[int],
-        item_id: typing.Optional[int],
-        reason: typing.Optional[int],
+        owner_id: typing.Optional[int] = None,
+        item_id: typing.Optional[int] = None,
+        reason: typing.Optional[int] = None,
     ) -> OkResponse:
         """
         :param owner_id: - ID of an item owner community.
@@ -413,9 +419,9 @@ class Market(Category):
 
     def report_comment(
         self,
-        owner_id: typing.Optional[int],
-        comment_id: typing.Optional[int],
-        reason: typing.Optional[int],
+        owner_id: typing.Optional[int] = None,
+        comment_id: typing.Optional[int] = None,
+        reason: typing.Optional[int] = None,
     ) -> OkResponse:
         """
         :param owner_id: - ID of an item owner community.
@@ -430,7 +436,9 @@ class Market(Category):
         return result
 
     def restore(
-        self, owner_id: typing.Optional[int], item_id: typing.Optional[int],
+        self,
+        owner_id: typing.Optional[int] = None,
+        item_id: typing.Optional[int] = None,
     ) -> OkResponse:
         """
         :param owner_id: - ID of an item owner community.
@@ -444,7 +452,9 @@ class Market(Category):
         return result
 
     def restore_comment(
-        self, owner_id: typing.Optional[int], comment_id: typing.Optional[int],
+        self,
+        owner_id: typing.Optional[int] = None,
+        comment_id: typing.Optional[int] = None,
     ) -> MarketRestoreCommentResponse:
         """
         :param owner_id: - identifier of an item owner community, "Note that community id in the 'owner_id' parameter should be negative number. For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community "
@@ -459,18 +469,18 @@ class Market(Category):
 
     def search(
         self,
-        owner_id: typing.Optional[int],
-        album_id: typing.Optional[int],
-        q: typing.Optional[str],
-        price_from: typing.Optional[int],
-        price_to: typing.Optional[int],
-        tags: typing.Optional[typing.List[int]],
-        sort: typing.Optional[int],
-        rev: typing.Optional[int],
-        offset: typing.Optional[int],
-        count: typing.Optional[int],
-        extended: typing.Optional[bool],
-        status: typing.Optional[int],
+        owner_id: typing.Optional[int] = None,
+        album_id: typing.Optional[int] = None,
+        q: typing.Optional[str] = None,
+        price_from: typing.Optional[int] = None,
+        price_to: typing.Optional[int] = None,
+        tags: typing.Optional[typing.List[int]] = None,
+        sort: typing.Optional[int] = None,
+        rev: typing.Optional[int] = None,
+        offset: typing.Optional[int] = None,
+        count: typing.Optional[int] = None,
+        extended: typing.Optional[bool] = None,
+        status: typing.Optional[int] = None,
     ) -> MarketSearchResponse:
         """
         :param owner_id: - ID of an items owner community.

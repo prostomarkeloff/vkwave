@@ -5,8 +5,8 @@ from ._category import Category
 class Newsfeed(Category):
     def add_ban(
         self,
-        user_ids: typing.Optional[typing.List[int]],
-        group_ids: typing.Optional[typing.List[int]],
+        user_ids: typing.Optional[typing.List[int]] = None,
+        group_ids: typing.Optional[typing.List[int]] = None,
     ) -> OkResponse:
         """
         :param user_ids:
@@ -21,8 +21,8 @@ class Newsfeed(Category):
 
     def delete_ban(
         self,
-        user_ids: typing.Optional[typing.List[int]],
-        group_ids: typing.Optional[typing.List[int]],
+        user_ids: typing.Optional[typing.List[int]] = None,
+        group_ids: typing.Optional[typing.List[int]] = None,
     ) -> OkResponse:
         """
         :param user_ids:
@@ -35,7 +35,7 @@ class Newsfeed(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def delete_list(self, list_id: typing.Optional[int],) -> OkResponse:
+    def delete_list(self, list_id: typing.Optional[int] = None,) -> OkResponse:
         """
         :param list_id:
         :return:
@@ -48,16 +48,16 @@ class Newsfeed(Category):
 
     def get(
         self,
-        filters: typing.Optional[typing.List[NewsfeedFilters]],
-        return_banned: typing.Optional[bool],
-        start_time: typing.Optional[int],
-        end_time: typing.Optional[int],
-        max_photos: typing.Optional[int],
-        source_ids: typing.Optional[str],
-        start_from: typing.Optional[str],
-        count: typing.Optional[int],
-        fields: typing.Optional[typing.List[BaseUserGroupFields]],
-        section: typing.Optional[str],
+        filters: typing.Optional[typing.List[NewsfeedFilters]] = None,
+        return_banned: typing.Optional[bool] = None,
+        start_time: typing.Optional[int] = None,
+        end_time: typing.Optional[int] = None,
+        max_photos: typing.Optional[int] = None,
+        source_ids: typing.Optional[str] = None,
+        start_from: typing.Optional[str] = None,
+        count: typing.Optional[int] = None,
+        fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
+        section: typing.Optional[str] = None,
     ) -> NewsfeedGetResponse:
         """
         :param filters: - Filters to apply: 'post' — new wall posts, 'photo' — new photos, 'photo_tag' — new photo tags, 'wall_photo' — new wall photos, 'friend' — new friends, 'note' — new notes
@@ -80,9 +80,9 @@ class Newsfeed(Category):
 
     def get_banned(
         self,
-        extended: typing.Optional[bool],
-        fields: typing.Optional[typing.List[UsersFields]],
-        name_case: typing.Optional[str],
+        extended: typing.Optional[bool] = None,
+        fields: typing.Optional[typing.List[UsersFields]] = None,
+        name_case: typing.Optional[str] = None,
     ) -> NewsfeedGetBannedResponse:
         """
         :param extended: - '1' — return extra information about users and communities
@@ -98,14 +98,14 @@ class Newsfeed(Category):
 
     def get_comments(
         self,
-        count: typing.Optional[int],
-        filters: typing.Optional[typing.List[NewsfeedCommentsFilters]],
-        reposts: typing.Optional[str],
-        start_time: typing.Optional[int],
-        end_time: typing.Optional[int],
-        last_comments_count: typing.Optional[int],
-        start_from: typing.Optional[str],
-        fields: typing.Optional[typing.List[BaseUserGroupFields]],
+        count: typing.Optional[int] = None,
+        filters: typing.Optional[typing.List[NewsfeedCommentsFilters]] = None,
+        reposts: typing.Optional[str] = None,
+        start_time: typing.Optional[int] = None,
+        end_time: typing.Optional[int] = None,
+        last_comments_count: typing.Optional[int] = None,
+        start_from: typing.Optional[str] = None,
+        fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
     ) -> NewsfeedGetCommentsResponse:
         """
         :param count: - Number of comments to return. For auto feed, you can use the 'new_offset' parameter returned by this method.
@@ -126,8 +126,8 @@ class Newsfeed(Category):
 
     def get_lists(
         self,
-        list_ids: typing.Optional[typing.List[int]],
-        extended: typing.Optional[bool],
+        list_ids: typing.Optional[typing.List[int]] = None,
+        extended: typing.Optional[bool] = None,
     ) -> NewsfeedGetListsResponse:
         """
         :param list_ids: - numeric list identifiers.
@@ -142,11 +142,11 @@ class Newsfeed(Category):
 
     def get_mentions(
         self,
-        owner_id: typing.Optional[int],
-        start_time: typing.Optional[int],
-        end_time: typing.Optional[int],
-        offset: typing.Optional[int],
-        count: typing.Optional[int],
+        owner_id: typing.Optional[int] = None,
+        start_time: typing.Optional[int] = None,
+        end_time: typing.Optional[int] = None,
+        offset: typing.Optional[int] = None,
+        count: typing.Optional[int] = None,
     ) -> NewsfeedGetMentionsResponse:
         """
         :param owner_id: - Owner ID.
@@ -164,12 +164,12 @@ class Newsfeed(Category):
 
     def get_recommended(
         self,
-        start_time: typing.Optional[int],
-        end_time: typing.Optional[int],
-        max_photos: typing.Optional[int],
-        start_from: typing.Optional[str],
-        count: typing.Optional[int],
-        fields: typing.Optional[typing.List[BaseUserGroupFields]],
+        start_time: typing.Optional[int] = None,
+        end_time: typing.Optional[int] = None,
+        max_photos: typing.Optional[int] = None,
+        start_from: typing.Optional[str] = None,
+        count: typing.Optional[int] = None,
+        fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
     ) -> NewsfeedGetRecommendedResponse:
         """
         :param start_time: - Earliest timestamp (in Unix time) of a news item to return. By default, 24 hours ago.
@@ -188,10 +188,10 @@ class Newsfeed(Category):
 
     def get_suggested_sources(
         self,
-        offset: typing.Optional[int],
-        count: typing.Optional[int],
-        shuffle: typing.Optional[bool],
-        fields: typing.Optional[typing.List[BaseUserGroupFields]],
+        offset: typing.Optional[int] = None,
+        count: typing.Optional[int] = None,
+        shuffle: typing.Optional[bool] = None,
+        fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
     ) -> NewsfeedGetSuggestedSourcesResponse:
         """
         :param offset: - offset required to choose a particular subset of communities or users.
@@ -208,9 +208,9 @@ class Newsfeed(Category):
 
     def ignore_item(
         self,
-        type: typing.Optional[str],
-        owner_id: typing.Optional[int],
-        item_id: typing.Optional[int],
+        type: typing.Optional[str] = None,
+        owner_id: typing.Optional[int] = None,
+        item_id: typing.Optional[int] = None,
     ) -> OkResponse:
         """
         :param type: - Item type. Possible values: *'wall' – post on the wall,, *'tag' – tag on a photo,, *'profilephoto' – profile photo,, *'video' – video,, *'audio' – audio.
@@ -226,10 +226,10 @@ class Newsfeed(Category):
 
     def save_list(
         self,
-        list_id: typing.Optional[int],
-        title: typing.Optional[str],
-        source_ids: typing.Optional[typing.List[int]],
-        no_reposts: typing.Optional[bool],
+        list_id: typing.Optional[int] = None,
+        title: typing.Optional[str] = None,
+        source_ids: typing.Optional[typing.List[int]] = None,
+        no_reposts: typing.Optional[bool] = None,
     ) -> NewsfeedSaveListResponse:
         """
         :param list_id: - numeric list identifier (if not sent, will be set automatically).
@@ -246,15 +246,15 @@ class Newsfeed(Category):
 
     def search(
         self,
-        q: typing.Optional[str],
-        extended: typing.Optional[bool],
-        count: typing.Optional[int],
-        latitude: typing.Optional[int],
-        longitude: typing.Optional[int],
-        start_time: typing.Optional[int],
-        end_time: typing.Optional[int],
-        start_from: typing.Optional[str],
-        fields: typing.Optional[typing.List[BaseUserGroupFields]],
+        q: typing.Optional[str] = None,
+        extended: typing.Optional[bool] = None,
+        count: typing.Optional[int] = None,
+        latitude: typing.Optional[int] = None,
+        longitude: typing.Optional[int] = None,
+        start_time: typing.Optional[int] = None,
+        end_time: typing.Optional[int] = None,
+        start_from: typing.Optional[str] = None,
+        fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
     ) -> NewsfeedSearchResponse:
         """
         :param q: - Search query string (e.g., 'New Year').
@@ -276,9 +276,9 @@ class Newsfeed(Category):
 
     def unignore_item(
         self,
-        type: typing.Optional[str],
-        owner_id: typing.Optional[int],
-        item_id: typing.Optional[int],
+        type: typing.Optional[str] = None,
+        owner_id: typing.Optional[int] = None,
+        item_id: typing.Optional[int] = None,
     ) -> OkResponse:
         """
         :param type: - Item type. Possible values: *'wall' – post on the wall,, *'tag' – tag on a photo,, *'profilephoto' – profile photo,, *'video' – video,, *'audio' – audio.
@@ -294,9 +294,9 @@ class Newsfeed(Category):
 
     def unsubscribe(
         self,
-        type: typing.Optional[str],
-        owner_id: typing.Optional[int],
-        item_id: typing.Optional[int],
+        type: typing.Optional[str] = None,
+        owner_id: typing.Optional[int] = None,
+        item_id: typing.Optional[int] = None,
     ) -> OkResponse:
         """
         :param type: - Type of object from which to unsubscribe: 'note' — note, 'photo' — photo, 'post' — post on user wall or community wall, 'topic' — topic, 'video' — video

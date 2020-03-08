@@ -5,10 +5,10 @@ from ._category import Category
 class Notes(Category):
     def add(
         self,
-        title: typing.Optional[str],
-        text: typing.Optional[str],
-        privacy_view: typing.Optional[typing.List[str]],
-        privacy_comment: typing.Optional[typing.List[str]],
+        title: typing.Optional[str] = None,
+        text: typing.Optional[str] = None,
+        privacy_view: typing.Optional[typing.List[str]] = None,
+        privacy_comment: typing.Optional[typing.List[str]] = None,
     ) -> NotesAddResponse:
         """
         :param title: - Note title.
@@ -25,11 +25,11 @@ class Notes(Category):
 
     def create_comment(
         self,
-        note_id: typing.Optional[int],
-        owner_id: typing.Optional[int],
-        reply_to: typing.Optional[int],
-        message: typing.Optional[str],
-        guid: typing.Optional[str],
+        note_id: typing.Optional[int] = None,
+        owner_id: typing.Optional[int] = None,
+        reply_to: typing.Optional[int] = None,
+        message: typing.Optional[str] = None,
+        guid: typing.Optional[str] = None,
     ) -> NotesCreateCommentResponse:
         """
         :param note_id: - Note ID.
@@ -45,7 +45,7 @@ class Notes(Category):
         result = NotesCreateCommentResponse(**raw_result)
         return result
 
-    def delete(self, note_id: typing.Optional[int],) -> OkResponse:
+    def delete(self, note_id: typing.Optional[int] = None,) -> OkResponse:
         """
         :param note_id: - Note ID.
         :return:
@@ -57,7 +57,9 @@ class Notes(Category):
         return result
 
     def delete_comment(
-        self, comment_id: typing.Optional[int], owner_id: typing.Optional[int],
+        self,
+        comment_id: typing.Optional[int] = None,
+        owner_id: typing.Optional[int] = None,
     ) -> OkResponse:
         """
         :param comment_id: - Comment ID.
@@ -72,11 +74,11 @@ class Notes(Category):
 
     def edit(
         self,
-        note_id: typing.Optional[int],
-        title: typing.Optional[str],
-        text: typing.Optional[str],
-        privacy_view: typing.Optional[typing.List[str]],
-        privacy_comment: typing.Optional[typing.List[str]],
+        note_id: typing.Optional[int] = None,
+        title: typing.Optional[str] = None,
+        text: typing.Optional[str] = None,
+        privacy_view: typing.Optional[typing.List[str]] = None,
+        privacy_comment: typing.Optional[typing.List[str]] = None,
     ) -> OkResponse:
         """
         :param note_id: - Note ID.
@@ -94,9 +96,9 @@ class Notes(Category):
 
     def edit_comment(
         self,
-        comment_id: typing.Optional[int],
-        owner_id: typing.Optional[int],
-        message: typing.Optional[str],
+        comment_id: typing.Optional[int] = None,
+        owner_id: typing.Optional[int] = None,
+        message: typing.Optional[str] = None,
     ) -> OkResponse:
         """
         :param comment_id: - Comment ID.
@@ -112,11 +114,11 @@ class Notes(Category):
 
     def get(
         self,
-        note_ids: typing.Optional[typing.List[int]],
-        user_id: typing.Optional[int],
-        offset: typing.Optional[int],
-        count: typing.Optional[int],
-        sort: typing.Optional[int],
+        note_ids: typing.Optional[typing.List[int]] = None,
+        user_id: typing.Optional[int] = None,
+        offset: typing.Optional[int] = None,
+        count: typing.Optional[int] = None,
+        sort: typing.Optional[int] = None,
     ) -> NotesGetResponse:
         """
         :param note_ids: - Note IDs.
@@ -134,9 +136,9 @@ class Notes(Category):
 
     def get_by_id(
         self,
-        note_id: typing.Optional[int],
-        owner_id: typing.Optional[int],
-        need_wiki: typing.Optional[bool],
+        note_id: typing.Optional[int] = None,
+        owner_id: typing.Optional[int] = None,
+        need_wiki: typing.Optional[bool] = None,
     ) -> NotesGetByIdResponse:
         """
         :param note_id: - Note ID.
@@ -152,11 +154,11 @@ class Notes(Category):
 
     def get_comments(
         self,
-        note_id: typing.Optional[int],
-        owner_id: typing.Optional[int],
-        sort: typing.Optional[int],
-        offset: typing.Optional[int],
-        count: typing.Optional[int],
+        note_id: typing.Optional[int] = None,
+        owner_id: typing.Optional[int] = None,
+        sort: typing.Optional[int] = None,
+        offset: typing.Optional[int] = None,
+        count: typing.Optional[int] = None,
     ) -> NotesGetCommentsResponse:
         """
         :param note_id: - Note ID.
@@ -173,7 +175,9 @@ class Notes(Category):
         return result
 
     def restore_comment(
-        self, comment_id: typing.Optional[int], owner_id: typing.Optional[int],
+        self,
+        comment_id: typing.Optional[int] = None,
+        owner_id: typing.Optional[int] = None,
     ) -> OkResponse:
         """
         :param comment_id: - Comment ID.

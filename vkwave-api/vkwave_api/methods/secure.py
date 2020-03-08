@@ -5,9 +5,9 @@ from ._category import Category
 class Secure(Category):
     def add_app_event(
         self,
-        user_id: typing.Optional[int],
-        activity_id: typing.Optional[int],
-        value: typing.Optional[int],
+        user_id: typing.Optional[int] = None,
+        activity_id: typing.Optional[int] = None,
+        value: typing.Optional[int] = None,
     ) -> OkResponse:
         """
         :param user_id: - ID of a user to save the data
@@ -22,7 +22,7 @@ class Secure(Category):
         return result
 
     def check_token(
-        self, token: typing.Optional[str], ip: typing.Optional[str],
+        self, token: typing.Optional[str] = None, ip: typing.Optional[str] = None,
     ) -> SecureCheckTokenResponse:
         """
         :param token: - client 'access_token'
@@ -47,10 +47,10 @@ class Secure(Category):
 
     def get_s_m_s_history(
         self,
-        user_id: typing.Optional[int],
-        date_from: typing.Optional[int],
-        date_to: typing.Optional[int],
-        limit: typing.Optional[int],
+        user_id: typing.Optional[int] = None,
+        date_from: typing.Optional[int] = None,
+        date_to: typing.Optional[int] = None,
+        limit: typing.Optional[int] = None,
     ) -> SecureGetSMSHistoryResponse:
         """
         :param user_id:
@@ -67,12 +67,12 @@ class Secure(Category):
 
     def get_transactions_history(
         self,
-        type: typing.Optional[int],
-        uid_from: typing.Optional[int],
-        uid_to: typing.Optional[int],
-        date_from: typing.Optional[int],
-        date_to: typing.Optional[int],
-        limit: typing.Optional[int],
+        type: typing.Optional[int] = None,
+        uid_from: typing.Optional[int] = None,
+        uid_to: typing.Optional[int] = None,
+        date_from: typing.Optional[int] = None,
+        date_to: typing.Optional[int] = None,
+        limit: typing.Optional[int] = None,
     ) -> SecureGetTransactionsHistoryResponse:
         """
         :param type:
@@ -90,7 +90,7 @@ class Secure(Category):
         return result
 
     def get_user_level(
-        self, user_ids: typing.Optional[typing.List[int]],
+        self, user_ids: typing.Optional[typing.List[int]] = None,
     ) -> SecureGetUserLevelResponse:
         """
         :param user_ids:
@@ -104,8 +104,8 @@ class Secure(Category):
 
     def give_event_sticker(
         self,
-        user_ids: typing.Optional[typing.List[int]],
-        achievement_id: typing.Optional[int],
+        user_ids: typing.Optional[typing.List[int]] = None,
+        achievement_id: typing.Optional[int] = None,
     ) -> SecureGiveEventStickerResponse:
         """
         :param user_ids:
@@ -120,9 +120,9 @@ class Secure(Category):
 
     def send_notification(
         self,
-        user_ids: typing.Optional[typing.List[int]],
-        user_id: typing.Optional[int],
-        message: typing.Optional[str],
+        user_ids: typing.Optional[typing.List[int]] = None,
+        user_id: typing.Optional[int] = None,
+        message: typing.Optional[str] = None,
     ) -> SecureSendNotificationResponse:
         """
         :param user_ids:
@@ -137,7 +137,9 @@ class Secure(Category):
         return result
 
     def send_s_m_s_notification(
-        self, user_id: typing.Optional[int], message: typing.Optional[str],
+        self,
+        user_id: typing.Optional[int] = None,
+        message: typing.Optional[str] = None,
     ) -> OkResponse:
         """
         :param user_id: - ID of the user to whom SMS notification is sent. The user shall allow the application to send him/her notifications (, +1).
@@ -152,10 +154,10 @@ class Secure(Category):
 
     def set_counter(
         self,
-        counters: typing.Optional[typing.List[str]],
-        user_id: typing.Optional[int],
-        counter: typing.Optional[int],
-        increment: typing.Optional[bool],
+        counters: typing.Optional[typing.List[str]] = None,
+        user_id: typing.Optional[int] = None,
+        counter: typing.Optional[int] = None,
+        increment: typing.Optional[bool] = None,
     ) -> OkResponse:
         """
         :param counters:

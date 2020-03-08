@@ -15,13 +15,13 @@ class Apps(Category):
 
     def get(
         self,
-        app_id: typing.Optional[int],
-        app_ids: typing.Optional[typing.List[str]],
-        platform: typing.Optional[str],
-        extended: typing.Optional[bool],
-        return_friends: typing.Optional[bool],
-        fields: typing.Optional[typing.List[UsersFields]],
-        name_case: typing.Optional[str],
+        app_id: typing.Optional[int] = None,
+        app_ids: typing.Optional[typing.List[str]] = None,
+        platform: typing.Optional[str] = None,
+        extended: typing.Optional[bool] = None,
+        return_friends: typing.Optional[bool] = None,
+        fields: typing.Optional[typing.List[UsersFields]] = None,
+        name_case: typing.Optional[str] = None,
     ) -> AppsGetResponse:
         """
         :param app_id: - Application ID
@@ -41,17 +41,17 @@ class Apps(Category):
 
     def get_catalog(
         self,
-        sort: typing.Optional[str],
-        offset: typing.Optional[int],
-        count: typing.Optional[int],
-        platform: typing.Optional[str],
-        extended: typing.Optional[bool],
-        return_friends: typing.Optional[bool],
-        fields: typing.Optional[typing.List[UsersFields]],
-        name_case: typing.Optional[str],
-        q: typing.Optional[str],
-        genre_id: typing.Optional[int],
-        filter: typing.Optional[str],
+        sort: typing.Optional[str] = None,
+        offset: typing.Optional[int] = None,
+        count: typing.Optional[int] = None,
+        platform: typing.Optional[str] = None,
+        extended: typing.Optional[bool] = None,
+        return_friends: typing.Optional[bool] = None,
+        fields: typing.Optional[typing.List[UsersFields]] = None,
+        name_case: typing.Optional[str] = None,
+        q: typing.Optional[str] = None,
+        genre_id: typing.Optional[int] = None,
+        filter: typing.Optional[str] = None,
     ) -> AppsGetCatalogResponse:
         """
         :param sort: - Sort order: 'popular_today' — popular for one day (default), 'visitors' — by visitors number , 'create_date' — by creation date, 'growth_rate' — by growth rate, 'popular_week' — popular for one week
@@ -75,11 +75,11 @@ class Apps(Category):
 
     def get_friends_list(
         self,
-        extended: typing.Optional[bool],
-        count: typing.Optional[int],
-        offset: typing.Optional[int],
-        type: typing.Optional[str],
-        fields: typing.Optional[typing.List[UsersFields]],
+        extended: typing.Optional[bool] = None,
+        count: typing.Optional[int] = None,
+        offset: typing.Optional[int] = None,
+        type: typing.Optional[str] = None,
+        fields: typing.Optional[typing.List[UsersFields]] = None,
     ) -> AppsGetFriendsListResponse:
         """
         :param extended:
@@ -97,9 +97,9 @@ class Apps(Category):
 
     def get_leaderboard(
         self,
-        type: typing.Optional[str],
-        global_: typing.Optional[bool],
-        extended: typing.Optional[bool],
+        type: typing.Optional[str] = None,
+        global_: typing.Optional[bool] = None,
+        extended: typing.Optional[bool] = None,
     ) -> AppsGetLeaderboardResponse:
         """
         :param type: - Leaderboard type. Possible values: *'level' — by level,, *'points' — by mission points,, *'score' — by score ().
@@ -113,7 +113,7 @@ class Apps(Category):
         result = AppsGetLeaderboardResponse(**raw_result)
         return result
 
-    def get_scopes(self, type: typing.Optional[str],) -> AppsGetScopesResponse:
+    def get_scopes(self, type: typing.Optional[str] = None,) -> AppsGetScopesResponse:
         """
         :param type:
         :return:
@@ -124,7 +124,7 @@ class Apps(Category):
         result = AppsGetScopesResponse(**raw_result)
         return result
 
-    def get_score(self, user_id: typing.Optional[int],) -> AppsGetScoreResponse:
+    def get_score(self, user_id: typing.Optional[int] = None,) -> AppsGetScoreResponse:
         """
         :param user_id:
         :return:
@@ -137,12 +137,12 @@ class Apps(Category):
 
     def send_request(
         self,
-        user_id: typing.Optional[int],
-        text: typing.Optional[str],
-        type: typing.Optional[str],
-        name: typing.Optional[str],
-        key: typing.Optional[str],
-        separate: typing.Optional[bool],
+        user_id: typing.Optional[int] = None,
+        text: typing.Optional[str] = None,
+        type: typing.Optional[str] = None,
+        name: typing.Optional[str] = None,
+        key: typing.Optional[str] = None,
+        separate: typing.Optional[bool] = None,
     ) -> AppsSendRequestResponse:
         """
         :param user_id: - id of the user to send a request

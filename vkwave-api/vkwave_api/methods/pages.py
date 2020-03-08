@@ -3,7 +3,7 @@ from ._category import Category
 
 
 class Pages(Category):
-    def clear_cache(self, url: typing.Optional[str],) -> OkResponse:
+    def clear_cache(self, url: typing.Optional[str] = None,) -> OkResponse:
         """
         :param url: - Address of the page where you need to refesh the cached version
         :return:
@@ -16,13 +16,13 @@ class Pages(Category):
 
     def get(
         self,
-        owner_id: typing.Optional[int],
-        page_id: typing.Optional[int],
-        global_: typing.Optional[bool],
-        site_preview: typing.Optional[bool],
-        title: typing.Optional[str],
-        need_source: typing.Optional[bool],
-        need_html: typing.Optional[bool],
+        owner_id: typing.Optional[int] = None,
+        page_id: typing.Optional[int] = None,
+        global_: typing.Optional[bool] = None,
+        site_preview: typing.Optional[bool] = None,
+        title: typing.Optional[str] = None,
+        need_source: typing.Optional[bool] = None,
+        need_html: typing.Optional[bool] = None,
     ) -> PagesGetResponse:
         """
         :param owner_id: - Page owner ID.
@@ -42,9 +42,9 @@ class Pages(Category):
 
     def get_history(
         self,
-        page_id: typing.Optional[int],
-        group_id: typing.Optional[int],
-        user_id: typing.Optional[int],
+        page_id: typing.Optional[int] = None,
+        group_id: typing.Optional[int] = None,
+        user_id: typing.Optional[int] = None,
     ) -> PagesGetHistoryResponse:
         """
         :param page_id: - Wiki page ID.
@@ -58,7 +58,9 @@ class Pages(Category):
         result = PagesGetHistoryResponse(**raw_result)
         return result
 
-    def get_titles(self, group_id: typing.Optional[int],) -> PagesGetTitlesResponse:
+    def get_titles(
+        self, group_id: typing.Optional[int] = None,
+    ) -> PagesGetTitlesResponse:
         """
         :param group_id: - ID of the community that owns the wiki page.
         :return:
@@ -71,10 +73,10 @@ class Pages(Category):
 
     def get_version(
         self,
-        version_id: typing.Optional[int],
-        group_id: typing.Optional[int],
-        user_id: typing.Optional[int],
-        need_html: typing.Optional[bool],
+        version_id: typing.Optional[int] = None,
+        group_id: typing.Optional[int] = None,
+        user_id: typing.Optional[int] = None,
+        need_html: typing.Optional[bool] = None,
     ) -> PagesGetVersionResponse:
         """
         :param version_id:
@@ -90,7 +92,7 @@ class Pages(Category):
         return result
 
     def parse_wiki(
-        self, text: typing.Optional[str], group_id: typing.Optional[int],
+        self, text: typing.Optional[str] = None, group_id: typing.Optional[int] = None,
     ) -> PagesParseWikiResponse:
         """
         :param text: - Text of the wiki page.
@@ -105,11 +107,11 @@ class Pages(Category):
 
     def save(
         self,
-        text: typing.Optional[str],
-        page_id: typing.Optional[int],
-        group_id: typing.Optional[int],
-        user_id: typing.Optional[int],
-        title: typing.Optional[str],
+        text: typing.Optional[str] = None,
+        page_id: typing.Optional[int] = None,
+        group_id: typing.Optional[int] = None,
+        user_id: typing.Optional[int] = None,
+        title: typing.Optional[str] = None,
     ) -> PagesSaveResponse:
         """
         :param text: - Text of the wiki page in wiki-format.
@@ -127,11 +129,11 @@ class Pages(Category):
 
     def save_access(
         self,
-        page_id: typing.Optional[int],
-        group_id: typing.Optional[int],
-        user_id: typing.Optional[int],
-        view: typing.Optional[int],
-        edit: typing.Optional[int],
+        page_id: typing.Optional[int] = None,
+        group_id: typing.Optional[int] = None,
+        user_id: typing.Optional[int] = None,
+        view: typing.Optional[int] = None,
+        edit: typing.Optional[int] = None,
     ) -> PagesSaveAccessResponse:
         """
         :param page_id: - Wiki page ID.

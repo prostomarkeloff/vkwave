@@ -5,10 +5,10 @@ from ._category import Category
 class Storage(Category):
     def get(
         self,
-        key: typing.Optional[str],
-        keys: typing.Optional[typing.List[str]],
-        user_id: typing.Optional[int],
-        global_: typing.Optional[bool],
+        key: typing.Optional[str] = None,
+        keys: typing.Optional[typing.List[str]] = None,
+        user_id: typing.Optional[int] = None,
+        global_: typing.Optional[bool] = None,
     ) -> dict:
         """
         :param key:
@@ -25,10 +25,10 @@ class Storage(Category):
 
     def get_keys(
         self,
-        user_id: typing.Optional[int],
-        global_: typing.Optional[bool],
-        offset: typing.Optional[int],
-        count: typing.Optional[int],
+        user_id: typing.Optional[int] = None,
+        global_: typing.Optional[bool] = None,
+        offset: typing.Optional[int] = None,
+        count: typing.Optional[int] = None,
     ) -> StorageGetKeysResponse:
         """
         :param user_id: - user id, whose variables names are returned if they were requested with a server method.
@@ -45,10 +45,10 @@ class Storage(Category):
 
     def set(
         self,
-        key: typing.Optional[str],
-        value: typing.Optional[str],
-        user_id: typing.Optional[int],
-        global_: typing.Optional[bool],
+        key: typing.Optional[str] = None,
+        value: typing.Optional[str] = None,
+        user_id: typing.Optional[int] = None,
+        global_: typing.Optional[bool] = None,
     ) -> OkResponse:
         """
         :param key:

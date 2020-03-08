@@ -5,9 +5,9 @@ from ._category import Category
 class Friends(Category):
     def add(
         self,
-        user_id: typing.Optional[int],
-        text: typing.Optional[str],
-        follow: typing.Optional[bool],
+        user_id: typing.Optional[int] = None,
+        text: typing.Optional[str] = None,
+        follow: typing.Optional[bool] = None,
     ) -> FriendsAddResponse:
         """
         :param user_id: - ID of the user whose friend request will be approved or to whom a friend request will be sent.
@@ -22,7 +22,9 @@ class Friends(Category):
         return result
 
     def add_list(
-        self, name: typing.Optional[str], user_ids: typing.Optional[typing.List[int]],
+        self,
+        name: typing.Optional[str] = None,
+        user_ids: typing.Optional[typing.List[int]] = None,
     ) -> FriendsAddListResponse:
         """
         :param name: - Name of the friend list.
@@ -37,8 +39,8 @@ class Friends(Category):
 
     def are_friends(
         self,
-        user_ids: typing.Optional[typing.List[int]],
-        need_sign: typing.Optional[bool],
+        user_ids: typing.Optional[typing.List[int]] = None,
+        need_sign: typing.Optional[bool] = None,
     ) -> FriendsAreFriendsResponse:
         """
         :param user_ids: - IDs of the users whose friendship status to check.
@@ -51,7 +53,7 @@ class Friends(Category):
         result = FriendsAreFriendsResponse(**raw_result)
         return result
 
-    def delete(self, user_id: typing.Optional[int],) -> FriendsDeleteResponse:
+    def delete(self, user_id: typing.Optional[int] = None,) -> FriendsDeleteResponse:
         """
         :param user_id: - ID of the user whose friend request is to be declined or who is to be deleted from the current user's friend list.
         :return:
@@ -72,7 +74,7 @@ class Friends(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def delete_list(self, list_id: typing.Optional[int],) -> OkResponse:
+    def delete_list(self, list_id: typing.Optional[int] = None,) -> OkResponse:
         """
         :param list_id: - ID of the friend list to delete.
         :return:
@@ -85,8 +87,8 @@ class Friends(Category):
 
     def edit(
         self,
-        user_id: typing.Optional[int],
-        list_ids: typing.Optional[typing.List[int]],
+        user_id: typing.Optional[int] = None,
+        list_ids: typing.Optional[typing.List[int]] = None,
     ) -> OkResponse:
         """
         :param user_id: - ID of the user whose friend list is to be edited.
@@ -101,11 +103,11 @@ class Friends(Category):
 
     def edit_list(
         self,
-        name: typing.Optional[str],
-        list_id: typing.Optional[int],
-        user_ids: typing.Optional[typing.List[int]],
-        add_user_ids: typing.Optional[typing.List[int]],
-        delete_user_ids: typing.Optional[typing.List[int]],
+        name: typing.Optional[str] = None,
+        list_id: typing.Optional[int] = None,
+        user_ids: typing.Optional[typing.List[int]] = None,
+        add_user_ids: typing.Optional[typing.List[int]] = None,
+        delete_user_ids: typing.Optional[typing.List[int]] = None,
     ) -> OkResponse:
         """
         :param name: - Name of the friend list.
@@ -123,14 +125,14 @@ class Friends(Category):
 
     def get(
         self,
-        user_id: typing.Optional[int],
-        order: typing.Optional[str],
-        list_id: typing.Optional[int],
-        count: typing.Optional[int],
-        offset: typing.Optional[int],
-        fields: typing.Optional[typing.List[UsersFields]],
-        name_case: typing.Optional[str],
-        ref: typing.Optional[str],
+        user_id: typing.Optional[int] = None,
+        order: typing.Optional[str] = None,
+        list_id: typing.Optional[int] = None,
+        count: typing.Optional[int] = None,
+        offset: typing.Optional[int] = None,
+        fields: typing.Optional[typing.List[UsersFields]] = None,
+        name_case: typing.Optional[str] = None,
+        ref: typing.Optional[str] = None,
     ) -> FriendsGetResponse:
         """
         :param user_id: - User ID. By default, the current user ID.
@@ -161,8 +163,8 @@ class Friends(Category):
 
     def get_by_phones(
         self,
-        phones: typing.Optional[typing.List[str]],
-        fields: typing.Optional[typing.List[UsersFields]],
+        phones: typing.Optional[typing.List[str]] = None,
+        fields: typing.Optional[typing.List[UsersFields]] = None,
     ) -> FriendsGetByPhonesResponse:
         """
         :param phones: - List of phone numbers in MSISDN format (maximum 1000). Example: "+79219876543,+79111234567"
@@ -176,7 +178,9 @@ class Friends(Category):
         return result
 
     def get_lists(
-        self, user_id: typing.Optional[int], return_system: typing.Optional[bool],
+        self,
+        user_id: typing.Optional[int] = None,
+        return_system: typing.Optional[bool] = None,
     ) -> FriendsGetListsResponse:
         """
         :param user_id: - User ID.
@@ -191,12 +195,12 @@ class Friends(Category):
 
     def get_mutual(
         self,
-        source_uid: typing.Optional[int],
-        target_uid: typing.Optional[int],
-        target_uids: typing.Optional[typing.List[int]],
-        order: typing.Optional[str],
-        count: typing.Optional[int],
-        offset: typing.Optional[int],
+        source_uid: typing.Optional[int] = None,
+        target_uid: typing.Optional[int] = None,
+        target_uids: typing.Optional[typing.List[int]] = None,
+        order: typing.Optional[str] = None,
+        count: typing.Optional[int] = None,
+        offset: typing.Optional[int] = None,
     ) -> FriendsGetMutualResponse:
         """
         :param source_uid: - ID of the user whose friends will be checked against the friends of the user specified in 'target_uid'.
@@ -215,12 +219,12 @@ class Friends(Category):
 
     def get_online(
         self,
-        user_id: typing.Optional[int],
-        list_id: typing.Optional[int],
-        online_mobile: typing.Optional[bool],
-        order: typing.Optional[str],
-        count: typing.Optional[int],
-        offset: typing.Optional[int],
+        user_id: typing.Optional[int] = None,
+        list_id: typing.Optional[int] = None,
+        online_mobile: typing.Optional[bool] = None,
+        order: typing.Optional[str] = None,
+        count: typing.Optional[int] = None,
+        offset: typing.Optional[int] = None,
     ) -> FriendsGetOnlineResponse:
         """
         :param user_id: - User ID.
@@ -237,7 +241,9 @@ class Friends(Category):
         result = FriendsGetOnlineResponse(**raw_result)
         return result
 
-    def get_recent(self, count: typing.Optional[int],) -> FriendsGetRecentResponse:
+    def get_recent(
+        self, count: typing.Optional[int] = None,
+    ) -> FriendsGetRecentResponse:
         """
         :param count: - Number of recently added friends to return.
         :return:
@@ -250,16 +256,16 @@ class Friends(Category):
 
     def get_requests(
         self,
-        offset: typing.Optional[int],
-        count: typing.Optional[int],
-        extended: typing.Optional[bool],
-        need_mutual: typing.Optional[bool],
-        out: typing.Optional[bool],
-        sort: typing.Optional[int],
-        need_viewed: typing.Optional[bool],
-        suggested: typing.Optional[bool],
-        ref: typing.Optional[str],
-        fields: typing.Optional[typing.List[UsersFields]],
+        offset: typing.Optional[int] = None,
+        count: typing.Optional[int] = None,
+        extended: typing.Optional[bool] = None,
+        need_mutual: typing.Optional[bool] = None,
+        out: typing.Optional[bool] = None,
+        sort: typing.Optional[int] = None,
+        need_viewed: typing.Optional[bool] = None,
+        suggested: typing.Optional[bool] = None,
+        ref: typing.Optional[str] = None,
+        fields: typing.Optional[typing.List[UsersFields]] = None,
     ) -> FriendsGetRequestsResponse:
         """
         :param offset: - Offset needed to return a specific subset of friend requests.
@@ -282,11 +288,11 @@ class Friends(Category):
 
     def get_suggestions(
         self,
-        filter: typing.Optional[typing.List[str]],
-        count: typing.Optional[int],
-        offset: typing.Optional[int],
-        fields: typing.Optional[typing.List[UsersFields]],
-        name_case: typing.Optional[str],
+        filter: typing.Optional[typing.List[str]] = None,
+        count: typing.Optional[int] = None,
+        offset: typing.Optional[int] = None,
+        fields: typing.Optional[typing.List[UsersFields]] = None,
+        name_case: typing.Optional[str] = None,
     ) -> FriendsGetSuggestionsResponse:
         """
         :param filter: - Types of potential friends to return: 'mutual' — users with many mutual friends , 'contacts' — users found with the [vk.com/dev/account.importContacts|account.importContacts] method , 'mutual_contacts' — users who imported the same contacts as the current user with the [vk.com/dev/account.importContacts|account.importContacts] method
@@ -304,12 +310,12 @@ class Friends(Category):
 
     def search(
         self,
-        user_id: typing.Optional[int],
-        q: typing.Optional[str],
-        fields: typing.Optional[typing.List[UsersFields]],
-        name_case: typing.Optional[str],
-        offset: typing.Optional[int],
-        count: typing.Optional[int],
+        user_id: typing.Optional[int] = None,
+        q: typing.Optional[str] = None,
+        fields: typing.Optional[typing.List[UsersFields]] = None,
+        name_case: typing.Optional[str] = None,
+        offset: typing.Optional[int] = None,
+        count: typing.Optional[int] = None,
     ) -> FriendsSearchResponse:
         """
         :param user_id: - User ID.

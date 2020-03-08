@@ -5,12 +5,12 @@ from ._category import Category
 class Search(Category):
     def get_hints(
         self,
-        q: typing.Optional[str],
-        offset: typing.Optional[int],
-        limit: typing.Optional[int],
-        filters: typing.Optional[typing.List[str]],
-        fields: typing.Optional[typing.List[str]],
-        search_global: typing.Optional[bool],
+        q: typing.Optional[str] = None,
+        offset: typing.Optional[int] = None,
+        limit: typing.Optional[int] = None,
+        filters: typing.Optional[typing.List[str]] = None,
+        fields: typing.Optional[typing.List[str]] = None,
+        search_global: typing.Optional[bool] = None,
     ) -> SearchGetHintsResponse:
         """
         :param q: - Search query string.

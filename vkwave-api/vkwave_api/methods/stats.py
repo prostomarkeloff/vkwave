@@ -5,15 +5,15 @@ from ._category import Category
 class Stats(Category):
     def get(
         self,
-        group_id: typing.Optional[int],
-        app_id: typing.Optional[int],
-        timestamp_from: typing.Optional[int],
-        timestamp_to: typing.Optional[int],
-        interval: typing.Optional[str],
-        intervals_count: typing.Optional[int],
-        filters: typing.Optional[typing.List[str]],
-        stats_groups: typing.Optional[typing.List[str]],
-        extended: typing.Optional[bool],
+        group_id: typing.Optional[int] = None,
+        app_id: typing.Optional[int] = None,
+        timestamp_from: typing.Optional[int] = None,
+        timestamp_to: typing.Optional[int] = None,
+        interval: typing.Optional[str] = None,
+        intervals_count: typing.Optional[int] = None,
+        filters: typing.Optional[typing.List[str]] = None,
+        stats_groups: typing.Optional[typing.List[str]] = None,
+        extended: typing.Optional[bool] = None,
     ) -> StatsGetResponse:
         """
         :param group_id: - Community ID.
@@ -34,7 +34,9 @@ class Stats(Category):
         return result
 
     def get_post_reach(
-        self, owner_id: typing.Optional[str], post_id: typing.Optional[int],
+        self,
+        owner_id: typing.Optional[str] = None,
+        post_id: typing.Optional[int] = None,
     ) -> StatsGetPostReachResponse:
         """
         :param owner_id: - post owner community id. Specify with "-" sign.
@@ -47,7 +49,7 @@ class Stats(Category):
         result = StatsGetPostReachResponse(**raw_result)
         return result
 
-    def track_visitor(self, id: typing.Optional[str],) -> OkResponse:
+    def track_visitor(self, id: typing.Optional[str] = None,) -> OkResponse:
         """
         :param id:
         :return:

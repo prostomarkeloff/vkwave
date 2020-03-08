@@ -13,7 +13,7 @@ class Streaming(Category):
         result = StreamingGetServerUrlResponse(**raw_result)
         return result
 
-    def set_settings(self, monthly_tier: typing.Optional[str],) -> OkResponse:
+    def set_settings(self, monthly_tier: typing.Optional[str] = None,) -> OkResponse:
         """
         :param monthly_tier:
         :return:

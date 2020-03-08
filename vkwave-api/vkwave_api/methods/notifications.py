@@ -5,11 +5,11 @@ from ._category import Category
 class Notifications(Category):
     def get(
         self,
-        count: typing.Optional[int],
-        start_from: typing.Optional[str],
-        filters: typing.Optional[typing.List[str]],
-        start_time: typing.Optional[int],
-        end_time: typing.Optional[int],
+        count: typing.Optional[int] = None,
+        start_from: typing.Optional[str] = None,
+        filters: typing.Optional[typing.List[str]] = None,
+        start_time: typing.Optional[int] = None,
+        end_time: typing.Optional[int] = None,
     ) -> NotificationsGetResponse:
         """
         :param count: - Number of notifications to return.
@@ -37,10 +37,10 @@ class Notifications(Category):
 
     def send_message(
         self,
-        user_ids: typing.Optional[typing.List[int]],
-        message: typing.Optional[str],
-        fragment: typing.Optional[str],
-        group_id: typing.Optional[int],
+        user_ids: typing.Optional[typing.List[int]] = None,
+        message: typing.Optional[str] = None,
+        fragment: typing.Optional[str] = None,
+        group_id: typing.Optional[int] = None,
     ) -> NotificationsSendMessageResponse:
         """
         :param user_ids:

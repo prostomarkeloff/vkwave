@@ -3,7 +3,7 @@ from ._category import Category
 
 
 class Account(Category):
-    def ban(self, owner_id: typing.Optional[int],) -> OkResponse:
+    def ban(self, owner_id: typing.Optional[int] = None,) -> OkResponse:
         """
         :param owner_id:
         :return:
@@ -16,10 +16,10 @@ class Account(Category):
 
     def change_password(
         self,
-        restore_sid: typing.Optional[str],
-        change_password_hash: typing.Optional[str],
-        old_password: typing.Optional[str],
-        new_password: typing.Optional[str],
+        restore_sid: typing.Optional[str] = None,
+        change_password_hash: typing.Optional[str] = None,
+        old_password: typing.Optional[str] = None,
+        new_password: typing.Optional[str] = None,
     ) -> AccountChangePasswordResponse:
         """
         :param restore_sid: - Session id received after the [vk.com/dev/auth.restore|auth.restore] method is executed. (If the password is changed right after the access was restored)
@@ -35,7 +35,7 @@ class Account(Category):
         return result
 
     def get_active_offers(
-        self, offset: typing.Optional[int], count: typing.Optional[int],
+        self, offset: typing.Optional[int] = None, count: typing.Optional[int] = None,
     ) -> AccountGetActiveOffersResponse:
         """
         :param offset:
@@ -49,7 +49,7 @@ class Account(Category):
         return result
 
     def get_app_permissions(
-        self, user_id: typing.Optional[int],
+        self, user_id: typing.Optional[int] = None,
     ) -> AccountGetAppPermissionsResponse:
         """
         :param user_id: - User ID whose settings information shall be got. By default: current user.
@@ -62,7 +62,7 @@ class Account(Category):
         return result
 
     def get_banned(
-        self, offset: typing.Optional[int], count: typing.Optional[int],
+        self, offset: typing.Optional[int] = None, count: typing.Optional[int] = None,
     ) -> AccountGetBannedResponse:
         """
         :param offset: - Offset needed to return a specific subset of results.
@@ -76,7 +76,7 @@ class Account(Category):
         return result
 
     def get_counters(
-        self, filter: typing.Optional[typing.List[str]],
+        self, filter: typing.Optional[typing.List[str]] = None,
     ) -> AccountGetCountersResponse:
         """
         :param filter: - Counters to be returned.
@@ -89,7 +89,7 @@ class Account(Category):
         return result
 
     def get_info(
-        self, fields: typing.Optional[typing.List[str]],
+        self, fields: typing.Optional[typing.List[str]] = None,
     ) -> AccountGetInfoResponse:
         """
         :param fields: - Fields to return. Possible values: *'country' — user country,, *'https_required' — is "HTTPS only" option enabled,, *'own_posts_default' — is "Show my posts only" option is enabled,, *'no_wall_replies' — are wall replies disabled or not,, *'intro' — is intro passed by user or not,, *'lang' — user language. By default: all.
@@ -112,7 +112,7 @@ class Account(Category):
         return result
 
     def get_push_settings(
-        self, device_id: typing.Optional[str],
+        self, device_id: typing.Optional[str] = None,
     ) -> AccountGetPushSettingsResponse:
         """
         :param device_id: - Unique device ID.
@@ -126,13 +126,13 @@ class Account(Category):
 
     def register_device(
         self,
-        token: typing.Optional[str],
-        device_model: typing.Optional[str],
-        device_year: typing.Optional[int],
-        device_id: typing.Optional[str],
-        system_version: typing.Optional[str],
-        settings: typing.Optional[str],
-        sandbox: typing.Optional[bool],
+        token: typing.Optional[str] = None,
+        device_model: typing.Optional[str] = None,
+        device_year: typing.Optional[int] = None,
+        device_id: typing.Optional[str] = None,
+        system_version: typing.Optional[str] = None,
+        settings: typing.Optional[str] = None,
+        sandbox: typing.Optional[bool] = None,
     ) -> OkResponse:
         """
         :param token: - Device token used to send notifications. (for mpns, the token shall be URL for sending of notifications)
@@ -152,20 +152,20 @@ class Account(Category):
 
     def save_profile_info(
         self,
-        first_name: typing.Optional[str],
-        last_name: typing.Optional[str],
-        maiden_name: typing.Optional[str],
-        screen_name: typing.Optional[str],
-        cancel_request_id: typing.Optional[int],
-        sex: typing.Optional[int],
-        relation: typing.Optional[int],
-        relation_partner_id: typing.Optional[int],
-        bdate: typing.Optional[str],
-        bdate_visibility: typing.Optional[int],
-        home_town: typing.Optional[str],
-        country_id: typing.Optional[int],
-        city_id: typing.Optional[int],
-        status: typing.Optional[str],
+        first_name: typing.Optional[str] = None,
+        last_name: typing.Optional[str] = None,
+        maiden_name: typing.Optional[str] = None,
+        screen_name: typing.Optional[str] = None,
+        cancel_request_id: typing.Optional[int] = None,
+        sex: typing.Optional[int] = None,
+        relation: typing.Optional[int] = None,
+        relation_partner_id: typing.Optional[int] = None,
+        bdate: typing.Optional[str] = None,
+        bdate_visibility: typing.Optional[int] = None,
+        home_town: typing.Optional[str] = None,
+        country_id: typing.Optional[int] = None,
+        city_id: typing.Optional[int] = None,
+        status: typing.Optional[str] = None,
     ) -> AccountSaveProfileInfoResponse:
         """
         :param first_name: - User first name.
@@ -191,7 +191,7 @@ class Account(Category):
         return result
 
     def set_info(
-        self, name: typing.Optional[str], value: typing.Optional[str],
+        self, name: typing.Optional[str] = None, value: typing.Optional[str] = None,
     ) -> OkResponse:
         """
         :param name: - Setting name.
@@ -205,7 +205,7 @@ class Account(Category):
         return result
 
     def set_name_in_menu(
-        self, user_id: typing.Optional[int], name: typing.Optional[str],
+        self, user_id: typing.Optional[int] = None, name: typing.Optional[str] = None,
     ) -> OkResponse:
         """
         :param user_id: - User ID.
@@ -228,7 +228,7 @@ class Account(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def set_online(self, voip: typing.Optional[bool],) -> OkResponse:
+    def set_online(self, voip: typing.Optional[bool] = None,) -> OkResponse:
         """
         :param voip: - '1' if videocalls are available for current device.
         :return:
@@ -241,10 +241,10 @@ class Account(Category):
 
     def set_push_settings(
         self,
-        device_id: typing.Optional[str],
-        settings: typing.Optional[str],
-        key: typing.Optional[str],
-        value: typing.Optional[typing.List[str]],
+        device_id: typing.Optional[str] = None,
+        settings: typing.Optional[str] = None,
+        key: typing.Optional[str] = None,
+        value: typing.Optional[typing.List[str]] = None,
     ) -> OkResponse:
         """
         :param device_id: - Unique device ID.
@@ -261,10 +261,10 @@ class Account(Category):
 
     def set_silence_mode(
         self,
-        device_id: typing.Optional[str],
-        time: typing.Optional[int],
-        peer_id: typing.Optional[int],
-        sound: typing.Optional[int],
+        device_id: typing.Optional[str] = None,
+        time: typing.Optional[int] = None,
+        peer_id: typing.Optional[int] = None,
+        sound: typing.Optional[int] = None,
     ) -> OkResponse:
         """
         :param device_id: - Unique device ID.
@@ -279,7 +279,7 @@ class Account(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def unban(self, owner_id: typing.Optional[int],) -> OkResponse:
+    def unban(self, owner_id: typing.Optional[int] = None,) -> OkResponse:
         """
         :param owner_id:
         :return:
@@ -291,7 +291,9 @@ class Account(Category):
         return result
 
     def unregister_device(
-        self, device_id: typing.Optional[str], sandbox: typing.Optional[bool],
+        self,
+        device_id: typing.Optional[str] = None,
+        sandbox: typing.Optional[bool] = None,
     ) -> OkResponse:
         """
         :param device_id: - Unique device ID.

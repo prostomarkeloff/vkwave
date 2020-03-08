@@ -5,10 +5,10 @@ from ._category import Category
 class Auth(Category):
     def check_phone(
         self,
-        phone: typing.Optional[str],
-        client_id: typing.Optional[int],
-        client_secret: typing.Optional[str],
-        auth_by_phone: typing.Optional[bool],
+        phone: typing.Optional[str] = None,
+        client_id: typing.Optional[int] = None,
+        client_secret: typing.Optional[str] = None,
+        auth_by_phone: typing.Optional[bool] = None,
     ) -> OkResponse:
         """
         :param phone: - Phone number.
@@ -24,7 +24,9 @@ class Auth(Category):
         return result
 
     def restore(
-        self, phone: typing.Optional[str], last_name: typing.Optional[str],
+        self,
+        phone: typing.Optional[str] = None,
+        last_name: typing.Optional[str] = None,
     ) -> AuthRestoreResponse:
         """
         :param phone: - User phone number.

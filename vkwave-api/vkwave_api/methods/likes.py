@@ -5,10 +5,10 @@ from ._category import Category
 class Likes(Category):
     def add(
         self,
-        type: typing.Optional[str],
-        owner_id: typing.Optional[int],
-        item_id: typing.Optional[int],
-        access_key: typing.Optional[str],
+        type: typing.Optional[str] = None,
+        owner_id: typing.Optional[int] = None,
+        item_id: typing.Optional[int] = None,
+        access_key: typing.Optional[str] = None,
     ) -> LikesAddResponse:
         """
         :param type: - Object type: 'post' — post on user or community wall, 'comment' — comment on a wall post, 'photo' — photo, 'audio' — audio, 'video' — video, 'note' — note, 'photo_comment' — comment on the photo, 'video_comment' — comment on the video, 'topic_comment' — comment in the discussion, 'sitepage' — page of the site where the [vk.com/dev/Like|Like widget] is installed
@@ -25,9 +25,9 @@ class Likes(Category):
 
     def delete(
         self,
-        type: typing.Optional[str],
-        owner_id: typing.Optional[int],
-        item_id: typing.Optional[int],
+        type: typing.Optional[str] = None,
+        owner_id: typing.Optional[int] = None,
+        item_id: typing.Optional[int] = None,
     ) -> LikesDeleteResponse:
         """
         :param type: - Object type: 'post' — post on user or community wall, 'comment' — comment on a wall post, 'photo' — photo, 'audio' — audio, 'video' — video, 'note' — note, 'photo_comment' — comment on the photo, 'video_comment' — comment on the video, 'topic_comment' — comment in the discussion, 'sitepage' — page of the site where the [vk.com/dev/Like|Like widget] is installed
@@ -43,16 +43,16 @@ class Likes(Category):
 
     def get_list(
         self,
-        type: typing.Optional[str],
-        owner_id: typing.Optional[int],
-        item_id: typing.Optional[int],
-        page_url: typing.Optional[str],
-        filter: typing.Optional[str],
-        friends_only: typing.Optional[int],
-        extended: typing.Optional[bool],
-        offset: typing.Optional[int],
-        count: typing.Optional[int],
-        skip_own: typing.Optional[bool],
+        type: typing.Optional[str] = None,
+        owner_id: typing.Optional[int] = None,
+        item_id: typing.Optional[int] = None,
+        page_url: typing.Optional[str] = None,
+        filter: typing.Optional[str] = None,
+        friends_only: typing.Optional[int] = None,
+        extended: typing.Optional[bool] = None,
+        offset: typing.Optional[int] = None,
+        count: typing.Optional[int] = None,
+        skip_own: typing.Optional[bool] = None,
     ) -> LikesGetListResponse:
         """
         :param type: - , Object type: 'post' — post on user or community wall, 'comment' — comment on a wall post, 'photo' — photo, 'audio' — audio, 'video' — video, 'note' — note, 'photo_comment' — comment on the photo, 'video_comment' — comment on the video, 'topic_comment' — comment in the discussion, 'sitepage' — page of the site where the [vk.com/dev/Like|Like widget] is installed
@@ -75,10 +75,10 @@ class Likes(Category):
 
     def is_liked(
         self,
-        user_id: typing.Optional[int],
-        type: typing.Optional[str],
-        owner_id: typing.Optional[int],
-        item_id: typing.Optional[int],
+        user_id: typing.Optional[int] = None,
+        type: typing.Optional[str] = None,
+        owner_id: typing.Optional[int] = None,
+        item_id: typing.Optional[int] = None,
     ) -> LikesIsLikedResponse:
         """
         :param user_id: - User ID.

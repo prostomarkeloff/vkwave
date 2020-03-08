@@ -5,9 +5,9 @@ from ._category import Category
 class Gifts(Category):
     def get(
         self,
-        user_id: typing.Optional[int],
-        count: typing.Optional[int],
-        offset: typing.Optional[int],
+        user_id: typing.Optional[int] = None,
+        count: typing.Optional[int] = None,
+        offset: typing.Optional[int] = None,
     ) -> GiftsGetResponse:
         """
         :param user_id: - User ID.

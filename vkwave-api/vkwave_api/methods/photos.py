@@ -5,9 +5,9 @@ from ._category import Category
 class Photos(Category):
     def confirm_tag(
         self,
-        owner_id: typing.Optional[int],
-        photo_id: typing.Optional[str],
-        tag_id: typing.Optional[int],
+        owner_id: typing.Optional[int] = None,
+        photo_id: typing.Optional[str] = None,
+        tag_id: typing.Optional[int] = None,
     ) -> OkResponse:
         """
         :param owner_id: - ID of the user or community that owns the photo.
@@ -23,9 +23,9 @@ class Photos(Category):
 
     def copy(
         self,
-        owner_id: typing.Optional[int],
-        photo_id: typing.Optional[int],
-        access_key: typing.Optional[str],
+        owner_id: typing.Optional[int] = None,
+        photo_id: typing.Optional[int] = None,
+        access_key: typing.Optional[str] = None,
     ) -> PhotosCopyResponse:
         """
         :param owner_id: - photo's owner ID
@@ -41,13 +41,13 @@ class Photos(Category):
 
     def create_album(
         self,
-        title: typing.Optional[str],
-        group_id: typing.Optional[int],
-        description: typing.Optional[str],
-        privacy_view: typing.Optional[typing.List[str]],
-        privacy_comment: typing.Optional[typing.List[str]],
-        upload_by_admins_only: typing.Optional[bool],
-        comments_disabled: typing.Optional[bool],
+        title: typing.Optional[str] = None,
+        group_id: typing.Optional[int] = None,
+        description: typing.Optional[str] = None,
+        privacy_view: typing.Optional[typing.List[str]] = None,
+        privacy_comment: typing.Optional[typing.List[str]] = None,
+        upload_by_admins_only: typing.Optional[bool] = None,
+        comments_disabled: typing.Optional[bool] = None,
     ) -> PhotosCreateAlbumResponse:
         """
         :param title: - Album title.
@@ -67,15 +67,15 @@ class Photos(Category):
 
     def create_comment(
         self,
-        owner_id: typing.Optional[int],
-        photo_id: typing.Optional[int],
-        message: typing.Optional[str],
-        attachments: typing.Optional[typing.List[str]],
-        from_group: typing.Optional[bool],
-        reply_to_comment: typing.Optional[int],
-        sticker_id: typing.Optional[int],
-        access_key: typing.Optional[str],
-        guid: typing.Optional[str],
+        owner_id: typing.Optional[int] = None,
+        photo_id: typing.Optional[int] = None,
+        message: typing.Optional[str] = None,
+        attachments: typing.Optional[typing.List[str]] = None,
+        from_group: typing.Optional[bool] = None,
+        reply_to_comment: typing.Optional[int] = None,
+        sticker_id: typing.Optional[int] = None,
+        access_key: typing.Optional[str] = None,
+        guid: typing.Optional[str] = None,
     ) -> PhotosCreateCommentResponse:
         """
         :param owner_id: - ID of the user or community that owns the photo.
@@ -96,7 +96,9 @@ class Photos(Category):
         return result
 
     def delete(
-        self, owner_id: typing.Optional[int], photo_id: typing.Optional[int],
+        self,
+        owner_id: typing.Optional[int] = None,
+        photo_id: typing.Optional[int] = None,
     ) -> OkResponse:
         """
         :param owner_id: - ID of the user or community that owns the photo.
@@ -110,7 +112,9 @@ class Photos(Category):
         return result
 
     def delete_album(
-        self, album_id: typing.Optional[int], group_id: typing.Optional[int],
+        self,
+        album_id: typing.Optional[int] = None,
+        group_id: typing.Optional[int] = None,
     ) -> OkResponse:
         """
         :param album_id: - Album ID.
@@ -124,7 +128,9 @@ class Photos(Category):
         return result
 
     def delete_comment(
-        self, owner_id: typing.Optional[int], comment_id: typing.Optional[int],
+        self,
+        owner_id: typing.Optional[int] = None,
+        comment_id: typing.Optional[int] = None,
     ) -> PhotosDeleteCommentResponse:
         """
         :param owner_id: - ID of the user or community that owns the photo.
@@ -139,14 +145,14 @@ class Photos(Category):
 
     def edit(
         self,
-        owner_id: typing.Optional[int],
-        photo_id: typing.Optional[int],
-        caption: typing.Optional[str],
-        latitude: typing.Optional[int],
-        longitude: typing.Optional[int],
-        place_str: typing.Optional[str],
-        foursquare_id: typing.Optional[str],
-        delete_place: typing.Optional[bool],
+        owner_id: typing.Optional[int] = None,
+        photo_id: typing.Optional[int] = None,
+        caption: typing.Optional[str] = None,
+        latitude: typing.Optional[int] = None,
+        longitude: typing.Optional[int] = None,
+        place_str: typing.Optional[str] = None,
+        foursquare_id: typing.Optional[str] = None,
+        delete_place: typing.Optional[bool] = None,
     ) -> OkResponse:
         """
         :param owner_id: - ID of the user or community that owns the photo.
@@ -167,14 +173,14 @@ class Photos(Category):
 
     def edit_album(
         self,
-        album_id: typing.Optional[int],
-        title: typing.Optional[str],
-        description: typing.Optional[str],
-        owner_id: typing.Optional[int],
-        privacy_view: typing.Optional[typing.List[str]],
-        privacy_comment: typing.Optional[typing.List[str]],
-        upload_by_admins_only: typing.Optional[bool],
-        comments_disabled: typing.Optional[bool],
+        album_id: typing.Optional[int] = None,
+        title: typing.Optional[str] = None,
+        description: typing.Optional[str] = None,
+        owner_id: typing.Optional[int] = None,
+        privacy_view: typing.Optional[typing.List[str]] = None,
+        privacy_comment: typing.Optional[typing.List[str]] = None,
+        upload_by_admins_only: typing.Optional[bool] = None,
+        comments_disabled: typing.Optional[bool] = None,
     ) -> OkResponse:
         """
         :param album_id: - ID of the photo album to be edited.
@@ -195,10 +201,10 @@ class Photos(Category):
 
     def edit_comment(
         self,
-        owner_id: typing.Optional[int],
-        comment_id: typing.Optional[int],
-        message: typing.Optional[str],
-        attachments: typing.Optional[typing.List[str]],
+        owner_id: typing.Optional[int] = None,
+        comment_id: typing.Optional[int] = None,
+        message: typing.Optional[str] = None,
+        attachments: typing.Optional[typing.List[str]] = None,
     ) -> OkResponse:
         """
         :param owner_id: - ID of the user or community that owns the photo.
@@ -215,16 +221,16 @@ class Photos(Category):
 
     def get(
         self,
-        owner_id: typing.Optional[int],
-        album_id: typing.Optional[str],
-        photo_ids: typing.Optional[typing.List[str]],
-        rev: typing.Optional[bool],
-        extended: typing.Optional[bool],
-        feed_type: typing.Optional[str],
-        feed: typing.Optional[int],
-        photo_sizes: typing.Optional[bool],
-        offset: typing.Optional[int],
-        count: typing.Optional[int],
+        owner_id: typing.Optional[int] = None,
+        album_id: typing.Optional[str] = None,
+        photo_ids: typing.Optional[typing.List[str]] = None,
+        rev: typing.Optional[bool] = None,
+        extended: typing.Optional[bool] = None,
+        feed_type: typing.Optional[str] = None,
+        feed: typing.Optional[int] = None,
+        photo_sizes: typing.Optional[bool] = None,
+        offset: typing.Optional[int] = None,
+        count: typing.Optional[int] = None,
     ) -> PhotosGetResponse:
         """
         :param owner_id: - ID of the user or community that owns the photos. Use a negative value to designate a community ID.
@@ -247,13 +253,13 @@ class Photos(Category):
 
     def get_albums(
         self,
-        owner_id: typing.Optional[int],
-        album_ids: typing.Optional[typing.List[int]],
-        offset: typing.Optional[int],
-        count: typing.Optional[int],
-        need_system: typing.Optional[bool],
-        need_covers: typing.Optional[bool],
-        photo_sizes: typing.Optional[bool],
+        owner_id: typing.Optional[int] = None,
+        album_ids: typing.Optional[typing.List[int]] = None,
+        offset: typing.Optional[int] = None,
+        count: typing.Optional[int] = None,
+        need_system: typing.Optional[bool] = None,
+        need_covers: typing.Optional[bool] = None,
+        photo_sizes: typing.Optional[bool] = None,
     ) -> PhotosGetAlbumsResponse:
         """
         :param owner_id: - ID of the user or community that owns the albums.
@@ -272,7 +278,9 @@ class Photos(Category):
         return result
 
     def get_albums_count(
-        self, user_id: typing.Optional[int], group_id: typing.Optional[int],
+        self,
+        user_id: typing.Optional[int] = None,
+        group_id: typing.Optional[int] = None,
     ) -> PhotosGetAlbumsCountResponse:
         """
         :param user_id: - User ID.
@@ -287,14 +295,14 @@ class Photos(Category):
 
     def get_all(
         self,
-        owner_id: typing.Optional[int],
-        extended: typing.Optional[bool],
-        offset: typing.Optional[int],
-        count: typing.Optional[int],
-        photo_sizes: typing.Optional[bool],
-        no_service_albums: typing.Optional[bool],
-        need_hidden: typing.Optional[bool],
-        skip_hidden: typing.Optional[bool],
+        owner_id: typing.Optional[int] = None,
+        extended: typing.Optional[bool] = None,
+        offset: typing.Optional[int] = None,
+        count: typing.Optional[int] = None,
+        photo_sizes: typing.Optional[bool] = None,
+        no_service_albums: typing.Optional[bool] = None,
+        need_hidden: typing.Optional[bool] = None,
+        skip_hidden: typing.Optional[bool] = None,
     ) -> PhotosGetAllResponse:
         """
         :param owner_id: - ID of a user or community that owns the photos. Use a negative value to designate a community ID.
@@ -315,11 +323,11 @@ class Photos(Category):
 
     def get_all_comments(
         self,
-        owner_id: typing.Optional[int],
-        album_id: typing.Optional[int],
-        need_likes: typing.Optional[bool],
-        offset: typing.Optional[int],
-        count: typing.Optional[int],
+        owner_id: typing.Optional[int] = None,
+        album_id: typing.Optional[int] = None,
+        need_likes: typing.Optional[bool] = None,
+        offset: typing.Optional[int] = None,
+        count: typing.Optional[int] = None,
     ) -> PhotosGetAllCommentsResponse:
         """
         :param owner_id: - ID of the user or community that owns the album(s).
@@ -337,9 +345,9 @@ class Photos(Category):
 
     def get_by_id(
         self,
-        photos: typing.Optional[typing.List[str]],
-        extended: typing.Optional[bool],
-        photo_sizes: typing.Optional[bool],
+        photos: typing.Optional[typing.List[str]] = None,
+        extended: typing.Optional[bool] = None,
+        photo_sizes: typing.Optional[bool] = None,
     ) -> PhotosGetByIdResponse:
         """
         :param photos: - IDs separated with a comma, that are IDs of users who posted photos and IDs of photos themselves with an underscore character between such IDs. To get information about a photo in the group album, you shall specify group ID instead of user ID. Example: "1_129207899,6492_135055734, , -20629724_271945303"
@@ -355,10 +363,10 @@ class Photos(Category):
 
     def get_chat_upload_server(
         self,
-        chat_id: typing.Optional[int],
-        crop_x: typing.Optional[int],
-        crop_y: typing.Optional[int],
-        crop_width: typing.Optional[int],
+        chat_id: typing.Optional[int] = None,
+        crop_x: typing.Optional[int] = None,
+        crop_y: typing.Optional[int] = None,
+        crop_width: typing.Optional[int] = None,
     ) -> BaseGetUploadServerResponse:
         """
         :param chat_id: - ID of the chat for which you want to upload a cover photo.
@@ -375,16 +383,16 @@ class Photos(Category):
 
     def get_comments(
         self,
-        owner_id: typing.Optional[int],
-        photo_id: typing.Optional[int],
-        need_likes: typing.Optional[bool],
-        start_comment_id: typing.Optional[int],
-        offset: typing.Optional[int],
-        count: typing.Optional[int],
-        sort: typing.Optional[str],
-        access_key: typing.Optional[str],
-        extended: typing.Optional[bool],
-        fields: typing.Optional[typing.List[UsersFields]],
+        owner_id: typing.Optional[int] = None,
+        photo_id: typing.Optional[int] = None,
+        need_likes: typing.Optional[bool] = None,
+        start_comment_id: typing.Optional[int] = None,
+        offset: typing.Optional[int] = None,
+        count: typing.Optional[int] = None,
+        sort: typing.Optional[str] = None,
+        access_key: typing.Optional[str] = None,
+        extended: typing.Optional[bool] = None,
+        fields: typing.Optional[typing.List[UsersFields]] = None,
     ) -> PhotosGetCommentsResponse:
         """
         :param owner_id: - ID of the user or community that owns the photo.
@@ -406,7 +414,7 @@ class Photos(Category):
         return result
 
     def get_market_album_upload_server(
-        self, group_id: typing.Optional[int],
+        self, group_id: typing.Optional[int] = None,
     ) -> BaseGetUploadServerResponse:
         """
         :param group_id: - Community ID.
@@ -420,11 +428,11 @@ class Photos(Category):
 
     def get_market_upload_server(
         self,
-        group_id: typing.Optional[int],
-        main_photo: typing.Optional[bool],
-        crop_x: typing.Optional[int],
-        crop_y: typing.Optional[int],
-        crop_width: typing.Optional[int],
+        group_id: typing.Optional[int] = None,
+        main_photo: typing.Optional[bool] = None,
+        crop_x: typing.Optional[int] = None,
+        crop_y: typing.Optional[int] = None,
+        crop_width: typing.Optional[int] = None,
     ) -> PhotosGetMarketUploadServerResponse:
         """
         :param group_id: - Community ID.
@@ -441,7 +449,7 @@ class Photos(Category):
         return result
 
     def get_messages_upload_server(
-        self, peer_id: typing.Optional[int],
+        self, peer_id: typing.Optional[int] = None,
     ) -> PhotosGetMessagesUploadServerResponse:
         """
         :param peer_id: - Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'Chat ID', e.g. '2000000001'. For community: '- Community ID', e.g. '-12345'. "
@@ -454,7 +462,7 @@ class Photos(Category):
         return result
 
     def get_new_tags(
-        self, offset: typing.Optional[int], count: typing.Optional[int],
+        self, offset: typing.Optional[int] = None, count: typing.Optional[int] = None,
     ) -> PhotosGetNewTagsResponse:
         """
         :param offset: - Offset needed to return a specific subset of photos.
@@ -469,11 +477,11 @@ class Photos(Category):
 
     def get_owner_cover_photo_upload_server(
         self,
-        group_id: typing.Optional[int],
-        crop_x: typing.Optional[int],
-        crop_y: typing.Optional[int],
-        crop_x2: typing.Optional[int],
-        crop_y2: typing.Optional[int],
+        group_id: typing.Optional[int] = None,
+        crop_x: typing.Optional[int] = None,
+        crop_y: typing.Optional[int] = None,
+        crop_x2: typing.Optional[int] = None,
+        crop_y2: typing.Optional[int] = None,
     ) -> BaseGetUploadServerResponse:
         """
         :param group_id: - ID of community that owns the album (if the photo will be uploaded to a community album).
@@ -490,7 +498,7 @@ class Photos(Category):
         return result
 
     def get_owner_photo_upload_server(
-        self, owner_id: typing.Optional[int],
+        self, owner_id: typing.Optional[int] = None,
     ) -> BaseGetUploadServerResponse:
         """
         :param owner_id: - identifier of a community or current user. "Note that community id must be negative. 'owner_id=1' – user, 'owner_id=-1' – community, "
@@ -504,9 +512,9 @@ class Photos(Category):
 
     def get_tags(
         self,
-        owner_id: typing.Optional[int],
-        photo_id: typing.Optional[int],
-        access_key: typing.Optional[str],
+        owner_id: typing.Optional[int] = None,
+        photo_id: typing.Optional[int] = None,
+        access_key: typing.Optional[str] = None,
     ) -> PhotosGetTagsResponse:
         """
         :param owner_id: - ID of the user or community that owns the photo.
@@ -521,7 +529,9 @@ class Photos(Category):
         return result
 
     def get_upload_server(
-        self, group_id: typing.Optional[int], album_id: typing.Optional[int],
+        self,
+        group_id: typing.Optional[int] = None,
+        album_id: typing.Optional[int] = None,
     ) -> PhotosGetUploadServerResponse:
         """
         :param group_id: - ID of community that owns the album (if the photo will be uploaded to a community album).
@@ -536,11 +546,11 @@ class Photos(Category):
 
     def get_user_photos(
         self,
-        user_id: typing.Optional[int],
-        offset: typing.Optional[int],
-        count: typing.Optional[int],
-        extended: typing.Optional[bool],
-        sort: typing.Optional[str],
+        user_id: typing.Optional[int] = None,
+        offset: typing.Optional[int] = None,
+        count: typing.Optional[int] = None,
+        extended: typing.Optional[bool] = None,
+        sort: typing.Optional[str] = None,
     ) -> PhotosGetUserPhotosResponse:
         """
         :param user_id: - User ID.
@@ -557,7 +567,7 @@ class Photos(Category):
         return result
 
     def get_wall_upload_server(
-        self, group_id: typing.Optional[int],
+        self, group_id: typing.Optional[int] = None,
     ) -> PhotosGetWallUploadServerResponse:
         """
         :param group_id: - ID of community to whose wall the photo will be uploaded.
@@ -571,9 +581,9 @@ class Photos(Category):
 
     def make_cover(
         self,
-        owner_id: typing.Optional[int],
-        photo_id: typing.Optional[int],
-        album_id: typing.Optional[int],
+        owner_id: typing.Optional[int] = None,
+        photo_id: typing.Optional[int] = None,
+        album_id: typing.Optional[int] = None,
     ) -> OkResponse:
         """
         :param owner_id: - ID of the user or community that owns the photo.
@@ -589,9 +599,9 @@ class Photos(Category):
 
     def move(
         self,
-        owner_id: typing.Optional[int],
-        target_album_id: typing.Optional[int],
-        photo_id: typing.Optional[int],
+        owner_id: typing.Optional[int] = None,
+        target_album_id: typing.Optional[int] = None,
+        photo_id: typing.Optional[int] = None,
     ) -> OkResponse:
         """
         :param owner_id: - ID of the user or community that owns the photo.
@@ -607,13 +617,13 @@ class Photos(Category):
 
     def put_tag(
         self,
-        owner_id: typing.Optional[int],
-        photo_id: typing.Optional[int],
-        user_id: typing.Optional[int],
-        x: typing.Optional[int],
-        y: typing.Optional[int],
-        x2: typing.Optional[int],
-        y2: typing.Optional[int],
+        owner_id: typing.Optional[int] = None,
+        photo_id: typing.Optional[int] = None,
+        user_id: typing.Optional[int] = None,
+        x: typing.Optional[int] = None,
+        y: typing.Optional[int] = None,
+        x2: typing.Optional[int] = None,
+        y2: typing.Optional[int] = None,
     ) -> PhotosPutTagResponse:
         """
         :param owner_id: - ID of the user or community that owns the photo.
@@ -633,9 +643,9 @@ class Photos(Category):
 
     def remove_tag(
         self,
-        owner_id: typing.Optional[int],
-        photo_id: typing.Optional[int],
-        tag_id: typing.Optional[int],
+        owner_id: typing.Optional[int] = None,
+        photo_id: typing.Optional[int] = None,
+        tag_id: typing.Optional[int] = None,
     ) -> OkResponse:
         """
         :param owner_id: - ID of the user or community that owns the photo.
@@ -651,10 +661,10 @@ class Photos(Category):
 
     def reorder_albums(
         self,
-        owner_id: typing.Optional[int],
-        album_id: typing.Optional[int],
-        before: typing.Optional[int],
-        after: typing.Optional[int],
+        owner_id: typing.Optional[int] = None,
+        album_id: typing.Optional[int] = None,
+        before: typing.Optional[int] = None,
+        after: typing.Optional[int] = None,
     ) -> OkResponse:
         """
         :param owner_id: - ID of the user or community that owns the album.
@@ -671,10 +681,10 @@ class Photos(Category):
 
     def reorder_photos(
         self,
-        owner_id: typing.Optional[int],
-        photo_id: typing.Optional[int],
-        before: typing.Optional[int],
-        after: typing.Optional[int],
+        owner_id: typing.Optional[int] = None,
+        photo_id: typing.Optional[int] = None,
+        before: typing.Optional[int] = None,
+        after: typing.Optional[int] = None,
     ) -> OkResponse:
         """
         :param owner_id: - ID of the user or community that owns the photo.
@@ -691,9 +701,9 @@ class Photos(Category):
 
     def report(
         self,
-        owner_id: typing.Optional[int],
-        photo_id: typing.Optional[int],
-        reason: typing.Optional[int],
+        owner_id: typing.Optional[int] = None,
+        photo_id: typing.Optional[int] = None,
+        reason: typing.Optional[int] = None,
     ) -> OkResponse:
         """
         :param owner_id: - ID of the user or community that owns the photo.
@@ -709,9 +719,9 @@ class Photos(Category):
 
     def report_comment(
         self,
-        owner_id: typing.Optional[int],
-        comment_id: typing.Optional[int],
-        reason: typing.Optional[int],
+        owner_id: typing.Optional[int] = None,
+        comment_id: typing.Optional[int] = None,
+        reason: typing.Optional[int] = None,
     ) -> OkResponse:
         """
         :param owner_id: - ID of the user or community that owns the photo.
@@ -726,7 +736,9 @@ class Photos(Category):
         return result
 
     def restore(
-        self, owner_id: typing.Optional[int], photo_id: typing.Optional[int],
+        self,
+        owner_id: typing.Optional[int] = None,
+        photo_id: typing.Optional[int] = None,
     ) -> OkResponse:
         """
         :param owner_id: - ID of the user or community that owns the photo.
@@ -740,7 +752,9 @@ class Photos(Category):
         return result
 
     def restore_comment(
-        self, owner_id: typing.Optional[int], comment_id: typing.Optional[int],
+        self,
+        owner_id: typing.Optional[int] = None,
+        comment_id: typing.Optional[int] = None,
     ) -> PhotosRestoreCommentResponse:
         """
         :param owner_id: - ID of the user or community that owns the photo.
@@ -755,14 +769,14 @@ class Photos(Category):
 
     def save(
         self,
-        album_id: typing.Optional[int],
-        group_id: typing.Optional[int],
-        server: typing.Optional[int],
-        photos_list: typing.Optional[str],
-        hash: typing.Optional[str],
-        latitude: typing.Optional[int],
-        longitude: typing.Optional[int],
-        caption: typing.Optional[str],
+        album_id: typing.Optional[int] = None,
+        group_id: typing.Optional[int] = None,
+        server: typing.Optional[int] = None,
+        photos_list: typing.Optional[str] = None,
+        hash: typing.Optional[str] = None,
+        latitude: typing.Optional[int] = None,
+        longitude: typing.Optional[int] = None,
+        caption: typing.Optional[str] = None,
     ) -> PhotosSaveResponse:
         """
         :param album_id: - ID of the album to save photos to.
@@ -783,10 +797,10 @@ class Photos(Category):
 
     def save_market_album_photo(
         self,
-        group_id: typing.Optional[int],
-        photo: typing.Optional[str],
-        server: typing.Optional[int],
-        hash: typing.Optional[str],
+        group_id: typing.Optional[int] = None,
+        photo: typing.Optional[str] = None,
+        server: typing.Optional[int] = None,
+        hash: typing.Optional[str] = None,
     ) -> PhotosSaveMarketAlbumPhotoResponse:
         """
         :param group_id: - Community ID.
@@ -803,12 +817,12 @@ class Photos(Category):
 
     def save_market_photo(
         self,
-        group_id: typing.Optional[int],
-        photo: typing.Optional[str],
-        server: typing.Optional[int],
-        hash: typing.Optional[str],
-        crop_data: typing.Optional[str],
-        crop_hash: typing.Optional[str],
+        group_id: typing.Optional[int] = None,
+        photo: typing.Optional[str] = None,
+        server: typing.Optional[int] = None,
+        hash: typing.Optional[str] = None,
+        crop_data: typing.Optional[str] = None,
+        crop_hash: typing.Optional[str] = None,
     ) -> PhotosSaveMarketPhotoResponse:
         """
         :param group_id: - Community ID.
@@ -827,9 +841,9 @@ class Photos(Category):
 
     def save_messages_photo(
         self,
-        photo: typing.Optional[str],
-        server: typing.Optional[int],
-        hash: typing.Optional[str],
+        photo: typing.Optional[str] = None,
+        server: typing.Optional[int] = None,
+        hash: typing.Optional[str] = None,
     ) -> PhotosSaveMessagesPhotoResponse:
         """
         :param photo: - Parameter returned when the photo is [vk.com/dev/upload_files|uploaded to the server].
@@ -844,7 +858,7 @@ class Photos(Category):
         return result
 
     def save_owner_cover_photo(
-        self, hash: typing.Optional[str], photo: typing.Optional[str],
+        self, hash: typing.Optional[str] = None, photo: typing.Optional[str] = None,
     ) -> PhotosSaveOwnerCoverPhotoResponse:
         """
         :param hash: - Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
@@ -859,9 +873,9 @@ class Photos(Category):
 
     def save_owner_photo(
         self,
-        server: typing.Optional[str],
-        hash: typing.Optional[str],
-        photo: typing.Optional[str],
+        server: typing.Optional[str] = None,
+        hash: typing.Optional[str] = None,
+        photo: typing.Optional[str] = None,
     ) -> PhotosSaveOwnerPhotoResponse:
         """
         :param server: - parameter returned after [vk.com/dev/upload_files|photo upload].
@@ -877,14 +891,14 @@ class Photos(Category):
 
     def save_wall_photo(
         self,
-        user_id: typing.Optional[int],
-        group_id: typing.Optional[int],
-        photo: typing.Optional[str],
-        server: typing.Optional[int],
-        hash: typing.Optional[str],
-        latitude: typing.Optional[int],
-        longitude: typing.Optional[int],
-        caption: typing.Optional[str],
+        user_id: typing.Optional[int] = None,
+        group_id: typing.Optional[int] = None,
+        photo: typing.Optional[str] = None,
+        server: typing.Optional[int] = None,
+        hash: typing.Optional[str] = None,
+        latitude: typing.Optional[int] = None,
+        longitude: typing.Optional[int] = None,
+        caption: typing.Optional[str] = None,
     ) -> PhotosSaveWallPhotoResponse:
         """
         :param user_id: - ID of the user on whose wall the photo will be saved.
@@ -905,15 +919,15 @@ class Photos(Category):
 
     def search(
         self,
-        q: typing.Optional[str],
-        lat: typing.Optional[int],
-        long: typing.Optional[int],
-        start_time: typing.Optional[int],
-        end_time: typing.Optional[int],
-        sort: typing.Optional[int],
-        offset: typing.Optional[int],
-        count: typing.Optional[int],
-        radius: typing.Optional[int],
+        q: typing.Optional[str] = None,
+        lat: typing.Optional[int] = None,
+        long: typing.Optional[int] = None,
+        start_time: typing.Optional[int] = None,
+        end_time: typing.Optional[int] = None,
+        sort: typing.Optional[int] = None,
+        offset: typing.Optional[int] = None,
+        count: typing.Optional[int] = None,
+        radius: typing.Optional[int] = None,
     ) -> PhotosSearchResponse:
         """
         :param q: - Search query string.
