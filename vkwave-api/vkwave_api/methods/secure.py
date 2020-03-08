@@ -184,7 +184,7 @@ class Secure(Category):
         result = SecureSendNotificationResponse(**raw_result)
         return result
 
-    async def send_s_m_s_notification(
+    async def send_sms_notification(
         self,
         user_id: typing.Optional[int] = None,
         message: typing.Optional[str] = None,
