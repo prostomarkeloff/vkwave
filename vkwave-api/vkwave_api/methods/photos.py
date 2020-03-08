@@ -16,7 +16,13 @@ class Photos(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("confirmTag", params)
         result = OkResponse(**raw_result)
         return result
@@ -34,7 +40,13 @@ class Photos(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("copy", params)
         result = PhotosCopyResponse(**raw_result)
         return result
@@ -60,7 +72,13 @@ class Photos(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("createAlbum", params)
         result = PhotosCreateAlbumResponse(**raw_result)
         return result
@@ -90,7 +108,13 @@ class Photos(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("createComment", params)
         result = PhotosCreateCommentResponse(**raw_result)
         return result
@@ -106,7 +130,13 @@ class Photos(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("delete", params)
         result = OkResponse(**raw_result)
         return result
@@ -122,7 +152,13 @@ class Photos(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("deleteAlbum", params)
         result = OkResponse(**raw_result)
         return result
@@ -138,7 +174,13 @@ class Photos(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("deleteComment", params)
         result = PhotosDeleteCommentResponse(**raw_result)
         return result
@@ -166,7 +208,13 @@ class Photos(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("edit", params)
         result = OkResponse(**raw_result)
         return result
@@ -194,7 +242,13 @@ class Photos(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("editAlbum", params)
         result = OkResponse(**raw_result)
         return result
@@ -214,7 +268,13 @@ class Photos(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("editComment", params)
         result = OkResponse(**raw_result)
         return result
@@ -246,7 +306,13 @@ class Photos(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("get", params)
         result = PhotosGetResponse(**raw_result)
         return result
@@ -272,7 +338,13 @@ class Photos(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("getAlbums", params)
         result = PhotosGetAlbumsResponse(**raw_result)
         return result
@@ -288,7 +360,13 @@ class Photos(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("getAlbumsCount", params)
         result = PhotosGetAlbumsCountResponse(**raw_result)
         return result
@@ -316,7 +394,13 @@ class Photos(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("getAll", params)
         result = PhotosGetAllResponse(**raw_result)
         return result
@@ -338,7 +422,13 @@ class Photos(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("getAllComments", params)
         result = PhotosGetAllCommentsResponse(**raw_result)
         return result
@@ -356,7 +446,13 @@ class Photos(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("getById", params)
         result = PhotosGetByIdResponse(**raw_result)
         return result
@@ -376,7 +472,13 @@ class Photos(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("getChatUploadServer", params)
         result = BaseGetUploadServerResponse(**raw_result)
         return result
@@ -408,7 +510,13 @@ class Photos(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("getComments", params)
         result = PhotosGetCommentsResponse(**raw_result)
         return result
@@ -421,7 +529,13 @@ class Photos(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("getMarketAlbumUploadServer", params)
         result = BaseGetUploadServerResponse(**raw_result)
         return result
@@ -443,7 +557,13 @@ class Photos(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("getMarketUploadServer", params)
         result = PhotosGetMarketUploadServerResponse(**raw_result)
         return result
@@ -456,7 +576,13 @@ class Photos(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("getMessagesUploadServer", params)
         result = PhotosGetMessagesUploadServerResponse(**raw_result)
         return result
@@ -470,7 +596,13 @@ class Photos(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("getNewTags", params)
         result = PhotosGetNewTagsResponse(**raw_result)
         return result
@@ -492,7 +624,13 @@ class Photos(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("getOwnerCoverPhotoUploadServer", params)
         result = BaseGetUploadServerResponse(**raw_result)
         return result
@@ -505,7 +643,13 @@ class Photos(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("getOwnerPhotoUploadServer", params)
         result = BaseGetUploadServerResponse(**raw_result)
         return result
@@ -523,7 +667,13 @@ class Photos(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("getTags", params)
         result = PhotosGetTagsResponse(**raw_result)
         return result
@@ -539,7 +689,13 @@ class Photos(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("getUploadServer", params)
         result = PhotosGetUploadServerResponse(**raw_result)
         return result
@@ -561,7 +717,13 @@ class Photos(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("getUserPhotos", params)
         result = PhotosGetUserPhotosResponse(**raw_result)
         return result
@@ -574,7 +736,13 @@ class Photos(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("getWallUploadServer", params)
         result = PhotosGetWallUploadServerResponse(**raw_result)
         return result
@@ -592,7 +760,13 @@ class Photos(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("makeCover", params)
         result = OkResponse(**raw_result)
         return result
@@ -610,7 +784,13 @@ class Photos(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("move", params)
         result = OkResponse(**raw_result)
         return result
@@ -636,7 +816,13 @@ class Photos(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("putTag", params)
         result = PhotosPutTagResponse(**raw_result)
         return result
@@ -654,7 +840,13 @@ class Photos(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("removeTag", params)
         result = OkResponse(**raw_result)
         return result
@@ -674,7 +866,13 @@ class Photos(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("reorderAlbums", params)
         result = OkResponse(**raw_result)
         return result
@@ -694,7 +892,13 @@ class Photos(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("reorderPhotos", params)
         result = OkResponse(**raw_result)
         return result
@@ -712,7 +916,13 @@ class Photos(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("report", params)
         result = OkResponse(**raw_result)
         return result
@@ -730,7 +940,13 @@ class Photos(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("reportComment", params)
         result = OkResponse(**raw_result)
         return result
@@ -746,7 +962,13 @@ class Photos(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("restore", params)
         result = OkResponse(**raw_result)
         return result
@@ -762,7 +984,13 @@ class Photos(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("restoreComment", params)
         result = PhotosRestoreCommentResponse(**raw_result)
         return result
@@ -790,7 +1018,13 @@ class Photos(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("save", params)
         result = PhotosSaveResponse(**raw_result)
         return result
@@ -810,7 +1044,13 @@ class Photos(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("saveMarketAlbumPhoto", params)
         result = PhotosSaveMarketAlbumPhotoResponse(**raw_result)
         return result
@@ -834,7 +1074,13 @@ class Photos(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("saveMarketPhoto", params)
         result = PhotosSaveMarketPhotoResponse(**raw_result)
         return result
@@ -852,7 +1098,13 @@ class Photos(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("saveMessagesPhoto", params)
         result = PhotosSaveMessagesPhotoResponse(**raw_result)
         return result
@@ -866,7 +1118,13 @@ class Photos(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("saveOwnerCoverPhoto", params)
         result = PhotosSaveOwnerCoverPhotoResponse(**raw_result)
         return result
@@ -884,7 +1142,13 @@ class Photos(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("saveOwnerPhoto", params)
         result = PhotosSaveOwnerPhotoResponse(**raw_result)
         return result
@@ -912,7 +1176,13 @@ class Photos(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("saveWallPhoto", params)
         result = PhotosSaveWallPhotoResponse(**raw_result)
         return result
@@ -942,7 +1212,13 @@ class Photos(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("search", params)
         result = PhotosSearchResponse(**raw_result)
         return result

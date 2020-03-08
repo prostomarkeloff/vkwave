@@ -14,7 +14,13 @@ class Newsfeed(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("addBan", params)
         result = OkResponse(**raw_result)
         return result
@@ -30,7 +36,13 @@ class Newsfeed(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("deleteBan", params)
         result = OkResponse(**raw_result)
         return result
@@ -41,7 +53,13 @@ class Newsfeed(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("deleteList", params)
         result = OkResponse(**raw_result)
         return result
@@ -73,7 +91,13 @@ class Newsfeed(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("get", params)
         result = NewsfeedGetResponse(**raw_result)
         return result
@@ -91,7 +115,13 @@ class Newsfeed(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("getBanned", params)
         result = NewsfeedGetBannedResponse(**raw_result)
         return result
@@ -119,7 +149,13 @@ class Newsfeed(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("getComments", params)
         result = NewsfeedGetCommentsResponse(**raw_result)
         return result
@@ -135,7 +171,13 @@ class Newsfeed(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("getLists", params)
         result = NewsfeedGetListsResponse(**raw_result)
         return result
@@ -157,7 +199,13 @@ class Newsfeed(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("getMentions", params)
         result = NewsfeedGetMentionsResponse(**raw_result)
         return result
@@ -181,7 +229,13 @@ class Newsfeed(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("getRecommended", params)
         result = NewsfeedGetRecommendedResponse(**raw_result)
         return result
@@ -201,7 +255,13 @@ class Newsfeed(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("getSuggestedSources", params)
         result = NewsfeedGetSuggestedSourcesResponse(**raw_result)
         return result
@@ -219,7 +279,13 @@ class Newsfeed(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("ignoreItem", params)
         result = OkResponse(**raw_result)
         return result
@@ -239,7 +305,13 @@ class Newsfeed(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("saveList", params)
         result = NewsfeedSaveListResponse(**raw_result)
         return result
@@ -269,7 +341,13 @@ class Newsfeed(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("search", params)
         result = NewsfeedSearchResponse(**raw_result)
         return result
@@ -287,7 +365,13 @@ class Newsfeed(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("unignoreItem", params)
         result = OkResponse(**raw_result)
         return result
@@ -305,7 +389,13 @@ class Newsfeed(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("unsubscribe", params)
         result = OkResponse(**raw_result)
         return result

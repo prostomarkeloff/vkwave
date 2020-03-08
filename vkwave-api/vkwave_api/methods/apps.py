@@ -8,7 +8,13 @@ class Apps(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("deleteAppRequests", params)
         result = OkResponse(**raw_result)
         return result
@@ -34,7 +40,13 @@ class Apps(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("get", params)
         result = AppsGetResponse(**raw_result)
         return result
@@ -68,7 +80,13 @@ class Apps(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("getCatalog", params)
         result = AppsGetCatalogResponse(**raw_result)
         return result
@@ -90,7 +108,13 @@ class Apps(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("getFriendsList", params)
         result = AppsGetFriendsListResponse(**raw_result)
         return result
@@ -108,7 +132,13 @@ class Apps(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("getLeaderboard", params)
         result = AppsGetLeaderboardResponse(**raw_result)
         return result
@@ -119,7 +149,13 @@ class Apps(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("getScopes", params)
         result = AppsGetScopesResponse(**raw_result)
         return result
@@ -130,7 +166,13 @@ class Apps(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("getScore", params)
         result = AppsGetScoreResponse(**raw_result)
         return result
@@ -154,7 +196,13 @@ class Apps(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("sendRequest", params)
         result = AppsSendRequestResponse(**raw_result)
         return result

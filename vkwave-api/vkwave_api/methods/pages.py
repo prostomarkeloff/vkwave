@@ -9,7 +9,13 @@ class Pages(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("clearCache", params)
         result = OkResponse(**raw_result)
         return result
@@ -35,7 +41,13 @@ class Pages(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("get", params)
         result = PagesGetResponse(**raw_result)
         return result
@@ -53,7 +65,13 @@ class Pages(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("getHistory", params)
         result = PagesGetHistoryResponse(**raw_result)
         return result
@@ -66,7 +84,13 @@ class Pages(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("getTitles", params)
         result = PagesGetTitlesResponse(**raw_result)
         return result
@@ -86,7 +110,13 @@ class Pages(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("getVersion", params)
         result = PagesGetVersionResponse(**raw_result)
         return result
@@ -100,7 +130,13 @@ class Pages(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("parseWiki", params)
         result = PagesParseWikiResponse(**raw_result)
         return result
@@ -122,7 +158,13 @@ class Pages(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("save", params)
         result = PagesSaveResponse(**raw_result)
         return result
@@ -144,7 +186,13 @@ class Pages(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("saveAccess", params)
         result = PagesSaveAccessResponse(**raw_result)
         return result

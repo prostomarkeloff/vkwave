@@ -36,7 +36,13 @@ class Groups(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("addAddress", params)
         result = GroupsAddAddressResponse(**raw_result)
         return result
@@ -56,7 +62,13 @@ class Groups(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("addCallbackServer", params)
         result = GroupsAddCallbackServerResponse(**raw_result)
         return result
@@ -74,7 +86,13 @@ class Groups(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("addLink", params)
         result = GroupsAddLinkResponse(**raw_result)
         return result
@@ -90,7 +108,13 @@ class Groups(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("approveRequest", params)
         result = OkResponse(**raw_result)
         return result
@@ -114,7 +138,13 @@ class Groups(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("ban", params)
         result = OkResponse(**raw_result)
         return result
@@ -136,7 +166,13 @@ class Groups(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("create", params)
         result = GroupsCreateResponse(**raw_result)
         return result
@@ -152,7 +188,13 @@ class Groups(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("deleteCallbackServer", params)
         result = OkResponse(**raw_result)
         return result
@@ -168,7 +210,13 @@ class Groups(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("deleteLink", params)
         result = OkResponse(**raw_result)
         return result
@@ -179,7 +227,13 @@ class Groups(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("disableOnline", params)
         result = OkResponse(**raw_result)
         return result
@@ -281,7 +335,13 @@ class Groups(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("edit", params)
         result = OkResponse(**raw_result)
         return result
@@ -321,7 +381,13 @@ class Groups(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("editAddress", params)
         result = GroupsEditAddressResponse(**raw_result)
         return result
@@ -343,7 +409,13 @@ class Groups(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("editCallbackServer", params)
         result = OkResponse(**raw_result)
         return result
@@ -361,7 +433,13 @@ class Groups(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("editLink", params)
         result = OkResponse(**raw_result)
         return result
@@ -387,7 +465,13 @@ class Groups(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("editManager", params)
         result = OkResponse(**raw_result)
         return result
@@ -398,7 +482,13 @@ class Groups(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("enableOnline", params)
         result = OkResponse(**raw_result)
         return result
@@ -422,7 +512,13 @@ class Groups(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("get", params)
         result = GroupsGetResponse(**raw_result)
         return result
@@ -448,7 +544,13 @@ class Groups(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("getAddresses", params)
         result = GroupsGetAddressesResponse(**raw_result)
         return result
@@ -470,7 +572,13 @@ class Groups(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("getBanned", params)
         result = GroupsGetBannedResponse(**raw_result)
         return result
@@ -488,7 +596,13 @@ class Groups(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("getById", params)
         result = GroupsGetByIdResponse(**raw_result)
         return result
@@ -501,7 +615,13 @@ class Groups(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("getCallbackConfirmationCode", params)
         result = GroupsGetCallbackConfirmationCodeResponse(**raw_result)
         return result
@@ -517,7 +637,13 @@ class Groups(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("getCallbackServers", params)
         result = GroupsGetCallbackServersResponse(**raw_result)
         return result
@@ -533,7 +659,13 @@ class Groups(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("getCallbackSettings", params)
         result = GroupsGetCallbackSettingsResponse(**raw_result)
         return result
@@ -549,7 +681,13 @@ class Groups(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("getCatalog", params)
         result = GroupsGetCatalogResponse(**raw_result)
         return result
@@ -565,7 +703,13 @@ class Groups(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("getCatalogInfo", params)
         result = GroupsGetCatalogInfoResponse(**raw_result)
         return result
@@ -587,7 +731,13 @@ class Groups(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("getInvitedUsers", params)
         result = GroupsGetInvitedUsersResponse(**raw_result)
         return result
@@ -605,7 +755,13 @@ class Groups(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("getInvites", params)
         result = GroupsGetInvitesResponse(**raw_result)
         return result
@@ -618,7 +774,13 @@ class Groups(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("getLongPollServer", params)
         result = GroupsGetLongPollServerResponse(**raw_result)
         return result
@@ -631,7 +793,13 @@ class Groups(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("getLongPollSettings", params)
         result = GroupsGetLongPollSettingsResponse(**raw_result)
         return result
@@ -655,7 +823,13 @@ class Groups(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("getMembers", params)
         result = GroupsGetMembersResponse(**raw_result)
         return result
@@ -675,7 +849,13 @@ class Groups(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("getRequests", params)
         result = GroupsGetRequestsResponse(**raw_result)
         return result
@@ -688,7 +868,13 @@ class Groups(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("getSettings", params)
         result = GroupsGetSettingsResponse(**raw_result)
         return result
@@ -698,7 +884,13 @@ class Groups(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("getTokenPermissions", params)
         result = GroupsGetTokenPermissionsResponse(**raw_result)
         return result
@@ -714,7 +906,13 @@ class Groups(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("invite", params)
         result = OkResponse(**raw_result)
         return result
@@ -734,7 +932,13 @@ class Groups(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("isMember", params)
         result = GroupsIsMemberResponse(**raw_result)
         return result
@@ -750,7 +954,13 @@ class Groups(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("join", params)
         result = OkResponse(**raw_result)
         return result
@@ -761,7 +971,13 @@ class Groups(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("leave", params)
         result = OkResponse(**raw_result)
         return result
@@ -777,7 +993,13 @@ class Groups(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("removeUser", params)
         result = OkResponse(**raw_result)
         return result
@@ -795,7 +1017,13 @@ class Groups(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("reorderLink", params)
         result = OkResponse(**raw_result)
         return result
@@ -825,7 +1053,13 @@ class Groups(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("search", params)
         result = GroupsSearchResponse(**raw_result)
         return result
@@ -923,7 +1157,13 @@ class Groups(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("setCallbackSettings", params)
         result = OkResponse(**raw_result)
         return result
@@ -1019,7 +1259,13 @@ class Groups(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("setLongPollSettings", params)
         result = OkResponse(**raw_result)
         return result
@@ -1035,7 +1281,13 @@ class Groups(Category):
         :return:
         """
 
-        params = {k: v for k, v in locals().items() if k != "self" and v is not None}
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
         raw_result = await self.api_request("unban", params)
         result = OkResponse(**raw_result)
         return result

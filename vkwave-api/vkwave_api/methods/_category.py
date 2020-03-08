@@ -3,7 +3,8 @@ from vkwave_client.context import ResultState
 import typing
 
 if typing.TYPE_CHECKING:
-	from vkwave_api.methods._abc import APIOptionsRequestContext
+    from ._abc import APIOptionsRequestContext
+
 
 class TemporaryException(Exception):
     """It means nothing."""
