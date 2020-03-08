@@ -3,10 +3,9 @@ Working with API tokens.
 """
 from enum import Enum, auto
 from typing import NewType, Callable, Awaitable, Union, ClassVar
+from typing_extensions import Protocol
 
 Token = NewType("Token", str)
-GetTokenSync = Callable[..., Token]
-GetTokenAsync = Callable[..., Awaitable[Token]]
 
 
 class TokenType(Enum):
@@ -19,62 +18,52 @@ class GetTokenType(Enum):
     ASYNC = auto()
 
 
-class ABCToken:
-    """
-    This class represents abstract token subject.
-    You should inherit from it if you want to create own abstraction over token.
-    """
+AnyABCToken = Union["ABCSyncToken", "ABCAsyncToken"]
 
+
+class ABCSyncToken(Protocol):
+    get_token_type: ClassVar[GetTokenType] = GetTokenType.SYNC
     typeof: ClassVar[TokenType]
-    get_token_type: ClassVar[GetTokenType]
-    get_token: Union[GetTokenSync, GetTokenAsync]
+
+    def get_token(self, *args, **kwargs) -> Token:
+        ...
 
 
-class ABCSyncToken(ABCToken):
-    get_token_type = GetTokenType.SYNC
+class ABCAsyncToken(Protocol):
+    get_token_type: ClassVar[GetTokenType] = GetTokenType.ASYNC
+    token_type: ClassVar[TokenType]
+
+    async def get_token(self, *args, **kwargs) -> Token:
+        ...
 
 
-class ABCAsyncToken(ABCToken):
-    get_token_type = GetTokenType.ASYNC
+class ABCUserSyncToken(ABCSyncToken):
+    typeof: ClassVar[TokenType] = TokenType.USER
 
 
-class ABCUserToken(ABCToken):
-    typeof = TokenType.USER
+class ABCUserAsyncToken(ABCAsyncToken):
+    typeof: ClassVar[TokenType] = TokenType.USER
 
 
-class ABCUserSyncToken(ABCUserToken, ABCSyncToken):
-    pass
+class ABCBotSyncToken(ABCSyncToken):
+    typeof: ClassVar[TokenType] = TokenType.BOT
 
 
-class ABCUserAsyncToken(ABCUserToken, ABCAsyncToken):
-    pass
-
-
-class ABCBotToken(ABCToken):
-    typeof = TokenType.BOT
-
-
-class ABCBotSyncToken(ABCBotToken, ABCSyncToken):
-    pass
-
-
-class ABCBotAsyncToken(ABCBotToken, ABCAsyncToken):
-    pass
+class ABCBotAsyncToken(ABCAsyncToken):
+    typeof: ClassVar[TokenType] = TokenType.BOT
 
 
 class UserSyncSingleToken(ABCUserSyncToken):
     def __init__(self, token: Token):
         self._token: Token = token
-        self.get_token = self._get_token
 
-    def _get_token(self, *args, **kwargs) -> Token:
+    def get_token(self, *args, **kwargs) -> Token:
         return self._token
 
 
 class BotSyncSingleToken(ABCBotSyncToken):
     def __init__(self, token: Token):
         self._token: Token = token
-        self.get_token = self._get_token
 
-    def _get_token(self, *args, **kwargs) -> Token:
+    def get_token(self, *args, **kwargs) -> Token:
         return self._token
