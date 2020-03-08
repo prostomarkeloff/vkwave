@@ -4,7 +4,7 @@ from vkwave_client.context import ResultState
 from vkwave_api.token.token import AnyABCToken, Token
 from vkwave_api.token.strategy import ABCGetTokenStrategy, RandomGetTokenStrategy
 from vkwave_api.methods._error import ErrorDispatcher, Error
-from typing import Optional, cast, Tuple, List, Union
+from typing import Optional, cast, Tuple, List, Union, AsyncGenerator
 from contextlib import asynccontextmanager
 
 import copy
@@ -80,8 +80,6 @@ class APIOptionsRequestContext:
         return result
 
     async def _get_token(self) -> Token:
-        if len(self.api_options.tokens) == 1:
-            return self.api_options.tokens[0]
         return await self.api_options.get_token_strategy.get_token(
             self.api_options.tokens
         )
@@ -118,15 +116,18 @@ class API:
     def get_context(self) -> APIOptionsRequestContext:
         return APIOptionsRequestContext(self.default_api_options)
 
-    def with_token(self, token: Token) -> APIOptionsRequestContext:
+    def with_token(self, token: AnyABCToken) -> APIOptionsRequestContext:
         copied = copy.copy(self.default_api_options)
         copied.tokens = [token]
-        return copied
+        new = APIOptionsRequestContext(copied)
+        return new
 
     @asynccontextmanager
-    async def sync_token(self) -> APIOptionsRequestContext:
+    async def sync_token(self) -> AsyncGenerator[APIOptionsRequestContext, None]:
         """Grab random token and work only with it"""
         copied = copy.copy(self.default_api_options)
-        copied.tokens = [await copied._get_token()]
-        yield copied
+        copied.tokens = [random.choice(copied.tokens)]
+        new = APIOptionsRequestContext(copied)
+        yield new
         del copied
+        del new
