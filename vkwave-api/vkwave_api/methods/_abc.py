@@ -59,6 +59,15 @@ class APIOptionsRequestContext:
         params.update(v=self.api_options.api_version, access_token=token)
         return params
 
+    @asynccontextmanager
+    async def sync_token(self) -> AsyncGenerator[APIOptionsRequestContext, None]:
+        """Grab random token and work only with it"""
+        copied = copy.copy(self.api_options)
+        copied.tokens = [random.choice(copied.tokens)]
+        new = APIOptionsRequestContext(copied)
+        yield new
+        del copied
+        del new
 
 class API:
     def __init__(
@@ -86,12 +95,3 @@ class API:
         new = APIOptionsRequestContext(copied)
         return new
 
-    @asynccontextmanager
-    async def sync_token(self) -> AsyncGenerator[APIOptionsRequestContext, None]:
-        """Grab random token and work only with it"""
-        copied = copy.copy(self.default_api_options)
-        copied.tokens = [random.choice(copied.tokens)]
-        new = APIOptionsRequestContext(copied)
-        yield new
-        del copied
-        del new
