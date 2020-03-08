@@ -3,7 +3,7 @@ from ._category import Category
 
 
 class Notifications(Category):
-    def get(
+    async def get(
         self,
         count: typing.Optional[int] = None,
         start_from: typing.Optional[str] = None,
@@ -31,7 +31,7 @@ class Notifications(Category):
         result = NotificationsGetResponse(**raw_result)
         return result
 
-    def mark_as_viewed(self,) -> NotificationsMarkAsViewedResponse:
+    async def mark_as_viewed(self,) -> NotificationsMarkAsViewedResponse:
         """
         :return:
         """
@@ -47,7 +47,7 @@ class Notifications(Category):
         result = NotificationsMarkAsViewedResponse(**raw_result)
         return result
 
-    def send_message(
+    async def send_message(
         self,
         user_ids: typing.Optional[typing.List[int]] = None,
         message: typing.Optional[str] = None,

@@ -3,7 +3,7 @@ from ._category import Category
 
 
 class Gifts(Category):
-    def get(
+    async def get(
         self,
         user_id: typing.Optional[int] = None,
         count: typing.Optional[int] = None,

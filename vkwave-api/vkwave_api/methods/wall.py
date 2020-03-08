@@ -3,7 +3,7 @@ from ._category import Category
 
 
 class Wall(Category):
-    def close_comments(
+    async def close_comments(
         self,
         owner_id: typing.Optional[int] = None,
         post_id: typing.Optional[int] = None,
@@ -25,7 +25,7 @@ class Wall(Category):
         result = BaseBoolResponse(**raw_result)
         return result
 
-    def create_comment(
+    async def create_comment(
         self,
         owner_id: typing.Optional[int] = None,
         post_id: typing.Optional[int] = None,
@@ -59,7 +59,7 @@ class Wall(Category):
         result = WallCreateCommentResponse(**raw_result)
         return result
 
-    def delete(
+    async def delete(
         self,
         owner_id: typing.Optional[int] = None,
         post_id: typing.Optional[int] = None,
@@ -81,7 +81,7 @@ class Wall(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def delete_comment(
+    async def delete_comment(
         self,
         owner_id: typing.Optional[int] = None,
         comment_id: typing.Optional[int] = None,
@@ -103,7 +103,7 @@ class Wall(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def edit(
+    async def edit(
         self,
         owner_id: typing.Optional[int] = None,
         post_id: typing.Optional[int] = None,
@@ -153,7 +153,7 @@ class Wall(Category):
         result = WallEditResponse(**raw_result)
         return result
 
-    def edit_ads_stealth(
+    async def edit_ads_stealth(
         self,
         owner_id: typing.Optional[int] = None,
         post_id: typing.Optional[int] = None,
@@ -195,7 +195,7 @@ class Wall(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def edit_comment(
+    async def edit_comment(
         self,
         owner_id: typing.Optional[int] = None,
         comment_id: typing.Optional[int] = None,
@@ -221,7 +221,7 @@ class Wall(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def get(
+    async def get(
         self,
         owner_id: typing.Optional[int] = None,
         domain: typing.Optional[str] = None,
@@ -253,7 +253,7 @@ class Wall(Category):
         result = WallGetResponse(**raw_result)
         return result
 
-    def get_by_id(
+    async def get_by_id(
         self,
         posts: typing.Optional[typing.List[str]] = None,
         extended: typing.Optional[bool] = None,
@@ -279,7 +279,7 @@ class Wall(Category):
         result = WallGetByIdResponse(**raw_result)
         return result
 
-    def get_comments(
+    async def get_comments(
         self,
         owner_id: typing.Optional[int] = None,
         post_id: typing.Optional[int] = None,
@@ -321,7 +321,7 @@ class Wall(Category):
         result = WallGetCommentsResponse(**raw_result)
         return result
 
-    def get_reposts(
+    async def get_reposts(
         self,
         owner_id: typing.Optional[int] = None,
         post_id: typing.Optional[int] = None,
@@ -347,7 +347,7 @@ class Wall(Category):
         result = WallGetRepostsResponse(**raw_result)
         return result
 
-    def open_comments(
+    async def open_comments(
         self,
         owner_id: typing.Optional[int] = None,
         post_id: typing.Optional[int] = None,
@@ -369,7 +369,7 @@ class Wall(Category):
         result = BaseBoolResponse(**raw_result)
         return result
 
-    def pin(
+    async def pin(
         self,
         owner_id: typing.Optional[int] = None,
         post_id: typing.Optional[int] = None,
@@ -391,7 +391,7 @@ class Wall(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def post(
+    async def post(
         self,
         owner_id: typing.Optional[int] = None,
         friends_only: typing.Optional[bool] = None,
@@ -441,7 +441,7 @@ class Wall(Category):
         result = WallPostResponse(**raw_result)
         return result
 
-    def post_ads_stealth(
+    async def post_ads_stealth(
         self,
         owner_id: typing.Optional[int] = None,
         message: typing.Optional[str] = None,
@@ -483,7 +483,7 @@ class Wall(Category):
         result = WallPostAdsStealthResponse(**raw_result)
         return result
 
-    def report_comment(
+    async def report_comment(
         self,
         owner_id: typing.Optional[int] = None,
         comment_id: typing.Optional[int] = None,
@@ -507,7 +507,7 @@ class Wall(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def report_post(
+    async def report_post(
         self,
         owner_id: typing.Optional[int] = None,
         post_id: typing.Optional[int] = None,
@@ -531,7 +531,7 @@ class Wall(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def repost(
+    async def repost(
         self,
         object: typing.Optional[str] = None,
         message: typing.Optional[str] = None,
@@ -559,7 +559,7 @@ class Wall(Category):
         result = WallRepostResponse(**raw_result)
         return result
 
-    def restore(
+    async def restore(
         self,
         owner_id: typing.Optional[int] = None,
         post_id: typing.Optional[int] = None,
@@ -581,7 +581,7 @@ class Wall(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def restore_comment(
+    async def restore_comment(
         self,
         owner_id: typing.Optional[int] = None,
         comment_id: typing.Optional[int] = None,
@@ -603,7 +603,7 @@ class Wall(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def search(
+    async def search(
         self,
         owner_id: typing.Optional[int] = None,
         domain: typing.Optional[str] = None,
@@ -637,7 +637,7 @@ class Wall(Category):
         result = WallSearchResponse(**raw_result)
         return result
 
-    def unpin(
+    async def unpin(
         self,
         owner_id: typing.Optional[int] = None,
         post_id: typing.Optional[int] = None,

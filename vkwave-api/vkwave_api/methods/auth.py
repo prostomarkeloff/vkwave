@@ -3,7 +3,7 @@ from ._category import Category
 
 
 class Auth(Category):
-    def check_phone(
+    async def check_phone(
         self,
         phone: typing.Optional[str] = None,
         client_id: typing.Optional[int] = None,
@@ -29,7 +29,7 @@ class Auth(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def restore(
+    async def restore(
         self,
         phone: typing.Optional[str] = None,
         last_name: typing.Optional[str] = None,

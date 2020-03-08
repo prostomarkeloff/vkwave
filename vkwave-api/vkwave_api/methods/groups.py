@@ -3,7 +3,7 @@ from ._category import Category
 
 
 class Groups(Category):
-    def add_address(
+    async def add_address(
         self,
         group_id: typing.Optional[int] = None,
         title: typing.Optional[str] = None,
@@ -47,7 +47,7 @@ class Groups(Category):
         result = GroupsAddAddressResponse(**raw_result)
         return result
 
-    def add_callback_server(
+    async def add_callback_server(
         self,
         group_id: typing.Optional[int] = None,
         url: typing.Optional[str] = None,
@@ -73,7 +73,7 @@ class Groups(Category):
         result = GroupsAddCallbackServerResponse(**raw_result)
         return result
 
-    def add_link(
+    async def add_link(
         self,
         group_id: typing.Optional[int] = None,
         link: typing.Optional[str] = None,
@@ -97,7 +97,7 @@ class Groups(Category):
         result = GroupsAddLinkResponse(**raw_result)
         return result
 
-    def approve_request(
+    async def approve_request(
         self,
         group_id: typing.Optional[int] = None,
         user_id: typing.Optional[int] = None,
@@ -119,7 +119,7 @@ class Groups(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def ban(
+    async def ban(
         self,
         group_id: typing.Optional[int] = None,
         owner_id: typing.Optional[int] = None,
@@ -149,7 +149,7 @@ class Groups(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def create(
+    async def create(
         self,
         title: typing.Optional[str] = None,
         description: typing.Optional[str] = None,
@@ -177,7 +177,7 @@ class Groups(Category):
         result = GroupsCreateResponse(**raw_result)
         return result
 
-    def delete_callback_server(
+    async def delete_callback_server(
         self,
         group_id: typing.Optional[int] = None,
         server_id: typing.Optional[int] = None,
@@ -199,7 +199,7 @@ class Groups(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def delete_link(
+    async def delete_link(
         self,
         group_id: typing.Optional[int] = None,
         link_id: typing.Optional[int] = None,
@@ -221,7 +221,9 @@ class Groups(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def disable_online(self, group_id: typing.Optional[int] = None,) -> OkResponse:
+    async def disable_online(
+        self, group_id: typing.Optional[int] = None,
+    ) -> OkResponse:
         """
         :param group_id:
         :return:
@@ -238,7 +240,7 @@ class Groups(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def edit(
+    async def edit(
         self,
         group_id: typing.Optional[int] = None,
         title: typing.Optional[str] = None,
@@ -346,7 +348,7 @@ class Groups(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def edit_address(
+    async def edit_address(
         self,
         group_id: typing.Optional[int] = None,
         address_id: typing.Optional[int] = None,
@@ -392,7 +394,7 @@ class Groups(Category):
         result = GroupsEditAddressResponse(**raw_result)
         return result
 
-    def edit_callback_server(
+    async def edit_callback_server(
         self,
         group_id: typing.Optional[int] = None,
         server_id: typing.Optional[int] = None,
@@ -420,7 +422,7 @@ class Groups(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def edit_link(
+    async def edit_link(
         self,
         group_id: typing.Optional[int] = None,
         link_id: typing.Optional[int] = None,
@@ -444,7 +446,7 @@ class Groups(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def edit_manager(
+    async def edit_manager(
         self,
         group_id: typing.Optional[int] = None,
         user_id: typing.Optional[int] = None,
@@ -476,7 +478,7 @@ class Groups(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def enable_online(self, group_id: typing.Optional[int] = None,) -> OkResponse:
+    async def enable_online(self, group_id: typing.Optional[int] = None,) -> OkResponse:
         """
         :param group_id:
         :return:
@@ -493,7 +495,7 @@ class Groups(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def get(
+    async def get(
         self,
         user_id: typing.Optional[int] = None,
         extended: typing.Optional[bool] = None,
@@ -523,7 +525,7 @@ class Groups(Category):
         result = GroupsGetResponse(**raw_result)
         return result
 
-    def get_addresses(
+    async def get_addresses(
         self,
         group_id: typing.Optional[int] = None,
         address_ids: typing.Optional[typing.List[int]] = None,
@@ -555,7 +557,7 @@ class Groups(Category):
         result = GroupsGetAddressesResponse(**raw_result)
         return result
 
-    def get_banned(
+    async def get_banned(
         self,
         group_id: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
@@ -583,7 +585,7 @@ class Groups(Category):
         result = GroupsGetBannedResponse(**raw_result)
         return result
 
-    def get_by_id(
+    async def get_by_id(
         self,
         group_ids: typing.Optional[typing.List[str]] = None,
         group_id: typing.Optional[str] = None,
@@ -607,7 +609,7 @@ class Groups(Category):
         result = GroupsGetByIdResponse(**raw_result)
         return result
 
-    def get_callback_confirmation_code(
+    async def get_callback_confirmation_code(
         self, group_id: typing.Optional[int] = None,
     ) -> GroupsGetCallbackConfirmationCodeResponse:
         """
@@ -626,7 +628,7 @@ class Groups(Category):
         result = GroupsGetCallbackConfirmationCodeResponse(**raw_result)
         return result
 
-    def get_callback_servers(
+    async def get_callback_servers(
         self,
         group_id: typing.Optional[int] = None,
         server_ids: typing.Optional[typing.List[int]] = None,
@@ -648,7 +650,7 @@ class Groups(Category):
         result = GroupsGetCallbackServersResponse(**raw_result)
         return result
 
-    def get_callback_settings(
+    async def get_callback_settings(
         self,
         group_id: typing.Optional[int] = None,
         server_id: typing.Optional[int] = None,
@@ -670,7 +672,7 @@ class Groups(Category):
         result = GroupsGetCallbackSettingsResponse(**raw_result)
         return result
 
-    def get_catalog(
+    async def get_catalog(
         self,
         category_id: typing.Optional[int] = None,
         subcategory_id: typing.Optional[int] = None,
@@ -692,7 +694,7 @@ class Groups(Category):
         result = GroupsGetCatalogResponse(**raw_result)
         return result
 
-    def get_catalog_info(
+    async def get_catalog_info(
         self,
         extended: typing.Optional[bool] = None,
         subcategories: typing.Optional[bool] = None,
@@ -714,7 +716,7 @@ class Groups(Category):
         result = GroupsGetCatalogInfoResponse(**raw_result)
         return result
 
-    def get_invited_users(
+    async def get_invited_users(
         self,
         group_id: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
@@ -742,7 +744,7 @@ class Groups(Category):
         result = GroupsGetInvitedUsersResponse(**raw_result)
         return result
 
-    def get_invites(
+    async def get_invites(
         self,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
@@ -766,7 +768,7 @@ class Groups(Category):
         result = GroupsGetInvitesResponse(**raw_result)
         return result
 
-    def get_long_poll_server(
+    async def get_long_poll_server(
         self, group_id: typing.Optional[int] = None,
     ) -> GroupsGetLongPollServerResponse:
         """
@@ -785,7 +787,7 @@ class Groups(Category):
         result = GroupsGetLongPollServerResponse(**raw_result)
         return result
 
-    def get_long_poll_settings(
+    async def get_long_poll_settings(
         self, group_id: typing.Optional[int] = None,
     ) -> GroupsGetLongPollSettingsResponse:
         """
@@ -804,7 +806,7 @@ class Groups(Category):
         result = GroupsGetLongPollSettingsResponse(**raw_result)
         return result
 
-    def get_members(
+    async def get_members(
         self,
         group_id: typing.Optional[str] = None,
         sort: typing.Optional[str] = None,
@@ -834,7 +836,7 @@ class Groups(Category):
         result = GroupsGetMembersResponse(**raw_result)
         return result
 
-    def get_requests(
+    async def get_requests(
         self,
         group_id: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
@@ -860,7 +862,7 @@ class Groups(Category):
         result = GroupsGetRequestsResponse(**raw_result)
         return result
 
-    def get_settings(
+    async def get_settings(
         self, group_id: typing.Optional[int] = None,
     ) -> GroupsGetSettingsResponse:
         """
@@ -879,7 +881,7 @@ class Groups(Category):
         result = GroupsGetSettingsResponse(**raw_result)
         return result
 
-    def get_token_permissions(self,) -> GroupsGetTokenPermissionsResponse:
+    async def get_token_permissions(self,) -> GroupsGetTokenPermissionsResponse:
         """
         :return:
         """
@@ -895,7 +897,7 @@ class Groups(Category):
         result = GroupsGetTokenPermissionsResponse(**raw_result)
         return result
 
-    def invite(
+    async def invite(
         self,
         group_id: typing.Optional[int] = None,
         user_id: typing.Optional[int] = None,
@@ -917,7 +919,7 @@ class Groups(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def is_member(
+    async def is_member(
         self,
         group_id: typing.Optional[str] = None,
         user_id: typing.Optional[int] = None,
@@ -943,7 +945,7 @@ class Groups(Category):
         result = GroupsIsMemberResponse(**raw_result)
         return result
 
-    def join(
+    async def join(
         self,
         group_id: typing.Optional[int] = None,
         not_sure: typing.Optional[str] = None,
@@ -965,7 +967,7 @@ class Groups(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def leave(self, group_id: typing.Optional[int] = None,) -> OkResponse:
+    async def leave(self, group_id: typing.Optional[int] = None,) -> OkResponse:
         """
         :param group_id: - ID or screen name of the community.
         :return:
@@ -982,7 +984,7 @@ class Groups(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def remove_user(
+    async def remove_user(
         self,
         group_id: typing.Optional[int] = None,
         user_id: typing.Optional[int] = None,
@@ -1004,7 +1006,7 @@ class Groups(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def reorder_link(
+    async def reorder_link(
         self,
         group_id: typing.Optional[int] = None,
         link_id: typing.Optional[int] = None,
@@ -1028,7 +1030,7 @@ class Groups(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def search(
+    async def search(
         self,
         q: typing.Optional[str] = None,
         type: typing.Optional[str] = None,
@@ -1064,7 +1066,7 @@ class Groups(Category):
         result = GroupsSearchResponse(**raw_result)
         return result
 
-    def set_callback_settings(
+    async def set_callback_settings(
         self,
         group_id: typing.Optional[int] = None,
         server_id: typing.Optional[int] = None,
@@ -1168,7 +1170,7 @@ class Groups(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def set_long_poll_settings(
+    async def set_long_poll_settings(
         self,
         group_id: typing.Optional[int] = None,
         enabled: typing.Optional[bool] = None,
@@ -1270,7 +1272,7 @@ class Groups(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def unban(
+    async def unban(
         self,
         group_id: typing.Optional[int] = None,
         owner_id: typing.Optional[int] = None,

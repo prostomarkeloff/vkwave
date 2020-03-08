@@ -3,7 +3,7 @@ from ._category import Category
 
 
 class Streaming(Category):
-    def get_server_url(self,) -> StreamingGetServerUrlResponse:
+    async def get_server_url(self,) -> StreamingGetServerUrlResponse:
         """
         :return:
         """
@@ -19,7 +19,9 @@ class Streaming(Category):
         result = StreamingGetServerUrlResponse(**raw_result)
         return result
 
-    def set_settings(self, monthly_tier: typing.Optional[str] = None,) -> OkResponse:
+    async def set_settings(
+        self, monthly_tier: typing.Optional[str] = None,
+    ) -> OkResponse:
         """
         :param monthly_tier:
         :return:

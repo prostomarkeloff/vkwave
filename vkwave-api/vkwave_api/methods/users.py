@@ -3,7 +3,7 @@ from ._category import Category
 
 
 class Users(Category):
-    def get(
+    async def get(
         self,
         user_ids: typing.Optional[typing.List[str]] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
@@ -27,7 +27,7 @@ class Users(Category):
         result = UsersGetResponse(**raw_result)
         return result
 
-    def get_followers(
+    async def get_followers(
         self,
         user_id: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
@@ -55,7 +55,7 @@ class Users(Category):
         result = UsersGetFollowersResponse(**raw_result)
         return result
 
-    def get_subscriptions(
+    async def get_subscriptions(
         self,
         user_id: typing.Optional[int] = None,
         extended: typing.Optional[bool] = None,
@@ -83,7 +83,7 @@ class Users(Category):
         result = UsersGetSubscriptionsResponse(**raw_result)
         return result
 
-    def is_app_user(
+    async def is_app_user(
         self, user_id: typing.Optional[int] = None,
     ) -> UsersIsAppUserResponse:
         """
@@ -102,7 +102,7 @@ class Users(Category):
         result = UsersIsAppUserResponse(**raw_result)
         return result
 
-    def report(
+    async def report(
         self,
         user_id: typing.Optional[int] = None,
         type: typing.Optional[str] = None,
@@ -126,7 +126,7 @@ class Users(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def search(
+    async def search(
         self,
         q: typing.Optional[str] = None,
         sort: typing.Optional[int] = None,

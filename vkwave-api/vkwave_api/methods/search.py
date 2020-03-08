@@ -3,7 +3,7 @@ from ._category import Category
 
 
 class Search(Category):
-    def get_hints(
+    async def get_hints(
         self,
         q: typing.Optional[str] = None,
         offset: typing.Optional[int] = None,

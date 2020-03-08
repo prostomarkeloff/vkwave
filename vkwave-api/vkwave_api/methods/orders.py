@@ -3,7 +3,7 @@ from ._category import Category
 
 
 class Orders(Category):
-    def cancel_subscription(
+    async def cancel_subscription(
         self,
         user_id: typing.Optional[int] = None,
         subscription_id: typing.Optional[int] = None,
@@ -27,7 +27,7 @@ class Orders(Category):
         result = OrdersCancelSubscriptionResponse(**raw_result)
         return result
 
-    def change_state(
+    async def change_state(
         self,
         order_id: typing.Optional[int] = None,
         action: typing.Optional[str] = None,
@@ -53,7 +53,7 @@ class Orders(Category):
         result = OrdersChangeStateResponse(**raw_result)
         return result
 
-    def get(
+    async def get(
         self,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
@@ -77,7 +77,7 @@ class Orders(Category):
         result = OrdersGetResponse(**raw_result)
         return result
 
-    def get_amount(
+    async def get_amount(
         self,
         user_id: typing.Optional[int] = None,
         votes: typing.Optional[typing.List[str]] = None,
@@ -99,7 +99,7 @@ class Orders(Category):
         result = OrdersGetAmountResponse(**raw_result)
         return result
 
-    def get_by_id(
+    async def get_by_id(
         self,
         order_id: typing.Optional[int] = None,
         order_ids: typing.Optional[typing.List[int]] = None,
@@ -123,7 +123,7 @@ class Orders(Category):
         result = OrdersGetByIdResponse(**raw_result)
         return result
 
-    def get_user_subscription_by_id(
+    async def get_user_subscription_by_id(
         self,
         user_id: typing.Optional[int] = None,
         subscription_id: typing.Optional[int] = None,
@@ -145,7 +145,7 @@ class Orders(Category):
         result = OrdersGetUserSubscriptionByIdResponse(**raw_result)
         return result
 
-    def get_user_subscriptions(
+    async def get_user_subscriptions(
         self, user_id: typing.Optional[int] = None,
     ) -> OrdersGetUserSubscriptionsResponse:
         """
@@ -164,7 +164,7 @@ class Orders(Category):
         result = OrdersGetUserSubscriptionsResponse(**raw_result)
         return result
 
-    def update_subscription(
+    async def update_subscription(
         self,
         user_id: typing.Optional[int] = None,
         subscription_id: typing.Optional[int] = None,

@@ -3,7 +3,7 @@ from ._category import Category
 
 
 class Secure(Category):
-    def add_app_event(
+    async def add_app_event(
         self,
         user_id: typing.Optional[int] = None,
         activity_id: typing.Optional[int] = None,
@@ -27,7 +27,7 @@ class Secure(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def check_token(
+    async def check_token(
         self, token: typing.Optional[str] = None, ip: typing.Optional[str] = None,
     ) -> SecureCheckTokenResponse:
         """
@@ -47,7 +47,7 @@ class Secure(Category):
         result = SecureCheckTokenResponse(**raw_result)
         return result
 
-    def get_app_balance(self,) -> SecureGetAppBalanceResponse:
+    async def get_app_balance(self,) -> SecureGetAppBalanceResponse:
         """
         :return:
         """
@@ -63,7 +63,7 @@ class Secure(Category):
         result = SecureGetAppBalanceResponse(**raw_result)
         return result
 
-    def get_s_m_s_history(
+    async def get_sms_history(
         self,
         user_id: typing.Optional[int] = None,
         date_from: typing.Optional[int] = None,
@@ -89,7 +89,7 @@ class Secure(Category):
         result = SecureGetSMSHistoryResponse(**raw_result)
         return result
 
-    def get_transactions_history(
+    async def get_transactions_history(
         self,
         type: typing.Optional[int] = None,
         uid_from: typing.Optional[int] = None,
@@ -119,7 +119,7 @@ class Secure(Category):
         result = SecureGetTransactionsHistoryResponse(**raw_result)
         return result
 
-    def get_user_level(
+    async def get_user_level(
         self, user_ids: typing.Optional[typing.List[int]] = None,
     ) -> SecureGetUserLevelResponse:
         """
@@ -138,7 +138,7 @@ class Secure(Category):
         result = SecureGetUserLevelResponse(**raw_result)
         return result
 
-    def give_event_sticker(
+    async def give_event_sticker(
         self,
         user_ids: typing.Optional[typing.List[int]] = None,
         achievement_id: typing.Optional[int] = None,
@@ -160,7 +160,7 @@ class Secure(Category):
         result = SecureGiveEventStickerResponse(**raw_result)
         return result
 
-    def send_notification(
+    async def send_notification(
         self,
         user_ids: typing.Optional[typing.List[int]] = None,
         user_id: typing.Optional[int] = None,
@@ -184,7 +184,7 @@ class Secure(Category):
         result = SecureSendNotificationResponse(**raw_result)
         return result
 
-    def send_s_m_s_notification(
+    async def send_s_m_s_notification(
         self,
         user_id: typing.Optional[int] = None,
         message: typing.Optional[str] = None,
@@ -206,7 +206,7 @@ class Secure(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def set_counter(
+    async def set_counter(
         self,
         counters: typing.Optional[typing.List[str]] = None,
         user_id: typing.Optional[int] = None,

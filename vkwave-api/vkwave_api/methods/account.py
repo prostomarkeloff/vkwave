@@ -3,7 +3,7 @@ from ._category import Category
 
 
 class Account(Category):
-    def ban(self, owner_id: typing.Optional[int] = None,) -> OkResponse:
+    async def ban(self, owner_id: typing.Optional[int] = None,) -> OkResponse:
         """
         :param owner_id:
         :return:
@@ -20,7 +20,7 @@ class Account(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def change_password(
+    async def change_password(
         self,
         restore_sid: typing.Optional[str] = None,
         change_password_hash: typing.Optional[str] = None,
@@ -46,7 +46,7 @@ class Account(Category):
         result = AccountChangePasswordResponse(**raw_result)
         return result
 
-    def get_active_offers(
+    async def get_active_offers(
         self, offset: typing.Optional[int] = None, count: typing.Optional[int] = None,
     ) -> AccountGetActiveOffersResponse:
         """
@@ -66,7 +66,7 @@ class Account(Category):
         result = AccountGetActiveOffersResponse(**raw_result)
         return result
 
-    def get_app_permissions(
+    async def get_app_permissions(
         self, user_id: typing.Optional[int] = None,
     ) -> AccountGetAppPermissionsResponse:
         """
@@ -85,7 +85,7 @@ class Account(Category):
         result = AccountGetAppPermissionsResponse(**raw_result)
         return result
 
-    def get_banned(
+    async def get_banned(
         self, offset: typing.Optional[int] = None, count: typing.Optional[int] = None,
     ) -> AccountGetBannedResponse:
         """
@@ -105,7 +105,7 @@ class Account(Category):
         result = AccountGetBannedResponse(**raw_result)
         return result
 
-    def get_counters(
+    async def get_counters(
         self, filter: typing.Optional[typing.List[str]] = None,
     ) -> AccountGetCountersResponse:
         """
@@ -124,7 +124,7 @@ class Account(Category):
         result = AccountGetCountersResponse(**raw_result)
         return result
 
-    def get_info(
+    async def get_info(
         self, fields: typing.Optional[typing.List[str]] = None,
     ) -> AccountGetInfoResponse:
         """
@@ -143,7 +143,7 @@ class Account(Category):
         result = AccountGetInfoResponse(**raw_result)
         return result
 
-    def get_profile_info(self,) -> AccountGetProfileInfoResponse:
+    async def get_profile_info(self,) -> AccountGetProfileInfoResponse:
         """
         :return:
         """
@@ -159,7 +159,7 @@ class Account(Category):
         result = AccountGetProfileInfoResponse(**raw_result)
         return result
 
-    def get_push_settings(
+    async def get_push_settings(
         self, device_id: typing.Optional[str] = None,
     ) -> AccountGetPushSettingsResponse:
         """
@@ -178,7 +178,7 @@ class Account(Category):
         result = AccountGetPushSettingsResponse(**raw_result)
         return result
 
-    def register_device(
+    async def register_device(
         self,
         token: typing.Optional[str] = None,
         device_model: typing.Optional[str] = None,
@@ -210,7 +210,7 @@ class Account(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def save_profile_info(
+    async def save_profile_info(
         self,
         first_name: typing.Optional[str] = None,
         last_name: typing.Optional[str] = None,
@@ -256,7 +256,7 @@ class Account(Category):
         result = AccountSaveProfileInfoResponse(**raw_result)
         return result
 
-    def set_info(
+    async def set_info(
         self, name: typing.Optional[str] = None, value: typing.Optional[str] = None,
     ) -> OkResponse:
         """
@@ -276,7 +276,7 @@ class Account(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def set_name_in_menu(
+    async def set_name_in_menu(
         self, user_id: typing.Optional[int] = None, name: typing.Optional[str] = None,
     ) -> OkResponse:
         """
@@ -296,7 +296,7 @@ class Account(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def set_offline(self,) -> OkResponse:
+    async def set_offline(self,) -> OkResponse:
         """
         :return:
         """
@@ -312,7 +312,7 @@ class Account(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def set_online(self, voip: typing.Optional[bool] = None,) -> OkResponse:
+    async def set_online(self, voip: typing.Optional[bool] = None,) -> OkResponse:
         """
         :param voip: - '1' if videocalls are available for current device.
         :return:
@@ -329,7 +329,7 @@ class Account(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def set_push_settings(
+    async def set_push_settings(
         self,
         device_id: typing.Optional[str] = None,
         settings: typing.Optional[str] = None,
@@ -355,7 +355,7 @@ class Account(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def set_silence_mode(
+    async def set_silence_mode(
         self,
         device_id: typing.Optional[str] = None,
         time: typing.Optional[int] = None,
@@ -381,7 +381,7 @@ class Account(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def unban(self, owner_id: typing.Optional[int] = None,) -> OkResponse:
+    async def unban(self, owner_id: typing.Optional[int] = None,) -> OkResponse:
         """
         :param owner_id:
         :return:
@@ -398,7 +398,7 @@ class Account(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def unregister_device(
+    async def unregister_device(
         self,
         device_id: typing.Optional[str] = None,
         sandbox: typing.Optional[bool] = None,

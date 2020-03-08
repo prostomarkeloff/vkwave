@@ -3,7 +3,7 @@ from ._category import Category
 
 
 class Polls(Category):
-    def add_vote(
+    async def add_vote(
         self,
         owner_id: typing.Optional[int] = None,
         poll_id: typing.Optional[int] = None,
@@ -29,7 +29,7 @@ class Polls(Category):
         result = PollsAddVoteResponse(**raw_result)
         return result
 
-    def create(
+    async def create(
         self,
         question: typing.Optional[str] = None,
         is_anonymous: typing.Optional[bool] = None,
@@ -63,7 +63,7 @@ class Polls(Category):
         result = PollsCreateResponse(**raw_result)
         return result
 
-    def delete_vote(
+    async def delete_vote(
         self,
         owner_id: typing.Optional[int] = None,
         poll_id: typing.Optional[int] = None,
@@ -89,7 +89,7 @@ class Polls(Category):
         result = PollsDeleteVoteResponse(**raw_result)
         return result
 
-    def edit(
+    async def edit(
         self,
         owner_id: typing.Optional[int] = None,
         poll_id: typing.Optional[int] = None,
@@ -125,7 +125,7 @@ class Polls(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def get_by_id(
+    async def get_by_id(
         self,
         owner_id: typing.Optional[int] = None,
         is_board: typing.Optional[bool] = None,
@@ -157,7 +157,7 @@ class Polls(Category):
         result = PollsGetByIdResponse(**raw_result)
         return result
 
-    def get_voters(
+    async def get_voters(
         self,
         owner_id: typing.Optional[int] = None,
         poll_id: typing.Optional[int] = None,

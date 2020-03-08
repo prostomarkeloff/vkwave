@@ -3,7 +3,7 @@ from ._category import Category
 
 
 class Friends(Category):
-    def add(
+    async def add(
         self,
         user_id: typing.Optional[int] = None,
         text: typing.Optional[str] = None,
@@ -27,7 +27,7 @@ class Friends(Category):
         result = FriendsAddResponse(**raw_result)
         return result
 
-    def add_list(
+    async def add_list(
         self,
         name: typing.Optional[str] = None,
         user_ids: typing.Optional[typing.List[int]] = None,
@@ -49,7 +49,7 @@ class Friends(Category):
         result = FriendsAddListResponse(**raw_result)
         return result
 
-    def are_friends(
+    async def are_friends(
         self,
         user_ids: typing.Optional[typing.List[int]] = None,
         need_sign: typing.Optional[bool] = None,
@@ -71,7 +71,9 @@ class Friends(Category):
         result = FriendsAreFriendsResponse(**raw_result)
         return result
 
-    def delete(self, user_id: typing.Optional[int] = None,) -> FriendsDeleteResponse:
+    async def delete(
+        self, user_id: typing.Optional[int] = None,
+    ) -> FriendsDeleteResponse:
         """
         :param user_id: - ID of the user whose friend request is to be declined or who is to be deleted from the current user's friend list.
         :return:
@@ -88,7 +90,7 @@ class Friends(Category):
         result = FriendsDeleteResponse(**raw_result)
         return result
 
-    def delete_all_requests(self,) -> OkResponse:
+    async def delete_all_requests(self,) -> OkResponse:
         """
         :return:
         """
@@ -104,7 +106,7 @@ class Friends(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def delete_list(self, list_id: typing.Optional[int] = None,) -> OkResponse:
+    async def delete_list(self, list_id: typing.Optional[int] = None,) -> OkResponse:
         """
         :param list_id: - ID of the friend list to delete.
         :return:
@@ -121,7 +123,7 @@ class Friends(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def edit(
+    async def edit(
         self,
         user_id: typing.Optional[int] = None,
         list_ids: typing.Optional[typing.List[int]] = None,
@@ -143,7 +145,7 @@ class Friends(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def edit_list(
+    async def edit_list(
         self,
         name: typing.Optional[str] = None,
         list_id: typing.Optional[int] = None,
@@ -171,7 +173,7 @@ class Friends(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def get(
+    async def get(
         self,
         user_id: typing.Optional[int] = None,
         order: typing.Optional[str] = None,
@@ -205,7 +207,7 @@ class Friends(Category):
         result = FriendsGetResponse(**raw_result)
         return result
 
-    def get_app_users(self,) -> FriendsGetAppUsersResponse:
+    async def get_app_users(self,) -> FriendsGetAppUsersResponse:
         """
         :return:
         """
@@ -221,7 +223,7 @@ class Friends(Category):
         result = FriendsGetAppUsersResponse(**raw_result)
         return result
 
-    def get_by_phones(
+    async def get_by_phones(
         self,
         phones: typing.Optional[typing.List[str]] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
@@ -243,7 +245,7 @@ class Friends(Category):
         result = FriendsGetByPhonesResponse(**raw_result)
         return result
 
-    def get_lists(
+    async def get_lists(
         self,
         user_id: typing.Optional[int] = None,
         return_system: typing.Optional[bool] = None,
@@ -265,7 +267,7 @@ class Friends(Category):
         result = FriendsGetListsResponse(**raw_result)
         return result
 
-    def get_mutual(
+    async def get_mutual(
         self,
         source_uid: typing.Optional[int] = None,
         target_uid: typing.Optional[int] = None,
@@ -295,7 +297,7 @@ class Friends(Category):
         result = FriendsGetMutualResponse(**raw_result)
         return result
 
-    def get_online(
+    async def get_online(
         self,
         user_id: typing.Optional[int] = None,
         list_id: typing.Optional[int] = None,
@@ -325,7 +327,7 @@ class Friends(Category):
         result = FriendsGetOnlineResponse(**raw_result)
         return result
 
-    def get_recent(
+    async def get_recent(
         self, count: typing.Optional[int] = None,
     ) -> FriendsGetRecentResponse:
         """
@@ -344,7 +346,7 @@ class Friends(Category):
         result = FriendsGetRecentResponse(**raw_result)
         return result
 
-    def get_requests(
+    async def get_requests(
         self,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
@@ -382,7 +384,7 @@ class Friends(Category):
         result = FriendsGetRequestsResponse(**raw_result)
         return result
 
-    def get_suggestions(
+    async def get_suggestions(
         self,
         filter: typing.Optional[typing.List[str]] = None,
         count: typing.Optional[int] = None,
@@ -410,7 +412,7 @@ class Friends(Category):
         result = FriendsGetSuggestionsResponse(**raw_result)
         return result
 
-    def search(
+    async def search(
         self,
         user_id: typing.Optional[int] = None,
         q: typing.Optional[str] = None,

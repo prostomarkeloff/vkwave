@@ -3,7 +3,7 @@ from ._category import Category
 
 
 class Pretty(Category):
-    def cards_create(
+    async def cards_create(
         self,
         owner_id: typing.Optional[int] = None,
         photo: typing.Optional[str] = None,
@@ -35,7 +35,7 @@ class Pretty(Category):
         result = PrettyCardsCreateResponse(**raw_result)
         return result
 
-    def cards_delete(
+    async def cards_delete(
         self,
         owner_id: typing.Optional[int] = None,
         card_id: typing.Optional[int] = None,
@@ -57,7 +57,7 @@ class Pretty(Category):
         result = PrettyCardsDeleteResponse(**raw_result)
         return result
 
-    def cards_edit(
+    async def cards_edit(
         self,
         owner_id: typing.Optional[int] = None,
         card_id: typing.Optional[int] = None,
@@ -91,7 +91,7 @@ class Pretty(Category):
         result = PrettyCardsEditResponse(**raw_result)
         return result
 
-    def cards_get(
+    async def cards_get(
         self,
         owner_id: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
@@ -115,7 +115,7 @@ class Pretty(Category):
         result = PrettyCardsGetResponse(**raw_result)
         return result
 
-    def cards_get_by_id(
+    async def cards_get_by_id(
         self,
         owner_id: typing.Optional[int] = None,
         card_ids: typing.Optional[typing.List[int]] = None,
@@ -137,7 +137,7 @@ class Pretty(Category):
         result = PrettyCardsGetByIdResponse(**raw_result)
         return result
 
-    def cards_get_upload_u_r_l(self,) -> PrettyCardsGetUploadURLResponse:
+    async def cards_get_upload_u_r_l(self,) -> PrettyCardsGetUploadURLResponse:
         """
         :return:
         """

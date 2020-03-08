@@ -3,7 +3,7 @@ from ._category import Category
 
 
 class Widgets(Category):
-    def get_comments(
+    async def get_comments(
         self,
         widget_api_id: typing.Optional[int] = None,
         url: typing.Optional[str] = None,
@@ -35,7 +35,7 @@ class Widgets(Category):
         result = WidgetsGetCommentsResponse(**raw_result)
         return result
 
-    def get_pages(
+    async def get_pages(
         self,
         widget_api_id: typing.Optional[int] = None,
         order: typing.Optional[str] = None,
