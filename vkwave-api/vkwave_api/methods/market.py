@@ -3,7 +3,7 @@ from ._category import Category
 
 
 class Market(Category):
-    def add(
+    async def add(
         self,
         owner_id: typing.Optional[int] = None,
         name: typing.Optional[str] = None,
@@ -41,7 +41,7 @@ class Market(Category):
         result = MarketAddResponse(**raw_result)
         return result
 
-    def add_album(
+    async def add_album(
         self,
         owner_id: typing.Optional[int] = None,
         title: typing.Optional[str] = None,
@@ -67,7 +67,7 @@ class Market(Category):
         result = MarketAddAlbumResponse(**raw_result)
         return result
 
-    def add_to_album(
+    async def add_to_album(
         self,
         owner_id: typing.Optional[int] = None,
         item_id: typing.Optional[int] = None,
@@ -91,7 +91,7 @@ class Market(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def create_comment(
+    async def create_comment(
         self,
         owner_id: typing.Optional[int] = None,
         item_id: typing.Optional[int] = None,
@@ -125,7 +125,7 @@ class Market(Category):
         result = MarketCreateCommentResponse(**raw_result)
         return result
 
-    def delete(
+    async def delete(
         self,
         owner_id: typing.Optional[int] = None,
         item_id: typing.Optional[int] = None,
@@ -147,7 +147,7 @@ class Market(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def delete_album(
+    async def delete_album(
         self,
         owner_id: typing.Optional[int] = None,
         album_id: typing.Optional[int] = None,
@@ -169,7 +169,7 @@ class Market(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def delete_comment(
+    async def delete_comment(
         self,
         owner_id: typing.Optional[int] = None,
         comment_id: typing.Optional[int] = None,
@@ -191,7 +191,7 @@ class Market(Category):
         result = MarketDeleteCommentResponse(**raw_result)
         return result
 
-    def edit(
+    async def edit(
         self,
         owner_id: typing.Optional[int] = None,
         item_id: typing.Optional[int] = None,
@@ -229,7 +229,7 @@ class Market(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def edit_album(
+    async def edit_album(
         self,
         owner_id: typing.Optional[int] = None,
         album_id: typing.Optional[int] = None,
@@ -257,7 +257,7 @@ class Market(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def edit_comment(
+    async def edit_comment(
         self,
         owner_id: typing.Optional[int] = None,
         comment_id: typing.Optional[int] = None,
@@ -283,7 +283,7 @@ class Market(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def get(
+    async def get(
         self,
         owner_id: typing.Optional[int] = None,
         album_id: typing.Optional[int] = None,
@@ -311,7 +311,7 @@ class Market(Category):
         result = MarketGetResponse(**raw_result)
         return result
 
-    def get_album_by_id(
+    async def get_album_by_id(
         self,
         owner_id: typing.Optional[int] = None,
         album_ids: typing.Optional[typing.List[int]] = None,
@@ -333,7 +333,7 @@ class Market(Category):
         result = MarketGetAlbumByIdResponse(**raw_result)
         return result
 
-    def get_albums(
+    async def get_albums(
         self,
         owner_id: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
@@ -357,7 +357,7 @@ class Market(Category):
         result = MarketGetAlbumsResponse(**raw_result)
         return result
 
-    def get_by_id(
+    async def get_by_id(
         self,
         item_ids: typing.Optional[typing.List[str]] = None,
         extended: typing.Optional[bool] = None,
@@ -379,7 +379,7 @@ class Market(Category):
         result = MarketGetByIdResponse(**raw_result)
         return result
 
-    def get_categories(
+    async def get_categories(
         self, count: typing.Optional[int] = None, offset: typing.Optional[int] = None,
     ) -> MarketGetCategoriesResponse:
         """
@@ -399,7 +399,7 @@ class Market(Category):
         result = MarketGetCategoriesResponse(**raw_result)
         return result
 
-    def get_comments(
+    async def get_comments(
         self,
         owner_id: typing.Optional[int] = None,
         item_id: typing.Optional[int] = None,
@@ -435,7 +435,7 @@ class Market(Category):
         result = MarketGetCommentsResponse(**raw_result)
         return result
 
-    def remove_from_album(
+    async def remove_from_album(
         self,
         owner_id: typing.Optional[int] = None,
         item_id: typing.Optional[int] = None,
@@ -459,7 +459,7 @@ class Market(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def reorder_albums(
+    async def reorder_albums(
         self,
         owner_id: typing.Optional[int] = None,
         album_id: typing.Optional[int] = None,
@@ -485,7 +485,7 @@ class Market(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def reorder_items(
+    async def reorder_items(
         self,
         owner_id: typing.Optional[int] = None,
         album_id: typing.Optional[int] = None,
@@ -513,7 +513,7 @@ class Market(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def report(
+    async def report(
         self,
         owner_id: typing.Optional[int] = None,
         item_id: typing.Optional[int] = None,
@@ -537,7 +537,7 @@ class Market(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def report_comment(
+    async def report_comment(
         self,
         owner_id: typing.Optional[int] = None,
         comment_id: typing.Optional[int] = None,
@@ -561,7 +561,7 @@ class Market(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def restore(
+    async def restore(
         self,
         owner_id: typing.Optional[int] = None,
         item_id: typing.Optional[int] = None,
@@ -583,7 +583,7 @@ class Market(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def restore_comment(
+    async def restore_comment(
         self,
         owner_id: typing.Optional[int] = None,
         comment_id: typing.Optional[int] = None,
@@ -605,7 +605,7 @@ class Market(Category):
         result = MarketRestoreCommentResponse(**raw_result)
         return result
 
-    def search(
+    async def search(
         self,
         owner_id: typing.Optional[int] = None,
         album_id: typing.Optional[int] = None,

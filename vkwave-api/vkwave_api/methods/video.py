@@ -3,7 +3,7 @@ from ._category import Category
 
 
 class Video(Category):
-    def add(
+    async def add(
         self,
         target_id: typing.Optional[int] = None,
         video_id: typing.Optional[int] = None,
@@ -27,7 +27,7 @@ class Video(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def add_album(
+    async def add_album(
         self,
         group_id: typing.Optional[int] = None,
         title: typing.Optional[str] = None,
@@ -51,7 +51,7 @@ class Video(Category):
         result = VideoAddAlbumResponse(**raw_result)
         return result
 
-    def add_to_album(
+    async def add_to_album(
         self,
         target_id: typing.Optional[int] = None,
         album_id: typing.Optional[int] = None,
@@ -79,7 +79,7 @@ class Video(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def create_comment(
+    async def create_comment(
         self,
         owner_id: typing.Optional[int] = None,
         video_id: typing.Optional[int] = None,
@@ -113,7 +113,7 @@ class Video(Category):
         result = VideoCreateCommentResponse(**raw_result)
         return result
 
-    def delete(
+    async def delete(
         self,
         video_id: typing.Optional[int] = None,
         owner_id: typing.Optional[int] = None,
@@ -137,7 +137,7 @@ class Video(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def delete_album(
+    async def delete_album(
         self,
         group_id: typing.Optional[int] = None,
         album_id: typing.Optional[int] = None,
@@ -159,7 +159,7 @@ class Video(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def delete_comment(
+    async def delete_comment(
         self,
         owner_id: typing.Optional[int] = None,
         comment_id: typing.Optional[int] = None,
@@ -181,7 +181,7 @@ class Video(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def edit(
+    async def edit(
         self,
         owner_id: typing.Optional[int] = None,
         video_id: typing.Optional[int] = None,
@@ -215,7 +215,7 @@ class Video(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def edit_album(
+    async def edit_album(
         self,
         group_id: typing.Optional[int] = None,
         album_id: typing.Optional[int] = None,
@@ -241,7 +241,7 @@ class Video(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def edit_comment(
+    async def edit_comment(
         self,
         owner_id: typing.Optional[int] = None,
         comment_id: typing.Optional[int] = None,
@@ -267,7 +267,7 @@ class Video(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def get(
+    async def get(
         self,
         owner_id: typing.Optional[int] = None,
         videos: typing.Optional[typing.List[str]] = None,
@@ -297,7 +297,7 @@ class Video(Category):
         result = VideoGetResponse(**raw_result)
         return result
 
-    def get_album_by_id(
+    async def get_album_by_id(
         self,
         owner_id: typing.Optional[int] = None,
         album_id: typing.Optional[int] = None,
@@ -319,7 +319,7 @@ class Video(Category):
         result = VideoGetAlbumByIdResponse(**raw_result)
         return result
 
-    def get_albums(
+    async def get_albums(
         self,
         owner_id: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
@@ -347,7 +347,7 @@ class Video(Category):
         result = VideoGetAlbumsResponse(**raw_result)
         return result
 
-    def get_albums_by_video(
+    async def get_albums_by_video(
         self,
         target_id: typing.Optional[int] = None,
         owner_id: typing.Optional[int] = None,
@@ -373,7 +373,7 @@ class Video(Category):
         result = VideoGetAlbumsByVideoResponse(**raw_result)
         return result
 
-    def get_comments(
+    async def get_comments(
         self,
         owner_id: typing.Optional[int] = None,
         video_id: typing.Optional[int] = None,
@@ -409,7 +409,7 @@ class Video(Category):
         result = VideoGetCommentsResponse(**raw_result)
         return result
 
-    def remove_from_album(
+    async def remove_from_album(
         self,
         target_id: typing.Optional[int] = None,
         album_id: typing.Optional[int] = None,
@@ -437,7 +437,7 @@ class Video(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def reorder_albums(
+    async def reorder_albums(
         self,
         owner_id: typing.Optional[int] = None,
         album_id: typing.Optional[int] = None,
@@ -463,7 +463,7 @@ class Video(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def reorder_videos(
+    async def reorder_videos(
         self,
         target_id: typing.Optional[int] = None,
         album_id: typing.Optional[int] = None,
@@ -497,7 +497,7 @@ class Video(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def report(
+    async def report(
         self,
         owner_id: typing.Optional[int] = None,
         video_id: typing.Optional[int] = None,
@@ -525,7 +525,7 @@ class Video(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def report_comment(
+    async def report_comment(
         self,
         owner_id: typing.Optional[int] = None,
         comment_id: typing.Optional[int] = None,
@@ -549,7 +549,7 @@ class Video(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def restore(
+    async def restore(
         self,
         video_id: typing.Optional[int] = None,
         owner_id: typing.Optional[int] = None,
@@ -571,7 +571,7 @@ class Video(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def restore_comment(
+    async def restore_comment(
         self,
         owner_id: typing.Optional[int] = None,
         comment_id: typing.Optional[int] = None,
@@ -593,7 +593,7 @@ class Video(Category):
         result = VideoRestoreCommentResponse(**raw_result)
         return result
 
-    def save(
+    async def save(
         self,
         name: typing.Optional[str] = None,
         description: typing.Optional[str] = None,
@@ -635,7 +635,7 @@ class Video(Category):
         result = VideoSaveResponse(**raw_result)
         return result
 
-    def search(
+    async def search(
         self,
         q: typing.Optional[str] = None,
         sort: typing.Optional[int] = None,

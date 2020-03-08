@@ -3,7 +3,7 @@ from ._category import Category
 
 
 class Newsfeed(Category):
-    def add_ban(
+    async def add_ban(
         self,
         user_ids: typing.Optional[typing.List[int]] = None,
         group_ids: typing.Optional[typing.List[int]] = None,
@@ -25,7 +25,7 @@ class Newsfeed(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def delete_ban(
+    async def delete_ban(
         self,
         user_ids: typing.Optional[typing.List[int]] = None,
         group_ids: typing.Optional[typing.List[int]] = None,
@@ -47,7 +47,7 @@ class Newsfeed(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def delete_list(self, list_id: typing.Optional[int] = None,) -> OkResponse:
+    async def delete_list(self, list_id: typing.Optional[int] = None,) -> OkResponse:
         """
         :param list_id:
         :return:
@@ -64,7 +64,7 @@ class Newsfeed(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def get(
+    async def get(
         self,
         filters: typing.Optional[typing.List[NewsfeedFilters]] = None,
         return_banned: typing.Optional[bool] = None,
@@ -102,7 +102,7 @@ class Newsfeed(Category):
         result = NewsfeedGetResponse(**raw_result)
         return result
 
-    def get_banned(
+    async def get_banned(
         self,
         extended: typing.Optional[bool] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
@@ -126,7 +126,7 @@ class Newsfeed(Category):
         result = NewsfeedGetBannedResponse(**raw_result)
         return result
 
-    def get_comments(
+    async def get_comments(
         self,
         count: typing.Optional[int] = None,
         filters: typing.Optional[typing.List[NewsfeedCommentsFilters]] = None,
@@ -160,7 +160,7 @@ class Newsfeed(Category):
         result = NewsfeedGetCommentsResponse(**raw_result)
         return result
 
-    def get_lists(
+    async def get_lists(
         self,
         list_ids: typing.Optional[typing.List[int]] = None,
         extended: typing.Optional[bool] = None,
@@ -182,7 +182,7 @@ class Newsfeed(Category):
         result = NewsfeedGetListsResponse(**raw_result)
         return result
 
-    def get_mentions(
+    async def get_mentions(
         self,
         owner_id: typing.Optional[int] = None,
         start_time: typing.Optional[int] = None,
@@ -210,7 +210,7 @@ class Newsfeed(Category):
         result = NewsfeedGetMentionsResponse(**raw_result)
         return result
 
-    def get_recommended(
+    async def get_recommended(
         self,
         start_time: typing.Optional[int] = None,
         end_time: typing.Optional[int] = None,
@@ -240,7 +240,7 @@ class Newsfeed(Category):
         result = NewsfeedGetRecommendedResponse(**raw_result)
         return result
 
-    def get_suggested_sources(
+    async def get_suggested_sources(
         self,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
@@ -266,7 +266,7 @@ class Newsfeed(Category):
         result = NewsfeedGetSuggestedSourcesResponse(**raw_result)
         return result
 
-    def ignore_item(
+    async def ignore_item(
         self,
         type: typing.Optional[str] = None,
         owner_id: typing.Optional[int] = None,
@@ -290,7 +290,7 @@ class Newsfeed(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def save_list(
+    async def save_list(
         self,
         list_id: typing.Optional[int] = None,
         title: typing.Optional[str] = None,
@@ -316,7 +316,7 @@ class Newsfeed(Category):
         result = NewsfeedSaveListResponse(**raw_result)
         return result
 
-    def search(
+    async def search(
         self,
         q: typing.Optional[str] = None,
         extended: typing.Optional[bool] = None,
@@ -352,7 +352,7 @@ class Newsfeed(Category):
         result = NewsfeedSearchResponse(**raw_result)
         return result
 
-    def unignore_item(
+    async def unignore_item(
         self,
         type: typing.Optional[str] = None,
         owner_id: typing.Optional[int] = None,
@@ -376,7 +376,7 @@ class Newsfeed(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def unsubscribe(
+    async def unsubscribe(
         self,
         type: typing.Optional[str] = None,
         owner_id: typing.Optional[int] = None,

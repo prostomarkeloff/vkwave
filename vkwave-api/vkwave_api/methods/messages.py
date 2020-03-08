@@ -3,7 +3,7 @@ from ._category import Category
 
 
 class Messages(Category):
-    def add_chat_user(
+    async def add_chat_user(
         self,
         chat_id: typing.Optional[int] = None,
         user_id: typing.Optional[int] = None,
@@ -25,7 +25,7 @@ class Messages(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def allow_messages_from_group(
+    async def allow_messages_from_group(
         self, group_id: typing.Optional[int] = None, key: typing.Optional[str] = None,
     ) -> OkResponse:
         """
@@ -45,7 +45,7 @@ class Messages(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def create_chat(
+    async def create_chat(
         self,
         user_ids: typing.Optional[typing.List[int]] = None,
         title: typing.Optional[str] = None,
@@ -67,7 +67,7 @@ class Messages(Category):
         result = MessagesCreateChatResponse(**raw_result)
         return result
 
-    def delete(
+    async def delete(
         self,
         message_ids: typing.Optional[typing.List[int]] = None,
         spam: typing.Optional[bool] = None,
@@ -93,7 +93,7 @@ class Messages(Category):
         result = MessagesDeleteResponse(**raw_result)
         return result
 
-    def delete_chat_photo(
+    async def delete_chat_photo(
         self,
         chat_id: typing.Optional[int] = None,
         group_id: typing.Optional[int] = None,
@@ -115,7 +115,7 @@ class Messages(Category):
         result = MessagesDeleteChatPhotoResponse(**raw_result)
         return result
 
-    def delete_conversation(
+    async def delete_conversation(
         self,
         user_id: typing.Optional[int] = None,
         peer_id: typing.Optional[int] = None,
@@ -139,7 +139,7 @@ class Messages(Category):
         result = MessagesDeleteConversationResponse(**raw_result)
         return result
 
-    def deny_messages_from_group(
+    async def deny_messages_from_group(
         self, group_id: typing.Optional[int] = None,
     ) -> OkResponse:
         """
@@ -158,7 +158,7 @@ class Messages(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def edit(
+    async def edit(
         self,
         peer_id: typing.Optional[int] = None,
         message: typing.Optional[str] = None,
@@ -196,7 +196,7 @@ class Messages(Category):
         result = MessagesEditResponse(**raw_result)
         return result
 
-    def edit_chat(
+    async def edit_chat(
         self, chat_id: typing.Optional[int] = None, title: typing.Optional[str] = None,
     ) -> OkResponse:
         """
@@ -216,7 +216,7 @@ class Messages(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def get_by_conversation_message_id(
+    async def get_by_conversation_message_id(
         self,
         peer_id: typing.Optional[int] = None,
         conversation_message_ids: typing.Optional[typing.List[int]] = None,
@@ -244,7 +244,7 @@ class Messages(Category):
         result = MessagesGetByConversationMessageIdResponse(**raw_result)
         return result
 
-    def get_by_id(
+    async def get_by_id(
         self,
         message_ids: typing.Optional[typing.List[int]] = None,
         preview_length: typing.Optional[int] = None,
@@ -272,7 +272,7 @@ class Messages(Category):
         result = MessagesGetByIdResponse(**raw_result)
         return result
 
-    def get_chat_preview(
+    async def get_chat_preview(
         self,
         peer_id: typing.Optional[int] = None,
         link: typing.Optional[str] = None,
@@ -296,7 +296,7 @@ class Messages(Category):
         result = MessagesGetChatPreviewResponse(**raw_result)
         return result
 
-    def get_conversation_members(
+    async def get_conversation_members(
         self,
         peer_id: typing.Optional[int] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
@@ -320,7 +320,7 @@ class Messages(Category):
         result = MessagesGetConversationMembersResponse(**raw_result)
         return result
 
-    def get_conversations(
+    async def get_conversations(
         self,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
@@ -352,7 +352,7 @@ class Messages(Category):
         result = MessagesGetConversationsResponse(**raw_result)
         return result
 
-    def get_conversations_by_id(
+    async def get_conversations_by_id(
         self,
         peer_ids: typing.Optional[typing.List[int]] = None,
         extended: typing.Optional[bool] = None,
@@ -378,7 +378,7 @@ class Messages(Category):
         result = MessagesGetConversationsByIdResponse(**raw_result)
         return result
 
-    def get_history(
+    async def get_history(
         self,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
@@ -414,7 +414,7 @@ class Messages(Category):
         result = MessagesGetHistoryResponse(**raw_result)
         return result
 
-    def get_history_attachments(
+    async def get_history_attachments(
         self,
         peer_id: typing.Optional[int] = None,
         media_type: typing.Optional[str] = None,
@@ -450,7 +450,7 @@ class Messages(Category):
         result = MessagesGetHistoryAttachmentsResponse(**raw_result)
         return result
 
-    def get_invite_link(
+    async def get_invite_link(
         self,
         peer_id: typing.Optional[int] = None,
         reset: typing.Optional[bool] = None,
@@ -474,7 +474,7 @@ class Messages(Category):
         result = MessagesGetInviteLinkResponse(**raw_result)
         return result
 
-    def get_last_activity(
+    async def get_last_activity(
         self, user_id: typing.Optional[int] = None,
     ) -> MessagesGetLastActivityResponse:
         """
@@ -493,7 +493,7 @@ class Messages(Category):
         result = MessagesGetLastActivityResponse(**raw_result)
         return result
 
-    def get_long_poll_history(
+    async def get_long_poll_history(
         self,
         ts: typing.Optional[int] = None,
         pts: typing.Optional[int] = None,
@@ -535,7 +535,7 @@ class Messages(Category):
         result = MessagesGetLongPollHistoryResponse(**raw_result)
         return result
 
-    def get_long_poll_server(
+    async def get_long_poll_server(
         self,
         need_pts: typing.Optional[bool] = None,
         group_id: typing.Optional[int] = None,
@@ -559,7 +559,7 @@ class Messages(Category):
         result = MessagesGetLongPollServerResponse(**raw_result)
         return result
 
-    def is_messages_from_group_allowed(
+    async def is_messages_from_group_allowed(
         self,
         group_id: typing.Optional[int] = None,
         user_id: typing.Optional[int] = None,
@@ -581,7 +581,7 @@ class Messages(Category):
         result = MessagesIsMessagesFromGroupAllowedResponse(**raw_result)
         return result
 
-    def join_chat_by_invite_link(
+    async def join_chat_by_invite_link(
         self, link: typing.Optional[str] = None,
     ) -> MessagesJoinChatByInviteLinkResponse:
         """
@@ -600,7 +600,7 @@ class Messages(Category):
         result = MessagesJoinChatByInviteLinkResponse(**raw_result)
         return result
 
-    def mark_as_answered_conversation(
+    async def mark_as_answered_conversation(
         self,
         peer_id: typing.Optional[int] = None,
         answered: typing.Optional[bool] = None,
@@ -624,7 +624,7 @@ class Messages(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def mark_as_important(
+    async def mark_as_important(
         self,
         message_ids: typing.Optional[typing.List[int]] = None,
         important: typing.Optional[int] = None,
@@ -646,7 +646,7 @@ class Messages(Category):
         result = MessagesMarkAsImportantResponse(**raw_result)
         return result
 
-    def mark_as_important_conversation(
+    async def mark_as_important_conversation(
         self,
         peer_id: typing.Optional[int] = None,
         important: typing.Optional[bool] = None,
@@ -670,7 +670,7 @@ class Messages(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def mark_as_read(
+    async def mark_as_read(
         self,
         message_ids: typing.Optional[typing.List[int]] = None,
         peer_id: typing.Optional[int] = None,
@@ -696,7 +696,7 @@ class Messages(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def pin(
+    async def pin(
         self,
         peer_id: typing.Optional[int] = None,
         message_id: typing.Optional[int] = None,
@@ -718,7 +718,7 @@ class Messages(Category):
         result = MessagesPinResponse(**raw_result)
         return result
 
-    def remove_chat_user(
+    async def remove_chat_user(
         self,
         chat_id: typing.Optional[int] = None,
         user_id: typing.Optional[int] = None,
@@ -742,7 +742,7 @@ class Messages(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def restore(
+    async def restore(
         self,
         message_id: typing.Optional[int] = None,
         group_id: typing.Optional[int] = None,
@@ -764,7 +764,7 @@ class Messages(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def search(
+    async def search(
         self,
         q: typing.Optional[str] = None,
         peer_id: typing.Optional[int] = None,
@@ -800,7 +800,7 @@ class Messages(Category):
         result = MessagesSearchResponse(**raw_result)
         return result
 
-    def search_conversations(
+    async def search_conversations(
         self,
         q: typing.Optional[str] = None,
         count: typing.Optional[int] = None,
@@ -828,7 +828,7 @@ class Messages(Category):
         result = MessagesSearchConversationsResponse(**raw_result)
         return result
 
-    def send(
+    async def send(
         self,
         user_id: typing.Optional[int] = None,
         random_id: typing.Optional[int] = None,
@@ -884,7 +884,7 @@ class Messages(Category):
         result = MessagesSendResponse(**raw_result)
         return result
 
-    def set_activity(
+    async def set_activity(
         self,
         user_id: typing.Optional[int] = None,
         type: typing.Optional[str] = None,
@@ -910,7 +910,7 @@ class Messages(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def set_chat_photo(
+    async def set_chat_photo(
         self, file: typing.Optional[str] = None,
     ) -> MessagesSetChatPhotoResponse:
         """
@@ -929,7 +929,7 @@ class Messages(Category):
         result = MessagesSetChatPhotoResponse(**raw_result)
         return result
 
-    def unpin(
+    async def unpin(
         self,
         peer_id: typing.Optional[int] = None,
         group_id: typing.Optional[int] = None,

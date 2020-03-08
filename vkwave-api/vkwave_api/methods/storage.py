@@ -3,7 +3,7 @@ from ._category import Category
 
 
 class Storage(Category):
-    def get(
+    async def get(
         self,
         key: typing.Optional[str] = None,
         keys: typing.Optional[typing.List[str]] = None,
@@ -29,7 +29,7 @@ class Storage(Category):
         result = dict(**raw_result)
         return result
 
-    def get_keys(
+    async def get_keys(
         self,
         user_id: typing.Optional[int] = None,
         global_: typing.Optional[bool] = None,
@@ -55,7 +55,7 @@ class Storage(Category):
         result = StorageGetKeysResponse(**raw_result)
         return result
 
-    def set(
+    async def set(
         self,
         key: typing.Optional[str] = None,
         value: typing.Optional[str] = None,

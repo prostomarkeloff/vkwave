@@ -3,7 +3,7 @@ from ._category import Category
 
 
 class Likes(Category):
-    def add(
+    async def add(
         self,
         type: typing.Optional[str] = None,
         owner_id: typing.Optional[int] = None,
@@ -29,7 +29,7 @@ class Likes(Category):
         result = LikesAddResponse(**raw_result)
         return result
 
-    def delete(
+    async def delete(
         self,
         type: typing.Optional[str] = None,
         owner_id: typing.Optional[int] = None,
@@ -53,7 +53,7 @@ class Likes(Category):
         result = LikesDeleteResponse(**raw_result)
         return result
 
-    def get_list(
+    async def get_list(
         self,
         type: typing.Optional[str] = None,
         owner_id: typing.Optional[int] = None,
@@ -91,7 +91,7 @@ class Likes(Category):
         result = LikesGetListResponse(**raw_result)
         return result
 
-    def is_liked(
+    async def is_liked(
         self,
         user_id: typing.Optional[int] = None,
         type: typing.Optional[str] = None,

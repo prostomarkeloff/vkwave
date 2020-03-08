@@ -3,7 +3,7 @@ from ._category import Category
 
 
 class Pages(Category):
-    def clear_cache(self, url: typing.Optional[str] = None,) -> OkResponse:
+    async def clear_cache(self, url: typing.Optional[str] = None,) -> OkResponse:
         """
         :param url: - Address of the page where you need to refesh the cached version
         :return:
@@ -20,7 +20,7 @@ class Pages(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def get(
+    async def get(
         self,
         owner_id: typing.Optional[int] = None,
         page_id: typing.Optional[int] = None,
@@ -52,7 +52,7 @@ class Pages(Category):
         result = PagesGetResponse(**raw_result)
         return result
 
-    def get_history(
+    async def get_history(
         self,
         page_id: typing.Optional[int] = None,
         group_id: typing.Optional[int] = None,
@@ -76,7 +76,7 @@ class Pages(Category):
         result = PagesGetHistoryResponse(**raw_result)
         return result
 
-    def get_titles(
+    async def get_titles(
         self, group_id: typing.Optional[int] = None,
     ) -> PagesGetTitlesResponse:
         """
@@ -95,7 +95,7 @@ class Pages(Category):
         result = PagesGetTitlesResponse(**raw_result)
         return result
 
-    def get_version(
+    async def get_version(
         self,
         version_id: typing.Optional[int] = None,
         group_id: typing.Optional[int] = None,
@@ -121,7 +121,7 @@ class Pages(Category):
         result = PagesGetVersionResponse(**raw_result)
         return result
 
-    def parse_wiki(
+    async def parse_wiki(
         self, text: typing.Optional[str] = None, group_id: typing.Optional[int] = None,
     ) -> PagesParseWikiResponse:
         """
@@ -141,7 +141,7 @@ class Pages(Category):
         result = PagesParseWikiResponse(**raw_result)
         return result
 
-    def save(
+    async def save(
         self,
         text: typing.Optional[str] = None,
         page_id: typing.Optional[int] = None,
@@ -169,7 +169,7 @@ class Pages(Category):
         result = PagesSaveResponse(**raw_result)
         return result
 
-    def save_access(
+    async def save_access(
         self,
         page_id: typing.Optional[int] = None,
         group_id: typing.Optional[int] = None,

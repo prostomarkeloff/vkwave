@@ -3,7 +3,7 @@ from ._category import Category
 
 
 class Notes(Category):
-    def add(
+    async def add(
         self,
         title: typing.Optional[str] = None,
         text: typing.Optional[str] = None,
@@ -29,7 +29,7 @@ class Notes(Category):
         result = NotesAddResponse(**raw_result)
         return result
 
-    def create_comment(
+    async def create_comment(
         self,
         note_id: typing.Optional[int] = None,
         owner_id: typing.Optional[int] = None,
@@ -57,7 +57,7 @@ class Notes(Category):
         result = NotesCreateCommentResponse(**raw_result)
         return result
 
-    def delete(self, note_id: typing.Optional[int] = None,) -> OkResponse:
+    async def delete(self, note_id: typing.Optional[int] = None,) -> OkResponse:
         """
         :param note_id: - Note ID.
         :return:
@@ -74,7 +74,7 @@ class Notes(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def delete_comment(
+    async def delete_comment(
         self,
         comment_id: typing.Optional[int] = None,
         owner_id: typing.Optional[int] = None,
@@ -96,7 +96,7 @@ class Notes(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def edit(
+    async def edit(
         self,
         note_id: typing.Optional[int] = None,
         title: typing.Optional[str] = None,
@@ -124,7 +124,7 @@ class Notes(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def edit_comment(
+    async def edit_comment(
         self,
         comment_id: typing.Optional[int] = None,
         owner_id: typing.Optional[int] = None,
@@ -148,7 +148,7 @@ class Notes(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def get(
+    async def get(
         self,
         note_ids: typing.Optional[typing.List[int]] = None,
         user_id: typing.Optional[int] = None,
@@ -176,7 +176,7 @@ class Notes(Category):
         result = NotesGetResponse(**raw_result)
         return result
 
-    def get_by_id(
+    async def get_by_id(
         self,
         note_id: typing.Optional[int] = None,
         owner_id: typing.Optional[int] = None,
@@ -200,7 +200,7 @@ class Notes(Category):
         result = NotesGetByIdResponse(**raw_result)
         return result
 
-    def get_comments(
+    async def get_comments(
         self,
         note_id: typing.Optional[int] = None,
         owner_id: typing.Optional[int] = None,
@@ -228,7 +228,7 @@ class Notes(Category):
         result = NotesGetCommentsResponse(**raw_result)
         return result
 
-    def restore_comment(
+    async def restore_comment(
         self,
         comment_id: typing.Optional[int] = None,
         owner_id: typing.Optional[int] = None,

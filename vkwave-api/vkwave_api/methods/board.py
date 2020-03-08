@@ -3,7 +3,7 @@ from ._category import Category
 
 
 class Board(Category):
-    def add_topic(
+    async def add_topic(
         self,
         group_id: typing.Optional[int] = None,
         title: typing.Optional[str] = None,
@@ -31,7 +31,7 @@ class Board(Category):
         result = BoardAddTopicResponse(**raw_result)
         return result
 
-    def close_topic(
+    async def close_topic(
         self,
         group_id: typing.Optional[int] = None,
         topic_id: typing.Optional[int] = None,
@@ -53,7 +53,7 @@ class Board(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def create_comment(
+    async def create_comment(
         self,
         group_id: typing.Optional[int] = None,
         topic_id: typing.Optional[int] = None,
@@ -85,7 +85,7 @@ class Board(Category):
         result = BoardCreateCommentResponse(**raw_result)
         return result
 
-    def delete_comment(
+    async def delete_comment(
         self,
         group_id: typing.Optional[int] = None,
         topic_id: typing.Optional[int] = None,
@@ -109,7 +109,7 @@ class Board(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def delete_topic(
+    async def delete_topic(
         self,
         group_id: typing.Optional[int] = None,
         topic_id: typing.Optional[int] = None,
@@ -131,7 +131,7 @@ class Board(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def edit_comment(
+    async def edit_comment(
         self,
         group_id: typing.Optional[int] = None,
         topic_id: typing.Optional[int] = None,
@@ -159,7 +159,7 @@ class Board(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def edit_topic(
+    async def edit_topic(
         self,
         group_id: typing.Optional[int] = None,
         topic_id: typing.Optional[int] = None,
@@ -183,7 +183,7 @@ class Board(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def fix_topic(
+    async def fix_topic(
         self,
         group_id: typing.Optional[int] = None,
         topic_id: typing.Optional[int] = None,
@@ -205,7 +205,7 @@ class Board(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def get_comments(
+    async def get_comments(
         self,
         group_id: typing.Optional[int] = None,
         topic_id: typing.Optional[int] = None,
@@ -239,7 +239,7 @@ class Board(Category):
         result = BoardGetCommentsResponse(**raw_result)
         return result
 
-    def get_topics(
+    async def get_topics(
         self,
         group_id: typing.Optional[int] = None,
         topic_ids: typing.Optional[typing.List[int]] = None,
@@ -273,7 +273,7 @@ class Board(Category):
         result = BoardGetTopicsResponse(**raw_result)
         return result
 
-    def open_topic(
+    async def open_topic(
         self,
         group_id: typing.Optional[int] = None,
         topic_id: typing.Optional[int] = None,
@@ -295,7 +295,7 @@ class Board(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def restore_comment(
+    async def restore_comment(
         self,
         group_id: typing.Optional[int] = None,
         topic_id: typing.Optional[int] = None,
@@ -319,7 +319,7 @@ class Board(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def unfix_topic(
+    async def unfix_topic(
         self,
         group_id: typing.Optional[int] = None,
         topic_id: typing.Optional[int] = None,

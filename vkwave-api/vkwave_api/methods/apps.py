@@ -3,7 +3,7 @@ from ._category import Category
 
 
 class Apps(Category):
-    def delete_app_requests(self,) -> OkResponse:
+    async def delete_app_requests(self,) -> OkResponse:
         """
         :return:
         """
@@ -19,7 +19,7 @@ class Apps(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def get(
+    async def get(
         self,
         app_id: typing.Optional[int] = None,
         app_ids: typing.Optional[typing.List[str]] = None,
@@ -51,7 +51,7 @@ class Apps(Category):
         result = AppsGetResponse(**raw_result)
         return result
 
-    def get_catalog(
+    async def get_catalog(
         self,
         sort: typing.Optional[str] = None,
         offset: typing.Optional[int] = None,
@@ -91,7 +91,7 @@ class Apps(Category):
         result = AppsGetCatalogResponse(**raw_result)
         return result
 
-    def get_friends_list(
+    async def get_friends_list(
         self,
         extended: typing.Optional[bool] = None,
         count: typing.Optional[int] = None,
@@ -119,7 +119,7 @@ class Apps(Category):
         result = AppsGetFriendsListResponse(**raw_result)
         return result
 
-    def get_leaderboard(
+    async def get_leaderboard(
         self,
         type: typing.Optional[str] = None,
         global_: typing.Optional[bool] = None,
@@ -143,7 +143,9 @@ class Apps(Category):
         result = AppsGetLeaderboardResponse(**raw_result)
         return result
 
-    def get_scopes(self, type: typing.Optional[str] = None,) -> AppsGetScopesResponse:
+    async def get_scopes(
+        self, type: typing.Optional[str] = None,
+    ) -> AppsGetScopesResponse:
         """
         :param type:
         :return:
@@ -160,7 +162,9 @@ class Apps(Category):
         result = AppsGetScopesResponse(**raw_result)
         return result
 
-    def get_score(self, user_id: typing.Optional[int] = None,) -> AppsGetScoreResponse:
+    async def get_score(
+        self, user_id: typing.Optional[int] = None,
+    ) -> AppsGetScoreResponse:
         """
         :param user_id:
         :return:
@@ -177,7 +181,7 @@ class Apps(Category):
         result = AppsGetScoreResponse(**raw_result)
         return result
 
-    def send_request(
+    async def send_request(
         self,
         user_id: typing.Optional[int] = None,
         text: typing.Optional[str] = None,

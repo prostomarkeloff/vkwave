@@ -3,7 +3,7 @@ from ._category import Category
 
 
 class Database(Category):
-    def get_chairs(
+    async def get_chairs(
         self,
         faculty_id: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
@@ -27,7 +27,7 @@ class Database(Category):
         result = DatabaseGetChairsResponse(**raw_result)
         return result
 
-    def get_cities(
+    async def get_cities(
         self,
         country_id: typing.Optional[int] = None,
         region_id: typing.Optional[int] = None,
@@ -57,7 +57,7 @@ class Database(Category):
         result = DatabaseGetCitiesResponse(**raw_result)
         return result
 
-    def get_cities_by_id(
+    async def get_cities_by_id(
         self, city_ids: typing.Optional[typing.List[int]] = None,
     ) -> DatabaseGetCitiesByIdResponse:
         """
@@ -76,7 +76,7 @@ class Database(Category):
         result = DatabaseGetCitiesByIdResponse(**raw_result)
         return result
 
-    def get_countries(
+    async def get_countries(
         self,
         need_all: typing.Optional[bool] = None,
         code: typing.Optional[str] = None,
@@ -102,7 +102,7 @@ class Database(Category):
         result = DatabaseGetCountriesResponse(**raw_result)
         return result
 
-    def get_countries_by_id(
+    async def get_countries_by_id(
         self, country_ids: typing.Optional[typing.List[int]] = None,
     ) -> DatabaseGetCountriesByIdResponse:
         """
@@ -121,7 +121,7 @@ class Database(Category):
         result = DatabaseGetCountriesByIdResponse(**raw_result)
         return result
 
-    def get_faculties(
+    async def get_faculties(
         self,
         university_id: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
@@ -145,7 +145,7 @@ class Database(Category):
         result = DatabaseGetFacultiesResponse(**raw_result)
         return result
 
-    def get_metro_stations(
+    async def get_metro_stations(
         self,
         city_id: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
@@ -171,7 +171,7 @@ class Database(Category):
         result = DatabaseGetMetroStationsResponse(**raw_result)
         return result
 
-    def get_metro_stations_by_id(
+    async def get_metro_stations_by_id(
         self, station_ids: typing.Optional[typing.List[int]] = None,
     ) -> DatabaseGetMetroStationsByIdResponse:
         """
@@ -190,7 +190,7 @@ class Database(Category):
         result = DatabaseGetMetroStationsByIdResponse(**raw_result)
         return result
 
-    def get_regions(
+    async def get_regions(
         self,
         country_id: typing.Optional[int] = None,
         q: typing.Optional[str] = None,
@@ -216,7 +216,7 @@ class Database(Category):
         result = DatabaseGetRegionsResponse(**raw_result)
         return result
 
-    def get_school_classes(
+    async def get_school_classes(
         self, country_id: typing.Optional[int] = None,
     ) -> DatabaseGetSchoolClassesResponse:
         """
@@ -235,7 +235,7 @@ class Database(Category):
         result = DatabaseGetSchoolClassesResponse(**raw_result)
         return result
 
-    def get_schools(
+    async def get_schools(
         self,
         q: typing.Optional[str] = None,
         city_id: typing.Optional[int] = None,
@@ -261,7 +261,7 @@ class Database(Category):
         result = DatabaseGetSchoolsResponse(**raw_result)
         return result
 
-    def get_universities(
+    async def get_universities(
         self,
         q: typing.Optional[str] = None,
         country_id: typing.Optional[int] = None,

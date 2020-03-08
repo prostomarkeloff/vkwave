@@ -3,7 +3,9 @@ from ._category import Category
 
 
 class Utils(Category):
-    def check_link(self, url: typing.Optional[str] = None,) -> UtilsCheckLinkResponse:
+    async def check_link(
+        self, url: typing.Optional[str] = None,
+    ) -> UtilsCheckLinkResponse:
         """
         :param url: - Link to check (e.g., 'http://google.com').
         :return:
@@ -20,7 +22,7 @@ class Utils(Category):
         result = UtilsCheckLinkResponse(**raw_result)
         return result
 
-    def delete_from_last_shortened(
+    async def delete_from_last_shortened(
         self, key: typing.Optional[str] = None,
     ) -> OkResponse:
         """
@@ -39,7 +41,7 @@ class Utils(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def get_last_shortened_links(
+    async def get_last_shortened_links(
         self, count: typing.Optional[int] = None, offset: typing.Optional[int] = None,
     ) -> UtilsGetLastShortenedLinksResponse:
         """
@@ -59,7 +61,7 @@ class Utils(Category):
         result = UtilsGetLastShortenedLinksResponse(**raw_result)
         return result
 
-    def get_link_stats(
+    async def get_link_stats(
         self,
         key: typing.Optional[str] = None,
         source: typing.Optional[str] = None,
@@ -89,7 +91,7 @@ class Utils(Category):
         result = UtilsGetLinkStatsResponse(**raw_result)
         return result
 
-    def get_server_time(self,) -> UtilsGetServerTimeResponse:
+    async def get_server_time(self,) -> UtilsGetServerTimeResponse:
         """
         :return:
         """
@@ -105,7 +107,7 @@ class Utils(Category):
         result = UtilsGetServerTimeResponse(**raw_result)
         return result
 
-    def get_short_link(
+    async def get_short_link(
         self, url: typing.Optional[str] = None, private: typing.Optional[bool] = None,
     ) -> UtilsGetShortLinkResponse:
         """
@@ -125,7 +127,7 @@ class Utils(Category):
         result = UtilsGetShortLinkResponse(**raw_result)
         return result
 
-    def resolve_screen_name(
+    async def resolve_screen_name(
         self, screen_name: typing.Optional[str] = None,
     ) -> UtilsResolveScreenNameResponse:
         """

@@ -3,7 +3,7 @@ from ._category import Category
 
 
 class Stories(Category):
-    def ban_owner(
+    async def ban_owner(
         self, owners_ids: typing.Optional[typing.List[int]] = None,
     ) -> OkResponse:
         """
@@ -22,7 +22,7 @@ class Stories(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def delete(
+    async def delete(
         self,
         owner_id: typing.Optional[int] = None,
         story_id: typing.Optional[int] = None,
@@ -44,7 +44,7 @@ class Stories(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def get(
+    async def get(
         self,
         owner_id: typing.Optional[int] = None,
         extended: typing.Optional[bool] = None,
@@ -66,7 +66,7 @@ class Stories(Category):
         result = StoriesGetResponse(**raw_result)
         return result
 
-    def get_banned(
+    async def get_banned(
         self,
         extended: typing.Optional[bool] = None,
         fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
@@ -88,7 +88,7 @@ class Stories(Category):
         result = StoriesGetBannedResponse(**raw_result)
         return result
 
-    def get_by_id(
+    async def get_by_id(
         self,
         stories: typing.Optional[typing.List[str]] = None,
         extended: typing.Optional[bool] = None,
@@ -112,7 +112,7 @@ class Stories(Category):
         result = StoriesGetByIdResponse(**raw_result)
         return result
 
-    def get_photo_upload_server(
+    async def get_photo_upload_server(
         self,
         add_to_news: typing.Optional[bool] = None,
         user_ids: typing.Optional[typing.List[int]] = None,
@@ -142,7 +142,7 @@ class Stories(Category):
         result = StoriesGetPhotoUploadServerResponse(**raw_result)
         return result
 
-    def get_replies(
+    async def get_replies(
         self,
         owner_id: typing.Optional[int] = None,
         story_id: typing.Optional[int] = None,
@@ -170,7 +170,7 @@ class Stories(Category):
         result = StoriesGetRepliesResponse(**raw_result)
         return result
 
-    def get_stats(
+    async def get_stats(
         self,
         owner_id: typing.Optional[int] = None,
         story_id: typing.Optional[int] = None,
@@ -192,7 +192,7 @@ class Stories(Category):
         result = StoriesGetStatsResponse(**raw_result)
         return result
 
-    def get_video_upload_server(
+    async def get_video_upload_server(
         self,
         add_to_news: typing.Optional[bool] = None,
         user_ids: typing.Optional[typing.List[int]] = None,
@@ -222,7 +222,7 @@ class Stories(Category):
         result = StoriesGetVideoUploadServerResponse(**raw_result)
         return result
 
-    def get_viewers(
+    async def get_viewers(
         self,
         owner_id: typing.Optional[int] = None,
         story_id: typing.Optional[int] = None,
@@ -250,7 +250,7 @@ class Stories(Category):
         result = StoriesGetViewersResponse(**raw_result)
         return result
 
-    def hide_all_replies(
+    async def hide_all_replies(
         self,
         owner_id: typing.Optional[int] = None,
         group_id: typing.Optional[int] = None,
@@ -272,7 +272,7 @@ class Stories(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def hide_reply(
+    async def hide_reply(
         self,
         owner_id: typing.Optional[int] = None,
         story_id: typing.Optional[int] = None,
@@ -294,7 +294,7 @@ class Stories(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def unban_owner(
+    async def unban_owner(
         self, owners_ids: typing.Optional[typing.List[int]] = None,
     ) -> OkResponse:
         """

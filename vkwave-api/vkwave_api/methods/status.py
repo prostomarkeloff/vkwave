@@ -3,7 +3,7 @@ from ._category import Category
 
 
 class Status(Category):
-    def get(
+    async def get(
         self,
         user_id: typing.Optional[int] = None,
         group_id: typing.Optional[int] = None,
@@ -25,7 +25,7 @@ class Status(Category):
         result = StatusGetResponse(**raw_result)
         return result
 
-    def set(
+    async def set(
         self, text: typing.Optional[str] = None, group_id: typing.Optional[int] = None,
     ) -> OkResponse:
         """

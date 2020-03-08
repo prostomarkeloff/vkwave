@@ -3,7 +3,7 @@ from ._category import Category
 
 
 class Stats(Category):
-    def get(
+    async def get(
         self,
         group_id: typing.Optional[int] = None,
         app_id: typing.Optional[int] = None,
@@ -39,7 +39,7 @@ class Stats(Category):
         result = StatsGetResponse(**raw_result)
         return result
 
-    def get_post_reach(
+    async def get_post_reach(
         self,
         owner_id: typing.Optional[str] = None,
         post_id: typing.Optional[int] = None,
@@ -61,7 +61,7 @@ class Stats(Category):
         result = StatsGetPostReachResponse(**raw_result)
         return result
 
-    def track_visitor(self, id: typing.Optional[str] = None,) -> OkResponse:
+    async def track_visitor(self, id: typing.Optional[str] = None,) -> OkResponse:
         """
         :param id:
         :return:

@@ -3,7 +3,7 @@ from ._category import Category
 
 
 class App(Category):
-    def widgets_update(
+    async def widgets_update(
         self, code: typing.Optional[str] = None, type: typing.Optional[str] = None,
     ) -> BaseOkResponse:
         """

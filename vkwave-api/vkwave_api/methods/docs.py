@@ -3,7 +3,7 @@ from ._category import Category
 
 
 class Docs(Category):
-    def add(
+    async def add(
         self,
         owner_id: typing.Optional[int] = None,
         doc_id: typing.Optional[int] = None,
@@ -27,7 +27,7 @@ class Docs(Category):
         result = DocsAddResponse(**raw_result)
         return result
 
-    def delete(
+    async def delete(
         self,
         owner_id: typing.Optional[int] = None,
         doc_id: typing.Optional[int] = None,
@@ -49,7 +49,7 @@ class Docs(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def edit(
+    async def edit(
         self,
         owner_id: typing.Optional[int] = None,
         doc_id: typing.Optional[int] = None,
@@ -75,7 +75,7 @@ class Docs(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def get(
+    async def get(
         self,
         count: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
@@ -101,7 +101,7 @@ class Docs(Category):
         result = DocsGetResponse(**raw_result)
         return result
 
-    def get_by_id(
+    async def get_by_id(
         self, docs: typing.Optional[typing.List[str]] = None,
     ) -> DocsGetByIdResponse:
         """
@@ -120,7 +120,7 @@ class Docs(Category):
         result = DocsGetByIdResponse(**raw_result)
         return result
 
-    def get_messages_upload_server(
+    async def get_messages_upload_server(
         self, type: typing.Optional[str] = None, peer_id: typing.Optional[int] = None,
     ) -> BaseGetUploadServerResponse:
         """
@@ -140,7 +140,9 @@ class Docs(Category):
         result = BaseGetUploadServerResponse(**raw_result)
         return result
 
-    def get_types(self, owner_id: typing.Optional[int] = None,) -> DocsGetTypesResponse:
+    async def get_types(
+        self, owner_id: typing.Optional[int] = None,
+    ) -> DocsGetTypesResponse:
         """
         :param owner_id: - ID of the user or community that owns the documents. Use a negative value to designate a community ID.
         :return:
@@ -157,7 +159,7 @@ class Docs(Category):
         result = DocsGetTypesResponse(**raw_result)
         return result
 
-    def get_upload_server(
+    async def get_upload_server(
         self, group_id: typing.Optional[int] = None,
     ) -> DocsGetUploadServer:
         """
@@ -176,7 +178,7 @@ class Docs(Category):
         result = DocsGetUploadServer(**raw_result)
         return result
 
-    def get_wall_upload_server(
+    async def get_wall_upload_server(
         self, group_id: typing.Optional[int] = None,
     ) -> BaseGetUploadServerResponse:
         """
@@ -195,7 +197,7 @@ class Docs(Category):
         result = BaseGetUploadServerResponse(**raw_result)
         return result
 
-    def save(
+    async def save(
         self,
         file: typing.Optional[str] = None,
         title: typing.Optional[str] = None,
@@ -219,7 +221,7 @@ class Docs(Category):
         result = DocsSaveResponse(**raw_result)
         return result
 
-    def search(
+    async def search(
         self,
         q: typing.Optional[str] = None,
         search_own: typing.Optional[bool] = None,

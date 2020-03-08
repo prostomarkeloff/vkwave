@@ -3,7 +3,7 @@ from ._category import Category
 
 
 class Fave(Category):
-    def add_article(self, url: typing.Optional[str] = None,) -> BaseBoolResponse:
+    async def add_article(self, url: typing.Optional[str] = None,) -> BaseBoolResponse:
         """
         :param url:
         :return:
@@ -20,7 +20,7 @@ class Fave(Category):
         result = BaseBoolResponse(**raw_result)
         return result
 
-    def add_link(self, link: typing.Optional[str] = None,) -> OkResponse:
+    async def add_link(self, link: typing.Optional[str] = None,) -> OkResponse:
         """
         :param link: - Link URL.
         :return:
@@ -37,7 +37,7 @@ class Fave(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def add_page(
+    async def add_page(
         self,
         user_id: typing.Optional[int] = None,
         group_id: typing.Optional[int] = None,
@@ -59,7 +59,7 @@ class Fave(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def add_post(
+    async def add_post(
         self,
         owner_id: typing.Optional[int] = None,
         id: typing.Optional[int] = None,
@@ -83,7 +83,7 @@ class Fave(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def add_product(
+    async def add_product(
         self,
         owner_id: typing.Optional[int] = None,
         id: typing.Optional[int] = None,
@@ -107,7 +107,7 @@ class Fave(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def add_tag(self, name: typing.Optional[str] = None,) -> FaveAddTagResponse:
+    async def add_tag(self, name: typing.Optional[str] = None,) -> FaveAddTagResponse:
         """
         :param name:
         :return:
@@ -124,7 +124,7 @@ class Fave(Category):
         result = FaveAddTagResponse(**raw_result)
         return result
 
-    def add_video(
+    async def add_video(
         self,
         owner_id: typing.Optional[int] = None,
         id: typing.Optional[int] = None,
@@ -148,7 +148,7 @@ class Fave(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def edit_tag(
+    async def edit_tag(
         self, id: typing.Optional[int] = None, name: typing.Optional[str] = None,
     ) -> OkResponse:
         """
@@ -168,7 +168,7 @@ class Fave(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def get(
+    async def get(
         self,
         extended: typing.Optional[bool] = None,
         item_type: typing.Optional[str] = None,
@@ -200,7 +200,7 @@ class Fave(Category):
         result = FaveGetResponse(**raw_result)
         return result
 
-    def get_pages(
+    async def get_pages(
         self,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
@@ -228,7 +228,7 @@ class Fave(Category):
         result = FaveGetPagesResponse(**raw_result)
         return result
 
-    def get_tags(self,) -> FaveGetTagsResponse:
+    async def get_tags(self,) -> FaveGetTagsResponse:
         """
         :return:
         """
@@ -244,7 +244,7 @@ class Fave(Category):
         result = FaveGetTagsResponse(**raw_result)
         return result
 
-    def mark_seen(self,) -> BaseBoolResponse:
+    async def mark_seen(self,) -> BaseBoolResponse:
         """
         :return:
         """
@@ -260,7 +260,7 @@ class Fave(Category):
         result = BaseBoolResponse(**raw_result)
         return result
 
-    def remove_article(
+    async def remove_article(
         self,
         owner_id: typing.Optional[int] = None,
         article_id: typing.Optional[int] = None,
@@ -282,7 +282,7 @@ class Fave(Category):
         result = BaseBoolResponse(**raw_result)
         return result
 
-    def remove_link(
+    async def remove_link(
         self, link_id: typing.Optional[str] = None, link: typing.Optional[str] = None,
     ) -> OkResponse:
         """
@@ -302,7 +302,7 @@ class Fave(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def remove_page(
+    async def remove_page(
         self,
         user_id: typing.Optional[int] = None,
         group_id: typing.Optional[int] = None,
@@ -324,7 +324,7 @@ class Fave(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def remove_post(
+    async def remove_post(
         self, owner_id: typing.Optional[int] = None, id: typing.Optional[int] = None,
     ) -> OkResponse:
         """
@@ -344,7 +344,7 @@ class Fave(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def remove_product(
+    async def remove_product(
         self, owner_id: typing.Optional[int] = None, id: typing.Optional[int] = None,
     ) -> OkResponse:
         """
@@ -364,7 +364,7 @@ class Fave(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def remove_tag(self, id: typing.Optional[int] = None,) -> OkResponse:
+    async def remove_tag(self, id: typing.Optional[int] = None,) -> OkResponse:
         """
         :param id:
         :return:
@@ -381,7 +381,7 @@ class Fave(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def reorder_tags(
+    async def reorder_tags(
         self, ids: typing.Optional[typing.List[int]] = None,
     ) -> OkResponse:
         """
@@ -400,7 +400,7 @@ class Fave(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def set_page_tags(
+    async def set_page_tags(
         self,
         user_id: typing.Optional[int] = None,
         group_id: typing.Optional[int] = None,
@@ -424,7 +424,7 @@ class Fave(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def set_tags(
+    async def set_tags(
         self,
         item_type: typing.Optional[str] = None,
         item_owner_id: typing.Optional[int] = None,
@@ -454,7 +454,7 @@ class Fave(Category):
         result = OkResponse(**raw_result)
         return result
 
-    def track_page_interaction(
+    async def track_page_interaction(
         self,
         user_id: typing.Optional[int] = None,
         group_id: typing.Optional[int] = None,
