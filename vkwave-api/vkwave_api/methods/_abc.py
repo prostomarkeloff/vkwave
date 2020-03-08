@@ -164,4 +164,6 @@ class API:
         copied.tokens = [token]
         new = APIOptionsRequestContext(copied)
         return new
-
+    
+    def with_options(self, options: APIOptions) -> APIOptionsRequestContext:
+        return APIOptionsRequestContext(options)
