@@ -2440,10 +2440,31 @@ class UsersPersonal(pydantic.BaseModel):
     )
 
 
-class UsersUser(pydantic.BaseModel):
-    users_user_min: typing.Optional["UsersUserMin"] = pydantic.Field(
+class UsersUserMin(pydantic.BaseModel):
+    deactivated: typing.Optional[str] = pydantic.Field(
+        None, description="Returns if a profile is deleted or blocked",
+    )
+    first_name: typing.Optional[str] = pydantic.Field(
+        None, description="User first name",
+    )
+    hidden: typing.Optional[int] = pydantic.Field(
+        None, description="Returns if a profile is hidden.",
+    )
+    id: typing.Optional[int] = pydantic.Field(
+        None, description="User ID",
+    )
+    last_name: typing.Optional[str] = pydantic.Field(
+        None, description="User last name",
+    )
+    can_access_closed: typing.Optional[bool] = pydantic.Field(
         None, description="",
     )
+    is_closed: typing.Optional[bool] = pydantic.Field(
+        None, description="",
+    )
+
+
+class UsersUser(UsersUserMin):
     sex: typing.Optional["BaseSex"] = pydantic.Field(
         None, description="User sex",
     )
@@ -2501,10 +2522,7 @@ class UsersUserConnections(pydantic.BaseModel):
     )
 
 
-class UsersUserFull(pydantic.BaseModel):
-    users_user: typing.Optional["UsersUser"] = pydantic.Field(
-        None, description="",
-    )
+class UsersUserFull(UsersUser):
     nickname: typing.Optional[str] = pydantic.Field(
         None, description="User nickname",
     )
@@ -2681,30 +2699,6 @@ class UsersUserFull(pydantic.BaseModel):
     )
     can_subscribe_posts: typing.Optional[bool] = pydantic.Field(
         None, description="Can subscribe to wall",
-    )
-
-
-class UsersUserMin(pydantic.BaseModel):
-    deactivated: typing.Optional[str] = pydantic.Field(
-        None, description="Returns if a profile is deleted or blocked",
-    )
-    first_name: typing.Optional[str] = pydantic.Field(
-        None, description="User first name",
-    )
-    hidden: typing.Optional[int] = pydantic.Field(
-        None, description="Returns if a profile is hidden.",
-    )
-    id: typing.Optional[int] = pydantic.Field(
-        None, description="User ID",
-    )
-    last_name: typing.Optional[str] = pydantic.Field(
-        None, description="User last name",
-    )
-    can_access_closed: typing.Optional[bool] = pydantic.Field(
-        None, description="",
-    )
-    is_closed: typing.Optional[bool] = pydantic.Field(
-        None, description="",
     )
 
 

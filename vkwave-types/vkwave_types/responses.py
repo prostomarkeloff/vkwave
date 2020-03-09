@@ -3538,7 +3538,7 @@ class UsersGetSubscriptionsResponse(pydantic.BaseModel):
 
 
 class UsersGetResponse(pydantic.BaseModel):
-    response: typing.Optional[typing.List["UsersUserMin"]] = pydantic.Field(
+    response: typing.Optional[typing.List["UsersUserFull"]] = pydantic.Field(
         None, description="",
     )
 
