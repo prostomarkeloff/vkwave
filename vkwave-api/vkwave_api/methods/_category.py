@@ -1,5 +1,6 @@
 from vkwave_client.types import MethodName
 from vkwave_client.context import ResultState
+from ._error import UnsuccessAPIRequestException
 import typing
 
 if typing.TYPE_CHECKING:
@@ -27,11 +28,22 @@ class Category:
         await ctx.send_request()
 
         state = ctx.result.state
+        
+        exc_data = None
+        data = None
+        
+        if state is ResultState.UNHANDLED_EXCEPTION:
+            raise UnsuccessAPIRequestException()
+        elif state is ResultState.HANDLED_EXCEPTION:
+            exc_data = ctx.result.exception_data
+            exc_data = typing.cast(dict, exc_data)
+            if not ("error" in exc_data or "response" in exc_data):
+                raise UnsuccessAPIRequestException()
+        else:
+            data = ctx.result.data
+            data = typing.cast(dict, data)
 
-        if state is not ResultState.SUCCESS:
-            raise TemporaryException()
-
-        result = ctx.result.data
+        result = data or exc_data
         result = typing.cast(dict, result)
 
         if "error" in result:
