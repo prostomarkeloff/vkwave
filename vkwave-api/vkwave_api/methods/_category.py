@@ -20,10 +20,10 @@ class Category:
         return MethodName(f"{self.category_name}.{method_name}")
 
     async def api_request(self, method_name: str, params: dict) -> dict:
-        client, token = await self.__api.get_client_and_token()
+        client, token = await self.__api.api_options.get_client_and_token()
         method_name = self.make_method_name(method_name)
 
-        params = self.__api.update_pre_request_params(params, token)
+        params = self.__api.api_options.update_pre_request_params(params, token)
         ctx = client.create_request(method_name, params)
         await ctx.send_request()
 
