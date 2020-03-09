@@ -1,7 +1,6 @@
 import typing
-from enum import Enum
-
 import pydantic
+from enum import Enum
 
 
 class AccountNameRequest(pydantic.BaseModel):
@@ -164,28 +163,28 @@ class AdsAccountType(str, Enum):
 
 
 class AdsAdApproved(int, Enum):
-    enum_0 = 0
-    enum_1 = 1
-    enum_2 = 2
-    enum_3 = 3
+    NOT_MODERATED = 0
+    PENDING_MODERATION = 1
+    APPROVED = 2
+    REJECTED = 3
 
 
 class AdsAdCostType(int, Enum):
-    enum_0 = 0
-    enum_1 = 1
-    enum_2 = 2
+    PER_CLICKS = 0
+    PER_IMPRESSIONS = 1
+    PER_ACTIONS = 2
 
 
 class AdsAdStatus(int, Enum):
-    enum_0 = 0
-    enum_1 = 1
-    enum_2 = 2
+    STOPPED = 0
+    STARTED = 1
+    DELETED = 2
 
 
 class AdsCampaignStatus(int, Enum):
-    enum_0 = 0
-    enum_1 = 1
-    enum_2 = 2
+    STOPPED = 0
+    STARTED = 1
+    DELETED = 2
 
 
 class AdsCampaignType(str, Enum):
@@ -196,9 +195,9 @@ class AdsCampaignType(str, Enum):
 
 
 class AdsCriteriaSex(int, Enum):
-    enum_0 = 0
-    enum_1 = 1
-    enum_2 = 2
+    ANY = 0
+    MALE = 1
+    FEMALE = 2
 
 
 class AdsDemostatsFormat(pydantic.BaseModel):
@@ -576,7 +575,7 @@ class BaseObjectCount(pydantic.BaseModel):
 
 
 class BaseOkResponse(int, Enum):
-    enum_1 = 1
+    OK = 1
 
 
 class BasePlace(pydantic.BaseModel):
@@ -616,7 +615,7 @@ class BasePlace(pydantic.BaseModel):
 
 
 class BasePropertyExists(int, Enum):
-    enum_1 = 1
+    PROPERTY_EXISTS = 1
 
 
 class BaseRepostsInfo(pydantic.BaseModel):
@@ -629,9 +628,9 @@ class BaseRepostsInfo(pydantic.BaseModel):
 
 
 class BaseSex(int, Enum):
-    enum_0 = 0
-    enum_1 = 1
-    enum_2 = 2
+    UNKNOWN = 0
+    FEMALE = 1
+    MALE = 2
 
 
 class BaseSticker(pydantic.BaseModel):
@@ -688,15 +687,15 @@ class CallbackGroupJoinType(str, Enum):
 
 
 class CallbackGroupMarket(int, Enum):
-    enum_0 = 0
-    enum_1 = 1
+    DISABLED = 0
+    OPEN = 1
 
 
 class CallbackGroupOfficerRole(int, Enum):
-    enum_0 = 0
-    enum_1 = 1
-    enum_2 = 2
-    enum_3 = 3
+    NONE = 0
+    MODERATOR = 1
+    EDITOR = 2
+    ADMINISTRATOR = 3
 
 
 class CallbackMessageType(str, Enum):
@@ -854,10 +853,10 @@ class FavePageType(str, Enum):
 
 
 class FriendsFriendStatusStatus(int, Enum):
-    enum_0 = 0
-    enum_1 = 1
-    enum_2 = 2
-    enum_3 = 3
+    NOT_A_FRIEND = 0
+    OUTCOMING_REQUEST = 1
+    INCOMING_REQUEST = 2
+    IS_FRIEND = 3
 
 
 class FriendsRequestsMutual(pydantic.BaseModel):
@@ -870,9 +869,9 @@ class FriendsRequestsMutual(pydantic.BaseModel):
 
 
 class GiftsGiftPrivacy(int, Enum):
-    enum_0 = 0
-    enum_1 = 1
-    enum_2 = 2
+    NAME_AND_MESSAGE_FOR_ALL = 0
+    NAME_FOR_ALL = 1
+    NAME_AND_MESSAGE_FOR_RECIPIENT_ONLY = 2
 
 
 class GiftsLayout(pydantic.BaseModel):
@@ -962,11 +961,11 @@ class GroupsBanInfo(pydantic.BaseModel):
 
 
 class GroupsBanInfoReason(int, Enum):
-    enum_0 = 0
-    enum_1 = 1
-    enum_2 = 2
-    enum_3 = 3
-    enum_4 = 4
+    OTHER = 0
+    SPAM = 1
+    VERBAL_ABUSE = 2
+    STRONG_LANGUAGE = 3
+    FLOOD = 4
 
 
 class GroupsGroup(pydantic.BaseModel):
@@ -1021,15 +1020,15 @@ class GroupsGroup(pydantic.BaseModel):
 
 
 class GroupsGroupAdminLevel(int, Enum):
-    enum_1 = 1
-    enum_2 = 2
-    enum_3 = 3
+    MODERATOR = 1
+    EDITOR = 2
+    ADMINISTRATOR = 3
 
 
 class GroupsGroupAudio(int, Enum):
-    enum_0 = 0
-    enum_1 = 1
-    enum_2 = 2
+    DISABLED = 0
+    OPEN = 1
+    LIMITED = 2
 
 
 class GroupsGroupFull(pydantic.BaseModel):
@@ -1153,30 +1152,30 @@ class GroupsGroupFull(pydantic.BaseModel):
 
 
 class GroupsGroupFullAgeLimits(int, Enum):
-    enum_1 = 1
-    enum_2 = 2
-    enum_3 = 3
+    NO = 1
+    OVER_SIXTEEN = 2
+    OVER_EIGHTEEN = 3
 
 
 class GroupsGroupFullMemberStatus(int, Enum):
-    enum_0 = 0
-    enum_1 = 1
-    enum_2 = 2
-    enum_3 = 3
-    enum_4 = 4
-    enum_5 = 5
+    NOT_A_MEMBER = 0
+    MEMBER = 1
+    NOT_SURE = 2
+    DECLINED = 3
+    HAS_SENT_A_REQUEST = 4
+    INVITED = 5
 
 
 class GroupsGroupIsClosed(int, Enum):
-    enum_0 = 0
-    enum_1 = 1
-    enum_2 = 2
+    OPEN = 0
+    CLOSED = 1
+    PRIVATE = 2
 
 
 class GroupsGroupPhotos(int, Enum):
-    enum_0 = 0
-    enum_1 = 1
-    enum_2 = 2
+    DISABLED = 0
+    OPEN = 1
+    LIMITED = 2
 
 
 class GroupsGroupType(str, Enum):
@@ -1186,22 +1185,22 @@ class GroupsGroupType(str, Enum):
 
 
 class GroupsGroupVideo(int, Enum):
-    enum_0 = 0
-    enum_1 = 1
-    enum_2 = 2
+    DISABLED = 0
+    OPEN = 1
+    LIMITED = 2
 
 
 class GroupsGroupWall(int, Enum):
-    enum_0 = 0
-    enum_1 = 1
-    enum_2 = 2
-    enum_3 = 3
+    DISABLED = 0
+    OPEN = 1
+    LIMITED = 2
+    CLOSED = 3
 
 
 class GroupsGroupXtrInvitedByAdminLevel(int, Enum):
-    enum_1 = 1
-    enum_2 = 2
-    enum_3 = 3
+    MODERATOR = 1
+    EDITOR = 2
+    ADMINISTRATOR = 3
 
 
 class GroupsGroupXtrInvitedByType(str, Enum):
@@ -1462,9 +1461,9 @@ class MarketMarketItem(pydantic.BaseModel):
 
 
 class MarketMarketItemAvailability(int, Enum):
-    enum_0 = 0
-    enum_1 = 1
-    enum_2 = 2
+    AVAILABLE = 0
+    REMOVED = 1
+    UNAVAILABLE = 2
 
 
 class MarketPrice(pydantic.BaseModel):
@@ -1962,9 +1961,9 @@ class NotificationsSendMessageError(pydantic.BaseModel):
 
 
 class PagesPrivacySettings(int, Enum):
-    enum_0 = 0
-    enum_1 = 1
-    enum_2 = 2
+    COMMUNITY_MANAGERS_ONLY = 0
+    COMMUNITY_MEMBERS_ONLY = 1
+    EVERYONE = 2
 
 
 class PagesWikipageFull(pydantic.BaseModel):
@@ -2710,15 +2709,15 @@ class UsersUserMin(pydantic.BaseModel):
 
 
 class UsersUserRelation(int, Enum):
-    enum_0 = 0
-    enum_1 = 1
-    enum_2 = 2
-    enum_3 = 3
-    enum_4 = 4
-    enum_5 = 5
-    enum_6 = 6
-    enum_7 = 7
-    enum_8 = 8
+    NOT_SPECIFIED = 0
+    SINGLE = 1
+    IN_A_RELATIONSHIP = 2
+    ENGAGED = 3
+    MARRIED = 4
+    COMPLICATED = 5
+    ACTIVELY_SEARCHING = 6
+    IN_LOVE = 7
+    IN_A_CIVIL_UNION = 8
 
 
 class UtilsDomainResolvedType(str, Enum):
@@ -3863,9 +3862,9 @@ class AdsUsers(pydantic.BaseModel):
 
 
 class AppsAppLeaderboardType(int, Enum):
-    enum_0 = 0
-    enum_1 = 1
-    enum_2 = 2
+    NOT_SUPPORTED = 0
+    LEVELS = 1
+    POINTS = 2
 
 
 class AppsAppMin(pydantic.BaseModel):
@@ -4095,10 +4094,10 @@ class BaseUserId(pydantic.BaseModel):
 
 
 class BoardDefaultOrder(int, Enum):
-    enum_1 = 1
-    enum_2 = 2
-    enum_minus_1 = -1
-    enum_minus_2 = -2
+    DESC_UPDATED = 1
+    DESC_CREATED = 2
+    ASC_UPDATED = -1
+    ASC_CREATED = -2
 
 
 class BoardTopicComment(pydantic.BaseModel):
@@ -4916,15 +4915,15 @@ class GroupsFilter(str, Enum):
 
 
 class GroupsGroupAccess(int, Enum):
-    enum_0 = 0
-    enum_1 = 1
-    enum_2 = 2
+    OPEN = 0
+    CLOSED = 1
+    PRIVATE = 2
 
 
 class GroupsGroupAgeLimits(int, Enum):
-    enum_1 = 1
-    enum_2 = 2
-    enum_3 = 3
+    UNLIMITED = 1
+    SIXTEEN_PLUS = 2
+    EIGHTEEN_PLUS = 3
 
 
 class GroupsGroupBanInfo(pydantic.BaseModel):
@@ -4976,18 +4975,18 @@ class GroupsGroupCategoryType(pydantic.BaseModel):
 
 
 class GroupsGroupDocs(int, Enum):
-    enum_0 = 0
-    enum_1 = 1
-    enum_2 = 2
+    DISABLED = 0
+    OPEN = 1
+    LIMITED = 2
 
 
 class GroupsGroupFullMainSection(int, Enum):
-    enum_0 = 0
-    enum_1 = 1
-    enum_2 = 2
-    enum_3 = 3
-    enum_4 = 4
-    enum_5 = 5
+    ABSENT = 0
+    PHOTOS = 1
+    TOPICS = 2
+    AUDIO = 3
+    VIDEO = 4
+    MARKET = 5
 
 
 class GroupsGroupLink(pydantic.BaseModel):
@@ -5012,11 +5011,11 @@ class GroupsGroupLink(pydantic.BaseModel):
 
 
 class GroupsGroupMarketCurrency(int, Enum):
-    enum_643 = 643
-    enum_980 = 980
-    enum_398 = 398
-    enum_978 = 978
-    enum_840 = 840
+    RUSSIAN_RUBLES = 643
+    UKRAINIAN_HRYVNIA = 980
+    KAZAKH_TENGE = 398
+    EURO = 978
+    US_DOLLARS = 840
 
 
 class GroupsGroupPublicCategoryList(pydantic.BaseModel):
@@ -5108,60 +5107,60 @@ class GroupsGroupSettings(pydantic.BaseModel):
 
 
 class GroupsGroupSubject(str, Enum):
-    enum_1 = 1
-    enum_2 = 2
-    enum_3 = 3
-    enum_4 = 4
-    enum_5 = 5
-    enum_6 = 6
-    enum_7 = 7
-    enum_8 = 8
-    enum_9 = 9
-    enum_10 = 10
-    enum_11 = 11
-    enum_12 = 12
-    enum_13 = 13
-    enum_14 = 14
-    enum_15 = 15
-    enum_16 = 16
-    enum_17 = 17
-    enum_18 = 18
-    enum_19 = 19
-    enum_20 = 20
-    enum_21 = 21
-    enum_22 = 22
-    enum_23 = 23
-    enum_24 = 24
-    enum_25 = 25
-    enum_26 = 26
-    enum_27 = 27
-    enum_28 = 28
-    enum_29 = 29
-    enum_30 = 30
-    enum_31 = 31
-    enum_32 = 32
-    enum_33 = 33
-    enum_34 = 34
-    enum_35 = 35
-    enum_36 = 36
-    enum_37 = 37
-    enum_38 = 38
-    enum_39 = 39
-    enum_40 = 40
-    enum_41 = 41
-    enum_42 = 42
+    AUTO = 1
+    ACTIVITY_HOLIDAYS = 2
+    BUSINESS = 3
+    PETS = 4
+    HEALTH = 5
+    DATING_AND_COMMUNICATION = 6
+    GAMES = 7
+    IT = 8
+    CINEMA = 9
+    BEAUTY_AND_FASHION = 10
+    COOKING = 11
+    ART_AND_CULTURE = 12
+    LITERATURE = 13
+    MOBILE_SERVICES_AND_INTERNET = 14
+    MUSIC = 15
+    SCIENCE_AND_TECHNOLOGY = 16
+    REAL_ESTATE = 17
+    NEWS_AND_MEDIA = 18
+    SECURITY = 19
+    EDUCATION = 20
+    HOME_AND_RENOVATIONS = 21
+    POLITICS = 22
+    FOOD = 23
+    INDUSTRY = 24
+    TRAVEL = 25
+    WORK = 26
+    ENTERTAINMENT = 27
+    RELIGION = 28
+    FAMILY = 29
+    SPORTS = 30
+    INSURANCE = 31
+    TELEVISION = 32
+    GOODS_AND_SERVICES = 33
+    HOBBIES = 34
+    FINANCE = 35
+    PHOTO = 36
+    ESOTERICS = 37
+    ELECTRONICS_AND_APPLIANCES = 38
+    EROTIC = 39
+    HUMOR = 40
+    SOCIETY_HUMANITIES = 41
+    DESIGN_AND_GRAPHICS = 42
 
 
 class GroupsGroupTopics(int, Enum):
-    enum_0 = 0
-    enum_1 = 1
-    enum_2 = 2
+    DISABLED = 0
+    OPEN = 1
+    LIMITED = 2
 
 
 class GroupsGroupWiki(int, Enum):
-    enum_0 = 0
-    enum_1 = 1
-    enum_2 = 2
+    DISABLED = 0
+    OPEN = 1
+    LIMITED = 2
 
 
 class GroupsGroupXtrInvitedBy(pydantic.BaseModel):
