@@ -139,6 +139,7 @@ class APIOptionsRequestContext:
         del copied
         del new
 
+
 class API:
     def __init__(
         self,
@@ -164,6 +165,7 @@ class API:
         copied.tokens = [token]
         new = APIOptionsRequestContext(copied)
         return new
-    
-    def with_options(self, options: APIOptions) -> APIOptionsRequestContext:
+
+    @staticmethod
+    def with_options(options: APIOptions) -> APIOptionsRequestContext:
         return APIOptionsRequestContext(options)

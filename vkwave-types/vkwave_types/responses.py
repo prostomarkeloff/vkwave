@@ -20,7 +20,7 @@ class AccountGetActiveOffersResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[AccountOffer] = pydantic.Field(
+    items: typing.Optional[typing.List[AccountOffer]] = pydantic.Field(
         None, description="",
     )
 
@@ -41,7 +41,7 @@ class AccountGetBannedResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[int] = pydantic.Field(
+    items: typing.Optional[typing.List[int]] = pydantic.Field(
         None, description="",
     )
     profiles: typing.Optional[UsersUserMin] = pydantic.Field(
@@ -339,7 +339,7 @@ class AppsGetCatalogResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[AppsApp] = pydantic.Field(
+    items: typing.Optional[typing.List[AppsApp]] = pydantic.Field(
         None, description="",
     )
 
@@ -354,7 +354,7 @@ class AppsGetFriendsListResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[UsersUserFull] = pydantic.Field(
+    items: typing.Optional[typing.List[UsersUserFull]] = pydantic.Field(
         None, description="",
     )
 
@@ -369,7 +369,7 @@ class AppsGetLeaderboardExtendedResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[AppsLeaderboard] = pydantic.Field(
+    items: typing.Optional[typing.List[AppsLeaderboard]] = pydantic.Field(
         None, description="",
     )
     profiles: typing.Optional[UsersUserMin] = pydantic.Field(
@@ -389,7 +389,7 @@ class AppsGetLeaderboardResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[AppsLeaderboard] = pydantic.Field(
+    items: typing.Optional[typing.List[AppsLeaderboard]] = pydantic.Field(
         None, description="",
     )
 
@@ -404,7 +404,7 @@ class AppsGetScopesResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[AppsScope] = pydantic.Field(
+    items: typing.Optional[typing.List[AppsScope]] = pydantic.Field(
         None, description="",
     )
 
@@ -425,7 +425,7 @@ class AppsGetResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[AppsApp] = pydantic.Field(
+    items: typing.Optional[typing.List[AppsApp]] = pydantic.Field(
         None, description="",
     )
 
@@ -485,7 +485,7 @@ class BoardGetCommentsExtendedResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[BoardTopicComment] = pydantic.Field(
+    items: typing.Optional[typing.List[BoardTopicComment]] = pydantic.Field(
         None, description="",
     )
     poll: typing.Optional[BoardTopicPoll] = pydantic.Field(
@@ -509,7 +509,7 @@ class BoardGetCommentsResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[BoardTopicComment] = pydantic.Field(
+    items: typing.Optional[typing.List[BoardTopicComment]] = pydantic.Field(
         None, description="",
     )
     poll: typing.Optional[BoardTopicPoll] = pydantic.Field(
@@ -527,7 +527,7 @@ class BoardGetTopicsExtendedResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[BoardTopic] = pydantic.Field(
+    items: typing.Optional[typing.List[BoardTopic]] = pydantic.Field(
         None, description="",
     )
     default_order: typing.Optional[BoardDefaultOrder] = pydantic.Field(
@@ -551,7 +551,7 @@ class BoardGetTopicsResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[BoardTopic] = pydantic.Field(
+    items: typing.Optional[typing.List[BoardTopic]] = pydantic.Field(
         None, description="",
     )
     default_order: typing.Optional[BoardDefaultOrder] = pydantic.Field(
@@ -572,7 +572,7 @@ class DatabaseGetChairsResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[BaseObject] = pydantic.Field(
+    items: typing.Optional[typing.List[BaseObject]] = pydantic.Field(
         None, description="",
     )
 
@@ -593,7 +593,7 @@ class DatabaseGetCitiesResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[DatabaseCity] = pydantic.Field(
+    items: typing.Optional[typing.List[DatabaseCity]] = pydantic.Field(
         None, description="",
     )
 
@@ -614,7 +614,7 @@ class DatabaseGetCountriesResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[BaseCountry] = pydantic.Field(
+    items: typing.Optional[typing.List[BaseCountry]] = pydantic.Field(
         None, description="",
     )
 
@@ -629,7 +629,7 @@ class DatabaseGetFacultiesResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[DatabaseFaculty] = pydantic.Field(
+    items: typing.Optional[typing.List[DatabaseFaculty]] = pydantic.Field(
         None, description="",
     )
 
@@ -650,7 +650,7 @@ class DatabaseGetMetroStationsResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[DatabaseStation] = pydantic.Field(
+    items: typing.Optional[typing.List[DatabaseStation]] = pydantic.Field(
         None, description="",
     )
 
@@ -665,7 +665,7 @@ class DatabaseGetRegionsResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[DatabaseRegion] = pydantic.Field(
+    items: typing.Optional[typing.List[DatabaseRegion]] = pydantic.Field(
         None, description="",
     )
 
@@ -688,7 +688,7 @@ class DatabaseGetSchoolsResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[DatabaseSchool] = pydantic.Field(
+    items: typing.Optional[typing.List[DatabaseSchool]] = pydantic.Field(
         None, description="",
     )
 
@@ -703,7 +703,7 @@ class DatabaseGetUniversitiesResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[DatabaseUniversity] = pydantic.Field(
+    items: typing.Optional[typing.List[DatabaseUniversity]] = pydantic.Field(
         None, description="",
     )
 
@@ -736,7 +736,7 @@ class DocsGetTypesResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[DocsDocTypes] = pydantic.Field(
+    items: typing.Optional[typing.List[DocsDocTypes]] = pydantic.Field(
         None, description="",
     )
 
@@ -757,7 +757,7 @@ class DocsGetResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[DocsDoc] = pydantic.Field(
+    items: typing.Optional[typing.List[DocsDoc]] = pydantic.Field(
         None, description="",
     )
 
@@ -793,7 +793,7 @@ class DocsSearchResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[DocsDoc] = pydantic.Field(
+    items: typing.Optional[typing.List[DocsDoc]] = pydantic.Field(
         None, description="",
     )
 
@@ -814,7 +814,7 @@ class FaveGetPagesResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="",
     )
-    items: typing.Optional[FavePage] = pydantic.Field(
+    items: typing.Optional[typing.List[FavePage]] = pydantic.Field(
         None, description="",
     )
 
@@ -829,7 +829,7 @@ class FaveGetTagsResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="",
     )
-    items: typing.Optional[FaveTag] = pydantic.Field(
+    items: typing.Optional[typing.List[FaveTag]] = pydantic.Field(
         None, description="",
     )
 
@@ -844,7 +844,7 @@ class FaveGetExtendedResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[FaveBookmark] = pydantic.Field(
+    items: typing.Optional[typing.List[FaveBookmark]] = pydantic.Field(
         None, description="",
     )
     profiles: typing.Optional[UsersUserFull] = pydantic.Field(
@@ -865,7 +865,7 @@ class FaveGetResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[FaveBookmark] = pydantic.Field(
+    items: typing.Optional[typing.List[FaveBookmark]] = pydantic.Field(
         None, description="",
     )
 
@@ -940,7 +940,7 @@ class FriendsGetListsResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total communities number",
     )
-    items: typing.Optional[FriendsFriendsList] = pydantic.Field(
+    items: typing.Optional[typing.List[FriendsFriendsList]] = pydantic.Field(
         None, description="",
     )
 
@@ -996,7 +996,7 @@ class FriendsGetRequestsExtendedResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total requests number",
     )
-    items: typing.Optional[FriendsRequestsXtrMessage] = pydantic.Field(
+    items: typing.Optional[typing.List[FriendsRequestsXtrMessage]] = pydantic.Field(
         None, description="",
     )
 
@@ -1013,7 +1013,7 @@ class FriendsGetRequestsNeedMutualResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total requests number",
     )
-    items: typing.Optional[FriendsRequests] = pydantic.Field(
+    items: typing.Optional[typing.List[FriendsRequests]] = pydantic.Field(
         None, description="",
     )
 
@@ -1030,7 +1030,7 @@ class FriendsGetRequestsResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total requests number",
     )
-    items: typing.Optional[int] = pydantic.Field(
+    items: typing.Optional[typing.List[int]] = pydantic.Field(
         None, description="",
     )
     count_unread: typing.Optional[int] = pydantic.Field(
@@ -1048,7 +1048,7 @@ class FriendsGetSuggestionsResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total results number",
     )
-    items: typing.Optional[UsersUserFull] = pydantic.Field(
+    items: typing.Optional[typing.List[UsersUserFull]] = pydantic.Field(
         None, description="",
     )
 
@@ -1063,7 +1063,7 @@ class FriendsGetFieldsResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total friends number",
     )
-    items: typing.Optional[FriendsUserXtrLists] = pydantic.Field(
+    items: typing.Optional[typing.List[FriendsUserXtrLists]] = pydantic.Field(
         None, description="",
     )
 
@@ -1078,7 +1078,7 @@ class FriendsGetResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total friends number",
     )
-    items: typing.Optional[int] = pydantic.Field(
+    items: typing.Optional[typing.List[int]] = pydantic.Field(
         None, description="",
     )
 
@@ -1093,7 +1093,7 @@ class FriendsSearchResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[UsersUserFull] = pydantic.Field(
+    items: typing.Optional[typing.List[UsersUserFull]] = pydantic.Field(
         None, description="",
     )
 
@@ -1108,7 +1108,7 @@ class GiftsGetResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[GiftsGift] = pydantic.Field(
+    items: typing.Optional[typing.List[GiftsGift]] = pydantic.Field(
         None, description="",
     )
 
@@ -1159,7 +1159,7 @@ class GroupsGetAddressesResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total count of addresses",
     )
-    items: typing.Optional[GroupsAddress] = pydantic.Field(
+    items: typing.Optional[typing.List[GroupsAddress]] = pydantic.Field(
         None, description="",
     )
 
@@ -1174,7 +1174,7 @@ class GroupsGetBannedResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total users number",
     )
-    items: typing.Optional[GroupsBannedItem] = pydantic.Field(
+    items: typing.Optional[typing.List[GroupsBannedItem]] = pydantic.Field(
         None, description="",
     )
 
@@ -1209,7 +1209,7 @@ class GroupsGetCallbackServersResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="",
     )
-    items: typing.Optional[GroupsCallbackServer] = pydantic.Field(
+    items: typing.Optional[typing.List[GroupsCallbackServer]] = pydantic.Field(
         None, description="",
     )
 
@@ -1262,7 +1262,7 @@ class GroupsGetCatalogResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total communities number",
     )
-    items: typing.Optional[GroupsGroup] = pydantic.Field(
+    items: typing.Optional[typing.List[GroupsGroup]] = pydantic.Field(
         None, description="",
     )
 
@@ -1277,7 +1277,7 @@ class GroupsGetInvitedUsersResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total communities number",
     )
-    items: typing.Optional[UsersUserFull] = pydantic.Field(
+    items: typing.Optional[typing.List[UsersUserFull]] = pydantic.Field(
         None, description="",
     )
 
@@ -1292,7 +1292,7 @@ class GroupsGetInvitesExtendedResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total communities number",
     )
-    items: typing.Optional[GroupsGroupXtrInvitedBy] = pydantic.Field(
+    items: typing.Optional[typing.List[GroupsGroupXtrInvitedBy]] = pydantic.Field(
         None, description="",
     )
     profiles: typing.Optional[UsersUserMin] = pydantic.Field(
@@ -1313,7 +1313,7 @@ class GroupsGetInvitesResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total communities number",
     )
-    items: typing.Optional[GroupsGroupXtrInvitedBy] = pydantic.Field(
+    items: typing.Optional[typing.List[GroupsGroupXtrInvitedBy]] = pydantic.Field(
         None, description="",
     )
 
@@ -1340,7 +1340,7 @@ class GroupsGetMembersFieldsResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total members number",
     )
-    items: typing.Optional[GroupsUserXtrRole] = pydantic.Field(
+    items: typing.Optional[typing.List[GroupsUserXtrRole]] = pydantic.Field(
         None, description="",
     )
 
@@ -1355,7 +1355,7 @@ class GroupsGetMembersFilterResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total members number",
     )
-    items: typing.Optional[GroupsMemberRole] = pydantic.Field(
+    items: typing.Optional[typing.List[GroupsMemberRole]] = pydantic.Field(
         None, description="",
     )
 
@@ -1370,7 +1370,7 @@ class GroupsGetMembersResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total members number",
     )
-    items: typing.Optional[int] = pydantic.Field(
+    items: typing.Optional[typing.List[int]] = pydantic.Field(
         None, description="",
     )
 
@@ -1385,7 +1385,7 @@ class GroupsGetRequestsFieldsResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total communities number",
     )
-    items: typing.Optional[UsersUserFull] = pydantic.Field(
+    items: typing.Optional[typing.List[UsersUserFull]] = pydantic.Field(
         None, description="",
     )
 
@@ -1400,7 +1400,7 @@ class GroupsGetRequestsResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total communities number",
     )
-    items: typing.Optional[int] = pydantic.Field(
+    items: typing.Optional[typing.List[int]] = pydantic.Field(
         None, description="",
     )
 
@@ -1438,7 +1438,7 @@ class GroupsGetExtendedResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total communities number",
     )
-    items: typing.Optional[GroupsGroupFull] = pydantic.Field(
+    items: typing.Optional[typing.List[GroupsGroupFull]] = pydantic.Field(
         None, description="",
     )
 
@@ -1453,7 +1453,7 @@ class GroupsGetResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total communities number",
     )
-    items: typing.Optional[int] = pydantic.Field(
+    items: typing.Optional[typing.List[int]] = pydantic.Field(
         None, description="",
     )
 
@@ -1511,7 +1511,7 @@ class GroupsSearchResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total communities number",
     )
-    items: typing.Optional[GroupsGroup] = pydantic.Field(
+    items: typing.Optional[typing.List[GroupsGroup]] = pydantic.Field(
         None, description="",
     )
 
@@ -1595,7 +1595,7 @@ class LikesGetListExtendedResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[UsersUserMin] = pydantic.Field(
+    items: typing.Optional[typing.List[UsersUserMin]] = pydantic.Field(
         None, description="",
     )
 
@@ -1610,7 +1610,7 @@ class LikesGetListResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[int] = pydantic.Field(
+    items: typing.Optional[typing.List[int]] = pydantic.Field(
         None, description="",
     )
 
@@ -1677,7 +1677,7 @@ class MarketGetAlbumByIdResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[MarketMarketAlbum] = pydantic.Field(
+    items: typing.Optional[typing.List[MarketMarketAlbum]] = pydantic.Field(
         None, description="",
     )
 
@@ -1692,7 +1692,7 @@ class MarketGetAlbumsResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[MarketMarketAlbum] = pydantic.Field(
+    items: typing.Optional[typing.List[MarketMarketAlbum]] = pydantic.Field(
         None, description="",
     )
 
@@ -1707,7 +1707,7 @@ class MarketGetByIdExtendedResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[MarketMarketItemFull] = pydantic.Field(
+    items: typing.Optional[typing.List[MarketMarketItemFull]] = pydantic.Field(
         None, description="",
     )
 
@@ -1722,7 +1722,7 @@ class MarketGetByIdResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[MarketMarketItem] = pydantic.Field(
+    items: typing.Optional[typing.List[MarketMarketItem]] = pydantic.Field(
         None, description="",
     )
 
@@ -1737,7 +1737,7 @@ class MarketGetCategoriesResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[MarketMarketCategory] = pydantic.Field(
+    items: typing.Optional[typing.List[MarketMarketCategory]] = pydantic.Field(
         None, description="",
     )
 
@@ -1752,7 +1752,7 @@ class MarketGetCommentsResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[WallWallComment] = pydantic.Field(
+    items: typing.Optional[typing.List[WallWallComment]] = pydantic.Field(
         None, description="",
     )
 
@@ -1767,7 +1767,7 @@ class MarketGetExtendedResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[MarketMarketItemFull] = pydantic.Field(
+    items: typing.Optional[typing.List[MarketMarketItemFull]] = pydantic.Field(
         None, description="",
     )
 
@@ -1782,7 +1782,7 @@ class MarketGetResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[MarketMarketItem] = pydantic.Field(
+    items: typing.Optional[typing.List[MarketMarketItem]] = pydantic.Field(
         None, description="",
     )
 
@@ -1804,7 +1804,7 @@ class MarketSearchExtendedResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[MarketMarketItemFull] = pydantic.Field(
+    items: typing.Optional[typing.List[MarketMarketItemFull]] = pydantic.Field(
         None, description="",
     )
 
@@ -1819,7 +1819,7 @@ class MarketSearchResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[MarketMarketItem] = pydantic.Field(
+    items: typing.Optional[typing.List[MarketMarketItem]] = pydantic.Field(
         None, description="",
     )
 
@@ -1881,7 +1881,7 @@ class MessagesGetByConversationMessageIdResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[MessagesMessage] = pydantic.Field(
+    items: typing.Optional[typing.List[MessagesMessage]] = pydantic.Field(
         None, description="",
     )
 
@@ -1898,7 +1898,7 @@ class MessagesGetByIdExtendedResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[MessagesMessage] = pydantic.Field(
+    items: typing.Optional[typing.List[MessagesMessage]] = pydantic.Field(
         None, description="",
     )
     profiles: typing.Optional[UsersUserFull] = pydantic.Field(
@@ -1919,7 +1919,7 @@ class MessagesGetByIdResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[MessagesMessage] = pydantic.Field(
+    items: typing.Optional[typing.List[MessagesMessage]] = pydantic.Field(
         None, description="",
     )
 
@@ -1973,7 +1973,7 @@ class MessagesGetConversationMembersResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Chat members count",
     )
-    items: typing.Optional[MessagesConversationMember] = pydantic.Field(
+    items: typing.Optional[typing.List[MessagesConversationMember]] = pydantic.Field(
         None, description="",
     )
     chat_restrictions: typing.Optional[MessagesChatRestrictions] = pydantic.Field(
@@ -1999,7 +1999,7 @@ class MessagesGetConversationsByIdExtendedResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[MessagesConversation] = pydantic.Field(
+    items: typing.Optional[typing.List[MessagesConversation]] = pydantic.Field(
         None, description="",
     )
     profiles: typing.Optional[UsersUser] = pydantic.Field(
@@ -2019,7 +2019,7 @@ class MessagesGetConversationsByIdResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[MessagesConversation] = pydantic.Field(
+    items: typing.Optional[typing.List[MessagesConversation]] = pydantic.Field(
         None, description="",
     )
 
@@ -2039,7 +2039,9 @@ class MessagesGetConversationsResponseModel(pydantic.BaseModel):
     unread_count: typing.Optional[int] = pydantic.Field(
         None, description="Unread dialogs number",
     )
-    items: typing.Optional[MessagesConversationWithMessage] = pydantic.Field(
+    items: typing.Optional[
+        typing.List[MessagesConversationWithMessage]
+    ] = pydantic.Field(
         None, description="",
     )
     profiles: typing.Optional[UsersUserFull] = pydantic.Field(
@@ -2057,7 +2059,7 @@ class MessagesGetConversationsResponse(pydantic.BaseModel):
 
 
 class MessagesGetHistoryAttachmentsResponseModel(pydantic.BaseModel):
-    items: typing.Optional[MessagesHistoryAttachment] = pydantic.Field(
+    items: typing.Optional[typing.List[MessagesHistoryAttachment]] = pydantic.Field(
         None, description="",
     )
     next_from: typing.Optional[str] = pydantic.Field(
@@ -2077,7 +2079,7 @@ class MessagesGetHistoryResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[MessagesMessage] = pydantic.Field(
+    items: typing.Optional[typing.List[MessagesMessage]] = pydantic.Field(
         None, description="",
     )
     profiles: typing.Optional[UsersUserFull] = pydantic.Field(
@@ -2197,7 +2199,7 @@ class MessagesSearchConversationsResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total results number",
     )
-    items: typing.Optional[MessagesConversation] = pydantic.Field(
+    items: typing.Optional[typing.List[MessagesConversation]] = pydantic.Field(
         None, description="",
     )
     profiles: typing.Optional[UsersUserFull] = pydantic.Field(
@@ -2220,7 +2222,7 @@ class MessagesSearchResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[MessagesMessage] = pydantic.Field(
+    items: typing.Optional[typing.List[MessagesMessage]] = pydantic.Field(
         None, description="",
     )
 
@@ -2291,7 +2293,7 @@ class NewsfeedGetBannedResponse(pydantic.BaseModel):
 
 
 class NewsfeedGetCommentsResponseModel(pydantic.BaseModel):
-    items: typing.Optional[NewsfeedNewsfeedItem] = pydantic.Field(
+    items: typing.Optional[typing.List[NewsfeedNewsfeedItem]] = pydantic.Field(
         None, description="",
     )
     profiles: typing.Optional[UsersUserFull] = pydantic.Field(
@@ -2315,7 +2317,7 @@ class NewsfeedGetListsExtendedResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[NewsfeedListFull] = pydantic.Field(
+    items: typing.Optional[typing.List[NewsfeedListFull]] = pydantic.Field(
         None, description="",
     )
 
@@ -2330,7 +2332,7 @@ class NewsfeedGetListsResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[NewsfeedList] = pydantic.Field(
+    items: typing.Optional[typing.List[NewsfeedList]] = pydantic.Field(
         None, description="",
     )
 
@@ -2345,7 +2347,7 @@ class NewsfeedGetMentionsResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[WallWallpostToId] = pydantic.Field(
+    items: typing.Optional[typing.List[WallWallpostToId]] = pydantic.Field(
         None, description="",
     )
 
@@ -2357,7 +2359,7 @@ class NewsfeedGetMentionsResponse(pydantic.BaseModel):
 
 
 class NewsfeedGetRecommendedResponseModel(pydantic.BaseModel):
-    items: typing.Optional[NewsfeedNewsfeedItem] = pydantic.Field(
+    items: typing.Optional[typing.List[NewsfeedNewsfeedItem]] = pydantic.Field(
         None, description="",
     )
     profiles: typing.Optional[UsersUserFull] = pydantic.Field(
@@ -2385,7 +2387,7 @@ class NewsfeedGetSuggestedSourcesResponseModel(pydantic.BaseModel):
         None, description="Total number",
     )
     items: typing.Optional[
-        typing.Union[GroupsGroupFull, UsersUserXtrType,]
+        typing.List[typing.Union[GroupsGroupFull, UsersUserXtrType,]]
     ] = pydantic.Field(
         None, description="",
     )
@@ -2400,7 +2402,7 @@ class NewsfeedGetSuggestedSourcesResponse(pydantic.BaseModel):
 
 
 class NewsfeedGetResponseModel(pydantic.BaseModel):
-    items: typing.Optional[NewsfeedNewsfeedItem] = pydantic.Field(
+    items: typing.Optional[typing.List[NewsfeedNewsfeedItem]] = pydantic.Field(
         None, description="",
     )
     profiles: typing.Optional[UsersUserFull] = pydantic.Field(
@@ -2427,7 +2429,7 @@ class NewsfeedSaveListResponse(pydantic.BaseModel):
 
 
 class NewsfeedSearchExtendedResponseModel(pydantic.BaseModel):
-    items: typing.Optional[WallWallpostFull] = pydantic.Field(
+    items: typing.Optional[typing.List[WallWallpostFull]] = pydantic.Field(
         None, description="",
     )
     profiles: typing.Optional[UsersUserFull] = pydantic.Field(
@@ -2454,7 +2456,7 @@ class NewsfeedSearchExtendedResponse(pydantic.BaseModel):
 
 
 class NewsfeedSearchResponseModel(pydantic.BaseModel):
-    items: typing.Optional[WallWallpostFull] = pydantic.Field(
+    items: typing.Optional[typing.List[WallWallpostFull]] = pydantic.Field(
         None, description="",
     )
     suggested_queries: typing.Optional[str] = pydantic.Field(
@@ -2490,7 +2492,7 @@ class NotesGetCommentsResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[NotesNoteComment] = pydantic.Field(
+    items: typing.Optional[typing.List[NotesNoteComment]] = pydantic.Field(
         None, description="",
     )
 
@@ -2505,7 +2507,7 @@ class NotesGetResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[NotesNote] = pydantic.Field(
+    items: typing.Optional[typing.List[NotesNote]] = pydantic.Field(
         None, description="",
     )
 
@@ -2606,7 +2608,7 @@ class OrdersGetUserSubscriptionsResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[OrdersSubscription] = pydantic.Field(
+    items: typing.Optional[typing.List[OrdersSubscription]] = pydantic.Field(
         None, description="",
     )
 
@@ -2708,7 +2710,7 @@ class PhotosGetAlbumsResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[PhotosPhotoAlbumFull] = pydantic.Field(
+    items: typing.Optional[typing.List[PhotosPhotoAlbumFull]] = pydantic.Field(
         None, description="",
     )
 
@@ -2723,7 +2725,7 @@ class PhotosGetAllCommentsResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[PhotosCommentXtrPid] = pydantic.Field(
+    items: typing.Optional[typing.List[PhotosCommentXtrPid]] = pydantic.Field(
         None, description="",
     )
 
@@ -2738,7 +2740,7 @@ class PhotosGetAllExtendedResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[PhotosPhotoFullXtrRealOffset] = pydantic.Field(
+    items: typing.Optional[typing.List[PhotosPhotoFullXtrRealOffset]] = pydantic.Field(
         None, description="",
     )
     more: typing.Optional[BaseBoolInt] = pydantic.Field(
@@ -2756,7 +2758,7 @@ class PhotosGetAllResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[PhotosPhotoXtrRealOffset] = pydantic.Field(
+    items: typing.Optional[typing.List[PhotosPhotoXtrRealOffset]] = pydantic.Field(
         None, description="",
     )
     more: typing.Optional[BaseBoolInt] = pydantic.Field(
@@ -2789,7 +2791,7 @@ class PhotosGetCommentsExtendedResponseModel(pydantic.BaseModel):
     real_offset: typing.Optional[int] = pydantic.Field(
         None, description="Real offset of the comments",
     )
-    items: typing.Optional[WallWallComment] = pydantic.Field(
+    items: typing.Optional[typing.List[WallWallComment]] = pydantic.Field(
         None, description="",
     )
     profiles: typing.Optional[UsersUserFull] = pydantic.Field(
@@ -2815,7 +2817,7 @@ class PhotosGetCommentsResponseModel(pydantic.BaseModel):
     real_offset: typing.Optional[int] = pydantic.Field(
         None, description="Real offset of the comments",
     )
-    items: typing.Optional[WallWallComment] = pydantic.Field(
+    items: typing.Optional[typing.List[WallWallComment]] = pydantic.Field(
         None, description="",
     )
 
@@ -2842,7 +2844,7 @@ class PhotosGetNewTagsResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[PhotosPhotoXtrTagInfo] = pydantic.Field(
+    items: typing.Optional[typing.List[PhotosPhotoXtrTagInfo]] = pydantic.Field(
         None, description="",
     )
 
@@ -2869,7 +2871,7 @@ class PhotosGetUserPhotosExtendedResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[PhotosPhotoFull] = pydantic.Field(
+    items: typing.Optional[typing.List[PhotosPhotoFull]] = pydantic.Field(
         None, description="",
     )
 
@@ -2886,7 +2888,7 @@ class PhotosGetUserPhotosResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[PhotosPhoto] = pydantic.Field(
+    items: typing.Optional[typing.List[PhotosPhoto]] = pydantic.Field(
         None, description="",
     )
 
@@ -2907,7 +2909,7 @@ class PhotosGetExtendedResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[PhotosPhotoFull] = pydantic.Field(
+    items: typing.Optional[typing.List[PhotosPhotoFull]] = pydantic.Field(
         None, description="",
     )
 
@@ -2922,7 +2924,7 @@ class PhotosGetResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[PhotosPhoto] = pydantic.Field(
+    items: typing.Optional[typing.List[PhotosPhoto]] = pydantic.Field(
         None, description="",
     )
 
@@ -3013,7 +3015,7 @@ class PhotosSearchResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[PhotosPhoto] = pydantic.Field(
+    items: typing.Optional[typing.List[PhotosPhoto]] = pydantic.Field(
         None, description="",
     )
 
@@ -3118,7 +3120,7 @@ class PrettyCardsGetResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[PrettyCardsPrettyCard] = pydantic.Field(
+    items: typing.Optional[typing.List[PrettyCardsPrettyCard]] = pydantic.Field(
         None, description="",
     )
 
@@ -3133,7 +3135,7 @@ class SearchGetHintsResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="",
     )
-    items: typing.Optional[SearchHint] = pydantic.Field(
+    items: typing.Optional[typing.List[SearchHint]] = pydantic.Field(
         None, description="",
     )
     suggested_queries: typing.Optional[str] = pydantic.Field(
@@ -3213,7 +3215,7 @@ class StorageGetKeysResponse(pydantic.BaseModel):
     )
 
 
-class StorageGetKeysResponseStorageValue(pydantic.BaseModel):
+class StorageGetKeysResponse(pydantic.BaseModel):
     response: typing.Optional[typing.List["StorageValue"]] = pydantic.Field(
         None, description="",
     )
@@ -3229,7 +3231,7 @@ class StoriesGetBannedExtendedResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Stories count",
     )
-    items: typing.Optional[int] = pydantic.Field(
+    items: typing.Optional[typing.List[int]] = pydantic.Field(
         None, description="",
     )
     profiles: typing.Optional[UsersUserFull] = pydantic.Field(
@@ -3250,7 +3252,7 @@ class StoriesGetBannedResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Stories count",
     )
-    items: typing.Optional[int] = pydantic.Field(
+    items: typing.Optional[typing.List[int]] = pydantic.Field(
         None, description="",
     )
 
@@ -3265,7 +3267,7 @@ class StoriesGetByIdExtendedResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Stories count",
     )
-    items: typing.Optional[StoriesStory] = pydantic.Field(
+    items: typing.Optional[typing.List[StoriesStory]] = pydantic.Field(
         None, description="",
     )
     profiles: typing.Optional[UsersUserFull] = pydantic.Field(
@@ -3286,7 +3288,7 @@ class StoriesGetByIdResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Stories count",
     )
-    items: typing.Optional[StoriesStory] = pydantic.Field(
+    items: typing.Optional[typing.List[StoriesStory]] = pydantic.Field(
         None, description="",
     )
 
@@ -3318,7 +3320,7 @@ class StoriesGetRepliesExtendedResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Stories count",
     )
-    items: typing.Optional[list] = pydantic.Field(
+    items: typing.Optional[typing.List[list]] = pydantic.Field(
         None, description="",
     )
     profiles: typing.Optional[UsersUserFull] = pydantic.Field(
@@ -3341,7 +3343,7 @@ class StoriesGetRepliesResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Stories count",
     )
-    items: typing.Optional[list] = pydantic.Field(
+    items: typing.Optional[typing.List[list]] = pydantic.Field(
         None, description="",
     )
 
@@ -3379,7 +3381,7 @@ class StoriesGetViewersExtendedResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Viewers count",
     )
-    items: typing.Optional[UsersUserFull] = pydantic.Field(
+    items: typing.Optional[typing.List[UsersUserFull]] = pydantic.Field(
         None, description="",
     )
 
@@ -3396,7 +3398,7 @@ class StoriesGetViewersResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Viewers count",
     )
-    items: typing.Optional[int] = pydantic.Field(
+    items: typing.Optional[typing.List[int]] = pydantic.Field(
         None, description="",
     )
 
@@ -3411,7 +3413,7 @@ class StoriesGetExtendedResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Stories count",
     )
-    items: typing.Optional[list] = pydantic.Field(
+    items: typing.Optional[typing.List[list]] = pydantic.Field(
         None, description="",
     )
     profiles: typing.Optional[UsersUser] = pydantic.Field(
@@ -3432,7 +3434,7 @@ class StoriesGetResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Stories count",
     )
-    items: typing.Optional[StoriesStory] = pydantic.Field(
+    items: typing.Optional[typing.List[StoriesStory]] = pydantic.Field(
         None, description="",
     )
     promo_data: typing.Optional[StoriesPromoBlock] = pydantic.Field(
@@ -3477,7 +3479,7 @@ class UsersGetFollowersFieldsResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number of available results",
     )
-    items: typing.Optional[UsersUserFull] = pydantic.Field(
+    items: typing.Optional[typing.List[UsersUserFull]] = pydantic.Field(
         None, description="",
     )
 
@@ -3492,7 +3494,7 @@ class UsersGetFollowersResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total friends number",
     )
-    items: typing.Optional[int] = pydantic.Field(
+    items: typing.Optional[typing.List[int]] = pydantic.Field(
         None, description="",
     )
 
@@ -3507,7 +3509,7 @@ class UsersGetSubscriptionsExtendedResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number of available results",
     )
-    items: typing.Optional[UsersSubscriptionsItem] = pydantic.Field(
+    items: typing.Optional[typing.List[UsersSubscriptionsItem]] = pydantic.Field(
         None, description="",
     )
 
@@ -3536,7 +3538,7 @@ class UsersGetSubscriptionsResponse(pydantic.BaseModel):
 
 
 class UsersGetResponse(pydantic.BaseModel):
-    response: typing.Optional[typing.List["UsersUserXtrCounters"]] = pydantic.Field(
+    response: typing.Optional[typing.List["UsersUserMin"]] = pydantic.Field(
         None, description="",
     )
 
@@ -3551,7 +3553,7 @@ class UsersSearchResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number of available results",
     )
-    items: typing.Optional[UsersUserFull] = pydantic.Field(
+    items: typing.Optional[typing.List[UsersUserFull]] = pydantic.Field(
         None, description="",
     )
 
@@ -3572,7 +3574,7 @@ class UtilsGetLastShortenedLinksResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number of available results",
     )
-    items: typing.Optional[UtilsLastShortenedLink] = pydantic.Field(
+    items: typing.Optional[typing.List[UtilsLastShortenedLink]] = pydantic.Field(
         None, description="",
     )
 
@@ -3643,7 +3645,7 @@ class VideoGetAlbumsByVideoExtendedResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[VideoVideoAlbumFull] = pydantic.Field(
+    items: typing.Optional[typing.List[VideoVideoAlbumFull]] = pydantic.Field(
         None, description="",
     )
 
@@ -3666,7 +3668,7 @@ class VideoGetAlbumsExtendedResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[VideoVideoAlbumFull] = pydantic.Field(
+    items: typing.Optional[typing.List[VideoVideoAlbumFull]] = pydantic.Field(
         None, description="",
     )
 
@@ -3681,7 +3683,7 @@ class VideoGetAlbumsResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[VideoVideoAlbumFull] = pydantic.Field(
+    items: typing.Optional[typing.List[VideoVideoAlbumFull]] = pydantic.Field(
         None, description="",
     )
 
@@ -3696,7 +3698,7 @@ class VideoGetCommentsExtendedResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[WallWallComment] = pydantic.Field(
+    items: typing.Optional[typing.List[WallWallComment]] = pydantic.Field(
         None, description="",
     )
     profiles: typing.Optional[UsersUserMin] = pydantic.Field(
@@ -3717,7 +3719,7 @@ class VideoGetCommentsResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[WallWallComment] = pydantic.Field(
+    items: typing.Optional[typing.List[WallWallComment]] = pydantic.Field(
         None, description="",
     )
 
@@ -3732,7 +3734,7 @@ class VideoGetExtendedResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[VideoVideoFull] = pydantic.Field(
+    items: typing.Optional[typing.List[VideoVideoFull]] = pydantic.Field(
         None, description="",
     )
     profiles: typing.Optional[UsersUserMin] = pydantic.Field(
@@ -3753,7 +3755,7 @@ class VideoGetResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[VideoVideo] = pydantic.Field(
+    items: typing.Optional[typing.List[VideoVideo]] = pydantic.Field(
         None, description="",
     )
 
@@ -3781,7 +3783,7 @@ class VideoSearchExtendedResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[VideoVideo] = pydantic.Field(
+    items: typing.Optional[typing.List[VideoVideo]] = pydantic.Field(
         None, description="",
     )
     profiles: typing.Optional[UsersUserMin] = pydantic.Field(
@@ -3802,7 +3804,7 @@ class VideoSearchResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[VideoVideo] = pydantic.Field(
+    items: typing.Optional[typing.List[VideoVideo]] = pydantic.Field(
         None, description="",
     )
 
@@ -3838,7 +3840,7 @@ class WallEditResponse(pydantic.BaseModel):
 
 
 class WallGetByIdExtendedResponseModel(pydantic.BaseModel):
-    items: typing.Optional[WallWallpostFull] = pydantic.Field(
+    items: typing.Optional[typing.List[WallWallpostFull]] = pydantic.Field(
         None, description="",
     )
     profiles: typing.Optional[UsersUserFull] = pydantic.Field(
@@ -3865,7 +3867,7 @@ class WallGetCommentsExtendedResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[WallWallComment] = pydantic.Field(
+    items: typing.Optional[typing.List[WallWallComment]] = pydantic.Field(
         None, description="",
     )
     show_reply_button: typing.Optional[bool] = pydantic.Field(
@@ -3898,7 +3900,7 @@ class WallGetCommentsResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[WallWallComment] = pydantic.Field(
+    items: typing.Optional[typing.List[WallWallComment]] = pydantic.Field(
         None, description="",
     )
     can_post: typing.Optional[bool] = pydantic.Field(
@@ -3919,7 +3921,7 @@ class WallGetCommentsResponse(pydantic.BaseModel):
 
 
 class WallGetRepostsResponseModel(pydantic.BaseModel):
-    items: typing.Optional[WallWallpostFull] = pydantic.Field(
+    items: typing.Optional[typing.List[WallWallpostFull]] = pydantic.Field(
         None, description="",
     )
     profiles: typing.Optional[UsersUser] = pydantic.Field(
@@ -3940,7 +3942,7 @@ class WallGetExtendedResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[WallWallpostFull] = pydantic.Field(
+    items: typing.Optional[typing.List[WallWallpostFull]] = pydantic.Field(
         None, description="",
     )
     profiles: typing.Optional[UsersUserFull] = pydantic.Field(
@@ -3961,7 +3963,7 @@ class WallGetResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[WallWallpostFull] = pydantic.Field(
+    items: typing.Optional[typing.List[WallWallpostFull]] = pydantic.Field(
         None, description="",
     )
 
@@ -4021,7 +4023,7 @@ class WallSearchExtendedResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[WallWallpostFull] = pydantic.Field(
+    items: typing.Optional[typing.List[WallWallpostFull]] = pydantic.Field(
         None, description="",
     )
     profiles: typing.Optional[UsersUserFull] = pydantic.Field(
@@ -4042,7 +4044,7 @@ class WallSearchResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    items: typing.Optional[WallWallpostFull] = pydantic.Field(
+    items: typing.Optional[typing.List[WallWallpostFull]] = pydantic.Field(
         None, description="",
     )
 
