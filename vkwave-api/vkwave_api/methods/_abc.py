@@ -166,6 +166,5 @@ class API:
         new = APIOptionsRequestContext(copied)
         return new
 
-    @staticmethod
-    def with_options(options: APIOptions) -> APIOptionsRequestContext:
+    def with_options(self, options: APIOptions) -> APIOptionsRequestContext:
         return APIOptionsRequestContext(options)
