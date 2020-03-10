@@ -43,6 +43,8 @@ class BotLongpollData:
         if "failed" in data:
             return await self.handle_error(data, http_client, api)
 
+        self.ts = data["ts"]
+
         return data["updates"]
 
 class BotLongpoll:
@@ -62,5 +64,6 @@ class BotLongpoll:
         while True:
             while not updates:
                 updates = await self.get_updates()
-            for update in updates:
+            while updates:
+                update = updates.pop()
                 yield update
