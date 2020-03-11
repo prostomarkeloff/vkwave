@@ -25,7 +25,7 @@ class Account(Category):
         restore_sid: typing.Optional[str] = None,
         change_password_hash: typing.Optional[str] = None,
         old_password: typing.Optional[str] = None,
-        new_password: typing.Optional[str] = None,
+        new_password: str = None,
     ) -> AccountChangePasswordResponse:
         """
         :param restore_sid: - Session id received after the [vk.com/dev/auth.restore|auth.restore] method is executed. (If the password is changed right after the access was restored)
@@ -67,7 +67,7 @@ class Account(Category):
         return result
 
     async def get_app_permissions(
-        self, user_id: typing.Optional[int] = None,
+        self, user_id: int = None,
     ) -> AccountGetAppPermissionsResponse:
         """
         :param user_id: - User ID whose settings information shall be got. By default: current user.
@@ -180,10 +180,10 @@ class Account(Category):
 
     async def register_device(
         self,
-        token: typing.Optional[str] = None,
+        token: str = None,
         device_model: typing.Optional[str] = None,
         device_year: typing.Optional[int] = None,
-        device_id: typing.Optional[str] = None,
+        device_id: str = None,
         system_version: typing.Optional[str] = None,
         settings: typing.Optional[str] = None,
         sandbox: typing.Optional[bool] = None,
@@ -277,7 +277,7 @@ class Account(Category):
         return result
 
     async def set_name_in_menu(
-        self, user_id: typing.Optional[int] = None, name: typing.Optional[str] = None,
+        self, user_id: int = None, name: typing.Optional[str] = None,
     ) -> OkResponse:
         """
         :param user_id: - User ID.
@@ -331,7 +331,7 @@ class Account(Category):
 
     async def set_push_settings(
         self,
-        device_id: typing.Optional[str] = None,
+        device_id: str = None,
         settings: typing.Optional[str] = None,
         key: typing.Optional[str] = None,
         value: typing.Optional[typing.List[str]] = None,

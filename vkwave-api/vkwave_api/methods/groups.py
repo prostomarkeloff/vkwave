@@ -5,15 +5,15 @@ from ._category import Category
 class Groups(Category):
     async def add_address(
         self,
-        group_id: typing.Optional[int] = None,
-        title: typing.Optional[str] = None,
-        address: typing.Optional[str] = None,
+        group_id: int = None,
+        title: str = None,
+        address: str = None,
         additional_address: typing.Optional[str] = None,
-        country_id: typing.Optional[int] = None,
-        city_id: typing.Optional[int] = None,
+        country_id: int = None,
+        city_id: int = None,
         metro_id: typing.Optional[int] = None,
-        latitude: typing.Optional[int] = None,
-        longitude: typing.Optional[int] = None,
+        latitude: int = None,
+        longitude: int = None,
         phone: typing.Optional[str] = None,
         work_info_status: typing.Optional[str] = None,
         timetable: typing.Optional[str] = None,
@@ -49,9 +49,9 @@ class Groups(Category):
 
     async def add_callback_server(
         self,
-        group_id: typing.Optional[int] = None,
-        url: typing.Optional[str] = None,
-        title: typing.Optional[str] = None,
+        group_id: int = None,
+        url: str = None,
+        title: str = None,
         secret_key: typing.Optional[str] = None,
     ) -> GroupsAddCallbackServerResponse:
         """
@@ -74,10 +74,7 @@ class Groups(Category):
         return result
 
     async def add_link(
-        self,
-        group_id: typing.Optional[int] = None,
-        link: typing.Optional[str] = None,
-        text: typing.Optional[str] = None,
+        self, group_id: int = None, link: str = None, text: typing.Optional[str] = None,
     ) -> GroupsAddLinkResponse:
         """
         :param group_id: - Community ID.
@@ -98,9 +95,7 @@ class Groups(Category):
         return result
 
     async def approve_request(
-        self,
-        group_id: typing.Optional[int] = None,
-        user_id: typing.Optional[int] = None,
+        self, group_id: int = None, user_id: int = None,
     ) -> OkResponse:
         """
         :param group_id: - Community ID.
@@ -121,7 +116,7 @@ class Groups(Category):
 
     async def ban(
         self,
-        group_id: typing.Optional[int] = None,
+        group_id: int = None,
         owner_id: typing.Optional[int] = None,
         end_date: typing.Optional[int] = None,
         reason: typing.Optional[int] = None,
@@ -151,7 +146,7 @@ class Groups(Category):
 
     async def create(
         self,
-        title: typing.Optional[str] = None,
+        title: str = None,
         description: typing.Optional[str] = None,
         type: typing.Optional[str] = None,
         public_category: typing.Optional[int] = None,
@@ -178,9 +173,7 @@ class Groups(Category):
         return result
 
     async def delete_callback_server(
-        self,
-        group_id: typing.Optional[int] = None,
-        server_id: typing.Optional[int] = None,
+        self, group_id: int = None, server_id: int = None,
     ) -> OkResponse:
         """
         :param group_id:
@@ -200,9 +193,7 @@ class Groups(Category):
         return result
 
     async def delete_link(
-        self,
-        group_id: typing.Optional[int] = None,
-        link_id: typing.Optional[int] = None,
+        self, group_id: int = None, link_id: int = None,
     ) -> OkResponse:
         """
         :param group_id: - Community ID.
@@ -221,9 +212,7 @@ class Groups(Category):
         result = OkResponse(**raw_result)
         return result
 
-    async def disable_online(
-        self, group_id: typing.Optional[int] = None,
-    ) -> OkResponse:
+    async def disable_online(self, group_id: int = None,) -> OkResponse:
         """
         :param group_id:
         :return:
@@ -242,7 +231,7 @@ class Groups(Category):
 
     async def edit(
         self,
-        group_id: typing.Optional[int] = None,
+        group_id: int = None,
         title: typing.Optional[str] = None,
         description: typing.Optional[str] = None,
         screen_name: typing.Optional[str] = None,
@@ -350,8 +339,8 @@ class Groups(Category):
 
     async def edit_address(
         self,
-        group_id: typing.Optional[int] = None,
-        address_id: typing.Optional[int] = None,
+        group_id: int = None,
+        address_id: int = None,
         title: typing.Optional[str] = None,
         address: typing.Optional[str] = None,
         additional_address: typing.Optional[str] = None,
@@ -396,10 +385,10 @@ class Groups(Category):
 
     async def edit_callback_server(
         self,
-        group_id: typing.Optional[int] = None,
-        server_id: typing.Optional[int] = None,
-        url: typing.Optional[str] = None,
-        title: typing.Optional[str] = None,
+        group_id: int = None,
+        server_id: int = None,
+        url: str = None,
+        title: str = None,
         secret_key: typing.Optional[str] = None,
     ) -> OkResponse:
         """
@@ -424,8 +413,8 @@ class Groups(Category):
 
     async def edit_link(
         self,
-        group_id: typing.Optional[int] = None,
-        link_id: typing.Optional[int] = None,
+        group_id: int = None,
+        link_id: int = None,
         text: typing.Optional[str] = None,
     ) -> OkResponse:
         """
@@ -448,8 +437,8 @@ class Groups(Category):
 
     async def edit_manager(
         self,
-        group_id: typing.Optional[int] = None,
-        user_id: typing.Optional[int] = None,
+        group_id: int = None,
+        user_id: int = None,
         role: typing.Optional[str] = None,
         is_contact: typing.Optional[bool] = None,
         contact_position: typing.Optional[str] = None,
@@ -478,7 +467,7 @@ class Groups(Category):
         result = OkResponse(**raw_result)
         return result
 
-    async def enable_online(self, group_id: typing.Optional[int] = None,) -> OkResponse:
+    async def enable_online(self, group_id: int = None,) -> OkResponse:
         """
         :param group_id:
         :return:
@@ -527,7 +516,7 @@ class Groups(Category):
 
     async def get_addresses(
         self,
-        group_id: typing.Optional[int] = None,
+        group_id: int = None,
         address_ids: typing.Optional[typing.List[int]] = None,
         latitude: typing.Optional[int] = None,
         longitude: typing.Optional[int] = None,
@@ -559,7 +548,7 @@ class Groups(Category):
 
     async def get_banned(
         self,
-        group_id: typing.Optional[int] = None,
+        group_id: int = None,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
         fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
@@ -610,7 +599,7 @@ class Groups(Category):
         return result
 
     async def get_callback_confirmation_code(
-        self, group_id: typing.Optional[int] = None,
+        self, group_id: int = None,
     ) -> GroupsGetCallbackConfirmationCodeResponse:
         """
         :param group_id: - Community ID.
@@ -630,7 +619,7 @@ class Groups(Category):
 
     async def get_callback_servers(
         self,
-        group_id: typing.Optional[int] = None,
+        group_id: int = None,
         server_ids: typing.Optional[typing.List[int]] = None,
     ) -> GroupsGetCallbackServersResponse:
         """
@@ -651,9 +640,7 @@ class Groups(Category):
         return result
 
     async def get_callback_settings(
-        self,
-        group_id: typing.Optional[int] = None,
-        server_id: typing.Optional[int] = None,
+        self, group_id: int = None, server_id: typing.Optional[int] = None,
     ) -> GroupsGetCallbackSettingsResponse:
         """
         :param group_id: - Community ID.
@@ -718,7 +705,7 @@ class Groups(Category):
 
     async def get_invited_users(
         self,
-        group_id: typing.Optional[int] = None,
+        group_id: int = None,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
@@ -769,7 +756,7 @@ class Groups(Category):
         return result
 
     async def get_long_poll_server(
-        self, group_id: typing.Optional[int] = None,
+        self, group_id: int = None,
     ) -> GroupsGetLongPollServerResponse:
         """
         :param group_id: - Community ID
@@ -788,7 +775,7 @@ class Groups(Category):
         return result
 
     async def get_long_poll_settings(
-        self, group_id: typing.Optional[int] = None,
+        self, group_id: int = None,
     ) -> GroupsGetLongPollSettingsResponse:
         """
         :param group_id: - Community ID.
@@ -838,7 +825,7 @@ class Groups(Category):
 
     async def get_requests(
         self,
-        group_id: typing.Optional[int] = None,
+        group_id: int = None,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
@@ -862,9 +849,7 @@ class Groups(Category):
         result = GroupsGetRequestsResponse(**raw_result)
         return result
 
-    async def get_settings(
-        self, group_id: typing.Optional[int] = None,
-    ) -> GroupsGetSettingsResponse:
+    async def get_settings(self, group_id: int = None,) -> GroupsGetSettingsResponse:
         """
         :param group_id: - Community ID.
         :return:
@@ -897,11 +882,7 @@ class Groups(Category):
         result = GroupsGetTokenPermissionsResponse(**raw_result)
         return result
 
-    async def invite(
-        self,
-        group_id: typing.Optional[int] = None,
-        user_id: typing.Optional[int] = None,
-    ) -> OkResponse:
+    async def invite(self, group_id: int = None, user_id: int = None,) -> OkResponse:
         """
         :param group_id: - Community ID.
         :param user_id: - User ID.
@@ -921,7 +902,7 @@ class Groups(Category):
 
     async def is_member(
         self,
-        group_id: typing.Optional[str] = None,
+        group_id: str = None,
         user_id: typing.Optional[int] = None,
         user_ids: typing.Optional[typing.List[int]] = None,
         extended: typing.Optional[bool] = None,
@@ -967,7 +948,7 @@ class Groups(Category):
         result = OkResponse(**raw_result)
         return result
 
-    async def leave(self, group_id: typing.Optional[int] = None,) -> OkResponse:
+    async def leave(self, group_id: int = None,) -> OkResponse:
         """
         :param group_id: - ID or screen name of the community.
         :return:
@@ -985,9 +966,7 @@ class Groups(Category):
         return result
 
     async def remove_user(
-        self,
-        group_id: typing.Optional[int] = None,
-        user_id: typing.Optional[int] = None,
+        self, group_id: int = None, user_id: int = None,
     ) -> OkResponse:
         """
         :param group_id: - Community ID.
@@ -1008,8 +987,8 @@ class Groups(Category):
 
     async def reorder_link(
         self,
-        group_id: typing.Optional[int] = None,
-        link_id: typing.Optional[int] = None,
+        group_id: int = None,
+        link_id: int = None,
         after: typing.Optional[int] = None,
     ) -> OkResponse:
         """
@@ -1032,7 +1011,7 @@ class Groups(Category):
 
     async def search(
         self,
-        q: typing.Optional[str] = None,
+        q: str = None,
         type: typing.Optional[str] = None,
         country_id: typing.Optional[int] = None,
         city_id: typing.Optional[int] = None,
@@ -1068,7 +1047,7 @@ class Groups(Category):
 
     async def set_callback_settings(
         self,
-        group_id: typing.Optional[int] = None,
+        group_id: int = None,
         server_id: typing.Optional[int] = None,
         api_version: typing.Optional[str] = None,
         message_new: typing.Optional[bool] = None,
@@ -1172,7 +1151,7 @@ class Groups(Category):
 
     async def set_long_poll_settings(
         self,
-        group_id: typing.Optional[int] = None,
+        group_id: int = None,
         enabled: typing.Optional[bool] = None,
         api_version: typing.Optional[str] = None,
         message_new: typing.Optional[bool] = None,
@@ -1273,9 +1252,7 @@ class Groups(Category):
         return result
 
     async def unban(
-        self,
-        group_id: typing.Optional[int] = None,
-        owner_id: typing.Optional[int] = None,
+        self, group_id: int = None, owner_id: typing.Optional[int] = None,
     ) -> OkResponse:
         """
         :param group_id:

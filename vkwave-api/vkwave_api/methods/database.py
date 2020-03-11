@@ -5,7 +5,7 @@ from ._category import Category
 class Database(Category):
     async def get_chairs(
         self,
-        faculty_id: typing.Optional[int] = None,
+        faculty_id: int = None,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
     ) -> DatabaseGetChairsResponse:
@@ -29,7 +29,7 @@ class Database(Category):
 
     async def get_cities(
         self,
-        country_id: typing.Optional[int] = None,
+        country_id: int = None,
         region_id: typing.Optional[int] = None,
         q: typing.Optional[str] = None,
         need_all: typing.Optional[bool] = None,
@@ -123,7 +123,7 @@ class Database(Category):
 
     async def get_faculties(
         self,
-        university_id: typing.Optional[int] = None,
+        university_id: int = None,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
     ) -> DatabaseGetFacultiesResponse:
@@ -147,7 +147,7 @@ class Database(Category):
 
     async def get_metro_stations(
         self,
-        city_id: typing.Optional[int] = None,
+        city_id: int = None,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
         extended: typing.Optional[bool] = None,
@@ -192,7 +192,7 @@ class Database(Category):
 
     async def get_regions(
         self,
-        country_id: typing.Optional[int] = None,
+        country_id: int = None,
         q: typing.Optional[str] = None,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
@@ -238,7 +238,7 @@ class Database(Category):
     async def get_schools(
         self,
         q: typing.Optional[str] = None,
-        city_id: typing.Optional[int] = None,
+        city_id: int = None,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
     ) -> DatabaseGetSchoolsResponse:

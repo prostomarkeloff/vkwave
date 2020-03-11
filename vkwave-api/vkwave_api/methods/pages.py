@@ -3,7 +3,7 @@ from ._category import Category
 
 
 class Pages(Category):
-    async def clear_cache(self, url: typing.Optional[str] = None,) -> OkResponse:
+    async def clear_cache(self, url: str = None,) -> OkResponse:
         """
         :param url: - Address of the page where you need to refesh the cached version
         :return:
@@ -54,7 +54,7 @@ class Pages(Category):
 
     async def get_history(
         self,
-        page_id: typing.Optional[int] = None,
+        page_id: int = None,
         group_id: typing.Optional[int] = None,
         user_id: typing.Optional[int] = None,
     ) -> PagesGetHistoryResponse:
@@ -97,7 +97,7 @@ class Pages(Category):
 
     async def get_version(
         self,
-        version_id: typing.Optional[int] = None,
+        version_id: int = None,
         group_id: typing.Optional[int] = None,
         user_id: typing.Optional[int] = None,
         need_html: typing.Optional[bool] = None,
@@ -122,7 +122,7 @@ class Pages(Category):
         return result
 
     async def parse_wiki(
-        self, text: typing.Optional[str] = None, group_id: typing.Optional[int] = None,
+        self, text: str = None, group_id: typing.Optional[int] = None,
     ) -> PagesParseWikiResponse:
         """
         :param text: - Text of the wiki page.
@@ -171,7 +171,7 @@ class Pages(Category):
 
     async def save_access(
         self,
-        page_id: typing.Optional[int] = None,
+        page_id: int = None,
         group_id: typing.Optional[int] = None,
         user_id: typing.Optional[int] = None,
         view: typing.Optional[int] = None,

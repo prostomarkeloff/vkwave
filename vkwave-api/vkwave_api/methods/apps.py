@@ -55,7 +55,7 @@ class Apps(Category):
         self,
         sort: typing.Optional[str] = None,
         offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
+        count: int = None,
         platform: typing.Optional[str] = None,
         extended: typing.Optional[bool] = None,
         return_friends: typing.Optional[bool] = None,
@@ -121,7 +121,7 @@ class Apps(Category):
 
     async def get_leaderboard(
         self,
-        type: typing.Optional[str] = None,
+        type: str = None,
         global_: typing.Optional[bool] = None,
         extended: typing.Optional[bool] = None,
     ) -> AppsGetLeaderboardResponse:
@@ -162,9 +162,7 @@ class Apps(Category):
         result = AppsGetScopesResponse(**raw_result)
         return result
 
-    async def get_score(
-        self, user_id: typing.Optional[int] = None,
-    ) -> AppsGetScoreResponse:
+    async def get_score(self, user_id: int = None,) -> AppsGetScoreResponse:
         """
         :param user_id:
         :return:
@@ -183,7 +181,7 @@ class Apps(Category):
 
     async def send_request(
         self,
-        user_id: typing.Optional[int] = None,
+        user_id: int = None,
         text: typing.Optional[str] = None,
         type: typing.Optional[str] = None,
         name: typing.Optional[str] = None,

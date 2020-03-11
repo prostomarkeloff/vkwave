@@ -6,8 +6,8 @@ class Polls(Category):
     async def add_vote(
         self,
         owner_id: typing.Optional[int] = None,
-        poll_id: typing.Optional[int] = None,
-        answer_ids: typing.Optional[typing.List[int]] = None,
+        poll_id: int = None,
+        answer_ids: typing.List[int] = None,
         is_board: typing.Optional[bool] = None,
     ) -> PollsAddVoteResponse:
         """
@@ -66,8 +66,8 @@ class Polls(Category):
     async def delete_vote(
         self,
         owner_id: typing.Optional[int] = None,
-        poll_id: typing.Optional[int] = None,
-        answer_id: typing.Optional[int] = None,
+        poll_id: int = None,
+        answer_id: int = None,
         is_board: typing.Optional[bool] = None,
     ) -> PollsDeleteVoteResponse:
         """
@@ -92,7 +92,7 @@ class Polls(Category):
     async def edit(
         self,
         owner_id: typing.Optional[int] = None,
-        poll_id: typing.Optional[int] = None,
+        poll_id: int = None,
         question: typing.Optional[str] = None,
         add_answers: typing.Optional[str] = None,
         edit_answers: typing.Optional[str] = None,
@@ -129,7 +129,7 @@ class Polls(Category):
         self,
         owner_id: typing.Optional[int] = None,
         is_board: typing.Optional[bool] = None,
-        poll_id: typing.Optional[int] = None,
+        poll_id: int = None,
         extended: typing.Optional[bool] = None,
         friends_count: typing.Optional[int] = None,
         fields: typing.Optional[typing.List[str]] = None,
@@ -160,8 +160,8 @@ class Polls(Category):
     async def get_voters(
         self,
         owner_id: typing.Optional[int] = None,
-        poll_id: typing.Optional[int] = None,
-        answer_ids: typing.Optional[typing.List[int]] = None,
+        poll_id: int = None,
+        answer_ids: typing.List[int] = None,
         is_board: typing.Optional[bool] = None,
         friends_only: typing.Optional[bool] = None,
         offset: typing.Optional[int] = None,

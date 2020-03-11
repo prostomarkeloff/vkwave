@@ -104,8 +104,8 @@ class Users(Category):
 
     async def report(
         self,
-        user_id: typing.Optional[int] = None,
-        type: typing.Optional[str] = None,
+        user_id: int = None,
+        type: str = None,
         comment: typing.Optional[str] = None,
     ) -> OkResponse:
         """

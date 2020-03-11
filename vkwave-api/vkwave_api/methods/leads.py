@@ -5,7 +5,7 @@ from ._category import Category
 class Leads(Category):
     async def check_user(
         self,
-        lead_id: typing.Optional[int] = None,
+        lead_id: int = None,
         test_result: typing.Optional[int] = None,
         test_mode: typing.Optional[bool] = None,
         auto_start: typing.Optional[bool] = None,
@@ -35,8 +35,8 @@ class Leads(Category):
 
     async def complete(
         self,
-        vk_sid: typing.Optional[str] = None,
-        secret: typing.Optional[str] = None,
+        vk_sid: str = None,
+        secret: str = None,
         comment: typing.Optional[str] = None,
     ) -> LeadsCompleteResponse:
         """
@@ -59,7 +59,7 @@ class Leads(Category):
 
     async def get_stats(
         self,
-        lead_id: typing.Optional[int] = None,
+        lead_id: int = None,
         secret: typing.Optional[str] = None,
         date_start: typing.Optional[str] = None,
         date_end: typing.Optional[str] = None,
@@ -85,8 +85,8 @@ class Leads(Category):
 
     async def get_users(
         self,
-        offer_id: typing.Optional[int] = None,
-        secret: typing.Optional[str] = None,
+        offer_id: int = None,
+        secret: str = None,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
         status: typing.Optional[int] = None,
@@ -113,9 +113,7 @@ class Leads(Category):
         result = LeadsGetUsersResponse(**raw_result)
         return result
 
-    async def metric_hit(
-        self, data: typing.Optional[str] = None,
-    ) -> LeadsMetricHitResponse:
+    async def metric_hit(self, data: str = None,) -> LeadsMetricHitResponse:
         """
         :param data: - Metric data obtained in the lead interface.
         :return:
@@ -134,8 +132,8 @@ class Leads(Category):
 
     async def start(
         self,
-        lead_id: typing.Optional[int] = None,
-        secret: typing.Optional[str] = None,
+        lead_id: int = None,
+        secret: str = None,
         uid: typing.Optional[int] = None,
         aid: typing.Optional[int] = None,
         test_mode: typing.Optional[bool] = None,

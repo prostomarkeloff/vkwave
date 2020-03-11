@@ -47,7 +47,7 @@ class Newsfeed(Category):
         result = OkResponse(**raw_result)
         return result
 
-    async def delete_list(self, list_id: typing.Optional[int] = None,) -> OkResponse:
+    async def delete_list(self, list_id: int = None,) -> OkResponse:
         """
         :param list_id:
         :return:
@@ -267,10 +267,7 @@ class Newsfeed(Category):
         return result
 
     async def ignore_item(
-        self,
-        type: typing.Optional[str] = None,
-        owner_id: typing.Optional[int] = None,
-        item_id: typing.Optional[int] = None,
+        self, type: str = None, owner_id: int = None, item_id: int = None,
     ) -> OkResponse:
         """
         :param type: - Item type. Possible values: *'wall' – post on the wall,, *'tag' – tag on a photo,, *'profilephoto' – profile photo,, *'video' – video,, *'audio' – audio.
@@ -293,7 +290,7 @@ class Newsfeed(Category):
     async def save_list(
         self,
         list_id: typing.Optional[int] = None,
-        title: typing.Optional[str] = None,
+        title: str = None,
         source_ids: typing.Optional[typing.List[int]] = None,
         no_reposts: typing.Optional[bool] = None,
     ) -> NewsfeedSaveListResponse:
@@ -353,10 +350,7 @@ class Newsfeed(Category):
         return result
 
     async def unignore_item(
-        self,
-        type: typing.Optional[str] = None,
-        owner_id: typing.Optional[int] = None,
-        item_id: typing.Optional[int] = None,
+        self, type: str = None, owner_id: int = None, item_id: int = None,
     ) -> OkResponse:
         """
         :param type: - Item type. Possible values: *'wall' – post on the wall,, *'tag' – tag on a photo,, *'profilephoto' – profile photo,, *'video' – video,, *'audio' – audio.
@@ -378,9 +372,9 @@ class Newsfeed(Category):
 
     async def unsubscribe(
         self,
-        type: typing.Optional[str] = None,
+        type: str = None,
         owner_id: typing.Optional[int] = None,
-        item_id: typing.Optional[int] = None,
+        item_id: int = None,
     ) -> OkResponse:
         """
         :param type: - Type of object from which to unsubscribe: 'note' — note, 'photo' — photo, 'post' — post on user wall or community wall, 'topic' — topic, 'video' — video

@@ -4,9 +4,7 @@ from ._category import Category
 
 class Messages(Category):
     async def add_chat_user(
-        self,
-        chat_id: typing.Optional[int] = None,
-        user_id: typing.Optional[int] = None,
+        self, chat_id: int = None, user_id: typing.Optional[int] = None,
     ) -> OkResponse:
         """
         :param chat_id: - Chat ID.
@@ -26,7 +24,7 @@ class Messages(Category):
         return result
 
     async def allow_messages_from_group(
-        self, group_id: typing.Optional[int] = None, key: typing.Optional[str] = None,
+        self, group_id: int = None, key: typing.Optional[str] = None,
     ) -> OkResponse:
         """
         :param group_id: - Group ID.
@@ -94,9 +92,7 @@ class Messages(Category):
         return result
 
     async def delete_chat_photo(
-        self,
-        chat_id: typing.Optional[int] = None,
-        group_id: typing.Optional[int] = None,
+        self, chat_id: int = None, group_id: typing.Optional[int] = None,
     ) -> MessagesDeleteChatPhotoResponse:
         """
         :param chat_id: - Chat ID.
@@ -139,9 +135,7 @@ class Messages(Category):
         result = MessagesDeleteConversationResponse(**raw_result)
         return result
 
-    async def deny_messages_from_group(
-        self, group_id: typing.Optional[int] = None,
-    ) -> OkResponse:
+    async def deny_messages_from_group(self, group_id: int = None,) -> OkResponse:
         """
         :param group_id: - Group ID.
         :return:
@@ -160,9 +154,9 @@ class Messages(Category):
 
     async def edit(
         self,
-        peer_id: typing.Optional[int] = None,
+        peer_id: int = None,
         message: typing.Optional[str] = None,
-        message_id: typing.Optional[int] = None,
+        message_id: int = None,
         lat: typing.Optional[int] = None,
         long: typing.Optional[int] = None,
         attachment: typing.Optional[str] = None,
@@ -196,9 +190,7 @@ class Messages(Category):
         result = MessagesEditResponse(**raw_result)
         return result
 
-    async def edit_chat(
-        self, chat_id: typing.Optional[int] = None, title: typing.Optional[str] = None,
-    ) -> OkResponse:
+    async def edit_chat(self, chat_id: int = None, title: str = None,) -> OkResponse:
         """
         :param chat_id: - Chat ID.
         :param title: - New title of the chat.
@@ -218,8 +210,8 @@ class Messages(Category):
 
     async def get_by_conversation_message_id(
         self,
-        peer_id: typing.Optional[int] = None,
-        conversation_message_ids: typing.Optional[typing.List[int]] = None,
+        peer_id: int = None,
+        conversation_message_ids: typing.List[int] = None,
         extended: typing.Optional[bool] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
         group_id: typing.Optional[int] = None,
@@ -246,7 +238,7 @@ class Messages(Category):
 
     async def get_by_id(
         self,
-        message_ids: typing.Optional[typing.List[int]] = None,
+        message_ids: typing.List[int] = None,
         preview_length: typing.Optional[int] = None,
         extended: typing.Optional[bool] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
@@ -298,7 +290,7 @@ class Messages(Category):
 
     async def get_conversation_members(
         self,
-        peer_id: typing.Optional[int] = None,
+        peer_id: int = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
         group_id: typing.Optional[int] = None,
     ) -> MessagesGetConversationMembersResponse:
@@ -354,7 +346,7 @@ class Messages(Category):
 
     async def get_conversations_by_id(
         self,
-        peer_ids: typing.Optional[typing.List[int]] = None,
+        peer_ids: typing.List[int] = None,
         extended: typing.Optional[bool] = None,
         fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
         group_id: typing.Optional[int] = None,
@@ -416,7 +408,7 @@ class Messages(Category):
 
     async def get_history_attachments(
         self,
-        peer_id: typing.Optional[int] = None,
+        peer_id: int = None,
         media_type: typing.Optional[str] = None,
         start_from: typing.Optional[str] = None,
         count: typing.Optional[int] = None,
@@ -452,7 +444,7 @@ class Messages(Category):
 
     async def get_invite_link(
         self,
-        peer_id: typing.Optional[int] = None,
+        peer_id: int = None,
         reset: typing.Optional[bool] = None,
         group_id: typing.Optional[int] = None,
     ) -> MessagesGetInviteLinkResponse:
@@ -475,7 +467,7 @@ class Messages(Category):
         return result
 
     async def get_last_activity(
-        self, user_id: typing.Optional[int] = None,
+        self, user_id: int = None,
     ) -> MessagesGetLastActivityResponse:
         """
         :param user_id: - User ID.
@@ -560,9 +552,7 @@ class Messages(Category):
         return result
 
     async def is_messages_from_group_allowed(
-        self,
-        group_id: typing.Optional[int] = None,
-        user_id: typing.Optional[int] = None,
+        self, group_id: int = None, user_id: int = None,
     ) -> MessagesIsMessagesFromGroupAllowedResponse:
         """
         :param group_id: - Group ID.
@@ -582,7 +572,7 @@ class Messages(Category):
         return result
 
     async def join_chat_by_invite_link(
-        self, link: typing.Optional[str] = None,
+        self, link: str = None,
     ) -> MessagesJoinChatByInviteLinkResponse:
         """
         :param link: - Invitation link.
@@ -602,7 +592,7 @@ class Messages(Category):
 
     async def mark_as_answered_conversation(
         self,
-        peer_id: typing.Optional[int] = None,
+        peer_id: int = None,
         answered: typing.Optional[bool] = None,
         group_id: typing.Optional[int] = None,
     ) -> OkResponse:
@@ -648,7 +638,7 @@ class Messages(Category):
 
     async def mark_as_important_conversation(
         self,
-        peer_id: typing.Optional[int] = None,
+        peer_id: int = None,
         important: typing.Optional[bool] = None,
         group_id: typing.Optional[int] = None,
     ) -> OkResponse:
@@ -697,9 +687,7 @@ class Messages(Category):
         return result
 
     async def pin(
-        self,
-        peer_id: typing.Optional[int] = None,
-        message_id: typing.Optional[int] = None,
+        self, peer_id: int = None, message_id: typing.Optional[int] = None,
     ) -> MessagesPinResponse:
         """
         :param peer_id: - Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'Chat ID', e.g. '2000000001'. For community: '- Community ID', e.g. '-12345'. "
@@ -720,7 +708,7 @@ class Messages(Category):
 
     async def remove_chat_user(
         self,
-        chat_id: typing.Optional[int] = None,
+        chat_id: int = None,
         user_id: typing.Optional[int] = None,
         member_id: typing.Optional[int] = None,
     ) -> OkResponse:
@@ -743,9 +731,7 @@ class Messages(Category):
         return result
 
     async def restore(
-        self,
-        message_id: typing.Optional[int] = None,
-        group_id: typing.Optional[int] = None,
+        self, message_id: int = None, group_id: typing.Optional[int] = None,
     ) -> OkResponse:
         """
         :param message_id: - ID of a previously-deleted message to restore.
@@ -910,9 +896,7 @@ class Messages(Category):
         result = OkResponse(**raw_result)
         return result
 
-    async def set_chat_photo(
-        self, file: typing.Optional[str] = None,
-    ) -> MessagesSetChatPhotoResponse:
+    async def set_chat_photo(self, file: str = None,) -> MessagesSetChatPhotoResponse:
         """
         :param file: - Upload URL from the 'response' field returned by the [vk.com/dev/photos.getChatUploadServer|photos.getChatUploadServer] method upon successfully uploading an image.
         :return:
@@ -930,9 +914,7 @@ class Messages(Category):
         return result
 
     async def unpin(
-        self,
-        peer_id: typing.Optional[int] = None,
-        group_id: typing.Optional[int] = None,
+        self, peer_id: int = None, group_id: typing.Optional[int] = None,
     ) -> OkResponse:
         """
         :param peer_id:
