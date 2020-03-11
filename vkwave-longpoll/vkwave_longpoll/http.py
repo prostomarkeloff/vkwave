@@ -3,10 +3,12 @@ from typing import Optional
 from aiohttp import ClientSession
 from asyncio import AbstractEventLoop as AEL, get_event_loop
 
+
 class AbstractHTTPClient(ABC):
     @abstractmethod
     async def request(self, method: str, url: str, data: Optional[dict] = None) -> dict:
         ...
+
 
 class AIOHTTPClient(AbstractHTTPClient):
     def __init__(self, loop: Optional[AEL] = None):
