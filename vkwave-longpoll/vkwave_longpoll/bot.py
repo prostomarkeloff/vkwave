@@ -1,8 +1,7 @@
-from vkwave_api.methods import API
 from vkwave_api.methods import APIOptionsRequestContext
 from .http import AbstractHTTPClient
 from .http import AIOHTTPClient
-from typing import Union, Optional, List, cast, NewType, AsyncGenerator
+from typing import Optional, List, cast, NewType, AsyncGenerator
 from vkwave_types.objects import GroupsLongPollServer
 
 Update = NewType("Update", dict)
