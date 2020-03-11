@@ -67,6 +67,24 @@ class APIOptions:
         self.error_dispatcher = error_dispatcher
 
 
+    async def _get_token(self) -> Token:
+        return await self.get_token_strategy.get_token(
+            self.tokens
+        )
+
+    async def _get_client(self) -> AbstractAPIClient:
+        # TODO: maybe get_client_strategy
+        return random.choice(self.clients)
+
+    async def get_client_and_token(self) -> Tuple[AbstractAPIClient, Token]:
+        return await self._get_client(), await self._get_token()
+
+    def update_pre_request_params(self, params: dict, token: Token) -> dict:
+        params.update(v=self.api_version, access_token=token)
+        return params
+
+
+
 class APIOptionsRequestContext:
     def __init__(self, api_options: APIOptions):
         self.api_options = api_options
@@ -112,22 +130,6 @@ class APIOptionsRequestContext:
         dispatcher = self.api_options.error_dispatcher
         result = await dispatcher.process_error(error, self)
         return result
-
-    async def _get_token(self) -> Token:
-        return await self.api_options.get_token_strategy.get_token(
-            self.api_options.tokens
-        )
-
-    async def _get_client(self) -> AbstractAPIClient:
-        # TODO: maybe get_client_strategy
-        return random.choice(self.api_options.clients)
-
-    async def get_client_and_token(self) -> Tuple[AbstractAPIClient, Token]:
-        return await self._get_client(), await self._get_token()
-
-    def update_pre_request_params(self, params: dict, token: Token) -> dict:
-        params.update(v=self.api_options.api_version, access_token=token)
-        return params
 
     @asynccontextmanager
     async def sync_token(self) -> AsyncGenerator["APIOptionsRequestContext", None]:
