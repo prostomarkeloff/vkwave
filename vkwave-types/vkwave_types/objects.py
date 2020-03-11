@@ -3296,13 +3296,13 @@ class UsersUserSettingsXtr(pydantic.BaseModel):
     country: typing.Optional["BaseCountry"] = pydantic.Field(
         None, description="",
     )
-    first_name: typing.Optional[str] = pydantic.Field(
+    first_name: str = pydantic.Field(
         None, description="User first name",
     )
     home_town: str = pydantic.Field(
         None, description="User's hometown",
     )
-    last_name: typing.Optional[str] = pydantic.Field(
+    last_name: str = pydantic.Field(
         None, description="User last name",
     )
     maiden_name: typing.Optional[str] = pydantic.Field(

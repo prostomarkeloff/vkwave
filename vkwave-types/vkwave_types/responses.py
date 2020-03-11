@@ -3169,10 +3169,11 @@ class StorageGetKeysResponse(pydantic.BaseModel):
     )
 
 
-class StorageGetKeysResponse(pydantic.BaseModel):
-    response: typing.Optional[typing.List["StorageValue"]] = pydantic.Field(
-        None, description="",
-    )
+# fixme maybe for storage.get?
+# class StorageGetKeysResponse(pydantic.BaseModel):
+#     response: typing.Optional[typing.List["StorageValue"]] = pydantic.Field(
+#         None, description="",
+#     )
 
 
 class StorageGetResponse(pydantic.BaseModel):
