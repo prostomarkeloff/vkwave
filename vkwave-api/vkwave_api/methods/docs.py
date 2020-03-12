@@ -5,8 +5,8 @@ from ._category import Category
 class Docs(Category):
     async def add(
         self,
-        owner_id: typing.Optional[int] = None,
-        doc_id: typing.Optional[int] = None,
+        owner_id: int = None,
+        doc_id: int = None,
         access_key: typing.Optional[str] = None,
     ) -> DocsAddResponse:
         """
@@ -27,11 +27,7 @@ class Docs(Category):
         result = DocsAddResponse(**raw_result)
         return result
 
-    async def delete(
-        self,
-        owner_id: typing.Optional[int] = None,
-        doc_id: typing.Optional[int] = None,
-    ) -> OkResponse:
+    async def delete(self, owner_id: int = None, doc_id: int = None,) -> OkResponse:
         """
         :param owner_id: - ID of the user or community that owns the document. Use a negative value to designate a community ID.
         :param doc_id: - Document ID.
@@ -51,8 +47,8 @@ class Docs(Category):
 
     async def edit(
         self,
-        owner_id: typing.Optional[int] = None,
-        doc_id: typing.Optional[int] = None,
+        owner_id: int = None,
+        doc_id: int = None,
         title: typing.Optional[str] = None,
         tags: typing.Optional[typing.List[str]] = None,
     ) -> OkResponse:
@@ -101,9 +97,7 @@ class Docs(Category):
         result = DocsGetResponse(**raw_result)
         return result
 
-    async def get_by_id(
-        self, docs: typing.Optional[typing.List[str]] = None,
-    ) -> DocsGetByIdResponse:
+    async def get_by_id(self, docs: typing.List[str] = None,) -> DocsGetByIdResponse:
         """
         :param docs: - Document IDs. Example: , "66748_91488,66748_91455",
         :return:
@@ -140,9 +134,7 @@ class Docs(Category):
         result = BaseGetUploadServerResponse(**raw_result)
         return result
 
-    async def get_types(
-        self, owner_id: typing.Optional[int] = None,
-    ) -> DocsGetTypesResponse:
+    async def get_types(self, owner_id: int = None,) -> DocsGetTypesResponse:
         """
         :param owner_id: - ID of the user or community that owns the documents. Use a negative value to designate a community ID.
         :return:
@@ -199,7 +191,7 @@ class Docs(Category):
 
     async def save(
         self,
-        file: typing.Optional[str] = None,
+        file: str = None,
         title: typing.Optional[str] = None,
         tags: typing.Optional[str] = None,
     ) -> DocsSaveResponse:
@@ -223,7 +215,7 @@ class Docs(Category):
 
     async def search(
         self,
-        q: typing.Optional[str] = None,
+        q: str = None,
         search_own: typing.Optional[bool] = None,
         count: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,

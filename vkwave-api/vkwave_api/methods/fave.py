@@ -3,7 +3,7 @@ from ._category import Category
 
 
 class Fave(Category):
-    async def add_article(self, url: typing.Optional[str] = None,) -> BaseBoolResponse:
+    async def add_article(self, url: str = None,) -> BaseBoolResponse:
         """
         :param url:
         :return:
@@ -20,7 +20,7 @@ class Fave(Category):
         result = BaseBoolResponse(**raw_result)
         return result
 
-    async def add_link(self, link: typing.Optional[str] = None,) -> OkResponse:
+    async def add_link(self, link: str = None,) -> OkResponse:
         """
         :param link: - Link URL.
         :return:
@@ -61,8 +61,8 @@ class Fave(Category):
 
     async def add_post(
         self,
-        owner_id: typing.Optional[int] = None,
-        id: typing.Optional[int] = None,
+        owner_id: int = None,
+        id: int = None,
         access_key: typing.Optional[str] = None,
     ) -> OkResponse:
         """
@@ -85,8 +85,8 @@ class Fave(Category):
 
     async def add_product(
         self,
-        owner_id: typing.Optional[int] = None,
-        id: typing.Optional[int] = None,
+        owner_id: int = None,
+        id: int = None,
         access_key: typing.Optional[str] = None,
     ) -> OkResponse:
         """
@@ -126,8 +126,8 @@ class Fave(Category):
 
     async def add_video(
         self,
-        owner_id: typing.Optional[int] = None,
-        id: typing.Optional[int] = None,
+        owner_id: int = None,
+        id: int = None,
         access_key: typing.Optional[str] = None,
     ) -> OkResponse:
         """
@@ -148,9 +148,7 @@ class Fave(Category):
         result = OkResponse(**raw_result)
         return result
 
-    async def edit_tag(
-        self, id: typing.Optional[int] = None, name: typing.Optional[str] = None,
-    ) -> OkResponse:
+    async def edit_tag(self, id: int = None, name: str = None,) -> OkResponse:
         """
         :param id:
         :param name:
@@ -261,9 +259,7 @@ class Fave(Category):
         return result
 
     async def remove_article(
-        self,
-        owner_id: typing.Optional[int] = None,
-        article_id: typing.Optional[int] = None,
+        self, owner_id: int = None, article_id: int = None,
     ) -> BaseBoolResponse:
         """
         :param owner_id:
@@ -324,9 +320,7 @@ class Fave(Category):
         result = OkResponse(**raw_result)
         return result
 
-    async def remove_post(
-        self, owner_id: typing.Optional[int] = None, id: typing.Optional[int] = None,
-    ) -> OkResponse:
+    async def remove_post(self, owner_id: int = None, id: int = None,) -> OkResponse:
         """
         :param owner_id:
         :param id:
@@ -344,9 +338,7 @@ class Fave(Category):
         result = OkResponse(**raw_result)
         return result
 
-    async def remove_product(
-        self, owner_id: typing.Optional[int] = None, id: typing.Optional[int] = None,
-    ) -> OkResponse:
+    async def remove_product(self, owner_id: int = None, id: int = None,) -> OkResponse:
         """
         :param owner_id:
         :param id:
@@ -364,7 +356,7 @@ class Fave(Category):
         result = OkResponse(**raw_result)
         return result
 
-    async def remove_tag(self, id: typing.Optional[int] = None,) -> OkResponse:
+    async def remove_tag(self, id: int = None,) -> OkResponse:
         """
         :param id:
         :return:
@@ -381,9 +373,7 @@ class Fave(Category):
         result = OkResponse(**raw_result)
         return result
 
-    async def reorder_tags(
-        self, ids: typing.Optional[typing.List[int]] = None,
-    ) -> OkResponse:
+    async def reorder_tags(self, ids: typing.List[int] = None,) -> OkResponse:
         """
         :param ids:
         :return:

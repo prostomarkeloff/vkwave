@@ -5,8 +5,8 @@ from ._category import Category
 class Notes(Category):
     async def add(
         self,
-        title: typing.Optional[str] = None,
-        text: typing.Optional[str] = None,
+        title: str = None,
+        text: str = None,
         privacy_view: typing.Optional[typing.List[str]] = None,
         privacy_comment: typing.Optional[typing.List[str]] = None,
     ) -> NotesAddResponse:
@@ -31,10 +31,10 @@ class Notes(Category):
 
     async def create_comment(
         self,
-        note_id: typing.Optional[int] = None,
+        note_id: int = None,
         owner_id: typing.Optional[int] = None,
         reply_to: typing.Optional[int] = None,
-        message: typing.Optional[str] = None,
+        message: str = None,
         guid: typing.Optional[str] = None,
     ) -> NotesCreateCommentResponse:
         """
@@ -57,7 +57,7 @@ class Notes(Category):
         result = NotesCreateCommentResponse(**raw_result)
         return result
 
-    async def delete(self, note_id: typing.Optional[int] = None,) -> OkResponse:
+    async def delete(self, note_id: int = None,) -> OkResponse:
         """
         :param note_id: - Note ID.
         :return:
@@ -75,9 +75,7 @@ class Notes(Category):
         return result
 
     async def delete_comment(
-        self,
-        comment_id: typing.Optional[int] = None,
-        owner_id: typing.Optional[int] = None,
+        self, comment_id: int = None, owner_id: typing.Optional[int] = None,
     ) -> OkResponse:
         """
         :param comment_id: - Comment ID.
@@ -98,9 +96,9 @@ class Notes(Category):
 
     async def edit(
         self,
-        note_id: typing.Optional[int] = None,
-        title: typing.Optional[str] = None,
-        text: typing.Optional[str] = None,
+        note_id: int = None,
+        title: str = None,
+        text: str = None,
         privacy_view: typing.Optional[typing.List[str]] = None,
         privacy_comment: typing.Optional[typing.List[str]] = None,
     ) -> OkResponse:
@@ -126,9 +124,9 @@ class Notes(Category):
 
     async def edit_comment(
         self,
-        comment_id: typing.Optional[int] = None,
+        comment_id: int = None,
         owner_id: typing.Optional[int] = None,
-        message: typing.Optional[str] = None,
+        message: str = None,
     ) -> OkResponse:
         """
         :param comment_id: - Comment ID.
@@ -178,7 +176,7 @@ class Notes(Category):
 
     async def get_by_id(
         self,
-        note_id: typing.Optional[int] = None,
+        note_id: int = None,
         owner_id: typing.Optional[int] = None,
         need_wiki: typing.Optional[bool] = None,
     ) -> NotesGetByIdResponse:
@@ -202,7 +200,7 @@ class Notes(Category):
 
     async def get_comments(
         self,
-        note_id: typing.Optional[int] = None,
+        note_id: int = None,
         owner_id: typing.Optional[int] = None,
         sort: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
@@ -229,9 +227,7 @@ class Notes(Category):
         return result
 
     async def restore_comment(
-        self,
-        comment_id: typing.Optional[int] = None,
-        owner_id: typing.Optional[int] = None,
+        self, comment_id: int = None, owner_id: typing.Optional[int] = None,
     ) -> OkResponse:
         """
         :param comment_id: - Comment ID.

@@ -40,9 +40,7 @@ class Stats(Category):
         return result
 
     async def get_post_reach(
-        self,
-        owner_id: typing.Optional[str] = None,
-        post_id: typing.Optional[int] = None,
+        self, owner_id: str = None, post_id: int = None,
     ) -> StatsGetPostReachResponse:
         """
         :param owner_id: - post owner community id. Specify with "-" sign.
@@ -61,7 +59,7 @@ class Stats(Category):
         result = StatsGetPostReachResponse(**raw_result)
         return result
 
-    async def track_visitor(self, id: typing.Optional[str] = None,) -> OkResponse:
+    async def track_visitor(self, id: str = None,) -> OkResponse:
         """
         :param id:
         :return:

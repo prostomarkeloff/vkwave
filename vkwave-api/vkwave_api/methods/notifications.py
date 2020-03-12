@@ -49,8 +49,8 @@ class Notifications(Category):
 
     async def send_message(
         self,
-        user_ids: typing.Optional[typing.List[int]] = None,
-        message: typing.Optional[str] = None,
+        user_ids: typing.List[int] = None,
+        message: str = None,
         fragment: typing.Optional[str] = None,
         group_id: typing.Optional[int] = None,
     ) -> NotificationsSendMessageResponse:

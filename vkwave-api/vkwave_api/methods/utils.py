@@ -3,9 +3,7 @@ from ._category import Category
 
 
 class Utils(Category):
-    async def check_link(
-        self, url: typing.Optional[str] = None,
-    ) -> UtilsCheckLinkResponse:
+    async def check_link(self, url: str = None,) -> UtilsCheckLinkResponse:
         """
         :param url: - Link to check (e.g., 'http://google.com').
         :return:
@@ -22,9 +20,7 @@ class Utils(Category):
         result = UtilsCheckLinkResponse(**raw_result)
         return result
 
-    async def delete_from_last_shortened(
-        self, key: typing.Optional[str] = None,
-    ) -> OkResponse:
+    async def delete_from_last_shortened(self, key: str = None,) -> OkResponse:
         """
         :param key: - Link key (characters after vk.cc/).
         :return:
@@ -63,7 +59,7 @@ class Utils(Category):
 
     async def get_link_stats(
         self,
-        key: typing.Optional[str] = None,
+        key: str = None,
         source: typing.Optional[str] = None,
         access_key: typing.Optional[str] = None,
         interval: typing.Optional[str] = None,
@@ -108,7 +104,7 @@ class Utils(Category):
         return result
 
     async def get_short_link(
-        self, url: typing.Optional[str] = None, private: typing.Optional[bool] = None,
+        self, url: str = None, private: typing.Optional[bool] = None,
     ) -> UtilsGetShortLinkResponse:
         """
         :param url: - URL to be shortened.
@@ -128,7 +124,7 @@ class Utils(Category):
         return result
 
     async def resolve_screen_name(
-        self, screen_name: typing.Optional[str] = None,
+        self, screen_name: str = None,
     ) -> UtilsResolveScreenNameResponse:
         """
         :param screen_name: - Screen name of the user, community (e.g., 'apiclub,' 'andrew', or 'rules_of_war'), or application.

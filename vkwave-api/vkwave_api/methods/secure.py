@@ -5,8 +5,8 @@ from ._category import Category
 class Secure(Category):
     async def add_app_event(
         self,
-        user_id: typing.Optional[int] = None,
-        activity_id: typing.Optional[int] = None,
+        user_id: int = None,
+        activity_id: int = None,
         value: typing.Optional[int] = None,
     ) -> OkResponse:
         """
@@ -63,7 +63,7 @@ class Secure(Category):
         result = SecureGetAppBalanceResponse(**raw_result)
         return result
 
-    async def get_sms_history(
+    async def get_s_m_s_history(
         self,
         user_id: typing.Optional[int] = None,
         date_from: typing.Optional[int] = None,
@@ -120,7 +120,7 @@ class Secure(Category):
         return result
 
     async def get_user_level(
-        self, user_ids: typing.Optional[typing.List[int]] = None,
+        self, user_ids: typing.List[int] = None,
     ) -> SecureGetUserLevelResponse:
         """
         :param user_ids:
@@ -139,9 +139,7 @@ class Secure(Category):
         return result
 
     async def give_event_sticker(
-        self,
-        user_ids: typing.Optional[typing.List[int]] = None,
-        achievement_id: typing.Optional[int] = None,
+        self, user_ids: typing.List[int] = None, achievement_id: int = None,
     ) -> SecureGiveEventStickerResponse:
         """
         :param user_ids:
@@ -164,7 +162,7 @@ class Secure(Category):
         self,
         user_ids: typing.Optional[typing.List[int]] = None,
         user_id: typing.Optional[int] = None,
-        message: typing.Optional[str] = None,
+        message: str = None,
     ) -> SecureSendNotificationResponse:
         """
         :param user_ids:
@@ -184,10 +182,8 @@ class Secure(Category):
         result = SecureSendNotificationResponse(**raw_result)
         return result
 
-    async def send_sms_notification(
-        self,
-        user_id: typing.Optional[int] = None,
-        message: typing.Optional[str] = None,
+    async def send_s_m_s_notification(
+        self, user_id: int = None, message: str = None,
     ) -> OkResponse:
         """
         :param user_id: - ID of the user to whom SMS notification is sent. The user shall allow the application to send him/her notifications (, +1).

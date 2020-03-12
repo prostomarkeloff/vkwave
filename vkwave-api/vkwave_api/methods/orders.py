@@ -5,8 +5,8 @@ from ._category import Category
 class Orders(Category):
     async def cancel_subscription(
         self,
-        user_id: typing.Optional[int] = None,
-        subscription_id: typing.Optional[int] = None,
+        user_id: int = None,
+        subscription_id: int = None,
         pending_cancel: typing.Optional[bool] = None,
     ) -> OrdersCancelSubscriptionResponse:
         """
@@ -29,8 +29,8 @@ class Orders(Category):
 
     async def change_state(
         self,
-        order_id: typing.Optional[int] = None,
-        action: typing.Optional[str] = None,
+        order_id: int = None,
+        action: str = None,
         app_order_id: typing.Optional[int] = None,
         test_mode: typing.Optional[bool] = None,
     ) -> OrdersChangeStateResponse:
@@ -78,9 +78,7 @@ class Orders(Category):
         return result
 
     async def get_amount(
-        self,
-        user_id: typing.Optional[int] = None,
-        votes: typing.Optional[typing.List[str]] = None,
+        self, user_id: int = None, votes: typing.List[str] = None,
     ) -> OrdersGetAmountResponse:
         """
         :param user_id:
@@ -124,9 +122,7 @@ class Orders(Category):
         return result
 
     async def get_user_subscription_by_id(
-        self,
-        user_id: typing.Optional[int] = None,
-        subscription_id: typing.Optional[int] = None,
+        self, user_id: int = None, subscription_id: int = None,
     ) -> OrdersGetUserSubscriptionByIdResponse:
         """
         :param user_id:
@@ -146,7 +142,7 @@ class Orders(Category):
         return result
 
     async def get_user_subscriptions(
-        self, user_id: typing.Optional[int] = None,
+        self, user_id: int = None,
     ) -> OrdersGetUserSubscriptionsResponse:
         """
         :param user_id:
@@ -165,10 +161,7 @@ class Orders(Category):
         return result
 
     async def update_subscription(
-        self,
-        user_id: typing.Optional[int] = None,
-        subscription_id: typing.Optional[int] = None,
-        price: typing.Optional[int] = None,
+        self, user_id: int = None, subscription_id: int = None, price: int = None,
     ) -> OrdersUpdateSubscriptionResponse:
         """
         :param user_id:

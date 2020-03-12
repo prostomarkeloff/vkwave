@@ -57,7 +57,7 @@ class Storage(Category):
 
     async def set(
         self,
-        key: typing.Optional[str] = None,
+        key: str = None,
         value: typing.Optional[str] = None,
         user_id: typing.Optional[int] = None,
         global_: typing.Optional[bool] = None,

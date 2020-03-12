@@ -28,9 +28,7 @@ class Friends(Category):
         return result
 
     async def add_list(
-        self,
-        name: typing.Optional[str] = None,
-        user_ids: typing.Optional[typing.List[int]] = None,
+        self, name: str = None, user_ids: typing.Optional[typing.List[int]] = None,
     ) -> FriendsAddListResponse:
         """
         :param name: - Name of the friend list.
@@ -51,7 +49,7 @@ class Friends(Category):
 
     async def are_friends(
         self,
-        user_ids: typing.Optional[typing.List[int]] = None,
+        user_ids: typing.List[int] = None,
         need_sign: typing.Optional[bool] = None,
     ) -> FriendsAreFriendsResponse:
         """
@@ -106,7 +104,7 @@ class Friends(Category):
         result = OkResponse(**raw_result)
         return result
 
-    async def delete_list(self, list_id: typing.Optional[int] = None,) -> OkResponse:
+    async def delete_list(self, list_id: int = None,) -> OkResponse:
         """
         :param list_id: - ID of the friend list to delete.
         :return:
@@ -124,9 +122,7 @@ class Friends(Category):
         return result
 
     async def edit(
-        self,
-        user_id: typing.Optional[int] = None,
-        list_ids: typing.Optional[typing.List[int]] = None,
+        self, user_id: int = None, list_ids: typing.Optional[typing.List[int]] = None,
     ) -> OkResponse:
         """
         :param user_id: - ID of the user whose friend list is to be edited.
@@ -148,7 +144,7 @@ class Friends(Category):
     async def edit_list(
         self,
         name: typing.Optional[str] = None,
-        list_id: typing.Optional[int] = None,
+        list_id: int = None,
         user_ids: typing.Optional[typing.List[int]] = None,
         add_user_ids: typing.Optional[typing.List[int]] = None,
         delete_user_ids: typing.Optional[typing.List[int]] = None,
@@ -414,7 +410,7 @@ class Friends(Category):
 
     async def search(
         self,
-        user_id: typing.Optional[int] = None,
+        user_id: int = None,
         q: typing.Optional[str] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
         name_case: typing.Optional[str] = None,

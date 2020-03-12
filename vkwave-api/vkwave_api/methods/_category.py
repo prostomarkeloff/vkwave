@@ -28,10 +28,10 @@ class Category:
         await ctx.send_request()
 
         state = ctx.result.state
-        
+
         exc_data = None
         data = None
-        
+
         if state is ResultState.UNHANDLED_EXCEPTION:
             raise UnsuccessAPIRequestException()
         elif state is ResultState.HANDLED_EXCEPTION:
