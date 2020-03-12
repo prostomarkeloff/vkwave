@@ -1,18 +1,24 @@
 """How to get token strategy."""
 
+from typing import TypeVar, Generic, Union
 from abc import ABC, abstractmethod
-from .types import GroupId
-from vkwave_api.tokens.tokens import AnyABCToken
+from .types import GroupId, UserId, AnyToken, AnyId
+from .types import UST,BST
 
+T = TypeVar("T")
+V = TypeVar("V")
 
-class ABCGetTokenStrategy(ABC):
+class ABCGetTokenStrategy(ABC, Generic[T, V]):
     @abstractmethod
-    async def get_token(self, group_id: GroupId) -> AnyABCToken:
+    async def get_token(self, id_to_check: T) -> V:
         ...
 
 
-class NotImplementedGetTokenStrategy(ABCGetTokenStrategy):
-    async def get_token(self, group_id: GroupId) -> AnyABCToken:
+class NotImplementedGetTokenStrategy(ABCGetTokenStrategy[T, V]):
+    async def get_token(self, group_id: T) -> V:
         raise NotImplementedError(
-            "By default, events with unknown group_id are ignored"
+            "By default, events with unknown group (user) ID are ignored"
         )
+
+NotImplementedGetTokenStrategyUserIdSync = NotImplementedGetTokenStrategy[UST, UserId]
+NotImplementedGetTokenStrategyGroupIdSync = NotImplementedGetTokenStrategy[BST, GroupId]

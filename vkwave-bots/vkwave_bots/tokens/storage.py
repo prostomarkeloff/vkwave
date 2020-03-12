@@ -1,20 +1,21 @@
-from typing import Optional, Dict
-from .types import GroupId
+from typing import Optional, Dict, Generic, TypeVar
+from .types import GroupId, UserId
+from .types import UST, UAT, BST, BAT
 from .strategy import ABCGetTokenStrategy, NotImplementedGetTokenStrategy
-from vkwave_api.tokens.tokens import AnyABCToken
 
+T = TypeVar("T", GroupId, UserId)
+V = TypeVar("V", UST, UAT, BST, BAT)
 
-class TokenStorage:
-    def __init__(
-        self,
-        available: Optional[Dict[GroupId, AnyABCToken]] = None,
-        get_token_strategy: Optional[ABCGetTokenStrategy] = None,
-    ):
-        self.tokens: Dict[GroupId, AnyABCToken] = available or {}
-        self.get_token_strategy: ABCGetTokenStrategy = get_token_strategy or NotImplementedGetTokenStrategy()
+class TokenStorage(Generic[T, V]):
+    def __init__(self, available: Optional[Dict[T, V]] = None, get_token_strategy: Optional[ABCGetTokenStrategy] = None):
+        self.tokens: Dict[T, V] = available or Dict[T, V]()
+        self.get_token_strategy: ABCGetTokenStrategy[T, V] = get_token_strategy or NotImplementedGetTokenStrategy[T, V]()
 
-    def _get_cached(self, group_id: GroupId) -> Optional[AnyABCToken]:
-        return self.tokens.get(group_id)
+    def _get_cached(self, id_to_check: T) -> Optional[V]:
+        return self.tokens.get(id_to_check)
 
-    async def get_token(self, group_id: GroupId) -> AnyABCToken:
-        return self._get_cached(group_id) or (await self.get_token_strategy.get_token(group_id))
+    async def get_token(self, id_to_check: T) -> V:
+        return self._get_cached(id_to_check) or (
+            await self.get_token_strategy.get_token(id_to_check)
+        )
+
