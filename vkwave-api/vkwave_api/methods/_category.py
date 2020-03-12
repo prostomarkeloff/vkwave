@@ -47,7 +47,7 @@ class Category:
         result = typing.cast(dict, result)
 
         if "error" in result:
-            err_handler_result = await self.__api.handle_error(result["error"])
+            err_handler_result = await self.__api.handle_error(result)
             if err_handler_result:
                 result = err_handler_result
 
