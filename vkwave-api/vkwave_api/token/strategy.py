@@ -1,5 +1,7 @@
 from typing import List, Union, Tuple, cast
 from random import choice
+from abc import ABC, abstractmethod
+
 from vkwave_api.token.token import (
     AnyABCToken,
     TokenType,
@@ -8,7 +10,6 @@ from vkwave_api.token.token import (
     ABCAsyncToken,
     ABCSyncToken,
 )
-from abc import ABC, abstractmethod
 
 
 class ABCGetTokenStrategy(ABC):
@@ -29,6 +30,5 @@ class RandomGetTokenStrategy(ABCGetTokenStrategy):
         if token.get_token_type is GetTokenType.ASYNC:
             token = cast(ABCAsyncToken, token)
             return await token.get_token()
-        else:
-            token = cast(ABCSyncToken, token)
-            return token.get_token()
+        token = cast(ABCSyncToken, token)
+        return token.get_token()

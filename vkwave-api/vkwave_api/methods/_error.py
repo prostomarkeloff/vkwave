@@ -32,8 +32,10 @@ def get_return_info(code: int) -> ReturnInfo:
         return ReturnInfo.RETURN
     return ReturnInfo.NORETURN
 
+
 class UnsuccessAPIRequestException(Exception):
     """When ctx.result.state is not SUCCESS"""
+
 
 class APIError(Exception):
     def __init__(self, code: int, message: str, request_params: dict):

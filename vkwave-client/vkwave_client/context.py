@@ -1,14 +1,14 @@
 from enum import auto, Enum
-from .types import MethodName, ErrorHandlerCallable, RequestCallbackCallable
-from .types import SignalCallbackCallable
+import typing
+
 from typing_extensions import final
 
-import typing
+from .types import MethodName, ErrorHandlerCallable, RequestCallbackCallable
+from .types import SignalCallbackCallable
 
 
 async def _noop_error_handler(ctx: "RequestContext") -> None:
     """This handler does nothing. You should replace that."""
-    pass
 
 
 class RequestState(Enum):

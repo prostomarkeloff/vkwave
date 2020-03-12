@@ -199,11 +199,11 @@ class Apps(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
+        for key_, value in locals().items():
+            if key_ not in ["self", "params"] and value is not None:
                 if isinstance(value, list):
                     value = ",".join(str(item) for item in value)
-                params[key] = value
+                params[key_] = value
 
         raw_result = await self.api_request("sendRequest", params)
         result = AppsSendRequestResponse(**raw_result)

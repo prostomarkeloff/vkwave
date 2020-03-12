@@ -1,12 +1,13 @@
 """How to get token strategy."""
 
-from typing import TypeVar, Generic, Union
+from typing import TypeVar, Generic
 from abc import ABC, abstractmethod
-from .types import GroupId, UserId, AnyToken, AnyId
-from .types import UST,BST
+from .types import GroupId, UserId
+from .types import UST, BST
 
 T = TypeVar("T")
 V = TypeVar("V")
+
 
 class ABCGetTokenStrategy(ABC, Generic[T, V]):
     @abstractmethod
@@ -19,6 +20,7 @@ class NotImplementedGetTokenStrategy(ABCGetTokenStrategy[T, V]):
         raise NotImplementedError(
             "By default, events with unknown group (user) ID are ignored"
         )
+
 
 NotImplementedGetTokenStrategyUserIdSync = NotImplementedGetTokenStrategy[UST, UserId]
 NotImplementedGetTokenStrategyGroupIdSync = NotImplementedGetTokenStrategy[BST, GroupId]

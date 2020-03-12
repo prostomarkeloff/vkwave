@@ -33,11 +33,11 @@ class Messages(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
+        for key_, value in locals().items():
+            if key_ not in ["self", "params"] and value is not None:
                 if isinstance(value, list):
                     value = ",".join(str(item) for item in value)
-                params[key] = value
+                params[key_] = value
 
         raw_result = await self.api_request("allowMessagesFromGroup", params)
         result = OkResponse(**raw_result)
@@ -424,7 +424,7 @@ class Messages(Category):
         :param start_from: - Message ID to start return results from.
         :param count: - Number of objects to return.
         :param photo_sizes: - '1' — to return photo sizes in a
-        :param fields: - Additional profile [vk.com/dev/fields|fields] to return. 
+        :param fields: - Additional profile [vk.com/dev/fields|fields] to return.
         :param group_id: - Group ID (for group messages with group access token)
         :param preserve_order:
         :param max_forwards_level:

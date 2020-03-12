@@ -1,8 +1,10 @@
+from typing import Optional, List, cast, NewType, AsyncGenerator
+
 from vkwave_api.methods import APIOptionsRequestContext
+from vkwave_types.objects import GroupsLongPollServer
+
 from .http import AbstractHTTPClient
 from .http import AIOHTTPClient
-from typing import Optional, List, cast, NewType, AsyncGenerator
-from vkwave_types.objects import GroupsLongPollServer
 
 Update = NewType("Update", dict)
 
@@ -32,7 +34,7 @@ class BotLongpollData:
         if code == 1:
             self.ts = data["ts"]
             return await self.get_updates(client, api)
-        elif code == 2 or code == 3:
+        if code in (2, 3):
             await self.update_data(api)
             return await self.get_updates(client, api)
         return await self.get_updates(client, api)

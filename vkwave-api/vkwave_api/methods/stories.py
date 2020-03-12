@@ -168,7 +168,7 @@ class Stories(Category):
         self, owner_id: int = None, story_id: int = None,
     ) -> StoriesGetStatsResponse:
         """
-        :param owner_id: - Story owner ID. 
+        :param owner_id: - Story owner ID.
         :param story_id: - Story ID.
         :return:
         """
