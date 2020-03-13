@@ -1,11 +1,11 @@
 """
 Factory of context.
 """
+from abc import ABC, abstractmethod
+from typing import Dict, Type
 
 from .context import RequestContext
 from .types import RequestCallbackCallable, MethodName
-from abc import ABC, abstractmethod
-from typing import Dict, Type
 
 
 class AbstractFactory(ABC):

@@ -5,10 +5,10 @@ Default implementation of HTTPClient for vkwave-client.
 from asyncio import get_event_loop, AbstractEventLoop
 from typing import Optional
 from logging import getLogger
+from json import JSONDecodeError
 
 from typing_extensions import Final
 from aiohttp import ClientSession
-from json import JSONDecodeError
 from aiohttp import ClientConnectionError
 
 from .abstract import AbstractAPIClient

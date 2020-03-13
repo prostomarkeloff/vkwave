@@ -1,7 +1,8 @@
+import typing
+
 from vkwave_client.types import MethodName
 from vkwave_client.context import ResultState
 from ._error import UnsuccessAPIRequestException
-import typing
 
 if typing.TYPE_CHECKING:
     from ._abc import APIOptionsRequestContext
@@ -34,7 +35,7 @@ class Category:
 
         if state is ResultState.UNHANDLED_EXCEPTION:
             raise UnsuccessAPIRequestException()
-        elif state is ResultState.HANDLED_EXCEPTION:
+        if state is ResultState.HANDLED_EXCEPTION:
             exc_data = ctx.result.exception_data
             exc_data = typing.cast(dict, exc_data)
             if not ("error" in exc_data or "response" in exc_data):

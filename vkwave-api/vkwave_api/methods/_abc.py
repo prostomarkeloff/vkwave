@@ -1,8 +1,12 @@
+from typing import Optional, Tuple, List, Union, AsyncGenerator
+import copy
+import random
+from contextlib import asynccontextmanager
+
 from vkwave_client.abstract import AbstractAPIClient
 from vkwave_api.token.token import AnyABCToken, Token
 from vkwave_api.token.strategy import ABCGetTokenStrategy, RandomGetTokenStrategy
 from vkwave_api.methods._error import ErrorDispatcher, Error
-from typing import Optional, Tuple, List, Union, AsyncGenerator
 from .account import Account
 from .ads import Ads
 from .app import App
@@ -38,13 +42,7 @@ from .utils import Utils
 from .video import Video
 from .wall import Wall
 from .widgets import Widgets
-
-
-from contextlib import asynccontextmanager
 from .status import Status
-
-import copy
-import random
 
 
 TokensInput = Union[List[AnyABCToken], AnyABCToken]
@@ -66,11 +64,8 @@ class APIOptions:
         self.api_version: str = api_version
         self.error_dispatcher = error_dispatcher
 
-
     async def _get_token(self) -> Token:
-        return await self.get_token_strategy.get_token(
-            self.tokens
-        )
+        return await self.get_token_strategy.get_token(self.tokens)
 
     async def _get_client(self) -> AbstractAPIClient:
         # TODO: maybe get_client_strategy
@@ -82,7 +77,6 @@ class APIOptions:
     def update_pre_request_params(self, params: dict, token: Token) -> dict:
         params.update(v=self.api_version, access_token=token)
         return params
-
 
 
 class APIOptionsRequestContext:

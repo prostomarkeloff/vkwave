@@ -2,7 +2,7 @@
 Working with API tokens.
 """
 from enum import Enum, auto
-from typing import NewType, Callable, Awaitable, Union, ClassVar
+from typing import NewType, Union, ClassVar
 from typing_extensions import Protocol
 
 Token = NewType("Token", str)

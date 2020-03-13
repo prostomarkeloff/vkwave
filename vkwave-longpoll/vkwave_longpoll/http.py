@@ -1,7 +1,8 @@
+from asyncio import AbstractEventLoop as AEL, get_event_loop
+
 from abc import ABC, abstractmethod
 from typing import Optional
 from aiohttp import ClientSession
-from asyncio import AbstractEventLoop as AEL, get_event_loop
 
 
 class AbstractHTTPClient(ABC):
