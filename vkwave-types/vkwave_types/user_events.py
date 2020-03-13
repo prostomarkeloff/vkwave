@@ -6,6 +6,10 @@ import pydantic
 from .objects import MessagesKeyboard
 
 
+class BaseUserEvent(pydantic.BaseModel):
+    object: typing.Any
+
+
 class ServiceMessageData(pydantic.BaseModel):
     source_act: typing.Optional[str]
     source_mid: typing.Optional[str]
@@ -39,7 +43,7 @@ class MessageEventObject(pydantic.BaseModel):
     edit_time: typing.Optional[int]
 
 
-class MessageEventModel(pydantic.BaseModel):
+class MessageEventModel(BaseUserEvent):
     object: typing.Optional[MessageEventObject] = pydantic.Field(None)
 
 
@@ -50,7 +54,7 @@ class SetFlagsEventObject(pydantic.BaseModel):
     peer_id: typing.Optional[int]
 
 
-class SetFlagsEventModel(pydantic.BaseModel):
+class SetFlagsEventModel(BaseUserEvent):
     object: SetFlagsEventObject = pydantic.Field(None)
 
 
@@ -61,7 +65,7 @@ class ReadIncomingMessagesEventObject(pydantic.BaseModel):
     count: typing.Optional[int]
 
 
-class ReadIncomingMessagesModel(pydantic.BaseModel):
+class ReadIncomingMessagesModel(BaseUserEvent):
     object: ReadIncomingMessagesEventObject = pydantic.Field(None)
 
 
@@ -72,7 +76,7 @@ class ReadOutgoingMessagesEventObject(pydantic.BaseModel):
     count: typing.Optional[int]
 
 
-class ReadOutgoingMessagesModel(pydantic.BaseModel):
+class ReadOutgoingMessagesModel(BaseUserEvent):
     object: ReadOutgoingMessagesEventObject = pydantic.Field(None)
 
 
@@ -94,7 +98,7 @@ class FriendOnlineEventObject(pydantic.BaseModel):
     app_id: typing.Optional[int]
 
 
-class FriendOnlineModel(pydantic.BaseModel):
+class FriendOnlineModel(BaseUserEvent):
     object: FriendOnlineEventObject = pydantic.Field(None)
 
 
@@ -111,7 +115,7 @@ class FriendOfflineEventObject(pydantic.BaseModel):
     app_id: typing.Optional[int]
 
 
-class FriendOfflineModel(pydantic.BaseModel):
+class FriendOfflineModel(BaseUserEvent):
     object: FriendOfflineEventObject = pydantic.Field(None)
 
 
@@ -121,7 +125,7 @@ class SeenMentionInChatEventObject(pydantic.BaseModel):
     flags: typing.Optional[int]
 
 
-class SeenMentionInChatModel(pydantic.BaseModel):
+class SeenMentionInChatModel(BaseUserEvent):
     object: SeenMentionInChatEventObject = pydantic.Field(None)
 
 
@@ -131,7 +135,7 @@ class NewMentionInChatEventObject(pydantic.BaseModel):
     flags: typing.Optional[int]
 
 
-class NewMentionInChatModel(pydantic.BaseModel):
+class NewMentionInChatModel(BaseUserEvent):
     object: NewMentionInChatEventObject = pydantic.Field(None)
 
 
@@ -141,7 +145,7 @@ class DeletedAllMessagesInDialogEventObject(pydantic.BaseModel):
     last_message_id: typing.Optional[int]
 
 
-class DeletedAllMessagesInDialogModel(pydantic.BaseModel):
+class DeletedAllMessagesInDialogModel(BaseUserEvent):
     object: DeletedAllMessagesInDialogEventObject = pydantic.Field(None)
 
 
@@ -150,7 +154,7 @@ class DropMessageCacheEventObject(pydantic.BaseModel):
     message_id: typing.Optional[int]
 
 
-class DropMessageCacheModel(pydantic.BaseModel):
+class DropMessageCacheModel(BaseUserEvent):
     object: DropMessageCacheEventObject = pydantic.Field(None)
 
 
@@ -178,7 +182,7 @@ class ChangedChatSettingsEventObject(pydantic.BaseModel):
     ]  # https://github.com/danyadev/longpoll-doc#%D1%81%D0%BE%D0%B1%D1%8B%D1%82%D0%B8%D0%B5-52-%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85-%D1%87%D0%B0%D1%82%D0%B0
 
 
-class ChangedChatSettingsModel(pydantic.BaseModel):
+class ChangedChatSettingsModel(BaseUserEvent):
     object: ChangedChatSettingsEventObject = pydantic.Field(None)
 
 
@@ -190,7 +194,7 @@ class TypingOrVoiceEventObject(pydantic.BaseModel):
     timestamp: typing.Optional[int]
 
 
-class TypingOrVoiceModel(pydantic.BaseModel):
+class TypingOrVoiceModel(BaseUserEvent):
     object: TypingOrVoiceEventObject = pydantic.Field(None)
 
 
@@ -200,7 +204,7 @@ class ChangedUnreadDialogsCountEventObject(pydantic.BaseModel):
     count_with_notifications: typing.Optional[int]
 
 
-class ChangedUnreadDialogsCountModel(pydantic.BaseModel):
+class ChangedUnreadDialogsCountModel(BaseUserEvent):
     object: ChangedUnreadDialogsCountEventObject = pydantic.Field(None)
 
 
