@@ -1,5 +1,5 @@
 import asyncio
-
+import ssl
 from vkwave_api import __version__
 from vkwave_api.methods._abc import API
 from vkwave_api.token.token import BotSyncSingleToken, Token
@@ -33,9 +33,7 @@ async def test_users_get():
     request_data = await api.users.get(
         user_ids=[1, 2], fields=["photo_50", "city", "verified"]
     )
-
     assert request_data.response[0].first_name == "Павел"
-    assert request_data.response[0].photo_50 == "https://sun1-29.userapi.com/c836333/v836333001/31193/dNxZpRF-z_M.jpg?ava=1"
     assert request_data.response[1].id == 2
     assert request_data.response[1].is_closed
     assert request_data.response[1].verified == BaseBoolInt.NO
