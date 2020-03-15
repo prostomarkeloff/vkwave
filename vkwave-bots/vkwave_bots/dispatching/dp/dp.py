@@ -3,6 +3,7 @@ from vkwave_bots.tokens.storage import TokenStorage
 from vkwave_api.methods import API
 from vkwave_bots.tokens.types import GroupId, UserId
 from vkwave_types.bot_events import get_event_object
+from vkwave_types.user_events import get_event_object as user_get_event_object
 from vkwave_bots.dispatching.events.base import BaseEvent, BotEvent, UserEvent
 from vkwave_bots.dispatching.router.router import BaseRouter, HANDLER_NOT_FOUND
 from vkwave_api.token.token import AnyABCToken
@@ -40,7 +41,10 @@ class Dispatcher:
             token = await self.token_storage.get_token(GroupId(group_id))
             event = BotEvent(get_event_object(revent.raw_event), self.api.with_token(token))
         else:
-            raise NotImplementedError("not implemented yet")
+            obj = user_get_event_object(revent.raw_event)
+            user_id = obj.peer_id
+            token = await self.token_storage.get_token(UserId(user_id))
+            event = UserEvent(obj, self.api.with_token(token))
 
         if not await self.middleware_manager.execute_pre_process_event(event):
             return ProcessingResult(False)
