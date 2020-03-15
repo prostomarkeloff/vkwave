@@ -14,10 +14,13 @@ class TokenStorage(Generic[T]):
         available: Optional[Dict[T, AnyABCToken]] = None,
         get_token_strategy: Optional[ABCGetTokenStrategy] = None,
     ):
-        self.tokens: Dict[T, AnyABCToken] = available or Dict[T, AnyABCToken]()
+        self.tokens: Dict[T, AnyABCToken] = available or dict()
         self.get_token_strategy: ABCGetTokenStrategy[
             T
         ] = get_token_strategy or NotImplementedGetTokenStrategy[T]()
+
+    def append(self, id_to_add: T, token: AnyABCToken):
+        self.tokens[id_to_add] = token
 
     def _get_cached(self, id_to_check: T) -> Optional[AnyABCToken]:
         return self.tokens.get(id_to_check)
