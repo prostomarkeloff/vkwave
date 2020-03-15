@@ -7,6 +7,7 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from ..dp.dp import Dispatcher
 
+
 class BotLongpollExtension(BaseExtension):
     def __init__(self, dp: "Dispatcher", lp: BotLongpoll):
         self.dp = dp
@@ -16,7 +17,9 @@ class BotLongpollExtension(BaseExtension):
         while True:
             events = await self.lp.get_updates()
             for event in events:
-                get_running_loop().create_task(self.dp.process_event(ExtensionEvent(BotType.BOT, event)))
-                
+                get_running_loop().create_task(
+                    self.dp.process_event(ExtensionEvent(BotType.BOT, event))
+                )
+
     async def start(self):
         get_running_loop().create_task(self._start())

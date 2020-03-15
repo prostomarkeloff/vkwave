@@ -8,6 +8,7 @@ from typing import Any, List, Optional
 
 HANDLER_NOT_FOUND = object()
 
+
 class BaseRouter(ABC):
     @abstractmethod
     async def is_suitable(self, event: BaseEvent) -> bool:
@@ -22,13 +23,14 @@ class BaseRouter(ABC):
     def registrar(self) -> HandlerRegistrar:
         ...
 
+
 class DefaultRouter(BaseRouter):
     def __init__(self, filters: Optional[List[BaseFilter]] = None):
         self.filter_manager = FilterManager()
         filters = filters or []
         for filter in filters:
             self.filter_manager.add_filter(filter)
-        
+
         self._registrar = HandlerRegistrar()
 
     @property
@@ -44,4 +46,4 @@ class DefaultRouter(BaseRouter):
         return HANDLER_NOT_FOUND
 
     async def is_suitable(self, event: BaseEvent) -> bool:
-        return await self.filter_manager.execute_filters(event)        
+        return await self.filter_manager.execute_filters(event)

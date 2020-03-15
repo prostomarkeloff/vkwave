@@ -4,10 +4,12 @@ from typing import NewType, List
 
 MiddlewareResult = NewType("MiddlewareResult", bool)
 
+
 class BaseMiddleware(ABC):
     @abstractmethod
     async def pre_process_event(self, event: BaseEvent) -> MiddlewareResult:
         ...
+
 
 class MiddlewareManager:
     def __init__(self):

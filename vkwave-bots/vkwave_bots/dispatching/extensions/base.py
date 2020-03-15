@@ -5,11 +5,14 @@ import typing
 if typing.TYPE_CHECKING:
     from ..dp.dp import Dispatcher
 
+
 class BaseExtension(ABC):
     dp: "Dispatcher"
+
     @abstractmethod
     async def start(self):
         ...
+
 
 class ExtensionEvent:
     def __init__(self, bot_type: BotType, raw_event: typing.Union[list, dict]):

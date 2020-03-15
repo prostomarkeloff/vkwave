@@ -6,6 +6,7 @@ from vkwave_bots.dispatching.filters import EventTypeFilter, cast_to_filter
 from vkwave_bots.dispatching.handler import DefaultHandler
 from vkwave_bots.dispatching.handler import BaseHandler
 
+
 class HandlerRecord:
     def __init__(self):
         self.filters: List[BaseFilter] = []
@@ -24,7 +25,9 @@ class HandlerRecord:
                 self.filters.append(cast_to_filter(filter))
         return self
 
-    def with_event_type(self, event_type: Union[Tuple[str, ...], Tuple[int, ...], int, str]) -> "HandlerRecord":
+    def with_event_type(
+        self, event_type: Union[Tuple[str, ...], Tuple[int, ...], int, str]
+    ) -> "HandlerRecord":
         self.filters.append(EventTypeFilter(event_type))
         return self
 
@@ -36,5 +39,6 @@ class HandlerRecord:
         return self
 
     def ready(self) -> BaseHandler:
-        return self.handler_type(cast(BaseCallback, self.callback), filters=self.filters)
-
+        return self.handler_type(
+            cast(BaseCallback, self.callback), filters=self.filters
+        )

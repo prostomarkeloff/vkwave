@@ -4,6 +4,7 @@ from vkwave_bots.dispatching.handler.record import HandlerRecord
 from vkwave_bots.dispatching.handler.base import BaseHandler
 from typing import List
 
+
 class HandlerRegistrar:
     def __init__(self):
         self.handlers: List[BaseHandler] = []
@@ -13,4 +14,3 @@ class HandlerRegistrar:
 
     def register(self, handler: BaseHandler):
         self.handlers.append(handler)
-

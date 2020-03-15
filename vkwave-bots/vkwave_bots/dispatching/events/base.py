@@ -44,6 +44,7 @@ class Event(BaseEvent[T]):
     def __getitem__(self, key: Any) -> Any:
         return self.__user_data[key]
 
+
 class UserEvent(Event[BaseUserEvent]):
     def __init__(self, object: BaseUserEvent, api_ctx: APIOptionsRequestContext):
         super().__init__()
@@ -58,11 +59,10 @@ class UserEvent(Event[BaseUserEvent]):
     @property
     def object(self) -> BaseUserEvent:
         return self._object
-    
+
     @property
     def api_ctx(self) -> APIOptionsRequestContext:
         return self._api_ctx
-
 
 
 class BotEvent(Event[BaseBotEvent]):
@@ -79,10 +79,7 @@ class BotEvent(Event[BaseBotEvent]):
     @property
     def object(self) -> BaseBotEvent:
         return self._object
-    
+
     @property
     def api_ctx(self) -> APIOptionsRequestContext:
         return self._api_ctx
-
-
-

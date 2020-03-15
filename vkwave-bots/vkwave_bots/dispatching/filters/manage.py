@@ -2,6 +2,7 @@ from .base import BaseFilter
 from vkwave_bots.dispatching.events.base import BaseEvent
 from typing import List
 
+
 class FilterManager:
     def __init__(self):
         self.filters: List[BaseFilter] = []

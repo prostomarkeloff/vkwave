@@ -7,17 +7,23 @@ from .callback import BaseCallback
 
 FILTERS_NOT_PASSED = object()
 
+
 class BaseHandler(ABC):
     @abstractmethod
-    def __init__(self, callback: BaseCallback, filters: Optional[List[BaseFilter]] = None):
+    def __init__(
+        self, callback: BaseCallback, filters: Optional[List[BaseFilter]] = None
+    ):
         ...
 
     @abstractmethod
     async def process_event(self, event: BaseEvent) -> Any:
         """Return FILTERS_NOT_PASSED or handler's result"""
 
+
 class DefaultHandler(BaseHandler):
-    def __init__(self, callback: BaseCallback, filters: Optional[List[BaseFilter]] = None):
+    def __init__(
+        self, callback: BaseCallback, filters: Optional[List[BaseFilter]] = None
+    ):
         self.callback = callback
         self.filter_manager = FilterManager()
         filters = filters or []

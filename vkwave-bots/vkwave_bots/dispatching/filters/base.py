@@ -4,10 +4,12 @@ from typing import NewType, Callable, Awaitable
 
 FilterResult = NewType("FilterResult", bool)
 
+
 class BaseFilter(ABC):
     @abstractmethod
     async def check(self, event: BaseEvent) -> FilterResult:
         ...
+
 
 class SyncFuncFilter(BaseFilter):
     """It accepts lambda and sync functions."""
@@ -17,6 +19,7 @@ class SyncFuncFilter(BaseFilter):
 
     async def check(self, event: BaseEvent) -> FilterResult:
         return FilterResult(self.func(event))
+
 
 class AsyncFuncFilter(BaseFilter):
     """It accepts any callables that return awaitables."""

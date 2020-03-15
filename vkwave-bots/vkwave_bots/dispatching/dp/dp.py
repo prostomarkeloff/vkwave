@@ -40,7 +40,9 @@ class Dispatcher:
             revent.raw_event = cast(dict, revent.raw_event)
             group_id = revent.raw_event["group_id"]
             token = await self.token_storage.get_token(GroupId(group_id))
-            event = BotEvent(get_event_object(revent.raw_event), self.api.with_token(token))
+            event = BotEvent(
+                get_event_object(revent.raw_event), self.api.with_token(token)
+            )
         else:
             revent.raw_event = cast(list, revent.raw_event)
             obj = user_get_event_object(revent.raw_event)

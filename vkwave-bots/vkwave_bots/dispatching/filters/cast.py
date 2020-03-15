@@ -4,7 +4,11 @@ from asyncio import iscoroutinefunction
 from inspect import isawaitable, isfunction
 from typing import Dict, Any, Type, cast as cast_t
 
-POSSIBLE_CASTS: Dict[str, Type[BaseFilter]] = {"awaitable": AsyncFuncFilter, "sync": SyncFuncFilter}
+POSSIBLE_CASTS: Dict[str, Type[BaseFilter]] = {
+    "awaitable": AsyncFuncFilter,
+    "sync": SyncFuncFilter,
+}
+
 
 def cast(to_cast: Any) -> BaseFilter:
     filter: Type[BaseFilter]
@@ -17,4 +21,3 @@ def cast(to_cast: Any) -> BaseFilter:
         return filter(to_cast)
 
     raise NotImplementedError
-
