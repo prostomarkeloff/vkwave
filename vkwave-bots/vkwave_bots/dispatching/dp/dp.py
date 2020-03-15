@@ -37,10 +37,12 @@ class Dispatcher:
     ) -> ProcessingResult:
         event: BaseEvent
         if revent.bot_type is BotType.BOT:
+            revent.raw_event = cast(dict, revent.raw_event)
             group_id = revent.raw_event["group_id"]
             token = await self.token_storage.get_token(GroupId(group_id))
             event = BotEvent(get_event_object(revent.raw_event), self.api.with_token(token))
         else:
+            revent.raw_event = cast(list, revent.raw_event)
             obj = user_get_event_object(revent.raw_event)
             user_id = obj.peer_id
             token = await self.token_storage.get_token(UserId(user_id))

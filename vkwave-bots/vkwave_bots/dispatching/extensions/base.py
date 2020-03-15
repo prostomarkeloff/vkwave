@@ -12,6 +12,6 @@ class BaseExtension(ABC):
         ...
 
 class ExtensionEvent:
-    def __init__(self, bot_type: BotType, raw_event: dict):
+    def __init__(self, bot_type: BotType, raw_event: typing.Union[list, dict]):
         self.bot_type = bot_type
         self.raw_event = raw_event

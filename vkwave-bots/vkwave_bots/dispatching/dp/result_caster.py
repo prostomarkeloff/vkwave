@@ -19,6 +19,6 @@ class ResultCaster:
 
 async def _default_str_handler(some: str, event: BaseEvent):
     if event.bot_type is BotType.USER:
-        raise NotImplementedError()
+        raise NotImplementedError("Default 'str' handler is not implemented yet")
     
     await event.api_ctx.messages.send(random_id=0, peer_id=event.object.object.message.peer_id, message=some)
