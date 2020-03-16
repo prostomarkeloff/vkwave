@@ -63,7 +63,50 @@ class BotEventType(str, Enum):
 class BaseBotEvent(pydantic.BaseModel):
     type: str
     group_id: int
-    object: typing.Optional[typing.Any]
+    object: typing.Union[
+        "MessageNewObject",
+        "MessagesMessage",
+        "MessagesMessage",
+        "MessageAllowObject",
+        "MessageDenyObject",
+        "PhotosPhoto",
+        "PhotoCommentObject",
+        "PhotoCommentObject",
+        "PhotoCommentObject",
+        "PhotoCommentDeleteObject",
+        "AudioAudio",
+        "VideoVideo",
+        "VideoCommentObject",
+        "VideoCommentObject",
+        "VideoCommentObject",
+        "VideoCommentDeleteObject",
+        "WallPostObject",
+        "WallPostObject",
+        "WallReplyObject",
+        "WallReplyObject",
+        "WallReplyObject",
+        "WallReplyDeleteObject",
+        "BoardPostObject",
+        "BoardPostObject",
+        "BoardPostObject",
+        "BoardPostDeleteObject",
+        "MarketCommentObject",
+        "MarketCommentObject",
+        "MarketCommentObject",
+        "MarketCommentDeleteObject",
+        "GroupLeaveObject",
+        "GroupJoinObject",
+        "UserBlockObject",
+        "UserUnblockObject",
+        "PollVoteNewObject",
+        "GroupOfficersEditObject",
+        "GroupChangeSettingsObject",
+        "GroupChangePhotoObject",
+        "VkpayTransactionObject",
+        "AppPayloadObject",
+        "MessageTypingStateObject",
+        "BaseBotEvent",
+    ]
     event_id: typing.Optional[str]
 
 
