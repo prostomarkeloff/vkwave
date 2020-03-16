@@ -8024,7 +8024,7 @@ class StoriesStoryVideo(VideoVideo):
     )
 
 
-class UsersSubscriptionsItem(
+class UsersSubscriptionsItem(  # type: ignore
     UsersUserXtrType, GroupsGroupFull,
 ):
     pass
