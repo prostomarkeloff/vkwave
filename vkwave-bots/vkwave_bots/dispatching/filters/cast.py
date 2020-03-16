@@ -1,23 +1,21 @@
 from .base import BaseFilter
 from .base import AsyncFuncFilter, SyncFuncFilter
+from vkwave_bots.dispatching.cast.default import DefaultCaster
 from asyncio import iscoroutinefunction
 from inspect import isawaitable, isfunction
-from typing import Dict, Any, Type, cast as cast_t
+from typing import Any
 
-POSSIBLE_CASTS: Dict[str, Type[BaseFilter]] = {
-    "awaitable": AsyncFuncFilter,
-    "sync": SyncFuncFilter,
-}
+class FilterCaster(DefaultCaster[BaseFilter]):
+    def cast(self, something: Any):
+        filter: BaseFilter
+        if iscoroutinefunction(something) or isawaitable(something):
+            filter = AsyncFuncFilter(something)
+            return filter
 
+        elif isfunction(something):
+            filter = SyncFuncFilter(something)
+            return filter
 
-def cast(to_cast: Any) -> BaseFilter:
-    filter: Type[BaseFilter]
-    if iscoroutinefunction(to_cast) or isawaitable(to_cast):
-        filter = cast_t(Type[AsyncFuncFilter], POSSIBLE_CASTS["awaitable"])
-        return filter(to_cast)
+        raise NotImplementedError("There is not caster for this type")
 
-    elif isfunction(to_cast):
-        filter = cast_t(Type[SyncFuncFilter], POSSIBLE_CASTS["sync"])
-        return filter(to_cast)
-
-    raise NotImplementedError
+caster = FilterCaster()

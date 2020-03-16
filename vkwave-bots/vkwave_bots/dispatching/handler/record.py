@@ -1,8 +1,8 @@
-from .cast import cast as cast_to_callback
-from .callback import BaseCallback
+from .cast import caster as callback_caster
+from vkwave_bots.dispatching.handler.callback import BaseCallback
 from typing import cast, Union, Type, List, Optional, Any
 from vkwave_bots.dispatching.filters.base import BaseFilter
-from vkwave_bots.dispatching.filters import EventTypeFilter, cast_to_filter
+from vkwave_bots.dispatching.filters import EventTypeFilter, filter_caster
 from vkwave_bots.dispatching.handler import DefaultHandler
 from vkwave_bots.dispatching.handler import BaseHandler
 
@@ -22,14 +22,14 @@ class HandlerRecord:
             if isinstance(filter, BaseFilter):
                 self.filters.append(filter)
             else:
-                self.filters.append(cast_to_filter(filter))
+                self.filters.append(filter_caster.cast(filter))
         return self
 
     def handle(self, callback: Union[BaseCallback, Any]) -> "HandlerRecord":
         if isinstance(callback, BaseCallback):
             self.callback = callback
         else:
-            self.callback = cast_to_callback(callback)
+            self.callback = callback_caster.cast(callback)
         return self
 
     def ready(self) -> BaseHandler:
