@@ -1,6 +1,6 @@
 from .cast import cast as cast_to_callback
 from .callback import BaseCallback
-from typing import cast, Union, Type, Tuple, List, Optional, Any
+from typing import cast, Union, Type, List, Optional, Any
 from vkwave_bots.dispatching.filters.base import BaseFilter
 from vkwave_bots.dispatching.filters import EventTypeFilter, cast_to_filter
 from vkwave_bots.dispatching.handler import DefaultHandler
@@ -23,12 +23,6 @@ class HandlerRecord:
                 self.filters.append(filter)
             else:
                 self.filters.append(cast_to_filter(filter))
-        return self
-
-    def with_event_type(
-        self, event_type: Union[Tuple[str, ...], Tuple[int, ...], int, str]
-    ) -> "HandlerRecord":
-        self.filters.append(EventTypeFilter(event_type))
         return self
 
     def handle(self, callback: Union[BaseCallback, Any]) -> "HandlerRecord":
