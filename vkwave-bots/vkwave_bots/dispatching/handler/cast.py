@@ -5,8 +5,8 @@ from vkwave_bots.dispatching.cast.default import DefaultCaster
 from .callback import SyncFuncCallback, AsyncFuncCallback
 from .callback import BaseCallback
 
-class CallbackCaster(DefaultCaster[BaseCallback]):
 
+class CallbackCaster(DefaultCaster[BaseCallback]):
     def cast(self, something: Any) -> BaseCallback:
         av_cast = super().cast(something)
         if av_cast:
@@ -21,7 +21,8 @@ class CallbackCaster(DefaultCaster[BaseCallback]):
             return cb
         if isinstance(something, str):
             return SyncFuncCallback(lambda event: something)
-        
+
         raise NotImplementedError("There is no cast for this type")
 
-caster = CallbackCaster()    
+
+caster = CallbackCaster()

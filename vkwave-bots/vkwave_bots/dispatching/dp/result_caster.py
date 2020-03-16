@@ -8,7 +8,7 @@ class ResultCaster:
         self.available: Dict[
             Type[Any], Callable[[Any, BaseEvent], Awaitable[None]]
         ] = {}
-        
+
         self.add_caster(str, _default_str_handler)
         self.add_caster(type(None), _default_none_handler)
 
@@ -26,8 +26,10 @@ class ResultCaster:
             raise NotImplementedError("implementation for this type doesn't exist")
         await handler(result, event)
 
+
 async def _default_none_handler(some, event: BaseEvent):
     pass
+
 
 async def _default_str_handler(some: str, event: BaseEvent):
     if event.bot_type is BotType.USER:

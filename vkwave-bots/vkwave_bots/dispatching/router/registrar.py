@@ -4,7 +4,7 @@ from vkwave_bots.dispatching.handler.record import HandlerRecord
 from vkwave_bots.dispatching.handler.base import BaseHandler
 from typing import List, TypeVar, Callable, Any
 
-F = TypeVar('F', bound=Callable[..., Any])
+F = TypeVar("F", bound=Callable[..., Any])
 
 
 class HandlerRegistrar:
@@ -19,6 +19,7 @@ class HandlerRegistrar:
             handler = record.ready()
             self.register(handler)
             return func
+
         return decorator
 
     def new(self) -> HandlerRecord:

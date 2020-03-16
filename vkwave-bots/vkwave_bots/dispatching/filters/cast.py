@@ -5,6 +5,7 @@ from asyncio import iscoroutinefunction
 from inspect import isawaitable, isfunction
 from typing import Any
 
+
 class FilterCaster(DefaultCaster[BaseFilter]):
     def cast(self, something: Any):
         filter: BaseFilter
@@ -17,5 +18,6 @@ class FilterCaster(DefaultCaster[BaseFilter]):
             return filter
 
         raise NotImplementedError("There is not caster for this type")
+
 
 caster = FilterCaster()
