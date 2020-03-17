@@ -5,9 +5,9 @@ import time
 
 
 class TTLStorage(AbstractExpiredStorage):
-    def __init__(self):
+    def __init__(self, default_ttl: TTL = 10):
         self.data: typing.Dict[Key, typing.Tuple[Value, TTL]] = {}
-        self.default_ttl = TTL(10)
+        self.default_ttl = default_ttl
 
     async def put(self, key: Key, value: Value, ttl: TTL = None) -> None:
         if ttl is None:
