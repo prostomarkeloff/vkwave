@@ -1,7 +1,8 @@
-from vkwave_bots_storage.base import AbstractExpiredStorage
-from vkwave_bots_storage._types import Key, Value, TTL
 import typing
 import time
+
+from vkwave_bots_storage.base import AbstractExpiredStorage
+from vkwave_bots_storage._types import Key, Value, TTL
 
 
 class TTLStorage(AbstractExpiredStorage):
@@ -12,6 +13,8 @@ class TTLStorage(AbstractExpiredStorage):
     async def put(self, key: Key, value: Value, ttl: TTL = None) -> None:
         if ttl is None:
             expire = TTL(time.time() + self.default_ttl)
+        elif ttl == -1:
+            expire = TTL(time.time() ** 2)
         else:
             expire = TTL(time.time() + ttl)
         self.data[key] = (value, expire)
@@ -29,9 +32,8 @@ class TTLStorage(AbstractExpiredStorage):
     async def contains(self, key: Key) -> bool:
         if key not in self.data:
             return False
-        value, expire = self.data[key]
+        _, expire = self.data[key]
 
         if expire < time.time():
             del self.data[key]
         return key in self.data
-

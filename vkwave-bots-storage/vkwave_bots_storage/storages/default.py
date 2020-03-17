@@ -1,6 +1,7 @@
+import typing
+
 from vkwave_bots_storage.base import AbstractStorage
 from vkwave_bots_storage._types import Key, Value
-import typing
 
 
 class Storage(AbstractStorage):
@@ -12,7 +13,7 @@ class Storage(AbstractStorage):
             return self.data[key]
         return default
 
-    async def put(self, key: Key, value: Value) -> typing.Optional[typing.NoReturn]:
+    async def put(self, key: Key, value: Value) -> None:
         self.data[key] = value
 
     async def delete(self, key: Key) -> typing.Optional[typing.NoReturn]:
