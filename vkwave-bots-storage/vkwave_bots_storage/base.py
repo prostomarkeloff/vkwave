@@ -1,13 +1,9 @@
 from abc import ABC, abstractmethod
 import typing
-from .types import Key, Value
+from vkwave_bots_storage._types import Key, Value
 
 
 class AbstractStorage(ABC):
-    @abstractmethod
-    async def post(self, key: Key, value: Value) -> None:
-        ...
-
     @abstractmethod
     async def get(self, key: Key, default: Value = None) -> typing.Optional[Value]:
         ...
