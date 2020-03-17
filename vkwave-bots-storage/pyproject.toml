@@ -2,7 +2,7 @@
 name = "vkwave-bots-storage"
 version = "0.1.0"
 description = ""
-authors = ["kesha1225 <samedov03@mail.ru>"]
+authors = ["kesha1225"]
 
 [tool.poetry.dependencies]
 python = "^3.7"
