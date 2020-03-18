@@ -8,7 +8,7 @@ class Storage(AbstractStorage):
     def __init__(self):
         self.data: typing.Dict[Key, Value] = {}
 
-    async def get(self, key: Key, default: Value = None) -> typing.Optional[Value]:
+    async def get(self, key: Key, default: typing.Optional[Value] = None) -> typing.Optional[Value]:
         if await self.contains(key):
             return self.data[key]
         return default

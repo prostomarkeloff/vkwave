@@ -10,7 +10,7 @@ class TTLStorage(AbstractExpiredStorage):
         self.data: typing.Dict[Key, typing.Tuple[Value, TTL]] = {}
         self.default_ttl = default_ttl
 
-    async def put(self, key: Key, value: Value, ttl: TTL = None) -> None:
+    async def put(self, key: Key, value: Value, ttl: typing.Optional[TTL] = None) -> None:
         if ttl is None:
             expire = TTL(time.time() + self.default_ttl)
         elif ttl == -1:
@@ -19,7 +19,7 @@ class TTLStorage(AbstractExpiredStorage):
             expire = TTL(time.time() + ttl)
         self.data[key] = (value, expire)
 
-    async def get(self, key: Key, default: Value = None) -> typing.Optional[Value]:
+    async def get(self, key: Key, default: typing.Optional[Value] = None) -> typing.Optional[Value]:
         if await self.contains(key):
             return self.data[key][0]
         return default
