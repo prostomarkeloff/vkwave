@@ -1,12 +1,14 @@
-from typing import Optional, Tuple, List, Union, AsyncGenerator
 import copy
 import random
 from contextlib import asynccontextmanager
+from typing import AsyncGenerator, List, Optional, Tuple, Union
 
-from vkwave_client.abstract import AbstractAPIClient
+from vkwave_api.methods._error import Error, ErrorDispatcher
+from vkwave_api.token.strategy import (ABCGetTokenStrategy,
+                                       RandomGetTokenStrategy)
 from vkwave_api.token.token import AnyABCToken, Token
-from vkwave_api.token.strategy import ABCGetTokenStrategy, RandomGetTokenStrategy
-from vkwave_api.methods._error import ErrorDispatcher, Error
+from vkwave_client.abstract import AbstractAPIClient
+
 from .account import Account
 from .ads import Ads
 from .app import App
@@ -34,6 +36,7 @@ from .pretty import Pretty
 from .search import Search
 from .secure import Secure
 from .stats import Stats
+from .status import Status
 from .storage import Storage
 from .stories import Stories
 from .streaming import Streaming
@@ -42,8 +45,6 @@ from .utils import Utils
 from .video import Video
 from .wall import Wall
 from .widgets import Widgets
-from .status import Status
-
 
 TokensInput = Union[List[AnyABCToken], AnyABCToken]
 ClientsInput = Union[List[AbstractAPIClient], AbstractAPIClient]

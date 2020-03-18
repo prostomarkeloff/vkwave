@@ -1,8 +1,9 @@
-from .base import BaseFilter
+from typing import Tuple, Union
+
 from vkwave_bots.dispatching.events.base import BaseEvent
 from vkwave_bots.types.bot_type import BotType
-from .base import FilterResult
-from typing import Union, Tuple
+
+from .base import BaseFilter, FilterResult
 
 
 class EventTypeFilter(BaseFilter):

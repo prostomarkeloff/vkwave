@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
+from typing import Any, Awaitable, Callable
+
 from vkwave_bots.dispatching.events.base import BaseEvent
-from typing import Any, Callable, Awaitable
 
 
 class BaseCallback(ABC):

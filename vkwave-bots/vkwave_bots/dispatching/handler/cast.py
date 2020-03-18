@@ -1,9 +1,10 @@
-from inspect import isfunction, isawaitable
 from asyncio import iscoroutinefunction
+from inspect import isawaitable, isfunction
 from typing import Any, cast
+
 from vkwave_bots.dispatching.cast.default import DefaultCaster
-from .callback import SyncFuncCallback, AsyncFuncCallback
-from .callback import BaseCallback
+
+from .callback import AsyncFuncCallback, BaseCallback, SyncFuncCallback
 
 
 class CallbackCaster(DefaultCaster[BaseCallback]):

@@ -1,9 +1,10 @@
+import pytest
+
 from vkwave_client.abstract import AbstractAPIClient
 from vkwave_client.context import RequestContext, Signal
-from vkwave_client.types import MethodName
 from vkwave_client.factory import AbstractFactory, DefaultFactory
+from vkwave_client.types import MethodName
 
-import pytest
 
 class SomeAPIException(Exception):
     pass

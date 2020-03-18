@@ -3,16 +3,9 @@ from enum import Enum
 
 import pydantic
 
-from .objects import (
-    CallbackGroupJoinType,
-    MessagesMessage,
-    PhotosPhoto,
-    AudioAudio,
-    WallWallComment,
-    WallWallpost,
-    VideoVideo,
-    BoardTopicComment,
-)
+from .objects import (AudioAudio, BoardTopicComment, CallbackGroupJoinType,
+                      MessagesMessage, PhotosPhoto, VideoVideo,
+                      WallWallComment, WallWallpost)
 
 
 class BotEventType(str, Enum):

@@ -1,8 +1,8 @@
-import typing
 import time
+import typing
 
+from vkwave_bots_storage._types import TTL, Key, Value
 from vkwave_bots_storage.base import AbstractExpiredStorage
-from vkwave_bots_storage._types import Key, Value, TTL
 
 
 class TTLStorage(AbstractExpiredStorage):

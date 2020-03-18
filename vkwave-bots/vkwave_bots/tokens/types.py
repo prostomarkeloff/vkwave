@@ -1,10 +1,9 @@
 import typing
-from vkwave_api.token.token import (
-    ABCUserSyncToken as UST,
-    ABCUserAsyncToken as UAT,
-    ABCBotSyncToken as BST,
-    ABCBotAsyncToken as BAT,
-)
+
+from vkwave_api.token.token import ABCBotAsyncToken as BAT
+from vkwave_api.token.token import ABCBotSyncToken as BST
+from vkwave_api.token.token import ABCUserAsyncToken as UAT
+from vkwave_api.token.token import ABCUserSyncToken as UST
 
 GroupId = typing.NewType("GroupId", int)
 UserId = typing.NewType("UserId", int)

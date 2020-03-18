@@ -1,8 +1,10 @@
 from abc import ABC, abstractmethod
-from vkwave_bots.dispatching.filters.base import BaseFilter
-from vkwave_bots.dispatching.events.base import BaseEvent
-from vkwave_bots.dispatching.filters.manage import FilterManager
 from typing import Any, Awaitable, Callable, List, Optional
+
+from vkwave_bots.dispatching.events.base import BaseEvent
+from vkwave_bots.dispatching.filters.base import BaseFilter
+from vkwave_bots.dispatching.filters.manage import FilterManager
+
 from .callback import BaseCallback
 
 FILTERS_NOT_PASSED = object()

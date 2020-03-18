@@ -1,8 +1,10 @@
-from .base import BaseExtension, ExtensionEvent
-from vkwave_bots.types.bot_type import BotType
-from vkwave_longpoll.bot import BotLongpoll
 from asyncio import get_running_loop
 from typing import TYPE_CHECKING
+
+from vkwave_bots.types.bot_type import BotType
+from vkwave_longpoll.bot import BotLongpoll
+
+from .base import BaseExtension, ExtensionEvent
 
 if TYPE_CHECKING:
     from ..dp.dp import Dispatcher

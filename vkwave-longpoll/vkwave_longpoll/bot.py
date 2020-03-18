@@ -1,10 +1,9 @@
-from typing import Optional, List, cast, NewType, AsyncGenerator
+from typing import AsyncGenerator, List, NewType, Optional, cast
 
 from vkwave_api.methods import APIOptionsRequestContext
 from vkwave_types.objects import GroupsLongPollServer
 
-from .http import AbstractHTTPClient
-from .http import AIOHTTPClient
+from .http import AbstractHTTPClient, AIOHTTPClient
 
 Update = NewType("Update", dict)
 

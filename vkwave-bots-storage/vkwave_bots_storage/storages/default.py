@@ -1,7 +1,7 @@
 import typing
 
-from vkwave_bots_storage.base import AbstractStorage
 from vkwave_bots_storage._types import Key, Value
+from vkwave_bots_storage.base import AbstractStorage
 
 
 class Storage(AbstractStorage):

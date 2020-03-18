@@ -1,15 +1,9 @@
-from typing import List, Union, Tuple, cast
-from random import choice
 from abc import ABC, abstractmethod
+from random import choice
+from typing import List, Tuple, Union, cast
 
-from vkwave_api.token.token import (
-    AnyABCToken,
-    TokenType,
-    GetTokenType,
-    Token,
-    ABCAsyncToken,
-    ABCSyncToken,
-)
+from vkwave_api.token.token import (ABCAsyncToken, ABCSyncToken, AnyABCToken,
+                                    GetTokenType, Token, TokenType)
 
 
 class ABCGetTokenStrategy(ABC):

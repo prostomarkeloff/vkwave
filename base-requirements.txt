@@ -1,6 +1,7 @@
 poetry
 mypy
 black
+isort
 pytest
 pytest-asyncio
 mypy_extensions

@@ -1,10 +1,12 @@
-from vkwave_bots.dispatching.filters.manage import FilterManager
-from vkwave_bots.dispatching.filters import BaseFilter
-from vkwave_bots.dispatching.events.base import BaseEvent
-from vkwave_bots.dispatching.handler.base import FILTERS_NOT_PASSED
-from .registrar import HandlerRegistrar
 from abc import ABC, abstractmethod
 from typing import Any, List, Optional
+
+from vkwave_bots.dispatching.events.base import BaseEvent
+from vkwave_bots.dispatching.filters import BaseFilter
+from vkwave_bots.dispatching.filters.manage import FilterManager
+from vkwave_bots.dispatching.handler.base import FILTERS_NOT_PASSED
+
+from .registrar import HandlerRegistrar
 
 HANDLER_NOT_FOUND = object()
 

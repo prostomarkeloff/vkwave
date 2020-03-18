@@ -1,6 +1,7 @@
-from abc import ABC, abstractmethod
 import typing
-from vkwave_bots_storage._types import Key, Value, TTL
+from abc import ABC, abstractmethod
+
+from vkwave_bots_storage._types import TTL, Key, Value
 
 
 class AbstractBaseStorage(ABC):

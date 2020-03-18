@@ -1,10 +1,10 @@
 from abc import ABC, abstractmethod
-from typing import Generic, TypeVar, Any, Dict
+from typing import Any, Dict, Generic, TypeVar
 
+from vkwave_api.methods._abc import APIOptionsRequestContext
 from vkwave_bots.types.bot_type import BotType
 from vkwave_types.bot_events import BaseBotEvent
 from vkwave_types.user_events import BaseUserEvent
-from vkwave_api.methods._abc import APIOptionsRequestContext
 
 T = TypeVar("T")
 

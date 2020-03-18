@@ -1,19 +1,21 @@
-from vkwave_bots.types.bot_type import BotType
-from vkwave_bots.tokens.storage import TokenStorage
-from vkwave_api.methods import API
-from vkwave_bots.tokens.types import GroupId, UserId
-from vkwave_types.bot_events import get_event_object
-from vkwave_types.user_events import get_event_object as user_get_event_object
-from vkwave_bots.dispatching.events.base import BaseEvent, BotEvent, UserEvent
-from vkwave_bots.dispatching.router.router import BaseRouter, HANDLER_NOT_FOUND
-from vkwave_api.token.token import AnyABCToken
-from vkwave_types.objects import GroupsGroup
-from .processing_options import ProcessEventOptions
-from typing import NewType, Optional, List, cast
-from .middleware.middleware import MiddlewareManager
-from vkwave_bots.dispatching.extensions.base import ExtensionEvent
-from .result_caster import ResultCaster
 from asyncio import get_running_loop
+from typing import List, NewType, Optional, cast
+
+from vkwave_api.methods import API
+from vkwave_api.token.token import AnyABCToken
+from vkwave_bots.dispatching.events.base import BaseEvent, BotEvent, UserEvent
+from vkwave_bots.dispatching.extensions.base import ExtensionEvent
+from vkwave_bots.dispatching.router.router import HANDLER_NOT_FOUND, BaseRouter
+from vkwave_bots.tokens.storage import TokenStorage
+from vkwave_bots.tokens.types import GroupId, UserId
+from vkwave_bots.types.bot_type import BotType
+from vkwave_types.bot_events import get_event_object
+from vkwave_types.objects import GroupsGroup
+from vkwave_types.user_events import get_event_object as user_get_event_object
+
+from .middleware.middleware import MiddlewareManager
+from .processing_options import ProcessEventOptions
+from .result_caster import ResultCaster
 
 ProcessingResult = NewType("ProcessingResult", bool)
 

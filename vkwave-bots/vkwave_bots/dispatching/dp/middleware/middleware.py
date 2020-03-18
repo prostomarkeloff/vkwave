@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
+from typing import List, NewType
+
 from vkwave_bots.dispatching.events.base import BaseEvent
-from typing import NewType, List
 
 MiddlewareResult = NewType("MiddlewareResult", bool)
 
