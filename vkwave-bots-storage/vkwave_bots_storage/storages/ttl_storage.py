@@ -2,11 +2,11 @@ import time
 import typing
 
 from vkwave_bots_storage._types import TTL, Key, Value
-from vkwave_bots_storage.base import AbstractExpiredStorage
+from vkwave_bots_storage.base import AbstractExpiredStorage, NO_KEY, NoKeyOrValue
 
 
 class TTLStorage(AbstractExpiredStorage):
-    def __init__(self, default_ttl: TTL = 10):
+    def __init__(self, default_ttl: TTL = TTL(10)):
         self.data: typing.Dict[Key, typing.Tuple[Value, TTL]] = {}
         self.default_ttl = default_ttl
 
@@ -19,9 +19,11 @@ class TTLStorage(AbstractExpiredStorage):
             expire = TTL(time.time() + ttl)
         self.data[key] = (value, expire)
 
-    async def get(self, key: Key, default: typing.Optional[Value] = None) -> typing.Optional[Value]:
+    async def get(self, key: Key, default: NoKeyOrValue = NO_KEY) -> Value:
         if await self.contains(key):
             return self.data[key][0]
+        if default is NO_KEY:
+            raise KeyError("There is no such key")
         return default
 
     async def delete(self, key: Key) -> None:
