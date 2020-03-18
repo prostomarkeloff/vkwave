@@ -1,9 +1,10 @@
-from .base import BaseFilter
-from .base import AsyncFuncFilter, SyncFuncFilter
-from vkwave_bots.dispatching.cast.default import DefaultCaster
 from asyncio import iscoroutinefunction
 from inspect import isawaitable, isfunction
 from typing import Any
+
+from vkwave_bots.dispatching.cast.default import DefaultCaster
+
+from .base import AsyncFuncFilter, BaseFilter, SyncFuncFilter
 
 
 class FilterCaster(DefaultCaster[BaseFilter]):

@@ -1,4 +1,5 @@
-from typing import Dict, Optional, Type, Any, Callable, Awaitable
+from typing import Any, Awaitable, Callable, Dict, Optional, Type
+
 from vkwave_bots.dispatching.events.base import BaseEvent
 from vkwave_bots.types.bot_type import BotType
 

@@ -1,8 +1,9 @@
 import typing
 
-from vkwave_client.types import MethodName
 from vkwave_client.context import ResultState
-from ._error import UnsuccessAPIRequestException, Error
+from vkwave_client.types import MethodName
+
+from ._error import Error, UnsuccessAPIRequestException
 
 if typing.TYPE_CHECKING:
     from ._abc import APIOptionsRequestContext

@@ -1,5 +1,6 @@
-from .caster import AbstractCaster
 from typing import Any, Callable, Type, TypeVar, cast
+
+from .caster import AbstractCaster
 
 IT = TypeVar("IT")
 T = TypeVar("T")

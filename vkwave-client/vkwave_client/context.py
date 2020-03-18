@@ -1,10 +1,10 @@
-from enum import auto, Enum
 import typing
+from enum import Enum, auto
 
 from typing_extensions import final
 
-from .types import MethodName, ErrorHandlerCallable, RequestCallbackCallable
-from .types import SignalCallbackCallable
+from .types import (ErrorHandlerCallable, MethodName, RequestCallbackCallable,
+                    SignalCallbackCallable)
 
 
 async def _noop_error_handler(ctx: "RequestContext") -> None:

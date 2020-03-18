@@ -1,9 +1,9 @@
-from typing import Optional, Dict, Generic, TypeVar
-from .types import GroupId, UserId
-from .types import UST, UAT, BST, BAT
-from .strategy import ABCGetTokenStrategy, NotImplementedGetTokenStrategy
+from typing import Dict, Generic, Optional, TypeVar
 
 from vkwave_api.token.token import AnyABCToken
+
+from .strategy import ABCGetTokenStrategy, NotImplementedGetTokenStrategy
+from .types import BAT, BST, UAT, UST, GroupId, UserId
 
 T = TypeVar("T", GroupId, UserId)
 

@@ -1,7 +1,8 @@
 """How to get token strategy."""
 
-from typing import TypeVar, Generic
 from abc import ABC, abstractmethod
+from typing import Generic, TypeVar
+
 from vkwave_api.token.token import AnyABCToken
 
 T = TypeVar("T")

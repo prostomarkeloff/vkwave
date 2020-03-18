@@ -2,19 +2,18 @@
 Default implementation of HTTPClient for vkwave-client.
 """
 
-from asyncio import get_event_loop, AbstractEventLoop
-from typing import Optional
-from logging import getLogger
+from asyncio import AbstractEventLoop, get_event_loop
 from json import JSONDecodeError
+from logging import getLogger
+from typing import Optional
 
+from aiohttp import ClientConnectionError, ClientSession
 from typing_extensions import Final
-from aiohttp import ClientSession
-from aiohttp import ClientConnectionError
 
 from .abstract import AbstractAPIClient
-from .types import MethodName
 from .context import RequestContext, Signal
 from .factory import AbstractFactory, DefaultFactory
+from .types import MethodName
 
 logger = getLogger(__name__)
 

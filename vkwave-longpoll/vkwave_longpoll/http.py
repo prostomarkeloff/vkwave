@@ -1,7 +1,8 @@
-from asyncio import AbstractEventLoop as AEL, get_event_loop
-
 from abc import ABC, abstractmethod
+from asyncio import AbstractEventLoop as AEL
+from asyncio import get_event_loop
 from typing import Optional
+
 from aiohttp import ClientSession
 
 

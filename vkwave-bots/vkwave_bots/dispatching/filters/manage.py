@@ -1,6 +1,8 @@
-from .base import BaseFilter
-from vkwave_bots.dispatching.events.base import BaseEvent
 from typing import List
+
+from vkwave_bots.dispatching.events.base import BaseEvent
+
+from .base import BaseFilter
 
 
 class FilterManager:

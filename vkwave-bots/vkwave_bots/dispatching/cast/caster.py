@@ -1,5 +1,6 @@
-from abc import ABC, abstractmethod as abm
-from typing import Generic, TypeVar, Any, Type, Callable
+from abc import ABC
+from abc import abstractmethod as abm
+from typing import Any, Callable, Generic, Type, TypeVar
 
 IT = TypeVar("IT")  # input type
 T = TypeVar("T")

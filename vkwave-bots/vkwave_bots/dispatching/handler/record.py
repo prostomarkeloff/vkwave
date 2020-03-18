@@ -1,10 +1,11 @@
-from .cast import caster as callback_caster
-from vkwave_bots.dispatching.handler.callback import BaseCallback
-from typing import cast, Union, Type, List, Optional, Any
-from vkwave_bots.dispatching.filters.base import BaseFilter
+from typing import Any, List, Optional, Type, Union, cast
+
 from vkwave_bots.dispatching.filters import EventTypeFilter, filter_caster
-from vkwave_bots.dispatching.handler import DefaultHandler
-from vkwave_bots.dispatching.handler import BaseHandler
+from vkwave_bots.dispatching.filters.base import BaseFilter
+from vkwave_bots.dispatching.handler import BaseHandler, DefaultHandler
+from vkwave_bots.dispatching.handler.callback import BaseCallback
+
+from .cast import caster as callback_caster
 
 
 class HandlerRecord:
