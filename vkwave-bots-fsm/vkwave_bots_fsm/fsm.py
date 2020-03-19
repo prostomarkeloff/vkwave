@@ -49,7 +49,11 @@ class FiniteStateMachine:
         self.storage = storage or Storage()
 
     async def set_state(
-        self, state: State, event: BaseEvent, for_what: ForWhat, extra_state_data=None,
+        self,
+        state: State,
+        event: BaseEvent,
+        for_what: ForWhat,
+        extra_state_data: typing.Optional[typing.Dict[str, str]] = None,
     ) -> None:
         sid = Key(create_state_id(event, for_what))
         if extra_state_data is None:
@@ -57,16 +61,16 @@ class FiniteStateMachine:
 
         if await self.storage.contains(sid):
             current_data = await self.storage.get(sid)
-            current_data["__vkwave_fsm_state__"] = state.title
+            current_data["__vkwave_fsm_state__"] = str(state)
             current_data.update(extra_state_data)
             return await self.storage.put(sid, current_data)
 
-        storage_data = {"__vkwave_fsm_state__": state.title}
+        storage_data = {"__vkwave_fsm_state__": str(state)}
         storage_data.update(extra_state_data)
         return await self.storage.put(sid, storage_data)
 
     async def add_data(
-        self, event: BaseEvent, for_what: ForWhat, state_data: dict
+        self, event: BaseEvent, for_what: ForWhat, state_data: typing.Dict[str, str]
     ) -> None:
         sid = Key(create_state_id(event, for_what))
 
