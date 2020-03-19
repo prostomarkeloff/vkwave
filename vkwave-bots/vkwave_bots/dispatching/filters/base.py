@@ -46,11 +46,16 @@ class OrFilter(BaseFilter):
         self.funcs = sfilters
 
     async def check(self, event: BaseEvent) -> FilterResult:
-        res = []
+        res: bool = True
         for func in self.funcs:
-           res.append(await func.check(event))
-        
-        return FilterResult(any(res))
+            if await func.check(event):
+                res = True
+                break
+            else:
+                res = False
+                break
+
+        return FilterResult(res)
 
 class SyncFuncFilter(BaseFilter):
     """It accepts lambda and sync functions."""

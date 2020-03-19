@@ -9,8 +9,7 @@ In other words, your bot in vkwave is just a set of routers that handle events. 
 Initiating:
 ```python
 router = Router()  # also you can pass here filters
-# it can be like: router = Router(lambda event: event.bot_type is not BotType.USER)
-# router with this filter WON'T accept user events
+# it can be like: router = Router(SomeFilter(...))
 ```
 
 The main question of this piece of docs: how to register handlers.
