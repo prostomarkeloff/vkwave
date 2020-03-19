@@ -32,6 +32,13 @@ def handler(event: BaseEvent) -> str:
 
 There is one more way how to do that, but it's not needed for everyday usage and I won't show you it
 
+Router's registrar has option for default filters. It will add them to handler's filters when creates.
+
+```python
+router.registrar.add_default_filter(SomeFilter(...))
+```
+
+
 And finally: how to add router to dispatcher (`dispatcher.md`, please).
 
 ```python
