@@ -10,11 +10,15 @@ F = TypeVar("F", bound=Callable[..., Any])
 
 class HandlerRegistrar:
     def __init__(self):
+        self.default_filters: List[BaseFilter] = []
         self.handlers: List[BaseHandler] = []
+
+    def add_default_filter(self, filter: BaseFilter):
+        self.default_filters.append(filter)
 
     def with_decorator(self, *filters: BaseFilter):
         def decorator(func: Callable[..., Any]):
-            record = HandlerRecord()
+            record = self.new()
             record.with_filters(*filters)
             record.handle(func)
             handler = record.ready()
@@ -24,7 +28,9 @@ class HandlerRegistrar:
         return decorator
 
     def new(self) -> HandlerRecord:
-        return HandlerRecord()
+        record = HandlerRecord()
+        record.with_filters(*self.default_filters)
+        return record
 
     def register(self, handler: BaseHandler):
         self.handlers.append(handler)
