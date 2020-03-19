@@ -11,11 +11,14 @@ FILTERS_NOT_PASSED = object()
 
 
 class BaseHandler(ABC):
+    filter_manager: FilterManager
+
     @abstractmethod
     def __init__(
         self, callback: BaseCallback, filters: Optional[List[BaseFilter]] = None
     ):
         ...
+
 
     @abstractmethod
     async def process_event(self, event: BaseEvent) -> Any:

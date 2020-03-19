@@ -1,7 +1,7 @@
 from typing import Any, Callable, List, TypeVar
 
 from vkwave_bots.dispatching.events.base import BaseEvent
-from vkwave_bots.dispatching.filters.base import BaseFilter
+from vkwave_bots.dispatching.filters.base import BaseFilter, AsyncFuncFilter, SyncFuncFilter
 from vkwave_bots.dispatching.handler.base import BaseHandler
 from vkwave_bots.dispatching.handler.record import HandlerRecord
 
@@ -14,6 +14,9 @@ class HandlerRegistrar:
         self.handlers: List[BaseHandler] = []
 
     def add_default_filter(self, filter: BaseFilter):
+        if isinstance(filter, (AsyncFuncFilter, SyncFuncFilter)):
+            raise ValueError("You should add custom filters derived from `BaseFilter` for using default as filter")
+
         self.default_filters.append(filter)
 
     def with_decorator(self, *filters: BaseFilter):
@@ -29,8 +32,16 @@ class HandlerRegistrar:
 
     def new(self) -> HandlerRecord:
         record = HandlerRecord()
-        record.with_filters(*self.default_filters)
         return record
 
     def register(self, handler: BaseHandler):
+        for dfilter in self.default_filters:
+            to_include: bool = True
+            for afilter in handler.filter_manager.filters:
+                if type(dfilter) is type(afilter):
+                    to_include = False
+                    break
+            if to_include:
+                handler.filter_manager.add_filter(dfilter)
+
         self.handlers.append(handler)
