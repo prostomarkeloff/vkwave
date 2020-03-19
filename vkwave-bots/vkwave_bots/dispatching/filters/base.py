@@ -11,6 +11,46 @@ class BaseFilter(ABC):
     async def check(self, event: BaseEvent) -> FilterResult:
         ...
 
+    def __and__(self, other: "BaseFilter") -> "AndFilter":
+        return AndFilter(self, other)
+
+    def __not__(self) -> "NotFilter":
+        return NotFilter(self)
+
+    def __or__(self, other: "BaseFilter") -> "OrFilter":
+        return OrFilter(self, other)
+
+# sfilter: some filter
+
+class NotFilter(BaseFilter):
+    def __init__(self, sfilter: BaseFilter):
+        self.func = sfilter
+
+    async def check(self, event: BaseEvent) -> FilterResult:
+        res = await self.func.check(event)
+        return FilterResult(not res)
+
+class AndFilter(BaseFilter):
+    def __init__(self, *sfilters: BaseFilter):
+        self.funcs = sfilters
+
+    async def check(self, event: BaseEvent) -> FilterResult:
+        for func in self.funcs:
+            res = await func.check(event)
+            if not res:
+                return FilterResult(False)
+        return FilterResult(True)
+
+class OrFilter(BaseFilter):
+    def __init__(self, *sfilters: BaseFilter):
+        self.funcs = sfilters
+
+    async def check(self, event: BaseEvent) -> FilterResult:
+        res = []
+        for func in self.funcs:
+           res.append(await func.check(event))
+        
+        return FilterResult(any(res))
 
 class SyncFuncFilter(BaseFilter):
     """It accepts lambda and sync functions."""
