@@ -3,6 +3,10 @@
 This module is implementation of [Finite-state machine](https://en.wikipedia.org/wiki/Finite-state_machine)
 for bots
 
+fsm divides user states, chat states and user in chat states,
+for selecting one of the above options you can set ```for_what```
+argument in fsm methods.
+
 ```python3
 from vkwave_bots_fsm.fsm import FiniteStateMachine, State, ForWhat
 from vkwave_bots_fsm.filter import FsmFilter
