@@ -26,7 +26,7 @@ class Keyboard:
         :param one_time:
         """
         self.one_time = one_time
-        self.buttons: typing.List[typing.List[Button]]= [[]]
+        self.buttons: typing.List[typing.List[Button]] = [[]]
         self.keyboard = {
             "one_time": one_time,
             "buttons": self.buttons,
@@ -34,7 +34,9 @@ class Keyboard:
         }
 
     @staticmethod
-    def _generate_payload(payload: typing.Optional[typing.Dict[str, str]]) -> typing.Union[str, typing.Dict[str, str]]:
+    def _generate_payload(
+        payload: typing.Optional[typing.Dict[str, str]]
+    ) -> typing.Union[str, typing.Dict[str, str]]:
         return payload if payload is not None else ""
 
     def add_row(self) -> None:
@@ -52,7 +54,10 @@ class Keyboard:
         current_row.append(action)
 
     def add_text_button(
-        self, text: str, color: ButtonColor = ButtonColor.PRIMARY, payload: typing.Optional[typing.Dict[str, str]] = None,
+        self,
+        text: str,
+        color: ButtonColor = ButtonColor.PRIMARY,
+        payload: typing.Optional[typing.Dict[str, str]] = None,
     ) -> None:
         """
         :param text:
@@ -77,7 +82,12 @@ class Keyboard:
         :return:
         """
 
-        action = {"action": {"type": ButtonType.LOCATION.value, "payload": self._generate_payload(payload)}}
+        action = {
+            "action": {
+                "type": ButtonType.LOCATION.value,
+                "payload": self._generate_payload(payload),
+            }
+        }
 
         self._add_button(action)
 
