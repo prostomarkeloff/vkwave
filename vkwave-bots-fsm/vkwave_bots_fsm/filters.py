@@ -2,7 +2,7 @@ from vkwave_bots.dispatching.events.base import BaseEvent
 from vkwave_bots_fsm.fsm import State, ForWhat, FiniteStateMachine, create_state_id
 
 from vkwave_bots.dispatching.filters.base_filters import BaseFilter, FilterResult
-
+from vkwave_bots_storage.types import Key
 
 ANY_STATE = "__any_state__"
 
@@ -43,8 +43,8 @@ class StateFilter(BaseFilter):
 
             return FilterResult(
                 not (
-                    user_in_chat_state in self.fsm.storage.data
-                    or user_state in self.fsm.storage.data
+                    await self.fsm.storage.contains(Key(user_in_chat_state))
+                    or await self.fsm.storage.contains(Key(user_state))
                 )
             )
         current_state = await self.fsm.get_data(event, for_what=self.for_what)
