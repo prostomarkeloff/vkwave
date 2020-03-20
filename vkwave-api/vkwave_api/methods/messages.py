@@ -833,6 +833,7 @@ class Messages(Category):
         sticker_id: typing.Optional[int] = None,
         group_id: typing.Optional[int] = None,
         keyboard: typing.Optional[str] = None,
+        template: typing.Optional[str] = None,
         payload: typing.Optional[str] = None,
         dont_parse_links: typing.Optional[bool] = None,
         disable_mentions: typing.Optional[bool] = None,
