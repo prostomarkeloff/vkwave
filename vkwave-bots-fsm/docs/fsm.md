@@ -8,11 +8,14 @@ for selecting one of the above options you can set ```for_what```
 argument in fsm methods.
 
 One user in personal message - ```ForWhat.FOR_USER```
+
 State for all chat - ```ForWhat.FOR_CHAT```
+
 For one user in chat - ```ForWhat.FOR_USER_IN_CHAT```
 
 So fsm doesn't reacted on handlers without ```StateFilter``` you can set default_filter - 
 ```router.registrar.add_default_filter(StateFilter(fsm, ..., ..., always_false=True))```.
+
 Because of this, if user have state, routes will not reacted on event.
 
 Example of simple interview with asking name and age.
