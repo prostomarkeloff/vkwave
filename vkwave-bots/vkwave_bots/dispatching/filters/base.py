@@ -22,6 +22,7 @@ class BaseFilter(ABC):
 
 # sfilter: some filter
 
+
 class NotFilter(BaseFilter):
     def __init__(self, sfilter: BaseFilter):
         self.func = sfilter
@@ -29,6 +30,7 @@ class NotFilter(BaseFilter):
     async def check(self, event: BaseEvent) -> FilterResult:
         res = await self.func.check(event)
         return FilterResult(not res)
+
 
 class AndFilter(BaseFilter):
     def __init__(self, *sfilters: BaseFilter):
@@ -40,6 +42,7 @@ class AndFilter(BaseFilter):
             if not res:
                 return FilterResult(False)
         return FilterResult(True)
+
 
 class OrFilter(BaseFilter):
     def __init__(self, *sfilters: BaseFilter):
@@ -56,6 +59,7 @@ class OrFilter(BaseFilter):
                 break
 
         return FilterResult(res)
+
 
 class SyncFuncFilter(BaseFilter):
     """It accepts lambda and sync functions."""
