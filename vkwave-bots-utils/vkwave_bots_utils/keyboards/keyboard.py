@@ -1,7 +1,8 @@
 import json
 from enum import Enum
 import typing
-from vkwave_bots_utils.keyboards._types import JSONEncoder, Button
+from vkwave_bots.types.json_types import JSONEncoder
+from vkwave_bots_utils.keyboards._types import Button
 
 
 class ButtonColor(Enum):
