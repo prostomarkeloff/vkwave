@@ -25,7 +25,7 @@ from vkwave_bots.dispatching.extensions.longpoll_bot import BotLongpollExtension
 from vkwave_bots.dispatching.router.router import DefaultRouter
 from vkwave_bots.tokens.types import GroupId
 from vkwave_api.methods._abc import API
-from vkwave_bots.dispatching.filters import EventTypeFilter
+from vkwave_bots.dispatching.filters.builtin import EventTypeFilter
 from vkwave_longpoll.bot import BotLongpoll, BotLongpollData
 from vkwave_types.bot_events import BotEventType
 

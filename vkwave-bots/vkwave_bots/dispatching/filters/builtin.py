@@ -1,7 +1,9 @@
-from typing import Tuple, Union
+from typing import Tuple, Union, Dict
+import json
 
 from vkwave_bots.dispatching.events.base import BaseEvent
 from vkwave_bots.types.bot_type import BotType
+from vkwave_bots.types.json_types import JSONDecoder
 
 from .base import BaseFilter, FilterResult
 
@@ -33,6 +35,7 @@ class EventTypeFilter(BaseFilter):
                 return FilterResult(event.object.event_id == self.event_type)
         raise NotImplementedError("There is no implementation for this type of bot")
 
+
 class TextFilter(BaseFilter):
     """Message text filter."""
 
@@ -41,11 +44,22 @@ class TextFilter(BaseFilter):
         self.ic = ignore_case
 
     async def check(self, event: BaseEvent) -> FilterResult:
-        if not event.bot_type is BotType.BOT:
+        if event.bot_type is not BotType.BOT:
             raise NotImplementedError("It's not implemented for users' bots yet")
 
         text = event.object.object.message.text
         if self.ic:
             return FilterResult(text == self.text.lower())
-        else:
-            return FilterResult(text.lower() == self.text.lower())
+        return FilterResult(text.lower() == self.text.lower())
+
+
+class PayloadFilter(BaseFilter):
+    """Filter for message payload"""
+
+    def __init__(self, payload: Dict[str, str], json_loader: JSONDecoder = json.loads):
+        self.json_loader = json_loader
+        self.payload = payload
+
+    async def check(self, event: BaseEvent) -> FilterResult:
+        current_payload = self.json_loader(event.object.object.message.payload)
+        return FilterResult(current_payload == self.payload)
