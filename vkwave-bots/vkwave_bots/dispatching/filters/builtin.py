@@ -1,7 +1,7 @@
 from typing import Tuple, Union, Dict
 import json
 
-from vkwave_bots.dispatching.events.base import BaseEvent
+from vkwave_bots.dispatching.events.base import BaseEvent, UserEvent
 from vkwave_bots.types.bot_type import BotType
 from vkwave_bots.types.json_types import JSONDecoder
 from vkwave_types.objects import MessagesMessageActionStatus
@@ -45,10 +45,10 @@ class TextFilter(BaseFilter):
         self.ic = ignore_case
 
     async def check(self, event: BaseEvent) -> FilterResult:
-        if event.bot_type is not BotType.BOT:
-            raise NotImplementedError("It's not implemented for users' bots yet")
-
-        text = event.object.object.message.text
+        if event.bot_type is not BotType.USER:
+            text = event.object.object.text
+        else:
+            text = event.object.object.message.text
         if self.ic:
             return FilterResult(text == self.text.lower())
         return FilterResult(text.lower() == self.text.lower())
@@ -62,7 +62,10 @@ class PayloadFilter(BaseFilter):
         self.payload = payload
 
     async def check(self, event: BaseEvent) -> FilterResult:
-        current_payload = event.object.object.message.payload
+        if event.bot_type is BotType.USER:
+            current_payload = event.object.object.message_data.payload
+        else:
+            current_payload = event.object.object.message.payload
         if current_payload is None:
             return FilterResult(False)
         return FilterResult(self.json_loader(current_payload) == self.payload)
@@ -75,5 +78,8 @@ class ChatActionFilter(BaseFilter):
         self.action = action
 
     async def check(self, event: BaseEvent) -> FilterResult:
-        current_action = event.object.object.message.action.type
+        if event.bot_type is BotType.USER:
+            current_action = event.object.object.message_data.source_act
+        else:
+            current_action = event.object.object.message.action.type
         return FilterResult(current_action == self.action)
