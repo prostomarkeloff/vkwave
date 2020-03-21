@@ -4,6 +4,7 @@ import json
 from vkwave_bots.dispatching.events.base import BaseEvent
 from vkwave_bots.types.bot_type import BotType
 from vkwave_bots.types.json_types import JSONDecoder
+from vkwave_types.objects import MessagesMessageActionStatus
 
 from .base import BaseFilter, FilterResult
 
@@ -61,5 +62,18 @@ class PayloadFilter(BaseFilter):
         self.payload = payload
 
     async def check(self, event: BaseEvent) -> FilterResult:
-        current_payload = self.json_loader(event.object.object.message.payload)
-        return FilterResult(current_payload == self.payload)
+        current_payload = event.object.object.message.payload
+        if current_payload is None:
+            return FilterResult(False)
+        return FilterResult(self.json_loader(current_payload) == self.payload)
+
+
+class ChatActionFilter(BaseFilter):
+    """Filter for actions in chat"""
+
+    def __init__(self, action: MessagesMessageActionStatus):
+        self.action = action
+
+    async def check(self, event: BaseEvent) -> FilterResult:
+        current_action = event.object.object.message.action.type
+        return FilterResult(current_action == self.action)
