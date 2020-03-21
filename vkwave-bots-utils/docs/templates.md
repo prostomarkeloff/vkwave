@@ -1,7 +1,7 @@
-Carousels for vk
+Carousels for VK.
 
 
-```python3
+```python
 from vkwave_bots_utils.keyboards import Template
 
 template_1 = Template(
@@ -24,9 +24,9 @@ template_2.add_text_button("Wow, another button")
 carousel = Template.generate_carousel(template_1, template_2)
 ```
 
-After this you can send carousel im vk message as template
+After this you can send this carousel to user as template:
 
 
-```python3
+```python
 api.messages.send(user_id=1, random_id=0, template=carousel)
 ```
