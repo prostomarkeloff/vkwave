@@ -1,9 +1,8 @@
 from typing import AsyncGenerator, List, NewType, Optional, cast
 
+from vkwave_http import AbstractHTTPClient
 from vkwave_api.methods import APIOptionsRequestContext
 from vkwave_types.objects import GroupsLongPollServer
-
-from .http import AbstractHTTPClient, AIOHTTPClient
 
 Update = NewType("Update", dict)
 
@@ -68,7 +67,7 @@ class BotLongpoll:
 
         self.api: APIOptionsRequestContext = api
 
-        self.client = http_client or AIOHTTPClient()
+        self.client: AbstractHTTPClient = http_client or self.api.api_options.get_client().http_client
         self.data = bot_longpoll_data
 
     async def get_updates(self) -> List[Update]:

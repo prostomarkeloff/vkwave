@@ -71,15 +71,14 @@ class APIOptions:
     def add_client(self, clients: ClientsInput):
         self.clients.extend(clients if isinstance(clients, list) else [clients])
 
-    async def _get_token(self) -> Token:
+    async def get_token(self) -> Token:
         return await self.get_token_strategy.get_token(self.tokens)
 
-    async def _get_client(self) -> AbstractAPIClient:
-        # TODO: maybe get_client_strategy
+    def get_client(self) -> AbstractAPIClient:
         return random.choice(self.clients)
 
     async def get_client_and_token(self) -> Tuple[AbstractAPIClient, Token]:
-        return await self._get_client(), await self._get_token()
+        return self.get_client(), await self.get_token()
 
     def update_pre_request_params(self, params: dict, token: Token) -> dict:
         params.update(v=self.api_version, access_token=token)

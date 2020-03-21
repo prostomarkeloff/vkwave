@@ -1,11 +1,18 @@
 from abc import ABC, abstractmethod
 
+from vkwave_http import AbstractHTTPClient
 from .context import RequestContext
 from .factory import AbstractFactory
 from .types import MethodName
 
 
 class AbstractAPIClient(ABC):
+
+    @property
+    @abstractmethod
+    def http_client(self) -> AbstractHTTPClient:
+        ...
+
     @abstractmethod
     def set_context_factory(self, factory: AbstractFactory) -> None:
         ...

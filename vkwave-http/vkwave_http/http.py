@@ -13,7 +13,7 @@ class AbstractHTTPClient(ABC):
 
 
 class AIOHTTPClient(AbstractHTTPClient):
-    def __init__(self, loop: Optional[AEL] = None):
+    def __init__(self, session: Optional[ClientSession] = None, loop: Optional[AEL] = None):
         self.loop = loop or get_event_loop()
         self.session = ClientSession(loop=self.loop)
 

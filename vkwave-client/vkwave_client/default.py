@@ -7,6 +7,7 @@ from json import JSONDecodeError
 from logging import getLogger
 from typing import Optional
 
+from vkwave_http import AIOHTTPClient as AHC_H, AbstractHTTPClient
 from aiohttp import ClientConnectionError, ClientSession
 from typing_extensions import Final
 
@@ -33,9 +34,12 @@ class AIOHTTPClient(AbstractAPIClient):
         session: Optional[ClientSession] = None,
         loop: Optional[AbstractEventLoop] = None,
     ):
-        self._loop = loop or get_event_loop()
-        self._session = session or ClientSession(loop=self._loop)
+        self._http_client = AHC_H(session=session, loop=loop)
         self._factory: AbstractFactory = DefaultFactory()
+
+    @property
+    def http_client(self) -> AbstractHTTPClient:
+        return self._http_client
 
     @property
     def context_factory(self) -> AbstractFactory:
@@ -55,10 +59,7 @@ class AIOHTTPClient(AbstractAPIClient):
         return ctx
 
     async def request_callback(self, method_name: MethodName, params: dict) -> dict:
-        async with self._session.post(
-            self.API_URL.format(method_name=method_name), data=params
-        ) as resp:
-            return await resp.json()
+        return await self._http_client.request("POST", self.API_URL.format(method_name=method_name), data=params)
 
     async def close(self) -> None:
         logger.debug("Closing aiohttp session...")
