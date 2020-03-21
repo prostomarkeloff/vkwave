@@ -65,6 +65,12 @@ class APIOptions:
         self.api_version: str = api_version
         self.error_dispatcher = error_dispatcher
 
+    def add_token(self, tokens: TokensInput):
+        self.tokens.extend(tokens if isinstance(tokens, list) else [tokens])
+
+    def add_client(self, clients: ClientsInput):
+        self.clients.extend(clients if isinstance(clients, list) else [clients])
+
     async def _get_token(self) -> Token:
         return await self.get_token_strategy.get_token(self.tokens)
 
