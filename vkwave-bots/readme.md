@@ -25,8 +25,9 @@ from vkwave_bots.dispatching.extensions.longpoll_bot import BotLongpollExtension
 from vkwave_bots.dispatching.router.router import DefaultRouter
 from vkwave_bots.tokens.types import GroupId
 from vkwave_api.methods._abc import API
-from vkwave_bots.dispatching.filters import EventTypeFilter
+from vkwave_bots.dispatching.filters.builtin import EventTypeFilter
 from vkwave_longpoll.bot import BotLongpoll, BotLongpollData
+from vkwave_bots.dispatching.events.base import BaseEvent, BotEvent
 from vkwave_types.bot_events import BotEventType
 
 
@@ -93,7 +94,7 @@ class MyCallback(BaseCallback):
         return await self.func(event)
 
 
-async def answer(event: BaseEvent):
+async def answer(event: BotEvent):
     event: BotEvent
     return f"hello, {event.object.object.message.from_id}"
 

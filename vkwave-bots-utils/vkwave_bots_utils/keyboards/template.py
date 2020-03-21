@@ -1,5 +1,5 @@
 import json
-from vkwave_bots_utils.keyboards._types import JSONEncoder
+from vkwave_bots.types.json_types import JSONEncoder
 from vkwave_bots_utils.keyboards.keyboard import Keyboard, ButtonColor
 
 
