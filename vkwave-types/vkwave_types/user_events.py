@@ -7,7 +7,21 @@ from .objects import MessagesKeyboard
 
 
 class BaseUserEvent(pydantic.BaseModel):
-    object: typing.Any
+    object: typing.Union[
+        "MessageEventObject",
+        "SetFlagsEventObject",
+        "ReadIncomingMessagesEventObject",
+        "ReadOutgoingMessagesEventObject",
+        "FriendOnlineEventObject",
+        "FriendOfflineEventObject",
+        "SeenMentionInChatEventObject",
+        "NewMentionInChatEventObject",
+        "DeletedAllMessagesInDialogEventObject",
+        "DropMessageCacheEventObject",
+        "ChangedChatSettingsEventObject",
+        "TypingOrVoiceEventObject",
+        "ChangedUnreadDialogsCountEventObject",
+    ]
 
 
 class ServiceMessageData(pydantic.BaseModel):
@@ -23,6 +37,9 @@ class MessageData(pydantic.BaseModel):
     from_id: typing.Optional[str] = pydantic.Field(None, alias="from")
     fwd_count: typing.Optional[int]
     has_template: typing.Optional[str]
+    payload: typing.Optional[str]
+    source_act: typing.Optional[str]
+    source_mid: typing.Optional[str]
     mentions: typing.Optional[list]
     marked_users: typing.Optional[list]  # useless
     keyboard: typing.Optional[MessagesKeyboard]
@@ -250,11 +267,9 @@ _set_flags_event = {
     3: "peer_id",
 }
 
-_read_incoming_messages = {0: "event_id", 1: "peer_id", 2: "message_id",
-                           3: "count"}
+_read_incoming_messages = {0: "event_id", 1: "peer_id", 2: "message_id", 3: "count"}
 
-_read_outgoing_messages = {0: "event_id", 1: "peer_id", 2: "message_id",
-                           3: "count"}
+_read_outgoing_messages = {0: "event_id", 1: "peer_id", 2: "message_id", 3: "count"}
 
 _friend_online = {
     0: "event_id",
@@ -271,7 +286,7 @@ _friend_offline = {
     3: "timestamp",
     4: "app_id",
     5: "unexpected",
-    6: "unexpected"
+    6: "unexpected",
 }
 
 _seen_mention_in_chat = {
@@ -335,14 +350,11 @@ def get_event_object(raw_event: list):
 
     if event_type in EventId.MESSAGE_EVENT:
         for event_number, event_param in enumerate(raw_event):
-            event[
-                _events_dict[EventId.MESSAGE_EVENT][event_number]
-            ] = event_param
+            event[_events_dict[EventId.MESSAGE_EVENT][event_number]] = event_param
         return MessageEventModel(object=MessageEventObject(**event))
     if event_type == EventId.SET_FLAGS:
         for event_number, event_param in enumerate(raw_event):
-            event[_events_dict[EventId.SET_FLAGS][
-                event_number]] = event_param
+            event[_events_dict[EventId.SET_FLAGS][event_number]] = event_param
         return SetFlagsEventModel(object=(SetFlagsEventObject(**event)))
     if event_type == EventId.READ_INCOMING_MESSAGES:
         for event_number, event_param in enumerate(raw_event):
@@ -362,48 +374,34 @@ def get_event_object(raw_event: list):
         )
     if event_type == EventId.FRIEND_ONLINE:
         for event_number, event_param in enumerate(raw_event):
-            event[
-                _events_dict[EventId.FRIEND_ONLINE][event_number]
-            ] = event_param
+            event[_events_dict[EventId.FRIEND_ONLINE][event_number]] = event_param
         return FriendOnlineModel(object=(FriendOnlineEventObject(**event)))
     if event_type == EventId.FRIEND_OFFLINE:
         for event_number, event_param in enumerate(raw_event):
-            event[
-                _events_dict[EventId.FRIEND_OFFLINE][event_number]
-            ] = event_param
+            event[_events_dict[EventId.FRIEND_OFFLINE][event_number]] = event_param
         return FriendOfflineModel(object=(FriendOfflineEventObject(**event)))
     if event_type == EventId.SEEN_MENTION_IN_CHAT:
         for event_number, event_param in enumerate(raw_event):
             event[
-               _events_dict[EventId.SEEN_MENTION_IN_CHAT][event_number]
+                _events_dict[EventId.SEEN_MENTION_IN_CHAT][event_number]
             ] = event_param
-        return SeenMentionInChatModel(
-            object=(SeenMentionInChatEventObject(**event))
-        )
+        return SeenMentionInChatModel(object=(SeenMentionInChatEventObject(**event)))
     if event_type == EventId.NEW_MENTION_IN_CHAT:
         for event_number, event_param in enumerate(raw_event):
-            event[
-                _events_dict[EventId.NEW_MENTION_IN_CHAT][event_number]
-            ] = event_param
-        return NewMentionInChatModel(
-            object=(NewMentionInChatEventObject(**event)))
+            event[_events_dict[EventId.NEW_MENTION_IN_CHAT][event_number]] = event_param
+        return NewMentionInChatModel(object=(NewMentionInChatEventObject(**event)))
     if event_type == EventId.DELETED_ALL_MESSAGES_IN_DIALOG:
         for event_number, event_param in enumerate(raw_event):
             event[
-                _events_dict[EventId.DELETED_ALL_MESSAGES_IN_DIALOG][
-                    event_number
-                ]
+                _events_dict[EventId.DELETED_ALL_MESSAGES_IN_DIALOG][event_number]
             ] = event_param
         return DeletedAllMessagesInDialogModel(
             object=(DeletedAllMessagesInDialogEventObject(**event))
         )
     if event_type == EventId.DROP_MESSAGE_CACHE:
         for event_number, event_param in enumerate(raw_event):
-            event[
-                _events_dict[EventId.DROP_MESSAGE_CACHE][event_number]
-            ] = event_param
-        return DropMessageCacheModel(
-            object=(DropMessageCacheEventObject(**event)))
+            event[_events_dict[EventId.DROP_MESSAGE_CACHE][event_number]] = event_param
+        return DropMessageCacheModel(object=(DropMessageCacheEventObject(**event)))
     if event_type == EventId.CHANGE_CHAT_SETTINGS:
         for event_number, event_param in enumerate(raw_event):
             event[
@@ -415,16 +413,13 @@ def get_event_object(raw_event: list):
     if event_type in EventId.USER_TYPING_OR_MAKING_VOICE_MESSAGE:
         for event_number, event_param in enumerate(raw_event):
             event[
-               _events_dict[EventId.USER_TYPING_OR_MAKING_VOICE_MESSAGE][
-                    event_number
-                ]
+                _events_dict[EventId.USER_TYPING_OR_MAKING_VOICE_MESSAGE][event_number]
             ] = event_param
         return TypingOrVoiceModel(object=(TypingOrVoiceEventObject(**event)))
     if event_type == EventId.CHANGED_UNREAD_DIALOGS_COUNT:
         for event_number, event_param in enumerate(raw_event):
             event[
-                _events_dict[EventId.CHANGED_UNREAD_DIALOGS_COUNT][
-                    event_number]
+                _events_dict[EventId.CHANGED_UNREAD_DIALOGS_COUNT][event_number]
             ] = event_param
         return ChangedUnreadDialogsCountModel(
             object=(ChangedUnreadDialogsCountEventObject(**event))
