@@ -5,7 +5,7 @@ Upload photo from file
 from vkwave_bots_utils.uploaders.photo_uploader import PhotoUploader
 
 api = API(clients=client, tokens=token)
-uploader = PhotoUploader(api)
+uploader = PhotoUploader(api.get_context())
 
 
 async def main():
@@ -36,7 +36,7 @@ Upload audio message
 
 ```python
 from vkwave_bots_utils.uploaders.audio_uploader import VoiceUploader
-uploader = VoiceUploader(api)
+uploader = VoiceUploader(api.get_context())
 
 
 audio_message = await uploader.get_attachment_from_path(

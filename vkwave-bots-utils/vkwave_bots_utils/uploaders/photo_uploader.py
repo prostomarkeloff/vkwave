@@ -4,18 +4,18 @@ import os
 
 from vkwave_bots.types.json_types import JSONDecoder
 from vkwave_http import AbstractHTTPClient
-from vkwave_api.methods import API
+from vkwave_api.methods import APIOptionsRequestContext
 from vkwave_types.objects import PhotosPhoto
 
 
 class PhotoUploader:
-    def __init__(self, api: API, json_serialize: JSONDecoder = json.loads):
-        self.api = api
-        self.client: AbstractHTTPClient = api.default_api_options.get_client().http_client
+    def __init__(self, api_context: APIOptionsRequestContext, json_serialize: JSONDecoder = json.loads):
+        self.api_context = api_context
+        self.client: AbstractHTTPClient = api_context.api_options.get_client().http_client
         self.json_serialize = json_serialize
 
     async def get_server(self, peer_id: int) -> str:
-        server_data = await self.api.get_context().photos.get_messages_upload_server(
+        server_data = await self.api_context.photos.get_messages_upload_server(
             peer_id=peer_id
         )
         return server_data.response.upload_url
@@ -27,7 +27,7 @@ class PhotoUploader:
             )
         )
         photo_sizes = (
-            await self.api.get_context().photos.save_messages_photo(
+            await self.api_context.photos.save_messages_photo(
                 photo=upload_data["photo"],
                 server=upload_data["server"],
                 hash=upload_data["hash"],
@@ -53,15 +53,12 @@ class PhotoUploader:
     async def get_attachment_from_link(self, peer_id: int, link: str) -> str:
         filename = "__vkwave__temp__file__.jpg"
         photo_data = await self.client.request_data(method="GET", url=link)
-        current_filename = filename.format(number=0)
 
         #  TODO: async saving
-        with open(current_filename, "wb") as file:
+        with open(filename, "wb") as file:
             file.write(photo_data)
-        attachment = await self.get_attachment_from_path(
-            file_path=current_filename, peer_id=peer_id
-        )
-        os.remove(current_filename)
+        attachment = await self.get_attachment_from_path(file_path=filename, peer_id=peer_id)
+        os.remove(filename)
         return attachment
 
     async def get_attachments_from_links(

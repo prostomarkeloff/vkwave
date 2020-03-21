@@ -2,18 +2,18 @@ import json
 
 from vkwave_bots.types.json_types import JSONDecoder
 from vkwave_http import AbstractHTTPClient
-from vkwave_api.methods import API
+from vkwave_api.methods import APIOptionsRequestContext
 from vkwave_types.responses import DocsSaveResponseModel
 
 
 class VoiceUploader:
-    def __init__(self, api: API, json_serialize: JSONDecoder = json.loads):
-        self.api = api
-        self.client: AbstractHTTPClient = api.default_api_options.get_client().http_client
+    def __init__(self, api_context: APIOptionsRequestContext, json_serialize: JSONDecoder = json.loads):
+        self.api_context = api_context
+        self.client: AbstractHTTPClient = api_context.api_options.get_client().http_client
         self.json_serialize = json_serialize
 
     async def get_server(self, peer_id: int) -> str:
-        server_data = await self.api.get_context().docs.get_messages_upload_server(
+        server_data = await self.api_context.docs.get_messages_upload_server(
             type="audio_message", peer_id=peer_id
         )
         return server_data.response.upload_url
@@ -25,7 +25,7 @@ class VoiceUploader:
             )
         )
         photo_sizes = (
-            await self.api.get_context().docs.save(file=upload_data["file"])
+            await self.api_context.docs.save(file=upload_data["file"])
         ).response
         return photo_sizes
 
