@@ -1,3 +1,5 @@
+import typing
+
 from vkwave_bots.dispatching.events.base import BaseEvent
 from vkwave_bots_fsm.fsm import State, ForWhat, FiniteStateMachine
 
@@ -48,4 +50,7 @@ class StateFilter(BaseFilter):
                 )
             )
         current_state = await self.fsm.get_data(event, for_what=self.for_what)
-        return FilterResult(current_state["__vkwave_fsm_state__"] == str(self.state))
+        return FilterResult(
+            current_state is not None
+            and current_state["__vkwave_fsm_state__"] == str(self.state)
+        )

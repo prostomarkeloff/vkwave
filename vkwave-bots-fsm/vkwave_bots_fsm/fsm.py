@@ -80,7 +80,7 @@ class FiniteStateMachine:
 
     async def get_data(self, event: BaseEvent, for_what: ForWhat) -> None:
         sid = Key(create_state_id(event, for_what))
-        return await self.storage.get(sid)
+        return await self.storage.get(sid, default=None)
 
     async def finish(self, event: BaseEvent, for_what: ForWhat) -> None:
         sid = Key(create_state_id(event, for_what))
