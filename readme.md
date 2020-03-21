@@ -19,11 +19,11 @@ VKWave is a most fast library for Python for working with VK's API.
 ## Core libs
 
 VKWave client - [core library](./vkwave-client)\
-VKWave API - [use VK's API in most fancy way](./vkwave-api)\
+VKWave API - [use VK's API in the most fancy way](./vkwave-api)\
 VKWave bots - [create awesome bots with ease](./vkwave-bots)\
 VKWave storage & VKWave FSM - [FSM implementation for VKWave](./vkwave-bots-fsm)\
 VKWave bots utils - [keyboards, carousels, ...](./vkwave-bots-utils)\
-VKWave longpoll - [acessing VK's longpoll (user/bot)](./vkwave-longpoll)\
+VKWave longpoll - [acessing VK's longpoll (user/bot)](./vkwave-longpoll)
 
 ## Community
 
