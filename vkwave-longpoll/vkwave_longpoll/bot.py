@@ -44,7 +44,7 @@ class BotLongpollData:
             await self.update_data(api)
             self._first_request = True
 
-        data = await http_client.request(
+        data = await http_client.request_json(
             "POST",
             f"{self.server}?act=a_check&key={self.key}&ts={self.ts}&wait={self.wait}",
         )
