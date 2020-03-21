@@ -16,6 +16,10 @@ class AbstractHTTPClient(ABC):
         ...
 
     @abstractmethod
+    async def request_data(self, method: str, url: str, data: Optional[dict] = None) -> bytes:
+        ...
+
+    @abstractmethod
     async def close(self):
         ...
 
@@ -27,6 +31,12 @@ class AIOHTTPClient(AbstractHTTPClient):
 
     async def close(self):
         await self.session.close()
+
+    async def request_data(self, method: str, url: str, data: Optional[dict] = None) -> bytes:
+        data = data or {}
+
+        async with self.session.request(method, url, data=data) as resp:
+            return await resp.read()
 
     async def request_text(self, method: str, url: str, data: Optional[dict] = None) -> str:
         data = data or {}
