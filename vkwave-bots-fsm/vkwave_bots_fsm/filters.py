@@ -1,9 +1,7 @@
-import typing
-
 from vkwave_bots.dispatching.events.base import BaseEvent
 from vkwave_bots_fsm.fsm import State, ForWhat, FiniteStateMachine
 
-from vkwave_bots.dispatching.filters.base_filters import BaseFilter, FilterResult
+from vkwave_bots.dispatching.filters.builtin import BaseFilter, FilterResult
 from vkwave_bots_storage.types import Key
 
 ANY_STATE = "__any_state__"
