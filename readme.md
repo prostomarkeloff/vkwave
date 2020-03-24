@@ -4,7 +4,7 @@
 
 # What is it?
 
-VKWave - is a set of tools for applications that interact with VK's API.
+Library for building high-performance & easy to scale projects interacting with VK's API.
 
 It's built over asyncio and Python's type hints. Minimal required version is `3.7`.
 
