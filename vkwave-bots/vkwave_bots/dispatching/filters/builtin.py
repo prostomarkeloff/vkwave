@@ -45,7 +45,7 @@ class TextFilter(BaseFilter):
         self.ic = ignore_case
 
     async def check(self, event: BaseEvent) -> FilterResult:
-        if event.bot_type is not BotType.USER:
+        if event.bot_type is BotType.USER:
             text = event.object.object.text
         else:
             text = event.object.object.message.text

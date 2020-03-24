@@ -1,5 +1,6 @@
 from asyncio import get_running_loop
 from typing import List, NewType, Optional, cast
+import logging
 
 from vkwave_api.methods import API
 from vkwave_api.token.token import AnyABCToken
@@ -19,6 +20,7 @@ from .result_caster import ResultCaster
 
 ProcessingResult = NewType("ProcessingResult", bool)
 
+logger = logging.getLogger(__name__)
 
 class Dispatcher:
     def __init__(
@@ -38,6 +40,7 @@ class Dispatcher:
         self, revent: ExtensionEvent, options: Optional[ProcessEventOptions] = None
     ) -> ProcessingResult:
         event: BaseEvent
+        logger.debug(f"New event! Raw:\n{revent}")
         if revent.bot_type is BotType.BOT:
             revent.raw_event = cast(dict, revent.raw_event)
             group_id = revent.raw_event["group_id"]
@@ -52,6 +55,8 @@ class Dispatcher:
             token = await self.token_storage.get_token(UserId(user_id))
             event = UserEvent(obj, self.api.with_token(token))
 
+        logger.debug(f"New event! Formatted:\n{event}")
+
         if not await self.middleware_manager.execute_pre_process_event(event):
             return ProcessingResult(False)
         for router in self.routers:
@@ -60,7 +65,9 @@ class Dispatcher:
                 if result is HANDLER_NOT_FOUND:
                     continue
                 await self.result_caster.cast(result, event)
+                logger.debug("Event was succesfully handled")
                 return ProcessingResult(True)
+        logger.debug("Event wasn't handled")
         return ProcessingResult(False)
 
     async def cache_potential_tokens(self, tokens: Optional[List[AnyABCToken]] = None):

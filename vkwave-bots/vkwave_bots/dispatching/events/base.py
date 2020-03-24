@@ -10,6 +10,9 @@ T = TypeVar("T")
 
 
 class BaseEvent(ABC, Generic[T]):
+    def __repr__(self) -> str:
+        return f"{self.__class__.__name__}(bot_type={self.bot_type}, object={self.object}, api_ctx={self.api_ctx})"
+
     @abstractmethod
     def __setitem__(self, key: Any, item: Any) -> None:
         ...
