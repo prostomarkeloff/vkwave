@@ -1,6 +1,7 @@
 from typing import Tuple, Union, Dict
 import json
 
+import typing
 from vkwave_bots.dispatching.events.base import BaseEvent, UserEvent
 from vkwave_bots.types.bot_type import BotType
 from vkwave_bots.types.json_types import JSONDecoder
@@ -65,6 +66,8 @@ class PayloadFilter(BaseFilter):
         if event.bot_type is BotType.USER:
             current_payload = event.object.object.message_data.payload
         else:
+            if event.object.object.dict().get("message") is None:
+                return FilterResult(False)
             current_payload = event.object.object.message.payload
         if current_payload is None:
             return FilterResult(False)
@@ -81,5 +84,33 @@ class ChatActionFilter(BaseFilter):
         if event.bot_type is BotType.USER:
             current_action = event.object.object.message_data.source_act
         else:
+            if event.object.object.dict().get("message") is None:
+                return FilterResult(False)
+            if event.object.object.message.action is None:
+                return FilterResult(False)
             current_action = event.object.object.message.action.type
         return FilterResult(current_action == self.action)
+
+
+class CommandsFilter(BaseFilter):
+    """Filter for commands im message"""
+
+    def __init__(self, commands: typing.List[str], prefixes: typing.Iterable[str] = "/!"):
+        self.commands = commands
+        self.prefixes = prefixes
+
+    async def check(self, event: BaseEvent) -> FilterResult:
+        if event.bot_type is BotType.USER:
+            text = event.object.object.text
+        else:
+            if event.object.object.dict().get("message") is None:
+                return FilterResult(False)
+            text = event.object.object.message.text
+
+        for command in self.commands:
+            for prefix in self.prefixes:
+                if text.lower().startswith(f"{prefix}{command}"):
+                    return FilterResult(True)
+        return FilterResult(False)
+
+# TODO: MessageArgsFilter
