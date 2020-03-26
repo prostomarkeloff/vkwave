@@ -37,12 +37,24 @@ class EventTypeFilter(BaseFilter):
                 return FilterResult(event.object.event_id == self.event_type)
         raise NotImplementedError("There is no implementation for this type of bot")
 
+AnyText = typing.Union[typing.Tuple[str, ...], typing.List[str], str]
 
 class TextFilter(BaseFilter):
-    """Message text filter."""
+    """
+    Message text filter.
+    
+    >>> text = TextFilter # alias
+    >>> _ = text("hi")
+    >>> _ = text(("hi",))
+    >>> _ = text(["hi"])
+    >>> _ = text("hI", ignore_case=False)
 
-    def __init__(self, text: str, ignore_case: bool = True):
-        self.text = text
+    >>> filter = text("hi")
+    >>> @router.registrar.with_decorator(filter)
+    """
+
+    def __init__(self, text: AnyText, ignore_case: bool = True):
+        self.text = (text,) if isinstance(text, str) else text
         self.ic = ignore_case
 
     async def check(self, event: BaseEvent) -> FilterResult:
@@ -51,8 +63,8 @@ class TextFilter(BaseFilter):
         else:
             text = event.object.object.message.text
         if self.ic:
-            return FilterResult(text == self.text.lower())
-        return FilterResult(text.lower() == self.text.lower())
+            text = text.lower()
+        return FilterResult(text in self.text)
 
 
 class PayloadFilter(BaseFilter):
@@ -93,11 +105,24 @@ class ChatActionFilter(BaseFilter):
 
 
 class CommandsFilter(BaseFilter):
-    """Filter for commands im message"""
+    """
+    Filter for commands in message.
+    
+    >>> cm = CommandsFilter # alias
+    >>> _ = cm("start")
+    >>> _ = cm(("start",))
+    >>> _ = cm(("start", "notstart"))
+    >>> _ = cm(["start"])
+    >>> _ = cm("start", prefixes=("/",))
+    
+    >>> filter = cm("start", prefixes=("/",))
+    >>> @router.registrar.with_decorator(filter)
+    """
 
-    def __init__(self, commands: typing.List[str], prefixes: typing.Iterable[str] = "/!"):
-        self.commands = commands
+    def __init__(self, commands: AnyText, prefixes: typing.Iterable[str] = "/!", ignore_case: bool = True):
+        self.commands = (commands,) if isinstance(commands, str) else commands
         self.prefixes = prefixes
+        self.ic = ignore_case
 
     async def check(self, event: BaseEvent) -> FilterResult:
         if event.bot_type is BotType.USER:
@@ -106,10 +131,11 @@ class CommandsFilter(BaseFilter):
             if event.object.object.dict().get("message") is None:
                 return FilterResult(False)
             text = event.object.object.message.text
-
+            if self.ic:
+                text = text.lower()
         for command in self.commands:
             for prefix in self.prefixes:
-                if text.lower().startswith(f"{prefix}{command}"):
+                if text.startswith(f"{prefix}{command}"):
                     return FilterResult(True)
         return FilterResult(False)
 
