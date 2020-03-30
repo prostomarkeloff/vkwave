@@ -153,8 +153,8 @@ class Keyboard:
         """
         return json_serialize(self.keyboard)
 
-    @staticmethod
-    def get_empty_keyboard() -> str:
+    @classmethod
+    def get_empty_keyboard(cls) -> str:
         """
         :return:
         """
