@@ -8,6 +8,8 @@ Library for building high-performance & easy to scale projects interacting with 
 
 It's built over asyncio and Python's type hints. Minimal required version is `3.7`.
 
+Our Telegram chat - [let's chat](https://t.me/vkwave)
+
 ## VKWave core
 
 This repostitory contains only `core` parts of VKWave. It means that code introduced in this repository is probably `low-level` and shouldn't be used directly unless otherwise specified.
