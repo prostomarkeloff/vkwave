@@ -1,16 +1,11 @@
 import asyncio
 import json
 import typing
+import ssl
 
 import aioredis
 from vkwave_bots_storage.base import AbstractExpiredStorage, NO_KEY, NoKeyOrValue
-
-Key = typing.NewType("Key", str)
-Value = typing.Any
-TTL = typing.NewType("TTL", float)
-
-Dumper = typing.Callable[[Value], str]
-Loader = typing.Callable[[str], Value]
+from vkwave_bots_storage.types import Dumper, Loader, TTL, Key, Value
 
 
 class RedisStorage(AbstractExpiredStorage):
@@ -20,9 +15,9 @@ class RedisStorage(AbstractExpiredStorage):
             port: int = 6379,
             db: typing.Optional[int] = None,
             password: typing.Optional[str] = None,
-            ssl=None,
+            ssl_context: typing.Optional[ssl.SSLContext] = None,
             pool_size: int = 10,
-            loop=None,
+            loop: typing.Optional[asyncio.AbstractEventLoop] = None,
             # dumps object to str
             dumper: Dumper = json.dumps,
             # loads object from str
@@ -36,7 +31,7 @@ class RedisStorage(AbstractExpiredStorage):
         self._port = port
         self._db = db
         self._password = password
-        self._ssl = ssl
+        self._ssl = ssl_context
         self._pool_size = pool_size
         self._loop = loop or asyncio.get_event_loop()
 
