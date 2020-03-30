@@ -37,7 +37,9 @@ class EventTypeFilter(BaseFilter):
                 return FilterResult(event.object.event_id == self.event_type)
         raise NotImplementedError("There is no implementation for this type of bot")
 
+
 AnyText = typing.Union[typing.Tuple[str, ...], typing.List[str], str]
+
 
 class TextFilter(BaseFilter):
     """
@@ -49,8 +51,8 @@ class TextFilter(BaseFilter):
     >>> _ = text(["hi"])
     >>> _ = text("hI", ignore_case=False)
 
-    >>> filter = text("hi")
-    >>> @router.registrar.with_decorator(filter)
+    >>> text_filter = text("hi")
+    >>> @router.registrar.with_decorator(text_filter)
     """
 
     def __init__(self, text: AnyText, ignore_case: bool = True):
@@ -107,7 +109,7 @@ class ChatActionFilter(BaseFilter):
 class CommandsFilter(BaseFilter):
     """
     Filter for commands in message.
-    
+
     >>> cm = CommandsFilter # alias
     >>> _ = cm("start")
     >>> _ = cm(("start",))
@@ -115,11 +117,11 @@ class CommandsFilter(BaseFilter):
     >>> _ = cm(["start"])
     >>> _ = cm("start", prefixes=("/",))
     
-    >>> filter = cm("start", prefixes=("/",))
-    >>> @router.registrar.with_decorator(filter)
+    >>> command_filter = cm("start", prefixes=("/",))
+    >>> @router.registrar.with_decorator(command_filter)
     """
 
-    def __init__(self, commands: AnyText, prefixes: typing.Iterable[str] = "/!", ignore_case: bool = True):
+    def __init__(self, commands: AnyText, prefixes: typing.Tuple[str] = ("/", "!"), ignore_case: bool = True):
         self.commands = (commands,) if isinstance(commands, str) else commands
         self.prefixes = prefixes
         self.ic = ignore_case
