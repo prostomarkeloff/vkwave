@@ -4,6 +4,8 @@ import typing
 from vkwave_bots_storage.types import TTL, Key, Value
 from vkwave_bots_storage.base import AbstractExpiredStorage, NO_KEY, NoKeyOrValue
 
+INF = float("inf")
+
 
 class TTLStorage(AbstractExpiredStorage):
     def __init__(self, default_ttl: TTL = TTL(10)):
@@ -16,7 +18,7 @@ class TTLStorage(AbstractExpiredStorage):
         if ttl is None:
             expire = TTL(time.time() + self.default_ttl)
         elif ttl == -1:
-            expire = TTL(time.time() ** 2)
+            expire = TTL(INF)
         else:
             expire = TTL(time.time() + ttl)
         self.data[key] = (value, expire)
