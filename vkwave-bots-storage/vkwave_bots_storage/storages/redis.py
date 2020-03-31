@@ -10,20 +10,20 @@ from vkwave_bots_storage.types import Dumper, Loader, TTL, Key, Value
 
 class RedisStorage(AbstractExpiredStorage):
     def __init__(
-            self,
-            host: str = 'localhost',
-            port: int = 6379,
-            db: typing.Optional[int] = None,
-            password: typing.Optional[str] = None,
-            ssl_context: typing.Optional[ssl.SSLContext] = None,
-            pool_size: int = 10,
-            loop: typing.Optional[asyncio.AbstractEventLoop] = None,
-            # dumps object to str
-            dumper: Dumper = json.dumps,
-            # loads object from str
-            loader: Loader = json.loads,
-            default_ttl: TTL = TTL(10),
-            **kwargs
+        self,
+        host: str = "localhost",
+        port: int = 6379,
+        db: typing.Optional[int] = None,
+        password: typing.Optional[str] = None,
+        ssl_context: typing.Optional[ssl.SSLContext] = None,
+        pool_size: int = 10,
+        loop: typing.Optional[asyncio.AbstractEventLoop] = None,
+        # dumps object to str
+        dumper: Dumper = json.dumps,
+        # loads object from str
+        loader: Loader = json.loads,
+        default_ttl: TTL = TTL(10),
+        **kwargs
     ):
         self._kwargs = kwargs
 
@@ -39,25 +39,29 @@ class RedisStorage(AbstractExpiredStorage):
         self._loader = loader
         self._default_ttl = default_ttl
 
-        self._redis: typing.Optional[aioredis.RedisConnection] = None
+        self._redis: typing.Optional[aioredis.Redis] = None
         self._connection_lock = asyncio.Lock(loop=self._loop)
 
     async def get(
-            self, key: Key, default: NoKeyOrValue = NO_KEY
+        self, key: Key, default: NoKeyOrValue = NO_KEY
     ) -> typing.Union[typing.NoReturn, Value]:
         redis = await self.redis()
-        v = redis.get(key)
+
+        v = await redis.get(key)
         if v:
             return self._loader(v)
         if default is NO_KEY:
             raise KeyError("There is no such key")
+
         return default
 
-    async def put(self, key: Key, value: Value, ttl: TTL) -> None:
+    async def put(
+        self, key: Key, value: Value, ttl: typing.Optional[TTL] = None
+    ) -> None:
         redis = await self.redis()
 
         if ttl is None:
-            pexpire = int(self.default_ttl * 1000)
+            pexpire = int(self._default_ttl * 1000)
         elif ttl == -1:
             pexpire = None
         else:
@@ -71,22 +75,25 @@ class RedisStorage(AbstractExpiredStorage):
             raise KeyError("Storage doesn't contain this key.")
 
         redis = await self.redis()
+
         await redis.delete(key)
         return None
 
     async def contains(self, key: Key) -> bool:
         redis = await self.redis()
+
         return await redis.exists(key)
 
     async def redis(self) -> aioredis.Redis:
         async with self._connection_lock:
             if self._redis is None or self._redis.closed:
-                self._redis = await aioredis.create_connection(
+                self._redis = await aioredis.create_redis_pool(
                     (self._host, self._port),
                     db=self._db,
                     password=self._password,
                     ssl=self._ssl,
                     loop=self._loop,
+                    maxsize=self._pool_size,
                     **self._kwargs,
                 )
 
