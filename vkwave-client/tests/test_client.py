@@ -9,12 +9,14 @@ from vkwave_client.types import MethodName
 class SomeAPIException(Exception):
     pass
 
+
 async def callback(method_name: MethodName, params: dict) -> dict:
     raise_exception = params.pop("raise_exception")
     if raise_exception:
         raise SomeAPIException()
     else:
         return params
+
 
 @pytest.fixture
 def client():
@@ -29,8 +31,15 @@ def client():
         def set_context_factory(self, factory: AbstractFactory) -> None:
             self._factory = factory
 
-        def create_request(self, method_name: MethodName, params: dict) -> RequestContext:
-            ctx = self.context_factory.create_context(exceptions={SomeAPIException: None}, request_callback=callback, request_params=params, method_name=method_name)
+        def create_request(
+            self, method_name: MethodName, params: dict
+        ) -> RequestContext:
+            ctx = self.context_factory.create_context(
+                exceptions={SomeAPIException: None},
+                request_callback=callback,
+                request_params=params,
+                method_name=method_name,
+            )
             return ctx
 
         async def close(self):
@@ -38,26 +47,30 @@ def client():
 
     return TestAPIClient()
 
+
 @pytest.mark.asyncio
 async def test_with_exception(client):
     async def exception_handler(ctx: RequestContext):
         # it's called anymore
-        assert 1 
+        assert 1
         ctx.result.exception_data = {"me": "alive"}
 
-    ctx = client.create_request("anymethod", {"raise_exception": True, "something": "yes, of course"})
+    ctx = client.create_request(
+        "anymethod", {"raise_exception": True, "something": "yes, of course"}
+    )
 
     # we can't set exception handler(s) for unknown exceptions
     with pytest.raises(ValueError):
         ctx.set_exception_handler(RuntimeError, exception_handler)
 
     ctx.set_exception_handler(SomeAPIException, exception_handler)
-    
+
     await ctx.send_request()
-   
+
     assert ctx.result.exception_data == {"me": "alive"}
     assert ctx.result.data is None
     assert isinstance(ctx.result.exception, SomeAPIException)
+
 
 @pytest.mark.asyncio
 async def test_without_exception(client):
@@ -68,6 +81,7 @@ async def test_without_exception(client):
     assert ctx.result.exception is None
     assert ctx.result.exception_data is None
     assert ctx.result.data == {"hi": "there"}
+
 
 @pytest.mark.asyncio
 async def test_signals(client):

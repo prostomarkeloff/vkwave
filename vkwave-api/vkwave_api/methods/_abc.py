@@ -4,8 +4,7 @@ from contextlib import asynccontextmanager
 from typing import AsyncGenerator, List, Optional, Tuple, Union
 
 from vkwave_api.methods._error import Error, ErrorDispatcher
-from vkwave_api.token.strategy import (ABCGetTokenStrategy,
-                                       RandomGetTokenStrategy)
+from vkwave_api.token.strategy import ABCGetTokenStrategy, RandomGetTokenStrategy
 from vkwave_api.token.token import AnyABCToken, Token
 from vkwave_client.abstract import AbstractAPIClient
 

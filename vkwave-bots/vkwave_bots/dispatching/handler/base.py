@@ -19,7 +19,6 @@ class BaseHandler(ABC):
     ):
         ...
 
-
     @abstractmethod
     async def process_event(self, event: BaseEvent) -> Any:
         """Return FILTERS_NOT_PASSED or handler's result"""

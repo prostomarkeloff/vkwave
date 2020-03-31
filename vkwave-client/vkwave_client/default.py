@@ -59,7 +59,9 @@ class AIOHTTPClient(AbstractAPIClient):
         return ctx
 
     async def request_callback(self, method_name: MethodName, params: dict) -> dict:
-        return await self._http_client.request_json("POST", self.API_URL.format(method_name=method_name), data=params)
+        return await self._http_client.request_json(
+            "POST", self.API_URL.format(method_name=method_name), data=params
+        )
 
     async def close(self) -> None:
         logger.debug("Closing aiohttp session...")

@@ -10,16 +10,12 @@ from vkwave_bots.dispatching.extensions.longpoll_bot import BotLongpollExtension
 from vkwave_bots.dispatching.router.router import DefaultRouter
 from vkwave_bots.tokens.types import GroupId
 from vkwave_api.methods import API
-from vkwave_bots.dispatching.filters.builtin import (
-    ChatActionFilter,
-)
+from vkwave_bots.dispatching.filters.builtin import ChatActionFilter
 from vkwave_longpoll.bot import BotLongpoll, BotLongpollData
 from vkwave_types.objects import MessagesMessageActionStatus
 
 logging.basicConfig(level=logging.DEBUG)
-bot_token = Token(
-    "123"
-)
+bot_token = Token("123")
 gid = 123
 router = DefaultRouter()
 

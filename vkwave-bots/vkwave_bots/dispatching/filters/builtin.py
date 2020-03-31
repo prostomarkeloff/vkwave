@@ -121,7 +121,12 @@ class CommandsFilter(BaseFilter):
     >>> @router.registrar.with_decorator(command_filter)
     """
 
-    def __init__(self, commands: AnyText, prefixes: typing.Tuple[str] = ("/", "!"), ignore_case: bool = True):
+    def __init__(
+        self,
+        commands: AnyText,
+        prefixes: typing.Tuple[str] = ("/", "!"),
+        ignore_case: bool = True,
+    ):
         self.commands = (commands,) if isinstance(commands, str) else commands
         self.prefixes = prefixes
         self.ic = ignore_case
@@ -140,5 +145,6 @@ class CommandsFilter(BaseFilter):
                 if text.startswith(f"{prefix}{command}"):
                     return FilterResult(True)
         return FilterResult(False)
+
 
 # TODO: MessageArgsFilter

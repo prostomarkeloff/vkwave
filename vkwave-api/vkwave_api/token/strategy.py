@@ -2,8 +2,14 @@ from abc import ABC, abstractmethod
 from random import choice
 from typing import List, Tuple, Union, cast
 
-from vkwave_api.token.token import (ABCAsyncToken, ABCSyncToken, AnyABCToken,
-                                    GetTokenType, Token, TokenType)
+from vkwave_api.token.token import (
+    ABCAsyncToken,
+    ABCSyncToken,
+    AnyABCToken,
+    GetTokenType,
+    Token,
+    TokenType,
+)
 
 
 class ABCGetTokenStrategy(ABC):

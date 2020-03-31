@@ -7,7 +7,11 @@ from vkwave_types.responses import DocsSaveResponseModel
 
 
 class VoiceUploader:
-    def __init__(self, api_context: APIOptionsRequestContext, json_serialize: JSONDecoder = json.loads):
+    def __init__(
+        self,
+        api_context: APIOptionsRequestContext,
+        json_serialize: JSONDecoder = json.loads,
+    ):
         self.api_context = api_context
         self.client: AbstractHTTPClient = api_context.api_options.get_client().http_client
         self.json_serialize = json_serialize

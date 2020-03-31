@@ -3,9 +3,16 @@ from enum import Enum
 
 import pydantic
 
-from .objects import (AudioAudio, BoardTopicComment, CallbackGroupJoinType,
-                      MessagesMessage, PhotosPhoto, VideoVideo,
-                      WallWallComment, WallWallpost)
+from .objects import (
+    AudioAudio,
+    BoardTopicComment,
+    CallbackGroupJoinType,
+    MessagesMessage,
+    PhotosPhoto,
+    VideoVideo,
+    WallWallComment,
+    WallWallpost,
+)
 
 
 class BotEventType(str, Enum):
@@ -428,7 +435,9 @@ class ChangesSettingsModel(pydantic.BaseModel):
 
 class GroupChangeSettingsObject(pydantic.BaseModel):
     user_id: int = pydantic.Field(None, description="")
-    changes: typing.Dict[str, ChangesSettingsModel] = pydantic.Field(None, description="")
+    changes: typing.Dict[str, ChangesSettingsModel] = pydantic.Field(
+        None, description=""
+    )
 
 
 class GroupChangeSettings(BaseBotEvent):
@@ -517,7 +526,7 @@ _event_dict = {
 
 
 def get_event_object(
-        raw_event: dict,
+    raw_event: dict,
 ) -> typing.Union[
     MessageNew,
     MessageReply,

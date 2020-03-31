@@ -9,8 +9,7 @@ from vkwave_api.methods import API
 from vkwave_api.token.token import BotSyncSingleToken
 from vkwave_bots import Dispatcher, EventTypeFilter, TextFilter
 from vkwave_bots.dispatching.events.base import BotEvent
-from vkwave_bots.dispatching.extensions.longpoll_bot import \
-    BotLongpollExtension
+from vkwave_bots.dispatching.extensions.longpoll_bot import BotLongpollExtension
 from vkwave_bots.dispatching.router.router import DefaultRouter
 from vkwave_bots.tokens.storage import TokenStorage
 from vkwave_bots.tokens.types import GroupId
