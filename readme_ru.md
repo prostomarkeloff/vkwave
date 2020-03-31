@@ -21,7 +21,7 @@ VKWave - одна из самых быстрых Python библиотек дл�
 ## Core libs
 
 VKWave client - [ядро](./vkwave-client)\
-VKWave API - [используйте VK API самым причудливым способом](./vkwave-api)\
+VKWave API - [используйте VK API самым удобным способом](./vkwave-api)\
 VKWave bots - [с легкостью создавайте великолепных ботов](./vkwave-bots)\
 VKWave storage & VKWave FSM - [реализация FSM для VKWave](./vkwave-bots-fsm)\
 VKWave bots utils - [клавиатуры, карусели, ...](./vkwave-bots-utils)\
