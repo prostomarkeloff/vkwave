@@ -156,7 +156,7 @@ class RegexFilter(BaseFilter):
     >>> _ = regex(r".+")  # any string  (example match: "hello world!!!")
     >>> _ = regex(r"\d+")  # any integer number (example match: "254")
     >>> _ = regex(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)")  # any email (example match: "email@example.com")
-    >>> _ = regex(r"abc-\d\d", flags=re.IGNORECASE)  # example mathc: "Abc-54"
+    >>> _ = regex(r"abc-\d\d", flags=re.IGNORECASE)  # example match: "Abc-54"
 
     >>> regex_filter = regex(r"user#\d{1,4}")  # example match: "user#723"
     >>> @router.registrar.with_decorator(regex_filter)
