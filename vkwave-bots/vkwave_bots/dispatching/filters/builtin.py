@@ -151,9 +151,18 @@ class CommandsFilter(BaseFilter):
 class RegexFilter(BaseFilter):
     """
     Message text regex filter
+
+    >>> regex = RegexFilter # alias
+    >>> _ = regex(r".+")  # any string  (example match: "hello world!!!")
+    >>> _ = regex(r"\d+")  # any integer number (e.g. match: "254")
+    >>> _ = regex(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)")  # any email (example match: "email@example.com")
+    >>> _ = regex(r"abc-\d\d", flags=re.IGNORECASE)  # example mathc: "Abc-54"
+
+    >>> regex_filter = regex(r"user#\d{1,4}")  # example match: "user#723"
+    >>> @router.registrar.with_decorator(regex_filter)
     """
 
-    def __init__(self, regex: str, flags: re.RegexFlag = 0):
+    def __init__(self, regex: str, flags: int = 0):
         self.pattern = re.compile(regex, flags)
 
     async def check(self, event: BaseEvent) -> FilterResult:
@@ -162,7 +171,7 @@ class RegexFilter(BaseFilter):
         else:
             text = event.object.object.message.text
 
-        return FilterResult(bool(self.pattern.match(text)))
+        return FilterResult(self.pattern.match(text) is not None)
 
 
 # TODO: MessageArgsFilter
