@@ -5,7 +5,7 @@
 [Русская версия](https://github.com/fscdev/vkwave/blob/master/readme_ru.md)
 # What is it?
 
-Library for building high-performance & easy to scale projects interacting with VK's API.
+Framework for building high-performance & easy to scale projects interacting with VK's API.
 
 It's built over asyncio and Python's type hints. Minimal required version is `3.7`.
 
