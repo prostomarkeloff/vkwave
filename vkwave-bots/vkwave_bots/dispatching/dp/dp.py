@@ -5,7 +5,7 @@ import logging
 from vkwave_api.methods import API
 from vkwave_api.token.token import AnyABCToken
 from vkwave_bots.dispatching.events.base import BaseEvent, BotEvent, UserEvent
-from vkwave_bots.dispatching.extensions.base import ExtensionEvent
+from vkwave_bots.dispatching.events.raw import ExtensionEvent
 from vkwave_bots.dispatching.router.router import HANDLER_NOT_FOUND, BaseRouter
 from vkwave_bots.tokens.storage import TokenStorage
 from vkwave_bots.tokens.types import GroupId, UserId
