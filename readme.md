@@ -2,6 +2,7 @@
 
 > It's time to carry out vk_api & vkbottle. VKWave is here.
 
+[Русская версия](https://github.com/fscdev/vkwave/blob/master/readme_ru.md)
 # What is it?
 
 Library for building high-performance & easy to scale projects interacting with VK's API.
