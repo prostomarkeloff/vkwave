@@ -38,10 +38,19 @@ class Dispatcher:
         self.routers.append(router)
 
     async def process_event(
-        self, revent: ExtensionEvent, options: Optional[ProcessEventOptions] = None
+        self, revent: ExtensionEvent, options: ProcessEventOptions
     ) -> ProcessingResult:
         event: BaseEvent
+        
+        logger.debug(f"ProcessEventOptions:\n{options}")
         logger.debug(f"New event! Raw:\n{revent}")
+        
+
+        if options.do_not_handle:
+            logger.debug("ProcessEventOptions.do_not_handle is True")
+            logger.debug("Event was skipped")
+            return ProcessingResult(False)
+
         if revent.bot_type is BotType.BOT:
             revent.raw_event = cast(dict, revent.raw_event)
             group_id = revent.raw_event["group_id"]

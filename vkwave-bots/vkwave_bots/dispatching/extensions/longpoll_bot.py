@@ -4,6 +4,7 @@ from typing import TYPE_CHECKING
 from vkwave_bots.types.bot_type import BotType
 from vkwave_longpoll.bot import BotLongpoll
 
+from vkwave_bots.dispatching.dp.processing_options import ProcessEventOptions
 from vkwave_bots.dispatching.events.raw import ExtensionEvent
 from .base import BaseExtension
 
@@ -17,11 +18,12 @@ class BotLongpollExtension(BaseExtension):
         self.lp = lp
 
     async def _start(self):
+        options = ProcessEventOptions(do_not_handle=False)
         while True:
             events = await self.lp.get_updates()
             for event in events:
                 get_running_loop().create_task(
-                    self.dp.process_event(ExtensionEvent(BotType.BOT, event))
+                    self.dp.process_event(ExtensionEvent(BotType.BOT, event), options)
                 )
 
     async def start(self):
