@@ -154,7 +154,7 @@ class RegexFilter(BaseFilter):
 
     >>> regex = RegexFilter # alias
     >>> _ = regex(r".+")  # any string  (example match: "hello world!!!")
-    >>> _ = regex(r"\d+")  # any integer number (e.g. match: "254")
+    >>> _ = regex(r"\d+")  # any integer number (example match: "254")
     >>> _ = regex(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)")  # any email (example match: "email@example.com")
     >>> _ = regex(r"abc-\d\d", flags=re.IGNORECASE)  # example mathc: "Abc-54"
 
