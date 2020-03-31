@@ -13,16 +13,14 @@ from vkwave_api.methods import API
 from vkwave_bots.dispatching.filters.builtin import (
     EventTypeFilter,
     PayloadFilter,
-    CommandsFilter
+    CommandsFilter,
 )
 from vkwave_longpoll.bot import BotLongpoll, BotLongpollData
 from vkwave_types.bot_events import BotEventType
 from vkwave_bots_utils.keyboards import Keyboard
 
 logging.basicConfig(level=logging.DEBUG)
-bot_token = Token(
-    "123"
-)
+bot_token = Token("123")
 gid = 123
 router = DefaultRouter()
 

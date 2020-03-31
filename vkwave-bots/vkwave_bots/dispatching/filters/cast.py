@@ -9,7 +9,7 @@ from .base import AsyncFuncFilter, BaseFilter, SyncFuncFilter
 
 class FilterCaster(DefaultCaster[BaseFilter]):
     def cast(self, something: Any):
-        
+
         av_cast = super().cast(something)
         if av_cast:
             return av_cast

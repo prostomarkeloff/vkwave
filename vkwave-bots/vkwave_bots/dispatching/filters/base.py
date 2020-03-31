@@ -20,6 +20,7 @@ class BaseFilter(ABC):
     def __or__(self, other: "BaseFilter") -> "OrFilter":
         return OrFilter(self, other)
 
+
 # sfilter: some filter
 
 

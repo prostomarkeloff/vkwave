@@ -22,6 +22,7 @@ ProcessingResult = NewType("ProcessingResult", bool)
 
 logger = logging.getLogger(__name__)
 
+
 class Dispatcher:
     def __init__(
         self, api: API, token_storage: TokenStorage, bot_type: BotType = BotType.BOT

@@ -9,7 +9,11 @@ from vkwave_types.objects import PhotosPhoto
 
 
 class PhotoUploader:
-    def __init__(self, api_context: APIOptionsRequestContext, json_serialize: JSONDecoder = json.loads):
+    def __init__(
+        self,
+        api_context: APIOptionsRequestContext,
+        json_serialize: JSONDecoder = json.loads,
+    ):
         self.api_context = api_context
         self.client: AbstractHTTPClient = api_context.api_options.get_client().http_client
         self.json_serialize = json_serialize
@@ -57,7 +61,9 @@ class PhotoUploader:
         #  TODO: async saving
         with open(filename, "wb") as file:
             file.write(photo_data)
-        attachment = await self.get_attachment_from_path(file_path=filename, peer_id=peer_id)
+        attachment = await self.get_attachment_from_path(
+            file_path=filename, peer_id=peer_id
+        )
         os.remove(filename)
         return attachment
 

@@ -33,7 +33,7 @@ class Category:
 
         exc_data = None
         data = None
-        
+
         if state is ResultState.UNHANDLED_EXCEPTION:
             raise UnsuccessAPIRequestException()
         if state is ResultState.HANDLED_EXCEPTION:

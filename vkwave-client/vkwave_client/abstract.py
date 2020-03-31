@@ -7,7 +7,6 @@ from .types import MethodName
 
 
 class AbstractAPIClient(ABC):
-
     @property
     @abstractmethod
     def http_client(self) -> AbstractHTTPClient:
