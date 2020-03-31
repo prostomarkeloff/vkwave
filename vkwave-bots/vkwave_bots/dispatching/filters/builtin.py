@@ -1,5 +1,6 @@
 from typing import Tuple, Union, Dict
 import json
+import re
 
 import typing
 from vkwave_bots.dispatching.events.base import BaseEvent, UserEvent
@@ -145,6 +146,23 @@ class CommandsFilter(BaseFilter):
                 if text.startswith(f"{prefix}{command}"):
                     return FilterResult(True)
         return FilterResult(False)
+
+
+class RegexFilter(BaseFilter):
+    """
+    Message text regex filter
+    """
+
+    def __init__(self, regex: str, flags: re.RegexFlag = 0):
+        self.pattern = re.compile(regex, flags)
+
+    async def check(self, event: BaseEvent) -> FilterResult:
+        if event.bot_type is BotType.USER:
+            text = event.object.object.text
+        else:
+            text = event.object.object.message.text
+
+        return FilterResult(bool(self.pattern.match(text)))
 
 
 # TODO: MessageArgsFilter
