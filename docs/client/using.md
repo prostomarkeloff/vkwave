@@ -2,15 +2,15 @@
 
 This library shouldn't be used directly. 
 
-But reading it may be useful for you if you want to create addons for vkwave.
+But reading it may be useful for you if you want to create addons for VKWave.
 
 ## How to
 
 It's easy.
 
 ```python
-from vkwave_client.default import AIOHTTPClient
-from vkwave_client.context import ResultState
+from vkwave.client.default import AIOHTTPClient
+from vkwave.client.context import ResultState
 import asyncio
 
 async def main():

@@ -1,4 +1,5 @@
 # Context
+
 When you call `client.create_request` you get the context of this request.
 
 That contains information about result of request (of course, not defined until you call `send_request`), and exceptions.

@@ -1,8 +1,10 @@
+# Uploaders
+
 It will help you with send attachments in messages.
 
 Upload photo from file
 ```python
-from vkwave_bots_utils.uploaders.photo_uploader import PhotoUploader
+from vkwave.bots.utils.uploaders.photo_uploader import PhotoUploader
 
 api = API(clients=client, tokens=token)
 uploader = PhotoUploader(api.get_context())
@@ -35,7 +37,7 @@ big_attachment = await uploader.get_attachments_from_links(
 Upload audio message
 
 ```python
-from vkwave_bots_utils.uploaders.audio_uploader import VoiceUploader
+from vkwave.bots.utils.uploaders.audio_uploader import VoiceUploader
 uploader = VoiceUploader(api.get_context())
 
 

@@ -1,9 +1,11 @@
+# Filters
+
 Filters are needed for _filtering_ events for routers/handlers.
 
-In vkwave, they are represented like instances of `BaseFilter` class. Also you can cast lambdas/functions/coroutines to filters via filter_caster.
+In VKWave, they are represented like instances of `BaseFilter` class. Also you can cast lambdas/functions/coroutines to filters via filter_caster.
 
 ```python
-from vkwave_bots.dispatching.filters import filter_caster
+from vkwave.bots.dispatching.filters import filter_caster
 
 # here we are creating function that will create another function and cast it to filter
 # it's called `currying`.
@@ -24,7 +26,7 @@ r.new().with_filters(filter_caster.cast(lambda event: 1).handle(...).ready()
 But knowing that it exists sometimes may help you. By default, you have only 3 casts to filters: lambdas, regular function & async functions. You can extend it.
 
 ```python
-from vkwave_bots.dispatching.filters.base import BaseFilter, FilterResult
+from vkwave.bots.dispatching.filters.base import BaseFilter, FilterResult
 
 # simple filter for messages's text
 class TextFilter(BaseFilter):
@@ -52,7 +54,7 @@ r.new().with_filters("some pretty text")
 If you have `BaseFilter`'s instance you can do _magic_ things. I'll pick up filter from 1st example.
 
 ```python
-from vkwave_bots.dispatching.filters import filter_caster
+from vkwave.bots.dispatching.filters import filter_caster
 
 text = lambda text: filter_caster.cast(lambda event: event.object.object.message.text.lower() == text)
 

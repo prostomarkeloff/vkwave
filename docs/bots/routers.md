@@ -1,8 +1,10 @@
+# Routers
+
 Today I wanna tell you about routers and how to use them.
 
 First of all, you should know that you can't handle any kind of events without it (router, of course). It is the main entity of your bot in vkwave. It's pretty simple, yet has own useful features, like filters.
 
-In other words, your bot in vkwave is just a set of routers that handle events. And they can filter events.
+In other words, your bot in VKWave is just a set of routers that handle events. And they can filter events.
 
 # Short guide: how to routers
 

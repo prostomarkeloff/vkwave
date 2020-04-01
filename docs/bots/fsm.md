@@ -1,4 +1,4 @@
-# vkwave-bots-fsm
+# FSM
 
 This module is implementation of [Finite-state machine](https://en.wikipedia.org/wiki/Finite-state_machine)
 for bots.
@@ -85,5 +85,5 @@ async def simple_handler(event: BotEvent):
 
 In the end of interview it will write down to you something like that:
 ```
-Your data - {'__vkwave_fsm_state__': '<vkwave_bots_fsm.fsm.State object at 0x0000021C19D61A90>', 'name': 'Nick', 'age': '46'}
+Your data - {'__vkwave_fsm_state__': '<vkwave.bots_fsm.fsm.State object at 0x0000021C19D61A90>', 'name': 'Nick', 'age': '46'}
 ```

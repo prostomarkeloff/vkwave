@@ -1,8 +1,10 @@
+# Templates
+
 Carousels for VK.
 
 
 ```python
-from vkwave_bots_utils.keyboards import Template
+from vkwave.bots.utils.keyboards import Template
 
 template_1 = Template(
     title="First title",

@@ -1,14 +1,15 @@
-# vkwave-bots-storage
+# Storage
 
 This module will help you with storing your bot data.
 You have choice of two default storage:
  - simple dict-like storage
  - ttl storage
+ - redis storage
  
 
 ```python3
-from vkwave_bots_storage.storages import Storage
-from vkwave_bots_storage.types import Key
+from vkwave.bots.storage.storages import Storage
+from vkwave.bots.storage.types import Key
 import asyncio
 
 

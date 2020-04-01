@@ -1,8 +1,10 @@
+# Keyboard
+
 It will help you with creating keyboards for group bots.
 
 ```python
-from vkwave_bots_utils.keyboards import Keyboard
-from vkwave_bots_utils.keyboards.keyboard import ButtonColor
+from vkwave.bots.utils.keyboards import Keyboard
+from vkwave.bots.utils.keyboards.keyboard import ButtonColor
 
 kb = Keyboard(one_time=False)
 kb.add_text_button("hello")
