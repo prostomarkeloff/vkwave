@@ -2,7 +2,7 @@ import typing
 import json
 import os
 
-from vkwave.bots.types.json_types import JSONDecoder
+from vkwave.bots.core.types.json_types import JSONDecoder
 from vkwave.http import AbstractHTTPClient
 from vkwave.api.methods import APIOptionsRequestContext
 from vkwave.types.objects import PhotosPhoto

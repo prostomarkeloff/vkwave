@@ -3,9 +3,9 @@ import json
 import re
 
 import typing
-from vkwave.bots.dispatching.events.base import BaseEvent, UserEvent
-from vkwave.bots.types.bot_type import BotType
-from vkwave.bots.types.json_types import JSONDecoder
+from vkwave.bots.core.dispatching.events.base import BaseEvent
+from vkwave.bots.core.types.bot_type import BotType
+from vkwave.bots.core.types.json_types import JSONDecoder
 from vkwave.types.objects import MessagesMessageActionStatus
 
 from .base import BaseFilter, FilterResult

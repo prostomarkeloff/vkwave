@@ -1,6 +1,6 @@
 from enum import Enum, auto
 
-from vkwave.bots.dispatching.events.base import BaseEvent
+from vkwave.bots.core.dispatching.events.base import BaseEvent
 from vkwave.bots.storage.base import AbstractStorage
 from vkwave.bots.storage.storages import Storage
 from vkwave.bots.storage.types import Key

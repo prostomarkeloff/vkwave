@@ -1,13 +1,12 @@
 from typing import Any, Callable, List, TypeVar
 
-from vkwave.bots.dispatching.events.base import BaseEvent
-from vkwave.bots.dispatching.filters.base import (
+from vkwave.bots.core.dispatching.filters.base import (
     BaseFilter,
     AsyncFuncFilter,
     SyncFuncFilter,
 )
-from vkwave.bots.dispatching.handler.base import BaseHandler
-from vkwave.bots.dispatching.handler.record import HandlerRecord
+from vkwave.bots.core.dispatching.handler.base import BaseHandler
+from vkwave.bots.core.dispatching.handler.record import HandlerRecord
 
 F = TypeVar("F", bound=Callable[..., Any])
 

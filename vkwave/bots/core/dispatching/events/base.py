@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Dict, Generic, TypeVar
 
 from vkwave.api.methods._abc import APIOptionsRequestContext
-from vkwave.bots.types.bot_type import BotType
+from vkwave.bots.core.types.bot_type import BotType
 from vkwave.types.bot_events import BaseBotEvent
 from vkwave.types.user_events import BaseUserEvent
 

@@ -1,10 +1,10 @@
 from abc import ABC, abstractmethod
 from typing import Any, List, Optional
 
-from vkwave.bots.dispatching.events.base import BaseEvent
-from vkwave.bots.dispatching.filters import BaseFilter
-from vkwave.bots.dispatching.filters.manage import FilterManager
-from vkwave.bots.dispatching.handler.base import FILTERS_NOT_PASSED
+from vkwave.bots.core.dispatching.events.base import BaseEvent
+from vkwave.bots.core.dispatching.filters import BaseFilter
+from vkwave.bots.core.dispatching.filters.manage import FilterManager
+from vkwave.bots.core.dispatching.handler.base import FILTERS_NOT_PASSED
 
 from .registrar import HandlerRegistrar
 

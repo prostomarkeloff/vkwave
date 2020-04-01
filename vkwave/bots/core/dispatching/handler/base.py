@@ -1,9 +1,9 @@
 from abc import ABC, abstractmethod
-from typing import Any, Awaitable, Callable, List, Optional
+from typing import Any, List, Optional
 
-from vkwave.bots.dispatching.events.base import BaseEvent
-from vkwave.bots.dispatching.filters.base import BaseFilter
-from vkwave.bots.dispatching.filters.manage import FilterManager
+from vkwave.bots.core.dispatching.events.base import BaseEvent
+from vkwave.bots.core.dispatching.filters.base import BaseFilter
+from vkwave.bots.core.dispatching.filters.manage import FilterManager
 
 from .callback import BaseCallback
 

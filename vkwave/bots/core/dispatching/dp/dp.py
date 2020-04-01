@@ -3,12 +3,12 @@ import logging
 
 from vkwave.api.methods import API
 from vkwave.api.token.token import AnyABCToken
-from vkwave.bots.dispatching.events.base import BaseEvent, BotEvent, UserEvent
-from vkwave.bots.dispatching.events.raw import ExtensionEvent
-from vkwave.bots.dispatching.router.router import HANDLER_NOT_FOUND, BaseRouter
-from vkwave.bots.tokens.storage import TokenStorage
-from vkwave.bots.tokens.types import GroupId, UserId
-from vkwave.bots.types.bot_type import BotType
+from vkwave.bots.core.dispatching.events.base import BaseEvent, BotEvent, UserEvent
+from vkwave.bots.core.dispatching.events.raw import ExtensionEvent
+from vkwave.bots.core.dispatching.router.router import HANDLER_NOT_FOUND, BaseRouter
+from vkwave.bots.core.tokens.storage import TokenStorage
+from vkwave.bots.core.tokens.types import GroupId, UserId
+from vkwave.bots.core.types.bot_type import BotType
 from vkwave.types.bot_events import get_event_object
 from vkwave.types.user_events import get_event_object as user_get_event_object
 

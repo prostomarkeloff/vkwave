@@ -1,7 +1,7 @@
 import json
 from enum import Enum
 import typing
-from vkwave.bots.types.json_types import JSONEncoder
+from vkwave.bots.core.types.json_types import JSONEncoder
 from vkwave.bots.utils.keyboards._types import Button
 
 

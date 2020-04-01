@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import Awaitable, Callable, NewType
 
-from vkwave.bots.dispatching.events.base import BaseEvent
+from vkwave.bots.core.dispatching.events.base import BaseEvent
 
 FilterResult = NewType("FilterResult", bool)
 

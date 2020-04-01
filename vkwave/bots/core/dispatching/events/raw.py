@@ -1,4 +1,4 @@
-from vkwave.bots.types.bot_type import BotType
+from vkwave.bots.core.types.bot_type import BotType
 import typing
 
 

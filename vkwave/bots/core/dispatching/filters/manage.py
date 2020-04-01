@@ -1,6 +1,6 @@
 from typing import List
 
-from vkwave.bots.dispatching.events.base import BaseEvent
+from vkwave.bots.core.dispatching.events.base import BaseEvent
 
 from .base import BaseFilter
 

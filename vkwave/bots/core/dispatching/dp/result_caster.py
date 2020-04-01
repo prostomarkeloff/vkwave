@@ -1,7 +1,7 @@
 from typing import Any, Awaitable, Callable, Dict, Optional, Type
 
-from vkwave.bots.dispatching.events.base import BaseEvent
-from vkwave.bots.types.bot_type import BotType
+from vkwave.bots.core.dispatching.events.base import BaseEvent
+from vkwave.bots.core.types.bot_type import BotType
 
 
 class ResultCaster:

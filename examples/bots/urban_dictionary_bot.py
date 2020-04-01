@@ -8,11 +8,11 @@ from udpy import AsyncUrbanClient, UrbanDefinition
 from vkwave.api.methods import API
 from vkwave.api.token.token import BotSyncSingleToken
 from vkwave.bots import Dispatcher, EventTypeFilter, TextFilter
-from vkwave.bots.dispatching.events.base import BotEvent
-from vkwave.bots.dispatching.extensions.longpoll_bot import BotLongpollExtension
-from vkwave.bots.dispatching.router.router import DefaultRouter
-from vkwave.bots.tokens.storage import TokenStorage
-from vkwave.bots.tokens.types import GroupId
+from vkwave.bots.core.dispatching.events.base import BotEvent
+from vkwave.bots.core.dispatching.extensions.longpoll_bot import BotLongpollExtension
+from vkwave.bots.core.dispatching.router.router import DefaultRouter
+from vkwave.bots.core.tokens.storage import TokenStorage
+from vkwave.bots.core.tokens.types import GroupId
 from vkwave.client.default import AIOHTTPClient
 from vkwave.longpoll.bot import BotLongpoll, BotLongpollData
 
