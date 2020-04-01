@@ -3,7 +3,6 @@ from inspect import isawaitable, isfunction
 from typing import Any
 
 from vkwave.bots.core.dispatching.cast.default import DefaultCaster
-
 from .callback import AsyncFuncCallback, BaseCallback, SyncFuncCallback
 
 

@@ -31,9 +31,7 @@ def client():
         def set_context_factory(self, factory: AbstractFactory) -> None:
             self._factory = factory
 
-        def create_request(
-            self, method_name: MethodName, params: dict
-        ) -> RequestContext:
+        def create_request(self, method_name: MethodName, params: dict) -> RequestContext:
             ctx = self.context_factory.create_context(
                 exceptions={SomeAPIException: None},
                 request_callback=callback,

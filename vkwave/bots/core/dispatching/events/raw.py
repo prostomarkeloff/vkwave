@@ -1,5 +1,6 @@
-from vkwave.bots.core.types.bot_type import BotType
 import typing
+
+from vkwave.bots.core.types.bot_type import BotType
 
 
 class ExtensionEvent:

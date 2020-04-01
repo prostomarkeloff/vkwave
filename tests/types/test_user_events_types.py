@@ -16,11 +16,7 @@ def test_message_new_event():
             2000000005,
             1582466146,
             "Всем привет я тест",
-            {
-                "from": "253866502",
-                "mentions": [431631325],
-                "marked_users": [[1, [431631325]]],
-            },
+            {"from": "253866502", "mentions": [431631325], "marked_users": [[1, [431631325]]],},
             {"reply": '{"conversation_message_id":93222}', "fwd": "0_0"},
             0,
         ],
@@ -28,10 +24,7 @@ def test_message_new_event():
     assert event.object.text == "Всем привет я тест"
     assert event.object.peer_id == 2000000005
     assert event.object.message_data.mentions[0] == 431631325
-    assert (
-        json.loads(event.object.extra_message_data["reply"])["conversation_message_id"]
-        == 93222
-    )
+    assert json.loads(event.object.extra_message_data["reply"])["conversation_message_id"] == 93222
     assert event.object.message_id == 174167
 
 
@@ -70,11 +63,7 @@ def test_message_with_keyboard():
                     "buttons": [
                         [
                             {
-                                "action": {
-                                    "type": "text",
-                                    "payload": "",
-                                    "label": "helloworld",
-                                },
+                                "action": {"type": "text", "payload": "", "label": "helloworld",},
                                 "color": "default",
                             }
                         ]

@@ -1,1 +1,1 @@
-from ._abc import API, APIOptionsRequestContext
+from ._abc import API, APIOptionsRequestContext  # noqa: F401

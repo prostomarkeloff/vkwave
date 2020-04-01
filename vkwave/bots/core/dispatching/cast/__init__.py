@@ -1,1 +1,1 @@
-from .caster import AbstractCaster
+from .caster import AbstractCaster  # noqa: F401

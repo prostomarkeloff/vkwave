@@ -4,7 +4,6 @@ from typing import Any, List, Optional
 from vkwave.bots.core.dispatching.events.base import BaseEvent
 from vkwave.bots.core.dispatching.filters.base import BaseFilter
 from vkwave.bots.core.dispatching.filters.manage import FilterManager
-
 from .callback import BaseCallback
 
 FILTERS_NOT_PASSED = object()
@@ -14,9 +13,7 @@ class BaseHandler(ABC):
     filter_manager: FilterManager
 
     @abstractmethod
-    def __init__(
-            self, callback: BaseCallback, filters: Optional[List[BaseFilter]] = None
-    ):
+    def __init__(self, callback: BaseCallback, filters: Optional[List[BaseFilter]] = None):
         ...
 
     @abstractmethod
@@ -25,9 +22,7 @@ class BaseHandler(ABC):
 
 
 class DefaultHandler(BaseHandler):
-    def __init__(
-            self, callback: BaseCallback, filters: Optional[List[BaseFilter]] = None
-    ):
+    def __init__(self, callback: BaseCallback, filters: Optional[List[BaseFilter]] = None):
         self.callback = callback
         self.filter_manager = FilterManager()
         filters = filters or []

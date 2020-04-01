@@ -1,7 +1,6 @@
 from vkwave.bots.core.dispatching.events.base import BaseEvent
-from vkwave.bots.fsm.fsm import State, ForWhat, FiniteStateMachine
-
 from vkwave.bots.core.dispatching.filters.builtin import BaseFilter, FilterResult
+from vkwave.bots.fsm.fsm import State, ForWhat, FiniteStateMachine
 from vkwave.bots.storage.types import Key
 
 ANY_STATE = "__any_state__"
@@ -9,11 +8,7 @@ ANY_STATE = "__any_state__"
 
 class StateFilter(BaseFilter):
     def __init__(
-            self,
-            fsm: FiniteStateMachine,
-            state: State,
-            for_what: ForWhat,
-            always_false: bool = False,
+        self, fsm: FiniteStateMachine, state: State, for_what: ForWhat, always_false: bool = False,
     ):
         self.always_false = always_false
         self.fsm = fsm
@@ -33,22 +28,17 @@ class StateFilter(BaseFilter):
                 for_what="userInChat", peer_id=peer_id, from_id=from_id
             )
             if is_pm:
-                user_state = template.format(
-                    for_what="user", peer_id=from_id, from_id=from_id
-                )
+                user_state = template.format(for_what="user", peer_id=from_id, from_id=from_id)
             else:
-                user_state = template.format(
-                    for_what="chat", peer_id=peer_id, from_id=peer_id
-                )
+                user_state = template.format(for_what="chat", peer_id=peer_id, from_id=peer_id)
 
             return FilterResult(
                 not (
-                        await self.fsm.storage.contains(Key(user_in_chat_state))
-                        or await self.fsm.storage.contains(Key(user_state))
+                    await self.fsm.storage.contains(Key(user_in_chat_state))
+                    or await self.fsm.storage.contains(Key(user_state))
                 )
             )
         current_state = await self.fsm.get_data(event, for_what=self.for_what)
         return FilterResult(
-            current_state is not None
-            and current_state["__vkwave_fsm_state__"] == str(self.state)
+            current_state is not None and current_state["__vkwave_fsm_state__"] == str(self.state)
         )

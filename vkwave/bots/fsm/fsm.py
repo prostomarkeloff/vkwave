@@ -1,11 +1,11 @@
+import typing
 from enum import Enum, auto
 
 from vkwave.bots.core.dispatching.events.base import BaseEvent
+from vkwave.bots.fsm.types import StateId
 from vkwave.bots.storage.base import AbstractStorage
 from vkwave.bots.storage.storages import Storage
 from vkwave.bots.storage.types import Key
-from vkwave.bots.fsm.types import StateId
-import typing
 
 
 class ForWhat(Enum):
@@ -49,11 +49,11 @@ class FiniteStateMachine:
         self.storage = storage or Storage()
 
     async def set_state(
-            self,
-            state: State,
-            event: BaseEvent,
-            for_what: ForWhat,
-            extra_state_data: typing.Optional[typing.Dict[str, str]] = None,
+        self,
+        state: State,
+        event: BaseEvent,
+        for_what: ForWhat,
+        extra_state_data: typing.Optional[typing.Dict[str, str]] = None,
     ) -> None:
         sid = Key(create_state_id(event, for_what))
         if extra_state_data is None:
@@ -70,7 +70,7 @@ class FiniteStateMachine:
         return await self.storage.put(sid, storage_data)
 
     async def add_data(
-            self, event: BaseEvent, for_what: ForWhat, state_data: typing.Dict[str, str]
+        self, event: BaseEvent, for_what: ForWhat, state_data: typing.Dict[str, str]
     ) -> None:
         sid = Key(create_state_id(event, for_what))
 

@@ -1,1 +1,1 @@
-from .http import AIOHTTPClient, AbstractHTTPClient
+from .http import AIOHTTPClient, AbstractHTTPClient  # noqa: F401

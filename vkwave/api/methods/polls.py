@@ -5,11 +5,11 @@ from ._category import Category
 
 class Polls(Category):
     async def add_vote(
-            self,
-            owner_id: typing.Optional[int] = None,
-            poll_id: int = None,
-            answer_ids: typing.List[int] = None,
-            is_board: typing.Optional[bool] = None,
+        self,
+        owner_id: typing.Optional[int] = None,
+        poll_id: int = None,
+        answer_ids: typing.List[int] = None,
+        is_board: typing.Optional[bool] = None,
     ) -> PollsAddVoteResponse:
         """
         :param owner_id: - ID of the user or community that owns the poll. Use a negative value to designate a community ID.
@@ -31,15 +31,15 @@ class Polls(Category):
         return result
 
     async def create(
-            self,
-            question: typing.Optional[str] = None,
-            is_anonymous: typing.Optional[bool] = None,
-            is_multiple: typing.Optional[bool] = None,
-            end_date: typing.Optional[int] = None,
-            owner_id: typing.Optional[int] = None,
-            add_answers: typing.Optional[str] = None,
-            photo_id: typing.Optional[int] = None,
-            background_id: typing.Optional[str] = None,
+        self,
+        question: typing.Optional[str] = None,
+        is_anonymous: typing.Optional[bool] = None,
+        is_multiple: typing.Optional[bool] = None,
+        end_date: typing.Optional[int] = None,
+        owner_id: typing.Optional[int] = None,
+        add_answers: typing.Optional[str] = None,
+        photo_id: typing.Optional[int] = None,
+        background_id: typing.Optional[str] = None,
     ) -> PollsCreateResponse:
         """
         :param question: - question text
@@ -65,11 +65,11 @@ class Polls(Category):
         return result
 
     async def delete_vote(
-            self,
-            owner_id: typing.Optional[int] = None,
-            poll_id: int = None,
-            answer_id: int = None,
-            is_board: typing.Optional[bool] = None,
+        self,
+        owner_id: typing.Optional[int] = None,
+        poll_id: int = None,
+        answer_id: int = None,
+        is_board: typing.Optional[bool] = None,
     ) -> PollsDeleteVoteResponse:
         """
         :param owner_id: - ID of the user or community that owns the poll. Use a negative value to designate a community ID.
@@ -91,16 +91,16 @@ class Polls(Category):
         return result
 
     async def edit(
-            self,
-            owner_id: typing.Optional[int] = None,
-            poll_id: int = None,
-            question: typing.Optional[str] = None,
-            add_answers: typing.Optional[str] = None,
-            edit_answers: typing.Optional[str] = None,
-            delete_answers: typing.Optional[str] = None,
-            end_date: typing.Optional[int] = None,
-            photo_id: typing.Optional[int] = None,
-            background_id: typing.Optional[str] = None,
+        self,
+        owner_id: typing.Optional[int] = None,
+        poll_id: int = None,
+        question: typing.Optional[str] = None,
+        add_answers: typing.Optional[str] = None,
+        edit_answers: typing.Optional[str] = None,
+        delete_answers: typing.Optional[str] = None,
+        end_date: typing.Optional[int] = None,
+        photo_id: typing.Optional[int] = None,
+        background_id: typing.Optional[str] = None,
     ) -> OkResponse:
         """
         :param owner_id: - poll owner id
@@ -127,14 +127,14 @@ class Polls(Category):
         return result
 
     async def get_by_id(
-            self,
-            owner_id: typing.Optional[int] = None,
-            is_board: typing.Optional[bool] = None,
-            poll_id: int = None,
-            extended: typing.Optional[bool] = None,
-            friends_count: typing.Optional[int] = None,
-            fields: typing.Optional[typing.List[str]] = None,
-            name_case: typing.Optional[str] = None,
+        self,
+        owner_id: typing.Optional[int] = None,
+        is_board: typing.Optional[bool] = None,
+        poll_id: int = None,
+        extended: typing.Optional[bool] = None,
+        friends_count: typing.Optional[int] = None,
+        fields: typing.Optional[typing.List[str]] = None,
+        name_case: typing.Optional[str] = None,
     ) -> PollsGetByIdResponse:
         """
         :param owner_id: - ID of the user or community that owns the poll. Use a negative value to designate a community ID.
@@ -159,16 +159,16 @@ class Polls(Category):
         return result
 
     async def get_voters(
-            self,
-            owner_id: typing.Optional[int] = None,
-            poll_id: int = None,
-            answer_ids: typing.List[int] = None,
-            is_board: typing.Optional[bool] = None,
-            friends_only: typing.Optional[bool] = None,
-            offset: typing.Optional[int] = None,
-            count: typing.Optional[int] = None,
-            fields: typing.Optional[typing.List[UsersFields]] = None,
-            name_case: typing.Optional[str] = None,
+        self,
+        owner_id: typing.Optional[int] = None,
+        poll_id: int = None,
+        answer_ids: typing.List[int] = None,
+        is_board: typing.Optional[bool] = None,
+        friends_only: typing.Optional[bool] = None,
+        offset: typing.Optional[int] = None,
+        count: typing.Optional[int] = None,
+        fields: typing.Optional[typing.List[UsersFields]] = None,
+        name_case: typing.Optional[str] = None,
     ) -> PollsGetVotersResponse:
         """
         :param owner_id: - ID of the user or community that owns the poll. Use a negative value to designate a community ID.

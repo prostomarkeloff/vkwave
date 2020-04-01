@@ -16,6 +16,4 @@ class ABCGetTokenStrategy(ABC, Generic[T]):
 
 class NotImplementedGetTokenStrategy(ABCGetTokenStrategy[T]):
     async def get_token(self, id_to_check: T) -> AnyABCToken:
-        raise NotImplementedError(
-            "By default, events with unknown group (user) ID are ignored"
-        )
+        raise NotImplementedError("By default, events with unknown group (user) ID are ignored")

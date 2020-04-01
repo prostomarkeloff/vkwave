@@ -5,12 +5,12 @@ from ._category import Category
 
 class Notifications(Category):
     async def get(
-            self,
-            count: typing.Optional[int] = None,
-            start_from: typing.Optional[str] = None,
-            filters: typing.Optional[typing.List[str]] = None,
-            start_time: typing.Optional[int] = None,
-            end_time: typing.Optional[int] = None,
+        self,
+        count: typing.Optional[int] = None,
+        start_from: typing.Optional[str] = None,
+        filters: typing.Optional[typing.List[str]] = None,
+        start_time: typing.Optional[int] = None,
+        end_time: typing.Optional[int] = None,
     ) -> NotificationsGetResponse:
         """
         :param count: - Number of notifications to return.
@@ -32,7 +32,7 @@ class Notifications(Category):
         result = NotificationsGetResponse(**raw_result)
         return result
 
-    async def mark_as_viewed(self, ) -> NotificationsMarkAsViewedResponse:
+    async def mark_as_viewed(self,) -> NotificationsMarkAsViewedResponse:
         """
         :return:
         """
@@ -49,11 +49,11 @@ class Notifications(Category):
         return result
 
     async def send_message(
-            self,
-            user_ids: typing.List[int] = None,
-            message: str = None,
-            fragment: typing.Optional[str] = None,
-            group_id: typing.Optional[int] = None,
+        self,
+        user_ids: typing.List[int] = None,
+        message: str = None,
+        fragment: typing.Optional[str] = None,
+        group_id: typing.Optional[int] = None,
     ) -> NotificationsSendMessageResponse:
         """
         :param user_ids:

@@ -1,8 +1,6 @@
 import typing
 from abc import ABC, abstractmethod
 
-from vkwave.bots.core.types.bot_type import BotType
-
 if typing.TYPE_CHECKING:
     from ..dp.dp import Dispatcher
 

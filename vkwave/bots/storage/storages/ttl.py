@@ -1,8 +1,8 @@
 import time
 import typing
 
-from vkwave.bots.storage.types import TTL, Key, Value
 from vkwave.bots.storage.base import AbstractExpiredStorage, NO_KEY, NoKeyOrValue
+from vkwave.bots.storage.types import TTL, Key, Value
 
 INF = float("inf")
 
@@ -12,9 +12,7 @@ class TTLStorage(AbstractExpiredStorage):
         self.data: typing.Dict[Key, typing.Tuple[Value, TTL]] = {}
         self.default_ttl = default_ttl
 
-    async def put(
-            self, key: Key, value: Value, ttl: typing.Optional[TTL] = None
-    ) -> None:
+    async def put(self, key: Key, value: Value, ttl: typing.Optional[TTL] = None) -> None:
         if ttl is None:
             expire = TTL(time.time() + self.default_ttl)
         elif ttl == -1:

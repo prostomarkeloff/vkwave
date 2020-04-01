@@ -1,18 +1,17 @@
 from typing import Dict, Generic, Optional, TypeVar
 
 from vkwave.api.token.token import AnyABCToken
-
 from .strategy import ABCGetTokenStrategy, NotImplementedGetTokenStrategy
-from .types import BAT, BST, UAT, UST, GroupId, UserId
+from .types import GroupId, UserId
 
 T = TypeVar("T", GroupId, UserId)
 
 
 class TokenStorage(Generic[T]):
     def __init__(
-            self,
-            available: Optional[Dict[T, AnyABCToken]] = None,
-            get_token_strategy: Optional[ABCGetTokenStrategy] = None,
+        self,
+        available: Optional[Dict[T, AnyABCToken]] = None,
+        get_token_strategy: Optional[ABCGetTokenStrategy] = None,
     ):
         self.tokens: Dict[T, AnyABCToken] = available or dict()
         self.get_token_strategy: ABCGetTokenStrategy[

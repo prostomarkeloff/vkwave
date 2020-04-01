@@ -163,13 +163,7 @@ def test_message_new_event():
                     "is_hidden": False,
                 },
                 "client_info": {
-                    "button_actions": [
-                        "text",
-                        "vkpay",
-                        "open_app",
-                        "location",
-                        "open_link",
-                    ],
+                    "button_actions": ["text", "vkpay", "open_app", "location", "open_link",],
                     "keyboard": True,
                     "inline_keyboard": True,
                     "lang_id": 0,
@@ -191,9 +185,7 @@ def test_message_new_event():
     assert event.object.message.fwd_messages[0].text == "meh"
     assert event.object.message.fwd_messages[0].date == 1582576949
     assert event.object.message.fwd_messages[0].attachments[0].type == "photo"
-    assert (
-        event.object.message.fwd_messages[0].attachments[0].photo.sizes[0].height == 130
-    )
+    assert event.object.message.fwd_messages[0].attachments[0].photo.sizes[0].height == 130
 
 
 def test_message_typing_state():
@@ -401,18 +393,8 @@ def test_wall_post_new():
                             "question": "how are you?",
                             "votes": 0,
                             "answers": [
-                                {
-                                    "id": 1220489985,
-                                    "text": "first",
-                                    "votes": 0,
-                                    "rate": 0.0,
-                                },
-                                {
-                                    "id": 1220489986,
-                                    "text": "second",
-                                    "votes": 0,
-                                    "rate": 0.0,
-                                },
+                                {"id": 1220489985, "text": "first", "votes": 0, "rate": 0.0,},
+                                {"id": 1220489986, "text": "second", "votes": 0, "rate": 0.0,},
                             ],
                             "anonymous": False,
                             "multiple": False,

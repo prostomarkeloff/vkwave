@@ -5,14 +5,14 @@ from ._category import Category
 
 class Widgets(Category):
     async def get_comments(
-            self,
-            widget_api_id: typing.Optional[int] = None,
-            url: typing.Optional[str] = None,
-            page_id: typing.Optional[str] = None,
-            order: typing.Optional[str] = None,
-            fields: typing.Optional[typing.List[UsersFields]] = None,
-            offset: typing.Optional[int] = None,
-            count: typing.Optional[int] = None,
+        self,
+        widget_api_id: typing.Optional[int] = None,
+        url: typing.Optional[str] = None,
+        page_id: typing.Optional[str] = None,
+        order: typing.Optional[str] = None,
+        fields: typing.Optional[typing.List[UsersFields]] = None,
+        offset: typing.Optional[int] = None,
+        count: typing.Optional[int] = None,
     ) -> WidgetsGetCommentsResponse:
         """
         :param widget_api_id:
@@ -37,12 +37,12 @@ class Widgets(Category):
         return result
 
     async def get_pages(
-            self,
-            widget_api_id: typing.Optional[int] = None,
-            order: typing.Optional[str] = None,
-            period: typing.Optional[str] = None,
-            offset: typing.Optional[int] = None,
-            count: typing.Optional[int] = None,
+        self,
+        widget_api_id: typing.Optional[int] = None,
+        order: typing.Optional[str] = None,
+        period: typing.Optional[str] = None,
+        offset: typing.Optional[int] = None,
+        count: typing.Optional[int] = None,
     ) -> WidgetsGetPagesResponse:
         """
         :param widget_api_id:

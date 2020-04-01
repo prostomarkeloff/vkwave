@@ -1,20 +1,19 @@
-from typing import Tuple, Union, Dict
 import json
 import re
-
 import typing
+from typing import Tuple, Union, Dict
+
 from vkwave.bots.core.dispatching.events.base import BaseEvent
 from vkwave.bots.core.types.bot_type import BotType
 from vkwave.bots.core.types.json_types import JSONDecoder
 from vkwave.types.objects import MessagesMessageActionStatus
-
 from .base import BaseFilter, FilterResult
 
 
 class EventTypeFilter(BaseFilter):
     """
     Event type filter. It supports both user and bot events.
-    
+
     >>> mn = EventTypeFilter("message_new") # bots' message_new event
     >>> @router.registrar.with_decorator(mn)
 
@@ -45,7 +44,7 @@ AnyText = typing.Union[typing.Tuple[str, ...], typing.List[str], str]
 class TextFilter(BaseFilter):
     """
     Message text filter.
-    
+
     >>> text = TextFilter # alias
     >>> _ = text("hi")
     >>> _ = text(("hi",))
@@ -117,16 +116,16 @@ class CommandsFilter(BaseFilter):
     >>> _ = cm(("start", "notstart"))
     >>> _ = cm(["start"])
     >>> _ = cm("start", prefixes=("/",))
-    
+
     >>> command_filter = cm("start", prefixes=("/",))
     >>> @router.registrar.with_decorator(command_filter)
     """
 
     def __init__(
-            self,
-            commands: AnyText,
-            prefixes: typing.Tuple[str] = ("/", "!"),
-            ignore_case: bool = True,
+        self,
+        commands: AnyText,
+        prefixes: typing.Tuple[str] = ("/", "!"),
+        ignore_case: bool = True,
     ):
         self.commands = (commands,) if isinstance(commands, str) else commands
         self.prefixes = prefixes
@@ -154,11 +153,11 @@ class RegexFilter(BaseFilter):
 
     >>> regex = RegexFilter # alias
     >>> _ = regex(r".+")  # any string  (example match: "hello world!!!")
-    >>> _ = regex(r"\d+")  # any integer number (example match: "254")
-    >>> _ = regex(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)")  # any email (example match: "email@example.com")
-    >>> _ = regex(r"abc-\d\d", flags=re.IGNORECASE)  # example match: "Abc-54"
+    >>> _ = regex(r"\d+")  # any integer number (example match: "254")  # noqa: W605
+    >>> _ = regex(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)")  # any email (example match: "email@example.com")  # noqa: W605
+    >>> _ = regex(r"abc-\d\d", flags=re.IGNORECASE)  # example match: "Abc-54"  # noqa: W605
 
-    >>> regex_filter = regex(r"user#\d{1,4}")  # example match: "user#723"
+    >>> regex_filter = regex(r"user#\d{1,4}")  # example match: "user#723"  # noqa: W605
     >>> @router.registrar.with_decorator(regex_filter)
     """
 
@@ -172,5 +171,6 @@ class RegexFilter(BaseFilter):
             text = event.object.object.message.text
 
         return FilterResult(self.pattern.match(text) is not None)
+
 
 # TODO: MessageArgsFilter

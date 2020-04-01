@@ -5,10 +5,10 @@ from ._category import Category
 
 class Gifts(Category):
     async def get(
-            self,
-            user_id: typing.Optional[int] = None,
-            count: typing.Optional[int] = None,
-            offset: typing.Optional[int] = None,
+        self,
+        user_id: typing.Optional[int] = None,
+        count: typing.Optional[int] = None,
+        offset: typing.Optional[int] = None,
     ) -> GiftsGetResponse:
         """
         :param user_id: - User ID.

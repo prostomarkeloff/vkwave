@@ -2,7 +2,6 @@ import typing
 
 from vkwave.client.context import ResultState
 from vkwave.client.types import MethodName
-
 from ._error import Error, UnsuccessAPIRequestException
 
 if typing.TYPE_CHECKING:

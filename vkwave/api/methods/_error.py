@@ -52,11 +52,11 @@ class ErrorDispatcher:
         self.handlers: typing.Dict[int, ErrorHandlerCallable] = {}
 
     async def _run_handler(
-            self,
-            code: int,
-            error: Error,
-            return_info: ReturnInfo,
-            request_context: "APIOptionsRequestContext",
+        self,
+        code: int,
+        error: Error,
+        return_info: ReturnInfo,
+        request_context: "APIOptionsRequestContext",
     ) -> typing.Union[bool, typing.Optional[dict]]:
         handler = self.handlers.get(code)
         if not handler:
@@ -69,7 +69,7 @@ class ErrorDispatcher:
         return None
 
     async def process_error(
-            self, error: Error, request_context: "APIOptionsRequestContext"
+        self, error: Error, request_context: "APIOptionsRequestContext"
     ) -> typing.Optional[dict]:
         err = error["error"]
         code = err["error_code"]

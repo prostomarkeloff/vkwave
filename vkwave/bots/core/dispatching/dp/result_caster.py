@@ -6,23 +6,17 @@ from vkwave.bots.core.types.bot_type import BotType
 
 class ResultCaster:
     def __init__(self):
-        self.available: Dict[
-            Type[Any], Callable[[Any, BaseEvent], Awaitable[None]]
-        ] = {}
+        self.available: Dict[Type[Any], Callable[[Any, BaseEvent], Awaitable[None]]] = {}
 
         self.add_caster(str, _default_str_handler)
         self.add_caster(type(None), _default_none_handler)
 
-    def add_caster(
-            self, typeof: Type[Any], handler: Callable[[Any, BaseEvent], Awaitable[None]]
-    ):
+    def add_caster(self, typeof: Type[Any], handler: Callable[[Any, BaseEvent], Awaitable[None]]):
         self.available[typeof] = handler
 
     async def cast(self, result: Any, event: BaseEvent):
         typeof = type(result)
-        handler: Optional[
-            Callable[[Any, BaseEvent], Awaitable[None]]
-        ] = self.available.get(typeof)
+        handler: Optional[Callable[[Any, BaseEvent], Awaitable[None]]] = self.available.get(typeof)
         if not handler:
             raise NotImplementedError("implementation for this type doesn't exist")
         await handler(result, event)
