@@ -1,8 +1,8 @@
 import pytest
 
-from vkwave_bots_storage.base import AbstractStorage, AbstractExpiredStorage
-from vkwave_bots_storage.storages.redis import RedisStorage
-from vkwave_bots_storage.storages import TTLStorage, Storage
+from vkwave.bots.storage.base import AbstractStorage, AbstractExpiredStorage
+from vkwave.bots.storage.storages.redis import RedisStorage
+from vkwave.bots.storage.storages import TTLStorage, Storage
 
 import time
 

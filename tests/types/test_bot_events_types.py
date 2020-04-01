@@ -1,4 +1,4 @@
-from vkwave_types.bot_events import WallPostNew, get_event_object
+from vkwave.types.bot_events import WallPostNew, get_event_object
 
 
 def test_group_join_event():

@@ -1,15 +1,12 @@
-import asyncio
 import os
-import ssl
 
 import pytest
 from dotenv import load_dotenv
 
-from vkwave_api import __version__
-from vkwave_api.methods._abc import API
-from vkwave_api.token.token import BotSyncSingleToken, Token
-from vkwave_client.default import AIOHTTPClient
-from vkwave_types.objects import BaseBoolInt
+from vkwave.api.methods._abc import API
+from vkwave.api.token.token import BotSyncSingleToken, Token
+from vkwave.client.default import AIOHTTPClient
+from vkwave.types.objects import BaseBoolInt
 
 load_dotenv()
 TOKEN = os.getenv("TOKEN")
@@ -23,10 +20,6 @@ async def get_api():
 
     api = vk_session.get_context()
     return api
-
-
-def test_version():
-    assert __version__ == "0.1.0"
 
 
 @pytest.mark.asyncio

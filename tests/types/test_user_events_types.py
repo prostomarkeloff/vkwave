@@ -1,6 +1,6 @@
 import json
 
-from vkwave_types.user_events import (
+from vkwave.types.user_events import (
     ChangedChatSettingsType,
     TimeoutUserEnum,
     get_event_object,
