@@ -1,0 +1,65 @@
+site_name: VKWave
+site_description: 'Documentations of VKWave framework'
+site_author: 'prostomarkeloff'
+repo_name: 'fscdev/vkwave'
+repo_url: 'https://github.com/fscdev/vkwave'
+
+theme:
+  name: 'material'
+  language: 'en'
+  palette:
+    primary: 'blue'
+    accent: 'blue'
+  favicon: 'assets/images/logo.png'
+
+extra:
+  version: 0.1.0
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - mkautodoc
+  - footnotes
+  - toc:
+      permalink: true
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  - pymdownx.tasklist
+  - pymdownx.inlinehilite
+  - markdown_include.include:
+      base_path: docs
+
+nav:
+  - index.md
+  - Client:
+      - client/index.md
+      - client/context.md
+      - client/using.md
+      - client/custom.md
+  - API:
+      - api/index.md
+  - Bots:
+      - bots/index.md
+      - bots/usage.md
+      - bots/filters.md
+      - bots/routers.md
+      - bots/fsm.md
+      - bots/storage.md
+      - Utils:
+          - bots/utils/index.md
+          - bots/utils/keyboard.md
+          - bots/utils/templates.md
+          - bots/utils/uploaders.md
+  - LongPoll:
+      - longpoll/index.md
+  - Types:
+      - types/index.md
+  - HTTP:
+      - http/index.md
+  Build reports:
+    - Tests result: /reports/tests
+    - Code coverage: /reports/coverage
+    - mypy results: /reports/typechecking
