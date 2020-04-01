@@ -1,0 +1,56 @@
+[tool.poetry]
+name = "vkwave"
+version = "0.1.0"
+description = "Framework for building high-performance & easy to scale projects interacting with VK's API."
+authors = ["prostomarkeloff"]
+license = "MIT"
+readme = "readme.md"
+homepage = "https://github.com/fscdev/vkwave"
+repository = "https://github.com/fscdev/vkwave"
+keywords = [
+        "vk",
+        "vkontakte",
+        "api",
+        "framework",
+        "wrapper",
+        "asyncio",
+        "bots"
+]
+classifiers = [
+  "Environment :: Console",
+  "Framework :: AsyncIO",
+  "Intended Audience :: Developers",
+  "Intended Audience :: System Administrators",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3.7",
+  "Programming Language :: Python :: 3.8",
+  "Topic :: Software Development :: Libraries :: Application Frameworks",
+  "Framework :: AsyncIO",
+  "Typing :: Typed",
+]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+typing_extensions = "^3.7.4"
+pydantic = "^1.4"
+
+aiohttp = { version="^3.6", optional = true }
+aioredis = { version="^1.3", optional = true }
+
+[tool.poetry.dev-dependencies]
+mypy = "^0.770"
+isort = "^4.3"
+pytest = "^5.4"
+pytest-asyncio = "^0.10.0"
+mypy_extensions = "^0.4.3"
+python-dotenv = "^0.12.0"
+black = {version = "^19.0", allow-prereleases = true}
+
+[tool.poetry.extras]
+client-default = ["aiohttp"]
+storage-redis = ["aioredis"]
+all = ["aiohttp"]
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
