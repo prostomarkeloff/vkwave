@@ -3788,7 +3788,7 @@ class CallbackMessageBase(pydantic.BaseModel):
     type: "CallbackMessageType" = pydantic.Field(
         None, description="",
     )
-    object: dict = pydantic.Field(
+    object: typing.Dict[typing.Any, typing.Any] = pydantic.Field(
         None, description="",
     )
     group_id: int = pydantic.Field(

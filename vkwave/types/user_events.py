@@ -21,6 +21,7 @@ class BaseUserEvent(pydantic.BaseModel):
         "ChangedChatSettingsEventObject",
         "TypingOrVoiceEventObject",
         "ChangedUnreadDialogsCountEventObject",
+        "MessageEventObject",
     ]
 
 
@@ -40,8 +41,8 @@ class MessageData(pydantic.BaseModel):
     payload: typing.Optional[str]
     source_act: typing.Optional[str]
     source_mid: typing.Optional[str]
-    mentions: typing.Optional[list]
-    marked_users: typing.Optional[list]  # useless
+    mentions: typing.Optional[typing.List[int]]
+    marked_users: typing.Optional[typing.Any]  # useless
     keyboard: typing.Optional[MessagesKeyboard]
     service_message: typing.Optional[ServiceMessageData]
 
@@ -61,7 +62,7 @@ class MessageEventObject(pydantic.BaseModel):
 
 
 class MessageEventModel(BaseUserEvent):
-    object: typing.Optional[MessageEventObject] = pydantic.Field(None)
+    object: MessageEventObject = pydantic.Field(None)
 
 
 class SetFlagsEventObject(pydantic.BaseModel):
@@ -344,7 +345,26 @@ _events_dict = {
 }
 
 
-def get_event_object(raw_event: list):
+def get_event_object(
+    raw_event: typing.List[typing.Union[str, typing.Any]],
+) -> typing.Optional[
+    typing.Union[
+        MessageEventModel,
+        SetFlagsEventModel,
+        ReadIncomingMessagesModel,
+        ReadOutgoingMessagesModel,
+        FriendOnlineModel,
+        FriendOfflineModel,
+        SeenMentionInChatModel,
+        SeenMentionInChatModel,
+        DeletedAllMessagesInDialogModel,
+        DropMessageCacheModel,
+        TypingOrVoiceModel,
+        NewMentionInChatModel,
+        ChangedChatSettingsModel,
+        ChangedUnreadDialogsCountModel,
+    ]
+]:
     event = {}
     event_type = raw_event[0]
 

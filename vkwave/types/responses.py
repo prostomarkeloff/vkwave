@@ -1843,7 +1843,7 @@ class MessagesDeleteConversationResponse(pydantic.BaseModel):
 
 
 class MessagesDeleteResponse(pydantic.BaseModel):
-    response: dict = pydantic.Field(
+    response: typing.Dict[typing.Any, typing.Any] = pydantic.Field(
         None, description="",
     )
 
@@ -2080,7 +2080,7 @@ class MessagesGetLastActivityResponse(pydantic.BaseModel):
 
 
 class MessagesGetLongPollHistoryResponseModel(pydantic.BaseModel):
-    history: typing.Optional[list] = pydantic.Field(
+    history: typing.Optional[typing.List[typing.List[int]]] = pydantic.Field(
         None, description="",
     )
     groups: typing.Optional[GroupsGroup] = pydantic.Field(
@@ -2197,7 +2197,7 @@ class MessagesSendResponse(pydantic.BaseModel):
 
 
 class MessagesSendUserIdsResponse(pydantic.BaseModel):
-    response: typing.List[dict] = pydantic.Field(
+    response: typing.List[typing.Dict[typing.Any, typing.Any]] = pydantic.Field(
         None, description="",
     )
 
@@ -3125,7 +3125,7 @@ class SecureGetUserLevelResponse(pydantic.BaseModel):
 
 
 class SecureGiveEventStickerResponse(pydantic.BaseModel):
-    response: typing.List[dict] = pydantic.Field(
+    response: typing.List[typing.Dict[typing.Any, typing.Any]] = pydantic.Field(
         None, description="",
     )
 
@@ -3257,7 +3257,7 @@ class StoriesGetRepliesExtendedResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
         None, description="Stories count",
     )
-    items: typing.List[list] = pydantic.Field(
+    items: typing.List[typing.List[typing.List[StoriesStory]]] = pydantic.Field(
         None, description="",
     )
     profiles: UsersUserFull = pydantic.Field(
@@ -3278,7 +3278,7 @@ class StoriesGetRepliesResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
         None, description="Stories count",
     )
-    items: typing.List[list] = pydantic.Field(
+    items: typing.List[typing.List[typing.List[StoriesStory]]] = pydantic.Field(
         None, description="",
     )
 
@@ -3344,7 +3344,7 @@ class StoriesGetExtendedResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
         None, description="Stories count",
     )
-    items: typing.List[list] = pydantic.Field(
+    items: typing.List[typing.List[StoriesStory]] = pydantic.Field(
         None, description="",
     )
     profiles: UsersUser = pydantic.Field(
