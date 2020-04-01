@@ -43,6 +43,7 @@ aioredis = { version="^1.3", optional = true }
 lxml = "^4.5.0"
 mypy = "^0.770"
 isort = "^4.3"
+flake8 = "^3.7.9"
 mypy_extensions = "^0.4.3"
 black = {version = "^19.0", allow-prereleases = true}
 
@@ -67,6 +68,28 @@ python-dotenv = "^0.12.0"
 client-default = ["aiohttp"]
 storage-redis = ["aioredis"]
 all = ["aiohttp"]
+
+[tool.black]
+line-length = 99
+target-version = ['py37', 'py38']
+exclude = '''
+(
+    \.eggs
+  | \.git
+  | \.tox
+  | build
+  | dist
+  | venv
+  | docs
+)
+'''
+
+[tool.isort]
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+line_length = 99
 
 [build-system]
 requires = ["poetry>=0.12"]

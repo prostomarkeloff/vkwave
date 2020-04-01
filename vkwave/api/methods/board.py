@@ -5,12 +5,12 @@ from ._category import Category
 
 class Board(Category):
     async def add_topic(
-            self,
-            group_id: int = None,
-            title: str = None,
-            text: typing.Optional[str] = None,
-            from_group: typing.Optional[bool] = None,
-            attachments: typing.Optional[typing.List[str]] = None,
+        self,
+        group_id: int = None,
+        title: str = None,
+        text: typing.Optional[str] = None,
+        from_group: typing.Optional[bool] = None,
+        attachments: typing.Optional[typing.List[str]] = None,
     ) -> BoardAddTopicResponse:
         """
         :param group_id: - ID of the community that owns the discussion board.
@@ -32,9 +32,7 @@ class Board(Category):
         result = BoardAddTopicResponse(**raw_result)
         return result
 
-    async def close_topic(
-            self, group_id: int = None, topic_id: int = None,
-    ) -> OkResponse:
+    async def close_topic(self, group_id: int = None, topic_id: int = None,) -> OkResponse:
         """
         :param group_id: - ID of the community that owns the discussion board.
         :param topic_id: - Topic ID.
@@ -53,14 +51,14 @@ class Board(Category):
         return result
 
     async def create_comment(
-            self,
-            group_id: int = None,
-            topic_id: int = None,
-            message: typing.Optional[str] = None,
-            attachments: typing.Optional[typing.List[str]] = None,
-            from_group: typing.Optional[bool] = None,
-            sticker_id: typing.Optional[int] = None,
-            guid: typing.Optional[str] = None,
+        self,
+        group_id: int = None,
+        topic_id: int = None,
+        message: typing.Optional[str] = None,
+        attachments: typing.Optional[typing.List[str]] = None,
+        from_group: typing.Optional[bool] = None,
+        sticker_id: typing.Optional[int] = None,
+        guid: typing.Optional[str] = None,
     ) -> BoardCreateCommentResponse:
         """
         :param group_id: - ID of the community that owns the discussion board.
@@ -85,7 +83,7 @@ class Board(Category):
         return result
 
     async def delete_comment(
-            self, group_id: int = None, topic_id: int = None, comment_id: int = None,
+        self, group_id: int = None, topic_id: int = None, comment_id: int = None,
     ) -> OkResponse:
         """
         :param group_id: - ID of the community that owns the discussion board.
@@ -105,9 +103,7 @@ class Board(Category):
         result = OkResponse(**raw_result)
         return result
 
-    async def delete_topic(
-            self, group_id: int = None, topic_id: int = None,
-    ) -> OkResponse:
+    async def delete_topic(self, group_id: int = None, topic_id: int = None,) -> OkResponse:
         """
         :param group_id: - ID of the community that owns the discussion board.
         :param topic_id: - Topic ID.
@@ -126,12 +122,12 @@ class Board(Category):
         return result
 
     async def edit_comment(
-            self,
-            group_id: int = None,
-            topic_id: int = None,
-            comment_id: int = None,
-            message: typing.Optional[str] = None,
-            attachments: typing.Optional[typing.List[str]] = None,
+        self,
+        group_id: int = None,
+        topic_id: int = None,
+        comment_id: int = None,
+        message: typing.Optional[str] = None,
+        attachments: typing.Optional[typing.List[str]] = None,
     ) -> OkResponse:
         """
         :param group_id: - ID of the community that owns the discussion board.
@@ -154,7 +150,7 @@ class Board(Category):
         return result
 
     async def edit_topic(
-            self, group_id: int = None, topic_id: int = None, title: str = None,
+        self, group_id: int = None, topic_id: int = None, title: str = None,
     ) -> OkResponse:
         """
         :param group_id: - ID of the community that owns the discussion board.
@@ -174,9 +170,7 @@ class Board(Category):
         result = OkResponse(**raw_result)
         return result
 
-    async def fix_topic(
-            self, group_id: int = None, topic_id: int = None,
-    ) -> OkResponse:
+    async def fix_topic(self, group_id: int = None, topic_id: int = None,) -> OkResponse:
         """
         :param group_id: - ID of the community that owns the discussion board.
         :param topic_id: - Topic ID.
@@ -195,15 +189,15 @@ class Board(Category):
         return result
 
     async def get_comments(
-            self,
-            group_id: int = None,
-            topic_id: int = None,
-            need_likes: typing.Optional[bool] = None,
-            start_comment_id: typing.Optional[int] = None,
-            offset: typing.Optional[int] = None,
-            count: typing.Optional[int] = None,
-            extended: typing.Optional[bool] = None,
-            sort: typing.Optional[str] = None,
+        self,
+        group_id: int = None,
+        topic_id: int = None,
+        need_likes: typing.Optional[bool] = None,
+        start_comment_id: typing.Optional[int] = None,
+        offset: typing.Optional[int] = None,
+        count: typing.Optional[int] = None,
+        extended: typing.Optional[bool] = None,
+        sort: typing.Optional[str] = None,
     ) -> BoardGetCommentsResponse:
         """
         :param group_id: - ID of the community that owns the discussion board.
@@ -229,15 +223,15 @@ class Board(Category):
         return result
 
     async def get_topics(
-            self,
-            group_id: int = None,
-            topic_ids: typing.Optional[typing.List[int]] = None,
-            order: typing.Optional[int] = None,
-            offset: typing.Optional[int] = None,
-            count: typing.Optional[int] = None,
-            extended: typing.Optional[bool] = None,
-            preview: typing.Optional[int] = None,
-            preview_length: typing.Optional[int] = None,
+        self,
+        group_id: int = None,
+        topic_ids: typing.Optional[typing.List[int]] = None,
+        order: typing.Optional[int] = None,
+        offset: typing.Optional[int] = None,
+        count: typing.Optional[int] = None,
+        extended: typing.Optional[bool] = None,
+        preview: typing.Optional[int] = None,
+        preview_length: typing.Optional[int] = None,
     ) -> BoardGetTopicsResponse:
         """
         :param group_id: - ID of the community that owns the discussion board.
@@ -262,9 +256,7 @@ class Board(Category):
         result = BoardGetTopicsResponse(**raw_result)
         return result
 
-    async def open_topic(
-            self, group_id: int = None, topic_id: int = None,
-    ) -> OkResponse:
+    async def open_topic(self, group_id: int = None, topic_id: int = None,) -> OkResponse:
         """
         :param group_id: - ID of the community that owns the discussion board.
         :param topic_id: - Topic ID.
@@ -283,7 +275,7 @@ class Board(Category):
         return result
 
     async def restore_comment(
-            self, group_id: int = None, topic_id: int = None, comment_id: int = None,
+        self, group_id: int = None, topic_id: int = None, comment_id: int = None,
     ) -> OkResponse:
         """
         :param group_id: - ID of the community that owns the discussion board.
@@ -303,9 +295,7 @@ class Board(Category):
         result = OkResponse(**raw_result)
         return result
 
-    async def unfix_topic(
-            self, group_id: int = None, topic_id: int = None,
-    ) -> OkResponse:
+    async def unfix_topic(self, group_id: int = None, topic_id: int = None,) -> OkResponse:
         """
         :param group_id: - ID of the community that owns the discussion board.
         :param topic_id: - Topic ID.

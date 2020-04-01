@@ -7,7 +7,6 @@ from vkwave.api.methods._error import Error, ErrorDispatcher
 from vkwave.api.token.strategy import ABCGetTokenStrategy, RandomGetTokenStrategy
 from vkwave.api.token.token import AnyABCToken, Token
 from vkwave.client.abstract import AbstractAPIClient
-
 from .account import Account
 from .ads import Ads
 from .app import App
@@ -51,12 +50,12 @@ ClientsInput = Union[List[AbstractAPIClient], AbstractAPIClient]
 
 class APIOptions:
     def __init__(
-            self,
-            tokens: TokensInput,
-            clients: ClientsInput,
-            get_token_strategy: ABCGetTokenStrategy,
-            api_version: str,
-            error_dispatcher: ErrorDispatcher,
+        self,
+        tokens: TokensInput,
+        clients: ClientsInput,
+        get_token_strategy: ABCGetTokenStrategy,
+        api_version: str,
+        error_dispatcher: ErrorDispatcher,
     ):
         self.tokens = tokens if isinstance(tokens, list) else [tokens]
         self.clients = clients if isinstance(clients, list) else [clients]
@@ -143,12 +142,12 @@ class APIOptionsRequestContext:
 
 class API:
     def __init__(
-            self,
-            tokens: TokensInput,
-            clients: ClientsInput,
-            get_token_strategy: Optional[ABCGetTokenStrategy] = None,
-            api_version: Optional[str] = None,
-            error_dispatcher: Optional[ErrorDispatcher] = None,
+        self,
+        tokens: TokensInput,
+        clients: ClientsInput,
+        get_token_strategy: Optional[ABCGetTokenStrategy] = None,
+        api_version: Optional[str] = None,
+        error_dispatcher: Optional[ErrorDispatcher] = None,
     ):
         self.default_api_options = APIOptions(
             tokens,

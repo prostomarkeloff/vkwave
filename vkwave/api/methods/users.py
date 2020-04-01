@@ -5,10 +5,10 @@ from ._category import Category
 
 class Users(Category):
     async def get(
-            self,
-            user_ids: typing.Optional[typing.List[str]] = None,
-            fields: typing.Optional[typing.List[UsersFields]] = None,
-            name_case: typing.Optional[str] = None,
+        self,
+        user_ids: typing.Optional[typing.List[str]] = None,
+        fields: typing.Optional[typing.List[UsersFields]] = None,
+        name_case: typing.Optional[str] = None,
     ) -> UsersGetResponse:
         """
         :param user_ids: - User IDs or screen names ('screen_name'). By default, current user ID.
@@ -29,12 +29,12 @@ class Users(Category):
         return result
 
     async def get_followers(
-            self,
-            user_id: typing.Optional[int] = None,
-            offset: typing.Optional[int] = None,
-            count: typing.Optional[int] = None,
-            fields: typing.Optional[typing.List[UsersFields]] = None,
-            name_case: typing.Optional[str] = None,
+        self,
+        user_id: typing.Optional[int] = None,
+        offset: typing.Optional[int] = None,
+        count: typing.Optional[int] = None,
+        fields: typing.Optional[typing.List[UsersFields]] = None,
+        name_case: typing.Optional[str] = None,
     ) -> UsersGetFollowersResponse:
         """
         :param user_id: - User ID.
@@ -57,12 +57,12 @@ class Users(Category):
         return result
 
     async def get_subscriptions(
-            self,
-            user_id: typing.Optional[int] = None,
-            extended: typing.Optional[bool] = None,
-            offset: typing.Optional[int] = None,
-            count: typing.Optional[int] = None,
-            fields: typing.Optional[typing.List[UsersFields]] = None,
+        self,
+        user_id: typing.Optional[int] = None,
+        extended: typing.Optional[bool] = None,
+        offset: typing.Optional[int] = None,
+        count: typing.Optional[int] = None,
+        fields: typing.Optional[typing.List[UsersFields]] = None,
     ) -> UsersGetSubscriptionsResponse:
         """
         :param user_id: - User ID.
@@ -84,9 +84,7 @@ class Users(Category):
         result = UsersGetSubscriptionsResponse(**raw_result)
         return result
 
-    async def is_app_user(
-            self, user_id: typing.Optional[int] = None,
-    ) -> UsersIsAppUserResponse:
+    async def is_app_user(self, user_id: typing.Optional[int] = None,) -> UsersIsAppUserResponse:
         """
         :param user_id:
         :return:
@@ -104,10 +102,7 @@ class Users(Category):
         return result
 
     async def report(
-            self,
-            user_id: int = None,
-            type: str = None,
-            comment: typing.Optional[str] = None,
+        self, user_id: int = None, type: str = None, comment: typing.Optional[str] = None,
     ) -> OkResponse:
         """
         :param user_id: - ID of the user about whom a complaint is being made.
@@ -128,40 +123,40 @@ class Users(Category):
         return result
 
     async def search(
-            self,
-            q: typing.Optional[str] = None,
-            sort: typing.Optional[int] = None,
-            offset: typing.Optional[int] = None,
-            count: typing.Optional[int] = None,
-            fields: typing.Optional[typing.List[UsersFields]] = None,
-            city: typing.Optional[int] = None,
-            country: typing.Optional[int] = None,
-            hometown: typing.Optional[str] = None,
-            university_country: typing.Optional[int] = None,
-            university: typing.Optional[int] = None,
-            university_year: typing.Optional[int] = None,
-            university_faculty: typing.Optional[int] = None,
-            university_chair: typing.Optional[int] = None,
-            sex: typing.Optional[int] = None,
-            status: typing.Optional[int] = None,
-            age_from: typing.Optional[int] = None,
-            age_to: typing.Optional[int] = None,
-            birth_day: typing.Optional[int] = None,
-            birth_month: typing.Optional[int] = None,
-            birth_year: typing.Optional[int] = None,
-            online: typing.Optional[bool] = None,
-            has_photo: typing.Optional[bool] = None,
-            school_country: typing.Optional[int] = None,
-            school_city: typing.Optional[int] = None,
-            school_class: typing.Optional[int] = None,
-            school: typing.Optional[int] = None,
-            school_year: typing.Optional[int] = None,
-            religion: typing.Optional[str] = None,
-            interests: typing.Optional[str] = None,
-            company: typing.Optional[str] = None,
-            position: typing.Optional[str] = None,
-            group_id: typing.Optional[int] = None,
-            from_list: typing.Optional[typing.List[str]] = None,
+        self,
+        q: typing.Optional[str] = None,
+        sort: typing.Optional[int] = None,
+        offset: typing.Optional[int] = None,
+        count: typing.Optional[int] = None,
+        fields: typing.Optional[typing.List[UsersFields]] = None,
+        city: typing.Optional[int] = None,
+        country: typing.Optional[int] = None,
+        hometown: typing.Optional[str] = None,
+        university_country: typing.Optional[int] = None,
+        university: typing.Optional[int] = None,
+        university_year: typing.Optional[int] = None,
+        university_faculty: typing.Optional[int] = None,
+        university_chair: typing.Optional[int] = None,
+        sex: typing.Optional[int] = None,
+        status: typing.Optional[int] = None,
+        age_from: typing.Optional[int] = None,
+        age_to: typing.Optional[int] = None,
+        birth_day: typing.Optional[int] = None,
+        birth_month: typing.Optional[int] = None,
+        birth_year: typing.Optional[int] = None,
+        online: typing.Optional[bool] = None,
+        has_photo: typing.Optional[bool] = None,
+        school_country: typing.Optional[int] = None,
+        school_city: typing.Optional[int] = None,
+        school_class: typing.Optional[int] = None,
+        school: typing.Optional[int] = None,
+        school_year: typing.Optional[int] = None,
+        religion: typing.Optional[str] = None,
+        interests: typing.Optional[str] = None,
+        company: typing.Optional[str] = None,
+        position: typing.Optional[str] = None,
+        group_id: typing.Optional[int] = None,
+        from_list: typing.Optional[typing.List[str]] = None,
     ) -> UsersSearchResponse:
         """
         :param q: - Search query string (e.g., 'Vasya Babich').

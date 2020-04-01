@@ -44,11 +44,11 @@ class RequestContext:
     """Context of request. It is being returned from `create_request` function. Needed to work with request specified things."""
 
     def __init__(
-            self,
-            request_callback: RequestCallbackCallable,
-            method_name: MethodName,
-            request_params: dict,
-            exceptions: typing.Optional[typing.Dict[typing.Type[Exception], None,]] = None,
+        self,
+        request_callback: RequestCallbackCallable,
+        method_name: MethodName,
+        request_params: dict,
+        exceptions: typing.Optional[typing.Dict[typing.Type[Exception], None]] = None,
     ):
         """
         :param request_callback: callable thing that will be called on `ctx.send_request`.
@@ -70,9 +70,7 @@ class RequestContext:
             Signal.AFTER_REQUEST: [],
         }
 
-        self._exception_handlers: typing.Dict[
-            typing.Type[Exception], ErrorHandlerCallable
-        ] = {}
+        self._exception_handlers: typing.Dict[typing.Type[Exception], ErrorHandlerCallable] = {}
 
         if exceptions is None:
             exceptions = {}
@@ -97,7 +95,7 @@ class RequestContext:
             await callback(self)
 
     def set_exception_handler(
-            self, exception: typing.Type[Exception], handler: ErrorHandlerCallable,
+        self, exception: typing.Type[Exception], handler: ErrorHandlerCallable,
     ) -> None:
         if not self._exception_handlers.get(exception):
             raise ValueError("Unallowed exception")

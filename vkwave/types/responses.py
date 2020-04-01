@@ -1455,8 +1455,7 @@ class GroupsIsMemberExtendedResponseModel(pydantic.BaseModel):
         None, description="Information whether user can be invited",
     )
     can_recall: typing.Optional[BaseBoolInt] = pydantic.Field(
-        None,
-        description="Information whether user's invite to the group can be recalled",
+        None, description="Information whether user's invite to the group can be recalled",
     )
     request: typing.Optional[BaseBoolInt] = pydantic.Field(
         None, description="Information whether user has sent request to the group",
@@ -2343,7 +2342,7 @@ class NewsfeedGetSuggestedSourcesResponseModel(pydantic.BaseModel):
         None, description="Total number",
     )
     items: typing.Optional[
-        typing.List[typing.Union[GroupsGroupFull, UsersUserXtrType,]]
+        typing.List[typing.Union[GroupsGroupFull, UsersUserXtrType]]
     ] = pydantic.Field(
         None, description="",
     )

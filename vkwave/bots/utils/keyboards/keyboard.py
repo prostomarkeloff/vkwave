@@ -1,7 +1,8 @@
 import json
-from enum import Enum
 import typing
-from vkwave.bots.types.json_types import JSONEncoder
+from enum import Enum
+
+from vkwave.bots.core.types.json_types import JSONEncoder
 from vkwave.bots.utils.keyboards._types import Button
 
 
@@ -36,7 +37,7 @@ class Keyboard:
 
     @staticmethod
     def _generate_payload(
-            payload: typing.Optional[typing.Dict[str, str]]
+        payload: typing.Optional[typing.Dict[str, str]]
     ) -> typing.Union[str, typing.Dict[str, str]]:
         return payload if payload is not None else ""
 
@@ -55,10 +56,10 @@ class Keyboard:
         current_row.append(action)
 
     def add_text_button(
-            self,
-            text: str,
-            color: ButtonColor = ButtonColor.PRIMARY,
-            payload: typing.Optional[typing.Dict[str, str]] = None,
+        self,
+        text: str,
+        color: ButtonColor = ButtonColor.PRIMARY,
+        payload: typing.Optional[typing.Dict[str, str]] = None,
     ) -> None:
         """
         :param text:
@@ -122,7 +123,7 @@ class Keyboard:
         self._add_button(action)
 
     def add_vkapps_button(
-            self, app_id: int, owner_id: int, label: str, payload: dict = None
+        self, app_id: int, owner_id: int, label: str, payload: dict = None
     ) -> None:
         """
         :param app_id:

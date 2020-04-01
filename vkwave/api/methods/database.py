@@ -5,10 +5,10 @@ from ._category import Category
 
 class Database(Category):
     async def get_chairs(
-            self,
-            faculty_id: int = None,
-            offset: typing.Optional[int] = None,
-            count: typing.Optional[int] = None,
+        self,
+        faculty_id: int = None,
+        offset: typing.Optional[int] = None,
+        count: typing.Optional[int] = None,
     ) -> DatabaseGetChairsResponse:
         """
         :param faculty_id: - id of the faculty to get chairs from
@@ -29,13 +29,13 @@ class Database(Category):
         return result
 
     async def get_cities(
-            self,
-            country_id: int = None,
-            region_id: typing.Optional[int] = None,
-            q: typing.Optional[str] = None,
-            need_all: typing.Optional[bool] = None,
-            offset: typing.Optional[int] = None,
-            count: typing.Optional[int] = None,
+        self,
+        country_id: int = None,
+        region_id: typing.Optional[int] = None,
+        q: typing.Optional[str] = None,
+        need_all: typing.Optional[bool] = None,
+        offset: typing.Optional[int] = None,
+        count: typing.Optional[int] = None,
     ) -> DatabaseGetCitiesResponse:
         """
         :param country_id: - Country ID.
@@ -59,7 +59,7 @@ class Database(Category):
         return result
 
     async def get_cities_by_id(
-            self, city_ids: typing.Optional[typing.List[int]] = None,
+        self, city_ids: typing.Optional[typing.List[int]] = None,
     ) -> DatabaseGetCitiesByIdResponse:
         """
         :param city_ids: - City IDs.
@@ -78,11 +78,11 @@ class Database(Category):
         return result
 
     async def get_countries(
-            self,
-            need_all: typing.Optional[bool] = None,
-            code: typing.Optional[str] = None,
-            offset: typing.Optional[int] = None,
-            count: typing.Optional[int] = None,
+        self,
+        need_all: typing.Optional[bool] = None,
+        code: typing.Optional[str] = None,
+        offset: typing.Optional[int] = None,
+        count: typing.Optional[int] = None,
     ) -> DatabaseGetCountriesResponse:
         """
         :param need_all: - '1' — to return a full list of all countries, '0' — to return a list of countries near the current user's country (default).
@@ -104,7 +104,7 @@ class Database(Category):
         return result
 
     async def get_countries_by_id(
-            self, country_ids: typing.Optional[typing.List[int]] = None,
+        self, country_ids: typing.Optional[typing.List[int]] = None,
     ) -> DatabaseGetCountriesByIdResponse:
         """
         :param country_ids: - Country IDs.
@@ -123,10 +123,10 @@ class Database(Category):
         return result
 
     async def get_faculties(
-            self,
-            university_id: int = None,
-            offset: typing.Optional[int] = None,
-            count: typing.Optional[int] = None,
+        self,
+        university_id: int = None,
+        offset: typing.Optional[int] = None,
+        count: typing.Optional[int] = None,
     ) -> DatabaseGetFacultiesResponse:
         """
         :param university_id: - University ID.
@@ -147,11 +147,11 @@ class Database(Category):
         return result
 
     async def get_metro_stations(
-            self,
-            city_id: int = None,
-            offset: typing.Optional[int] = None,
-            count: typing.Optional[int] = None,
-            extended: typing.Optional[bool] = None,
+        self,
+        city_id: int = None,
+        offset: typing.Optional[int] = None,
+        count: typing.Optional[int] = None,
+        extended: typing.Optional[bool] = None,
     ) -> DatabaseGetMetroStationsResponse:
         """
         :param city_id:
@@ -173,7 +173,7 @@ class Database(Category):
         return result
 
     async def get_metro_stations_by_id(
-            self, station_ids: typing.Optional[typing.List[int]] = None,
+        self, station_ids: typing.Optional[typing.List[int]] = None,
     ) -> DatabaseGetMetroStationsByIdResponse:
         """
         :param station_ids:
@@ -192,11 +192,11 @@ class Database(Category):
         return result
 
     async def get_regions(
-            self,
-            country_id: int = None,
-            q: typing.Optional[str] = None,
-            offset: typing.Optional[int] = None,
-            count: typing.Optional[int] = None,
+        self,
+        country_id: int = None,
+        q: typing.Optional[str] = None,
+        offset: typing.Optional[int] = None,
+        count: typing.Optional[int] = None,
     ) -> DatabaseGetRegionsResponse:
         """
         :param country_id: - Country ID, received in [vk.com/dev/database.getCountries|database.getCountries] method.
@@ -218,7 +218,7 @@ class Database(Category):
         return result
 
     async def get_school_classes(
-            self, country_id: typing.Optional[int] = None,
+        self, country_id: typing.Optional[int] = None,
     ) -> DatabaseGetSchoolClassesResponse:
         """
         :param country_id: - Country ID.
@@ -237,11 +237,11 @@ class Database(Category):
         return result
 
     async def get_schools(
-            self,
-            q: typing.Optional[str] = None,
-            city_id: int = None,
-            offset: typing.Optional[int] = None,
-            count: typing.Optional[int] = None,
+        self,
+        q: typing.Optional[str] = None,
+        city_id: int = None,
+        offset: typing.Optional[int] = None,
+        count: typing.Optional[int] = None,
     ) -> DatabaseGetSchoolsResponse:
         """
         :param q: - Search query.
@@ -263,12 +263,12 @@ class Database(Category):
         return result
 
     async def get_universities(
-            self,
-            q: typing.Optional[str] = None,
-            country_id: typing.Optional[int] = None,
-            city_id: typing.Optional[int] = None,
-            offset: typing.Optional[int] = None,
-            count: typing.Optional[int] = None,
+        self,
+        q: typing.Optional[str] = None,
+        country_id: typing.Optional[int] = None,
+        city_id: typing.Optional[int] = None,
+        offset: typing.Optional[int] = None,
+        count: typing.Optional[int] = None,
     ) -> DatabaseGetUniversitiesResponse:
         """
         :param q: - Search query.

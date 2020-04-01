@@ -5,10 +5,7 @@ from ._category import Category
 
 class Video(Category):
     async def add(
-            self,
-            target_id: typing.Optional[int] = None,
-            video_id: int = None,
-            owner_id: int = None,
+        self, target_id: typing.Optional[int] = None, video_id: int = None, owner_id: int = None,
     ) -> OkResponse:
         """
         :param target_id: - identifier of a user or community to add a video to. Use a negative value to designate a community ID.
@@ -29,10 +26,10 @@ class Video(Category):
         return result
 
     async def add_album(
-            self,
-            group_id: typing.Optional[int] = None,
-            title: typing.Optional[str] = None,
-            privacy: typing.Optional[typing.List[str]] = None,
+        self,
+        group_id: typing.Optional[int] = None,
+        title: typing.Optional[str] = None,
+        privacy: typing.Optional[typing.List[str]] = None,
     ) -> VideoAddAlbumResponse:
         """
         :param group_id: - Community ID (if the album will be created in a community).
@@ -53,12 +50,12 @@ class Video(Category):
         return result
 
     async def add_to_album(
-            self,
-            target_id: typing.Optional[int] = None,
-            album_id: typing.Optional[int] = None,
-            album_ids: typing.Optional[typing.List[int]] = None,
-            owner_id: int = None,
-            video_id: int = None,
+        self,
+        target_id: typing.Optional[int] = None,
+        album_id: typing.Optional[int] = None,
+        album_ids: typing.Optional[typing.List[int]] = None,
+        owner_id: int = None,
+        video_id: int = None,
     ) -> OkResponse:
         """
         :param target_id:
@@ -81,15 +78,15 @@ class Video(Category):
         return result
 
     async def create_comment(
-            self,
-            owner_id: typing.Optional[int] = None,
-            video_id: int = None,
-            message: typing.Optional[str] = None,
-            attachments: typing.Optional[typing.List[str]] = None,
-            from_group: typing.Optional[bool] = None,
-            reply_to_comment: typing.Optional[int] = None,
-            sticker_id: typing.Optional[int] = None,
-            guid: typing.Optional[str] = None,
+        self,
+        owner_id: typing.Optional[int] = None,
+        video_id: int = None,
+        message: typing.Optional[str] = None,
+        attachments: typing.Optional[typing.List[str]] = None,
+        from_group: typing.Optional[bool] = None,
+        reply_to_comment: typing.Optional[int] = None,
+        sticker_id: typing.Optional[int] = None,
+        guid: typing.Optional[str] = None,
     ) -> VideoCreateCommentResponse:
         """
         :param owner_id: - ID of the user or community that owns the video.
@@ -115,10 +112,10 @@ class Video(Category):
         return result
 
     async def delete(
-            self,
-            video_id: int = None,
-            owner_id: typing.Optional[int] = None,
-            target_id: typing.Optional[int] = None,
+        self,
+        video_id: int = None,
+        owner_id: typing.Optional[int] = None,
+        target_id: typing.Optional[int] = None,
     ) -> OkResponse:
         """
         :param video_id: - Video ID.
@@ -139,7 +136,7 @@ class Video(Category):
         return result
 
     async def delete_album(
-            self, group_id: typing.Optional[int] = None, album_id: int = None,
+        self, group_id: typing.Optional[int] = None, album_id: int = None,
     ) -> OkResponse:
         """
         :param group_id: - Community ID (if the album is owned by a community).
@@ -159,7 +156,7 @@ class Video(Category):
         return result
 
     async def delete_comment(
-            self, owner_id: typing.Optional[int] = None, comment_id: int = None,
+        self, owner_id: typing.Optional[int] = None, comment_id: int = None,
     ) -> OkResponse:
         """
         :param owner_id: - ID of the user or community that owns the video.
@@ -179,15 +176,15 @@ class Video(Category):
         return result
 
     async def edit(
-            self,
-            owner_id: typing.Optional[int] = None,
-            video_id: int = None,
-            name: typing.Optional[str] = None,
-            desc: typing.Optional[str] = None,
-            privacy_view: typing.Optional[typing.List[str]] = None,
-            privacy_comment: typing.Optional[typing.List[str]] = None,
-            no_comments: typing.Optional[bool] = None,
-            repeat: typing.Optional[bool] = None,
+        self,
+        owner_id: typing.Optional[int] = None,
+        video_id: int = None,
+        name: typing.Optional[str] = None,
+        desc: typing.Optional[str] = None,
+        privacy_view: typing.Optional[typing.List[str]] = None,
+        privacy_comment: typing.Optional[typing.List[str]] = None,
+        no_comments: typing.Optional[bool] = None,
+        repeat: typing.Optional[bool] = None,
     ) -> OkResponse:
         """
         :param owner_id: - ID of the user or community that owns the video.
@@ -213,11 +210,11 @@ class Video(Category):
         return result
 
     async def edit_album(
-            self,
-            group_id: typing.Optional[int] = None,
-            album_id: int = None,
-            title: str = None,
-            privacy: typing.Optional[typing.List[str]] = None,
+        self,
+        group_id: typing.Optional[int] = None,
+        album_id: int = None,
+        title: str = None,
+        privacy: typing.Optional[typing.List[str]] = None,
     ) -> OkResponse:
         """
         :param group_id: - Community ID (if the album edited is owned by a community).
@@ -239,11 +236,11 @@ class Video(Category):
         return result
 
     async def edit_comment(
-            self,
-            owner_id: typing.Optional[int] = None,
-            comment_id: int = None,
-            message: typing.Optional[str] = None,
-            attachments: typing.Optional[typing.List[str]] = None,
+        self,
+        owner_id: typing.Optional[int] = None,
+        comment_id: int = None,
+        message: typing.Optional[str] = None,
+        attachments: typing.Optional[typing.List[str]] = None,
     ) -> OkResponse:
         """
         :param owner_id: - ID of the user or community that owns the video.
@@ -265,13 +262,13 @@ class Video(Category):
         return result
 
     async def get(
-            self,
-            owner_id: typing.Optional[int] = None,
-            videos: typing.Optional[typing.List[str]] = None,
-            album_id: typing.Optional[int] = None,
-            count: typing.Optional[int] = None,
-            offset: typing.Optional[int] = None,
-            extended: typing.Optional[bool] = None,
+        self,
+        owner_id: typing.Optional[int] = None,
+        videos: typing.Optional[typing.List[str]] = None,
+        album_id: typing.Optional[int] = None,
+        count: typing.Optional[int] = None,
+        offset: typing.Optional[int] = None,
+        extended: typing.Optional[bool] = None,
     ) -> VideoGetResponse:
         """
         :param owner_id: - ID of the user or community that owns the video(s).
@@ -295,7 +292,7 @@ class Video(Category):
         return result
 
     async def get_album_by_id(
-            self, owner_id: typing.Optional[int] = None, album_id: int = None,
+        self, owner_id: typing.Optional[int] = None, album_id: int = None,
     ) -> VideoGetAlbumByIdResponse:
         """
         :param owner_id: - identifier of a user or community to add a video to. Use a negative value to designate a community ID.
@@ -315,12 +312,12 @@ class Video(Category):
         return result
 
     async def get_albums(
-            self,
-            owner_id: typing.Optional[int] = None,
-            offset: typing.Optional[int] = None,
-            count: typing.Optional[int] = None,
-            extended: typing.Optional[bool] = None,
-            need_system: typing.Optional[bool] = None,
+        self,
+        owner_id: typing.Optional[int] = None,
+        offset: typing.Optional[int] = None,
+        count: typing.Optional[int] = None,
+        extended: typing.Optional[bool] = None,
+        need_system: typing.Optional[bool] = None,
     ) -> VideoGetAlbumsResponse:
         """
         :param owner_id: - ID of the user or community that owns the video album(s).
@@ -343,11 +340,11 @@ class Video(Category):
         return result
 
     async def get_albums_by_video(
-            self,
-            target_id: typing.Optional[int] = None,
-            owner_id: int = None,
-            video_id: int = None,
-            extended: typing.Optional[bool] = None,
+        self,
+        target_id: typing.Optional[int] = None,
+        owner_id: int = None,
+        video_id: int = None,
+        extended: typing.Optional[bool] = None,
     ) -> VideoGetAlbumsByVideoResponse:
         """
         :param target_id:
@@ -369,16 +366,16 @@ class Video(Category):
         return result
 
     async def get_comments(
-            self,
-            owner_id: typing.Optional[int] = None,
-            video_id: int = None,
-            need_likes: typing.Optional[bool] = None,
-            start_comment_id: typing.Optional[int] = None,
-            offset: typing.Optional[int] = None,
-            count: typing.Optional[int] = None,
-            sort: typing.Optional[str] = None,
-            extended: typing.Optional[bool] = None,
-            fields: typing.Optional[typing.List[str]] = None,
+        self,
+        owner_id: typing.Optional[int] = None,
+        video_id: int = None,
+        need_likes: typing.Optional[bool] = None,
+        start_comment_id: typing.Optional[int] = None,
+        offset: typing.Optional[int] = None,
+        count: typing.Optional[int] = None,
+        sort: typing.Optional[str] = None,
+        extended: typing.Optional[bool] = None,
+        fields: typing.Optional[typing.List[str]] = None,
     ) -> VideoGetCommentsResponse:
         """
         :param owner_id: - ID of the user or community that owns the video.
@@ -405,12 +402,12 @@ class Video(Category):
         return result
 
     async def remove_from_album(
-            self,
-            target_id: typing.Optional[int] = None,
-            album_id: typing.Optional[int] = None,
-            album_ids: typing.Optional[typing.List[int]] = None,
-            owner_id: int = None,
-            video_id: int = None,
+        self,
+        target_id: typing.Optional[int] = None,
+        album_id: typing.Optional[int] = None,
+        album_ids: typing.Optional[typing.List[int]] = None,
+        owner_id: int = None,
+        video_id: int = None,
     ) -> OkResponse:
         """
         :param target_id:
@@ -433,11 +430,11 @@ class Video(Category):
         return result
 
     async def reorder_albums(
-            self,
-            owner_id: typing.Optional[int] = None,
-            album_id: int = None,
-            before: typing.Optional[int] = None,
-            after: typing.Optional[int] = None,
+        self,
+        owner_id: typing.Optional[int] = None,
+        album_id: int = None,
+        before: typing.Optional[int] = None,
+        after: typing.Optional[int] = None,
     ) -> OkResponse:
         """
         :param owner_id: - ID of the user or community that owns the albums..
@@ -459,15 +456,15 @@ class Video(Category):
         return result
 
     async def reorder_videos(
-            self,
-            target_id: typing.Optional[int] = None,
-            album_id: typing.Optional[int] = None,
-            owner_id: int = None,
-            video_id: int = None,
-            before_owner_id: typing.Optional[int] = None,
-            before_video_id: typing.Optional[int] = None,
-            after_owner_id: typing.Optional[int] = None,
-            after_video_id: typing.Optional[int] = None,
+        self,
+        target_id: typing.Optional[int] = None,
+        album_id: typing.Optional[int] = None,
+        owner_id: int = None,
+        video_id: int = None,
+        before_owner_id: typing.Optional[int] = None,
+        before_video_id: typing.Optional[int] = None,
+        after_owner_id: typing.Optional[int] = None,
+        after_video_id: typing.Optional[int] = None,
     ) -> OkResponse:
         """
         :param target_id: - ID of the user or community that owns the album with videos.
@@ -493,12 +490,12 @@ class Video(Category):
         return result
 
     async def report(
-            self,
-            owner_id: int = None,
-            video_id: int = None,
-            reason: typing.Optional[int] = None,
-            comment: typing.Optional[str] = None,
-            search_query: typing.Optional[str] = None,
+        self,
+        owner_id: int = None,
+        video_id: int = None,
+        reason: typing.Optional[int] = None,
+        comment: typing.Optional[str] = None,
+        search_query: typing.Optional[str] = None,
     ) -> OkResponse:
         """
         :param owner_id: - ID of the user or community that owns the video.
@@ -521,10 +518,7 @@ class Video(Category):
         return result
 
     async def report_comment(
-            self,
-            owner_id: int = None,
-            comment_id: int = None,
-            reason: typing.Optional[int] = None,
+        self, owner_id: int = None, comment_id: int = None, reason: typing.Optional[int] = None,
     ) -> OkResponse:
         """
         :param owner_id: - ID of the user or community that owns the video.
@@ -545,7 +539,7 @@ class Video(Category):
         return result
 
     async def restore(
-            self, video_id: int = None, owner_id: typing.Optional[int] = None,
+        self, video_id: int = None, owner_id: typing.Optional[int] = None,
     ) -> OkResponse:
         """
         :param video_id: - Video ID.
@@ -565,7 +559,7 @@ class Video(Category):
         return result
 
     async def restore_comment(
-            self, owner_id: typing.Optional[int] = None, comment_id: int = None,
+        self, owner_id: typing.Optional[int] = None, comment_id: int = None,
     ) -> VideoRestoreCommentResponse:
         """
         :param owner_id: - ID of the user or community that owns the video.
@@ -585,19 +579,19 @@ class Video(Category):
         return result
 
     async def save(
-            self,
-            name: typing.Optional[str] = None,
-            description: typing.Optional[str] = None,
-            is_private: typing.Optional[bool] = None,
-            wallpost: typing.Optional[bool] = None,
-            link: typing.Optional[str] = None,
-            group_id: typing.Optional[int] = None,
-            album_id: typing.Optional[int] = None,
-            privacy_view: typing.Optional[typing.List[str]] = None,
-            privacy_comment: typing.Optional[typing.List[str]] = None,
-            no_comments: typing.Optional[bool] = None,
-            repeat: typing.Optional[bool] = None,
-            compression: typing.Optional[bool] = None,
+        self,
+        name: typing.Optional[str] = None,
+        description: typing.Optional[str] = None,
+        is_private: typing.Optional[bool] = None,
+        wallpost: typing.Optional[bool] = None,
+        link: typing.Optional[str] = None,
+        group_id: typing.Optional[int] = None,
+        album_id: typing.Optional[int] = None,
+        privacy_view: typing.Optional[typing.List[str]] = None,
+        privacy_comment: typing.Optional[typing.List[str]] = None,
+        no_comments: typing.Optional[bool] = None,
+        repeat: typing.Optional[bool] = None,
+        compression: typing.Optional[bool] = None,
     ) -> VideoSaveResponse:
         """
         :param name: - Name of the video.
@@ -627,18 +621,18 @@ class Video(Category):
         return result
 
     async def search(
-            self,
-            q: str = None,
-            sort: typing.Optional[int] = None,
-            hd: typing.Optional[int] = None,
-            adult: typing.Optional[bool] = None,
-            filters: typing.Optional[typing.List[str]] = None,
-            search_own: typing.Optional[bool] = None,
-            offset: typing.Optional[int] = None,
-            longer: typing.Optional[int] = None,
-            shorter: typing.Optional[int] = None,
-            count: typing.Optional[int] = None,
-            extended: typing.Optional[bool] = None,
+        self,
+        q: str = None,
+        sort: typing.Optional[int] = None,
+        hd: typing.Optional[int] = None,
+        adult: typing.Optional[bool] = None,
+        filters: typing.Optional[typing.List[str]] = None,
+        search_own: typing.Optional[bool] = None,
+        offset: typing.Optional[int] = None,
+        longer: typing.Optional[int] = None,
+        shorter: typing.Optional[int] = None,
+        count: typing.Optional[int] = None,
+        extended: typing.Optional[bool] = None,
     ) -> VideoSearchResponse:
         """
         :param q: - Search query string (e.g., 'The Beatles').

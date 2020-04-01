@@ -4,7 +4,7 @@ from ._category import Category
 
 
 class Utils(Category):
-    async def check_link(self, url: str = None, ) -> UtilsCheckLinkResponse:
+    async def check_link(self, url: str = None,) -> UtilsCheckLinkResponse:
         """
         :param url: - Link to check (e.g., 'http://google.com').
         :return:
@@ -21,7 +21,7 @@ class Utils(Category):
         result = UtilsCheckLinkResponse(**raw_result)
         return result
 
-    async def delete_from_last_shortened(self, key: str = None, ) -> OkResponse:
+    async def delete_from_last_shortened(self, key: str = None,) -> OkResponse:
         """
         :param key: - Link key (characters after vk.cc/).
         :return:
@@ -39,7 +39,7 @@ class Utils(Category):
         return result
 
     async def get_last_shortened_links(
-            self, count: typing.Optional[int] = None, offset: typing.Optional[int] = None,
+        self, count: typing.Optional[int] = None, offset: typing.Optional[int] = None,
     ) -> UtilsGetLastShortenedLinksResponse:
         """
         :param count: - Number of links to return.
@@ -59,13 +59,13 @@ class Utils(Category):
         return result
 
     async def get_link_stats(
-            self,
-            key: str = None,
-            source: typing.Optional[str] = None,
-            access_key: typing.Optional[str] = None,
-            interval: typing.Optional[str] = None,
-            intervals_count: typing.Optional[int] = None,
-            extended: typing.Optional[bool] = None,
+        self,
+        key: str = None,
+        source: typing.Optional[str] = None,
+        access_key: typing.Optional[str] = None,
+        interval: typing.Optional[str] = None,
+        intervals_count: typing.Optional[int] = None,
+        extended: typing.Optional[bool] = None,
     ) -> UtilsGetLinkStatsResponse:
         """
         :param key: - Link key (characters after vk.cc/).
@@ -88,7 +88,7 @@ class Utils(Category):
         result = UtilsGetLinkStatsResponse(**raw_result)
         return result
 
-    async def get_server_time(self, ) -> UtilsGetServerTimeResponse:
+    async def get_server_time(self,) -> UtilsGetServerTimeResponse:
         """
         :return:
         """
@@ -105,7 +105,7 @@ class Utils(Category):
         return result
 
     async def get_short_link(
-            self, url: str = None, private: typing.Optional[bool] = None,
+        self, url: str = None, private: typing.Optional[bool] = None,
     ) -> UtilsGetShortLinkResponse:
         """
         :param url: - URL to be shortened.
@@ -125,7 +125,7 @@ class Utils(Category):
         return result
 
     async def resolve_screen_name(
-            self, screen_name: str = None,
+        self, screen_name: str = None,
     ) -> UtilsResolveScreenNameResponse:
         """
         :param screen_name: - Screen name of the user, community (e.g., 'apiclub,' 'andrew', or 'rules_of_war'), or application.

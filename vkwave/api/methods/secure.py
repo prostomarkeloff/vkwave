@@ -5,10 +5,7 @@ from ._category import Category
 
 class Secure(Category):
     async def add_app_event(
-            self,
-            user_id: int = None,
-            activity_id: int = None,
-            value: typing.Optional[int] = None,
+        self, user_id: int = None, activity_id: int = None, value: typing.Optional[int] = None,
     ) -> OkResponse:
         """
         :param user_id: - ID of a user to save the data
@@ -29,7 +26,7 @@ class Secure(Category):
         return result
 
     async def check_token(
-            self, token: typing.Optional[str] = None, ip: typing.Optional[str] = None,
+        self, token: typing.Optional[str] = None, ip: typing.Optional[str] = None,
     ) -> SecureCheckTokenResponse:
         """
         :param token: - client 'access_token'
@@ -48,7 +45,7 @@ class Secure(Category):
         result = SecureCheckTokenResponse(**raw_result)
         return result
 
-    async def get_app_balance(self, ) -> SecureGetAppBalanceResponse:
+    async def get_app_balance(self,) -> SecureGetAppBalanceResponse:
         """
         :return:
         """
@@ -65,11 +62,11 @@ class Secure(Category):
         return result
 
     async def get_s_m_s_history(
-            self,
-            user_id: typing.Optional[int] = None,
-            date_from: typing.Optional[int] = None,
-            date_to: typing.Optional[int] = None,
-            limit: typing.Optional[int] = None,
+        self,
+        user_id: typing.Optional[int] = None,
+        date_from: typing.Optional[int] = None,
+        date_to: typing.Optional[int] = None,
+        limit: typing.Optional[int] = None,
     ) -> SecureGetSMSHistoryResponse:
         """
         :param user_id:
@@ -91,13 +88,13 @@ class Secure(Category):
         return result
 
     async def get_transactions_history(
-            self,
-            type: typing.Optional[int] = None,
-            uid_from: typing.Optional[int] = None,
-            uid_to: typing.Optional[int] = None,
-            date_from: typing.Optional[int] = None,
-            date_to: typing.Optional[int] = None,
-            limit: typing.Optional[int] = None,
+        self,
+        type: typing.Optional[int] = None,
+        uid_from: typing.Optional[int] = None,
+        uid_to: typing.Optional[int] = None,
+        date_from: typing.Optional[int] = None,
+        date_to: typing.Optional[int] = None,
+        limit: typing.Optional[int] = None,
     ) -> SecureGetTransactionsHistoryResponse:
         """
         :param type:
@@ -121,7 +118,7 @@ class Secure(Category):
         return result
 
     async def get_user_level(
-            self, user_ids: typing.List[int] = None,
+        self, user_ids: typing.List[int] = None,
     ) -> SecureGetUserLevelResponse:
         """
         :param user_ids:
@@ -140,7 +137,7 @@ class Secure(Category):
         return result
 
     async def give_event_sticker(
-            self, user_ids: typing.List[int] = None, achievement_id: int = None,
+        self, user_ids: typing.List[int] = None, achievement_id: int = None,
     ) -> SecureGiveEventStickerResponse:
         """
         :param user_ids:
@@ -160,10 +157,10 @@ class Secure(Category):
         return result
 
     async def send_notification(
-            self,
-            user_ids: typing.Optional[typing.List[int]] = None,
-            user_id: typing.Optional[int] = None,
-            message: str = None,
+        self,
+        user_ids: typing.Optional[typing.List[int]] = None,
+        user_id: typing.Optional[int] = None,
+        message: str = None,
     ) -> SecureSendNotificationResponse:
         """
         :param user_ids:
@@ -184,7 +181,7 @@ class Secure(Category):
         return result
 
     async def send_s_m_s_notification(
-            self, user_id: int = None, message: str = None,
+        self, user_id: int = None, message: str = None,
     ) -> OkResponse:
         """
         :param user_id: - ID of the user to whom SMS notification is sent. The user shall allow the application to send him/her notifications (, +1).
@@ -204,11 +201,11 @@ class Secure(Category):
         return result
 
     async def set_counter(
-            self,
-            counters: typing.Optional[typing.List[str]] = None,
-            user_id: typing.Optional[int] = None,
-            counter: typing.Optional[int] = None,
-            increment: typing.Optional[bool] = None,
+        self,
+        counters: typing.Optional[typing.List[str]] = None,
+        user_id: typing.Optional[int] = None,
+        counter: typing.Optional[int] = None,
+        increment: typing.Optional[bool] = None,
     ) -> OkResponse:
         """
         :param counters:

@@ -1,7 +1,7 @@
 import typing
 
-from vkwave.bots.storage.types import Key, Value
 from vkwave.bots.storage.base import AbstractStorage, NO_KEY, NoKeyOrValue
+from vkwave.bots.storage.types import Key, Value
 
 
 class Storage(AbstractStorage):
@@ -9,7 +9,7 @@ class Storage(AbstractStorage):
         self.data: typing.Dict[Key, Value] = {}
 
     async def get(
-            self, key: Key, default: NoKeyOrValue = NO_KEY
+        self, key: Key, default: NoKeyOrValue = NO_KEY
     ) -> typing.Union[typing.NoReturn, Value]:
         if await self.contains(key):
             return self.data[key]

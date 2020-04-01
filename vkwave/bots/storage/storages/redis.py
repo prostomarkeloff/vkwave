@@ -1,29 +1,30 @@
 import asyncio
 import json
-import typing
 import ssl
+import typing
 
 import aioredis
+
 from vkwave.bots.storage.base import AbstractExpiredStorage, NO_KEY, NoKeyOrValue
 from vkwave.bots.storage.types import Dumper, Loader, TTL, Key, Value
 
 
 class RedisStorage(AbstractExpiredStorage):
     def __init__(
-            self,
-            host: str = "localhost",
-            port: int = 6379,
-            db: typing.Optional[int] = None,
-            password: typing.Optional[str] = None,
-            ssl_context: typing.Optional[ssl.SSLContext] = None,
-            pool_size: int = 10,
-            loop: typing.Optional[asyncio.AbstractEventLoop] = None,
-            # dumps object to str
-            dumper: Dumper = json.dumps,
-            # loads object from str
-            loader: Loader = json.loads,
-            default_ttl: TTL = TTL(10),
-            **kwargs
+        self,
+        host: str = "localhost",
+        port: int = 6379,
+        db: typing.Optional[int] = None,
+        password: typing.Optional[str] = None,
+        ssl_context: typing.Optional[ssl.SSLContext] = None,
+        pool_size: int = 10,
+        loop: typing.Optional[asyncio.AbstractEventLoop] = None,
+        # dumps object to str
+        dumper: Dumper = json.dumps,
+        # loads object from str
+        loader: Loader = json.loads,
+        default_ttl: TTL = TTL(10),
+        **kwargs,
     ):
         self._kwargs = kwargs
 
@@ -43,7 +44,7 @@ class RedisStorage(AbstractExpiredStorage):
         self._connection_lock = asyncio.Lock(loop=self._loop)
 
     async def get(
-            self, key: Key, default: NoKeyOrValue = NO_KEY
+        self, key: Key, default: NoKeyOrValue = NO_KEY
     ) -> typing.Union[typing.NoReturn, Value]:
         redis = await self.redis()
 
@@ -55,9 +56,7 @@ class RedisStorage(AbstractExpiredStorage):
 
         return default
 
-    async def put(
-            self, key: Key, value: Value, ttl: typing.Optional[TTL] = None
-    ) -> None:
+    async def put(self, key: Key, value: Value, ttl: typing.Optional[TTL] = None) -> None:
         redis = await self.redis()
 
         if ttl is None:

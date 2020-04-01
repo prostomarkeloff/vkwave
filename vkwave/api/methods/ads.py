@@ -5,7 +5,7 @@ from ._category import Category
 
 class Ads(Category):
     async def add_office_users(
-            self, account_id: int = None, data: str = None,
+        self, account_id: int = None, data: str = None,
     ) -> AdsAddOfficeUsersResponse:
         """
         :param account_id: - Advertising account ID.
@@ -25,11 +25,11 @@ class Ads(Category):
         return result
 
     async def check_link(
-            self,
-            account_id: int = None,
-            link_type: str = None,
-            link_url: str = None,
-            campaign_id: typing.Optional[int] = None,
+        self,
+        account_id: int = None,
+        link_type: str = None,
+        link_url: str = None,
+        campaign_id: typing.Optional[int] = None,
     ) -> AdsCheckLinkResponse:
         """
         :param account_id: - Advertising account ID.
@@ -50,9 +50,7 @@ class Ads(Category):
         result = AdsCheckLinkResponse(**raw_result)
         return result
 
-    async def create_ads(
-            self, account_id: int = None, data: str = None,
-    ) -> AdsCreateAdsResponse:
+    async def create_ads(self, account_id: int = None, data: str = None,) -> AdsCreateAdsResponse:
         """
         :param account_id: - Advertising account ID.
         :param data: - Serialized JSON array of objects that describe created ads. Description of 'ad_specification' objects see below.
@@ -71,7 +69,7 @@ class Ads(Category):
         return result
 
     async def create_campaigns(
-            self, account_id: int = None, data: str = None,
+        self, account_id: int = None, data: str = None,
     ) -> AdsCreateCampaignsResponse:
         """
         :param account_id: - Advertising account ID.
@@ -91,7 +89,7 @@ class Ads(Category):
         return result
 
     async def create_clients(
-            self, account_id: int = None, data: str = None,
+        self, account_id: int = None, data: str = None,
     ) -> AdsCreateClientsResponse:
         """
         :param account_id: - Advertising account ID.
@@ -111,13 +109,13 @@ class Ads(Category):
         return result
 
     async def create_target_group(
-            self,
-            account_id: int = None,
-            client_id: typing.Optional[int] = None,
-            name: str = None,
-            lifetime: typing.Optional[int] = None,
-            target_pixel_id: typing.Optional[int] = None,
-            target_pixel_rules: typing.Optional[str] = None,
+        self,
+        account_id: int = None,
+        client_id: typing.Optional[int] = None,
+        name: str = None,
+        lifetime: typing.Optional[int] = None,
+        target_pixel_id: typing.Optional[int] = None,
+        target_pixel_rules: typing.Optional[str] = None,
     ) -> AdsCreateTargetGroupResponse:
         """
         :param account_id: - Advertising account ID.
@@ -140,9 +138,7 @@ class Ads(Category):
         result = AdsCreateTargetGroupResponse(**raw_result)
         return result
 
-    async def delete_ads(
-            self, account_id: int = None, ids: str = None,
-    ) -> AdsDeleteAdsResponse:
+    async def delete_ads(self, account_id: int = None, ids: str = None,) -> AdsDeleteAdsResponse:
         """
         :param account_id: - Advertising account ID.
         :param ids: - Serialized JSON array with ad IDs.
@@ -161,7 +157,7 @@ class Ads(Category):
         return result
 
     async def delete_campaigns(
-            self, account_id: int = None, ids: str = None,
+        self, account_id: int = None, ids: str = None,
     ) -> AdsDeleteCampaignsResponse:
         """
         :param account_id: - Advertising account ID.
@@ -181,7 +177,7 @@ class Ads(Category):
         return result
 
     async def delete_clients(
-            self, account_id: int = None, ids: str = None,
+        self, account_id: int = None, ids: str = None,
     ) -> AdsDeleteClientsResponse:
         """
         :param account_id: - Advertising account ID.
@@ -201,10 +197,10 @@ class Ads(Category):
         return result
 
     async def delete_target_group(
-            self,
-            account_id: int = None,
-            client_id: typing.Optional[int] = None,
-            target_group_id: int = None,
+        self,
+        account_id: int = None,
+        client_id: typing.Optional[int] = None,
+        target_group_id: int = None,
     ) -> OkResponse:
         """
         :param account_id: - Advertising account ID.
@@ -224,7 +220,7 @@ class Ads(Category):
         result = OkResponse(**raw_result)
         return result
 
-    async def get_accounts(self, ) -> AdsGetAccountsResponse:
+    async def get_accounts(self,) -> AdsGetAccountsResponse:
         """
         :return:
         """
@@ -241,14 +237,14 @@ class Ads(Category):
         return result
 
     async def get_ads(
-            self,
-            account_id: int = None,
-            ad_ids: typing.Optional[str] = None,
-            campaign_ids: typing.Optional[str] = None,
-            client_id: typing.Optional[int] = None,
-            include_deleted: typing.Optional[bool] = None,
-            limit: typing.Optional[int] = None,
-            offset: typing.Optional[int] = None,
+        self,
+        account_id: int = None,
+        ad_ids: typing.Optional[str] = None,
+        campaign_ids: typing.Optional[str] = None,
+        client_id: typing.Optional[int] = None,
+        include_deleted: typing.Optional[bool] = None,
+        limit: typing.Optional[int] = None,
+        offset: typing.Optional[int] = None,
     ) -> AdsGetAdsResponse:
         """
         :param account_id: - Advertising account ID.
@@ -273,14 +269,14 @@ class Ads(Category):
         return result
 
     async def get_ads_layout(
-            self,
-            account_id: int = None,
-            ad_ids: typing.Optional[str] = None,
-            campaign_ids: typing.Optional[str] = None,
-            client_id: typing.Optional[int] = None,
-            include_deleted: typing.Optional[bool] = None,
-            limit: typing.Optional[int] = None,
-            offset: typing.Optional[int] = None,
+        self,
+        account_id: int = None,
+        ad_ids: typing.Optional[str] = None,
+        campaign_ids: typing.Optional[str] = None,
+        client_id: typing.Optional[int] = None,
+        include_deleted: typing.Optional[bool] = None,
+        limit: typing.Optional[int] = None,
+        offset: typing.Optional[int] = None,
     ) -> AdsGetAdsLayoutResponse:
         """
         :param account_id: - Advertising account ID.
@@ -305,14 +301,14 @@ class Ads(Category):
         return result
 
     async def get_ads_targeting(
-            self,
-            account_id: int = None,
-            ad_ids: typing.Optional[str] = None,
-            campaign_ids: typing.Optional[str] = None,
-            client_id: typing.Optional[int] = None,
-            include_deleted: typing.Optional[bool] = None,
-            limit: typing.Optional[int] = None,
-            offset: typing.Optional[int] = None,
+        self,
+        account_id: int = None,
+        ad_ids: typing.Optional[str] = None,
+        campaign_ids: typing.Optional[str] = None,
+        client_id: typing.Optional[int] = None,
+        include_deleted: typing.Optional[bool] = None,
+        limit: typing.Optional[int] = None,
+        offset: typing.Optional[int] = None,
     ) -> AdsGetAdsTargetingResponse:
         """
         :param account_id: - Advertising account ID.
@@ -336,7 +332,7 @@ class Ads(Category):
         result = AdsGetAdsTargetingResponse(**raw_result)
         return result
 
-    async def get_budget(self, account_id: int = None, ) -> AdsGetBudgetResponse:
+    async def get_budget(self, account_id: int = None,) -> AdsGetBudgetResponse:
         """
         :param account_id: - Advertising account ID.
         :return:
@@ -354,11 +350,11 @@ class Ads(Category):
         return result
 
     async def get_campaigns(
-            self,
-            account_id: int = None,
-            client_id: typing.Optional[int] = None,
-            include_deleted: typing.Optional[bool] = None,
-            campaign_ids: typing.Optional[str] = None,
+        self,
+        account_id: int = None,
+        client_id: typing.Optional[int] = None,
+        include_deleted: typing.Optional[bool] = None,
+        campaign_ids: typing.Optional[str] = None,
     ) -> AdsGetCampaignsResponse:
         """
         :param account_id: - Advertising account ID.
@@ -379,9 +375,7 @@ class Ads(Category):
         result = AdsGetCampaignsResponse(**raw_result)
         return result
 
-    async def get_categories(
-            self, lang: typing.Optional[str] = None,
-    ) -> AdsGetCategoriesResponse:
+    async def get_categories(self, lang: typing.Optional[str] = None,) -> AdsGetCategoriesResponse:
         """
         :param lang: - Language. The full list of supported languages is [vk.com/dev/api_requests|here].
         :return:
@@ -398,7 +392,7 @@ class Ads(Category):
         result = AdsGetCategoriesResponse(**raw_result)
         return result
 
-    async def get_clients(self, account_id: int = None, ) -> AdsGetClientsResponse:
+    async def get_clients(self, account_id: int = None,) -> AdsGetClientsResponse:
         """
         :param account_id: - Advertising account ID.
         :return:
@@ -416,13 +410,13 @@ class Ads(Category):
         return result
 
     async def get_demographics(
-            self,
-            account_id: int = None,
-            ids_type: str = None,
-            ids: str = None,
-            period: str = None,
-            date_from: str = None,
-            date_to: str = None,
+        self,
+        account_id: int = None,
+        ids_type: str = None,
+        ids: str = None,
+        period: str = None,
+        date_from: str = None,
+        date_to: str = None,
     ) -> AdsGetDemographicsResponse:
         """
         :param account_id: - Advertising account ID.
@@ -445,9 +439,7 @@ class Ads(Category):
         result = AdsGetDemographicsResponse(**raw_result)
         return result
 
-    async def get_flood_stats(
-            self, account_id: int = None,
-    ) -> AdsGetFloodStatsResponse:
+    async def get_flood_stats(self, account_id: int = None,) -> AdsGetFloodStatsResponse:
         """
         :param account_id: - Advertising account ID.
         :return:
@@ -464,9 +456,7 @@ class Ads(Category):
         result = AdsGetFloodStatsResponse(**raw_result)
         return result
 
-    async def get_office_users(
-            self, account_id: int = None,
-    ) -> AdsGetOfficeUsersResponse:
+    async def get_office_users(self, account_id: int = None,) -> AdsGetOfficeUsersResponse:
         """
         :param account_id: - Advertising account ID.
         :return:
@@ -484,7 +474,7 @@ class Ads(Category):
         return result
 
     async def get_posts_reach(
-            self, account_id: int = None, ids_type: str = None, ids: str = None,
+        self, account_id: int = None, ids_type: str = None, ids: str = None,
     ) -> AdsGetPostsReachResponse:
         """
         :param account_id: - Advertising account ID.
@@ -505,7 +495,7 @@ class Ads(Category):
         return result
 
     async def get_rejection_reason(
-            self, account_id: int = None, ad_id: int = None,
+        self, account_id: int = None, ad_id: int = None,
     ) -> AdsGetRejectionReasonResponse:
         """
         :param account_id: - Advertising account ID.
@@ -525,13 +515,13 @@ class Ads(Category):
         return result
 
     async def get_statistics(
-            self,
-            account_id: int = None,
-            ids_type: str = None,
-            ids: str = None,
-            period: str = None,
-            date_from: str = None,
-            date_to: str = None,
+        self,
+        account_id: int = None,
+        ids_type: str = None,
+        ids: str = None,
+        period: str = None,
+        date_from: str = None,
+        date_to: str = None,
     ) -> AdsGetStatisticsResponse:
         """
         :param account_id: - Advertising account ID.
@@ -555,13 +545,13 @@ class Ads(Category):
         return result
 
     async def get_suggestions(
-            self,
-            section: str = None,
-            ids: typing.Optional[str] = None,
-            q: typing.Optional[str] = None,
-            country: typing.Optional[int] = None,
-            cities: typing.Optional[str] = None,
-            lang: typing.Optional[str] = None,
+        self,
+        section: str = None,
+        ids: typing.Optional[str] = None,
+        q: typing.Optional[str] = None,
+        country: typing.Optional[int] = None,
+        cities: typing.Optional[str] = None,
+        lang: typing.Optional[str] = None,
     ) -> AdsGetSuggestionsResponse:
         """
         :param section: - Section, suggestions are retrieved in. Available values: *countries — request of a list of countries. If q is not set or blank, a short list of countries is shown. Otherwise, a full list of countries is shown. *regions — requested list of regions. 'country' parameter is required. *cities — requested list of cities. 'country' parameter is required. *districts — requested list of districts. 'cities' parameter is required. *stations — requested list of subway stations. 'cities' parameter is required. *streets — requested list of streets. 'cities' parameter is required. *schools — requested list of educational organizations. 'cities' parameter is required. *interests — requested list of interests. *positions — requested list of positions (professions). *group_types — requested list of group types. *religions — requested list of religious commitments. *browsers — requested list of browsers and mobile devices.
@@ -585,10 +575,10 @@ class Ads(Category):
         return result
 
     async def get_target_groups(
-            self,
-            account_id: int = None,
-            client_id: typing.Optional[int] = None,
-            extended: typing.Optional[bool] = None,
+        self,
+        account_id: int = None,
+        client_id: typing.Optional[int] = None,
+        extended: typing.Optional[bool] = None,
     ) -> AdsGetTargetGroupsResponse:
         """
         :param account_id: - Advertising account ID.
@@ -609,17 +599,17 @@ class Ads(Category):
         return result
 
     async def get_targeting_stats(
-            self,
-            account_id: int = None,
-            client_id: typing.Optional[int] = None,
-            criteria: typing.Optional[str] = None,
-            ad_id: typing.Optional[int] = None,
-            ad_format: typing.Optional[int] = None,
-            ad_platform: typing.Optional[str] = None,
-            ad_platform_no_wall: typing.Optional[str] = None,
-            ad_platform_no_ad_network: typing.Optional[str] = None,
-            link_url: str = None,
-            link_domain: typing.Optional[str] = None,
+        self,
+        account_id: int = None,
+        client_id: typing.Optional[int] = None,
+        criteria: typing.Optional[str] = None,
+        ad_id: typing.Optional[int] = None,
+        ad_format: typing.Optional[int] = None,
+        ad_platform: typing.Optional[str] = None,
+        ad_platform_no_wall: typing.Optional[str] = None,
+        ad_platform_no_ad_network: typing.Optional[str] = None,
+        link_url: str = None,
+        link_domain: typing.Optional[str] = None,
     ) -> AdsGetTargetingStatsResponse:
         """
         :param account_id: - Advertising account ID.
@@ -647,7 +637,7 @@ class Ads(Category):
         return result
 
     async def get_upload_u_r_l(
-            self, ad_format: int = None, icon: typing.Optional[int] = None,
+        self, ad_format: int = None, icon: typing.Optional[int] = None,
     ) -> AdsGetUploadURLResponse:
         """
         :param ad_format: - Ad format: *1 — image and text,, *2 — big image,, *3 — exclusive format,, *4 — community, square image,, *7 — special app format.
@@ -666,7 +656,7 @@ class Ads(Category):
         result = AdsGetUploadURLResponse(**raw_result)
         return result
 
-    async def get_video_upload_u_r_l(self, ) -> AdsGetVideoUploadURLResponse:
+    async def get_video_upload_u_r_l(self,) -> AdsGetVideoUploadURLResponse:
         """
         :return:
         """
@@ -683,11 +673,11 @@ class Ads(Category):
         return result
 
     async def import_target_contacts(
-            self,
-            account_id: int = None,
-            client_id: typing.Optional[int] = None,
-            target_group_id: int = None,
-            contacts: str = None,
+        self,
+        account_id: int = None,
+        client_id: typing.Optional[int] = None,
+        target_group_id: int = None,
+        contacts: str = None,
     ) -> AdsImportTargetContactsResponse:
         """
         :param account_id: - Advertising account ID.
@@ -709,7 +699,7 @@ class Ads(Category):
         return result
 
     async def remove_office_users(
-            self, account_id: int = None, ids: str = None,
+        self, account_id: int = None, ids: str = None,
     ) -> AdsRemoveOfficeUsersResponse:
         """
         :param account_id: - Advertising account ID.
@@ -728,9 +718,7 @@ class Ads(Category):
         result = AdsRemoveOfficeUsersResponse(**raw_result)
         return result
 
-    async def update_ads(
-            self, account_id: int = None, data: str = None,
-    ) -> AdsUpdateAdsResponse:
+    async def update_ads(self, account_id: int = None, data: str = None,) -> AdsUpdateAdsResponse:
         """
         :param account_id: - Advertising account ID.
         :param data: - Serialized JSON array of objects that describe changes in ads. Description of 'ad_edit_specification' objects see below.
@@ -749,7 +737,7 @@ class Ads(Category):
         return result
 
     async def update_campaigns(
-            self, account_id: int = None, data: str = None,
+        self, account_id: int = None, data: str = None,
     ) -> AdsUpdateCampaignsResponse:
         """
         :param account_id: - Advertising account ID.
@@ -769,7 +757,7 @@ class Ads(Category):
         return result
 
     async def update_clients(
-            self, account_id: int = None, data: str = None,
+        self, account_id: int = None, data: str = None,
     ) -> AdsUpdateClientsResponse:
         """
         :param account_id: - Advertising account ID.
@@ -789,15 +777,15 @@ class Ads(Category):
         return result
 
     async def update_target_group(
-            self,
-            account_id: int = None,
-            client_id: typing.Optional[int] = None,
-            target_group_id: int = None,
-            name: str = None,
-            domain: typing.Optional[str] = None,
-            lifetime: typing.Optional[int] = None,
-            target_pixel_id: typing.Optional[int] = None,
-            target_pixel_rules: typing.Optional[str] = None,
+        self,
+        account_id: int = None,
+        client_id: typing.Optional[int] = None,
+        target_group_id: int = None,
+        name: str = None,
+        domain: typing.Optional[str] = None,
+        lifetime: typing.Optional[int] = None,
+        target_pixel_id: typing.Optional[int] = None,
+        target_pixel_rules: typing.Optional[str] = None,
     ) -> OkResponse:
         """
         :param account_id: - Advertising account ID.

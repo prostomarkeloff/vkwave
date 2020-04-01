@@ -1,16 +1,16 @@
 import logging
 import asyncio
 
-from vkwave.bots.dispatching.events.base import BotEvent
+from vkwave.bots.core.dispatching.events.base import BotEvent
 from vkwave.client.default import AIOHTTPClient
 from vkwave.api.token.token import BotSyncSingleToken, Token
-from vkwave.bots.tokens.storage import TokenStorage
-from vkwave.bots.dispatching.dp.dp import Dispatcher
-from vkwave.bots.dispatching.extensions.longpoll_bot import BotLongpollExtension
-from vkwave.bots.dispatching.router.router import DefaultRouter
-from vkwave.bots.tokens.types import GroupId
+from vkwave.bots.core.tokens.storage import TokenStorage
+from vkwave.bots.core.dispatching.dp.dp import Dispatcher
+from vkwave.bots.core.dispatching.extensions.longpoll_bot import BotLongpollExtension
+from vkwave.bots.core.dispatching.router.router import DefaultRouter
+from vkwave.bots.core.tokens.types import GroupId
 from vkwave.api.methods import API
-from vkwave.bots.dispatching.filters.builtin import ChatActionFilter
+from vkwave.bots.core.dispatching.filters.builtin import ChatActionFilter
 from vkwave.longpoll.bot import BotLongpoll, BotLongpollData
 from vkwave.types.objects import MessagesMessageActionStatus
 

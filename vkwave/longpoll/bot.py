@@ -1,7 +1,7 @@
 from typing import AsyncGenerator, List, NewType, Optional, cast
 
-from vkwave.http import AbstractHTTPClient
 from vkwave.api.methods import APIOptionsRequestContext
+from vkwave.http import AbstractHTTPClient
 from vkwave.types.objects import GroupsLongPollServer
 
 Update = NewType("Update", dict)
@@ -26,7 +26,7 @@ class BotLongpollData:
         self.ts = response.ts
 
     async def handle_error(
-            self, data: dict, client: AbstractHTTPClient, api: APIOptionsRequestContext
+        self, data: dict, client: AbstractHTTPClient, api: APIOptionsRequestContext
     ) -> List[Update]:
         code = data["failed"]
         if code == 1:
@@ -38,15 +38,14 @@ class BotLongpollData:
         return await self.get_updates(client, api)
 
     async def get_updates(
-            self, http_client: AbstractHTTPClient, api: APIOptionsRequestContext
+        self, http_client: AbstractHTTPClient, api: APIOptionsRequestContext
     ) -> List[Update]:
         if not self._first_request:
             await self.update_data(api)
             self._first_request = True
 
         data = await http_client.request_json(
-            "POST",
-            f"{self.server}?act=a_check&key={self.key}&ts={self.ts}&wait={self.wait}",
+            "POST", f"{self.server}?act=a_check&key={self.key}&ts={self.ts}&wait={self.wait}",
         )
 
         if "failed" in data:
@@ -59,10 +58,10 @@ class BotLongpollData:
 
 class BotLongpoll:
     def __init__(
-            self,
-            api: APIOptionsRequestContext,
-            bot_longpoll_data: BotLongpollData,
-            http_client: Optional[AbstractHTTPClient] = None,
+        self,
+        api: APIOptionsRequestContext,
+        bot_longpoll_data: BotLongpollData,
+        http_client: Optional[AbstractHTTPClient] = None,
     ):
 
         self.api: APIOptionsRequestContext = api

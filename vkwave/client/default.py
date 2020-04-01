@@ -2,15 +2,15 @@
 Default implementation of HTTPClient for vkwave-client.
 """
 
-from asyncio import AbstractEventLoop, get_event_loop
+from asyncio import AbstractEventLoop
 from json import JSONDecodeError
 from logging import getLogger
 from typing import Optional
 
-from vkwave.http import AIOHTTPClient as AHC_H, AbstractHTTPClient
 from aiohttp import ClientConnectionError, ClientSession
 from typing_extensions import Final
 
+from vkwave.http import AIOHTTPClient as AHC_H, AbstractHTTPClient
 from .abstract import AbstractAPIClient
 from .context import RequestContext, Signal
 from .factory import AbstractFactory, DefaultFactory
@@ -29,9 +29,7 @@ class AIOHTTPClient(AbstractAPIClient):
     API_URL: Final = "https://api.vk.com/method/{method_name}"
 
     def __init__(
-            self,
-            session: Optional[ClientSession] = None,
-            loop: Optional[AbstractEventLoop] = None,
+        self, session: Optional[ClientSession] = None, loop: Optional[AbstractEventLoop] = None,
     ):
         self._http_client = AHC_H(session=session, loop=loop)
         self._factory: AbstractFactory = DefaultFactory()

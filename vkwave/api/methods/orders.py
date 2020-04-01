@@ -5,10 +5,10 @@ from ._category import Category
 
 class Orders(Category):
     async def cancel_subscription(
-            self,
-            user_id: int = None,
-            subscription_id: int = None,
-            pending_cancel: typing.Optional[bool] = None,
+        self,
+        user_id: int = None,
+        subscription_id: int = None,
+        pending_cancel: typing.Optional[bool] = None,
     ) -> OrdersCancelSubscriptionResponse:
         """
         :param user_id:
@@ -29,11 +29,11 @@ class Orders(Category):
         return result
 
     async def change_state(
-            self,
-            order_id: int = None,
-            action: str = None,
-            app_order_id: typing.Optional[int] = None,
-            test_mode: typing.Optional[bool] = None,
+        self,
+        order_id: int = None,
+        action: str = None,
+        app_order_id: typing.Optional[int] = None,
+        test_mode: typing.Optional[bool] = None,
     ) -> OrdersChangeStateResponse:
         """
         :param order_id: - order ID.
@@ -55,10 +55,10 @@ class Orders(Category):
         return result
 
     async def get(
-            self,
-            offset: typing.Optional[int] = None,
-            count: typing.Optional[int] = None,
-            test_mode: typing.Optional[bool] = None,
+        self,
+        offset: typing.Optional[int] = None,
+        count: typing.Optional[int] = None,
+        test_mode: typing.Optional[bool] = None,
     ) -> OrdersGetResponse:
         """
         :param offset:
@@ -79,7 +79,7 @@ class Orders(Category):
         return result
 
     async def get_amount(
-            self, user_id: int = None, votes: typing.List[str] = None,
+        self, user_id: int = None, votes: typing.List[str] = None,
     ) -> OrdersGetAmountResponse:
         """
         :param user_id:
@@ -99,10 +99,10 @@ class Orders(Category):
         return result
 
     async def get_by_id(
-            self,
-            order_id: typing.Optional[int] = None,
-            order_ids: typing.Optional[typing.List[int]] = None,
-            test_mode: typing.Optional[bool] = None,
+        self,
+        order_id: typing.Optional[int] = None,
+        order_ids: typing.Optional[typing.List[int]] = None,
+        test_mode: typing.Optional[bool] = None,
     ) -> OrdersGetByIdResponse:
         """
         :param order_id: - order ID.
@@ -123,7 +123,7 @@ class Orders(Category):
         return result
 
     async def get_user_subscription_by_id(
-            self, user_id: int = None, subscription_id: int = None,
+        self, user_id: int = None, subscription_id: int = None,
     ) -> OrdersGetUserSubscriptionByIdResponse:
         """
         :param user_id:
@@ -143,7 +143,7 @@ class Orders(Category):
         return result
 
     async def get_user_subscriptions(
-            self, user_id: int = None,
+        self, user_id: int = None,
     ) -> OrdersGetUserSubscriptionsResponse:
         """
         :param user_id:
@@ -162,7 +162,7 @@ class Orders(Category):
         return result
 
     async def update_subscription(
-            self, user_id: int = None, subscription_id: int = None, price: int = None,
+        self, user_id: int = None, subscription_id: int = None, price: int = None,
     ) -> OrdersUpdateSubscriptionResponse:
         """
         :param user_id:

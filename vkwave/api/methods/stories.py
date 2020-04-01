@@ -4,7 +4,7 @@ from ._category import Category
 
 
 class Stories(Category):
-    async def ban_owner(self, owners_ids: typing.List[int] = None, ) -> OkResponse:
+    async def ban_owner(self, owners_ids: typing.List[int] = None,) -> OkResponse:
         """
         :param owners_ids: - List of sources IDs
         :return:
@@ -21,7 +21,7 @@ class Stories(Category):
         result = OkResponse(**raw_result)
         return result
 
-    async def delete(self, owner_id: int = None, story_id: int = None, ) -> OkResponse:
+    async def delete(self, owner_id: int = None, story_id: int = None,) -> OkResponse:
         """
         :param owner_id: - Story owner's ID. Current user id is used by default.
         :param story_id: - Story ID.
@@ -40,9 +40,7 @@ class Stories(Category):
         return result
 
     async def get(
-            self,
-            owner_id: typing.Optional[int] = None,
-            extended: typing.Optional[bool] = None,
+        self, owner_id: typing.Optional[int] = None, extended: typing.Optional[bool] = None,
     ) -> StoriesGetResponse:
         """
         :param owner_id: - Owner ID.
@@ -62,9 +60,9 @@ class Stories(Category):
         return result
 
     async def get_banned(
-            self,
-            extended: typing.Optional[bool] = None,
-            fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
+        self,
+        extended: typing.Optional[bool] = None,
+        fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
     ) -> StoriesGetBannedResponse:
         """
         :param extended: - '1' — to return additional fields for users and communities. Default value is 0.
@@ -84,10 +82,10 @@ class Stories(Category):
         return result
 
     async def get_by_id(
-            self,
-            stories: typing.List[str] = None,
-            extended: typing.Optional[bool] = None,
-            fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
+        self,
+        stories: typing.List[str] = None,
+        extended: typing.Optional[bool] = None,
+        fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
     ) -> StoriesGetByIdResponse:
         """
         :param stories: - Stories IDs separated by commas. Use format {owner_id}+'_'+{story_id}, for example, 12345_54331.
@@ -108,13 +106,13 @@ class Stories(Category):
         return result
 
     async def get_photo_upload_server(
-            self,
-            add_to_news: typing.Optional[bool] = None,
-            user_ids: typing.Optional[typing.List[int]] = None,
-            reply_to_story: typing.Optional[str] = None,
-            link_text: typing.Optional[str] = None,
-            link_url: typing.Optional[str] = None,
-            group_id: typing.Optional[int] = None,
+        self,
+        add_to_news: typing.Optional[bool] = None,
+        user_ids: typing.Optional[typing.List[int]] = None,
+        reply_to_story: typing.Optional[str] = None,
+        link_text: typing.Optional[str] = None,
+        link_url: typing.Optional[str] = None,
+        group_id: typing.Optional[int] = None,
     ) -> StoriesGetPhotoUploadServerResponse:
         """
         :param add_to_news: - 1 — to add the story to friend's feed.
@@ -138,12 +136,12 @@ class Stories(Category):
         return result
 
     async def get_replies(
-            self,
-            owner_id: int = None,
-            story_id: int = None,
-            access_key: typing.Optional[str] = None,
-            extended: typing.Optional[bool] = None,
-            fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
+        self,
+        owner_id: int = None,
+        story_id: int = None,
+        access_key: typing.Optional[str] = None,
+        extended: typing.Optional[bool] = None,
+        fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
     ) -> StoriesGetRepliesResponse:
         """
         :param owner_id: - Story owner ID.
@@ -166,7 +164,7 @@ class Stories(Category):
         return result
 
     async def get_stats(
-            self, owner_id: int = None, story_id: int = None,
+        self, owner_id: int = None, story_id: int = None,
     ) -> StoriesGetStatsResponse:
         """
         :param owner_id: - Story owner ID.
@@ -186,13 +184,13 @@ class Stories(Category):
         return result
 
     async def get_video_upload_server(
-            self,
-            add_to_news: typing.Optional[bool] = None,
-            user_ids: typing.Optional[typing.List[int]] = None,
-            reply_to_story: typing.Optional[str] = None,
-            link_text: typing.Optional[str] = None,
-            link_url: typing.Optional[str] = None,
-            group_id: typing.Optional[int] = None,
+        self,
+        add_to_news: typing.Optional[bool] = None,
+        user_ids: typing.Optional[typing.List[int]] = None,
+        reply_to_story: typing.Optional[str] = None,
+        link_text: typing.Optional[str] = None,
+        link_url: typing.Optional[str] = None,
+        group_id: typing.Optional[int] = None,
     ) -> StoriesGetVideoUploadServerResponse:
         """
         :param add_to_news: - 1 — to add the story to friend's feed.
@@ -216,12 +214,12 @@ class Stories(Category):
         return result
 
     async def get_viewers(
-            self,
-            owner_id: int = None,
-            story_id: int = None,
-            count: typing.Optional[int] = None,
-            offset: typing.Optional[int] = None,
-            extended: typing.Optional[bool] = None,
+        self,
+        owner_id: int = None,
+        story_id: int = None,
+        count: typing.Optional[int] = None,
+        offset: typing.Optional[int] = None,
+        extended: typing.Optional[bool] = None,
     ) -> StoriesGetViewersResponse:
         """
         :param owner_id: - Story owner ID.
@@ -244,7 +242,7 @@ class Stories(Category):
         return result
 
     async def hide_all_replies(
-            self, owner_id: int = None, group_id: typing.Optional[int] = None,
+        self, owner_id: int = None, group_id: typing.Optional[int] = None,
     ) -> OkResponse:
         """
         :param owner_id: - ID of the user whose replies should be hidden.
@@ -263,9 +261,7 @@ class Stories(Category):
         result = OkResponse(**raw_result)
         return result
 
-    async def hide_reply(
-            self, owner_id: int = None, story_id: int = None,
-    ) -> OkResponse:
+    async def hide_reply(self, owner_id: int = None, story_id: int = None,) -> OkResponse:
         """
         :param owner_id: - ID of the user whose replies should be hidden.
         :param story_id: - Story ID.
@@ -283,7 +279,7 @@ class Stories(Category):
         result = OkResponse(**raw_result)
         return result
 
-    async def unban_owner(self, owners_ids: typing.List[int] = None, ) -> OkResponse:
+    async def unban_owner(self, owners_ids: typing.List[int] = None,) -> OkResponse:
         """
         :param owners_ids: - List of hidden sources to show stories from.
         :return:

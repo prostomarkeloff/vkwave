@@ -25,9 +25,7 @@ async def get_api():
 @pytest.mark.asyncio
 async def test_users_get():
     api = await get_api()
-    request_data = await api.users.get(
-        user_ids=[1, 2], fields=["photo_50", "city", "verified"]
-    )
+    request_data = await api.users.get(user_ids=[1, 2], fields=["photo_50", "city", "verified"])
     assert request_data.response[0].first_name == "Павел"
     assert request_data.response[1].id == 2
     assert request_data.response[1].is_closed

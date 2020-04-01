@@ -5,11 +5,11 @@ from ._category import Category
 
 class Auth(Category):
     async def check_phone(
-            self,
-            phone: str = None,
-            client_id: typing.Optional[int] = None,
-            client_secret: typing.Optional[str] = None,
-            auth_by_phone: typing.Optional[bool] = None,
+        self,
+        phone: str = None,
+        client_id: typing.Optional[int] = None,
+        client_secret: typing.Optional[str] = None,
+        auth_by_phone: typing.Optional[bool] = None,
     ) -> OkResponse:
         """
         :param phone: - Phone number.
@@ -30,9 +30,7 @@ class Auth(Category):
         result = OkResponse(**raw_result)
         return result
 
-    async def restore(
-            self, phone: str = None, last_name: str = None,
-    ) -> AuthRestoreResponse:
+    async def restore(self, phone: str = None, last_name: str = None,) -> AuthRestoreResponse:
         """
         :param phone: - User phone number.
         :param last_name: - User last name.

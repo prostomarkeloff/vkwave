@@ -38,6 +38,15 @@ isort:
 black:
 	$(py) black vkwave tests
 
+.PHONY: flake8
+flake8:
+	$(py) flake8 vkwave test
+
+.PHONY: flake8-report
+flake8-report:
+	mkdir -p $(reports_dir)/flake8
+	$(py) flake8 --format=html --htmldir=$(reports_dir)/flake8 vkwave test
+
 .PHONY: mypy
 mypy:
 	$(py) mypy vkwave
@@ -47,7 +56,7 @@ mypy-report:
 	$(py) mypy vkwave --html-report $(reports_dir)/typechecking
 
 .PHONY: lint
-lint: isort black mypy
+lint: isort black flake8 mypy
 
 # =================================================================================================
 # Tests
@@ -55,12 +64,12 @@ lint: isort black mypy
 
 .PHONY: test
 test:
-	$(py) pytest tests/
+	$(py) pytest --cov=vkwave --cov-config .coveragerc tests/
 
 .PHONY: test-coverage
 test-coverage:
 	mkdir -p $(reports_dir)/tests/
-	$(py) pytest --html=$(reports_dir)/tests/index.html tests/
+	$(py) pytest --cov=vkwave --cov-config .coveragerc --html=$(reports_dir)/tests/index.html tests/
 	$(py) coverage html -d $(reports_dir)/coverage
 
 # =================================================================================================

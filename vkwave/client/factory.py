@@ -11,26 +11,26 @@ from .types import MethodName, RequestCallbackCallable
 class AbstractFactory(ABC):
     @abstractmethod
     def create_context(
-            self,
-            exceptions: Dict[Type[Exception], None],
-            request_callback: RequestCallbackCallable,
-            method_name: MethodName,
-            request_params: dict,
-            *args,
-            **kwargs
+        self,
+        exceptions: Dict[Type[Exception], None],
+        request_callback: RequestCallbackCallable,
+        method_name: MethodName,
+        request_params: dict,
+        *args,
+        **kwargs,
     ) -> RequestContext:
         ...
 
 
 class DefaultFactory(AbstractFactory):
     def create_context(
-            self,
-            exceptions: Dict[Type[Exception], None],
-            request_callback: RequestCallbackCallable,
-            method_name: MethodName,
-            request_params: dict,
-            *args,
-            **kwargs
+        self,
+        exceptions: Dict[Type[Exception], None],
+        request_callback: RequestCallbackCallable,
+        method_name: MethodName,
+        request_params: dict,
+        *args,
+        **kwargs,
     ) -> RequestContext:
         return RequestContext(
             exceptions=exceptions,

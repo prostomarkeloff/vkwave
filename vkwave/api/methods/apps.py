@@ -4,7 +4,7 @@ from ._category import Category
 
 
 class Apps(Category):
-    async def delete_app_requests(self, ) -> OkResponse:
+    async def delete_app_requests(self,) -> OkResponse:
         """
         :return:
         """
@@ -21,14 +21,14 @@ class Apps(Category):
         return result
 
     async def get(
-            self,
-            app_id: typing.Optional[int] = None,
-            app_ids: typing.Optional[typing.List[str]] = None,
-            platform: typing.Optional[str] = None,
-            extended: typing.Optional[bool] = None,
-            return_friends: typing.Optional[bool] = None,
-            fields: typing.Optional[typing.List[UsersFields]] = None,
-            name_case: typing.Optional[str] = None,
+        self,
+        app_id: typing.Optional[int] = None,
+        app_ids: typing.Optional[typing.List[str]] = None,
+        platform: typing.Optional[str] = None,
+        extended: typing.Optional[bool] = None,
+        return_friends: typing.Optional[bool] = None,
+        fields: typing.Optional[typing.List[UsersFields]] = None,
+        name_case: typing.Optional[str] = None,
     ) -> AppsGetResponse:
         """
         :param app_id: - Application ID
@@ -53,18 +53,18 @@ class Apps(Category):
         return result
 
     async def get_catalog(
-            self,
-            sort: typing.Optional[str] = None,
-            offset: typing.Optional[int] = None,
-            count: int = None,
-            platform: typing.Optional[str] = None,
-            extended: typing.Optional[bool] = None,
-            return_friends: typing.Optional[bool] = None,
-            fields: typing.Optional[typing.List[UsersFields]] = None,
-            name_case: typing.Optional[str] = None,
-            q: typing.Optional[str] = None,
-            genre_id: typing.Optional[int] = None,
-            filter: typing.Optional[str] = None,
+        self,
+        sort: typing.Optional[str] = None,
+        offset: typing.Optional[int] = None,
+        count: int = None,
+        platform: typing.Optional[str] = None,
+        extended: typing.Optional[bool] = None,
+        return_friends: typing.Optional[bool] = None,
+        fields: typing.Optional[typing.List[UsersFields]] = None,
+        name_case: typing.Optional[str] = None,
+        q: typing.Optional[str] = None,
+        genre_id: typing.Optional[int] = None,
+        filter: typing.Optional[str] = None,
     ) -> AppsGetCatalogResponse:
         """
         :param sort: - Sort order: 'popular_today' — popular for one day (default), 'visitors' — by visitors number , 'create_date' — by creation date, 'growth_rate' — by growth rate, 'popular_week' — popular for one week
@@ -93,12 +93,12 @@ class Apps(Category):
         return result
 
     async def get_friends_list(
-            self,
-            extended: typing.Optional[bool] = None,
-            count: typing.Optional[int] = None,
-            offset: typing.Optional[int] = None,
-            type: typing.Optional[str] = None,
-            fields: typing.Optional[typing.List[UsersFields]] = None,
+        self,
+        extended: typing.Optional[bool] = None,
+        count: typing.Optional[int] = None,
+        offset: typing.Optional[int] = None,
+        type: typing.Optional[str] = None,
+        fields: typing.Optional[typing.List[UsersFields]] = None,
     ) -> AppsGetFriendsListResponse:
         """
         :param extended:
@@ -121,10 +121,10 @@ class Apps(Category):
         return result
 
     async def get_leaderboard(
-            self,
-            type: str = None,
-            global_: typing.Optional[bool] = None,
-            extended: typing.Optional[bool] = None,
+        self,
+        type: str = None,
+        global_: typing.Optional[bool] = None,
+        extended: typing.Optional[bool] = None,
     ) -> AppsGetLeaderboardResponse:
         """
         :param type: - Leaderboard type. Possible values: *'level' — by level,, *'points' — by mission points,, *'score' — by score ().
@@ -144,9 +144,7 @@ class Apps(Category):
         result = AppsGetLeaderboardResponse(**raw_result)
         return result
 
-    async def get_scopes(
-            self, type: typing.Optional[str] = None,
-    ) -> AppsGetScopesResponse:
+    async def get_scopes(self, type: typing.Optional[str] = None,) -> AppsGetScopesResponse:
         """
         :param type:
         :return:
@@ -163,7 +161,7 @@ class Apps(Category):
         result = AppsGetScopesResponse(**raw_result)
         return result
 
-    async def get_score(self, user_id: int = None, ) -> AppsGetScoreResponse:
+    async def get_score(self, user_id: int = None,) -> AppsGetScoreResponse:
         """
         :param user_id:
         :return:
@@ -181,13 +179,13 @@ class Apps(Category):
         return result
 
     async def send_request(
-            self,
-            user_id: int = None,
-            text: typing.Optional[str] = None,
-            type: typing.Optional[str] = None,
-            name: typing.Optional[str] = None,
-            key: typing.Optional[str] = None,
-            separate: typing.Optional[bool] = None,
+        self,
+        user_id: int = None,
+        text: typing.Optional[str] = None,
+        type: typing.Optional[str] = None,
+        name: typing.Optional[str] = None,
+        key: typing.Optional[str] = None,
+        separate: typing.Optional[bool] = None,
     ) -> AppsSendRequestResponse:
         """
         :param user_id: - id of the user to send a request

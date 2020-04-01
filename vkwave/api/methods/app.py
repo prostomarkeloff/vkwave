@@ -4,9 +4,7 @@ from ._category import Category
 
 
 class App(Category):
-    async def widgets_update(
-            self, code: str = None, type: str = None,
-    ) -> BaseOkResponse:
+    async def widgets_update(self, code: str = None, type: str = None,) -> BaseOkResponse:
         """
         :param code:
         :param type:
