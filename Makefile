@@ -64,12 +64,12 @@ lint: isort black flake8 mypy
 
 .PHONY: test
 test:
-	$(py) pytest tests/
+	$(py) pytest --cov=vkwave --cov-config .coveragerc tests/
 
 .PHONY: test-coverage
 test-coverage:
 	mkdir -p $(reports_dir)/tests/
-	$(py) pytest --html=$(reports_dir)/tests/index.html tests/
+	$(py) pytest --cov=vkwave --cov-config .coveragerc --html=$(reports_dir)/tests/index.html tests/
 	$(py) coverage html -d $(reports_dir)/coverage
 
 # =================================================================================================
