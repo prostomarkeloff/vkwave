@@ -19,17 +19,18 @@ This repostitory contains only `core` parts of VKWave. It means that code introd
 
 VKWave is a most fast library for Python for working with VK's API.
 
-## Core libs
+## Parts
 
-VKWave client - [core library](./vkwave-client)\
-VKWave API - [use VK's API in the most fancy way](./vkwave-api)\
-VKWave bots - [create awesome bots with ease](./vkwave-bots)\
-VKWave storage & VKWave FSM - [FSM implementation for VKWave](./vkwave-bots-fsm)\
-VKWave bots utils - [keyboards, carousels, ...](./vkwave-bots-utils)\
-VKWave longpoll - [acessing VK's longpoll (user/bot)](./vkwave-longpoll)
+- Client - [core part](./vkwave/client)
+- API - [use VK's API in the most fancy way](./vkwave/api)
+- Bots - [create awesome bots with ease](./vkwave/bots)
+- FSM - [FSM implementation for VKWave](./vkwave/bots/fsm)
+- Storage - [FSM Storage](./vkwave/bots/storage)
+- Bots utils - [keyboards, carousels, ...](./vkwave/bots/utils)
+- LongPoll - [acessing VK's longpoll (user/bot)](./vkwave/longpoll)
 
 ## Community
 
 VKWave is a young project.
 
-If you want to create addon for vkwave (like `fsm` for bots or something like that) you should name your project like that: `vkwave-bots-fsm`.
+If you want to create addon for VKWave (like `fsm` for bots or something like that) you should name your project like that: `vkwave-bots-fsm`.

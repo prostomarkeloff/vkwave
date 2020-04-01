@@ -20,7 +20,7 @@ VKWave is a most fast library for Python for working with VK's API.
 
 ## Parts
 
-- Client - [core library](./client)
+- Client - [core part](./client)
 - API - [use VK's API in the most fancy way](./api)
 - Bots - [create awesome bots with ease](./bots)
 - FSM - [FSM implementation for VKWave](./bots/fsm)
