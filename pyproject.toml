@@ -2,7 +2,7 @@
 name = "vkwave"
 version = "0.1.0"
 description = "Framework for building high-performance & easy to scale projects interacting with VK's API."
-authors = ["prostomarkeloff"]
+authors = ["prostomarkeloff", "kesha1225"]
 license = "MIT"
 readme = "readme.md"
 homepage = "https://github.com/fscdev/vkwave"
