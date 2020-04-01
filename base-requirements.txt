@@ -1,9 +1,0 @@
-poetry
-mypy
-black
-isort
-pytest
-pytest-asyncio
-mypy_extensions
-typing_extensions
-python-dotenv

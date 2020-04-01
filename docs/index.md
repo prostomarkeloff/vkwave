@@ -1,8 +1,7 @@
-![vkwave](https://user-images.githubusercontent.com/28061158/75329873-7f738200-5891-11ea-9565-fd117ea4fc9e.jpg)
+# Overview
 
-> It's time to carry out vk_api & vkbottle. VKWave is here.
+Documentation for VKWave [WIP] [^1]
 
-[Русская версия](https://github.com/fscdev/vkwave/blob/master/readme_ru.md)
 # What is it?
 
 Framework for building high-performance & easy to scale projects interacting with VK's API.
@@ -21,16 +20,18 @@ VKWave is a most fast library for Python for working with VK's API.
 
 ## Parts
 
-- Client - [core part](./vkwave/client)
-- API - [use VK's API in the most fancy way](./vkwave/api)
-- Bots - [create awesome bots with ease](./vkwave/bots)
-- FSM - [FSM implementation for VKWave](./vkwave/bots/fsm)
-- Storage - [FSM Storage](./vkwave/bots/storage)
-- Bots utils - [keyboards, carousels, ...](./vkwave/bots/utils)
-- LongPoll - [acessing VK's longpoll (user/bot)](./vkwave/longpoll)
+- Client - [core part](./client)
+- API - [use VK's API in the most fancy way](./api)
+- Bots - [create awesome bots with ease](./bots)
+- FSM - [FSM implementation for VKWave](./bots/fsm)
+- Storage - [FSM Storage](./bots/storage)
+- Bots utils - [keyboards, carousels, ...](./bots/utils)
+- LongPoll - [acessing VK's longpoll (user/bot)](./longpoll)
 
 ## Community
 
 VKWave is a young project.
 
 If you want to create addon for VKWave (like `fsm` for bots or something like that) you should name your project like that: `vkwave-bots-fsm`.
+
+[^1]: work in progress
