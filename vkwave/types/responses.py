@@ -44,10 +44,10 @@ class AccountGetBannedResponseModel(pydantic.BaseModel):
     items: typing.List[int] = pydantic.Field(
         None, description="",
     )
-    profiles: typing.Optional[UsersUserMin] = pydantic.Field(
+    profiles: typing.Optional[typing.List[UsersUserMin]] = pydantic.Field(
         None, description="",
     )
-    groups: typing.Optional[GroupsGroup] = pydantic.Field(
+    groups: typing.Optional[typing.List[GroupsGroup]] = pydantic.Field(
         None, description="",
     )
 
@@ -368,7 +368,7 @@ class AppsGetLeaderboardExtendedResponseModel(pydantic.BaseModel):
     items: typing.Optional[typing.List[AppsLeaderboard]] = pydantic.Field(
         None, description="",
     )
-    profiles: typing.Optional[UsersUserMin] = pydantic.Field(
+    profiles: typing.Optional[typing.List[UsersUserMin]] = pydantic.Field(
         None, description="",
     )
 
@@ -485,10 +485,10 @@ class BoardGetCommentsExtendedResponseModel(pydantic.BaseModel):
     poll: typing.Optional[BoardTopicPoll] = pydantic.Field(
         None, description="",
     )
-    profiles: UsersUser = pydantic.Field(
+    profiles: typing.List[UsersUser] = pydantic.Field(
         None, description="",
     )
-    groups: GroupsGroup = pydantic.Field(
+    groups: typing.List[GroupsGroup] = pydantic.Field(
         None, description="",
     )
 
@@ -530,7 +530,7 @@ class BoardGetTopicsExtendedResponseModel(pydantic.BaseModel):
     can_add_topics: BaseBoolInt = pydantic.Field(
         None, description="Information whether current user can add topic",
     )
-    profiles: UsersUserMin = pydantic.Field(
+    profiles: typing.List[UsersUserMin] = pydantic.Field(
         None, description="",
     )
 
@@ -839,10 +839,10 @@ class FaveGetExtendedResponseModel(pydantic.BaseModel):
     items: typing.Optional[typing.List[FaveBookmark]] = pydantic.Field(
         None, description="",
     )
-    profiles: typing.Optional[UsersUserFull] = pydantic.Field(
+    profiles: typing.Optional[typing.List[UsersUserFull]] = pydantic.Field(
         None, description="",
     )
-    groups: typing.Optional[GroupsGroup] = pydantic.Field(
+    groups: typing.Optional[typing.List[GroupsGroup]] = pydantic.Field(
         None, description="",
     )
 
@@ -1277,10 +1277,10 @@ class GroupsGetInvitesExtendedResponseModel(pydantic.BaseModel):
     items: typing.List[GroupsGroupXtrInvitedBy] = pydantic.Field(
         None, description="",
     )
-    profiles: UsersUserMin = pydantic.Field(
+    profiles: typing.List[UsersUserMin] = pydantic.Field(
         None, description="",
     )
-    groups: GroupsGroupFull = pydantic.Field(
+    groups: typing.List[GroupsGroupFull] = pydantic.Field(
         None, description="",
     )
 
@@ -1876,10 +1876,10 @@ class MessagesGetByIdExtendedResponseModel(pydantic.BaseModel):
     items: typing.List[MessagesMessage] = pydantic.Field(
         None, description="",
     )
-    profiles: UsersUserFull = pydantic.Field(
+    profiles: typing.List[UsersUserFull] = pydantic.Field(
         None, description="",
     )
-    groups: typing.Optional[GroupsGroupFull] = pydantic.Field(
+    groups: typing.Optional[typing.List[GroupsGroupFull]] = pydantic.Field(
         None, description="",
     )
 
@@ -1909,7 +1909,7 @@ class MessagesGetChatPreviewResponseModel(pydantic.BaseModel):
     preview: typing.Optional[MessageChatPreview] = pydantic.Field(
         None, description="",
     )
-    profiles: typing.Optional[UsersUserFull] = pydantic.Field(
+    profiles: typing.Optional[typing.List[UsersUserFull]] = pydantic.Field(
         None, description="",
     )
 
@@ -1954,10 +1954,10 @@ class MessagesGetConversationMembersResponseModel(pydantic.BaseModel):
     chat_restrictions: typing.Optional[MessagesChatRestrictions] = pydantic.Field(
         None, description="",
     )
-    profiles: typing.Optional[UsersUserFull] = pydantic.Field(
+    profiles: typing.Optional[typing.List[UsersUserFull]] = pydantic.Field(
         None, description="",
     )
-    groups: typing.Optional[GroupsGroupFull] = pydantic.Field(
+    groups: typing.Optional[typing.List[GroupsGroupFull]] = pydantic.Field(
         None, description="",
     )
 
@@ -1975,7 +1975,7 @@ class MessagesGetConversationsByIdExtendedResponseModel(pydantic.BaseModel):
     items: typing.List[MessagesConversation] = pydantic.Field(
         None, description="",
     )
-    profiles: typing.Optional[UsersUser] = pydantic.Field(
+    profiles: typing.Optional[typing.List[UsersUser]] = pydantic.Field(
         None, description="",
     )
 
@@ -2011,10 +2011,10 @@ class MessagesGetConversationsResponseModel(pydantic.BaseModel):
     items: typing.List[MessagesConversationWithMessage] = pydantic.Field(
         None, description="",
     )
-    profiles: typing.Optional[UsersUserFull] = pydantic.Field(
+    profiles: typing.Optional[typing.List[UsersUserFull]] = pydantic.Field(
         None, description="",
     )
-    groups: typing.Optional[GroupsGroupFull] = pydantic.Field(
+    groups: typing.Optional[typing.List[GroupsGroupFull]] = pydantic.Field(
         None, description="",
     )
 
@@ -2047,10 +2047,10 @@ class MessagesGetHistoryResponseModel(pydantic.BaseModel):
     items: typing.List[MessagesMessage] = pydantic.Field(
         None, description="",
     )
-    profiles: typing.Optional[UsersUserFull] = pydantic.Field(
+    profiles: typing.Optional[typing.List[UsersUserFull]] = pydantic.Field(
         None, description="",
     )
-    groups: typing.Optional[GroupsGroupFull] = pydantic.Field(
+    groups: typing.Optional[typing.List[GroupsGroupFull]] = pydantic.Field(
         None, description="",
     )
 
@@ -2083,16 +2083,16 @@ class MessagesGetLongPollHistoryResponseModel(pydantic.BaseModel):
     history: typing.Optional[typing.List[typing.List[int]]] = pydantic.Field(
         None, description="",
     )
-    groups: typing.Optional[GroupsGroup] = pydantic.Field(
+    groups: typing.Optional[typing.List[GroupsGroup]] = pydantic.Field(
         None, description="",
     )
-    messages: typing.Optional[MessagesLongpollMessages] = pydantic.Field(
+    messages: typing.Optional[typing.List[MessagesLongpollMessages]] = pydantic.Field(
         None, description="",
     )
-    profiles: typing.Optional[UsersUserFull] = pydantic.Field(
+    profiles: typing.Optional[typing.List[UsersUserFull]] = pydantic.Field(
         None, description="",
     )
-    chats: typing.Optional[MessagesChat] = pydantic.Field(
+    chats: typing.Optional[typing.List[MessagesChat]] = pydantic.Field(
         None, description="",
     )
     new_pts: typing.Optional[int] = pydantic.Field(
@@ -2101,7 +2101,7 @@ class MessagesGetLongPollHistoryResponseModel(pydantic.BaseModel):
     more: typing.Optional[bool] = pydantic.Field(
         None, description="Has more",
     )
-    conversations: typing.Optional[MessagesConversation] = pydantic.Field(
+    conversations: typing.Optional[typing.List[MessagesConversation]] = pydantic.Field(
         None, description="",
     )
 
@@ -2161,10 +2161,10 @@ class MessagesSearchConversationsResponseModel(pydantic.BaseModel):
     items: typing.Optional[typing.List[MessagesConversation]] = pydantic.Field(
         None, description="",
     )
-    profiles: typing.Optional[UsersUserFull] = pydantic.Field(
+    profiles: typing.Optional[typing.List[UsersUserFull]] = pydantic.Field(
         None, description="",
     )
-    groups: typing.Optional[GroupsGroupFull] = pydantic.Field(
+    groups: typing.Optional[typing.List[GroupsGroupFull]] = pydantic.Field(
         None, description="",
     )
 
@@ -2221,7 +2221,7 @@ class NewsfeedGetBannedExtendedResponseModel(pydantic.BaseModel):
     groups: typing.Optional[UsersUserFull] = pydantic.Field(
         None, description="",
     )
-    profiles: typing.Optional[GroupsGroupFull] = pydantic.Field(
+    profiles: typing.Optional[typing.List[GroupsGroupFull]] = pydantic.Field(
         None, description="",
     )
 
@@ -2251,10 +2251,10 @@ class NewsfeedGetCommentsResponseModel(pydantic.BaseModel):
     items: typing.List[NewsfeedNewsfeedItem] = pydantic.Field(
         None, description="",
     )
-    profiles: UsersUserFull = pydantic.Field(
+    profiles: typing.List[UsersUserFull] = pydantic.Field(
         None, description="",
     )
-    groups: GroupsGroupFull = pydantic.Field(
+    groups:typing.List[GroupsGroupFull] = pydantic.Field(
         None, description="",
     )
     next_from: typing.Optional[str] = pydantic.Field(
@@ -2317,10 +2317,10 @@ class NewsfeedGetRecommendedResponseModel(pydantic.BaseModel):
     items: typing.Optional[typing.List[NewsfeedNewsfeedItem]] = pydantic.Field(
         None, description="",
     )
-    profiles: typing.Optional[UsersUserFull] = pydantic.Field(
+    profiles: typing.Optional[typing.List[UsersUserFull]] = pydantic.Field(
         None, description="",
     )
-    groups: typing.Optional[GroupsGroupFull] = pydantic.Field(
+    groups: typing.Optional[typing.List[GroupsGroupFull]] = pydantic.Field(
         None, description="",
     )
     new_offset: typing.Optional[str] = pydantic.Field(
@@ -2358,10 +2358,10 @@ class NewsfeedGetResponseModel(pydantic.BaseModel):
     items: typing.Optional[typing.List[NewsfeedNewsfeedItem]] = pydantic.Field(
         None, description="",
     )
-    profiles: typing.Optional[UsersUserFull] = pydantic.Field(
+    profiles: typing.Optional[typing.List[UsersUserFull]] = pydantic.Field(
         None, description="",
     )
-    groups: typing.Optional[GroupsGroupFull] = pydantic.Field(
+    groups: typing.Optional[typing.List[GroupsGroupFull]] = pydantic.Field(
         None, description="",
     )
     next_from: typing.Optional[str] = pydantic.Field(
@@ -2385,10 +2385,10 @@ class NewsfeedSearchExtendedResponseModel(pydantic.BaseModel):
     items: typing.Optional[typing.List[WallWallpostFull]] = pydantic.Field(
         None, description="",
     )
-    profiles: typing.Optional[UsersUserFull] = pydantic.Field(
+    profiles: typing.Optional[typing.List[UsersUserFull]] = pydantic.Field(
         None, description="",
     )
-    groups: typing.Optional[GroupsGroupFull] = pydantic.Field(
+    groups: typing.Optional[typing.List[GroupsGroupFull]] = pydantic.Field(
         None, description="",
     )
     count: typing.Optional[int] = pydantic.Field(
@@ -2475,10 +2475,10 @@ class NotificationsGetResponseModel(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total number",
     )
-    profiles: typing.Optional[UsersUser] = pydantic.Field(
+    profiles: typing.Optional[typing.List[UsersUser]] = pydantic.Field(
         None, description="",
     )
-    groups: typing.Optional[GroupsGroup] = pydantic.Field(
+    groups: typing.Optional[typing.List[GroupsGroup]] = pydantic.Field(
         None, description="",
     )
     last_viewed: typing.Optional[int] = pydantic.Field(
@@ -2743,10 +2743,10 @@ class PhotosGetCommentsExtendedResponseModel(pydantic.BaseModel):
     items: typing.List[WallWallComment] = pydantic.Field(
         None, description="",
     )
-    profiles: UsersUserFull = pydantic.Field(
+    profiles: typing.List[UsersUserFull] = pydantic.Field(
         None, description="",
     )
-    groups: GroupsGroupFull = pydantic.Field(
+    groups: typing.List[GroupsGroupFull] = pydantic.Field(
         None, description="",
     )
 
@@ -3173,10 +3173,10 @@ class StoriesGetBannedExtendedResponseModel(pydantic.BaseModel):
     items: typing.List[int] = pydantic.Field(
         None, description="",
     )
-    profiles: UsersUserFull = pydantic.Field(
+    profiles: typing.List[UsersUserFull] = pydantic.Field(
         None, description="",
     )
-    groups: GroupsGroupFull = pydantic.Field(
+    groups: typing.List[GroupsGroupFull] = pydantic.Field(
         None, description="",
     )
 
@@ -3209,10 +3209,10 @@ class StoriesGetByIdExtendedResponseModel(pydantic.BaseModel):
     items: typing.List[StoriesStory] = pydantic.Field(
         None, description="",
     )
-    profiles: UsersUserFull = pydantic.Field(
+    profiles: typing.List[UsersUserFull] = pydantic.Field(
         None, description="",
     )
-    groups: GroupsGroupFull = pydantic.Field(
+    groups: typing.List[GroupsGroupFull] = pydantic.Field(
         None, description="",
     )
 
@@ -3260,10 +3260,10 @@ class StoriesGetRepliesExtendedResponseModel(pydantic.BaseModel):
     items: typing.List[typing.List[typing.List[StoriesStory]]] = pydantic.Field(
         None, description="",
     )
-    profiles: UsersUserFull = pydantic.Field(
+    profiles: typing.List[UsersUserFull] = pydantic.Field(
         None, description="",
     )
-    groups: GroupsGroupFull = pydantic.Field(
+    groups: typing.List[GroupsGroupFull] = pydantic.Field(
         None, description="",
     )
 
@@ -3347,10 +3347,10 @@ class StoriesGetExtendedResponseModel(pydantic.BaseModel):
     items: typing.List[typing.List[StoriesStory]] = pydantic.Field(
         None, description="",
     )
-    profiles: UsersUser = pydantic.Field(
+    profiles: typing.List[UsersUser] = pydantic.Field(
         None, description="",
     )
-    groups: GroupsGroup = pydantic.Field(
+    groups: typing.List[GroupsGroup] = pydantic.Field(
         None, description="",
     )
 
@@ -3369,6 +3369,22 @@ class StoriesGetResponseModel(pydantic.BaseModel):
         None, description="",
     )
     promo_data: typing.Optional[StoriesPromoBlock] = pydantic.Field(
+        None, description="",
+    )
+
+
+class StoriesSearchResponseModel(pydantic.BaseModel):
+    count: int = pydantic.Field(
+        None, description="Stories count",
+    )
+    items: typing.List[StoriesStory] = pydantic.Field(
+        None, description="",
+    )
+
+    profiles: typing.List[UsersUser] = pydantic.Field(
+        None, description="",
+    )
+    groups: typing.List[GroupsGroup] = pydantic.Field(
         None, description="",
     )
 
@@ -3626,10 +3642,10 @@ class VideoGetCommentsExtendedResponseModel(pydantic.BaseModel):
     items: typing.List[WallWallComment] = pydantic.Field(
         None, description="",
     )
-    profiles: UsersUserMin = pydantic.Field(
+    profiles: typing.List[UsersUserMin] = pydantic.Field(
         None, description="",
     )
-    groups: GroupsGroupFull = pydantic.Field(
+    groups: typing.List[GroupsGroupFull] = pydantic.Field(
         None, description="",
     )
 
@@ -3662,10 +3678,10 @@ class VideoGetExtendedResponseModel(pydantic.BaseModel):
     items: typing.List[VideoVideoFull] = pydantic.Field(
         None, description="",
     )
-    profiles: UsersUserMin = pydantic.Field(
+    profiles: typing.List[UsersUserMin] = pydantic.Field(
         None, description="",
     )
-    groups: GroupsGroupFull = pydantic.Field(
+    groups: typing.List[GroupsGroupFull] = pydantic.Field(
         None, description="",
     )
 
@@ -3711,10 +3727,10 @@ class VideoSearchExtendedResponseModel(pydantic.BaseModel):
     items: typing.List[VideoVideo] = pydantic.Field(
         None, description="",
     )
-    profiles: UsersUserMin = pydantic.Field(
+    profiles: typing.List[UsersUserMin] = pydantic.Field(
         None, description="",
     )
-    groups: GroupsGroupFull = pydantic.Field(
+    groups: typing.List[ GroupsGroupFull] = pydantic.Field(
         None, description="",
     )
 
@@ -3768,10 +3784,10 @@ class WallGetByIdExtendedResponseModel(pydantic.BaseModel):
     items: typing.List[WallWallpostFull] = pydantic.Field(
         None, description="",
     )
-    profiles: UsersUserFull = pydantic.Field(
+    profiles: typing.List[UsersUserFull] = pydantic.Field(
         None, description="",
     )
-    groups: GroupsGroupFull = pydantic.Field(
+    groups: typing.List[GroupsGroupFull] = pydantic.Field(
         None, description="",
     )
 
@@ -3807,10 +3823,10 @@ class WallGetCommentsExtendedResponseModel(pydantic.BaseModel):
     current_level_count: typing.Optional[int] = pydantic.Field(
         None, description="Count of replies of current level",
     )
-    profiles: UsersUser = pydantic.Field(
+    profiles: typing.List[UsersUser] = pydantic.Field(
         None, description="",
     )
-    groups: GroupsGroup = pydantic.Field(
+    groups: typing.List[GroupsGroup] = pydantic.Field(
         None, description="",
     )
 
@@ -3849,10 +3865,10 @@ class WallGetRepostsResponseModel(pydantic.BaseModel):
     items: typing.List[WallWallpostFull] = pydantic.Field(
         None, description="",
     )
-    profiles: UsersUser = pydantic.Field(
+    profiles: typing.List[UsersUser] = pydantic.Field(
         None, description="",
     )
-    groups: GroupsGroup = pydantic.Field(
+    groups: typing.List[GroupsGroup] = pydantic.Field(
         None, description="",
     )
 
@@ -3870,10 +3886,10 @@ class WallGetExtendedResponseModel(pydantic.BaseModel):
     items: typing.List[WallWallpostFull] = pydantic.Field(
         None, description="",
     )
-    profiles: UsersUserFull = pydantic.Field(
+    profiles: typing.List[UsersUserFull] = pydantic.Field(
         None, description="",
     )
-    groups: GroupsGroupFull = pydantic.Field(
+    groups: typing.List[GroupsGroupFull] = pydantic.Field(
         None, description="",
     )
 
@@ -3951,10 +3967,10 @@ class WallSearchExtendedResponseModel(pydantic.BaseModel):
     items: typing.List[WallWallpostFull] = pydantic.Field(
         None, description="",
     )
-    profiles: UsersUserFull = pydantic.Field(
+    profiles: typing.List[UsersUserFull] = pydantic.Field(
         None, description="",
     )
-    groups: GroupsGroupFull = pydantic.Field(
+    groups: typing.List[GroupsGroupFull] = pydantic.Field(
         None, description="",
     )
 

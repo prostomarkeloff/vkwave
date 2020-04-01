@@ -3351,9 +3351,6 @@ class AppsAppMin(pydantic.BaseModel):
     title: str = pydantic.Field(
         None, description="Application title",
     )
-    author_id: typing.Optional[int] = pydantic.Field(
-        None, description="Application author's ID",
-    )
     icon_139: typing.Optional[str] = pydantic.Field(
         None, description="URL of the app icon with 139 px in width",
     )
@@ -7525,8 +7522,8 @@ class AdsTargSettings(AdsCriteria):
 
 
 class AppsApp(AppsAppMin):
-    author_group: typing.Optional[int] = pydantic.Field(
-        None, description="Official community's ID",
+    author_owner_id: typing.Optional[int] = pydantic.Field(
+        None, description="Application author's URL",
     )
     author_url: typing.Optional[str] = pydantic.Field(
         None, description="Application author's URL",

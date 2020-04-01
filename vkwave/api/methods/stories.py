@@ -295,3 +295,29 @@ class Stories(Category):
         raw_result = await self.api_request("unbanOwner", params)
         result = OkResponse(**raw_result)
         return result
+
+    async def search(
+        self,
+        q: str,
+        place_id: typing.Optional[int],
+        latitude: typing.Optional[int],
+        longitude: typing.Optional[int],
+        radius: typing.Optional[int],
+        mentioned_id: typing.Optional[int],
+        count: typing.Optional[int],
+        extended: typing.Optional[typing.Literal[0, 1]],
+        fields: typing.Optional[typing.List[BaseUserGroupFields]],
+    ) -> StoriesSearchResponseModel:
+
+        params = {}
+        for key, value in locals().items():
+            if key not in ["self", "params"] and value is not None:
+                if isinstance(value, list):
+                    value = ",".join(str(item) for item in value)
+                params[key] = value
+
+        raw_result = await self.api_request("search", params)
+
+        # TODO: check model
+        result = StoriesSearchResponseModel(**raw_result)
+        return result
