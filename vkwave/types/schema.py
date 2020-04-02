@@ -1,7 +1,7 @@
 import typing
-from enum import Enum
 
 import pydantic
+from enum import Enum
 
 
 class ParameterTypesEnum(str, Enum):
@@ -41,7 +41,7 @@ class Errors(pydantic.BaseModel):
 
 class JsonReference(pydantic.BaseModel):
     ref: str = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -80,13 +80,13 @@ class ItemTypes(pydantic.BaseModel):
 
 class Parameter(pydantic.BaseModel):
     name: str = pydantic.Field(
-        None, description="Parameter name",
+        ..., description="Parameter name",
     )
     format: typing.Optional[str] = pydantic.Field(
         None, description="",
     )
     type: "ParameterTypes" = pydantic.Field(
-        None, description="Parameter type",
+        ..., description="Parameter type",
     )
     items: typing.Optional[dict] = pydantic.Field(
         None, description="",
@@ -176,13 +176,13 @@ class Response(pydantic.BaseModel):
 
 class Error(pydantic.BaseModel):
     name: str = pydantic.Field(
-        None, description="Error name",
+        ..., description="Error name",
     )
     code: int = pydantic.Field(
-        None, description="Error code",
+        ..., description="Error code",
     )
     description: str = pydantic.Field(
-        None, description="Error description",
+        ..., description="Error description",
     )
     deprecated_from_version: typing.Optional[str] = pydantic.Field(
         None, description="",
@@ -194,7 +194,7 @@ class Error(pydantic.BaseModel):
 
 class Method(pydantic.BaseModel):
     name: str = pydantic.Field(
-        None, description="Method name",
+        ..., description="Method name",
     )
     description: typing.Optional[str] = pydantic.Field(
         None, description="Method description",
@@ -206,13 +206,13 @@ class Method(pydantic.BaseModel):
         None, description="",
     )
     access_token_type: typing.List[str] = pydantic.Field(
-        None, description="Input parameters for method",
+        ..., description="Input parameters for method",
     )
     parameters: typing.Optional[typing.List["Parameter"]] = pydantic.Field(
         None, description="Input parameters for method",
     )
     responses: dict = pydantic.Field(
-        None, description="References to response objects",
+        ..., description="References to response objects",
     )
     emptyResponse: typing.Optional[bool] = pydantic.Field(
         None, description="",

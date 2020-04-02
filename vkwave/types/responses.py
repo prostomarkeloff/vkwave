@@ -3,7 +3,7 @@ from .objects import *
 
 class AccountChangePasswordResponseModel(pydantic.BaseModel):
     token: str = pydantic.Field(
-        None, description="New token",
+        ..., description="New token",
     )
     secret: typing.Optional[str] = pydantic.Field(
         None, description="New secret",
@@ -12,37 +12,37 @@ class AccountChangePasswordResponseModel(pydantic.BaseModel):
 
 class AccountChangePasswordResponse(pydantic.BaseModel):
     response: "AccountChangePasswordResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class AccountGetActiveOffersResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total number",
+        ..., description="Total number",
     )
     items: typing.List[AccountOffer] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class AccountGetActiveOffersResponse(pydantic.BaseModel):
     response: "AccountGetActiveOffersResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class AccountGetAppPermissionsResponse(pydantic.BaseModel):
     response: int = pydantic.Field(
-        None, description="Permissions mask",
+        ..., description="Permissions mask",
     )
 
 
 class AccountGetBannedResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total number",
+        ..., description="Total number",
     )
     items: typing.List[int] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
     profiles: typing.Optional[typing.List[UsersUserMin]] = pydantic.Field(
         None, description="",
@@ -54,31 +54,31 @@ class AccountGetBannedResponseModel(pydantic.BaseModel):
 
 class AccountGetBannedResponse(pydantic.BaseModel):
     response: "AccountGetBannedResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class AccountGetCountersResponse(pydantic.BaseModel):
     response: "AccountAccountCounters" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class AccountGetInfoResponse(pydantic.BaseModel):
     response: "AccountInfo" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class AccountGetProfileInfoResponse(pydantic.BaseModel):
     response: "AccountUserSettings" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class AccountGetPushSettingsResponse(pydantic.BaseModel):
     response: "AccountPushSettings" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -93,37 +93,37 @@ class AccountSaveProfileInfoResponseModel(pydantic.BaseModel):
 
 class AccountSaveProfileInfoResponse(pydantic.BaseModel):
     response: "AccountSaveProfileInfoResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class AdsAddOfficeUsersResponse(pydantic.BaseModel):
     response: bool = pydantic.Field(
-        None, description="true if success",
+        ..., description="true if success",
     )
 
 
 class AdsCheckLinkResponse(pydantic.BaseModel):
     response: "AdsLinkStatus" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class AdsCreateAdsResponse(pydantic.BaseModel):
     response: typing.List[int] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class AdsCreateCampaignsResponse(pydantic.BaseModel):
     response: typing.List[int] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class AdsCreateClientsResponse(pydantic.BaseModel):
     response: typing.List[int] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -138,61 +138,61 @@ class AdsCreateTargetGroupResponseModel(pydantic.BaseModel):
 
 class AdsCreateTargetGroupResponse(pydantic.BaseModel):
     response: "AdsCreateTargetGroupResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class AdsDeleteAdsResponse(pydantic.BaseModel):
     response: typing.List[int] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class AdsDeleteCampaignsResponse(pydantic.BaseModel):
     response: int = pydantic.Field(
-        None, description="0 if success",
+        ..., description="0 if success",
     )
 
 
 class AdsDeleteClientsResponse(pydantic.BaseModel):
     response: int = pydantic.Field(
-        None, description="0 if sucess",
+        ..., description="0 if sucess",
     )
 
 
 class AdsGetAccountsResponse(pydantic.BaseModel):
     response: typing.List["AdsAccount"] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class AdsGetAdsLayoutResponse(pydantic.BaseModel):
     response: typing.List["AdsAdLayout"] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class AdsGetAdsTargetingResponse(pydantic.BaseModel):
     response: typing.List["AdsTargSettings"] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class AdsGetAdsResponse(pydantic.BaseModel):
     response: typing.List["AdsAd"] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class AdsGetBudgetResponse(pydantic.BaseModel):
     response: int = pydantic.Field(
-        None, description="Budget",
+        ..., description="Budget",
     )
 
 
 class AdsGetCampaignsResponse(pydantic.BaseModel):
     response: typing.List["AdsCampaign"] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -207,127 +207,127 @@ class AdsGetCategoriesResponseModel(pydantic.BaseModel):
 
 class AdsGetCategoriesResponse(pydantic.BaseModel):
     response: "AdsGetCategoriesResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class AdsGetClientsResponse(pydantic.BaseModel):
     response: typing.List["AdsClient"] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class AdsGetDemographicsResponse(pydantic.BaseModel):
     response: typing.List["AdsDemoStats"] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class AdsGetFloodStatsResponse(pydantic.BaseModel):
     response: "AdsFloodStats" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class AdsGetOfficeUsersResponse(pydantic.BaseModel):
     response: typing.List["AdsUsers"] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class AdsGetPostsReachResponse(pydantic.BaseModel):
     response: typing.List["AdsPromotedPostReach"] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class AdsGetRejectionReasonResponse(pydantic.BaseModel):
     response: "AdsRejectReason" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class AdsGetStatisticsResponse(pydantic.BaseModel):
     response: typing.List["AdsStats"] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class AdsGetSuggestionsCitiesResponse(pydantic.BaseModel):
     response: typing.List["AdsTargSuggestionsCities"] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class AdsGetSuggestionsRegionsResponse(pydantic.BaseModel):
     response: typing.List["AdsTargSuggestionsRegions"] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class AdsGetSuggestionsResponse(pydantic.BaseModel):
     response: typing.List["AdsTargSuggestions"] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class AdsGetSuggestionsSchoolsResponse(pydantic.BaseModel):
     response: typing.List["AdsTargSuggestionsSchools"] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class AdsGetTargetGroupsResponse(pydantic.BaseModel):
     response: typing.List["AdsTargetGroup"] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class AdsGetTargetingStatsResponse(pydantic.BaseModel):
     response: "AdsTargStats" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class AdsGetUploadURLResponse(pydantic.BaseModel):
     response: str = pydantic.Field(
-        None, description="Photo upload URL",
+        ..., description="Photo upload URL",
     )
 
 
 class AdsGetVideoUploadURLResponse(pydantic.BaseModel):
     response: str = pydantic.Field(
-        None, description="Video upload URL",
+        ..., description="Video upload URL",
     )
 
 
 class AdsImportTargetContactsResponse(pydantic.BaseModel):
     response: int = pydantic.Field(
-        None, description="Imported contacts number",
+        ..., description="Imported contacts number",
     )
 
 
 class AdsRemoveOfficeUsersResponse(pydantic.BaseModel):
     response: bool = pydantic.Field(
-        None, description="true if success",
+        ..., description="true if success",
     )
 
 
 class AdsUpdateAdsResponse(pydantic.BaseModel):
     response: typing.List[int] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class AdsUpdateCampaignsResponse(pydantic.BaseModel):
     response: int = pydantic.Field(
-        None, description="Campaign ID",
+        ..., description="Campaign ID",
     )
 
 
 class AdsUpdateClientsResponse(pydantic.BaseModel):
     response: int = pydantic.Field(
-        None, description="Client ID",
+        ..., description="Client ID",
     )
 
 
@@ -342,7 +342,7 @@ class AppsGetCatalogResponseModel(pydantic.BaseModel):
 
 class AppsGetCatalogResponse(pydantic.BaseModel):
     response: "AppsGetCatalogResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -357,7 +357,7 @@ class AppsGetFriendsListResponseModel(pydantic.BaseModel):
 
 class AppsGetFriendsListResponse(pydantic.BaseModel):
     response: "AppsGetFriendsListResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -375,7 +375,7 @@ class AppsGetLeaderboardExtendedResponseModel(pydantic.BaseModel):
 
 class AppsGetLeaderboardExtendedResponse(pydantic.BaseModel):
     response: "AppsGetLeaderboardExtendedResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -390,28 +390,28 @@ class AppsGetLeaderboardResponseModel(pydantic.BaseModel):
 
 class AppsGetLeaderboardResponse(pydantic.BaseModel):
     response: "AppsGetLeaderboardResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class AppsGetScopesResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total number",
+        ..., description="Total number",
     )
     items: typing.List[AppsScope] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class AppsGetScopesResponse(pydantic.BaseModel):
     response: "AppsGetScopesResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class AppsGetScoreResponse(pydantic.BaseModel):
     response: int = pydantic.Field(
-        None, description="Score number",
+        ..., description="Score number",
     )
 
 
@@ -426,13 +426,13 @@ class AppsGetResponseModel(pydantic.BaseModel):
 
 class AppsGetResponse(pydantic.BaseModel):
     response: "AppsGetResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class AppsSendRequestResponse(pydantic.BaseModel):
     response: int = pydantic.Field(
-        None, description="Request ID",
+        ..., description="Request ID",
     )
 
 
@@ -447,64 +447,64 @@ class AuthRestoreResponseModel(pydantic.BaseModel):
 
 class AuthRestoreResponse(pydantic.BaseModel):
     response: "AuthRestoreResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class BaseBoolResponse(pydantic.BaseModel):
     response: "BaseBoolInt" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class BaseGetUploadServerResponse(pydantic.BaseModel):
     response: "BaseUploadServer" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class BoardAddTopicResponse(pydantic.BaseModel):
     response: int = pydantic.Field(
-        None, description="Topic ID",
+        ..., description="Topic ID",
     )
 
 
 class BoardCreateCommentResponse(pydantic.BaseModel):
     response: int = pydantic.Field(
-        None, description="Comment ID",
+        ..., description="Comment ID",
     )
 
 
 class BoardGetCommentsExtendedResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total number",
+        ..., description="Total number",
     )
     items: typing.List[BoardTopicComment] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
     poll: typing.Optional[BoardTopicPoll] = pydantic.Field(
         None, description="",
     )
     profiles: typing.List[UsersUser] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
     groups: typing.List[GroupsGroup] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class BoardGetCommentsExtendedResponse(pydantic.BaseModel):
     response: "BoardGetCommentsExtendedResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class BoardGetCommentsResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total number",
+        ..., description="Total number",
     )
     items: typing.List[BoardTopicComment] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
     poll: typing.Optional[BoardTopicPoll] = pydantic.Field(
         None, description="",
@@ -513,52 +513,52 @@ class BoardGetCommentsResponseModel(pydantic.BaseModel):
 
 class BoardGetCommentsResponse(pydantic.BaseModel):
     response: "BoardGetCommentsResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class BoardGetTopicsExtendedResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total number",
+        ..., description="Total number",
     )
     items: typing.List[BoardTopic] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
     default_order: BoardDefaultOrder = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
     can_add_topics: BaseBoolInt = pydantic.Field(
-        None, description="Information whether current user can add topic",
+        ..., description="Information whether current user can add topic",
     )
     profiles: typing.List[UsersUserMin] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class BoardGetTopicsExtendedResponse(pydantic.BaseModel):
     response: "BoardGetTopicsExtendedResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class BoardGetTopicsResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total number",
+        ..., description="Total number",
     )
     items: typing.List[BoardTopic] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
     default_order: BoardDefaultOrder = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
     can_add_topics: BaseBoolInt = pydantic.Field(
-        None, description="Information whether current user can add topic",
+        ..., description="Information whether current user can add topic",
     )
 
 
 class BoardGetTopicsResponse(pydantic.BaseModel):
     response: "BoardGetTopicsResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -573,13 +573,13 @@ class DatabaseGetChairsResponseModel(pydantic.BaseModel):
 
 class DatabaseGetChairsResponse(pydantic.BaseModel):
     response: "DatabaseGetChairsResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class DatabaseGetCitiesByIdResponse(pydantic.BaseModel):
     response: typing.List["BaseObject"] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -594,13 +594,13 @@ class DatabaseGetCitiesResponseModel(pydantic.BaseModel):
 
 class DatabaseGetCitiesResponse(pydantic.BaseModel):
     response: "DatabaseGetCitiesResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class DatabaseGetCountriesByIdResponse(pydantic.BaseModel):
     response: typing.List["BaseCountry"] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -615,7 +615,7 @@ class DatabaseGetCountriesResponseModel(pydantic.BaseModel):
 
 class DatabaseGetCountriesResponse(pydantic.BaseModel):
     response: "DatabaseGetCountriesResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -630,13 +630,13 @@ class DatabaseGetFacultiesResponseModel(pydantic.BaseModel):
 
 class DatabaseGetFacultiesResponse(pydantic.BaseModel):
     response: "DatabaseGetFacultiesResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class DatabaseGetMetroStationsByIdResponse(pydantic.BaseModel):
     response: typing.List["DatabaseStation"] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -651,7 +651,7 @@ class DatabaseGetMetroStationsResponseModel(pydantic.BaseModel):
 
 class DatabaseGetMetroStationsResponse(pydantic.BaseModel):
     response: "DatabaseGetMetroStationsResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -666,13 +666,13 @@ class DatabaseGetRegionsResponseModel(pydantic.BaseModel):
 
 class DatabaseGetRegionsResponse(pydantic.BaseModel):
     response: "DatabaseGetRegionsResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class DatabaseGetSchoolClassesResponse(pydantic.BaseModel):
     response: typing.List[typing.List[typing.Union[str, int]]] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -687,7 +687,7 @@ class DatabaseGetSchoolsResponseModel(pydantic.BaseModel):
 
 class DatabaseGetSchoolsResponse(pydantic.BaseModel):
     response: "DatabaseGetSchoolsResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -702,7 +702,7 @@ class DatabaseGetUniversitiesResponseModel(pydantic.BaseModel):
 
 class DatabaseGetUniversitiesResponse(pydantic.BaseModel):
     response: "DatabaseGetUniversitiesResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -714,13 +714,13 @@ class DocsAddResponseModel(pydantic.BaseModel):
 
 class DocsAddResponse(pydantic.BaseModel):
     response: "DocsAddResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class DocsGetByIdResponse(pydantic.BaseModel):
     response: typing.List["DocsDoc"] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -735,28 +735,28 @@ class DocsGetTypesResponseModel(pydantic.BaseModel):
 
 class DocsGetTypesResponse(pydantic.BaseModel):
     response: "DocsGetTypesResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class DocsGetUploadServer(pydantic.BaseModel):
     response: "BaseUploadServer" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class DocsGetResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total number",
+        ..., description="Total number",
     )
     items: typing.List[DocsDoc] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class DocsGetResponse(pydantic.BaseModel):
     response: "DocsGetResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -777,28 +777,28 @@ class DocsSaveResponseModel(pydantic.BaseModel):
 
 class DocsSaveResponse(pydantic.BaseModel):
     response: "DocsSaveResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class DocsSearchResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total number",
+        ..., description="Total number",
     )
     items: typing.List[DocsDoc] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class DocsSearchResponse(pydantic.BaseModel):
     response: "DocsSearchResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class FaveAddTagResponse(pydantic.BaseModel):
     response: "FaveTag" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -813,7 +813,7 @@ class FaveGetPagesResponseModel(pydantic.BaseModel):
 
 class FaveGetPagesResponse(pydantic.BaseModel):
     response: "FaveGetPagesResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -828,7 +828,7 @@ class FaveGetTagsResponseModel(pydantic.BaseModel):
 
 class FaveGetTagsResponse(pydantic.BaseModel):
     response: "FaveGetTagsResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -849,7 +849,7 @@ class FaveGetExtendedResponseModel(pydantic.BaseModel):
 
 class FaveGetExtendedResponse(pydantic.BaseModel):
     response: "FaveGetExtendedResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -864,37 +864,37 @@ class FaveGetResponseModel(pydantic.BaseModel):
 
 class FaveGetResponse(pydantic.BaseModel):
     response: "FaveGetResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class FriendsAddListResponseModel(pydantic.BaseModel):
     list_id: int = pydantic.Field(
-        None, description="List ID",
+        ..., description="List ID",
     )
 
 
 class FriendsAddListResponse(pydantic.BaseModel):
     response: "FriendsAddListResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class FriendsAddResponse(pydantic.BaseModel):
     response: int = pydantic.Field(
-        None, description="Friend request status",
+        ..., description="Friend request status",
     )
 
 
 class FriendsAreFriendsResponse(pydantic.BaseModel):
     response: typing.List["FriendsFriendStatus"] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class FriendsDeleteResponseModel(pydantic.BaseModel):
     success: BaseOkResponse = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
     friend_deleted: typing.Optional[int] = pydantic.Field(
         None, description="Returns 1 if friend has been deleted",
@@ -912,46 +912,46 @@ class FriendsDeleteResponseModel(pydantic.BaseModel):
 
 class FriendsDeleteResponse(pydantic.BaseModel):
     response: "FriendsDeleteResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class FriendsGetAppUsersResponse(pydantic.BaseModel):
     response: typing.List[int] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class FriendsGetByPhonesResponse(pydantic.BaseModel):
     response: typing.List["FriendsUserXtrPhone"] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class FriendsGetListsResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total communities number",
+        ..., description="Total communities number",
     )
     items: typing.List[FriendsFriendsList] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class FriendsGetListsResponse(pydantic.BaseModel):
     response: "FriendsGetListsResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class FriendsGetMutualResponse(pydantic.BaseModel):
     response: typing.List[int] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class FriendsGetMutualTargetUidsResponse(pydantic.BaseModel):
     response: typing.List["FriendsMutualFriend"] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -966,19 +966,19 @@ class FriendsGetOnlineOnlineMobileResponseModel(pydantic.BaseModel):
 
 class FriendsGetOnlineOnlineMobileResponse(pydantic.BaseModel):
     response: "FriendsGetOnlineOnlineMobileResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class FriendsGetOnlineResponse(pydantic.BaseModel):
     response: typing.List[int] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class FriendsGetRecentResponse(pydantic.BaseModel):
     response: typing.List[int] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -993,7 +993,7 @@ class FriendsGetRequestsExtendedResponseModel(pydantic.BaseModel):
 
 class FriendsGetRequestsExtendedResponse(pydantic.BaseModel):
     response: "FriendsGetRequestsExtendedResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -1008,7 +1008,7 @@ class FriendsGetRequestsNeedMutualResponseModel(pydantic.BaseModel):
 
 class FriendsGetRequestsNeedMutualResponse(pydantic.BaseModel):
     response: "FriendsGetRequestsNeedMutualResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -1026,67 +1026,67 @@ class FriendsGetRequestsResponseModel(pydantic.BaseModel):
 
 class FriendsGetRequestsResponse(pydantic.BaseModel):
     response: "FriendsGetRequestsResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class FriendsGetSuggestionsResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total results number",
+        ..., description="Total results number",
     )
     items: typing.List[UsersUserFull] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class FriendsGetSuggestionsResponse(pydantic.BaseModel):
     response: "FriendsGetSuggestionsResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class FriendsGetFieldsResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total friends number",
+        ..., description="Total friends number",
     )
     items: typing.List[FriendsUserXtrLists] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class FriendsGetFieldsResponse(pydantic.BaseModel):
     response: "FriendsGetFieldsResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class FriendsGetResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total friends number",
+        ..., description="Total friends number",
     )
     items: typing.List[int] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class FriendsGetResponse(pydantic.BaseModel):
     response: "FriendsGetResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class FriendsSearchResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total number",
+        ..., description="Total number",
     )
     items: typing.List[UsersUserFull] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class FriendsSearchResponse(pydantic.BaseModel):
     response: "FriendsSearchResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -1101,7 +1101,7 @@ class GiftsGetResponseModel(pydantic.BaseModel):
 
 class GiftsGetResponse(pydantic.BaseModel):
     response: "GiftsGetResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -1113,67 +1113,67 @@ class GroupsAddCallbackServerResponseModel(pydantic.BaseModel):
 
 class GroupsAddCallbackServerResponse(pydantic.BaseModel):
     response: "GroupsAddCallbackServerResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class GroupsAddLinkResponse(pydantic.BaseModel):
     response: "GroupsGroupLink" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class GroupsAddAddressResponse(pydantic.BaseModel):
     response: "GroupsAddress" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class GroupsCreateResponse(pydantic.BaseModel):
     response: "GroupsGroup" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class GroupsEditAddressResponse(pydantic.BaseModel):
     response: "GroupsAddress" = pydantic.Field(
-        None, description="Result",
+        ..., description="Result",
     )
 
 
 class GroupsGetAddressesResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total count of addresses",
+        ..., description="Total count of addresses",
     )
     items: typing.List[GroupsAddress] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class GroupsGetAddressesResponse(pydantic.BaseModel):
     response: "GroupsGetAddressesResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class GroupsGetBannedResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total users number",
+        ..., description="Total users number",
     )
     items: typing.List[GroupsBannedItem] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class GroupsGetBannedResponse(pydantic.BaseModel):
     response: "GroupsGetBannedResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class GroupsGetByIdResponse(pydantic.BaseModel):
     response: typing.List["GroupsGroupFull"] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -1185,34 +1185,34 @@ class GroupsGetCallbackConfirmationCodeResponseModel(pydantic.BaseModel):
 
 class GroupsGetCallbackConfirmationCodeResponse(pydantic.BaseModel):
     response: "GroupsGetCallbackConfirmationCodeResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class GroupsGetCallbackServersResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
     items: typing.List[GroupsCallbackServer] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class GroupsGetCallbackServersResponse(pydantic.BaseModel):
     response: "GroupsGetCallbackServersResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class GroupsGetCallbackSettingsResponse(pydantic.BaseModel):
     response: "GroupsCallbackSettings" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class GroupsGetCatalogInfoExtendedResponseModel(pydantic.BaseModel):
     enabled: int = pydantic.Field(
-        None, description="Information whether catalog is enabled for current user",
+        ..., description="Information whether catalog is enabled for current user",
     )
     categories: typing.Optional[GroupsGroupCategoryFull] = pydantic.Field(
         None, description="",
@@ -1221,13 +1221,13 @@ class GroupsGetCatalogInfoExtendedResponseModel(pydantic.BaseModel):
 
 class GroupsGetCatalogInfoExtendedResponse(pydantic.BaseModel):
     response: "GroupsGetCatalogInfoExtendedResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class GroupsGetCatalogInfoResponseModel(pydantic.BaseModel):
     enabled: int = pydantic.Field(
-        None, description="Information whether catalog is enabled for current user",
+        ..., description="Information whether catalog is enabled for current user",
     )
     categories: typing.Optional[GroupsGroupCategory] = pydantic.Field(
         None, description="",
@@ -1236,217 +1236,217 @@ class GroupsGetCatalogInfoResponseModel(pydantic.BaseModel):
 
 class GroupsGetCatalogInfoResponse(pydantic.BaseModel):
     response: "GroupsGetCatalogInfoResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class GroupsGetCatalogResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total communities number",
+        ..., description="Total communities number",
     )
     items: typing.List[GroupsGroup] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class GroupsGetCatalogResponse(pydantic.BaseModel):
     response: "GroupsGetCatalogResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class GroupsGetInvitedUsersResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total communities number",
+        ..., description="Total communities number",
     )
     items: typing.List[UsersUserFull] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class GroupsGetInvitedUsersResponse(pydantic.BaseModel):
     response: "GroupsGetInvitedUsersResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class GroupsGetInvitesExtendedResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total communities number",
+        ..., description="Total communities number",
     )
     items: typing.List[GroupsGroupXtrInvitedBy] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
     profiles: typing.List[UsersUserMin] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
     groups: typing.List[GroupsGroupFull] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class GroupsGetInvitesExtendedResponse(pydantic.BaseModel):
     response: "GroupsGetInvitesExtendedResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class GroupsGetInvitesResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total communities number",
+        ..., description="Total communities number",
     )
     items: typing.List[GroupsGroupXtrInvitedBy] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class GroupsGetInvitesResponse(pydantic.BaseModel):
     response: "GroupsGetInvitesResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class GroupsGetLongPollServerResponse(pydantic.BaseModel):
     response: "GroupsLongPollServer" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class GroupsGetLongPollSettingsResponse(pydantic.BaseModel):
     response: "GroupsLongPollSettings" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class GroupsGetMembersFieldsResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total members number",
+        ..., description="Total members number",
     )
     items: typing.List[GroupsUserXtrRole] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class GroupsGetMembersFieldsResponse(pydantic.BaseModel):
     response: "GroupsGetMembersFieldsResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class GroupsGetMembersFilterResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total members number",
+        ..., description="Total members number",
     )
     items: typing.List[GroupsMemberRole] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class GroupsGetMembersFilterResponse(pydantic.BaseModel):
     response: "GroupsGetMembersFilterResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class GroupsGetMembersResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total members number",
+        ..., description="Total members number",
     )
     items: typing.List[int] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class GroupsGetMembersResponse(pydantic.BaseModel):
     response: "GroupsGetMembersResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class GroupsGetRequestsFieldsResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total communities number",
+        ..., description="Total communities number",
     )
     items: typing.List[UsersUserFull] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class GroupsGetRequestsFieldsResponse(pydantic.BaseModel):
     response: "GroupsGetRequestsFieldsResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class GroupsGetRequestsResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total communities number",
+        ..., description="Total communities number",
     )
     items: typing.List[int] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class GroupsGetRequestsResponse(pydantic.BaseModel):
     response: "GroupsGetRequestsResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class GroupsGetSettingsResponse(pydantic.BaseModel):
     response: "GroupsGroupSettings" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class GroupsGetTokenPermissionsResponseModel(pydantic.BaseModel):
     mask: int = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
     permissions: GroupsTokenPermissionSetting = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class GroupsGetTokenPermissionsResponse(pydantic.BaseModel):
     response: "GroupsGetTokenPermissionsResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class GroupsGetExtendedResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total communities number",
+        ..., description="Total communities number",
     )
     items: typing.List[GroupsGroupFull] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class GroupsGetExtendedResponse(pydantic.BaseModel):
     response: "GroupsGetExtendedResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class GroupsGetResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total communities number",
+        ..., description="Total communities number",
     )
     items: typing.List[int] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class GroupsGetResponse(pydantic.BaseModel):
     response: "GroupsGetResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class GroupsIsMemberExtendedResponseModel(pydantic.BaseModel):
     member: BaseBoolInt = pydantic.Field(
-        None, description="Information whether user is a member of the group",
+        ..., description="Information whether user is a member of the group",
     )
     invitation: typing.Optional[BaseBoolInt] = pydantic.Field(
         None, description="Information whether user has been invited to the group",
@@ -1455,7 +1455,8 @@ class GroupsIsMemberExtendedResponseModel(pydantic.BaseModel):
         None, description="Information whether user can be invited",
     )
     can_recall: typing.Optional[BaseBoolInt] = pydantic.Field(
-        None, description="Information whether user's invite to the group can be recalled",
+        None,
+        description="Information whether user's invite to the group can be recalled",
     )
     request: typing.Optional[BaseBoolInt] = pydantic.Field(
         None, description="Information whether user has sent request to the group",
@@ -1464,64 +1465,64 @@ class GroupsIsMemberExtendedResponseModel(pydantic.BaseModel):
 
 class GroupsIsMemberExtendedResponse(pydantic.BaseModel):
     response: "GroupsIsMemberExtendedResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class GroupsIsMemberResponse(pydantic.BaseModel):
     response: "BaseBoolInt" = pydantic.Field(
-        None, description="Information whether user is a member of the group",
+        ..., description="Information whether user is a member of the group",
     )
 
 
 class GroupsIsMemberUserIdsExtendedResponse(pydantic.BaseModel):
     response: typing.List["GroupsMemberStatusFull"] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class GroupsIsMemberUserIdsResponse(pydantic.BaseModel):
     response: typing.List["GroupsMemberStatus"] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class GroupsSearchResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total communities number",
+        ..., description="Total communities number",
     )
     items: typing.List[GroupsGroup] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class GroupsSearchResponse(pydantic.BaseModel):
     response: "GroupsSearchResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class LeadsCheckUserResponse(pydantic.BaseModel):
     response: "LeadsChecked" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class LeadsCompleteResponse(pydantic.BaseModel):
     response: "LeadsComplete" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class LeadsGetStatsResponse(pydantic.BaseModel):
     response: "LeadsLead" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class LeadsGetUsersResponse(pydantic.BaseModel):
     response: typing.List["LeadsEntry"] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -1536,82 +1537,82 @@ class LeadsMetricHitResponseModel(pydantic.BaseModel):
 
 class LeadsMetricHitResponse(pydantic.BaseModel):
     response: "LeadsMetricHitResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class LeadsStartResponse(pydantic.BaseModel):
     response: "LeadsStart" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class LikesAddResponseModel(pydantic.BaseModel):
     likes: int = pydantic.Field(
-        None, description="Total likes number",
+        ..., description="Total likes number",
     )
 
 
 class LikesAddResponse(pydantic.BaseModel):
     response: "LikesAddResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class LikesDeleteResponseModel(pydantic.BaseModel):
     likes: int = pydantic.Field(
-        None, description="Total likes number",
+        ..., description="Total likes number",
     )
 
 
 class LikesDeleteResponse(pydantic.BaseModel):
     response: "LikesDeleteResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class LikesGetListExtendedResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total number",
+        ..., description="Total number",
     )
     items: typing.List[UsersUserMin] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class LikesGetListExtendedResponse(pydantic.BaseModel):
     response: "LikesGetListExtendedResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class LikesGetListResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total number",
+        ..., description="Total number",
     )
     items: typing.List[int] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class LikesGetListResponse(pydantic.BaseModel):
     response: "LikesGetListResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class LikesIsLikedResponseModel(pydantic.BaseModel):
     liked: BaseBoolInt = pydantic.Field(
-        None, description="Information whether user liked the object",
+        ..., description="Information whether user liked the object",
     )
     copied: BaseBoolInt = pydantic.Field(
-        None, description="Information whether user reposted the object",
+        ..., description="Information whether user reposted the object",
     )
 
 
 class LikesIsLikedResponse(pydantic.BaseModel):
     response: "LikesIsLikedResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -1623,7 +1624,7 @@ class MarketAddAlbumResponseModel(pydantic.BaseModel):
 
 class MarketAddAlbumResponse(pydantic.BaseModel):
     response: "MarketAddAlbumResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -1635,19 +1636,19 @@ class MarketAddResponseModel(pydantic.BaseModel):
 
 class MarketAddResponse(pydantic.BaseModel):
     response: "MarketAddResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class MarketCreateCommentResponse(pydantic.BaseModel):
     response: int = pydantic.Field(
-        None, description="Comment ID",
+        ..., description="Comment ID",
     )
 
 
 class MarketDeleteCommentResponse(pydantic.BaseModel):
     response: "BaseBoolInt" = pydantic.Field(
-        None,
+        ...,
         description="Returns 1 if request has been processed successfully (0 if the comment is not found)",
     )
 
@@ -1663,7 +1664,7 @@ class MarketGetAlbumByIdResponseModel(pydantic.BaseModel):
 
 class MarketGetAlbumByIdResponse(pydantic.BaseModel):
     response: "MarketGetAlbumByIdResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -1678,7 +1679,7 @@ class MarketGetAlbumsResponseModel(pydantic.BaseModel):
 
 class MarketGetAlbumsResponse(pydantic.BaseModel):
     response: "MarketGetAlbumsResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -1693,7 +1694,7 @@ class MarketGetByIdExtendedResponseModel(pydantic.BaseModel):
 
 class MarketGetByIdExtendedResponse(pydantic.BaseModel):
     response: "MarketGetByIdExtendedResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -1708,7 +1709,7 @@ class MarketGetByIdResponseModel(pydantic.BaseModel):
 
 class MarketGetByIdResponse(pydantic.BaseModel):
     response: "MarketGetByIdResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -1723,7 +1724,7 @@ class MarketGetCategoriesResponseModel(pydantic.BaseModel):
 
 class MarketGetCategoriesResponse(pydantic.BaseModel):
     response: "MarketGetCategoriesResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -1738,7 +1739,7 @@ class MarketGetCommentsResponseModel(pydantic.BaseModel):
 
 class MarketGetCommentsResponse(pydantic.BaseModel):
     response: "MarketGetCommentsResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -1753,7 +1754,7 @@ class MarketGetExtendedResponseModel(pydantic.BaseModel):
 
 class MarketGetExtendedResponse(pydantic.BaseModel):
     response: "MarketGetExtendedResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -1768,13 +1769,13 @@ class MarketGetResponseModel(pydantic.BaseModel):
 
 class MarketGetResponse(pydantic.BaseModel):
     response: "MarketGetResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class MarketRestoreCommentResponse(pydantic.BaseModel):
     response: "BaseBoolInt" = pydantic.Field(
-        None,
+        ...,
         description="Returns 1 if request has been processed successfully (0 if the comment is not found)",
     )
 
@@ -1790,7 +1791,7 @@ class MarketSearchExtendedResponseModel(pydantic.BaseModel):
 
 class MarketSearchExtendedResponse(pydantic.BaseModel):
     response: "MarketSearchExtendedResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -1805,13 +1806,13 @@ class MarketSearchResponseModel(pydantic.BaseModel):
 
 class MarketSearchResponse(pydantic.BaseModel):
     response: "MarketSearchResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class MessagesCreateChatResponse(pydantic.BaseModel):
     response: int = pydantic.Field(
-        None, description="Chat ID",
+        ..., description="Chat ID",
     )
 
 
@@ -1826,58 +1827,58 @@ class MessagesDeleteChatPhotoResponseModel(pydantic.BaseModel):
 
 class MessagesDeleteChatPhotoResponse(pydantic.BaseModel):
     response: "MessagesDeleteChatPhotoResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class MessagesDeleteConversationResponseModel(pydantic.BaseModel):
     last_deleted_id: int = pydantic.Field(
-        None, description="Id of the last message, that was deleted",
+        ..., description="Id of the last message, that was deleted",
     )
 
 
 class MessagesDeleteConversationResponse(pydantic.BaseModel):
     response: "MessagesDeleteConversationResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class MessagesDeleteResponse(pydantic.BaseModel):
-    response: typing.Dict[typing.Any, typing.Any] = pydantic.Field(
-        None, description="",
+    response: dict = pydantic.Field(
+        ..., description="",
     )
 
 
 class MessagesEditResponse(pydantic.BaseModel):
     response: "BaseBoolInt" = pydantic.Field(
-        None, description="Result",
+        ..., description="Result",
     )
 
 
 class MessagesGetByConversationMessageIdResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total number",
+        ..., description="Total number",
     )
     items: typing.List[MessagesMessage] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class MessagesGetByConversationMessageIdResponse(pydantic.BaseModel):
     response: "MessagesGetByConversationMessageIdResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class MessagesGetByIdExtendedResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total number",
+        ..., description="Total number",
     )
     items: typing.List[MessagesMessage] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
     profiles: typing.List[UsersUserFull] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
     groups: typing.Optional[typing.List[GroupsGroupFull]] = pydantic.Field(
         None, description="",
@@ -1886,22 +1887,22 @@ class MessagesGetByIdExtendedResponseModel(pydantic.BaseModel):
 
 class MessagesGetByIdExtendedResponse(pydantic.BaseModel):
     response: "MessagesGetByIdExtendedResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class MessagesGetByIdResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total number",
+        ..., description="Total number",
     )
     items: typing.List[MessagesMessage] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class MessagesGetByIdResponse(pydantic.BaseModel):
     response: "MessagesGetByIdResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -1916,40 +1917,40 @@ class MessagesGetChatPreviewResponseModel(pydantic.BaseModel):
 
 class MessagesGetChatPreviewResponse(pydantic.BaseModel):
     response: "MessagesGetChatPreviewResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class MessagesGetChatChatIdsFieldsResponse(pydantic.BaseModel):
     response: typing.List["MessagesChatFull"] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class MessagesGetChatChatIdsResponse(pydantic.BaseModel):
     response: typing.List["MessagesChat"] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class MessagesGetChatFieldsResponse(pydantic.BaseModel):
     response: "MessagesChatFull" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class MessagesGetChatResponse(pydantic.BaseModel):
     response: "MessagesChat" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class MessagesGetConversationMembersResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Chat members count",
+        ..., description="Chat members count",
     )
     items: typing.List[MessagesConversationMember] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
     chat_restrictions: typing.Optional[MessagesChatRestrictions] = pydantic.Field(
         None, description="",
@@ -1964,55 +1965,52 @@ class MessagesGetConversationMembersResponseModel(pydantic.BaseModel):
 
 class MessagesGetConversationMembersResponse(pydantic.BaseModel):
     response: "MessagesGetConversationMembersResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class MessagesGetConversationsByIdExtendedResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total number",
+        ..., description="Total number",
     )
     items: typing.List[MessagesConversation] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
     profiles: typing.Optional[typing.List[UsersUser]] = pydantic.Field(
-        None, description="",
-    )
-    groups: typing.Optional[typing.List[GroupsGroupFull]] = pydantic.Field(
         None, description="",
     )
 
 
 class MessagesGetConversationsByIdExtendedResponse(pydantic.BaseModel):
     response: "MessagesGetConversationsByIdExtendedResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class MessagesGetConversationsByIdResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total number",
+        ..., description="Total number",
     )
     items: typing.List[MessagesConversation] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class MessagesGetConversationsByIdResponse(pydantic.BaseModel):
     response: "MessagesGetConversationsByIdResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class MessagesGetConversationsResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total number",
+        ..., description="Total number",
     )
     unread_count: typing.Optional[int] = pydantic.Field(
         None, description="Unread dialogs number",
     )
     items: typing.List[MessagesConversationWithMessage] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
     profiles: typing.Optional[typing.List[UsersUserFull]] = pydantic.Field(
         None, description="",
@@ -2024,7 +2022,7 @@ class MessagesGetConversationsResponseModel(pydantic.BaseModel):
 
 class MessagesGetConversationsResponse(pydantic.BaseModel):
     response: "MessagesGetConversationsResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -2039,16 +2037,16 @@ class MessagesGetHistoryAttachmentsResponseModel(pydantic.BaseModel):
 
 class MessagesGetHistoryAttachmentsResponse(pydantic.BaseModel):
     response: "MessagesGetHistoryAttachmentsResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class MessagesGetHistoryResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total number",
+        ..., description="Total number",
     )
     items: typing.List[MessagesMessage] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
     profiles: typing.Optional[typing.List[UsersUserFull]] = pydantic.Field(
         None, description="",
@@ -2060,7 +2058,7 @@ class MessagesGetHistoryResponseModel(pydantic.BaseModel):
 
 class MessagesGetHistoryResponse(pydantic.BaseModel):
     response: "MessagesGetHistoryResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -2072,30 +2070,30 @@ class MessagesGetInviteLinkResponseModel(pydantic.BaseModel):
 
 class MessagesGetInviteLinkResponse(pydantic.BaseModel):
     response: "MessagesGetInviteLinkResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class MessagesGetLastActivityResponse(pydantic.BaseModel):
     response: "MessagesLastActivity" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class MessagesGetLongPollHistoryResponseModel(pydantic.BaseModel):
-    history: typing.Optional[typing.List[typing.List[int]]] = pydantic.Field(
+    history: typing.Optional[list] = pydantic.Field(
         None, description="",
     )
     groups: typing.Optional[typing.List[GroupsGroup]] = pydantic.Field(
         None, description="",
     )
-    messages: typing.Optional[typing.List[MessagesLongpollMessages]] = pydantic.Field(
+    messages: typing.Optional[MessagesLongpollMessages] = pydantic.Field(
         None, description="",
     )
     profiles: typing.Optional[typing.List[UsersUserFull]] = pydantic.Field(
         None, description="",
     )
-    chats: typing.Optional[typing.List[MessagesChat]] = pydantic.Field(
+    chats: typing.Optional[MessagesChat] = pydantic.Field(
         None, description="",
     )
     new_pts: typing.Optional[int] = pydantic.Field(
@@ -2104,20 +2102,20 @@ class MessagesGetLongPollHistoryResponseModel(pydantic.BaseModel):
     more: typing.Optional[bool] = pydantic.Field(
         None, description="Has more",
     )
-    conversations: typing.Optional[typing.List[MessagesConversation]] = pydantic.Field(
+    conversations: typing.Optional[MessagesConversation] = pydantic.Field(
         None, description="",
     )
 
 
 class MessagesGetLongPollHistoryResponse(pydantic.BaseModel):
     response: "MessagesGetLongPollHistoryResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class MessagesGetLongPollServerResponse(pydantic.BaseModel):
     response: "MessagesLongpollParams" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -2129,7 +2127,7 @@ class MessagesIsMessagesFromGroupAllowedResponseModel(pydantic.BaseModel):
 
 class MessagesIsMessagesFromGroupAllowedResponse(pydantic.BaseModel):
     response: "MessagesIsMessagesFromGroupAllowedResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -2141,19 +2139,19 @@ class MessagesJoinChatByInviteLinkResponseModel(pydantic.BaseModel):
 
 class MessagesJoinChatByInviteLinkResponse(pydantic.BaseModel):
     response: "MessagesJoinChatByInviteLinkResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class MessagesMarkAsImportantResponse(pydantic.BaseModel):
     response: typing.List[int] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class MessagesPinResponse(pydantic.BaseModel):
     response: "MessagesPinnedMessage" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -2174,34 +2172,34 @@ class MessagesSearchConversationsResponseModel(pydantic.BaseModel):
 
 class MessagesSearchConversationsResponse(pydantic.BaseModel):
     response: "MessagesSearchConversationsResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class MessagesSearchResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total number",
+        ..., description="Total number",
     )
     items: typing.List[MessagesMessage] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class MessagesSearchResponse(pydantic.BaseModel):
     response: "MessagesSearchResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class MessagesSendResponse(pydantic.BaseModel):
     response: int = pydantic.Field(
-        None, description="Message ID",
+        ..., description="Message ID",
     )
 
 
 class MessagesSendUserIdsResponse(pydantic.BaseModel):
-    response: typing.List[typing.Dict[typing.Any, typing.Any]] = pydantic.Field(
-        None, description="",
+    response: typing.List[dict] = pydantic.Field(
+        ..., description="",
     )
 
 
@@ -2216,12 +2214,12 @@ class MessagesSetChatPhotoResponseModel(pydantic.BaseModel):
 
 class MessagesSetChatPhotoResponse(pydantic.BaseModel):
     response: "MessagesSetChatPhotoResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class NewsfeedGetBannedExtendedResponseModel(pydantic.BaseModel):
-    groups: typing.Optional[UsersUserFull] = pydantic.Field(
+    groups: typing.Optional[typing.List[UsersUserFull]] = pydantic.Field(
         None, description="",
     )
     profiles: typing.Optional[typing.List[GroupsGroupFull]] = pydantic.Field(
@@ -2231,12 +2229,12 @@ class NewsfeedGetBannedExtendedResponseModel(pydantic.BaseModel):
 
 class NewsfeedGetBannedExtendedResponse(pydantic.BaseModel):
     response: "NewsfeedGetBannedExtendedResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class NewsfeedGetBannedResponseModel(pydantic.BaseModel):
-    groups: typing.Optional[int] = pydantic.Field(
+    groups: typing.Optional[typing.List[int]] = pydantic.Field(
         None, description="",
     )
     members: typing.Optional[int] = pydantic.Field(
@@ -2246,19 +2244,19 @@ class NewsfeedGetBannedResponseModel(pydantic.BaseModel):
 
 class NewsfeedGetBannedResponse(pydantic.BaseModel):
     response: "NewsfeedGetBannedResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class NewsfeedGetCommentsResponseModel(pydantic.BaseModel):
     items: typing.List[NewsfeedNewsfeedItem] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
     profiles: typing.List[UsersUserFull] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
-    groups:typing.List[GroupsGroupFull] = pydantic.Field(
-        None, description="",
+    groups: typing.List[GroupsGroupFull] = pydantic.Field(
+        ..., description="",
     )
     next_from: typing.Optional[str] = pydantic.Field(
         None, description="New from value",
@@ -2267,52 +2265,52 @@ class NewsfeedGetCommentsResponseModel(pydantic.BaseModel):
 
 class NewsfeedGetCommentsResponse(pydantic.BaseModel):
     response: "NewsfeedGetCommentsResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class NewsfeedGetListsExtendedResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total number",
+        ..., description="Total number",
     )
     items: typing.List[NewsfeedListFull] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class NewsfeedGetListsExtendedResponse(pydantic.BaseModel):
     response: "NewsfeedGetListsExtendedResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class NewsfeedGetListsResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total number",
+        ..., description="Total number",
     )
     items: typing.List[NewsfeedList] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class NewsfeedGetListsResponse(pydantic.BaseModel):
     response: "NewsfeedGetListsResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class NewsfeedGetMentionsResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total number",
+        ..., description="Total number",
     )
     items: typing.List[WallWallpostToId] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class NewsfeedGetMentionsResponse(pydantic.BaseModel):
     response: "NewsfeedGetMentionsResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -2336,7 +2334,7 @@ class NewsfeedGetRecommendedResponseModel(pydantic.BaseModel):
 
 class NewsfeedGetRecommendedResponse(pydantic.BaseModel):
     response: "NewsfeedGetRecommendedResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -2345,7 +2343,7 @@ class NewsfeedGetSuggestedSourcesResponseModel(pydantic.BaseModel):
         None, description="Total number",
     )
     items: typing.Optional[
-        typing.List[typing.Union[GroupsGroupFull, UsersUserXtrType]]
+        typing.List[typing.Union[GroupsGroupFull, UsersUserXtrType,]]
     ] = pydantic.Field(
         None, description="",
     )
@@ -2353,7 +2351,7 @@ class NewsfeedGetSuggestedSourcesResponseModel(pydantic.BaseModel):
 
 class NewsfeedGetSuggestedSourcesResponse(pydantic.BaseModel):
     response: "NewsfeedGetSuggestedSourcesResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -2374,13 +2372,13 @@ class NewsfeedGetResponseModel(pydantic.BaseModel):
 
 class NewsfeedGetResponse(pydantic.BaseModel):
     response: "NewsfeedGetResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class NewsfeedSaveListResponse(pydantic.BaseModel):
     response: int = pydantic.Field(
-        None, description="List ID",
+        ..., description="List ID",
     )
 
 
@@ -2407,7 +2405,7 @@ class NewsfeedSearchExtendedResponseModel(pydantic.BaseModel):
 
 class NewsfeedSearchExtendedResponse(pydantic.BaseModel):
     response: "NewsfeedSearchExtendedResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -2422,55 +2420,55 @@ class NewsfeedSearchResponseModel(pydantic.BaseModel):
 
 class NewsfeedSearchResponse(pydantic.BaseModel):
     response: "NewsfeedSearchResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class NotesAddResponse(pydantic.BaseModel):
     response: int = pydantic.Field(
-        None, description="Note ID",
+        ..., description="Note ID",
     )
 
 
 class NotesCreateCommentResponse(pydantic.BaseModel):
     response: int = pydantic.Field(
-        None, description="Comment ID",
+        ..., description="Comment ID",
     )
 
 
 class NotesGetByIdResponse(pydantic.BaseModel):
     response: "NotesNote" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class NotesGetCommentsResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total number",
+        ..., description="Total number",
     )
     items: typing.List[NotesNoteComment] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class NotesGetCommentsResponse(pydantic.BaseModel):
     response: "NotesGetCommentsResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class NotesGetResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total number",
+        ..., description="Total number",
     )
     items: typing.List[NotesNote] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class NotesGetResponse(pydantic.BaseModel):
     response: "NotesGetResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -2506,55 +2504,55 @@ class NotificationsGetResponseModel(pydantic.BaseModel):
 
 class NotificationsGetResponse(pydantic.BaseModel):
     response: "NotificationsGetResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class NotificationsMarkAsViewedResponse(pydantic.BaseModel):
     response: "BaseBoolInt" = pydantic.Field(
-        None, description="Result",
+        ..., description="Result",
     )
 
 
 class NotificationsSendMessageResponse(pydantic.BaseModel):
     response: typing.List["NotificationsSendMessageItem"] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class OkResponse(pydantic.BaseModel):
     response: "BaseOkResponse" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class OrdersCancelSubscriptionResponse(pydantic.BaseModel):
     response: "BaseBoolInt" = pydantic.Field(
-        None, description="Result",
+        ..., description="Result",
     )
 
 
 class OrdersChangeStateResponse(pydantic.BaseModel):
     response: str = pydantic.Field(
-        None, description="New state",
+        ..., description="New state",
     )
 
 
 class OrdersGetAmountResponse(pydantic.BaseModel):
     response: "OrdersAmount" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class OrdersGetByIdResponse(pydantic.BaseModel):
     response: typing.List["OrdersOrder"] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class OrdersGetUserSubscriptionByIdResponse(pydantic.BaseModel):
     response: "OrdersSubscription" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -2569,107 +2567,107 @@ class OrdersGetUserSubscriptionsResponseModel(pydantic.BaseModel):
 
 class OrdersGetUserSubscriptionsResponse(pydantic.BaseModel):
     response: "OrdersGetUserSubscriptionsResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class OrdersGetResponse(pydantic.BaseModel):
     response: typing.List["OrdersOrder"] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class OrdersUpdateSubscriptionResponse(pydantic.BaseModel):
     response: "BaseBoolInt" = pydantic.Field(
-        None, description="Result",
+        ..., description="Result",
     )
 
 
 class PagesGetHistoryResponse(pydantic.BaseModel):
     response: typing.List["PagesWikipageHistory"] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class PagesGetTitlesResponse(pydantic.BaseModel):
     response: typing.List["PagesWikipage"] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class PagesGetVersionResponse(pydantic.BaseModel):
     response: "PagesWikipageFull" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class PagesGetResponse(pydantic.BaseModel):
     response: "PagesWikipageFull" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class PagesParseWikiResponse(pydantic.BaseModel):
     response: str = pydantic.Field(
-        None, description="HTML source",
+        ..., description="HTML source",
     )
 
 
 class PagesSaveAccessResponse(pydantic.BaseModel):
     response: int = pydantic.Field(
-        None, description="Page ID",
+        ..., description="Page ID",
     )
 
 
 class PagesSaveResponse(pydantic.BaseModel):
     response: int = pydantic.Field(
-        None, description="Page ID",
+        ..., description="Page ID",
     )
 
 
 class PhotosCopyResponse(pydantic.BaseModel):
     response: int = pydantic.Field(
-        None, description="Photo ID",
+        ..., description="Photo ID",
     )
 
 
 class PhotosCreateAlbumResponse(pydantic.BaseModel):
     response: "PhotosPhotoAlbumFull" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class PhotosCreateCommentResponse(pydantic.BaseModel):
     response: int = pydantic.Field(
-        None, description="Created comment ID",
+        ..., description="Created comment ID",
     )
 
 
 class PhotosDeleteCommentResponse(pydantic.BaseModel):
     response: "BaseBoolInt" = pydantic.Field(
-        None,
+        ...,
         description="Returns 1 if request has been processed successfully, 0 if the comment is not found",
     )
 
 
 class PhotosGetAlbumsCountResponse(pydantic.BaseModel):
     response: int = pydantic.Field(
-        None, description="Albums number",
+        ..., description="Albums number",
     )
 
 
 class PhotosGetAlbumsResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total number",
+        ..., description="Total number",
     )
     items: typing.List[PhotosPhotoAlbumFull] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class PhotosGetAlbumsResponse(pydantic.BaseModel):
     response: "PhotosGetAlbumsResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -2684,7 +2682,7 @@ class PhotosGetAllCommentsResponseModel(pydantic.BaseModel):
 
 class PhotosGetAllCommentsResponse(pydantic.BaseModel):
     response: "PhotosGetAllCommentsResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -2702,7 +2700,7 @@ class PhotosGetAllExtendedResponseModel(pydantic.BaseModel):
 
 class PhotosGetAllExtendedResponse(pydantic.BaseModel):
     response: "PhotosGetAllExtendedResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -2720,43 +2718,43 @@ class PhotosGetAllResponseModel(pydantic.BaseModel):
 
 class PhotosGetAllResponse(pydantic.BaseModel):
     response: "PhotosGetAllResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class PhotosGetByIdExtendedResponse(pydantic.BaseModel):
     response: typing.List["PhotosPhotoFull"] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class PhotosGetByIdResponse(pydantic.BaseModel):
     response: typing.List["PhotosPhoto"] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class PhotosGetCommentsExtendedResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total number",
+        ..., description="Total number",
     )
     real_offset: typing.Optional[int] = pydantic.Field(
         None, description="Real offset of the comments",
     )
     items: typing.List[WallWallComment] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
     profiles: typing.List[UsersUserFull] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
     groups: typing.List[GroupsGroupFull] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class PhotosGetCommentsExtendedResponse(pydantic.BaseModel):
     response: "PhotosGetCommentsExtendedResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -2774,158 +2772,158 @@ class PhotosGetCommentsResponseModel(pydantic.BaseModel):
 
 class PhotosGetCommentsResponse(pydantic.BaseModel):
     response: "PhotosGetCommentsResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class PhotosGetMarketUploadServerResponse(pydantic.BaseModel):
     response: "BaseUploadServer" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class PhotosGetMessagesUploadServerResponse(pydantic.BaseModel):
     response: "PhotosPhotoUpload" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class PhotosGetNewTagsResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total number",
+        ..., description="Total number",
     )
     items: typing.List[PhotosPhotoXtrTagInfo] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class PhotosGetNewTagsResponse(pydantic.BaseModel):
     response: "PhotosGetNewTagsResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class PhotosGetTagsResponse(pydantic.BaseModel):
     response: typing.List["PhotosPhotoTag"] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class PhotosGetUploadServerResponse(pydantic.BaseModel):
     response: "PhotosPhotoUpload" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class PhotosGetUserPhotosExtendedResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total number",
+        ..., description="Total number",
     )
     items: typing.List[PhotosPhotoFull] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class PhotosGetUserPhotosExtendedResponse(pydantic.BaseModel):
     response: "PhotosGetUserPhotosExtendedResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class PhotosGetUserPhotosResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total number",
+        ..., description="Total number",
     )
     items: typing.List[PhotosPhoto] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class PhotosGetUserPhotosResponse(pydantic.BaseModel):
     response: "PhotosGetUserPhotosResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class PhotosGetWallUploadServerResponse(pydantic.BaseModel):
     response: "PhotosPhotoUpload" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class PhotosGetExtendedResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total number",
+        ..., description="Total number",
     )
     items: typing.List[PhotosPhotoFull] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class PhotosGetExtendedResponse(pydantic.BaseModel):
     response: "PhotosGetExtendedResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class PhotosGetResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total number",
+        ..., description="Total number",
     )
     items: typing.List[PhotosPhoto] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class PhotosGetResponse(pydantic.BaseModel):
     response: "PhotosGetResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class PhotosPutTagResponse(pydantic.BaseModel):
     response: int = pydantic.Field(
-        None, description="Created tag ID",
+        ..., description="Created tag ID",
     )
 
 
 class PhotosRestoreCommentResponse(pydantic.BaseModel):
     response: "BaseBoolInt" = pydantic.Field(
-        None,
+        ...,
         description="Returns 1 if request has been processed successfully, 0 if the comment is not found",
     )
 
 
 class PhotosSaveMarketAlbumPhotoResponse(pydantic.BaseModel):
     response: typing.List["PhotosPhoto"] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class PhotosSaveMarketPhotoResponse(pydantic.BaseModel):
     response: typing.List["PhotosPhoto"] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class PhotosSaveMessagesPhotoResponse(pydantic.BaseModel):
     response: typing.List["PhotosPhoto"] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class PhotosSaveOwnerCoverPhotoResponse(pydantic.BaseModel):
     response: typing.List["BaseImage"] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class PhotosSaveOwnerPhotoResponseModel(pydantic.BaseModel):
     photo_hash: str = pydantic.Field(
-        None, description="Photo hash",
+        ..., description="Photo hash",
     )
     photo_src: str = pydantic.Field(
-        None, description="Uploaded image url",
+        ..., description="Uploaded image url",
     )
     photo_src_big: typing.Optional[str] = pydantic.Field(
         None, description="Uploaded image url",
@@ -2943,19 +2941,19 @@ class PhotosSaveOwnerPhotoResponseModel(pydantic.BaseModel):
 
 class PhotosSaveOwnerPhotoResponse(pydantic.BaseModel):
     response: "PhotosSaveOwnerPhotoResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class PhotosSaveWallPhotoResponse(pydantic.BaseModel):
     response: typing.List["PhotosPhoto"] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class PhotosSaveResponse(pydantic.BaseModel):
     response: typing.List["PhotosPhoto"] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -2970,61 +2968,61 @@ class PhotosSearchResponseModel(pydantic.BaseModel):
 
 class PhotosSearchResponse(pydantic.BaseModel):
     response: "PhotosSearchResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class PollsAddVoteResponse(pydantic.BaseModel):
     response: "BaseBoolInt" = pydantic.Field(
-        None, description="Result",
+        ..., description="Result",
     )
 
 
 class PollsCreateResponse(pydantic.BaseModel):
     response: "PollsPoll" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class PollsDeleteVoteResponse(pydantic.BaseModel):
     response: "BaseBoolInt" = pydantic.Field(
-        None, description="Result",
+        ..., description="Result",
     )
 
 
 class PollsGetByIdResponse(pydantic.BaseModel):
     response: "PollsPoll" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class PollsGetVotersResponse(pydantic.BaseModel):
     response: typing.List["PollsVoters"] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class PrettyCardsCreateResponseModel(pydantic.BaseModel):
     owner_id: int = pydantic.Field(
-        None, description="Owner ID of created pretty card",
+        ..., description="Owner ID of created pretty card",
     )
     card_id: str = pydantic.Field(
-        None, description="Card ID of created pretty card",
+        ..., description="Card ID of created pretty card",
     )
 
 
 class PrettyCardsCreateResponse(pydantic.BaseModel):
     response: "PrettyCardsCreateResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class PrettyCardsDeleteResponseModel(pydantic.BaseModel):
     owner_id: int = pydantic.Field(
-        None, description="Owner ID of deleted pretty card",
+        ..., description="Owner ID of deleted pretty card",
     )
     card_id: str = pydantic.Field(
-        None, description="Card ID of deleted pretty card",
+        ..., description="Card ID of deleted pretty card",
     )
     error: typing.Optional[str] = pydantic.Field(
         None, description="Error reason if error happened",
@@ -3033,58 +3031,58 @@ class PrettyCardsDeleteResponseModel(pydantic.BaseModel):
 
 class PrettyCardsDeleteResponse(pydantic.BaseModel):
     response: "PrettyCardsDeleteResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class PrettyCardsEditResponseModel(pydantic.BaseModel):
     owner_id: int = pydantic.Field(
-        None, description="Owner ID of edited pretty card",
+        ..., description="Owner ID of edited pretty card",
     )
     card_id: str = pydantic.Field(
-        None, description="Card ID of edited pretty card",
+        ..., description="Card ID of edited pretty card",
     )
 
 
 class PrettyCardsEditResponse(pydantic.BaseModel):
     response: "PrettyCardsEditResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class PrettyCardsGetByIdResponse(pydantic.BaseModel):
     response: typing.List["PrettyCardsPrettyCard"] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class PrettyCardsGetUploadURLResponse(pydantic.BaseModel):
     response: str = pydantic.Field(
-        None, description="Upload URL",
+        ..., description="Upload URL",
     )
 
 
 class PrettyCardsGetResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total number",
+        ..., description="Total number",
     )
     items: typing.List[PrettyCardsPrettyCard] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class PrettyCardsGetResponse(pydantic.BaseModel):
     response: "PrettyCardsGetResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class SearchGetHintsResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
     items: typing.List[SearchHint] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
     suggested_queries: typing.Optional[str] = pydantic.Field(
         None, description="",
@@ -3093,320 +3091,310 @@ class SearchGetHintsResponseModel(pydantic.BaseModel):
 
 class SearchGetHintsResponse(pydantic.BaseModel):
     response: "SearchGetHintsResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class SecureCheckTokenResponse(pydantic.BaseModel):
     response: "SecureTokenChecked" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class SecureGetAppBalanceResponse(pydantic.BaseModel):
     response: int = pydantic.Field(
-        None, description="App balance",
+        ..., description="App balance",
     )
 
 
 class SecureGetSMSHistoryResponse(pydantic.BaseModel):
     response: typing.List["SecureSmsNotification"] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class SecureGetTransactionsHistoryResponse(pydantic.BaseModel):
     response: typing.List["SecureTransaction"] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class SecureGetUserLevelResponse(pydantic.BaseModel):
     response: typing.List["SecureLevel"] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class SecureGiveEventStickerResponse(pydantic.BaseModel):
-    response: typing.List[typing.Dict[typing.Any, typing.Any]] = pydantic.Field(
-        None, description="",
+    response: typing.List[dict] = pydantic.Field(
+        ..., description="",
     )
 
 
 class SecureSendNotificationResponse(pydantic.BaseModel):
     response: typing.List[int] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class StatsGetPostReachResponse(pydantic.BaseModel):
     response: typing.List["StatsWallpostStat"] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class StatsGetResponse(pydantic.BaseModel):
     response: typing.List["StatsPeriod"] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class StatusGetResponse(pydantic.BaseModel):
     response: "StatusStatus" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class StorageGetKeysResponse(pydantic.BaseModel):
     response: typing.List[str] = pydantic.Field(
-        None, description="",
+        ..., description="",
+    )
+
+
+class StorageGetKeysResponse(pydantic.BaseModel):
+    response: typing.List["StorageValue"] = pydantic.Field(
+        ..., description="",
     )
 
 
 class StorageGetResponse(pydantic.BaseModel):
     response: str = pydantic.Field(
-        None, description="Value of key",
+        ..., description="Value of key",
     )
 
 
 class StoriesGetBannedExtendedResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Stories count",
+        ..., description="Stories count",
     )
     items: typing.List[int] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
     profiles: typing.List[UsersUserFull] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
     groups: typing.List[GroupsGroupFull] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class StoriesGetBannedExtendedResponse(pydantic.BaseModel):
     response: "StoriesGetBannedExtendedResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class StoriesGetBannedResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Stories count",
+        ..., description="Stories count",
     )
     items: typing.List[int] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class StoriesGetBannedResponse(pydantic.BaseModel):
     response: "StoriesGetBannedResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class StoriesGetByIdExtendedResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Stories count",
+        ..., description="Stories count",
     )
     items: typing.List[StoriesStory] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
     profiles: typing.List[UsersUserFull] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
     groups: typing.List[GroupsGroupFull] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class StoriesGetByIdExtendedResponse(pydantic.BaseModel):
     response: "StoriesGetByIdExtendedResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class StoriesGetByIdResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Stories count",
+        ..., description="Stories count",
     )
     items: typing.List[StoriesStory] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class StoriesGetByIdResponse(pydantic.BaseModel):
     response: "StoriesGetByIdResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class StoriesGetPhotoUploadServerResponseModel(pydantic.BaseModel):
     upload_url: str = pydantic.Field(
-        None, description="Upload URL",
+        ..., description="Upload URL",
     )
     user_ids: int = pydantic.Field(
-        None, description="Users ID who can to see story.",
+        ..., description="Users ID who can to see story.",
     )
 
 
 class StoriesGetPhotoUploadServerResponse(pydantic.BaseModel):
     response: "StoriesGetPhotoUploadServerResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class StoriesGetRepliesExtendedResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Stories count",
+        ..., description="Stories count",
     )
-    items: typing.List[typing.List[typing.List[StoriesStory]]] = pydantic.Field(
-        None, description="",
+    items: typing.List[list] = pydantic.Field(
+        ..., description="",
     )
     profiles: typing.List[UsersUserFull] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
     groups: typing.List[GroupsGroupFull] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class StoriesGetRepliesExtendedResponse(pydantic.BaseModel):
     response: "StoriesGetRepliesExtendedResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class StoriesGetRepliesResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Stories count",
+        ..., description="Stories count",
     )
-    items: typing.List[typing.List[typing.List[StoriesStory]]] = pydantic.Field(
-        None, description="",
+    items: typing.List[list] = pydantic.Field(
+        ..., description="",
     )
 
 
 class StoriesGetRepliesResponse(pydantic.BaseModel):
     response: "StoriesGetRepliesResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class StoriesGetStatsResponse(pydantic.BaseModel):
     response: "StoriesStoryStats" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class StoriesGetVideoUploadServerResponseModel(pydantic.BaseModel):
     upload_url: str = pydantic.Field(
-        None, description="Upload URL",
+        ..., description="Upload URL",
     )
     user_ids: int = pydantic.Field(
-        None, description="Users ID who can to see story.",
+        ..., description="Users ID who can to see story.",
     )
 
 
 class StoriesGetVideoUploadServerResponse(pydantic.BaseModel):
     response: "StoriesGetVideoUploadServerResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class StoriesGetViewersExtendedResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Viewers count",
+        ..., description="Viewers count",
     )
     items: typing.List[UsersUserFull] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class StoriesGetViewersExtendedResponse(pydantic.BaseModel):
     response: "StoriesGetViewersExtendedResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class StoriesGetViewersResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Viewers count",
+        ..., description="Viewers count",
     )
     items: typing.List[int] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class StoriesGetViewersResponse(pydantic.BaseModel):
     response: "StoriesGetViewersResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class StoriesGetExtendedResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Stories count",
+        ..., description="Stories count",
     )
-    items: typing.List[typing.List[StoriesStory]] = pydantic.Field(
-        None, description="",
+    items: typing.List[list] = pydantic.Field(
+        ..., description="",
     )
     profiles: typing.List[UsersUser] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
     groups: typing.List[GroupsGroup] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class StoriesGetExtendedResponse(pydantic.BaseModel):
     response: "StoriesGetExtendedResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class StoriesGetResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Stories count",
+        ..., description="Stories count",
     )
     items: typing.List[StoriesStory] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
     promo_data: typing.Optional[StoriesPromoBlock] = pydantic.Field(
         None, description="",
     )
 
 
-class StoriesSearchResponseModel(pydantic.BaseModel):
-    count: int = pydantic.Field(
-        None, description="Stories count",
-    )
-    items: typing.List[StoriesStory] = pydantic.Field(
-        None, description="",
-    )
-
-    profiles: typing.List[UsersUser] = pydantic.Field(
-        None, description="",
-    )
-    groups: typing.List[GroupsGroup] = pydantic.Field(
-        None, description="",
-    )
-
-
 class StoriesGetResponse(pydantic.BaseModel):
     response: "StoriesGetResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class StoriesUploadResponseModel(pydantic.BaseModel):
     story: StoriesStory = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class StoriesUploadResponse(pydantic.BaseModel):
     response: "StoriesUploadResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -3421,79 +3409,79 @@ class StreamingGetServerUrlResponseModel(pydantic.BaseModel):
 
 class StreamingGetServerUrlResponse(pydantic.BaseModel):
     response: "StreamingGetServerUrlResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class UsersGetFollowersFieldsResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total number of available results",
+        ..., description="Total number of available results",
     )
     items: typing.List[UsersUserFull] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class UsersGetFollowersFieldsResponse(pydantic.BaseModel):
     response: "UsersGetFollowersFieldsResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class UsersGetFollowersResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total friends number",
+        ..., description="Total friends number",
     )
     items: typing.List[int] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class UsersGetFollowersResponse(pydantic.BaseModel):
     response: "UsersGetFollowersResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class UsersGetSubscriptionsExtendedResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total number of available results",
+        ..., description="Total number of available results",
     )
     items: typing.List[UsersSubscriptionsItem] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class UsersGetSubscriptionsExtendedResponse(pydantic.BaseModel):
     response: "UsersGetSubscriptionsExtendedResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class UsersGetSubscriptionsResponseModel(pydantic.BaseModel):
     users: UsersUsersArray = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
-    groups: GroupsGroupsArray = pydantic.Field(
-        None, description="",
+    groups: typing.List[GroupsGroupsArray] = pydantic.Field(
+        ..., description="",
     )
 
 
 class UsersGetSubscriptionsResponse(pydantic.BaseModel):
     response: "UsersGetSubscriptionsResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class UsersGetResponse(pydantic.BaseModel):
     response: typing.List["UsersUserXtrCounters"] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class UsersIsAppUserResponse(pydantic.BaseModel):
     response: "BaseBoolInt" = pydantic.Field(
-        None, description="Information whether the user have installed an app",
+        ..., description="Information whether the user have installed an app",
     )
 
 
@@ -3508,13 +3496,13 @@ class UsersSearchResponseModel(pydantic.BaseModel):
 
 class UsersSearchResponse(pydantic.BaseModel):
     response: "UsersSearchResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class UtilsCheckLinkResponse(pydantic.BaseModel):
     response: "UtilsLinkChecked" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -3529,61 +3517,61 @@ class UtilsGetLastShortenedLinksResponseModel(pydantic.BaseModel):
 
 class UtilsGetLastShortenedLinksResponse(pydantic.BaseModel):
     response: "UtilsGetLastShortenedLinksResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class UtilsGetLinkStatsExtendedResponse(pydantic.BaseModel):
     response: "UtilsLinkStatsExtended" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class UtilsGetLinkStatsResponse(pydantic.BaseModel):
     response: "UtilsLinkStats" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class UtilsGetServerTimeResponse(pydantic.BaseModel):
     response: int = pydantic.Field(
-        None, description="Time as Unixtime",
+        ..., description="Time as Unixtime",
     )
 
 
 class UtilsGetShortLinkResponse(pydantic.BaseModel):
     response: "UtilsShortLink" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class UtilsResolveScreenNameResponse(pydantic.BaseModel):
     response: "UtilsDomainResolved" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class VideoAddAlbumResponseModel(pydantic.BaseModel):
     album_id: int = pydantic.Field(
-        None, description="Created album ID",
+        ..., description="Created album ID",
     )
 
 
 class VideoAddAlbumResponse(pydantic.BaseModel):
     response: "VideoAddAlbumResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class VideoCreateCommentResponse(pydantic.BaseModel):
     response: int = pydantic.Field(
-        None, description="Created comment ID",
+        ..., description="Created comment ID",
     )
 
 
 class VideoGetAlbumByIdResponse(pydantic.BaseModel):
     response: "VideoVideoAlbumFull" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
@@ -3598,221 +3586,221 @@ class VideoGetAlbumsByVideoExtendedResponseModel(pydantic.BaseModel):
 
 class VideoGetAlbumsByVideoExtendedResponse(pydantic.BaseModel):
     response: "VideoGetAlbumsByVideoExtendedResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class VideoGetAlbumsByVideoResponse(pydantic.BaseModel):
     response: typing.List[int] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class VideoGetAlbumsExtendedResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total number",
+        ..., description="Total number",
     )
     items: typing.List[VideoVideoAlbumFull] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class VideoGetAlbumsExtendedResponse(pydantic.BaseModel):
     response: "VideoGetAlbumsExtendedResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class VideoGetAlbumsResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total number",
+        ..., description="Total number",
     )
     items: typing.List[VideoVideoAlbumFull] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class VideoGetAlbumsResponse(pydantic.BaseModel):
     response: "VideoGetAlbumsResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class VideoGetCommentsExtendedResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total number",
+        ..., description="Total number",
     )
     items: typing.List[WallWallComment] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
     profiles: typing.List[UsersUserMin] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
     groups: typing.List[GroupsGroupFull] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class VideoGetCommentsExtendedResponse(pydantic.BaseModel):
     response: "VideoGetCommentsExtendedResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class VideoGetCommentsResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total number",
+        ..., description="Total number",
     )
     items: typing.List[WallWallComment] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class VideoGetCommentsResponse(pydantic.BaseModel):
     response: "VideoGetCommentsResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class VideoGetExtendedResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total number",
+        ..., description="Total number",
     )
     items: typing.List[VideoVideoFull] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
     profiles: typing.List[UsersUserMin] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
     groups: typing.List[GroupsGroupFull] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class VideoGetExtendedResponse(pydantic.BaseModel):
     response: "VideoGetExtendedResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class VideoGetResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total number",
+        ..., description="Total number",
     )
     items: typing.List[VideoVideo] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class VideoGetResponse(pydantic.BaseModel):
     response: "VideoGetResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class VideoRestoreCommentResponse(pydantic.BaseModel):
     response: "BaseBoolInt" = pydantic.Field(
-        None,
+        ...,
         description="Returns 1 if request has been processed successfully, 0 if the comment is not found",
     )
 
 
 class VideoSaveResponse(pydantic.BaseModel):
     response: "VideoSaveResult" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class VideoSearchExtendedResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total number",
+        ..., description="Total number",
     )
     items: typing.List[VideoVideo] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
     profiles: typing.List[UsersUserMin] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
-    groups: typing.List[ GroupsGroupFull] = pydantic.Field(
-        None, description="",
+    groups: typing.List[GroupsGroupFull] = pydantic.Field(
+        ..., description="",
     )
 
 
 class VideoSearchExtendedResponse(pydantic.BaseModel):
     response: "VideoSearchExtendedResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class VideoSearchResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total number",
+        ..., description="Total number",
     )
     items: typing.List[VideoVideo] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class VideoSearchResponse(pydantic.BaseModel):
     response: "VideoSearchResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class WallCreateCommentResponseModel(pydantic.BaseModel):
     comment_id: int = pydantic.Field(
-        None, description="Created comment ID",
+        ..., description="Created comment ID",
     )
 
 
 class WallCreateCommentResponse(pydantic.BaseModel):
     response: "WallCreateCommentResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class WallEditResponseModel(pydantic.BaseModel):
     post_id: int = pydantic.Field(
-        None, description="Edited post ID",
+        ..., description="Edited post ID",
     )
 
 
 class WallEditResponse(pydantic.BaseModel):
     response: "WallEditResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class WallGetByIdExtendedResponseModel(pydantic.BaseModel):
     items: typing.List[WallWallpostFull] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
     profiles: typing.List[UsersUserFull] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
     groups: typing.List[GroupsGroupFull] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class WallGetByIdExtendedResponse(pydantic.BaseModel):
     response: "WallGetByIdExtendedResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class WallGetByIdResponse(pydantic.BaseModel):
     response: typing.List["WallWallpostFull"] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class WallGetCommentsExtendedResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total number",
+        ..., description="Total number",
     )
     items: typing.List[WallWallComment] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
     show_reply_button: typing.Optional[bool] = pydantic.Field(
         None, description="",
@@ -3827,25 +3815,25 @@ class WallGetCommentsExtendedResponseModel(pydantic.BaseModel):
         None, description="Count of replies of current level",
     )
     profiles: typing.List[UsersUser] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
     groups: typing.List[GroupsGroup] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class WallGetCommentsExtendedResponse(pydantic.BaseModel):
     response: "WallGetCommentsExtendedResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class WallGetCommentsResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total number",
+        ..., description="Total number",
     )
     items: typing.List[WallWallComment] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
     can_post: typing.Optional[bool] = pydantic.Field(
         None, description="Information whether current user can comment the post",
@@ -3860,170 +3848,170 @@ class WallGetCommentsResponseModel(pydantic.BaseModel):
 
 class WallGetCommentsResponse(pydantic.BaseModel):
     response: "WallGetCommentsResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class WallGetRepostsResponseModel(pydantic.BaseModel):
     items: typing.List[WallWallpostFull] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
     profiles: typing.List[UsersUser] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
     groups: typing.List[GroupsGroup] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class WallGetRepostsResponse(pydantic.BaseModel):
     response: "WallGetRepostsResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class WallGetExtendedResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total number",
+        ..., description="Total number",
     )
     items: typing.List[WallWallpostFull] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
     profiles: typing.List[UsersUserFull] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
     groups: typing.List[GroupsGroupFull] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class WallGetExtendedResponse(pydantic.BaseModel):
     response: "WallGetExtendedResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class WallGetResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total number",
+        ..., description="Total number",
     )
     items: typing.List[WallWallpostFull] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class WallGetResponse(pydantic.BaseModel):
     response: "WallGetResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class WallPostAdsStealthResponseModel(pydantic.BaseModel):
     post_id: int = pydantic.Field(
-        None, description="Created post ID",
+        ..., description="Created post ID",
     )
 
 
 class WallPostAdsStealthResponse(pydantic.BaseModel):
     response: "WallPostAdsStealthResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class WallPostResponseModel(pydantic.BaseModel):
     post_id: int = pydantic.Field(
-        None, description="Created post ID",
+        ..., description="Created post ID",
     )
 
 
 class WallPostResponse(pydantic.BaseModel):
     response: "WallPostResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class WallRepostResponseModel(pydantic.BaseModel):
     success: BaseOkResponse = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
     post_id: int = pydantic.Field(
-        None, description="Created post ID",
+        ..., description="Created post ID",
     )
     reposts_count: int = pydantic.Field(
-        None, description="Reposts number",
+        ..., description="Reposts number",
     )
     likes_count: int = pydantic.Field(
-        None, description="Reposts number",
+        ..., description="Reposts number",
     )
 
 
 class WallRepostResponse(pydantic.BaseModel):
     response: "WallRepostResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class WallSearchExtendedResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total number",
+        ..., description="Total number",
     )
     items: typing.List[WallWallpostFull] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
     profiles: typing.List[UsersUserFull] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
     groups: typing.List[GroupsGroupFull] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class WallSearchExtendedResponse(pydantic.BaseModel):
     response: "WallSearchExtendedResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class WallSearchResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total number",
+        ..., description="Total number",
     )
     items: typing.List[WallWallpostFull] = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class WallSearchResponse(pydantic.BaseModel):
     response: "WallSearchResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class WidgetsGetCommentsResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total number",
+        ..., description="Total number",
     )
     posts: WidgetsWidgetComment = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class WidgetsGetCommentsResponse(pydantic.BaseModel):
     response: "WidgetsGetCommentsResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class WidgetsGetPagesResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
-        None, description="Total number",
+        ..., description="Total number",
     )
     pages: WidgetsWidgetPage = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
 
 
 class WidgetsGetPagesResponse(pydantic.BaseModel):
     response: "WidgetsGetPagesResponseModel" = pydantic.Field(
-        None, description="",
+        ..., description="",
     )
