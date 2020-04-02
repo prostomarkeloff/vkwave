@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 
 
@@ -10,11 +9,11 @@ class Apps(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("deleteAppRequests", params)
         result = OkResponse(**raw_result)
@@ -25,7 +24,7 @@ class Apps(Category):
         app_id: typing.Optional[int] = None,
         app_ids: typing.Optional[typing.List[str]] = None,
         platform: typing.Optional[str] = None,
-        extended: typing.Optional[bool] = None,
+        extended: typing.Optional[BaseBoolInt] = None,
         return_friends: typing.Optional[bool] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
         name_case: typing.Optional[str] = None,
@@ -42,11 +41,11 @@ class Apps(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("get", params)
         result = AppsGetResponse(**raw_result)
@@ -58,7 +57,7 @@ class Apps(Category):
         offset: typing.Optional[int] = None,
         count: int = None,
         platform: typing.Optional[str] = None,
-        extended: typing.Optional[bool] = None,
+        extended: typing.Optional[BaseBoolInt] = None,
         return_friends: typing.Optional[bool] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
         name_case: typing.Optional[str] = None,
@@ -82,11 +81,11 @@ class Apps(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getCatalog", params)
         result = AppsGetCatalogResponse(**raw_result)
@@ -94,7 +93,7 @@ class Apps(Category):
 
     async def get_friends_list(
         self,
-        extended: typing.Optional[bool] = None,
+        extended: typing.Optional[BaseBoolInt] = None,
         count: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
         type: typing.Optional[str] = None,
@@ -110,11 +109,11 @@ class Apps(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getFriendsList", params)
         result = AppsGetFriendsListResponse(**raw_result)
@@ -123,9 +122,9 @@ class Apps(Category):
     async def get_leaderboard(
         self,
         type: str = None,
-        global_: typing.Optional[bool] = None,
-        extended: typing.Optional[bool] = None,
-    ) -> AppsGetLeaderboardResponse:
+        global_: typing.Optional[BaseBoolInt] = None,
+        extended: typing.Optional[BaseBoolInt] = None,
+    ) -> typing.Union[AppsGetLeaderboardResponse, AppsGetLeaderboardExtendedResponse]:
         """
         :param type: - Leaderboard type. Possible values: *'level' — by level,, *'points' — by mission points,, *'score' — by score ().
         :param global_: - Rating type. Possible values: *'1' — global rating among all players,, *'0' — rating among user friends.
@@ -134,28 +133,35 @@ class Apps(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getLeaderboard", params)
-        result = AppsGetLeaderboardResponse(**raw_result)
+
+        result = (
+            AppsGetLeaderboardResponse(**raw_result)
+            if not extended
+            else AppsGetLeaderboardExtendedResponse(**raw_result)
+        )
         return result
 
-    async def get_scopes(self, type: typing.Optional[str] = None,) -> AppsGetScopesResponse:
+    async def get_scopes(
+        self, type: typing.Optional[str] = None,
+    ) -> AppsGetScopesResponse:
         """
         :param type:
         :return:
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getScopes", params)
         result = AppsGetScopesResponse(**raw_result)
@@ -168,11 +174,11 @@ class Apps(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getScore", params)
         result = AppsGetScoreResponse(**raw_result)
@@ -198,11 +204,11 @@ class Apps(Category):
         """
 
         params = {}
-        for key_, value in locals().items():
-            if key_ not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key_] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("sendRequest", params)
         result = AppsSendRequestResponse(**raw_result)

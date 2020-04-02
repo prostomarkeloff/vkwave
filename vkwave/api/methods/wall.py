@@ -1,10 +1,11 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 
 
 class Wall(Category):
-    async def close_comments(self, owner_id: int = None, post_id: int = None,) -> BaseBoolResponse:
+    async def close_comments(
+        self, owner_id: int = None, post_id: int = None,
+    ) -> BaseBoolResponse:
         """
         :param owner_id:
         :param post_id:
@@ -12,11 +13,11 @@ class Wall(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("closeComments", params)
         result = BaseBoolResponse(**raw_result)
@@ -46,18 +47,20 @@ class Wall(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("createComment", params)
         result = WallCreateCommentResponse(**raw_result)
         return result
 
     async def delete(
-        self, owner_id: typing.Optional[int] = None, post_id: typing.Optional[int] = None,
+        self,
+        owner_id: typing.Optional[int] = None,
+        post_id: typing.Optional[int] = None,
     ) -> OkResponse:
         """
         :param owner_id: - User ID or community ID. Use a negative value to designate a community ID.
@@ -66,11 +69,11 @@ class Wall(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("delete", params)
         result = OkResponse(**raw_result)
@@ -86,11 +89,11 @@ class Wall(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("deleteComment", params)
         result = OkResponse(**raw_result)
@@ -136,11 +139,11 @@ class Wall(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("edit", params)
         result = WallEditResponse(**raw_result)
@@ -152,9 +155,9 @@ class Wall(Category):
         post_id: int = None,
         message: typing.Optional[str] = None,
         attachments: typing.Optional[typing.List[str]] = None,
-        signed: typing.Optional[bool] = None,
-        lat: typing.Optional[int] = None,
-        long: typing.Optional[int] = None,
+        signed: typing.Optional[BaseBoolInt] = None,
+        lat: typing.Optional[BaseBoolInt] = None,
+        long: typing.Optional[BaseBoolInt] = None,
         place_id: typing.Optional[int] = None,
         link_button: typing.Optional[str] = None,
         link_title: typing.Optional[str] = None,
@@ -178,11 +181,11 @@ class Wall(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("editAdsStealth", params)
         result = OkResponse(**raw_result)
@@ -204,11 +207,11 @@ class Wall(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("editComment", params)
         result = OkResponse(**raw_result)
@@ -219,11 +222,11 @@ class Wall(Category):
         owner_id: typing.Optional[int] = None,
         domain: typing.Optional[str] = None,
         offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
+        count: typing.Optional[BaseBoolInt] = None,
         filter: typing.Optional[str] = None,
-        extended: typing.Optional[bool] = None,
+        extended: typing.Optional[BaseBoolInt] = None,
         fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
-    ) -> WallGetResponse:
+    ) -> typing.Union[WallGetResponse, WallGetExtendedResponse]:
         """
         :param owner_id: - ID of the user or community that owns the wall. By default, current user ID. Use a negative value to designate a community ID.
         :param domain: - User or community short address.
@@ -236,23 +239,28 @@ class Wall(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("get", params)
-        result = WallGetResponse(**raw_result)
+
+        result = (
+            WallGetResponse(**raw_result)
+            if not extended
+            else WallGetExtendedResponse(**raw_result)
+        )
         return result
 
     async def get_by_id(
         self,
         posts: typing.List[str] = None,
-        extended: typing.Optional[bool] = None,
+        extended: typing.Optional[BaseBoolInt] = None,
         copy_history_depth: typing.Optional[int] = None,
         fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
-    ) -> WallGetByIdResponse:
+    ) -> typing.Union[WallGetByIdResponse, WallGetByIdExtendedResponse]:
         """
         :param posts: - User or community IDs and post IDs, separated by underscores. Use a negative value to designate a community ID. Example: "93388_21539,93388_20904,2943_4276,-1_1"
         :param extended: - '1' — to return user and community objects needed to display posts, '0' — no additional fields are returned (default)
@@ -262,31 +270,36 @@ class Wall(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getById", params)
-        result = WallGetByIdResponse(**raw_result)
+
+        result = (
+            WallGetByIdResponse(**raw_result)
+            if not extended
+            else WallGetByIdExtendedResponse(**raw_result)
+        )
         return result
 
     async def get_comments(
         self,
         owner_id: typing.Optional[int] = None,
         post_id: typing.Optional[int] = None,
-        need_likes: typing.Optional[bool] = None,
+        need_likes: typing.Optional[BaseBoolInt] = None,
         start_comment_id: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
+        count: typing.Optional[BaseBoolInt] = None,
         sort: typing.Optional[str] = None,
-        preview_length: typing.Optional[int] = None,
-        extended: typing.Optional[bool] = None,
+        preview_length: typing.Optional[BaseBoolInt] = None,
+        extended: typing.Optional[BaseBoolInt] = None,
         fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
         comment_id: typing.Optional[int] = None,
         thread_items_count: typing.Optional[int] = None,
-    ) -> WallGetCommentsResponse:
+    ) -> typing.Union[WallGetCommentsResponse, WallGetCommentsExtendedResponse]:
         """
         :param owner_id: - User ID or community ID. Use a negative value to designate a community ID.
         :param post_id: - Post ID.
@@ -304,14 +317,19 @@ class Wall(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getComments", params)
-        result = WallGetCommentsResponse(**raw_result)
+
+        result = (
+            WallGetCommentsResponse(**raw_result)
+            if not extended
+            else WallGetCommentsExtendedResponse(**raw_result)
+        )
         return result
 
     async def get_reposts(
@@ -330,17 +348,19 @@ class Wall(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getReposts", params)
         result = WallGetRepostsResponse(**raw_result)
         return result
 
-    async def open_comments(self, owner_id: int = None, post_id: int = None,) -> BaseBoolResponse:
+    async def open_comments(
+        self, owner_id: int = None, post_id: int = None,
+    ) -> BaseBoolResponse:
         """
         :param owner_id:
         :param post_id:
@@ -348,17 +368,19 @@ class Wall(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("openComments", params)
         result = BaseBoolResponse(**raw_result)
         return result
 
-    async def pin(self, owner_id: typing.Optional[int] = None, post_id: int = None,) -> OkResponse:
+    async def pin(
+        self, owner_id: typing.Optional[int] = None, post_id: int = None,
+    ) -> OkResponse:
         """
         :param owner_id: - ID of the user or community that owns the wall. By default, current user ID. Use a negative value to designate a community ID.
         :param post_id: - Post ID.
@@ -366,11 +388,11 @@ class Wall(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("pin", params)
         result = OkResponse(**raw_result)
@@ -379,15 +401,15 @@ class Wall(Category):
     async def post(
         self,
         owner_id: typing.Optional[int] = None,
-        friends_only: typing.Optional[bool] = None,
-        from_group: typing.Optional[bool] = None,
+        friends_only: typing.Optional[BaseBoolInt] = None,
+        from_group: typing.Optional[BaseBoolInt] = None,
         message: typing.Optional[str] = None,
         attachments: typing.Optional[typing.List[str]] = None,
         services: typing.Optional[str] = None,
-        signed: typing.Optional[bool] = None,
+        signed: typing.Optional[BaseBoolInt] = None,
         publish_date: typing.Optional[int] = None,
-        lat: typing.Optional[int] = None,
-        long: typing.Optional[int] = None,
+        lat: typing.Optional[BaseBoolInt] = None,
+        long: typing.Optional[BaseBoolInt] = None,
         place_id: typing.Optional[int] = None,
         post_id: typing.Optional[int] = None,
         guid: typing.Optional[str] = None,
@@ -416,11 +438,11 @@ class Wall(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("post", params)
         result = WallPostResponse(**raw_result)
@@ -431,9 +453,9 @@ class Wall(Category):
         owner_id: int = None,
         message: typing.Optional[str] = None,
         attachments: typing.Optional[typing.List[str]] = None,
-        signed: typing.Optional[bool] = None,
-        lat: typing.Optional[int] = None,
-        long: typing.Optional[int] = None,
+        signed: typing.Optional[BaseBoolInt] = None,
+        lat: typing.Optional[BaseBoolInt] = None,
+        long: typing.Optional[BaseBoolInt] = None,
         place_id: typing.Optional[int] = None,
         guid: typing.Optional[str] = None,
         link_button: typing.Optional[str] = None,
@@ -458,18 +480,21 @@ class Wall(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("postAdsStealth", params)
         result = WallPostAdsStealthResponse(**raw_result)
         return result
 
     async def report_comment(
-        self, owner_id: int = None, comment_id: int = None, reason: typing.Optional[int] = None,
+        self,
+        owner_id: int = None,
+        comment_id: int = None,
+        reason: typing.Optional[BaseBoolInt] = None,
     ) -> OkResponse:
         """
         :param owner_id: - ID of the user or community that owns the wall.
@@ -479,18 +504,21 @@ class Wall(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("reportComment", params)
         result = OkResponse(**raw_result)
         return result
 
     async def report_post(
-        self, owner_id: int = None, post_id: int = None, reason: typing.Optional[int] = None,
+        self,
+        owner_id: int = None,
+        post_id: int = None,
+        reason: typing.Optional[BaseBoolInt] = None,
     ) -> OkResponse:
         """
         :param owner_id: - ID of the user or community that owns the wall.
@@ -500,11 +528,11 @@ class Wall(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("reportPost", params)
         result = OkResponse(**raw_result)
@@ -528,18 +556,20 @@ class Wall(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("repost", params)
         result = WallRepostResponse(**raw_result)
         return result
 
     async def restore(
-        self, owner_id: typing.Optional[int] = None, post_id: typing.Optional[int] = None,
+        self,
+        owner_id: typing.Optional[int] = None,
+        post_id: typing.Optional[int] = None,
     ) -> OkResponse:
         """
         :param owner_id: - User ID or community ID from whose wall the post was deleted. Use a negative value to designate a community ID.
@@ -548,11 +578,11 @@ class Wall(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("restore", params)
         result = OkResponse(**raw_result)
@@ -568,11 +598,11 @@ class Wall(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("restoreComment", params)
         result = OkResponse(**raw_result)
@@ -583,12 +613,12 @@ class Wall(Category):
         owner_id: typing.Optional[int] = None,
         domain: typing.Optional[str] = None,
         query: typing.Optional[str] = None,
-        owners_only: typing.Optional[bool] = None,
+        owners_only: typing.Optional[BaseBoolInt] = None,
         count: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
-        extended: typing.Optional[bool] = None,
+        extended: typing.Optional[BaseBoolInt] = None,
         fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
-    ) -> WallSearchResponse:
+    ) -> typing.Union[WallSearchResponse, WallSearchExtendedResponse]:
         """
         :param owner_id: - user or community id. "Remember that for a community 'owner_id' must be negative."
         :param domain: - user or community screen name.
@@ -602,14 +632,19 @@ class Wall(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("search", params)
-        result = WallSearchResponse(**raw_result)
+
+        result = (
+            WallSearchResponse(**raw_result)
+            if not extended
+            else WallSearchExtendedResponse(**raw_result)
+        )
         return result
 
     async def unpin(
@@ -622,11 +657,11 @@ class Wall(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("unpin", params)
         result = OkResponse(**raw_result)

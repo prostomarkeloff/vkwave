@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 
 
@@ -14,7 +13,7 @@ class Stats(Category):
         intervals_count: typing.Optional[int] = None,
         filters: typing.Optional[typing.List[str]] = None,
         stats_groups: typing.Optional[typing.List[str]] = None,
-        extended: typing.Optional[bool] = None,
+        extended: typing.Optional[BaseBoolInt] = None,
     ) -> StatsGetResponse:
         """
         :param group_id: - Community ID.
@@ -30,18 +29,18 @@ class Stats(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("get", params)
         result = StatsGetResponse(**raw_result)
         return result
 
     async def get_post_reach(
-        self, owner_id: str = None, post_id: int = None,
+        self, owner_id: str = None, post_id: BaseBoolInt = None,
     ) -> StatsGetPostReachResponse:
         """
         :param owner_id: - post owner community id. Specify with "-" sign.
@@ -50,11 +49,11 @@ class Stats(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getPostReach", params)
         result = StatsGetPostReachResponse(**raw_result)
@@ -67,11 +66,11 @@ class Stats(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("trackVisitor", params)
         result = OkResponse(**raw_result)

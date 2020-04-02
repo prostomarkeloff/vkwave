@@ -1,11 +1,13 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 
 
 class Video(Category):
     async def add(
-        self, target_id: typing.Optional[int] = None, video_id: int = None, owner_id: int = None,
+        self,
+        target_id: typing.Optional[int] = None,
+        video_id: int = None,
+        owner_id: int = None,
     ) -> OkResponse:
         """
         :param target_id: - identifier of a user or community to add a video to. Use a negative value to designate a community ID.
@@ -15,11 +17,11 @@ class Video(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("add", params)
         result = OkResponse(**raw_result)
@@ -39,11 +41,11 @@ class Video(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("addAlbum", params)
         result = VideoAddAlbumResponse(**raw_result)
@@ -67,11 +69,11 @@ class Video(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("addToAlbum", params)
         result = OkResponse(**raw_result)
@@ -83,7 +85,7 @@ class Video(Category):
         video_id: int = None,
         message: typing.Optional[str] = None,
         attachments: typing.Optional[typing.List[str]] = None,
-        from_group: typing.Optional[bool] = None,
+        from_group: typing.Optional[BaseBoolInt] = None,
         reply_to_comment: typing.Optional[int] = None,
         sticker_id: typing.Optional[int] = None,
         guid: typing.Optional[str] = None,
@@ -101,11 +103,11 @@ class Video(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("createComment", params)
         result = VideoCreateCommentResponse(**raw_result)
@@ -125,11 +127,11 @@ class Video(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("delete", params)
         result = OkResponse(**raw_result)
@@ -145,11 +147,11 @@ class Video(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("deleteAlbum", params)
         result = OkResponse(**raw_result)
@@ -165,11 +167,11 @@ class Video(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("deleteComment", params)
         result = OkResponse(**raw_result)
@@ -184,7 +186,7 @@ class Video(Category):
         privacy_view: typing.Optional[typing.List[str]] = None,
         privacy_comment: typing.Optional[typing.List[str]] = None,
         no_comments: typing.Optional[bool] = None,
-        repeat: typing.Optional[bool] = None,
+        repeat: typing.Optional[BaseBoolInt] = None,
     ) -> OkResponse:
         """
         :param owner_id: - ID of the user or community that owns the video.
@@ -199,11 +201,11 @@ class Video(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("edit", params)
         result = OkResponse(**raw_result)
@@ -225,11 +227,11 @@ class Video(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("editAlbum", params)
         result = OkResponse(**raw_result)
@@ -251,11 +253,11 @@ class Video(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("editComment", params)
         result = OkResponse(**raw_result)
@@ -268,8 +270,8 @@ class Video(Category):
         album_id: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
-        extended: typing.Optional[bool] = None,
-    ) -> VideoGetResponse:
+        extended: typing.Optional[BaseBoolInt] = None,
+    ) -> typing.Union[VideoGetResponse, VideoGetExtendedResponse]:
         """
         :param owner_id: - ID of the user or community that owns the video(s).
         :param videos: - Video IDs, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", Use a negative value to designate a community ID. Example: "-4363_136089719,13245770_137352259"
@@ -281,14 +283,19 @@ class Video(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("get", params)
-        result = VideoGetResponse(**raw_result)
+
+        result = (
+            VideoGetResponse(**raw_result)
+            if not extended
+            else VideoGetExtendedResponse(**raw_result)
+        )
         return result
 
     async def get_album_by_id(
@@ -301,11 +308,11 @@ class Video(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getAlbumById", params)
         result = VideoGetAlbumByIdResponse(**raw_result)
@@ -316,9 +323,9 @@ class Video(Category):
         owner_id: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
-        extended: typing.Optional[bool] = None,
+        extended: typing.Optional[BaseBoolInt] = None,
         need_system: typing.Optional[bool] = None,
-    ) -> VideoGetAlbumsResponse:
+    ) -> typing.Union[VideoGetAlbumsResponse, VideoGetAlbumsExtendedResponse]:
         """
         :param owner_id: - ID of the user or community that owns the video album(s).
         :param offset: - Offset needed to return a specific subset of video albums.
@@ -329,14 +336,19 @@ class Video(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getAlbums", params)
-        result = VideoGetAlbumsResponse(**raw_result)
+
+        result = (
+            VideoGetAlbumsResponse(**raw_result)
+            if not extended
+            else VideoGetAlbumsExtendedResponse(**raw_result)
+        )
         return result
 
     async def get_albums_by_video(
@@ -344,8 +356,10 @@ class Video(Category):
         target_id: typing.Optional[int] = None,
         owner_id: int = None,
         video_id: int = None,
-        extended: typing.Optional[bool] = None,
-    ) -> VideoGetAlbumsByVideoResponse:
+        extended: typing.Optional[BaseBoolInt] = None,
+    ) -> typing.Union[
+        VideoGetAlbumsByVideoResponse, VideoGetAlbumsByVideoExtendedResponse
+    ]:
         """
         :param target_id:
         :param owner_id:
@@ -355,28 +369,33 @@ class Video(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getAlbumsByVideo", params)
-        result = VideoGetAlbumsByVideoResponse(**raw_result)
+
+        result = (
+            VideoGetAlbumsByVideoResponse(**raw_result)
+            if not extended
+            else VideoGetAlbumsByVideoExtendedResponse(**raw_result)
+        )
         return result
 
     async def get_comments(
         self,
         owner_id: typing.Optional[int] = None,
         video_id: int = None,
-        need_likes: typing.Optional[bool] = None,
+        need_likes: typing.Optional[BaseBoolInt] = None,
         start_comment_id: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
         sort: typing.Optional[str] = None,
-        extended: typing.Optional[bool] = None,
+        extended: typing.Optional[BaseBoolInt] = None,
         fields: typing.Optional[typing.List[str]] = None,
-    ) -> VideoGetCommentsResponse:
+    ) -> typing.Union[VideoGetCommentsResponse, VideoGetCommentsExtendedResponse]:
         """
         :param owner_id: - ID of the user or community that owns the video.
         :param video_id: - Video ID.
@@ -391,14 +410,19 @@ class Video(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getComments", params)
-        result = VideoGetCommentsResponse(**raw_result)
+
+        result = (
+            VideoGetCommentsResponse(**raw_result)
+            if not extended
+            else VideoGetCommentsExtendedResponse(**raw_result)
+        )
         return result
 
     async def remove_from_album(
@@ -419,11 +443,11 @@ class Video(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("removeFromAlbum", params)
         result = OkResponse(**raw_result)
@@ -445,11 +469,11 @@ class Video(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("reorderAlbums", params)
         result = OkResponse(**raw_result)
@@ -479,11 +503,11 @@ class Video(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("reorderVideos", params)
         result = OkResponse(**raw_result)
@@ -493,7 +517,7 @@ class Video(Category):
         self,
         owner_id: int = None,
         video_id: int = None,
-        reason: typing.Optional[int] = None,
+        reason: typing.Optional[BaseBoolInt] = None,
         comment: typing.Optional[str] = None,
         search_query: typing.Optional[str] = None,
     ) -> OkResponse:
@@ -507,18 +531,21 @@ class Video(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("report", params)
         result = OkResponse(**raw_result)
         return result
 
     async def report_comment(
-        self, owner_id: int = None, comment_id: int = None, reason: typing.Optional[int] = None,
+        self,
+        owner_id: int = None,
+        comment_id: int = None,
+        reason: typing.Optional[BaseBoolInt] = None,
     ) -> OkResponse:
         """
         :param owner_id: - ID of the user or community that owns the video.
@@ -528,11 +555,11 @@ class Video(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("reportComment", params)
         result = OkResponse(**raw_result)
@@ -548,11 +575,11 @@ class Video(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("restore", params)
         result = OkResponse(**raw_result)
@@ -568,11 +595,11 @@ class Video(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("restoreComment", params)
         result = VideoRestoreCommentResponse(**raw_result)
@@ -582,15 +609,15 @@ class Video(Category):
         self,
         name: typing.Optional[str] = None,
         description: typing.Optional[str] = None,
-        is_private: typing.Optional[bool] = None,
-        wallpost: typing.Optional[bool] = None,
+        is_private: typing.Optional[BaseBoolInt] = None,
+        wallpost: typing.Optional[BaseBoolInt] = None,
         link: typing.Optional[str] = None,
         group_id: typing.Optional[int] = None,
         album_id: typing.Optional[int] = None,
         privacy_view: typing.Optional[typing.List[str]] = None,
         privacy_comment: typing.Optional[typing.List[str]] = None,
         no_comments: typing.Optional[bool] = None,
-        repeat: typing.Optional[bool] = None,
+        repeat: typing.Optional[BaseBoolInt] = None,
         compression: typing.Optional[bool] = None,
     ) -> VideoSaveResponse:
         """
@@ -610,11 +637,11 @@ class Video(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("save", params)
         result = VideoSaveResponse(**raw_result)
@@ -623,17 +650,17 @@ class Video(Category):
     async def search(
         self,
         q: str = None,
-        sort: typing.Optional[int] = None,
+        sort: typing.Optional[BaseBoolInt] = None,
         hd: typing.Optional[int] = None,
-        adult: typing.Optional[bool] = None,
+        adult: typing.Optional[BaseBoolInt] = None,
         filters: typing.Optional[typing.List[str]] = None,
         search_own: typing.Optional[bool] = None,
         offset: typing.Optional[int] = None,
         longer: typing.Optional[int] = None,
         shorter: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
-        extended: typing.Optional[bool] = None,
-    ) -> VideoSearchResponse:
+        extended: typing.Optional[BaseBoolInt] = None,
+    ) -> typing.Union[VideoSearchResponse, VideoSearchExtendedResponse]:
         """
         :param q: - Search query string (e.g., 'The Beatles').
         :param sort: - Sort order: '1' — by duration, '2' — by relevance, '0' — by date added
@@ -650,12 +677,17 @@ class Video(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("search", params)
-        result = VideoSearchResponse(**raw_result)
+
+        result = (
+            VideoSearchResponse(**raw_result)
+            if not extended
+            else VideoSearchExtendedResponse(**raw_result)
+        )
         return result

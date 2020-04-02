@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 
 
@@ -11,11 +10,11 @@ class Stories(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("banOwner", params)
         result = OkResponse(**raw_result)
@@ -29,19 +28,21 @@ class Stories(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("delete", params)
         result = OkResponse(**raw_result)
         return result
 
     async def get(
-        self, owner_id: typing.Optional[int] = None, extended: typing.Optional[bool] = None,
-    ) -> StoriesGetResponse:
+        self,
+        owner_id: typing.Optional[int] = None,
+        extended: typing.Optional[BaseBoolInt] = None,
+    ) -> typing.Union[StoriesGetResponse, StoriesGetExtendedResponse]:
         """
         :param owner_id: - Owner ID.
         :param extended: - '1' — to return additional fields for users and communities. Default value is 0.
@@ -49,21 +50,26 @@ class Stories(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("get", params)
-        result = StoriesGetResponse(**raw_result)
+
+        result = (
+            StoriesGetResponse(**raw_result)
+            if not extended
+            else StoriesGetExtendedResponse(**raw_result)
+        )
         return result
 
     async def get_banned(
         self,
-        extended: typing.Optional[bool] = None,
+        extended: typing.Optional[BaseBoolInt] = None,
         fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
-    ) -> StoriesGetBannedResponse:
+    ) -> typing.Union[StoriesGetBannedResponse, StoriesGetBannedExtendedResponse]:
         """
         :param extended: - '1' — to return additional fields for users and communities. Default value is 0.
         :param fields: - Additional fields to return
@@ -71,22 +77,27 @@ class Stories(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getBanned", params)
-        result = StoriesGetBannedResponse(**raw_result)
+
+        result = (
+            StoriesGetBannedResponse(**raw_result)
+            if not extended
+            else StoriesGetBannedExtendedResponse(**raw_result)
+        )
         return result
 
     async def get_by_id(
         self,
         stories: typing.List[str] = None,
-        extended: typing.Optional[bool] = None,
+        extended: typing.Optional[BaseBoolInt] = None,
         fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
-    ) -> StoriesGetByIdResponse:
+    ) -> typing.Union[StoriesGetByIdResponse, StoriesGetByIdExtendedResponse]:
         """
         :param stories: - Stories IDs separated by commas. Use format {owner_id}+'_'+{story_id}, for example, 12345_54331.
         :param extended: - '1' — to return additional fields for users and communities. Default value is 0.
@@ -95,19 +106,24 @@ class Stories(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getById", params)
-        result = StoriesGetByIdResponse(**raw_result)
+
+        result = (
+            StoriesGetByIdResponse(**raw_result)
+            if not extended
+            else StoriesGetByIdExtendedResponse(**raw_result)
+        )
         return result
 
     async def get_photo_upload_server(
         self,
-        add_to_news: typing.Optional[bool] = None,
+        add_to_news: typing.Optional[BaseBoolInt] = None,
         user_ids: typing.Optional[typing.List[int]] = None,
         reply_to_story: typing.Optional[str] = None,
         link_text: typing.Optional[str] = None,
@@ -125,11 +141,11 @@ class Stories(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getPhotoUploadServer", params)
         result = StoriesGetPhotoUploadServerResponse(**raw_result)
@@ -140,9 +156,9 @@ class Stories(Category):
         owner_id: int = None,
         story_id: int = None,
         access_key: typing.Optional[str] = None,
-        extended: typing.Optional[bool] = None,
+        extended: typing.Optional[BaseBoolInt] = None,
         fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
-    ) -> StoriesGetRepliesResponse:
+    ) -> typing.Union[StoriesGetRepliesResponse, StoriesGetRepliesExtendedResponse]:
         """
         :param owner_id: - Story owner ID.
         :param story_id: - Story ID.
@@ -153,31 +169,36 @@ class Stories(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getReplies", params)
-        result = StoriesGetRepliesResponse(**raw_result)
+
+        result = (
+            StoriesGetRepliesResponse(**raw_result)
+            if not extended
+            else StoriesGetRepliesExtendedResponse(**raw_result)
+        )
         return result
 
     async def get_stats(
         self, owner_id: int = None, story_id: int = None,
     ) -> StoriesGetStatsResponse:
         """
-        :param owner_id: - Story owner ID.
+        :param owner_id: - Story owner ID. 
         :param story_id: - Story ID.
         :return:
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getStats", params)
         result = StoriesGetStatsResponse(**raw_result)
@@ -185,7 +206,7 @@ class Stories(Category):
 
     async def get_video_upload_server(
         self,
-        add_to_news: typing.Optional[bool] = None,
+        add_to_news: typing.Optional[BaseBoolInt] = None,
         user_ids: typing.Optional[typing.List[int]] = None,
         reply_to_story: typing.Optional[str] = None,
         link_text: typing.Optional[str] = None,
@@ -203,11 +224,11 @@ class Stories(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getVideoUploadServer", params)
         result = StoriesGetVideoUploadServerResponse(**raw_result)
@@ -219,8 +240,8 @@ class Stories(Category):
         story_id: int = None,
         count: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
-        extended: typing.Optional[bool] = None,
-    ) -> StoriesGetViewersResponse:
+        extended: typing.Optional[BaseBoolInt] = None,
+    ) -> typing.Union[StoriesGetViewersResponse, StoriesGetViewersExtendedResponse]:
         """
         :param owner_id: - Story owner ID.
         :param story_id: - Story ID.
@@ -231,14 +252,19 @@ class Stories(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getViewers", params)
-        result = StoriesGetViewersResponse(**raw_result)
+
+        result = (
+            StoriesGetViewersResponse(**raw_result)
+            if not extended
+            else StoriesGetViewersExtendedResponse(**raw_result)
+        )
         return result
 
     async def hide_all_replies(
@@ -251,17 +277,19 @@ class Stories(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("hideAllReplies", params)
         result = OkResponse(**raw_result)
         return result
 
-    async def hide_reply(self, owner_id: int = None, story_id: int = None,) -> OkResponse:
+    async def hide_reply(
+        self, owner_id: int = None, story_id: int = None,
+    ) -> OkResponse:
         """
         :param owner_id: - ID of the user whose replies should be hidden.
         :param story_id: - Story ID.
@@ -269,11 +297,11 @@ class Stories(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("hideReply", params)
         result = OkResponse(**raw_result)
@@ -286,38 +314,12 @@ class Stories(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("unbanOwner", params)
         result = OkResponse(**raw_result)
-        return result
-
-    async def search(
-        self,
-        q: str,
-        place_id: typing.Optional[int],
-        latitude: typing.Optional[int],
-        longitude: typing.Optional[int],
-        radius: typing.Optional[int],
-        mentioned_id: typing.Optional[int],
-        count: typing.Optional[int],
-        extended: typing.Optional[typing.Literal[0, 1]],
-        fields: typing.Optional[typing.List[BaseUserGroupFields]],
-    ) -> StoriesSearchResponseModel:
-
-        params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
-
-        raw_result = await self.api_request("search", params)
-
-        # TODO: check model
-        result = StoriesSearchResponseModel(**raw_result)
         return result

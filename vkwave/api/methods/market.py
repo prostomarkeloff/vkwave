@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 
 
@@ -12,7 +11,7 @@ class Market(Category):
         category_id: int = None,
         price: typing.Optional[int] = None,
         old_price: typing.Optional[int] = None,
-        deleted: typing.Optional[bool] = None,
+        deleted: typing.Optional[BaseBoolInt] = None,
         main_photo_id: int = None,
         photo_ids: typing.Optional[typing.List[int]] = None,
         url: typing.Optional[str] = None,
@@ -32,11 +31,11 @@ class Market(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("add", params)
         result = MarketAddResponse(**raw_result)
@@ -47,7 +46,7 @@ class Market(Category):
         owner_id: int = None,
         title: str = None,
         photo_id: typing.Optional[int] = None,
-        main_album: typing.Optional[bool] = None,
+        main_album: typing.Optional[BaseBoolInt] = None,
     ) -> MarketAddAlbumResponse:
         """
         :param owner_id: - ID of an item owner community.
@@ -58,18 +57,21 @@ class Market(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("addAlbum", params)
         result = MarketAddAlbumResponse(**raw_result)
         return result
 
     async def add_to_album(
-        self, owner_id: int = None, item_id: int = None, album_ids: typing.List[int] = None,
+        self,
+        owner_id: int = None,
+        item_id: int = None,
+        album_ids: typing.List[int] = None,
     ) -> OkResponse:
         """
         :param owner_id: - ID of an item owner community.
@@ -79,11 +81,11 @@ class Market(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("addToAlbum", params)
         result = OkResponse(**raw_result)
@@ -95,7 +97,7 @@ class Market(Category):
         item_id: int = None,
         message: typing.Optional[str] = None,
         attachments: typing.Optional[typing.List[str]] = None,
-        from_group: typing.Optional[bool] = None,
+        from_group: typing.Optional[BaseBoolInt] = None,
         reply_to_comment: typing.Optional[int] = None,
         sticker_id: typing.Optional[int] = None,
         guid: typing.Optional[str] = None,
@@ -113,11 +115,11 @@ class Market(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("createComment", params)
         result = MarketCreateCommentResponse(**raw_result)
@@ -131,17 +133,19 @@ class Market(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("delete", params)
         result = OkResponse(**raw_result)
         return result
 
-    async def delete_album(self, owner_id: int = None, album_id: int = None,) -> OkResponse:
+    async def delete_album(
+        self, owner_id: int = None, album_id: int = None,
+    ) -> OkResponse:
         """
         :param owner_id: - ID of an collection owner community.
         :param album_id: - Collection ID.
@@ -149,11 +153,11 @@ class Market(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("deleteAlbum", params)
         result = OkResponse(**raw_result)
@@ -169,11 +173,11 @@ class Market(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("deleteComment", params)
         result = MarketDeleteCommentResponse(**raw_result)
@@ -187,7 +191,7 @@ class Market(Category):
         description: str = None,
         category_id: int = None,
         price: int = None,
-        deleted: typing.Optional[bool] = None,
+        deleted: typing.Optional[BaseBoolInt] = None,
         main_photo_id: int = None,
         photo_ids: typing.Optional[typing.List[int]] = None,
         url: typing.Optional[str] = None,
@@ -207,11 +211,11 @@ class Market(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("edit", params)
         result = OkResponse(**raw_result)
@@ -223,7 +227,7 @@ class Market(Category):
         album_id: int = None,
         title: str = None,
         photo_id: typing.Optional[int] = None,
-        main_album: typing.Optional[bool] = None,
+        main_album: typing.Optional[BaseBoolInt] = None,
     ) -> OkResponse:
         """
         :param owner_id: - ID of an collection owner community.
@@ -235,11 +239,11 @@ class Market(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("editAlbum", params)
         result = OkResponse(**raw_result)
@@ -249,7 +253,7 @@ class Market(Category):
         self,
         owner_id: int = None,
         comment_id: int = None,
-        message: typing.Optional[str] = None,
+        message: typing.Optional[BaseBoolInt] = None,
         attachments: typing.Optional[typing.List[str]] = None,
     ) -> OkResponse:
         """
@@ -261,11 +265,11 @@ class Market(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("editComment", params)
         result = OkResponse(**raw_result)
@@ -277,8 +281,8 @@ class Market(Category):
         album_id: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
-        extended: typing.Optional[bool] = None,
-    ) -> MarketGetResponse:
+        extended: typing.Optional[BaseBoolInt] = None,
+    ) -> typing.Union[MarketGetResponse, MarketGetExtendedResponse]:
         """
         :param owner_id: - ID of an item owner community, "Note that community id in the 'owner_id' parameter should be negative number. For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community "
         :param album_id:
@@ -289,14 +293,19 @@ class Market(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("get", params)
-        result = MarketGetResponse(**raw_result)
+
+        result = (
+            MarketGetResponse(**raw_result)
+            if not extended
+            else MarketGetExtendedResponse(**raw_result)
+        )
         return result
 
     async def get_album_by_id(
@@ -309,11 +318,11 @@ class Market(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getAlbumById", params)
         result = MarketGetAlbumByIdResponse(**raw_result)
@@ -333,19 +342,21 @@ class Market(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getAlbums", params)
         result = MarketGetAlbumsResponse(**raw_result)
         return result
 
     async def get_by_id(
-        self, item_ids: typing.List[str] = None, extended: typing.Optional[bool] = None,
-    ) -> MarketGetByIdResponse:
+        self,
+        item_ids: typing.List[str] = None,
+        extended: typing.Optional[BaseBoolInt] = None,
+    ) -> typing.Union[MarketGetByIdResponse, MarketGetByIdExtendedResponse]:
         """
         :param item_ids: - Comma-separated ids list: {user id}_{item id}. If an item belongs to a community -{community id} is used. " 'Videos' value example: , '-4363_136089719,13245770_137352259'"
         :param extended: - '1' – to return additional fields: 'likes, can_comment, car_repost, photos'. By default: '0'.
@@ -353,14 +364,19 @@ class Market(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getById", params)
-        result = MarketGetByIdResponse(**raw_result)
+
+        result = (
+            MarketGetByIdResponse(**raw_result)
+            if not extended
+            else MarketGetByIdExtendedResponse(**raw_result)
+        )
         return result
 
     async def get_categories(
@@ -373,11 +389,11 @@ class Market(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getCategories", params)
         result = MarketGetCategoriesResponse(**raw_result)
@@ -387,12 +403,12 @@ class Market(Category):
         self,
         owner_id: int = None,
         item_id: int = None,
-        need_likes: typing.Optional[bool] = None,
+        need_likes: typing.Optional[BaseBoolInt] = None,
         start_comment_id: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
         sort: typing.Optional[str] = None,
-        extended: typing.Optional[bool] = None,
+        extended: typing.Optional[BaseBoolInt] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
     ) -> MarketGetCommentsResponse:
         """
@@ -409,18 +425,21 @@ class Market(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getComments", params)
         result = MarketGetCommentsResponse(**raw_result)
         return result
 
     async def remove_from_album(
-        self, owner_id: int = None, item_id: int = None, album_ids: typing.List[int] = None,
+        self,
+        owner_id: int = None,
+        item_id: int = None,
+        album_ids: typing.List[int] = None,
     ) -> OkResponse:
         """
         :param owner_id: - ID of an item owner community.
@@ -430,11 +449,11 @@ class Market(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("removeFromAlbum", params)
         result = OkResponse(**raw_result)
@@ -456,11 +475,11 @@ class Market(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("reorderAlbums", params)
         result = OkResponse(**raw_result)
@@ -469,7 +488,7 @@ class Market(Category):
     async def reorder_items(
         self,
         owner_id: int = None,
-        album_id: typing.Optional[int] = None,
+        album_id: typing.Optional[BaseBoolInt] = None,
         item_id: int = None,
         before: typing.Optional[int] = None,
         after: typing.Optional[int] = None,
@@ -484,18 +503,21 @@ class Market(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("reorderItems", params)
         result = OkResponse(**raw_result)
         return result
 
     async def report(
-        self, owner_id: int = None, item_id: int = None, reason: typing.Optional[int] = None,
+        self,
+        owner_id: int = None,
+        item_id: int = None,
+        reason: typing.Optional[BaseBoolInt] = None,
     ) -> OkResponse:
         """
         :param owner_id: - ID of an item owner community.
@@ -505,18 +527,18 @@ class Market(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("report", params)
         result = OkResponse(**raw_result)
         return result
 
     async def report_comment(
-        self, owner_id: int = None, comment_id: int = None, reason: int = None,
+        self, owner_id: int = None, comment_id: int = None, reason: BaseBoolInt = None,
     ) -> OkResponse:
         """
         :param owner_id: - ID of an item owner community.
@@ -526,11 +548,11 @@ class Market(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("reportComment", params)
         result = OkResponse(**raw_result)
@@ -544,11 +566,11 @@ class Market(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("restore", params)
         result = OkResponse(**raw_result)
@@ -564,11 +586,11 @@ class Market(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("restoreComment", params)
         result = MarketRestoreCommentResponse(**raw_result)
@@ -583,12 +605,12 @@ class Market(Category):
         price_to: typing.Optional[int] = None,
         tags: typing.Optional[typing.List[int]] = None,
         sort: typing.Optional[int] = None,
-        rev: typing.Optional[int] = None,
+        rev: typing.Optional[BaseBoolInt] = None,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
-        extended: typing.Optional[bool] = None,
+        extended: typing.Optional[BaseBoolInt] = None,
         status: typing.Optional[int] = None,
-    ) -> MarketSearchResponse:
+    ) -> typing.Union[MarketSearchResponse, MarketSearchExtendedResponse]:
         """
         :param owner_id: - ID of an items owner community.
         :param album_id:
@@ -606,12 +628,17 @@ class Market(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("search", params)
-        result = MarketSearchResponse(**raw_result)
+
+        result = (
+            MarketSearchResponse(**raw_result)
+            if not extended
+            else MarketSearchExtendedResponse(**raw_result)
+        )
         return result

@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 
 
@@ -11,11 +10,11 @@ class Account(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("ban", params)
         result = OkResponse(**raw_result)
@@ -37,11 +36,11 @@ class Account(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("changePassword", params)
         result = AccountChangePasswordResponse(**raw_result)
@@ -57,28 +56,30 @@ class Account(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getActiveOffers", params)
         result = AccountGetActiveOffersResponse(**raw_result)
         return result
 
-    async def get_app_permissions(self, user_id: int = None,) -> AccountGetAppPermissionsResponse:
+    async def get_app_permissions(
+        self, user_id: int = None,
+    ) -> AccountGetAppPermissionsResponse:
         """
         :param user_id: - User ID whose settings information shall be got. By default: current user.
         :return:
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getAppPermissions", params)
         result = AccountGetAppPermissionsResponse(**raw_result)
@@ -94,11 +95,11 @@ class Account(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getBanned", params)
         result = AccountGetBannedResponse(**raw_result)
@@ -113,11 +114,11 @@ class Account(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getCounters", params)
         result = AccountGetCountersResponse(**raw_result)
@@ -132,11 +133,11 @@ class Account(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getInfo", params)
         result = AccountGetInfoResponse(**raw_result)
@@ -148,11 +149,11 @@ class Account(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getProfileInfo", params)
         result = AccountGetProfileInfoResponse(**raw_result)
@@ -167,11 +168,11 @@ class Account(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getPushSettings", params)
         result = AccountGetPushSettingsResponse(**raw_result)
@@ -199,11 +200,11 @@ class Account(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("registerDevice", params)
         result = OkResponse(**raw_result)
@@ -217,10 +218,10 @@ class Account(Category):
         screen_name: typing.Optional[str] = None,
         cancel_request_id: typing.Optional[int] = None,
         sex: typing.Optional[int] = None,
-        relation: typing.Optional[int] = None,
+        relation: typing.Optional[BaseBoolInt] = None,
         relation_partner_id: typing.Optional[int] = None,
         bdate: typing.Optional[str] = None,
-        bdate_visibility: typing.Optional[int] = None,
+        bdate_visibility: typing.Optional[BaseBoolInt] = None,
         home_town: typing.Optional[str] = None,
         country_id: typing.Optional[int] = None,
         city_id: typing.Optional[int] = None,
@@ -245,11 +246,11 @@ class Account(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("saveProfileInfo", params)
         result = AccountSaveProfileInfoResponse(**raw_result)
@@ -268,7 +269,7 @@ class Account(Category):
         for key, value_ in locals().items():
             if key not in ["self", "params"] and value_ is not None:
                 if isinstance(value_, list):
-                    value = ",".join(str(item) for item in value_)
+                    value_ = ",".join(str(item) for item in value_)
                 params[key] = value_
 
         raw_result = await self.api_request("setInfo", params)
@@ -285,11 +286,11 @@ class Account(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("setNameInMenu", params)
         result = OkResponse(**raw_result)
@@ -301,28 +302,30 @@ class Account(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("setOffline", params)
         result = OkResponse(**raw_result)
         return result
 
-    async def set_online(self, voip: typing.Optional[bool] = None,) -> OkResponse:
+    async def set_online(
+        self, voip: typing.Optional[BaseBoolInt] = None,
+    ) -> OkResponse:
         """
         :param voip: - '1' if videocalls are available for current device.
         :return:
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("setOnline", params)
         result = OkResponse(**raw_result)
@@ -344,11 +347,11 @@ class Account(Category):
         """
 
         params = {}
-        for key_, value_ in locals().items():
-            if key_ not in ["self", "params"] and value_ is not None:
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
                 if isinstance(value_, list):
                     value_ = ",".join(str(item) for item in value_)
-                params[key_] = value_
+                params[key] = value_
 
         raw_result = await self.api_request("setPushSettings", params)
         result = OkResponse(**raw_result)
@@ -358,8 +361,8 @@ class Account(Category):
         self,
         device_id: typing.Optional[str] = None,
         time: typing.Optional[int] = None,
-        peer_id: typing.Optional[int] = None,
-        sound: typing.Optional[int] = None,
+        peer_id: typing.Optional[BaseBoolInt] = None,
+        sound: typing.Optional[BaseBoolInt] = None,
     ) -> OkResponse:
         """
         :param device_id: - Unique device ID.
@@ -370,11 +373,11 @@ class Account(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("setSilenceMode", params)
         result = OkResponse(**raw_result)
@@ -387,18 +390,20 @@ class Account(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("unban", params)
         result = OkResponse(**raw_result)
         return result
 
     async def unregister_device(
-        self, device_id: typing.Optional[str] = None, sandbox: typing.Optional[bool] = None,
+        self,
+        device_id: typing.Optional[str] = None,
+        sandbox: typing.Optional[bool] = None,
     ) -> OkResponse:
         """
         :param device_id: - Unique device ID.
@@ -407,11 +412,11 @@ class Account(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("unregisterDevice", params)
         result = OkResponse(**raw_result)

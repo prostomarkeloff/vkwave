@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 
 
@@ -20,11 +19,11 @@ class Storage(Category):
         """
 
         params = {}
-        for key_, value in locals().items():
-            if key_ not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key_] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("get", params)
         result = dict(**raw_result)
@@ -46,11 +45,11 @@ class Storage(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getKeys", params)
         result = StorageGetKeysResponse(**raw_result)
@@ -72,11 +71,11 @@ class Storage(Category):
         """
 
         params = {}
-        for key_, value_ in locals().items():
-            if key_ not in ["self", "params"] and value_ is not None:
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
                 if isinstance(value_, list):
-                    value = ",".join(str(item) for item in value_)
-                params[key_] = value_
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("set", params)
         result = OkResponse(**raw_result)

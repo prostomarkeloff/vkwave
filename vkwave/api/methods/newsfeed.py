@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 
 
@@ -16,11 +15,11 @@ class Newsfeed(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("addBan", params)
         result = OkResponse(**raw_result)
@@ -38,11 +37,11 @@ class Newsfeed(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("deleteBan", params)
         result = OkResponse(**raw_result)
@@ -55,11 +54,11 @@ class Newsfeed(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("deleteList", params)
         result = OkResponse(**raw_result)
@@ -68,13 +67,13 @@ class Newsfeed(Category):
     async def get(
         self,
         filters: typing.Optional[typing.List[NewsfeedFilters]] = None,
-        return_banned: typing.Optional[bool] = None,
+        return_banned: typing.Optional[BaseBoolInt] = None,
         start_time: typing.Optional[int] = None,
         end_time: typing.Optional[int] = None,
         max_photos: typing.Optional[int] = None,
         source_ids: typing.Optional[str] = None,
         start_from: typing.Optional[str] = None,
-        count: typing.Optional[int] = None,
+        count: typing.Optional[BaseBoolInt] = None,
         fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
         section: typing.Optional[str] = None,
     ) -> NewsfeedGetResponse:
@@ -93,11 +92,11 @@ class Newsfeed(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("get", params)
         result = NewsfeedGetResponse(**raw_result)
@@ -105,10 +104,10 @@ class Newsfeed(Category):
 
     async def get_banned(
         self,
-        extended: typing.Optional[bool] = None,
+        extended: typing.Optional[BaseBoolInt] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
         name_case: typing.Optional[str] = None,
-    ) -> NewsfeedGetBannedResponse:
+    ) -> typing.Union[NewsfeedGetBannedResponse, NewsfeedGetBannedExtendedResponse]:
         """
         :param extended: - '1' — return extra information about users and communities
         :param fields: - Profile fields to return.
@@ -117,14 +116,19 @@ class Newsfeed(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getBanned", params)
-        result = NewsfeedGetBannedResponse(**raw_result)
+
+        result = (
+            NewsfeedGetBannedResponse(**raw_result)
+            if not extended
+            else NewsfeedGetBannedExtendedResponse(**raw_result)
+        )
         return result
 
     async def get_comments(
@@ -151,11 +155,11 @@ class Newsfeed(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getComments", params)
         result = NewsfeedGetCommentsResponse(**raw_result)
@@ -164,8 +168,8 @@ class Newsfeed(Category):
     async def get_lists(
         self,
         list_ids: typing.Optional[typing.List[int]] = None,
-        extended: typing.Optional[bool] = None,
-    ) -> NewsfeedGetListsResponse:
+        extended: typing.Optional[BaseBoolInt] = None,
+    ) -> typing.Union[NewsfeedGetListsResponse, NewsfeedGetListsExtendedResponse]:
         """
         :param list_ids: - numeric list identifiers.
         :param extended: - Return additional list info
@@ -173,14 +177,19 @@ class Newsfeed(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getLists", params)
-        result = NewsfeedGetListsResponse(**raw_result)
+
+        result = (
+            NewsfeedGetListsResponse(**raw_result)
+            if not extended
+            else NewsfeedGetListsExtendedResponse(**raw_result)
+        )
         return result
 
     async def get_mentions(
@@ -201,11 +210,11 @@ class Newsfeed(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getMentions", params)
         result = NewsfeedGetMentionsResponse(**raw_result)
@@ -231,11 +240,11 @@ class Newsfeed(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getRecommended", params)
         result = NewsfeedGetRecommendedResponse(**raw_result)
@@ -257,11 +266,11 @@ class Newsfeed(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getSuggestedSources", params)
         result = NewsfeedGetSuggestedSourcesResponse(**raw_result)
@@ -278,11 +287,11 @@ class Newsfeed(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("ignoreItem", params)
         result = OkResponse(**raw_result)
@@ -293,7 +302,7 @@ class Newsfeed(Category):
         list_id: typing.Optional[int] = None,
         title: str = None,
         source_ids: typing.Optional[typing.List[int]] = None,
-        no_reposts: typing.Optional[bool] = None,
+        no_reposts: typing.Optional[BaseBoolInt] = None,
     ) -> NewsfeedSaveListResponse:
         """
         :param list_id: - numeric list identifier (if not sent, will be set automatically).
@@ -304,11 +313,11 @@ class Newsfeed(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("saveList", params)
         result = NewsfeedSaveListResponse(**raw_result)
@@ -317,15 +326,15 @@ class Newsfeed(Category):
     async def search(
         self,
         q: typing.Optional[str] = None,
-        extended: typing.Optional[bool] = None,
+        extended: typing.Optional[BaseBoolInt] = None,
         count: typing.Optional[int] = None,
-        latitude: typing.Optional[int] = None,
-        longitude: typing.Optional[int] = None,
+        latitude: typing.Optional[BaseBoolInt] = None,
+        longitude: typing.Optional[BaseBoolInt] = None,
         start_time: typing.Optional[int] = None,
         end_time: typing.Optional[int] = None,
         start_from: typing.Optional[str] = None,
         fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
-    ) -> NewsfeedSearchResponse:
+    ) -> typing.Union[NewsfeedSearchResponse, NewsfeedSearchExtendedResponse]:
         """
         :param q: - Search query string (e.g., 'New Year').
         :param extended: - '1' — to return additional information about the user or community that placed the post.
@@ -340,14 +349,19 @@ class Newsfeed(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("search", params)
-        result = NewsfeedSearchResponse(**raw_result)
+
+        result = (
+            NewsfeedSearchResponse(**raw_result)
+            if not extended
+            else NewsfeedSearchExtendedResponse(**raw_result)
+        )
         return result
 
     async def unignore_item(
@@ -361,18 +375,21 @@ class Newsfeed(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("unignoreItem", params)
         result = OkResponse(**raw_result)
         return result
 
     async def unsubscribe(
-        self, type: str = None, owner_id: typing.Optional[int] = None, item_id: int = None,
+        self,
+        type: str = None,
+        owner_id: typing.Optional[int] = None,
+        item_id: int = None,
     ) -> OkResponse:
         """
         :param type: - Type of object from which to unsubscribe: 'note' — note, 'photo' — photo, 'post' — post on user wall or community wall, 'topic' — topic, 'video' — video
@@ -382,11 +399,11 @@ class Newsfeed(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("unsubscribe", params)
         result = OkResponse(**raw_result)

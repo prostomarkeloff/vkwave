@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 
 
@@ -24,18 +23,21 @@ class Leads(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("checkUser", params)
         result = LeadsCheckUserResponse(**raw_result)
         return result
 
     async def complete(
-        self, vk_sid: str = None, secret: str = None, comment: typing.Optional[str] = None,
+        self,
+        vk_sid: str = None,
+        secret: str = None,
+        comment: typing.Optional[str] = None,
     ) -> LeadsCompleteResponse:
         """
         :param vk_sid: - Session obtained as GET parameter when session started.
@@ -45,11 +47,11 @@ class Leads(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("complete", params)
         result = LeadsCompleteResponse(**raw_result)
@@ -59,8 +61,8 @@ class Leads(Category):
         self,
         lead_id: int = None,
         secret: typing.Optional[str] = None,
-        date_start: typing.Optional[str] = None,
-        date_end: typing.Optional[str] = None,
+        date_start: typing.Optional[BaseBoolInt] = None,
+        date_end: typing.Optional[BaseBoolInt] = None,
     ) -> LeadsGetStatsResponse:
         """
         :param lead_id: - Lead ID.
@@ -71,11 +73,11 @@ class Leads(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getStats", params)
         result = LeadsGetStatsResponse(**raw_result)
@@ -87,8 +89,8 @@ class Leads(Category):
         secret: str = None,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
-        status: typing.Optional[int] = None,
-        reverse: typing.Optional[bool] = None,
+        status: typing.Optional[BaseBoolInt] = None,
+        reverse: typing.Optional[BaseBoolInt] = None,
     ) -> LeadsGetUsersResponse:
         """
         :param offer_id: - Offer ID.
@@ -101,11 +103,11 @@ class Leads(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getUsers", params)
         result = LeadsGetUsersResponse(**raw_result)
@@ -118,11 +120,11 @@ class Leads(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("metricHit", params)
         result = LeadsMetricHitResponse(**raw_result)
@@ -148,11 +150,11 @@ class Leads(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("start", params)
         result = LeadsStartResponse(**raw_result)

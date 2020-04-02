@@ -1,11 +1,13 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 
 
 class Secure(Category):
     async def add_app_event(
-        self, user_id: int = None, activity_id: int = None, value: typing.Optional[int] = None,
+        self,
+        user_id: int = None,
+        activity_id: int = None,
+        value: typing.Optional[int] = None,
     ) -> OkResponse:
         """
         :param user_id: - ID of a user to save the data
@@ -35,11 +37,11 @@ class Secure(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("checkToken", params)
         result = SecureCheckTokenResponse(**raw_result)
@@ -51,11 +53,11 @@ class Secure(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getAppBalance", params)
         result = SecureGetAppBalanceResponse(**raw_result)
@@ -66,7 +68,7 @@ class Secure(Category):
         user_id: typing.Optional[int] = None,
         date_from: typing.Optional[int] = None,
         date_to: typing.Optional[int] = None,
-        limit: typing.Optional[int] = None,
+        limit: typing.Optional[BaseBoolInt] = None,
     ) -> SecureGetSMSHistoryResponse:
         """
         :param user_id:
@@ -77,11 +79,11 @@ class Secure(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getSMSHistory", params)
         result = SecureGetSMSHistoryResponse(**raw_result)
@@ -107,11 +109,11 @@ class Secure(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getTransactionsHistory", params)
         result = SecureGetTransactionsHistoryResponse(**raw_result)
@@ -126,11 +128,11 @@ class Secure(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getUserLevel", params)
         result = SecureGetUserLevelResponse(**raw_result)
@@ -146,11 +148,11 @@ class Secure(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("giveEventSticker", params)
         result = SecureGiveEventStickerResponse(**raw_result)
@@ -170,18 +172,18 @@ class Secure(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("sendNotification", params)
         result = SecureSendNotificationResponse(**raw_result)
         return result
 
     async def send_s_m_s_notification(
-        self, user_id: int = None, message: str = None,
+        self, user_id: int = None, message: BaseBoolInt = None,
     ) -> OkResponse:
         """
         :param user_id: - ID of the user to whom SMS notification is sent. The user shall allow the application to send him/her notifications (, +1).
@@ -190,11 +192,11 @@ class Secure(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("sendSMSNotification", params)
         result = OkResponse(**raw_result)
@@ -216,11 +218,11 @@ class Secure(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("setCounter", params)
         result = OkResponse(**raw_result)

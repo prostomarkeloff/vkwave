@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 
 
@@ -11,11 +10,11 @@ class Pages(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("clearCache", params)
         result = OkResponse(**raw_result)
@@ -25,11 +24,11 @@ class Pages(Category):
         self,
         owner_id: typing.Optional[int] = None,
         page_id: typing.Optional[int] = None,
-        global_: typing.Optional[bool] = None,
-        site_preview: typing.Optional[bool] = None,
+        global_: typing.Optional[BaseBoolInt] = None,
+        site_preview: typing.Optional[BaseBoolInt] = None,
         title: typing.Optional[str] = None,
         need_source: typing.Optional[bool] = None,
-        need_html: typing.Optional[bool] = None,
+        need_html: typing.Optional[BaseBoolInt] = None,
     ) -> PagesGetResponse:
         """
         :param owner_id: - Page owner ID.
@@ -43,11 +42,11 @@ class Pages(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("get", params)
         result = PagesGetResponse(**raw_result)
@@ -67,28 +66,30 @@ class Pages(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getHistory", params)
         result = PagesGetHistoryResponse(**raw_result)
         return result
 
-    async def get_titles(self, group_id: typing.Optional[int] = None,) -> PagesGetTitlesResponse:
+    async def get_titles(
+        self, group_id: typing.Optional[int] = None,
+    ) -> PagesGetTitlesResponse:
         """
         :param group_id: - ID of the community that owns the wiki page.
         :return:
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getTitles", params)
         result = PagesGetTitlesResponse(**raw_result)
@@ -99,7 +100,7 @@ class Pages(Category):
         version_id: int = None,
         group_id: typing.Optional[int] = None,
         user_id: typing.Optional[int] = None,
-        need_html: typing.Optional[bool] = None,
+        need_html: typing.Optional[BaseBoolInt] = None,
     ) -> PagesGetVersionResponse:
         """
         :param version_id:
@@ -110,11 +111,11 @@ class Pages(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getVersion", params)
         result = PagesGetVersionResponse(**raw_result)
@@ -130,11 +131,11 @@ class Pages(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("parseWiki", params)
         result = PagesParseWikiResponse(**raw_result)
@@ -158,11 +159,11 @@ class Pages(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("save", params)
         result = PagesSaveResponse(**raw_result)
@@ -173,8 +174,8 @@ class Pages(Category):
         page_id: int = None,
         group_id: typing.Optional[int] = None,
         user_id: typing.Optional[int] = None,
-        view: typing.Optional[int] = None,
-        edit: typing.Optional[int] = None,
+        view: typing.Optional[BaseBoolInt] = None,
+        edit: typing.Optional[BaseBoolInt] = None,
     ) -> PagesSaveAccessResponse:
         """
         :param page_id: - Wiki page ID.
@@ -186,11 +187,11 @@ class Pages(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("saveAccess", params)
         result = PagesSaveAccessResponse(**raw_result)

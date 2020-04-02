@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 
 
@@ -11,11 +10,11 @@ class Fave(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("addArticle", params)
         result = BaseBoolResponse(**raw_result)
@@ -28,18 +27,20 @@ class Fave(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("addLink", params)
         result = OkResponse(**raw_result)
         return result
 
     async def add_page(
-        self, user_id: typing.Optional[int] = None, group_id: typing.Optional[int] = None,
+        self,
+        user_id: typing.Optional[int] = None,
+        group_id: typing.Optional[int] = None,
     ) -> OkResponse:
         """
         :param user_id:
@@ -48,18 +49,21 @@ class Fave(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("addPage", params)
         result = OkResponse(**raw_result)
         return result
 
     async def add_post(
-        self, owner_id: int = None, id: int = None, access_key: typing.Optional[str] = None,
+        self,
+        owner_id: int = None,
+        id: int = None,
+        access_key: typing.Optional[str] = None,
     ) -> OkResponse:
         """
         :param owner_id:
@@ -69,18 +73,21 @@ class Fave(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("addPost", params)
         result = OkResponse(**raw_result)
         return result
 
     async def add_product(
-        self, owner_id: int = None, id: int = None, access_key: typing.Optional[str] = None,
+        self,
+        owner_id: int = None,
+        id: int = None,
+        access_key: typing.Optional[str] = None,
     ) -> OkResponse:
         """
         :param owner_id:
@@ -90,11 +97,11 @@ class Fave(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("addProduct", params)
         result = OkResponse(**raw_result)
@@ -107,18 +114,21 @@ class Fave(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("addTag", params)
         result = FaveAddTagResponse(**raw_result)
         return result
 
     async def add_video(
-        self, owner_id: int = None, id: int = None, access_key: typing.Optional[str] = None,
+        self,
+        owner_id: int = None,
+        id: int = None,
+        access_key: typing.Optional[str] = None,
     ) -> OkResponse:
         """
         :param owner_id:
@@ -128,11 +138,11 @@ class Fave(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("addVideo", params)
         result = OkResponse(**raw_result)
@@ -146,11 +156,11 @@ class Fave(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("editTag", params)
         result = OkResponse(**raw_result)
@@ -158,14 +168,14 @@ class Fave(Category):
 
     async def get(
         self,
-        extended: typing.Optional[bool] = None,
+        extended: typing.Optional[BaseBoolInt] = None,
         item_type: typing.Optional[str] = None,
         tag_id: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
         fields: typing.Optional[str] = None,
         is_from_snackbar: typing.Optional[bool] = None,
-    ) -> FaveGetResponse:
+    ) -> typing.Union[FaveGetResponse, FaveGetExtendedResponse]:
         """
         :param extended: - '1' — to return additional 'wall', 'profiles', and 'groups' fields. By default: '0'.
         :param item_type:
@@ -178,14 +188,19 @@ class Fave(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("get", params)
-        result = FaveGetResponse(**raw_result)
+
+        result = (
+            FaveGetResponse(**raw_result)
+            if not extended
+            else FaveGetExtendedResponse(**raw_result)
+        )
         return result
 
     async def get_pages(
@@ -206,11 +221,11 @@ class Fave(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getPages", params)
         result = FaveGetPagesResponse(**raw_result)
@@ -222,11 +237,11 @@ class Fave(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getTags", params)
         result = FaveGetTagsResponse(**raw_result)
@@ -238,11 +253,11 @@ class Fave(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("markSeen", params)
         result = BaseBoolResponse(**raw_result)
@@ -258,11 +273,11 @@ class Fave(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("removeArticle", params)
         result = BaseBoolResponse(**raw_result)
@@ -278,18 +293,20 @@ class Fave(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("removeLink", params)
         result = OkResponse(**raw_result)
         return result
 
     async def remove_page(
-        self, user_id: typing.Optional[int] = None, group_id: typing.Optional[int] = None,
+        self,
+        user_id: typing.Optional[int] = None,
+        group_id: typing.Optional[int] = None,
     ) -> OkResponse:
         """
         :param user_id:
@@ -298,11 +315,11 @@ class Fave(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("removePage", params)
         result = OkResponse(**raw_result)
@@ -316,11 +333,11 @@ class Fave(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("removePost", params)
         result = OkResponse(**raw_result)
@@ -334,11 +351,11 @@ class Fave(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("removeProduct", params)
         result = OkResponse(**raw_result)
@@ -351,11 +368,11 @@ class Fave(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("removeTag", params)
         result = OkResponse(**raw_result)
@@ -368,11 +385,11 @@ class Fave(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("reorderTags", params)
         result = OkResponse(**raw_result)
@@ -392,11 +409,11 @@ class Fave(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("setPageTags", params)
         result = OkResponse(**raw_result)
@@ -422,18 +439,20 @@ class Fave(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("setTags", params)
         result = OkResponse(**raw_result)
         return result
 
     async def track_page_interaction(
-        self, user_id: typing.Optional[int] = None, group_id: typing.Optional[int] = None,
+        self,
+        user_id: typing.Optional[int] = None,
+        group_id: typing.Optional[int] = None,
     ) -> OkResponse:
         """
         :param user_id:
@@ -442,11 +461,11 @@ class Fave(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("trackPageInteraction", params)
         result = OkResponse(**raw_result)

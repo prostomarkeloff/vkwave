@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 
 
@@ -7,8 +6,8 @@ class Friends(Category):
     async def add(
         self,
         user_id: typing.Optional[int] = None,
-        text: typing.Optional[str] = None,
-        follow: typing.Optional[bool] = None,
+        text: typing.Optional[BaseBoolInt] = None,
+        follow: typing.Optional[BaseBoolInt] = None,
     ) -> FriendsAddResponse:
         """
         :param user_id: - ID of the user whose friend request will be approved or to whom a friend request will be sent.
@@ -18,11 +17,11 @@ class Friends(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("add", params)
         result = FriendsAddResponse(**raw_result)
@@ -38,18 +37,20 @@ class Friends(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("addList", params)
         result = FriendsAddListResponse(**raw_result)
         return result
 
     async def are_friends(
-        self, user_ids: typing.List[int] = None, need_sign: typing.Optional[bool] = None,
+        self,
+        user_ids: typing.List[int] = None,
+        need_sign: typing.Optional[BaseBoolInt] = None,
     ) -> FriendsAreFriendsResponse:
         """
         :param user_ids: - IDs of the users whose friendship status to check.
@@ -58,28 +59,30 @@ class Friends(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("areFriends", params)
         result = FriendsAreFriendsResponse(**raw_result)
         return result
 
-    async def delete(self, user_id: typing.Optional[int] = None,) -> FriendsDeleteResponse:
+    async def delete(
+        self, user_id: typing.Optional[int] = None,
+    ) -> FriendsDeleteResponse:
         """
         :param user_id: - ID of the user whose friend request is to be declined or who is to be deleted from the current user's friend list.
         :return:
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("delete", params)
         result = FriendsDeleteResponse(**raw_result)
@@ -91,11 +94,11 @@ class Friends(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("deleteAllRequests", params)
         result = OkResponse(**raw_result)
@@ -108,11 +111,11 @@ class Friends(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("deleteList", params)
         result = OkResponse(**raw_result)
@@ -128,11 +131,11 @@ class Friends(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("edit", params)
         result = OkResponse(**raw_result)
@@ -156,11 +159,11 @@ class Friends(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("editList", params)
         result = OkResponse(**raw_result)
@@ -190,11 +193,11 @@ class Friends(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("get", params)
         result = FriendsGetResponse(**raw_result)
@@ -206,11 +209,11 @@ class Friends(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getAppUsers", params)
         result = FriendsGetAppUsersResponse(**raw_result)
@@ -228,18 +231,20 @@ class Friends(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getByPhones", params)
         result = FriendsGetByPhonesResponse(**raw_result)
         return result
 
     async def get_lists(
-        self, user_id: typing.Optional[int] = None, return_system: typing.Optional[bool] = None,
+        self,
+        user_id: typing.Optional[int] = None,
+        return_system: typing.Optional[BaseBoolInt] = None,
     ) -> FriendsGetListsResponse:
         """
         :param user_id: - User ID.
@@ -248,11 +253,11 @@ class Friends(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getLists", params)
         result = FriendsGetListsResponse(**raw_result)
@@ -278,11 +283,11 @@ class Friends(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getMutual", params)
         result = FriendsGetMutualResponse(**raw_result)
@@ -292,7 +297,7 @@ class Friends(Category):
         self,
         user_id: typing.Optional[int] = None,
         list_id: typing.Optional[int] = None,
-        online_mobile: typing.Optional[bool] = None,
+        online_mobile: typing.Optional[BaseBoolInt] = None,
         order: typing.Optional[str] = None,
         count: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
@@ -308,28 +313,30 @@ class Friends(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getOnline", params)
         result = FriendsGetOnlineResponse(**raw_result)
         return result
 
-    async def get_recent(self, count: typing.Optional[int] = None,) -> FriendsGetRecentResponse:
+    async def get_recent(
+        self, count: typing.Optional[int] = None,
+    ) -> FriendsGetRecentResponse:
         """
         :param count: - Number of recently added friends to return.
         :return:
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getRecent", params)
         result = FriendsGetRecentResponse(**raw_result)
@@ -338,16 +345,16 @@ class Friends(Category):
     async def get_requests(
         self,
         offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-        extended: typing.Optional[bool] = None,
-        need_mutual: typing.Optional[bool] = None,
-        out: typing.Optional[bool] = None,
-        sort: typing.Optional[int] = None,
+        count: typing.Optional[BaseBoolInt] = None,
+        extended: typing.Optional[BaseBoolInt] = None,
+        need_mutual: typing.Optional[BaseBoolInt] = None,
+        out: typing.Optional[BaseBoolInt] = None,
+        sort: typing.Optional[BaseBoolInt] = None,
         need_viewed: typing.Optional[bool] = None,
-        suggested: typing.Optional[bool] = None,
+        suggested: typing.Optional[BaseBoolInt] = None,
         ref: typing.Optional[str] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
-    ) -> FriendsGetRequestsResponse:
+    ) -> typing.Union[FriendsGetRequestsResponse, FriendsGetRequestsExtendedResponse]:
         """
         :param offset: - Offset needed to return a specific subset of friend requests.
         :param count: - Number of friend requests to return (default 100, maximum 1000).
@@ -363,14 +370,19 @@ class Friends(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getRequests", params)
-        result = FriendsGetRequestsResponse(**raw_result)
+
+        result = (
+            FriendsGetRequestsResponse(**raw_result)
+            if not extended
+            else FriendsGetRequestsExtendedResponse(**raw_result)
+        )
         return result
 
     async def get_suggestions(
@@ -391,11 +403,11 @@ class Friends(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getSuggestions", params)
         result = FriendsGetSuggestionsResponse(**raw_result)
@@ -421,11 +433,11 @@ class Friends(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("search", params)
         result = FriendsSearchResponse(**raw_result)

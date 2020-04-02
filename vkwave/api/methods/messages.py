@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 
 
@@ -14,11 +13,11 @@ class Messages(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("addChatUser", params)
         result = OkResponse(**raw_result)
@@ -34,11 +33,11 @@ class Messages(Category):
         """
 
         params = {}
-        for key_, value in locals().items():
-            if key_ not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key_] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("allowMessagesFromGroup", params)
         result = OkResponse(**raw_result)
@@ -56,11 +55,11 @@ class Messages(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("createChat", params)
         result = MessagesCreateChatResponse(**raw_result)
@@ -69,9 +68,9 @@ class Messages(Category):
     async def delete(
         self,
         message_ids: typing.Optional[typing.List[int]] = None,
-        spam: typing.Optional[bool] = None,
+        spam: typing.Optional[BaseBoolInt] = None,
         group_id: typing.Optional[int] = None,
-        delete_for_all: typing.Optional[bool] = None,
+        delete_for_all: typing.Optional[BaseBoolInt] = None,
     ) -> MessagesDeleteResponse:
         """
         :param message_ids: - Message IDs.
@@ -82,11 +81,11 @@ class Messages(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("delete", params)
         result = MessagesDeleteResponse(**raw_result)
@@ -102,11 +101,11 @@ class Messages(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("deleteChatPhoto", params)
         result = MessagesDeleteChatPhotoResponse(**raw_result)
@@ -115,7 +114,7 @@ class Messages(Category):
     async def delete_conversation(
         self,
         user_id: typing.Optional[int] = None,
-        peer_id: typing.Optional[int] = None,
+        peer_id: typing.Optional[BaseBoolInt] = None,
         group_id: typing.Optional[int] = None,
     ) -> MessagesDeleteConversationResponse:
         """
@@ -126,11 +125,11 @@ class Messages(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("deleteConversation", params)
         result = MessagesDeleteConversationResponse(**raw_result)
@@ -143,11 +142,11 @@ class Messages(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("denyMessagesFromGroup", params)
         result = OkResponse(**raw_result)
@@ -155,14 +154,14 @@ class Messages(Category):
 
     async def edit(
         self,
-        peer_id: int = None,
+        peer_id: BaseBoolInt = None,
         message: typing.Optional[str] = None,
         message_id: int = None,
-        lat: typing.Optional[int] = None,
-        long: typing.Optional[int] = None,
-        attachment: typing.Optional[str] = None,
-        keep_forward_messages: typing.Optional[bool] = None,
-        keep_snippets: typing.Optional[bool] = None,
+        lat: typing.Optional[BaseBoolInt] = None,
+        long: typing.Optional[BaseBoolInt] = None,
+        attachment: typing.Optional[BaseBoolInt] = None,
+        keep_forward_messages: typing.Optional[BaseBoolInt] = None,
+        keep_snippets: typing.Optional[BaseBoolInt] = None,
         group_id: typing.Optional[int] = None,
         dont_parse_links: typing.Optional[bool] = None,
     ) -> MessagesEditResponse:
@@ -181,11 +180,11 @@ class Messages(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("edit", params)
         result = MessagesEditResponse(**raw_result)
@@ -199,11 +198,11 @@ class Messages(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("editChat", params)
         result = OkResponse(**raw_result)
@@ -211,9 +210,9 @@ class Messages(Category):
 
     async def get_by_conversation_message_id(
         self,
-        peer_id: int = None,
+        peer_id: BaseBoolInt = None,
         conversation_message_ids: typing.List[int] = None,
-        extended: typing.Optional[bool] = None,
+        extended: typing.Optional[BaseBoolInt] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
         group_id: typing.Optional[int] = None,
     ) -> MessagesGetByConversationMessageIdResponse:
@@ -227,11 +226,11 @@ class Messages(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getByConversationMessageId", params)
         result = MessagesGetByConversationMessageIdResponse(**raw_result)
@@ -240,11 +239,11 @@ class Messages(Category):
     async def get_by_id(
         self,
         message_ids: typing.List[int] = None,
-        preview_length: typing.Optional[int] = None,
-        extended: typing.Optional[bool] = None,
+        preview_length: typing.Optional[BaseBoolInt] = None,
+        extended: typing.Optional[BaseBoolInt] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
         group_id: typing.Optional[int] = None,
-    ) -> MessagesGetByIdResponse:
+    ) -> typing.Union[MessagesGetByIdResponse, MessagesGetByIdExtendedResponse]:
         """
         :param message_ids: - Message IDs.
         :param preview_length: - Number of characters after which to truncate a previewed message. To preview the full message, specify '0'. "NOTE: Messages are not truncated by default. Messages are truncated by words."
@@ -255,14 +254,19 @@ class Messages(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getById", params)
-        result = MessagesGetByIdResponse(**raw_result)
+
+        result = (
+            MessagesGetByIdResponse(**raw_result)
+            if not extended
+            else MessagesGetByIdExtendedResponse(**raw_result)
+        )
         return result
 
     async def get_chat_preview(
@@ -279,11 +283,11 @@ class Messages(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getChatPreview", params)
         result = MessagesGetChatPreviewResponse(**raw_result)
@@ -303,11 +307,11 @@ class Messages(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getConversationMembers", params)
         result = MessagesGetConversationMembersResponse(**raw_result)
@@ -318,7 +322,7 @@ class Messages(Category):
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
         filter: typing.Optional[str] = None,
-        extended: typing.Optional[bool] = None,
+        extended: typing.Optional[BaseBoolInt] = None,
         start_message_id: typing.Optional[int] = None,
         fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
         group_id: typing.Optional[int] = None,
@@ -335,11 +339,11 @@ class Messages(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getConversations", params)
         result = MessagesGetConversationsResponse(**raw_result)
@@ -348,10 +352,13 @@ class Messages(Category):
     async def get_conversations_by_id(
         self,
         peer_ids: typing.List[int] = None,
-        extended: typing.Optional[bool] = None,
+        extended: typing.Optional[BaseBoolInt] = None,
         fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
         group_id: typing.Optional[int] = None,
-    ) -> MessagesGetConversationsByIdResponse:
+    ) -> typing.Union[
+        MessagesGetConversationsByIdResponse,
+        MessagesGetConversationsByIdExtendedResponse,
+    ]:
         """
         :param peer_ids: - Destination IDs. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "
         :param extended: - Return extended properties
@@ -361,14 +368,20 @@ class Messages(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getConversationsById", params)
-        result = MessagesGetConversationsByIdResponse(**raw_result)
+
+        print(raw_result)
+        result = (
+            MessagesGetConversationsByIdResponse(**raw_result)
+            if not extended
+            else MessagesGetConversationsByIdExtendedResponse(**raw_result)
+        )
         return result
 
     async def get_history(
@@ -378,8 +391,8 @@ class Messages(Category):
         user_id: typing.Optional[int] = None,
         peer_id: typing.Optional[int] = None,
         start_message_id: typing.Optional[int] = None,
-        rev: typing.Optional[int] = None,
-        extended: typing.Optional[bool] = None,
+        rev: typing.Optional[BaseBoolInt] = None,
+        extended: typing.Optional[BaseBoolInt] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
         group_id: typing.Optional[int] = None,
     ) -> MessagesGetHistoryResponse:
@@ -397,11 +410,11 @@ class Messages(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getHistory", params)
         result = MessagesGetHistoryResponse(**raw_result)
@@ -409,11 +422,11 @@ class Messages(Category):
 
     async def get_history_attachments(
         self,
-        peer_id: int = None,
+        peer_id: BaseBoolInt = None,
         media_type: typing.Optional[str] = None,
         start_from: typing.Optional[str] = None,
         count: typing.Optional[int] = None,
-        photo_sizes: typing.Optional[bool] = None,
+        photo_sizes: typing.Optional[BaseBoolInt] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
         group_id: typing.Optional[int] = None,
         preserve_order: typing.Optional[bool] = None,
@@ -425,7 +438,7 @@ class Messages(Category):
         :param start_from: - Message ID to start return results from.
         :param count: - Number of objects to return.
         :param photo_sizes: - '1' — to return photo sizes in a
-        :param fields: - Additional profile [vk.com/dev/fields|fields] to return.
+        :param fields: - Additional profile [vk.com/dev/fields|fields] to return. 
         :param group_id: - Group ID (for group messages with group access token)
         :param preserve_order:
         :param max_forwards_level:
@@ -433,11 +446,11 @@ class Messages(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getHistoryAttachments", params)
         result = MessagesGetHistoryAttachmentsResponse(**raw_result)
@@ -446,7 +459,7 @@ class Messages(Category):
     async def get_invite_link(
         self,
         peer_id: int = None,
-        reset: typing.Optional[bool] = None,
+        reset: typing.Optional[BaseBoolInt] = None,
         group_id: typing.Optional[int] = None,
     ) -> MessagesGetInviteLinkResponse:
         """
@@ -457,28 +470,30 @@ class Messages(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getInviteLink", params)
         result = MessagesGetInviteLinkResponse(**raw_result)
         return result
 
-    async def get_last_activity(self, user_id: int = None,) -> MessagesGetLastActivityResponse:
+    async def get_last_activity(
+        self, user_id: int = None,
+    ) -> MessagesGetLastActivityResponse:
         """
         :param user_id: - User ID.
         :return:
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getLastActivity", params)
         result = MessagesGetLastActivityResponse(**raw_result)
@@ -488,8 +503,8 @@ class Messages(Category):
         self,
         ts: typing.Optional[int] = None,
         pts: typing.Optional[int] = None,
-        preview_length: typing.Optional[int] = None,
-        onlines: typing.Optional[bool] = None,
+        preview_length: typing.Optional[BaseBoolInt] = None,
+        onlines: typing.Optional[BaseBoolInt] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
         events_limit: typing.Optional[int] = None,
         msgs_limit: typing.Optional[int] = None,
@@ -516,11 +531,11 @@ class Messages(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getLongPollHistory", params)
         result = MessagesGetLongPollHistoryResponse(**raw_result)
@@ -528,7 +543,7 @@ class Messages(Category):
 
     async def get_long_poll_server(
         self,
-        need_pts: typing.Optional[bool] = None,
+        need_pts: typing.Optional[BaseBoolInt] = None,
         group_id: typing.Optional[int] = None,
         lp_version: typing.Optional[int] = None,
     ) -> MessagesGetLongPollServerResponse:
@@ -540,11 +555,11 @@ class Messages(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getLongPollServer", params)
         result = MessagesGetLongPollServerResponse(**raw_result)
@@ -560,11 +575,11 @@ class Messages(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("isMessagesFromGroupAllowed", params)
         result = MessagesIsMessagesFromGroupAllowedResponse(**raw_result)
@@ -579,11 +594,11 @@ class Messages(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("joinChatByInviteLink", params)
         result = MessagesJoinChatByInviteLinkResponse(**raw_result)
@@ -592,7 +607,7 @@ class Messages(Category):
     async def mark_as_answered_conversation(
         self,
         peer_id: int = None,
-        answered: typing.Optional[bool] = None,
+        answered: typing.Optional[BaseBoolInt] = None,
         group_id: typing.Optional[int] = None,
     ) -> OkResponse:
         """
@@ -603,11 +618,11 @@ class Messages(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("markAsAnsweredConversation", params)
         result = OkResponse(**raw_result)
@@ -616,7 +631,7 @@ class Messages(Category):
     async def mark_as_important(
         self,
         message_ids: typing.Optional[typing.List[int]] = None,
-        important: typing.Optional[int] = None,
+        important: typing.Optional[BaseBoolInt] = None,
     ) -> MessagesMarkAsImportantResponse:
         """
         :param message_ids: - IDs of messages to mark as important.
@@ -625,11 +640,11 @@ class Messages(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("markAsImportant", params)
         result = MessagesMarkAsImportantResponse(**raw_result)
@@ -638,7 +653,7 @@ class Messages(Category):
     async def mark_as_important_conversation(
         self,
         peer_id: int = None,
-        important: typing.Optional[bool] = None,
+        important: typing.Optional[BaseBoolInt] = None,
         group_id: typing.Optional[int] = None,
     ) -> OkResponse:
         """
@@ -649,11 +664,11 @@ class Messages(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("markAsImportantConversation", params)
         result = OkResponse(**raw_result)
@@ -662,7 +677,7 @@ class Messages(Category):
     async def mark_as_read(
         self,
         message_ids: typing.Optional[typing.List[int]] = None,
-        peer_id: typing.Optional[int] = None,
+        peer_id: typing.Optional[BaseBoolInt] = None,
         start_message_id: typing.Optional[int] = None,
         group_id: typing.Optional[int] = None,
     ) -> OkResponse:
@@ -675,18 +690,18 @@ class Messages(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("markAsRead", params)
         result = OkResponse(**raw_result)
         return result
 
     async def pin(
-        self, peer_id: int = None, message_id: typing.Optional[int] = None,
+        self, peer_id: BaseBoolInt = None, message_id: typing.Optional[int] = None,
     ) -> MessagesPinResponse:
         """
         :param peer_id: - Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'Chat ID', e.g. '2000000001'. For community: '- Community ID', e.g. '-12345'. "
@@ -695,11 +710,11 @@ class Messages(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("pin", params)
         result = MessagesPinResponse(**raw_result)
@@ -719,11 +734,11 @@ class Messages(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("removeChatUser", params)
         result = OkResponse(**raw_result)
@@ -739,11 +754,11 @@ class Messages(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("restore", params)
         result = OkResponse(**raw_result)
@@ -752,12 +767,12 @@ class Messages(Category):
     async def search(
         self,
         q: typing.Optional[str] = None,
-        peer_id: typing.Optional[int] = None,
+        peer_id: typing.Optional[BaseBoolInt] = None,
         date: typing.Optional[int] = None,
-        preview_length: typing.Optional[int] = None,
+        preview_length: typing.Optional[BaseBoolInt] = None,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
-        extended: typing.Optional[bool] = None,
+        extended: typing.Optional[BaseBoolInt] = None,
         fields: typing.Optional[typing.List[str]] = None,
         group_id: typing.Optional[int] = None,
     ) -> MessagesSearchResponse:
@@ -775,11 +790,11 @@ class Messages(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("search", params)
         result = MessagesSearchResponse(**raw_result)
@@ -789,7 +804,7 @@ class Messages(Category):
         self,
         q: typing.Optional[str] = None,
         count: typing.Optional[int] = None,
-        extended: typing.Optional[bool] = None,
+        extended: typing.Optional[BaseBoolInt] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
         group_id: typing.Optional[int] = None,
     ) -> MessagesSearchConversationsResponse:
@@ -803,11 +818,11 @@ class Messages(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("searchConversations", params)
         result = MessagesSearchConversationsResponse(**raw_result)
@@ -817,21 +832,20 @@ class Messages(Category):
         self,
         user_id: typing.Optional[int] = None,
         random_id: typing.Optional[int] = None,
-        peer_id: typing.Optional[int] = None,
+        peer_id: typing.Optional[BaseBoolInt] = None,
         domain: typing.Optional[str] = None,
         chat_id: typing.Optional[int] = None,
         user_ids: typing.Optional[typing.List[int]] = None,
         message: typing.Optional[str] = None,
-        lat: typing.Optional[int] = None,
-        long: typing.Optional[int] = None,
-        attachment: typing.Optional[str] = None,
+        lat: typing.Optional[BaseBoolInt] = None,
+        long: typing.Optional[BaseBoolInt] = None,
+        attachment: typing.Optional[BaseBoolInt] = None,
         reply_to: typing.Optional[int] = None,
         forward_messages: typing.Optional[typing.List[int]] = None,
         forward: typing.Optional[str] = None,
         sticker_id: typing.Optional[int] = None,
         group_id: typing.Optional[int] = None,
         keyboard: typing.Optional[str] = None,
-        template: typing.Optional[str] = None,
         payload: typing.Optional[str] = None,
         dont_parse_links: typing.Optional[bool] = None,
         disable_mentions: typing.Optional[bool] = None,
@@ -860,11 +874,11 @@ class Messages(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("send", params)
         result = MessagesSendResponse(**raw_result)
@@ -874,7 +888,7 @@ class Messages(Category):
         self,
         user_id: typing.Optional[int] = None,
         type: typing.Optional[str] = None,
-        peer_id: typing.Optional[int] = None,
+        peer_id: typing.Optional[BaseBoolInt] = None,
         group_id: typing.Optional[int] = None,
     ) -> OkResponse:
         """
@@ -886,11 +900,11 @@ class Messages(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("setActivity", params)
         result = OkResponse(**raw_result)
@@ -903,11 +917,11 @@ class Messages(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("setChatPhoto", params)
         result = MessagesSetChatPhotoResponse(**raw_result)
@@ -923,11 +937,11 @@ class Messages(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("unpin", params)
         result = OkResponse(**raw_result)

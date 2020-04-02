@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 
 
@@ -11,11 +10,11 @@ class Utils(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("checkLink", params)
         result = UtilsCheckLinkResponse(**raw_result)
@@ -28,11 +27,11 @@ class Utils(Category):
         """
 
         params = {}
-        for key_, value in locals().items():
-            if key_ not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key_] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("deleteFromLastShortened", params)
         result = OkResponse(**raw_result)
@@ -48,11 +47,11 @@ class Utils(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getLastShortenedLinks", params)
         result = UtilsGetLastShortenedLinksResponse(**raw_result)
@@ -65,8 +64,8 @@ class Utils(Category):
         access_key: typing.Optional[str] = None,
         interval: typing.Optional[str] = None,
         intervals_count: typing.Optional[int] = None,
-        extended: typing.Optional[bool] = None,
-    ) -> UtilsGetLinkStatsResponse:
+        extended: typing.Optional[BaseBoolInt] = None,
+    ) -> typing.Union[UtilsGetLinkStatsResponse, UtilsGetLinkStatsExtendedResponse]:
         """
         :param key: - Link key (characters after vk.cc/).
         :param source: - Source of scope
@@ -78,14 +77,19 @@ class Utils(Category):
         """
 
         params = {}
-        for key_, value in locals().items():
-            if key_ not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key_] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getLinkStats", params)
-        result = UtilsGetLinkStatsResponse(**raw_result)
+
+        result = (
+            UtilsGetLinkStatsResponse(**raw_result)
+            if not extended
+            else UtilsGetLinkStatsExtendedResponse(**raw_result)
+        )
         return result
 
     async def get_server_time(self,) -> UtilsGetServerTimeResponse:
@@ -94,18 +98,18 @@ class Utils(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getServerTime", params)
         result = UtilsGetServerTimeResponse(**raw_result)
         return result
 
     async def get_short_link(
-        self, url: str = None, private: typing.Optional[bool] = None,
+        self, url: str = None, private: typing.Optional[BaseBoolInt] = None,
     ) -> UtilsGetShortLinkResponse:
         """
         :param url: - URL to be shortened.
@@ -114,11 +118,11 @@ class Utils(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getShortLink", params)
         result = UtilsGetShortLinkResponse(**raw_result)
@@ -133,11 +137,11 @@ class Utils(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("resolveScreenName", params)
         result = UtilsResolveScreenNameResponse(**raw_result)

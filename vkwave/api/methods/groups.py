@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 
 
@@ -38,11 +37,11 @@ class Groups(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("addAddress", params)
         result = GroupsAddAddressResponse(**raw_result)
@@ -64,11 +63,11 @@ class Groups(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("addCallbackServer", params)
         result = GroupsAddCallbackServerResponse(**raw_result)
@@ -85,17 +84,19 @@ class Groups(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("addLink", params)
         result = GroupsAddLinkResponse(**raw_result)
         return result
 
-    async def approve_request(self, group_id: int = None, user_id: int = None,) -> OkResponse:
+    async def approve_request(
+        self, group_id: int = None, user_id: int = None,
+    ) -> OkResponse:
         """
         :param group_id: - Community ID.
         :param user_id: - User ID.
@@ -103,11 +104,11 @@ class Groups(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("approveRequest", params)
         result = OkResponse(**raw_result)
@@ -133,11 +134,11 @@ class Groups(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("ban", params)
         result = OkResponse(**raw_result)
@@ -161,11 +162,11 @@ class Groups(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("create", params)
         result = GroupsCreateResponse(**raw_result)
@@ -181,17 +182,19 @@ class Groups(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("deleteCallbackServer", params)
         result = OkResponse(**raw_result)
         return result
 
-    async def delete_link(self, group_id: int = None, link_id: int = None,) -> OkResponse:
+    async def delete_link(
+        self, group_id: int = None, link_id: int = None,
+    ) -> OkResponse:
         """
         :param group_id: - Community ID.
         :param link_id: - Link ID.
@@ -199,11 +202,11 @@ class Groups(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("deleteLink", params)
         result = OkResponse(**raw_result)
@@ -216,11 +219,11 @@ class Groups(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("disableOnline", params)
         result = OkResponse(**raw_result)
@@ -232,9 +235,9 @@ class Groups(Category):
         title: typing.Optional[str] = None,
         description: typing.Optional[str] = None,
         screen_name: typing.Optional[str] = None,
-        access: typing.Optional[int] = None,
+        access: typing.Optional[BaseBoolInt] = None,
         website: typing.Optional[str] = None,
-        subject: typing.Optional[str] = None,
+        subject: typing.Optional[BaseBoolInt] = None,
         email: typing.Optional[str] = None,
         phone: typing.Optional[str] = None,
         rss: typing.Optional[str] = None,
@@ -244,30 +247,30 @@ class Groups(Category):
         public_category: typing.Optional[int] = None,
         public_subcategory: typing.Optional[int] = None,
         public_date: typing.Optional[str] = None,
-        wall: typing.Optional[int] = None,
-        topics: typing.Optional[int] = None,
-        photos: typing.Optional[int] = None,
-        video: typing.Optional[int] = None,
-        audio: typing.Optional[int] = None,
-        links: typing.Optional[bool] = None,
-        events: typing.Optional[bool] = None,
-        places: typing.Optional[bool] = None,
-        contacts: typing.Optional[bool] = None,
-        docs: typing.Optional[int] = None,
-        wiki: typing.Optional[int] = None,
-        messages: typing.Optional[bool] = None,
+        wall: typing.Optional[BaseBoolInt] = None,
+        topics: typing.Optional[BaseBoolInt] = None,
+        photos: typing.Optional[BaseBoolInt] = None,
+        video: typing.Optional[BaseBoolInt] = None,
+        audio: typing.Optional[BaseBoolInt] = None,
+        links: typing.Optional[BaseBoolInt] = None,
+        events: typing.Optional[BaseBoolInt] = None,
+        places: typing.Optional[BaseBoolInt] = None,
+        contacts: typing.Optional[BaseBoolInt] = None,
+        docs: typing.Optional[BaseBoolInt] = None,
+        wiki: typing.Optional[BaseBoolInt] = None,
+        messages: typing.Optional[BaseBoolInt] = None,
         articles: typing.Optional[bool] = None,
         addresses: typing.Optional[bool] = None,
         age_limits: typing.Optional[int] = None,
-        market: typing.Optional[bool] = None,
-        market_comments: typing.Optional[bool] = None,
+        market: typing.Optional[BaseBoolInt] = None,
+        market_comments: typing.Optional[BaseBoolInt] = None,
         market_country: typing.Optional[typing.List[int]] = None,
         market_city: typing.Optional[typing.List[int]] = None,
-        market_currency: typing.Optional[int] = None,
-        market_contact: typing.Optional[int] = None,
+        market_currency: typing.Optional[BaseBoolInt] = None,
+        market_contact: typing.Optional[BaseBoolInt] = None,
         market_wiki: typing.Optional[int] = None,
-        obscene_filter: typing.Optional[bool] = None,
-        obscene_stopwords: typing.Optional[bool] = None,
+        obscene_filter: typing.Optional[BaseBoolInt] = None,
+        obscene_stopwords: typing.Optional[BaseBoolInt] = None,
         obscene_words: typing.Optional[typing.List[str]] = None,
         main_section: typing.Optional[int] = None,
         secondary_section: typing.Optional[int] = None,
@@ -324,11 +327,11 @@ class Groups(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("edit", params)
         result = OkResponse(**raw_result)
@@ -370,11 +373,11 @@ class Groups(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("editAddress", params)
         result = GroupsEditAddressResponse(**raw_result)
@@ -398,18 +401,21 @@ class Groups(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("editCallbackServer", params)
         result = OkResponse(**raw_result)
         return result
 
     async def edit_link(
-        self, group_id: int = None, link_id: int = None, text: typing.Optional[str] = None,
+        self,
+        group_id: int = None,
+        link_id: int = None,
+        text: typing.Optional[str] = None,
     ) -> OkResponse:
         """
         :param group_id: - Community ID.
@@ -419,11 +425,11 @@ class Groups(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("editLink", params)
         result = OkResponse(**raw_result)
@@ -434,7 +440,7 @@ class Groups(Category):
         group_id: int = None,
         user_id: int = None,
         role: typing.Optional[str] = None,
-        is_contact: typing.Optional[bool] = None,
+        is_contact: typing.Optional[BaseBoolInt] = None,
         contact_position: typing.Optional[str] = None,
         contact_phone: typing.Optional[str] = None,
         contact_email: typing.Optional[str] = None,
@@ -451,11 +457,11 @@ class Groups(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("editManager", params)
         result = OkResponse(**raw_result)
@@ -468,11 +474,11 @@ class Groups(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("enableOnline", params)
         result = OkResponse(**raw_result)
@@ -481,12 +487,12 @@ class Groups(Category):
     async def get(
         self,
         user_id: typing.Optional[int] = None,
-        extended: typing.Optional[bool] = None,
+        extended: typing.Optional[BaseBoolInt] = None,
         filter: typing.Optional[typing.List[GroupsFilter]] = None,
         fields: typing.Optional[typing.List[GroupsFields]] = None,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
-    ) -> GroupsGetResponse:
+    ) -> typing.Union[GroupsGetResponse, GroupsGetExtendedResponse]:
         """
         :param user_id: - User ID.
         :param extended: - '1' — to return complete information about a user's communities, '0' — to return a list of community IDs without any additional fields (default),
@@ -498,14 +504,19 @@ class Groups(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("get", params)
-        result = GroupsGetResponse(**raw_result)
+
+        result = (
+            GroupsGetResponse(**raw_result)
+            if not extended
+            else GroupsGetExtendedResponse(**raw_result)
+        )
         return result
 
     async def get_addresses(
@@ -530,11 +541,11 @@ class Groups(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getAddresses", params)
         result = GroupsGetAddressesResponse(**raw_result)
@@ -558,11 +569,11 @@ class Groups(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getBanned", params)
         result = GroupsGetBannedResponse(**raw_result)
@@ -582,11 +593,11 @@ class Groups(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getById", params)
         result = GroupsGetByIdResponse(**raw_result)
@@ -601,18 +612,20 @@ class Groups(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getCallbackConfirmationCode", params)
         result = GroupsGetCallbackConfirmationCodeResponse(**raw_result)
         return result
 
     async def get_callback_servers(
-        self, group_id: int = None, server_ids: typing.Optional[typing.List[int]] = None,
+        self,
+        group_id: int = None,
+        server_ids: typing.Optional[typing.List[int]] = None,
     ) -> GroupsGetCallbackServersResponse:
         """
         :param group_id:
@@ -621,11 +634,11 @@ class Groups(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getCallbackServers", params)
         result = GroupsGetCallbackServersResponse(**raw_result)
@@ -641,11 +654,11 @@ class Groups(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getCallbackSettings", params)
         result = GroupsGetCallbackSettingsResponse(**raw_result)
@@ -663,19 +676,23 @@ class Groups(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getCatalog", params)
         result = GroupsGetCatalogResponse(**raw_result)
         return result
 
     async def get_catalog_info(
-        self, extended: typing.Optional[bool] = None, subcategories: typing.Optional[bool] = None,
-    ) -> GroupsGetCatalogInfoResponse:
+        self,
+        extended: typing.Optional[BaseBoolInt] = None,
+        subcategories: typing.Optional[BaseBoolInt] = None,
+    ) -> typing.Union[
+        GroupsGetCatalogInfoResponse, GroupsGetCatalogInfoExtendedResponse
+    ]:
         """
         :param extended: - 1 – to return communities count and three communities for preview. By default: 0.
         :param subcategories: - 1 – to return subcategories info. By default: 0.
@@ -683,14 +700,19 @@ class Groups(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getCatalogInfo", params)
-        result = GroupsGetCatalogInfoResponse(**raw_result)
+
+        result = (
+            GroupsGetCatalogInfoResponse(**raw_result)
+            if not extended
+            else GroupsGetCatalogInfoExtendedResponse(**raw_result)
+        )
         return result
 
     async def get_invited_users(
@@ -711,11 +733,11 @@ class Groups(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getInvitedUsers", params)
         result = GroupsGetInvitedUsersResponse(**raw_result)
@@ -725,8 +747,8 @@ class Groups(Category):
         self,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
-        extended: typing.Optional[bool] = None,
-    ) -> GroupsGetInvitesResponse:
+        extended: typing.Optional[BaseBoolInt] = None,
+    ) -> typing.Union[GroupsGetInvitesResponse, GroupsGetInvitesExtendedResponse]:
         """
         :param offset: - Offset needed to return a specific subset of invitations.
         :param count: - Number of invitations to return.
@@ -735,28 +757,35 @@ class Groups(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getInvites", params)
-        result = GroupsGetInvitesResponse(**raw_result)
+
+        result = (
+            GroupsGetInvitesResponse(**raw_result)
+            if not extended
+            else GroupsGetInvitesExtendedResponse(**raw_result)
+        )
         return result
 
-    async def get_long_poll_server(self, group_id: int = None,) -> GroupsGetLongPollServerResponse:
+    async def get_long_poll_server(
+        self, group_id: int = None,
+    ) -> GroupsGetLongPollServerResponse:
         """
         :param group_id: - Community ID
         :return:
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getLongPollServer", params)
         result = GroupsGetLongPollServerResponse(**raw_result)
@@ -771,11 +800,11 @@ class Groups(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getLongPollSettings", params)
         result = GroupsGetLongPollSettingsResponse(**raw_result)
@@ -801,11 +830,11 @@ class Groups(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getMembers", params)
         result = GroupsGetMembersResponse(**raw_result)
@@ -827,11 +856,11 @@ class Groups(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getRequests", params)
         result = GroupsGetRequestsResponse(**raw_result)
@@ -844,11 +873,11 @@ class Groups(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getSettings", params)
         result = GroupsGetSettingsResponse(**raw_result)
@@ -860,11 +889,11 @@ class Groups(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getTokenPermissions", params)
         result = GroupsGetTokenPermissionsResponse(**raw_result)
@@ -878,11 +907,11 @@ class Groups(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("invite", params)
         result = OkResponse(**raw_result)
@@ -893,8 +922,8 @@ class Groups(Category):
         group_id: str = None,
         user_id: typing.Optional[int] = None,
         user_ids: typing.Optional[typing.List[int]] = None,
-        extended: typing.Optional[bool] = None,
-    ) -> GroupsIsMemberResponse:
+        extended: typing.Optional[BaseBoolInt] = None,
+    ) -> typing.Union[GroupsIsMemberResponse, GroupsIsMemberExtendedResponse]:
         """
         :param group_id: - ID or screen name of the community.
         :param user_id: - User ID.
@@ -904,18 +933,25 @@ class Groups(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("isMember", params)
-        result = GroupsIsMemberResponse(**raw_result)
+
+        result = (
+            GroupsIsMemberResponse(**raw_result)
+            if not extended
+            else GroupsIsMemberExtendedResponse(**raw_result)
+        )
         return result
 
     async def join(
-        self, group_id: typing.Optional[int] = None, not_sure: typing.Optional[str] = None,
+        self,
+        group_id: typing.Optional[int] = None,
+        not_sure: typing.Optional[BaseBoolInt] = None,
     ) -> OkResponse:
         """
         :param group_id: - ID or screen name of the community.
@@ -924,11 +960,11 @@ class Groups(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("join", params)
         result = OkResponse(**raw_result)
@@ -941,17 +977,19 @@ class Groups(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("leave", params)
         result = OkResponse(**raw_result)
         return result
 
-    async def remove_user(self, group_id: int = None, user_id: int = None,) -> OkResponse:
+    async def remove_user(
+        self, group_id: int = None, user_id: int = None,
+    ) -> OkResponse:
         """
         :param group_id: - Community ID.
         :param user_id: - User ID.
@@ -959,18 +997,21 @@ class Groups(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("removeUser", params)
         result = OkResponse(**raw_result)
         return result
 
     async def reorder_link(
-        self, group_id: int = None, link_id: int = None, after: typing.Optional[int] = None,
+        self,
+        group_id: int = None,
+        link_id: int = None,
+        after: typing.Optional[int] = None,
     ) -> OkResponse:
         """
         :param group_id: - Community ID.
@@ -980,11 +1021,11 @@ class Groups(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("reorderLink", params)
         result = OkResponse(**raw_result)
@@ -996,9 +1037,9 @@ class Groups(Category):
         type: typing.Optional[str] = None,
         country_id: typing.Optional[int] = None,
         city_id: typing.Optional[int] = None,
-        future: typing.Optional[bool] = None,
-        market: typing.Optional[bool] = None,
-        sort: typing.Optional[int] = None,
+        future: typing.Optional[BaseBoolInt] = None,
+        market: typing.Optional[BaseBoolInt] = None,
+        sort: typing.Optional[BaseBoolInt] = None,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
     ) -> GroupsSearchResponse:
@@ -1016,11 +1057,11 @@ class Groups(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("search", params)
         result = GroupsSearchResponse(**raw_result)
@@ -1031,40 +1072,40 @@ class Groups(Category):
         group_id: int = None,
         server_id: typing.Optional[int] = None,
         api_version: typing.Optional[str] = None,
-        message_new: typing.Optional[bool] = None,
-        message_reply: typing.Optional[bool] = None,
-        message_allow: typing.Optional[bool] = None,
+        message_new: typing.Optional[BaseBoolInt] = None,
+        message_reply: typing.Optional[BaseBoolInt] = None,
+        message_allow: typing.Optional[BaseBoolInt] = None,
         message_edit: typing.Optional[bool] = None,
-        message_deny: typing.Optional[bool] = None,
+        message_deny: typing.Optional[BaseBoolInt] = None,
         message_typing_state: typing.Optional[bool] = None,
-        photo_new: typing.Optional[bool] = None,
-        audio_new: typing.Optional[bool] = None,
-        video_new: typing.Optional[bool] = None,
-        wall_reply_new: typing.Optional[bool] = None,
-        wall_reply_edit: typing.Optional[bool] = None,
-        wall_reply_delete: typing.Optional[bool] = None,
-        wall_reply_restore: typing.Optional[bool] = None,
-        wall_post_new: typing.Optional[bool] = None,
-        wall_repost: typing.Optional[bool] = None,
-        board_post_new: typing.Optional[bool] = None,
-        board_post_edit: typing.Optional[bool] = None,
-        board_post_restore: typing.Optional[bool] = None,
-        board_post_delete: typing.Optional[bool] = None,
-        photo_comment_new: typing.Optional[bool] = None,
-        photo_comment_edit: typing.Optional[bool] = None,
-        photo_comment_delete: typing.Optional[bool] = None,
-        photo_comment_restore: typing.Optional[bool] = None,
-        video_comment_new: typing.Optional[bool] = None,
-        video_comment_edit: typing.Optional[bool] = None,
-        video_comment_delete: typing.Optional[bool] = None,
-        video_comment_restore: typing.Optional[bool] = None,
-        market_comment_new: typing.Optional[bool] = None,
-        market_comment_edit: typing.Optional[bool] = None,
-        market_comment_delete: typing.Optional[bool] = None,
-        market_comment_restore: typing.Optional[bool] = None,
-        poll_vote_new: typing.Optional[bool] = None,
-        group_join: typing.Optional[bool] = None,
-        group_leave: typing.Optional[bool] = None,
+        photo_new: typing.Optional[BaseBoolInt] = None,
+        audio_new: typing.Optional[BaseBoolInt] = None,
+        video_new: typing.Optional[BaseBoolInt] = None,
+        wall_reply_new: typing.Optional[BaseBoolInt] = None,
+        wall_reply_edit: typing.Optional[BaseBoolInt] = None,
+        wall_reply_delete: typing.Optional[BaseBoolInt] = None,
+        wall_reply_restore: typing.Optional[BaseBoolInt] = None,
+        wall_post_new: typing.Optional[BaseBoolInt] = None,
+        wall_repost: typing.Optional[BaseBoolInt] = None,
+        board_post_new: typing.Optional[BaseBoolInt] = None,
+        board_post_edit: typing.Optional[BaseBoolInt] = None,
+        board_post_restore: typing.Optional[BaseBoolInt] = None,
+        board_post_delete: typing.Optional[BaseBoolInt] = None,
+        photo_comment_new: typing.Optional[BaseBoolInt] = None,
+        photo_comment_edit: typing.Optional[BaseBoolInt] = None,
+        photo_comment_delete: typing.Optional[BaseBoolInt] = None,
+        photo_comment_restore: typing.Optional[BaseBoolInt] = None,
+        video_comment_new: typing.Optional[BaseBoolInt] = None,
+        video_comment_edit: typing.Optional[BaseBoolInt] = None,
+        video_comment_delete: typing.Optional[BaseBoolInt] = None,
+        video_comment_restore: typing.Optional[BaseBoolInt] = None,
+        market_comment_new: typing.Optional[BaseBoolInt] = None,
+        market_comment_edit: typing.Optional[BaseBoolInt] = None,
+        market_comment_delete: typing.Optional[BaseBoolInt] = None,
+        market_comment_restore: typing.Optional[BaseBoolInt] = None,
+        poll_vote_new: typing.Optional[BaseBoolInt] = None,
+        group_join: typing.Optional[BaseBoolInt] = None,
+        group_leave: typing.Optional[BaseBoolInt] = None,
         group_change_settings: typing.Optional[bool] = None,
         group_change_photo: typing.Optional[bool] = None,
         group_officers_edit: typing.Optional[bool] = None,
@@ -1120,11 +1161,11 @@ class Groups(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("setCallbackSettings", params)
         result = OkResponse(**raw_result)
@@ -1133,42 +1174,42 @@ class Groups(Category):
     async def set_long_poll_settings(
         self,
         group_id: int = None,
-        enabled: typing.Optional[bool] = None,
+        enabled: typing.Optional[BaseBoolInt] = None,
         api_version: typing.Optional[str] = None,
-        message_new: typing.Optional[bool] = None,
-        message_reply: typing.Optional[bool] = None,
-        message_allow: typing.Optional[bool] = None,
-        message_deny: typing.Optional[bool] = None,
-        message_edit: typing.Optional[bool] = None,
+        message_new: typing.Optional[BaseBoolInt] = None,
+        message_reply: typing.Optional[BaseBoolInt] = None,
+        message_allow: typing.Optional[BaseBoolInt] = None,
+        message_deny: typing.Optional[BaseBoolInt] = None,
+        message_edit: typing.Optional[BaseBoolInt] = None,
         message_typing_state: typing.Optional[bool] = None,
-        photo_new: typing.Optional[bool] = None,
-        audio_new: typing.Optional[bool] = None,
-        video_new: typing.Optional[bool] = None,
-        wall_reply_new: typing.Optional[bool] = None,
-        wall_reply_edit: typing.Optional[bool] = None,
-        wall_reply_delete: typing.Optional[bool] = None,
-        wall_reply_restore: typing.Optional[bool] = None,
-        wall_post_new: typing.Optional[bool] = None,
-        wall_repost: typing.Optional[bool] = None,
-        board_post_new: typing.Optional[bool] = None,
-        board_post_edit: typing.Optional[bool] = None,
-        board_post_restore: typing.Optional[bool] = None,
-        board_post_delete: typing.Optional[bool] = None,
-        photo_comment_new: typing.Optional[bool] = None,
-        photo_comment_edit: typing.Optional[bool] = None,
-        photo_comment_delete: typing.Optional[bool] = None,
-        photo_comment_restore: typing.Optional[bool] = None,
-        video_comment_new: typing.Optional[bool] = None,
-        video_comment_edit: typing.Optional[bool] = None,
-        video_comment_delete: typing.Optional[bool] = None,
-        video_comment_restore: typing.Optional[bool] = None,
-        market_comment_new: typing.Optional[bool] = None,
-        market_comment_edit: typing.Optional[bool] = None,
-        market_comment_delete: typing.Optional[bool] = None,
-        market_comment_restore: typing.Optional[bool] = None,
-        poll_vote_new: typing.Optional[bool] = None,
-        group_join: typing.Optional[bool] = None,
-        group_leave: typing.Optional[bool] = None,
+        photo_new: typing.Optional[BaseBoolInt] = None,
+        audio_new: typing.Optional[BaseBoolInt] = None,
+        video_new: typing.Optional[BaseBoolInt] = None,
+        wall_reply_new: typing.Optional[BaseBoolInt] = None,
+        wall_reply_edit: typing.Optional[BaseBoolInt] = None,
+        wall_reply_delete: typing.Optional[BaseBoolInt] = None,
+        wall_reply_restore: typing.Optional[BaseBoolInt] = None,
+        wall_post_new: typing.Optional[BaseBoolInt] = None,
+        wall_repost: typing.Optional[BaseBoolInt] = None,
+        board_post_new: typing.Optional[BaseBoolInt] = None,
+        board_post_edit: typing.Optional[BaseBoolInt] = None,
+        board_post_restore: typing.Optional[BaseBoolInt] = None,
+        board_post_delete: typing.Optional[BaseBoolInt] = None,
+        photo_comment_new: typing.Optional[BaseBoolInt] = None,
+        photo_comment_edit: typing.Optional[BaseBoolInt] = None,
+        photo_comment_delete: typing.Optional[BaseBoolInt] = None,
+        photo_comment_restore: typing.Optional[BaseBoolInt] = None,
+        video_comment_new: typing.Optional[BaseBoolInt] = None,
+        video_comment_edit: typing.Optional[BaseBoolInt] = None,
+        video_comment_delete: typing.Optional[BaseBoolInt] = None,
+        video_comment_restore: typing.Optional[BaseBoolInt] = None,
+        market_comment_new: typing.Optional[BaseBoolInt] = None,
+        market_comment_edit: typing.Optional[BaseBoolInt] = None,
+        market_comment_delete: typing.Optional[BaseBoolInt] = None,
+        market_comment_restore: typing.Optional[BaseBoolInt] = None,
+        poll_vote_new: typing.Optional[BaseBoolInt] = None,
+        group_join: typing.Optional[BaseBoolInt] = None,
+        group_leave: typing.Optional[BaseBoolInt] = None,
         group_change_settings: typing.Optional[bool] = None,
         group_change_photo: typing.Optional[bool] = None,
         group_officers_edit: typing.Optional[bool] = None,
@@ -1222,11 +1263,11 @@ class Groups(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("setLongPollSettings", params)
         result = OkResponse(**raw_result)
@@ -1242,11 +1283,11 @@ class Groups(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("unban", params)
         result = OkResponse(**raw_result)

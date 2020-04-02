@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 
 
@@ -18,11 +17,11 @@ class Users(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("get", params)
         result = UsersGetResponse(**raw_result)
@@ -46,11 +45,11 @@ class Users(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getFollowers", params)
         result = UsersGetFollowersResponse(**raw_result)
@@ -59,11 +58,13 @@ class Users(Category):
     async def get_subscriptions(
         self,
         user_id: typing.Optional[int] = None,
-        extended: typing.Optional[bool] = None,
+        extended: typing.Optional[BaseBoolInt] = None,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
-    ) -> UsersGetSubscriptionsResponse:
+    ) -> typing.Union[
+        UsersGetSubscriptionsResponse, UsersGetSubscriptionsExtendedResponse
+    ]:
         """
         :param user_id: - User ID.
         :param extended: - '1' — to return a combined list of users and communities, '0' — to return separate lists of users and communities (default)
@@ -74,35 +75,45 @@ class Users(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getSubscriptions", params)
-        result = UsersGetSubscriptionsResponse(**raw_result)
+
+        result = (
+            UsersGetSubscriptionsResponse(**raw_result)
+            if not extended
+            else UsersGetSubscriptionsExtendedResponse(**raw_result)
+        )
         return result
 
-    async def is_app_user(self, user_id: typing.Optional[int] = None,) -> UsersIsAppUserResponse:
+    async def is_app_user(
+        self, user_id: typing.Optional[int] = None,
+    ) -> UsersIsAppUserResponse:
         """
         :param user_id:
         :return:
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("isAppUser", params)
         result = UsersIsAppUserResponse(**raw_result)
         return result
 
     async def report(
-        self, user_id: int = None, type: str = None, comment: typing.Optional[str] = None,
+        self,
+        user_id: int = None,
+        type: str = None,
+        comment: typing.Optional[str] = None,
     ) -> OkResponse:
         """
         :param user_id: - ID of the user about whom a complaint is being made.
@@ -112,11 +123,11 @@ class Users(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("report", params)
         result = OkResponse(**raw_result)
@@ -125,7 +136,7 @@ class Users(Category):
     async def search(
         self,
         q: typing.Optional[str] = None,
-        sort: typing.Optional[int] = None,
+        sort: typing.Optional[BaseBoolInt] = None,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
@@ -137,15 +148,15 @@ class Users(Category):
         university_year: typing.Optional[int] = None,
         university_faculty: typing.Optional[int] = None,
         university_chair: typing.Optional[int] = None,
-        sex: typing.Optional[int] = None,
+        sex: typing.Optional[BaseBoolInt] = None,
         status: typing.Optional[int] = None,
         age_from: typing.Optional[int] = None,
         age_to: typing.Optional[int] = None,
         birth_day: typing.Optional[int] = None,
         birth_month: typing.Optional[int] = None,
         birth_year: typing.Optional[int] = None,
-        online: typing.Optional[bool] = None,
-        has_photo: typing.Optional[bool] = None,
+        online: typing.Optional[BaseBoolInt] = None,
+        has_photo: typing.Optional[BaseBoolInt] = None,
         school_country: typing.Optional[int] = None,
         school_city: typing.Optional[int] = None,
         school_class: typing.Optional[int] = None,
@@ -196,11 +207,11 @@ class Users(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("search", params)
         result = UsersSearchResponse(**raw_result)

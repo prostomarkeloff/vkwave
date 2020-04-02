@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 
 
@@ -14,11 +13,11 @@ class Ads(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("addOfficeUsers", params)
         result = AdsAddOfficeUsersResponse(**raw_result)
@@ -40,17 +39,19 @@ class Ads(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("checkLink", params)
         result = AdsCheckLinkResponse(**raw_result)
         return result
 
-    async def create_ads(self, account_id: int = None, data: str = None,) -> AdsCreateAdsResponse:
+    async def create_ads(
+        self, account_id: int = None, data: str = None,
+    ) -> AdsCreateAdsResponse:
         """
         :param account_id: - Advertising account ID.
         :param data: - Serialized JSON array of objects that describe created ads. Description of 'ad_specification' objects see below.
@@ -58,11 +59,11 @@ class Ads(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("createAds", params)
         result = AdsCreateAdsResponse(**raw_result)
@@ -78,11 +79,11 @@ class Ads(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("createCampaigns", params)
         result = AdsCreateCampaignsResponse(**raw_result)
@@ -98,11 +99,11 @@ class Ads(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("createClients", params)
         result = AdsCreateClientsResponse(**raw_result)
@@ -128,17 +129,19 @@ class Ads(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("createTargetGroup", params)
         result = AdsCreateTargetGroupResponse(**raw_result)
         return result
 
-    async def delete_ads(self, account_id: int = None, ids: str = None,) -> AdsDeleteAdsResponse:
+    async def delete_ads(
+        self, account_id: int = None, ids: str = None,
+    ) -> AdsDeleteAdsResponse:
         """
         :param account_id: - Advertising account ID.
         :param ids: - Serialized JSON array with ad IDs.
@@ -146,11 +149,11 @@ class Ads(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("deleteAds", params)
         result = AdsDeleteAdsResponse(**raw_result)
@@ -166,11 +169,11 @@ class Ads(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("deleteCampaigns", params)
         result = AdsDeleteCampaignsResponse(**raw_result)
@@ -186,11 +189,11 @@ class Ads(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("deleteClients", params)
         result = AdsDeleteClientsResponse(**raw_result)
@@ -210,11 +213,11 @@ class Ads(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("deleteTargetGroup", params)
         result = OkResponse(**raw_result)
@@ -226,11 +229,11 @@ class Ads(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getAccounts", params)
         result = AdsGetAccountsResponse(**raw_result)
@@ -242,7 +245,7 @@ class Ads(Category):
         ad_ids: typing.Optional[str] = None,
         campaign_ids: typing.Optional[str] = None,
         client_id: typing.Optional[int] = None,
-        include_deleted: typing.Optional[bool] = None,
+        include_deleted: typing.Optional[BaseBoolInt] = None,
         limit: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
     ) -> AdsGetAdsResponse:
@@ -258,11 +261,11 @@ class Ads(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getAds", params)
         result = AdsGetAdsResponse(**raw_result)
@@ -274,7 +277,7 @@ class Ads(Category):
         ad_ids: typing.Optional[str] = None,
         campaign_ids: typing.Optional[str] = None,
         client_id: typing.Optional[int] = None,
-        include_deleted: typing.Optional[bool] = None,
+        include_deleted: typing.Optional[BaseBoolInt] = None,
         limit: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
     ) -> AdsGetAdsLayoutResponse:
@@ -290,11 +293,11 @@ class Ads(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getAdsLayout", params)
         result = AdsGetAdsLayoutResponse(**raw_result)
@@ -306,7 +309,7 @@ class Ads(Category):
         ad_ids: typing.Optional[str] = None,
         campaign_ids: typing.Optional[str] = None,
         client_id: typing.Optional[int] = None,
-        include_deleted: typing.Optional[bool] = None,
+        include_deleted: typing.Optional[BaseBoolInt] = None,
         limit: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
     ) -> AdsGetAdsTargetingResponse:
@@ -322,11 +325,11 @@ class Ads(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getAdsTargeting", params)
         result = AdsGetAdsTargetingResponse(**raw_result)
@@ -339,11 +342,11 @@ class Ads(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getBudget", params)
         result = AdsGetBudgetResponse(**raw_result)
@@ -353,7 +356,7 @@ class Ads(Category):
         self,
         account_id: int = None,
         client_id: typing.Optional[int] = None,
-        include_deleted: typing.Optional[bool] = None,
+        include_deleted: typing.Optional[BaseBoolInt] = None,
         campaign_ids: typing.Optional[str] = None,
     ) -> AdsGetCampaignsResponse:
         """
@@ -365,28 +368,30 @@ class Ads(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getCampaigns", params)
         result = AdsGetCampaignsResponse(**raw_result)
         return result
 
-    async def get_categories(self, lang: typing.Optional[str] = None,) -> AdsGetCategoriesResponse:
+    async def get_categories(
+        self, lang: typing.Optional[str] = None,
+    ) -> AdsGetCategoriesResponse:
         """
         :param lang: - Language. The full list of supported languages is [vk.com/dev/api_requests|here].
         :return:
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getCategories", params)
         result = AdsGetCategoriesResponse(**raw_result)
@@ -399,11 +404,11 @@ class Ads(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getClients", params)
         result = AdsGetClientsResponse(**raw_result)
@@ -413,10 +418,10 @@ class Ads(Category):
         self,
         account_id: int = None,
         ids_type: str = None,
-        ids: str = None,
+        ids: BaseBoolInt = None,
         period: str = None,
-        date_from: str = None,
-        date_to: str = None,
+        date_from: BaseBoolInt = None,
+        date_to: BaseBoolInt = None,
     ) -> AdsGetDemographicsResponse:
         """
         :param account_id: - Advertising account ID.
@@ -429,52 +434,56 @@ class Ads(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getDemographics", params)
         result = AdsGetDemographicsResponse(**raw_result)
         return result
 
-    async def get_flood_stats(self, account_id: int = None,) -> AdsGetFloodStatsResponse:
+    async def get_flood_stats(
+        self, account_id: int = None,
+    ) -> AdsGetFloodStatsResponse:
         """
         :param account_id: - Advertising account ID.
         :return:
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getFloodStats", params)
         result = AdsGetFloodStatsResponse(**raw_result)
         return result
 
-    async def get_office_users(self, account_id: int = None,) -> AdsGetOfficeUsersResponse:
+    async def get_office_users(
+        self, account_id: int = None,
+    ) -> AdsGetOfficeUsersResponse:
         """
         :param account_id: - Advertising account ID.
         :return:
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getOfficeUsers", params)
         result = AdsGetOfficeUsersResponse(**raw_result)
         return result
 
     async def get_posts_reach(
-        self, account_id: int = None, ids_type: str = None, ids: str = None,
+        self, account_id: int = None, ids_type: str = None, ids: BaseBoolInt = None,
     ) -> AdsGetPostsReachResponse:
         """
         :param account_id: - Advertising account ID.
@@ -484,11 +493,11 @@ class Ads(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getPostsReach", params)
         result = AdsGetPostsReachResponse(**raw_result)
@@ -504,11 +513,11 @@ class Ads(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getRejectionReason", params)
         result = AdsGetRejectionReasonResponse(**raw_result)
@@ -518,10 +527,10 @@ class Ads(Category):
         self,
         account_id: int = None,
         ids_type: str = None,
-        ids: str = None,
+        ids: BaseBoolInt = None,
         period: str = None,
-        date_from: str = None,
-        date_to: str = None,
+        date_from: BaseBoolInt = None,
+        date_to: BaseBoolInt = None,
     ) -> AdsGetStatisticsResponse:
         """
         :param account_id: - Advertising account ID.
@@ -534,11 +543,11 @@ class Ads(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getStatistics", params)
         result = AdsGetStatisticsResponse(**raw_result)
@@ -564,11 +573,11 @@ class Ads(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getSuggestions", params)
         result = AdsGetSuggestionsResponse(**raw_result)
@@ -578,7 +587,7 @@ class Ads(Category):
         self,
         account_id: int = None,
         client_id: typing.Optional[int] = None,
-        extended: typing.Optional[bool] = None,
+        extended: typing.Optional[BaseBoolInt] = None,
     ) -> AdsGetTargetGroupsResponse:
         """
         :param account_id: - Advertising account ID.
@@ -588,11 +597,11 @@ class Ads(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getTargetGroups", params)
         result = AdsGetTargetGroupsResponse(**raw_result)
@@ -604,8 +613,8 @@ class Ads(Category):
         client_id: typing.Optional[int] = None,
         criteria: typing.Optional[str] = None,
         ad_id: typing.Optional[int] = None,
-        ad_format: typing.Optional[int] = None,
-        ad_platform: typing.Optional[str] = None,
+        ad_format: typing.Optional[BaseBoolInt] = None,
+        ad_platform: typing.Optional[BaseBoolInt] = None,
         ad_platform_no_wall: typing.Optional[str] = None,
         ad_platform_no_ad_network: typing.Optional[str] = None,
         link_url: str = None,
@@ -626,11 +635,11 @@ class Ads(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getTargetingStats", params)
         result = AdsGetTargetingStatsResponse(**raw_result)
@@ -646,11 +655,11 @@ class Ads(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getUploadURL", params)
         result = AdsGetUploadURLResponse(**raw_result)
@@ -662,11 +671,11 @@ class Ads(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getVideoUploadURL", params)
         result = AdsGetVideoUploadURLResponse(**raw_result)
@@ -688,11 +697,11 @@ class Ads(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("importTargetContacts", params)
         result = AdsImportTargetContactsResponse(**raw_result)
@@ -708,17 +717,19 @@ class Ads(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("removeOfficeUsers", params)
         result = AdsRemoveOfficeUsersResponse(**raw_result)
         return result
 
-    async def update_ads(self, account_id: int = None, data: str = None,) -> AdsUpdateAdsResponse:
+    async def update_ads(
+        self, account_id: int = None, data: str = None,
+    ) -> AdsUpdateAdsResponse:
         """
         :param account_id: - Advertising account ID.
         :param data: - Serialized JSON array of objects that describe changes in ads. Description of 'ad_edit_specification' objects see below.
@@ -726,11 +737,11 @@ class Ads(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("updateAds", params)
         result = AdsUpdateAdsResponse(**raw_result)
@@ -746,11 +757,11 @@ class Ads(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("updateCampaigns", params)
         result = AdsUpdateCampaignsResponse(**raw_result)
@@ -766,11 +777,11 @@ class Ads(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("updateClients", params)
         result = AdsUpdateClientsResponse(**raw_result)
@@ -783,7 +794,7 @@ class Ads(Category):
         target_group_id: int = None,
         name: str = None,
         domain: typing.Optional[str] = None,
-        lifetime: typing.Optional[int] = None,
+        lifetime: typing.Optional[BaseBoolInt] = None,
         target_pixel_id: typing.Optional[int] = None,
         target_pixel_rules: typing.Optional[str] = None,
     ) -> OkResponse:
@@ -800,11 +811,11 @@ class Ads(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("updateTargetGroup", params)
         result = OkResponse(**raw_result)

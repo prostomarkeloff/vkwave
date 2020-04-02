@@ -1,11 +1,13 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 
 
 class Photos(Category):
     async def confirm_tag(
-        self, owner_id: typing.Optional[int] = None, photo_id: str = None, tag_id: int = None,
+        self,
+        owner_id: typing.Optional[int] = None,
+        photo_id: str = None,
+        tag_id: int = None,
     ) -> OkResponse:
         """
         :param owner_id: - ID of the user or community that owns the photo.
@@ -15,18 +17,21 @@ class Photos(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("confirmTag", params)
         result = OkResponse(**raw_result)
         return result
 
     async def copy(
-        self, owner_id: int = None, photo_id: int = None, access_key: typing.Optional[str] = None,
+        self,
+        owner_id: int = None,
+        photo_id: int = None,
+        access_key: typing.Optional[str] = None,
     ) -> PhotosCopyResponse:
         """
         :param owner_id: - photo's owner ID
@@ -36,11 +41,11 @@ class Photos(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("copy", params)
         result = PhotosCopyResponse(**raw_result)
@@ -68,11 +73,11 @@ class Photos(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("createAlbum", params)
         result = PhotosCreateAlbumResponse(**raw_result)
@@ -84,7 +89,7 @@ class Photos(Category):
         photo_id: int = None,
         message: typing.Optional[str] = None,
         attachments: typing.Optional[typing.List[str]] = None,
-        from_group: typing.Optional[bool] = None,
+        from_group: typing.Optional[BaseBoolInt] = None,
         reply_to_comment: typing.Optional[int] = None,
         sticker_id: typing.Optional[int] = None,
         access_key: typing.Optional[str] = None,
@@ -104,11 +109,11 @@ class Photos(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("createComment", params)
         result = PhotosCreateCommentResponse(**raw_result)
@@ -124,11 +129,11 @@ class Photos(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("delete", params)
         result = OkResponse(**raw_result)
@@ -144,11 +149,11 @@ class Photos(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("deleteAlbum", params)
         result = OkResponse(**raw_result)
@@ -164,11 +169,11 @@ class Photos(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("deleteComment", params)
         result = PhotosDeleteCommentResponse(**raw_result)
@@ -198,11 +203,11 @@ class Photos(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("edit", params)
         result = OkResponse(**raw_result)
@@ -232,11 +237,11 @@ class Photos(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("editAlbum", params)
         result = OkResponse(**raw_result)
@@ -258,11 +263,11 @@ class Photos(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("editComment", params)
         result = OkResponse(**raw_result)
@@ -273,14 +278,14 @@ class Photos(Category):
         owner_id: typing.Optional[int] = None,
         album_id: typing.Optional[str] = None,
         photo_ids: typing.Optional[typing.List[str]] = None,
-        rev: typing.Optional[bool] = None,
-        extended: typing.Optional[bool] = None,
+        rev: typing.Optional[BaseBoolInt] = None,
+        extended: typing.Optional[BaseBoolInt] = None,
         feed_type: typing.Optional[str] = None,
         feed: typing.Optional[int] = None,
-        photo_sizes: typing.Optional[bool] = None,
+        photo_sizes: typing.Optional[BaseBoolInt] = None,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
-    ) -> PhotosGetResponse:
+    ) -> typing.Union[PhotosGetResponse, PhotosGetExtendedResponse]:
         """
         :param owner_id: - ID of the user or community that owns the photos. Use a negative value to designate a community ID.
         :param album_id: - Photo album ID. To return information about photos from service albums, use the following string values: 'profile, wall, saved'.
@@ -296,14 +301,19 @@ class Photos(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("get", params)
-        result = PhotosGetResponse(**raw_result)
+
+        result = (
+            PhotosGetResponse(**raw_result)
+            if not extended
+            else PhotosGetExtendedResponse(**raw_result)
+        )
         return result
 
     async def get_albums(
@@ -312,9 +322,9 @@ class Photos(Category):
         album_ids: typing.Optional[typing.List[int]] = None,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
-        need_system: typing.Optional[bool] = None,
-        need_covers: typing.Optional[bool] = None,
-        photo_sizes: typing.Optional[bool] = None,
+        need_system: typing.Optional[BaseBoolInt] = None,
+        need_covers: typing.Optional[BaseBoolInt] = None,
+        photo_sizes: typing.Optional[BaseBoolInt] = None,
     ) -> PhotosGetAlbumsResponse:
         """
         :param owner_id: - ID of the user or community that owns the albums.
@@ -328,18 +338,20 @@ class Photos(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getAlbums", params)
         result = PhotosGetAlbumsResponse(**raw_result)
         return result
 
     async def get_albums_count(
-        self, user_id: typing.Optional[int] = None, group_id: typing.Optional[int] = None,
+        self,
+        user_id: typing.Optional[int] = None,
+        group_id: typing.Optional[int] = None,
     ) -> PhotosGetAlbumsCountResponse:
         """
         :param user_id: - User ID.
@@ -348,11 +360,11 @@ class Photos(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getAlbumsCount", params)
         result = PhotosGetAlbumsCountResponse(**raw_result)
@@ -361,14 +373,14 @@ class Photos(Category):
     async def get_all(
         self,
         owner_id: typing.Optional[int] = None,
-        extended: typing.Optional[bool] = None,
-        offset: typing.Optional[int] = None,
+        extended: typing.Optional[BaseBoolInt] = None,
+        offset: typing.Optional[BaseBoolInt] = None,
         count: typing.Optional[int] = None,
-        photo_sizes: typing.Optional[bool] = None,
-        no_service_albums: typing.Optional[bool] = None,
-        need_hidden: typing.Optional[bool] = None,
-        skip_hidden: typing.Optional[bool] = None,
-    ) -> PhotosGetAllResponse:
+        photo_sizes: typing.Optional[BaseBoolInt] = None,
+        no_service_albums: typing.Optional[BaseBoolInt] = None,
+        need_hidden: typing.Optional[BaseBoolInt] = None,
+        skip_hidden: typing.Optional[BaseBoolInt] = None,
+    ) -> typing.Union[PhotosGetAllResponse, PhotosGetAllExtendedResponse]:
         """
         :param owner_id: - ID of a user or community that owns the photos. Use a negative value to designate a community ID.
         :param extended: - '1' — to return detailed information about photos
@@ -382,23 +394,28 @@ class Photos(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getAll", params)
-        result = PhotosGetAllResponse(**raw_result)
+
+        result = (
+            PhotosGetAllResponse(**raw_result)
+            if not extended
+            else PhotosGetAllExtendedResponse(**raw_result)
+        )
         return result
 
     async def get_all_comments(
         self,
         owner_id: typing.Optional[int] = None,
         album_id: typing.Optional[int] = None,
-        need_likes: typing.Optional[bool] = None,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
+        need_likes: typing.Optional[BaseBoolInt] = None,
+        offset: typing.Optional[BaseBoolInt] = None,
+        count: typing.Optional[BaseBoolInt] = None,
     ) -> PhotosGetAllCommentsResponse:
         """
         :param owner_id: - ID of the user or community that owns the album(s).
@@ -410,11 +427,11 @@ class Photos(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getAllComments", params)
         result = PhotosGetAllCommentsResponse(**raw_result)
@@ -423,9 +440,9 @@ class Photos(Category):
     async def get_by_id(
         self,
         photos: typing.List[str] = None,
-        extended: typing.Optional[bool] = None,
-        photo_sizes: typing.Optional[bool] = None,
-    ) -> PhotosGetByIdResponse:
+        extended: typing.Optional[BaseBoolInt] = None,
+        photo_sizes: typing.Optional[BaseBoolInt] = None,
+    ) -> typing.Union[PhotosGetByIdResponse, PhotosGetByIdExtendedResponse]:
         """
         :param photos: - IDs separated with a comma, that are IDs of users who posted photos and IDs of photos themselves with an underscore character between such IDs. To get information about a photo in the group album, you shall specify group ID instead of user ID. Example: "1_129207899,6492_135055734, , -20629724_271945303"
         :param extended: - '1' — to return additional fields, '0' — (default)
@@ -434,14 +451,19 @@ class Photos(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getById", params)
-        result = PhotosGetByIdResponse(**raw_result)
+
+        result = (
+            PhotosGetByIdResponse(**raw_result)
+            if not extended
+            else PhotosGetByIdExtendedResponse(**raw_result)
+        )
         return result
 
     async def get_chat_upload_server(
@@ -460,11 +482,11 @@ class Photos(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getChatUploadServer", params)
         result = BaseGetUploadServerResponse(**raw_result)
@@ -474,15 +496,15 @@ class Photos(Category):
         self,
         owner_id: typing.Optional[int] = None,
         photo_id: int = None,
-        need_likes: typing.Optional[bool] = None,
+        need_likes: typing.Optional[BaseBoolInt] = None,
         start_comment_id: typing.Optional[int] = None,
-        offset: typing.Optional[int] = None,
+        offset: typing.Optional[BaseBoolInt] = None,
         count: typing.Optional[int] = None,
         sort: typing.Optional[str] = None,
         access_key: typing.Optional[str] = None,
-        extended: typing.Optional[bool] = None,
+        extended: typing.Optional[BaseBoolInt] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
-    ) -> PhotosGetCommentsResponse:
+    ) -> typing.Union[PhotosGetCommentsResponse, PhotosGetCommentsExtendedResponse]:
         """
         :param owner_id: - ID of the user or community that owns the photo.
         :param photo_id: - Photo ID.
@@ -498,14 +520,19 @@ class Photos(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getComments", params)
-        result = PhotosGetCommentsResponse(**raw_result)
+
+        result = (
+            PhotosGetCommentsResponse(**raw_result)
+            if not extended
+            else PhotosGetCommentsExtendedResponse(**raw_result)
+        )
         return result
 
     async def get_market_album_upload_server(
@@ -517,11 +544,11 @@ class Photos(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getMarketAlbumUploadServer", params)
         result = BaseGetUploadServerResponse(**raw_result)
@@ -530,7 +557,7 @@ class Photos(Category):
     async def get_market_upload_server(
         self,
         group_id: int = None,
-        main_photo: typing.Optional[bool] = None,
+        main_photo: typing.Optional[BaseBoolInt] = None,
         crop_x: typing.Optional[int] = None,
         crop_y: typing.Optional[int] = None,
         crop_width: typing.Optional[int] = None,
@@ -545,18 +572,18 @@ class Photos(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getMarketUploadServer", params)
         result = PhotosGetMarketUploadServerResponse(**raw_result)
         return result
 
     async def get_messages_upload_server(
-        self, peer_id: typing.Optional[int] = None,
+        self, peer_id: typing.Optional[BaseBoolInt] = None,
     ) -> PhotosGetMessagesUploadServerResponse:
         """
         :param peer_id: - Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'Chat ID', e.g. '2000000001'. For community: '- Community ID', e.g. '-12345'. "
@@ -564,11 +591,11 @@ class Photos(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getMessagesUploadServer", params)
         result = PhotosGetMessagesUploadServerResponse(**raw_result)
@@ -584,11 +611,11 @@ class Photos(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getNewTags", params)
         result = PhotosGetNewTagsResponse(**raw_result)
@@ -612,11 +639,11 @@ class Photos(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getOwnerCoverPhotoUploadServer", params)
         result = BaseGetUploadServerResponse(**raw_result)
@@ -631,11 +658,11 @@ class Photos(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getOwnerPhotoUploadServer", params)
         result = BaseGetUploadServerResponse(**raw_result)
@@ -655,18 +682,20 @@ class Photos(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getTags", params)
         result = PhotosGetTagsResponse(**raw_result)
         return result
 
     async def get_upload_server(
-        self, group_id: typing.Optional[int] = None, album_id: typing.Optional[int] = None,
+        self,
+        group_id: typing.Optional[int] = None,
+        album_id: typing.Optional[int] = None,
     ) -> PhotosGetUploadServerResponse:
         """
         :param group_id: - ID of community that owns the album (if the photo will be uploaded to a community album).
@@ -675,11 +704,11 @@ class Photos(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getUploadServer", params)
         result = PhotosGetUploadServerResponse(**raw_result)
@@ -688,11 +717,11 @@ class Photos(Category):
     async def get_user_photos(
         self,
         user_id: typing.Optional[int] = None,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-        extended: typing.Optional[bool] = None,
-        sort: typing.Optional[str] = None,
-    ) -> PhotosGetUserPhotosResponse:
+        offset: typing.Optional[BaseBoolInt] = None,
+        count: typing.Optional[BaseBoolInt] = None,
+        extended: typing.Optional[BaseBoolInt] = None,
+        sort: typing.Optional[BaseBoolInt] = None,
+    ) -> typing.Union[PhotosGetUserPhotosResponse, PhotosGetUserPhotosExtendedResponse]:
         """
         :param user_id: - User ID.
         :param offset: - Offset needed to return a specific subset of photos. By default, '0'.
@@ -703,14 +732,19 @@ class Photos(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getUserPhotos", params)
-        result = PhotosGetUserPhotosResponse(**raw_result)
+
+        result = (
+            PhotosGetUserPhotosResponse(**raw_result)
+            if not extended
+            else PhotosGetUserPhotosExtendedResponse(**raw_result)
+        )
         return result
 
     async def get_wall_upload_server(
@@ -722,11 +756,11 @@ class Photos(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getWallUploadServer", params)
         result = PhotosGetWallUploadServerResponse(**raw_result)
@@ -746,11 +780,11 @@ class Photos(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("makeCover", params)
         result = OkResponse(**raw_result)
@@ -770,11 +804,11 @@ class Photos(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("move", params)
         result = OkResponse(**raw_result)
@@ -802,18 +836,21 @@ class Photos(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("putTag", params)
         result = PhotosPutTagResponse(**raw_result)
         return result
 
     async def remove_tag(
-        self, owner_id: typing.Optional[int] = None, photo_id: int = None, tag_id: int = None,
+        self,
+        owner_id: typing.Optional[int] = None,
+        photo_id: int = None,
+        tag_id: int = None,
     ) -> OkResponse:
         """
         :param owner_id: - ID of the user or community that owns the photo.
@@ -823,11 +860,11 @@ class Photos(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("removeTag", params)
         result = OkResponse(**raw_result)
@@ -849,11 +886,11 @@ class Photos(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("reorderAlbums", params)
         result = OkResponse(**raw_result)
@@ -875,18 +912,21 @@ class Photos(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("reorderPhotos", params)
         result = OkResponse(**raw_result)
         return result
 
     async def report(
-        self, owner_id: int = None, photo_id: int = None, reason: typing.Optional[int] = None,
+        self,
+        owner_id: int = None,
+        photo_id: int = None,
+        reason: typing.Optional[BaseBoolInt] = None,
     ) -> OkResponse:
         """
         :param owner_id: - ID of the user or community that owns the photo.
@@ -896,18 +936,21 @@ class Photos(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("report", params)
         result = OkResponse(**raw_result)
         return result
 
     async def report_comment(
-        self, owner_id: int = None, comment_id: int = None, reason: typing.Optional[int] = None,
+        self,
+        owner_id: int = None,
+        comment_id: int = None,
+        reason: typing.Optional[BaseBoolInt] = None,
     ) -> OkResponse:
         """
         :param owner_id: - ID of the user or community that owns the photo.
@@ -917,11 +960,11 @@ class Photos(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("reportComment", params)
         result = OkResponse(**raw_result)
@@ -937,11 +980,11 @@ class Photos(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("restore", params)
         result = OkResponse(**raw_result)
@@ -957,11 +1000,11 @@ class Photos(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("restoreComment", params)
         result = PhotosRestoreCommentResponse(**raw_result)
@@ -974,9 +1017,9 @@ class Photos(Category):
         server: typing.Optional[int] = None,
         photos_list: typing.Optional[str] = None,
         hash: typing.Optional[str] = None,
-        latitude: typing.Optional[int] = None,
-        longitude: typing.Optional[int] = None,
-        caption: typing.Optional[str] = None,
+        latitude: typing.Optional[BaseBoolInt] = None,
+        longitude: typing.Optional[BaseBoolInt] = None,
+        caption: typing.Optional[BaseBoolInt] = None,
     ) -> PhotosSaveResponse:
         """
         :param album_id: - ID of the album to save photos to.
@@ -991,18 +1034,22 @@ class Photos(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("save", params)
         result = PhotosSaveResponse(**raw_result)
         return result
 
     async def save_market_album_photo(
-        self, group_id: int = None, photo: str = None, server: int = None, hash: str = None,
+        self,
+        group_id: int = None,
+        photo: str = None,
+        server: int = None,
+        hash: str = None,
     ) -> PhotosSaveMarketAlbumPhotoResponse:
         """
         :param group_id: - Community ID.
@@ -1013,11 +1060,11 @@ class Photos(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("saveMarketAlbumPhoto", params)
         result = PhotosSaveMarketAlbumPhotoResponse(**raw_result)
@@ -1043,11 +1090,11 @@ class Photos(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("saveMarketPhoto", params)
         result = PhotosSaveMarketPhotoResponse(**raw_result)
@@ -1067,11 +1114,11 @@ class Photos(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("saveMessagesPhoto", params)
         result = PhotosSaveMessagesPhotoResponse(**raw_result)
@@ -1087,11 +1134,11 @@ class Photos(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("saveOwnerCoverPhoto", params)
         result = PhotosSaveOwnerCoverPhotoResponse(**raw_result)
@@ -1111,11 +1158,11 @@ class Photos(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("saveOwnerPhoto", params)
         result = PhotosSaveOwnerPhotoResponse(**raw_result)
@@ -1128,9 +1175,9 @@ class Photos(Category):
         photo: str = None,
         server: typing.Optional[int] = None,
         hash: typing.Optional[str] = None,
-        latitude: typing.Optional[int] = None,
-        longitude: typing.Optional[int] = None,
-        caption: typing.Optional[str] = None,
+        latitude: typing.Optional[BaseBoolInt] = None,
+        longitude: typing.Optional[BaseBoolInt] = None,
+        caption: typing.Optional[BaseBoolInt] = None,
     ) -> PhotosSaveWallPhotoResponse:
         """
         :param user_id: - ID of the user on whose wall the photo will be saved.
@@ -1145,11 +1192,11 @@ class Photos(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("saveWallPhoto", params)
         result = PhotosSaveWallPhotoResponse(**raw_result)
@@ -1158,14 +1205,14 @@ class Photos(Category):
     async def search(
         self,
         q: typing.Optional[str] = None,
-        lat: typing.Optional[int] = None,
-        long: typing.Optional[int] = None,
+        lat: typing.Optional[BaseBoolInt] = None,
+        long: typing.Optional[BaseBoolInt] = None,
         start_time: typing.Optional[int] = None,
         end_time: typing.Optional[int] = None,
         sort: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
-        radius: typing.Optional[int] = None,
+        radius: typing.Optional[BaseBoolInt] = None,
     ) -> PhotosSearchResponse:
         """
         :param q: - Search query string.
@@ -1181,11 +1228,11 @@ class Photos(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("search", params)
         result = PhotosSearchResponse(**raw_result)

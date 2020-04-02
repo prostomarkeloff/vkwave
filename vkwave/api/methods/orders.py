@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 
 
@@ -18,11 +17,11 @@ class Orders(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("cancelSubscription", params)
         result = OrdersCancelSubscriptionResponse(**raw_result)
@@ -33,7 +32,7 @@ class Orders(Category):
         order_id: int = None,
         action: str = None,
         app_order_id: typing.Optional[int] = None,
-        test_mode: typing.Optional[bool] = None,
+        test_mode: typing.Optional[BaseBoolInt] = None,
     ) -> OrdersChangeStateResponse:
         """
         :param order_id: - order ID.
@@ -44,11 +43,11 @@ class Orders(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("changeState", params)
         result = OrdersChangeStateResponse(**raw_result)
@@ -58,7 +57,7 @@ class Orders(Category):
         self,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
-        test_mode: typing.Optional[bool] = None,
+        test_mode: typing.Optional[BaseBoolInt] = None,
     ) -> OrdersGetResponse:
         """
         :param offset:
@@ -68,11 +67,11 @@ class Orders(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("get", params)
         result = OrdersGetResponse(**raw_result)
@@ -88,11 +87,11 @@ class Orders(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getAmount", params)
         result = OrdersGetAmountResponse(**raw_result)
@@ -102,7 +101,7 @@ class Orders(Category):
         self,
         order_id: typing.Optional[int] = None,
         order_ids: typing.Optional[typing.List[int]] = None,
-        test_mode: typing.Optional[bool] = None,
+        test_mode: typing.Optional[BaseBoolInt] = None,
     ) -> OrdersGetByIdResponse:
         """
         :param order_id: - order ID.
@@ -112,11 +111,11 @@ class Orders(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getById", params)
         result = OrdersGetByIdResponse(**raw_result)
@@ -132,11 +131,11 @@ class Orders(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getUserSubscriptionById", params)
         result = OrdersGetUserSubscriptionByIdResponse(**raw_result)
@@ -151,11 +150,11 @@ class Orders(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getUserSubscriptions", params)
         result = OrdersGetUserSubscriptionsResponse(**raw_result)
@@ -172,11 +171,11 @@ class Orders(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("updateSubscription", params)
         result = OrdersUpdateSubscriptionResponse(**raw_result)

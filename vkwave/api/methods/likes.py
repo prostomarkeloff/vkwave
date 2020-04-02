@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 
 
@@ -20,18 +19,21 @@ class Likes(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("add", params)
         result = LikesAddResponse(**raw_result)
         return result
 
     async def delete(
-        self, type: str = None, owner_id: typing.Optional[int] = None, item_id: int = None,
+        self,
+        type: str = None,
+        owner_id: typing.Optional[int] = None,
+        item_id: int = None,
     ) -> LikesDeleteResponse:
         """
         :param type: - Object type: 'post' — post on user or community wall, 'comment' — comment on a wall post, 'photo' — photo, 'audio' — audio, 'video' — video, 'note' — note, 'photo_comment' — comment on the photo, 'video_comment' — comment on the video, 'topic_comment' — comment in the discussion, 'sitepage' — page of the site where the [vk.com/dev/Like|Like widget] is installed
@@ -41,11 +43,11 @@ class Likes(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("delete", params)
         result = LikesDeleteResponse(**raw_result)
@@ -58,12 +60,12 @@ class Likes(Category):
         item_id: typing.Optional[int] = None,
         page_url: typing.Optional[str] = None,
         filter: typing.Optional[str] = None,
-        friends_only: typing.Optional[int] = None,
-        extended: typing.Optional[bool] = None,
+        friends_only: typing.Optional[BaseBoolInt] = None,
+        extended: typing.Optional[BaseBoolInt] = None,
         offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
+        count: typing.Optional[BaseBoolInt] = None,
         skip_own: typing.Optional[bool] = None,
-    ) -> LikesGetListResponse:
+    ) -> typing.Union[LikesGetListResponse, LikesGetListExtendedResponse]:
         """
         :param type: - , Object type: 'post' — post on user or community wall, 'comment' — comment on a wall post, 'photo' — photo, 'audio' — audio, 'video' — video, 'note' — note, 'photo_comment' — comment on the photo, 'video_comment' — comment on the video, 'topic_comment' — comment in the discussion, 'sitepage' — page of the site where the [vk.com/dev/Like|Like widget] is installed
         :param owner_id: - ID of the user, community, or application that owns the object. If the 'type' parameter is set as 'sitepage', the application ID is passed as 'owner_id'. Use negative value for a community id. If the 'type' parameter is not set, the 'owner_id' is assumed to be either the current user or the same application ID as if the 'type' parameter was set to 'sitepage'.
@@ -79,14 +81,19 @@ class Likes(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getList", params)
-        result = LikesGetListResponse(**raw_result)
+
+        result = (
+            LikesGetListResponse(**raw_result)
+            if not extended
+            else LikesGetListExtendedResponse(**raw_result)
+        )
         return result
 
     async def is_liked(
@@ -105,11 +112,11 @@ class Likes(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("isLiked", params)
         result = LikesIsLikedResponse(**raw_result)

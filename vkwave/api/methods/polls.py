@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 
 
@@ -20,11 +19,11 @@ class Polls(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("addVote", params)
         result = PollsAddVoteResponse(**raw_result)
@@ -33,11 +32,11 @@ class Polls(Category):
     async def create(
         self,
         question: typing.Optional[str] = None,
-        is_anonymous: typing.Optional[bool] = None,
+        is_anonymous: typing.Optional[BaseBoolInt] = None,
         is_multiple: typing.Optional[bool] = None,
         end_date: typing.Optional[int] = None,
         owner_id: typing.Optional[int] = None,
-        add_answers: typing.Optional[str] = None,
+        add_answers: typing.Optional[BaseBoolInt] = None,
         photo_id: typing.Optional[int] = None,
         background_id: typing.Optional[str] = None,
     ) -> PollsCreateResponse:
@@ -54,11 +53,11 @@ class Polls(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("create", params)
         result = PollsCreateResponse(**raw_result)
@@ -80,11 +79,11 @@ class Polls(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("deleteVote", params)
         result = PollsDeleteVoteResponse(**raw_result)
@@ -96,8 +95,8 @@ class Polls(Category):
         poll_id: int = None,
         question: typing.Optional[str] = None,
         add_answers: typing.Optional[str] = None,
-        edit_answers: typing.Optional[str] = None,
-        delete_answers: typing.Optional[str] = None,
+        edit_answers: typing.Optional[BaseBoolInt] = None,
+        delete_answers: typing.Optional[BaseBoolInt] = None,
         end_date: typing.Optional[int] = None,
         photo_id: typing.Optional[int] = None,
         background_id: typing.Optional[str] = None,
@@ -116,11 +115,11 @@ class Polls(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("edit", params)
         result = OkResponse(**raw_result)
@@ -129,9 +128,9 @@ class Polls(Category):
     async def get_by_id(
         self,
         owner_id: typing.Optional[int] = None,
-        is_board: typing.Optional[bool] = None,
+        is_board: typing.Optional[BaseBoolInt] = None,
         poll_id: int = None,
-        extended: typing.Optional[bool] = None,
+        extended: typing.Optional[BaseBoolInt] = None,
         friends_count: typing.Optional[int] = None,
         fields: typing.Optional[typing.List[str]] = None,
         name_case: typing.Optional[str] = None,
@@ -148,11 +147,11 @@ class Polls(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getById", params)
         result = PollsGetByIdResponse(**raw_result)
@@ -164,9 +163,9 @@ class Polls(Category):
         poll_id: int = None,
         answer_ids: typing.List[int] = None,
         is_board: typing.Optional[bool] = None,
-        friends_only: typing.Optional[bool] = None,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
+        friends_only: typing.Optional[BaseBoolInt] = None,
+        offset: typing.Optional[BaseBoolInt] = None,
+        count: typing.Optional[BaseBoolInt] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
         name_case: typing.Optional[str] = None,
     ) -> PollsGetVotersResponse:
@@ -184,11 +183,11 @@ class Polls(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getVoters", params)
         result = PollsGetVotersResponse(**raw_result)

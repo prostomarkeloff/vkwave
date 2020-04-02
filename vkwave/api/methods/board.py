@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 
 
@@ -9,7 +8,7 @@ class Board(Category):
         group_id: int = None,
         title: str = None,
         text: typing.Optional[str] = None,
-        from_group: typing.Optional[bool] = None,
+        from_group: typing.Optional[BaseBoolInt] = None,
         attachments: typing.Optional[typing.List[str]] = None,
     ) -> BoardAddTopicResponse:
         """
@@ -22,17 +21,19 @@ class Board(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("addTopic", params)
         result = BoardAddTopicResponse(**raw_result)
         return result
 
-    async def close_topic(self, group_id: int = None, topic_id: int = None,) -> OkResponse:
+    async def close_topic(
+        self, group_id: int = None, topic_id: int = None,
+    ) -> OkResponse:
         """
         :param group_id: - ID of the community that owns the discussion board.
         :param topic_id: - Topic ID.
@@ -40,11 +41,11 @@ class Board(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("closeTopic", params)
         result = OkResponse(**raw_result)
@@ -56,7 +57,7 @@ class Board(Category):
         topic_id: int = None,
         message: typing.Optional[str] = None,
         attachments: typing.Optional[typing.List[str]] = None,
-        from_group: typing.Optional[bool] = None,
+        from_group: typing.Optional[BaseBoolInt] = None,
         sticker_id: typing.Optional[int] = None,
         guid: typing.Optional[str] = None,
     ) -> BoardCreateCommentResponse:
@@ -72,11 +73,11 @@ class Board(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("createComment", params)
         result = BoardCreateCommentResponse(**raw_result)
@@ -93,17 +94,19 @@ class Board(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("deleteComment", params)
         result = OkResponse(**raw_result)
         return result
 
-    async def delete_topic(self, group_id: int = None, topic_id: int = None,) -> OkResponse:
+    async def delete_topic(
+        self, group_id: int = None, topic_id: int = None,
+    ) -> OkResponse:
         """
         :param group_id: - ID of the community that owns the discussion board.
         :param topic_id: - Topic ID.
@@ -111,11 +114,11 @@ class Board(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("deleteTopic", params)
         result = OkResponse(**raw_result)
@@ -139,11 +142,11 @@ class Board(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("editComment", params)
         result = OkResponse(**raw_result)
@@ -160,17 +163,19 @@ class Board(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("editTopic", params)
         result = OkResponse(**raw_result)
         return result
 
-    async def fix_topic(self, group_id: int = None, topic_id: int = None,) -> OkResponse:
+    async def fix_topic(
+        self, group_id: int = None, topic_id: int = None,
+    ) -> OkResponse:
         """
         :param group_id: - ID of the community that owns the discussion board.
         :param topic_id: - Topic ID.
@@ -178,11 +183,11 @@ class Board(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("fixTopic", params)
         result = OkResponse(**raw_result)
@@ -192,13 +197,13 @@ class Board(Category):
         self,
         group_id: int = None,
         topic_id: int = None,
-        need_likes: typing.Optional[bool] = None,
+        need_likes: typing.Optional[BaseBoolInt] = None,
         start_comment_id: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
-        extended: typing.Optional[bool] = None,
+        extended: typing.Optional[BaseBoolInt] = None,
         sort: typing.Optional[str] = None,
-    ) -> BoardGetCommentsResponse:
+    ) -> typing.Union[BoardGetCommentsResponse, BoardGetCommentsExtendedResponse]:
         """
         :param group_id: - ID of the community that owns the discussion board.
         :param topic_id: - Topic ID.
@@ -212,14 +217,19 @@ class Board(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getComments", params)
-        result = BoardGetCommentsResponse(**raw_result)
+
+        result = (
+            BoardGetCommentsResponse(**raw_result)
+            if not extended
+            else BoardGetCommentsExtendedResponse(**raw_result)
+        )
         return result
 
     async def get_topics(
@@ -229,10 +239,10 @@ class Board(Category):
         order: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
-        extended: typing.Optional[bool] = None,
-        preview: typing.Optional[int] = None,
-        preview_length: typing.Optional[int] = None,
-    ) -> BoardGetTopicsResponse:
+        extended: typing.Optional[BaseBoolInt] = None,
+        preview: typing.Optional[BaseBoolInt] = None,
+        preview_length: typing.Optional[BaseBoolInt] = None,
+    ) -> typing.Union[BoardGetTopicsResponse, BoardGetTopicsExtendedResponse]:
         """
         :param group_id: - ID of the community that owns the discussion board.
         :param topic_ids: - IDs of topics to be returned (100 maximum). By default, all topics are returned. If this parameter is set, the 'order', 'offset', and 'count' parameters are ignored.
@@ -246,17 +256,24 @@ class Board(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("getTopics", params)
-        result = BoardGetTopicsResponse(**raw_result)
+
+        result = (
+            BoardGetTopicsResponse(**raw_result)
+            if not extended
+            else BoardGetTopicsExtendedResponse(**raw_result)
+        )
         return result
 
-    async def open_topic(self, group_id: int = None, topic_id: int = None,) -> OkResponse:
+    async def open_topic(
+        self, group_id: int = None, topic_id: int = None,
+    ) -> OkResponse:
         """
         :param group_id: - ID of the community that owns the discussion board.
         :param topic_id: - Topic ID.
@@ -264,11 +281,11 @@ class Board(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("openTopic", params)
         result = OkResponse(**raw_result)
@@ -285,17 +302,19 @@ class Board(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("restoreComment", params)
         result = OkResponse(**raw_result)
         return result
 
-    async def unfix_topic(self, group_id: int = None, topic_id: int = None,) -> OkResponse:
+    async def unfix_topic(
+        self, group_id: int = None, topic_id: int = None,
+    ) -> OkResponse:
         """
         :param group_id: - ID of the community that owns the discussion board.
         :param topic_id: - Topic ID.
@@ -303,11 +322,11 @@ class Board(Category):
         """
 
         params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        for key, value_ in locals().items():
+            if key not in ["self", "params"] and value_ is not None:
+                if isinstance(value_, list):
+                    value_ = ",".join(str(item) for item in value_)
+                params[key] = value_
 
         raw_result = await self.api_request("unfixTopic", params)
         result = OkResponse(**raw_result)
