@@ -2,9 +2,11 @@
 Working with API tokens.
 """
 from enum import Enum, auto
-from typing import ClassVar, NewType, Union
+from typing import ClassVar, NewType, Union, List
 
 from typing_extensions import Protocol
+
+import random
 
 Token = NewType("Token", str)
 
@@ -68,3 +70,10 @@ class BotSyncSingleToken(ABCBotSyncToken):
 
     def get_token(self, *args, **kwargs) -> Token:
         return self._token
+
+class BotSyncPoolTokens(ABCBotSyncToken):
+    def __init__(self, tokens: List[Token]):
+        self._tokens = tokens
+
+    def get_token(self, *args, **kwargs) -> Token:
+        return random.choice(self._tokens)
