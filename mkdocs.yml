@@ -61,5 +61,4 @@ nav:
       - http/index.md
   Build reports:
     - Tests result: /reports/tests
-    - Code coverage: /reports/coverage
     - mypy results: /reports/typechecking
