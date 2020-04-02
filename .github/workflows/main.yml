@@ -21,7 +21,10 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@master
-      
+
+    - name: Installing
+    - run: make install
+
     - name: Linting
       run: make lint
     
