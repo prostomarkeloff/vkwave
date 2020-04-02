@@ -2,8 +2,8 @@ import json
 from typing import Optional
 
 from vkwave.api.methods import APIOptionsRequestContext
-from vkwave.bots.storage.base import AbstractStorage, NO_KEY, NoKeyOrValue
-from vkwave.bots.storage.types import Key, Value, Loader, Dumper
+from vkwave.bots.storage.base import NO_KEY, AbstractStorage, NoKeyOrValue
+from vkwave.bots.storage.types import Dumper, Key, Loader, Value
 
 
 class VKStorage(AbstractStorage):

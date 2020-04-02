@@ -1,10 +1,6 @@
 from typing import Any, Callable, List, TypeVar
 
-from vkwave.bots.core.dispatching.filters.base import (
-    BaseFilter,
-    AsyncFuncFilter,
-    SyncFuncFilter,
-)
+from vkwave.bots.core.dispatching.filters.base import AsyncFuncFilter, BaseFilter, SyncFuncFilter
 from vkwave.bots.core.dispatching.handler.base import BaseHandler
 from vkwave.bots.core.dispatching.handler.record import HandlerRecord
 

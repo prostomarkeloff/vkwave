@@ -11,6 +11,7 @@ from vkwave.bots.core.tokens.types import GroupId, UserId
 from vkwave.bots.core.types.bot_type import BotType
 from vkwave.types.bot_events import get_event_object
 from vkwave.types.user_events import get_event_object as user_get_event_object
+
 from .middleware.middleware import MiddlewareManager
 from .processing_options import ProcessEventOptions
 from .result_caster import ResultCaster

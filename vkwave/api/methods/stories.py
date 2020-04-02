@@ -1,4 +1,5 @@
 from vkwave.types.responses import *
+
 from ._category import Category
 
 
@@ -39,9 +40,7 @@ class Stories(Category):
         return result
 
     async def get(
-        self,
-        owner_id: typing.Optional[int] = None,
-        extended: typing.Optional[BaseBoolInt] = None,
+        self, owner_id: typing.Optional[int] = None, extended: typing.Optional[BaseBoolInt] = None,
     ) -> typing.Union[StoriesGetResponse, StoriesGetExtendedResponse]:
         """
         :param owner_id: - Owner ID.
@@ -287,9 +286,7 @@ class Stories(Category):
         result = OkResponse(**raw_result)
         return result
 
-    async def hide_reply(
-        self, owner_id: int = None, story_id: int = None,
-    ) -> OkResponse:
+    async def hide_reply(self, owner_id: int = None, story_id: int = None,) -> OkResponse:
         """
         :param owner_id: - ID of the user whose replies should be hidden.
         :param story_id: - Story ID.

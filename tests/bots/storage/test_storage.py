@@ -6,8 +6,8 @@ import pytest
 
 from vkwave.api.methods import API
 from vkwave.api.token.token import BotSyncSingleToken
-from vkwave.bots.storage.base import AbstractStorage, AbstractExpiredStorage
-from vkwave.bots.storage.storages import TTLStorage, Storage, RedisStorage, VKStorage
+from vkwave.bots.storage.base import AbstractExpiredStorage, AbstractStorage
+from vkwave.bots.storage.storages import RedisStorage, Storage, TTLStorage, VKStorage
 from vkwave.bots.storage.types import TTL, Key
 from vkwave.client.default import AIOHTTPClient
 from vkwave.http import AIOHTTPClient

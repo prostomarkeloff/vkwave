@@ -5,8 +5,8 @@ import typing
 
 import aioredis
 
-from vkwave.bots.storage.base import AbstractExpiredStorage, NO_KEY, NoKeyOrValue
-from vkwave.bots.storage.types import Dumper, Loader, TTL, Key, Value
+from vkwave.bots.storage.base import NO_KEY, AbstractExpiredStorage, NoKeyOrValue
+from vkwave.bots.storage.types import TTL, Dumper, Key, Loader, Value
 
 
 class RedisStorage(AbstractExpiredStorage):

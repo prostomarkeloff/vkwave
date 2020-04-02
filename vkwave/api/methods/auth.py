@@ -1,4 +1,5 @@
 from vkwave.types.responses import *
+
 from ._category import Category
 
 
@@ -29,9 +30,7 @@ class Auth(Category):
         result = OkResponse(**raw_result)
         return result
 
-    async def restore(
-        self, phone: str = None, last_name: str = None,
-    ) -> AuthRestoreResponse:
+    async def restore(self, phone: str = None, last_name: str = None,) -> AuthRestoreResponse:
         """
         :param phone: - User phone number.
         :param last_name: - User last name.

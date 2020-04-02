@@ -2257,7 +2257,7 @@ class NewsfeedGetCommentsResponseModel(pydantic.BaseModel):
     profiles: typing.List[UsersUserFull] = pydantic.Field(
         None, description="",
     )
-    groups:typing.List[GroupsGroupFull] = pydantic.Field(
+    groups: typing.List[GroupsGroupFull] = pydantic.Field(
         None, description="",
     )
     next_from: typing.Optional[str] = pydantic.Field(
@@ -3733,7 +3733,7 @@ class VideoSearchExtendedResponseModel(pydantic.BaseModel):
     profiles: typing.List[UsersUserMin] = pydantic.Field(
         None, description="",
     )
-    groups: typing.List[ GroupsGroupFull] = pydantic.Field(
+    groups: typing.List[GroupsGroupFull] = pydantic.Field(
         None, description="",
     )
 

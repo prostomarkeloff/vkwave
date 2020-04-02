@@ -1,4 +1,5 @@
 from vkwave.types.responses import *
+
 from ._category import Category
 
 
@@ -68,10 +69,7 @@ class Market(Category):
         return result
 
     async def add_to_album(
-        self,
-        owner_id: int = None,
-        item_id: int = None,
-        album_ids: typing.List[int] = None,
+        self, owner_id: int = None, item_id: int = None, album_ids: typing.List[int] = None,
     ) -> OkResponse:
         """
         :param owner_id: - ID of an item owner community.
@@ -143,9 +141,7 @@ class Market(Category):
         result = OkResponse(**raw_result)
         return result
 
-    async def delete_album(
-        self, owner_id: int = None, album_id: int = None,
-    ) -> OkResponse:
+    async def delete_album(self, owner_id: int = None, album_id: int = None,) -> OkResponse:
         """
         :param owner_id: - ID of an collection owner community.
         :param album_id: - Collection ID.
@@ -353,9 +349,7 @@ class Market(Category):
         return result
 
     async def get_by_id(
-        self,
-        item_ids: typing.List[str] = None,
-        extended: typing.Optional[BaseBoolInt] = None,
+        self, item_ids: typing.List[str] = None, extended: typing.Optional[BaseBoolInt] = None,
     ) -> typing.Union[MarketGetByIdResponse, MarketGetByIdExtendedResponse]:
         """
         :param item_ids: - Comma-separated ids list: {user id}_{item id}. If an item belongs to a community -{community id} is used. " 'Videos' value example: , '-4363_136089719,13245770_137352259'"
@@ -436,10 +430,7 @@ class Market(Category):
         return result
 
     async def remove_from_album(
-        self,
-        owner_id: int = None,
-        item_id: int = None,
-        album_ids: typing.List[int] = None,
+        self, owner_id: int = None, item_id: int = None, album_ids: typing.List[int] = None,
     ) -> OkResponse:
         """
         :param owner_id: - ID of an item owner community.

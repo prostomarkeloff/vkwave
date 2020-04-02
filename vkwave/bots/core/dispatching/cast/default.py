@@ -1,4 +1,4 @@
-from typing import Any, Callable, TypeVar, Dict, cast
+from typing import Any, Callable, Dict, TypeVar, cast
 
 from .caster import AbstractCaster
 

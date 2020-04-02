@@ -1,4 +1,5 @@
 from vkwave.types.responses import *
+
 from ._category import Category
 
 
@@ -34,10 +35,7 @@ class Leads(Category):
         return result
 
     async def complete(
-        self,
-        vk_sid: str = None,
-        secret: str = None,
-        comment: typing.Optional[str] = None,
+        self, vk_sid: str = None, secret: str = None, comment: typing.Optional[str] = None,
     ) -> LeadsCompleteResponse:
         """
         :param vk_sid: - Session obtained as GET parameter when session started.

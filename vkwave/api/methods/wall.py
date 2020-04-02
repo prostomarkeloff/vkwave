@@ -1,11 +1,10 @@
 from vkwave.types.responses import *
+
 from ._category import Category
 
 
 class Wall(Category):
-    async def close_comments(
-        self, owner_id: int = None, post_id: int = None,
-    ) -> BaseBoolResponse:
+    async def close_comments(self, owner_id: int = None, post_id: int = None,) -> BaseBoolResponse:
         """
         :param owner_id:
         :param post_id:
@@ -58,9 +57,7 @@ class Wall(Category):
         return result
 
     async def delete(
-        self,
-        owner_id: typing.Optional[int] = None,
-        post_id: typing.Optional[int] = None,
+        self, owner_id: typing.Optional[int] = None, post_id: typing.Optional[int] = None,
     ) -> OkResponse:
         """
         :param owner_id: - User ID or community ID. Use a negative value to designate a community ID.
@@ -358,9 +355,7 @@ class Wall(Category):
         result = WallGetRepostsResponse(**raw_result)
         return result
 
-    async def open_comments(
-        self, owner_id: int = None, post_id: int = None,
-    ) -> BaseBoolResponse:
+    async def open_comments(self, owner_id: int = None, post_id: int = None,) -> BaseBoolResponse:
         """
         :param owner_id:
         :param post_id:
@@ -378,9 +373,7 @@ class Wall(Category):
         result = BaseBoolResponse(**raw_result)
         return result
 
-    async def pin(
-        self, owner_id: typing.Optional[int] = None, post_id: int = None,
-    ) -> OkResponse:
+    async def pin(self, owner_id: typing.Optional[int] = None, post_id: int = None,) -> OkResponse:
         """
         :param owner_id: - ID of the user or community that owns the wall. By default, current user ID. Use a negative value to designate a community ID.
         :param post_id: - Post ID.
@@ -567,9 +560,7 @@ class Wall(Category):
         return result
 
     async def restore(
-        self,
-        owner_id: typing.Optional[int] = None,
-        post_id: typing.Optional[int] = None,
+        self, owner_id: typing.Optional[int] = None, post_id: typing.Optional[int] = None,
     ) -> OkResponse:
         """
         :param owner_id: - User ID or community ID from whose wall the post was deleted. Use a negative value to designate a community ID.

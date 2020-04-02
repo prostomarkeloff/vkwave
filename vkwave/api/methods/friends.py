@@ -1,4 +1,5 @@
 from vkwave.types.responses import *
+
 from ._category import Category
 
 
@@ -48,9 +49,7 @@ class Friends(Category):
         return result
 
     async def are_friends(
-        self,
-        user_ids: typing.List[int] = None,
-        need_sign: typing.Optional[BaseBoolInt] = None,
+        self, user_ids: typing.List[int] = None, need_sign: typing.Optional[BaseBoolInt] = None,
     ) -> FriendsAreFriendsResponse:
         """
         :param user_ids: - IDs of the users whose friendship status to check.
@@ -69,9 +68,7 @@ class Friends(Category):
         result = FriendsAreFriendsResponse(**raw_result)
         return result
 
-    async def delete(
-        self, user_id: typing.Optional[int] = None,
-    ) -> FriendsDeleteResponse:
+    async def delete(self, user_id: typing.Optional[int] = None,) -> FriendsDeleteResponse:
         """
         :param user_id: - ID of the user whose friend request is to be declined or who is to be deleted from the current user's friend list.
         :return:
@@ -323,9 +320,7 @@ class Friends(Category):
         result = FriendsGetOnlineResponse(**raw_result)
         return result
 
-    async def get_recent(
-        self, count: typing.Optional[int] = None,
-    ) -> FriendsGetRecentResponse:
+    async def get_recent(self, count: typing.Optional[int] = None,) -> FriendsGetRecentResponse:
         """
         :param count: - Number of recently added friends to return.
         :return:

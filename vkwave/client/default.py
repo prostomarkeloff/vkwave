@@ -10,7 +10,9 @@ from typing import Optional
 from aiohttp import ClientConnectionError, ClientSession
 from typing_extensions import Final
 
-from vkwave.http import AIOHTTPClient as AHC_H, AbstractHTTPClient
+from vkwave.http import AbstractHTTPClient
+from vkwave.http import AIOHTTPClient as AHC_H
+
 from .abstract import AbstractAPIClient
 from .context import RequestContext, Signal
 from .factory import AbstractFactory, DefaultFactory
