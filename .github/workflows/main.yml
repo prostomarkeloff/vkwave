@@ -23,7 +23,7 @@ jobs:
     - uses: actions/checkout@master
 
     - name: Installing
-    - run: make install
+      run: make install
 
     - name: Linting
       run: make lint
