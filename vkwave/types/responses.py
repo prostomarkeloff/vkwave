@@ -2256,7 +2256,11 @@ class NewsfeedGetCommentsResponseModel(pydantic.BaseModel):
         ..., description="",
     )
     groups: typing.List[GroupsGroupFull] = pydantic.Field(
+<<<<<<< HEAD
         ..., description="",
+=======
+        None, description="",
+>>>>>>> 1fa96a359d855c76a4a2caead6b4406db418ac62
     )
     next_from: typing.Optional[str] = pydantic.Field(
         None, description="New from value",
@@ -3722,7 +3726,11 @@ class VideoSearchExtendedResponseModel(pydantic.BaseModel):
         ..., description="",
     )
     groups: typing.List[GroupsGroupFull] = pydantic.Field(
+<<<<<<< HEAD
         ..., description="",
+=======
+        None, description="",
+>>>>>>> 1fa96a359d855c76a4a2caead6b4406db418ac62
     )
 
 

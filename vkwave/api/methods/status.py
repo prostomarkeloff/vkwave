@@ -1,12 +1,11 @@
 from vkwave.types.responses import *
+
 from ._category import Category
 
 
 class Status(Category):
     async def get(
-        self,
-        user_id: typing.Optional[int] = None,
-        group_id: typing.Optional[int] = None,
+        self, user_id: typing.Optional[int] = None, group_id: typing.Optional[int] = None,
     ) -> StatusGetResponse:
         """
         :param user_id: - User ID or community ID. Use a negative value to designate a community ID.

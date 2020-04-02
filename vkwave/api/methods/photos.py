@@ -1,13 +1,11 @@
 from vkwave.types.responses import *
+
 from ._category import Category
 
 
 class Photos(Category):
     async def confirm_tag(
-        self,
-        owner_id: typing.Optional[int] = None,
-        photo_id: str = None,
-        tag_id: int = None,
+        self, owner_id: typing.Optional[int] = None, photo_id: str = None, tag_id: int = None,
     ) -> OkResponse:
         """
         :param owner_id: - ID of the user or community that owns the photo.
@@ -28,10 +26,7 @@ class Photos(Category):
         return result
 
     async def copy(
-        self,
-        owner_id: int = None,
-        photo_id: int = None,
-        access_key: typing.Optional[str] = None,
+        self, owner_id: int = None, photo_id: int = None, access_key: typing.Optional[str] = None,
     ) -> PhotosCopyResponse:
         """
         :param owner_id: - photo's owner ID
@@ -349,9 +344,7 @@ class Photos(Category):
         return result
 
     async def get_albums_count(
-        self,
-        user_id: typing.Optional[int] = None,
-        group_id: typing.Optional[int] = None,
+        self, user_id: typing.Optional[int] = None, group_id: typing.Optional[int] = None,
     ) -> PhotosGetAlbumsCountResponse:
         """
         :param user_id: - User ID.
@@ -693,9 +686,7 @@ class Photos(Category):
         return result
 
     async def get_upload_server(
-        self,
-        group_id: typing.Optional[int] = None,
-        album_id: typing.Optional[int] = None,
+        self, group_id: typing.Optional[int] = None, album_id: typing.Optional[int] = None,
     ) -> PhotosGetUploadServerResponse:
         """
         :param group_id: - ID of community that owns the album (if the photo will be uploaded to a community album).
@@ -847,10 +838,7 @@ class Photos(Category):
         return result
 
     async def remove_tag(
-        self,
-        owner_id: typing.Optional[int] = None,
-        photo_id: int = None,
-        tag_id: int = None,
+        self, owner_id: typing.Optional[int] = None, photo_id: int = None, tag_id: int = None,
     ) -> OkResponse:
         """
         :param owner_id: - ID of the user or community that owns the photo.
@@ -1045,11 +1033,7 @@ class Photos(Category):
         return result
 
     async def save_market_album_photo(
-        self,
-        group_id: int = None,
-        photo: str = None,
-        server: int = None,
-        hash: str = None,
+        self, group_id: int = None, photo: str = None, server: int = None, hash: str = None,
     ) -> PhotosSaveMarketAlbumPhotoResponse:
         """
         :param group_id: - Community ID.

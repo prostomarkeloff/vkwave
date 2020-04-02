@@ -1,4 +1,5 @@
 from vkwave.types.responses import *
+
 from ._category import Category
 
 
@@ -38,9 +39,7 @@ class Fave(Category):
         return result
 
     async def add_page(
-        self,
-        user_id: typing.Optional[int] = None,
-        group_id: typing.Optional[int] = None,
+        self, user_id: typing.Optional[int] = None, group_id: typing.Optional[int] = None,
     ) -> OkResponse:
         """
         :param user_id:
@@ -60,10 +59,7 @@ class Fave(Category):
         return result
 
     async def add_post(
-        self,
-        owner_id: int = None,
-        id: int = None,
-        access_key: typing.Optional[str] = None,
+        self, owner_id: int = None, id: int = None, access_key: typing.Optional[str] = None,
     ) -> OkResponse:
         """
         :param owner_id:
@@ -84,10 +80,7 @@ class Fave(Category):
         return result
 
     async def add_product(
-        self,
-        owner_id: int = None,
-        id: int = None,
-        access_key: typing.Optional[str] = None,
+        self, owner_id: int = None, id: int = None, access_key: typing.Optional[str] = None,
     ) -> OkResponse:
         """
         :param owner_id:
@@ -125,10 +118,7 @@ class Fave(Category):
         return result
 
     async def add_video(
-        self,
-        owner_id: int = None,
-        id: int = None,
-        access_key: typing.Optional[str] = None,
+        self, owner_id: int = None, id: int = None, access_key: typing.Optional[str] = None,
     ) -> OkResponse:
         """
         :param owner_id:
@@ -304,9 +294,7 @@ class Fave(Category):
         return result
 
     async def remove_page(
-        self,
-        user_id: typing.Optional[int] = None,
-        group_id: typing.Optional[int] = None,
+        self, user_id: typing.Optional[int] = None, group_id: typing.Optional[int] = None,
     ) -> OkResponse:
         """
         :param user_id:
@@ -450,9 +438,7 @@ class Fave(Category):
         return result
 
     async def track_page_interaction(
-        self,
-        user_id: typing.Optional[int] = None,
-        group_id: typing.Optional[int] = None,
+        self, user_id: typing.Optional[int] = None, group_id: typing.Optional[int] = None,
     ) -> OkResponse:
         """
         :param user_id:

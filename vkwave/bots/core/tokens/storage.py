@@ -1,6 +1,7 @@
 from typing import Dict, Generic, Optional, TypeVar
 
 from vkwave.api.token.token import AnyABCToken
+
 from .strategy import ABCGetTokenStrategy, NotImplementedGetTokenStrategy
 from .types import GroupId, UserId
 

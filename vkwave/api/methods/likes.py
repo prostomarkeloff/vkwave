@@ -1,4 +1,5 @@
 from vkwave.types.responses import *
+
 from ._category import Category
 
 
@@ -30,10 +31,7 @@ class Likes(Category):
         return result
 
     async def delete(
-        self,
-        type: str = None,
-        owner_id: typing.Optional[int] = None,
-        item_id: int = None,
+        self, type: str = None, owner_id: typing.Optional[int] = None, item_id: int = None,
     ) -> LikesDeleteResponse:
         """
         :param type: - Object type: 'post' — post on user or community wall, 'comment' — comment on a wall post, 'photo' — photo, 'audio' — audio, 'video' — video, 'note' — note, 'photo_comment' — comment on the photo, 'video_comment' — comment on the video, 'topic_comment' — comment in the discussion, 'sitepage' — page of the site where the [vk.com/dev/Like|Like widget] is installed

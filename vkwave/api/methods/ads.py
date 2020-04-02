@@ -1,4 +1,5 @@
 from vkwave.types.responses import *
+
 from ._category import Category
 
 
@@ -49,9 +50,7 @@ class Ads(Category):
         result = AdsCheckLinkResponse(**raw_result)
         return result
 
-    async def create_ads(
-        self, account_id: int = None, data: str = None,
-    ) -> AdsCreateAdsResponse:
+    async def create_ads(self, account_id: int = None, data: str = None,) -> AdsCreateAdsResponse:
         """
         :param account_id: - Advertising account ID.
         :param data: - Serialized JSON array of objects that describe created ads. Description of 'ad_specification' objects see below.
@@ -139,9 +138,7 @@ class Ads(Category):
         result = AdsCreateTargetGroupResponse(**raw_result)
         return result
 
-    async def delete_ads(
-        self, account_id: int = None, ids: str = None,
-    ) -> AdsDeleteAdsResponse:
+    async def delete_ads(self, account_id: int = None, ids: str = None,) -> AdsDeleteAdsResponse:
         """
         :param account_id: - Advertising account ID.
         :param ids: - Serialized JSON array with ad IDs.
@@ -378,9 +375,7 @@ class Ads(Category):
         result = AdsGetCampaignsResponse(**raw_result)
         return result
 
-    async def get_categories(
-        self, lang: typing.Optional[str] = None,
-    ) -> AdsGetCategoriesResponse:
+    async def get_categories(self, lang: typing.Optional[str] = None,) -> AdsGetCategoriesResponse:
         """
         :param lang: - Language. The full list of supported languages is [vk.com/dev/api_requests|here].
         :return:
@@ -444,9 +439,7 @@ class Ads(Category):
         result = AdsGetDemographicsResponse(**raw_result)
         return result
 
-    async def get_flood_stats(
-        self, account_id: int = None,
-    ) -> AdsGetFloodStatsResponse:
+    async def get_flood_stats(self, account_id: int = None,) -> AdsGetFloodStatsResponse:
         """
         :param account_id: - Advertising account ID.
         :return:
@@ -463,9 +456,7 @@ class Ads(Category):
         result = AdsGetFloodStatsResponse(**raw_result)
         return result
 
-    async def get_office_users(
-        self, account_id: int = None,
-    ) -> AdsGetOfficeUsersResponse:
+    async def get_office_users(self, account_id: int = None,) -> AdsGetOfficeUsersResponse:
         """
         :param account_id: - Advertising account ID.
         :return:
@@ -727,9 +718,7 @@ class Ads(Category):
         result = AdsRemoveOfficeUsersResponse(**raw_result)
         return result
 
-    async def update_ads(
-        self, account_id: int = None, data: str = None,
-    ) -> AdsUpdateAdsResponse:
+    async def update_ads(self, account_id: int = None, data: str = None,) -> AdsUpdateAdsResponse:
         """
         :param account_id: - Advertising account ID.
         :param data: - Serialized JSON array of objects that describe changes in ads. Description of 'ad_edit_specification' objects see below.

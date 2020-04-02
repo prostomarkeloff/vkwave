@@ -1,4 +1,5 @@
 from vkwave.types.responses import *
+
 from ._category import Category
 
 
@@ -94,9 +95,7 @@ class Groups(Category):
         result = GroupsAddLinkResponse(**raw_result)
         return result
 
-    async def approve_request(
-        self, group_id: int = None, user_id: int = None,
-    ) -> OkResponse:
+    async def approve_request(self, group_id: int = None, user_id: int = None,) -> OkResponse:
         """
         :param group_id: - Community ID.
         :param user_id: - User ID.
@@ -192,9 +191,7 @@ class Groups(Category):
         result = OkResponse(**raw_result)
         return result
 
-    async def delete_link(
-        self, group_id: int = None, link_id: int = None,
-    ) -> OkResponse:
+    async def delete_link(self, group_id: int = None, link_id: int = None,) -> OkResponse:
         """
         :param group_id: - Community ID.
         :param link_id: - Link ID.
@@ -412,10 +409,7 @@ class Groups(Category):
         return result
 
     async def edit_link(
-        self,
-        group_id: int = None,
-        link_id: int = None,
-        text: typing.Optional[str] = None,
+        self, group_id: int = None, link_id: int = None, text: typing.Optional[str] = None,
     ) -> OkResponse:
         """
         :param group_id: - Community ID.
@@ -623,9 +617,7 @@ class Groups(Category):
         return result
 
     async def get_callback_servers(
-        self,
-        group_id: int = None,
-        server_ids: typing.Optional[typing.List[int]] = None,
+        self, group_id: int = None, server_ids: typing.Optional[typing.List[int]] = None,
     ) -> GroupsGetCallbackServersResponse:
         """
         :param group_id:
@@ -690,9 +682,7 @@ class Groups(Category):
         self,
         extended: typing.Optional[BaseBoolInt] = None,
         subcategories: typing.Optional[BaseBoolInt] = None,
-    ) -> typing.Union[
-        GroupsGetCatalogInfoResponse, GroupsGetCatalogInfoExtendedResponse
-    ]:
+    ) -> typing.Union[GroupsGetCatalogInfoResponse, GroupsGetCatalogInfoExtendedResponse]:
         """
         :param extended: - 1 – to return communities count and three communities for preview. By default: 0.
         :param subcategories: - 1 – to return subcategories info. By default: 0.
@@ -772,9 +762,7 @@ class Groups(Category):
         )
         return result
 
-    async def get_long_poll_server(
-        self, group_id: int = None,
-    ) -> GroupsGetLongPollServerResponse:
+    async def get_long_poll_server(self, group_id: int = None,) -> GroupsGetLongPollServerResponse:
         """
         :param group_id: - Community ID
         :return:
@@ -949,9 +937,7 @@ class Groups(Category):
         return result
 
     async def join(
-        self,
-        group_id: typing.Optional[int] = None,
-        not_sure: typing.Optional[BaseBoolInt] = None,
+        self, group_id: typing.Optional[int] = None, not_sure: typing.Optional[BaseBoolInt] = None,
     ) -> OkResponse:
         """
         :param group_id: - ID or screen name of the community.
@@ -987,9 +973,7 @@ class Groups(Category):
         result = OkResponse(**raw_result)
         return result
 
-    async def remove_user(
-        self, group_id: int = None, user_id: int = None,
-    ) -> OkResponse:
+    async def remove_user(self, group_id: int = None, user_id: int = None,) -> OkResponse:
         """
         :param group_id: - Community ID.
         :param user_id: - User ID.
@@ -1008,10 +992,7 @@ class Groups(Category):
         return result
 
     async def reorder_link(
-        self,
-        group_id: int = None,
-        link_id: int = None,
-        after: typing.Optional[int] = None,
+        self, group_id: int = None, link_id: int = None, after: typing.Optional[int] = None,
     ) -> OkResponse:
         """
         :param group_id: - Community ID.

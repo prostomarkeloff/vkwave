@@ -1,4 +1,5 @@
 from vkwave.types.responses import *
+
 from ._category import Category
 
 
@@ -386,10 +387,7 @@ class Newsfeed(Category):
         return result
 
     async def unsubscribe(
-        self,
-        type: str = None,
-        owner_id: typing.Optional[int] = None,
-        item_id: int = None,
+        self, type: str = None, owner_id: typing.Optional[int] = None, item_id: int = None,
     ) -> OkResponse:
         """
         :param type: - Type of object from which to unsubscribe: 'note' — note, 'photo' — photo, 'post' — post on user wall or community wall, 'topic' — topic, 'video' — video

@@ -1,4 +1,5 @@
 from vkwave.types.responses import *
+
 from ._category import Category
 
 
@@ -356,8 +357,7 @@ class Messages(Category):
         fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
         group_id: typing.Optional[int] = None,
     ) -> typing.Union[
-        MessagesGetConversationsByIdResponse,
-        MessagesGetConversationsByIdExtendedResponse,
+        MessagesGetConversationsByIdResponse, MessagesGetConversationsByIdExtendedResponse,
     ]:
         """
         :param peer_ids: - Destination IDs. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "
@@ -479,9 +479,7 @@ class Messages(Category):
         result = MessagesGetInviteLinkResponse(**raw_result)
         return result
 
-    async def get_last_activity(
-        self, user_id: int = None,
-    ) -> MessagesGetLastActivityResponse:
+    async def get_last_activity(self, user_id: int = None,) -> MessagesGetLastActivityResponse:
         """
         :param user_id: - User ID.
         :return:

@@ -1,12 +1,13 @@
 import json
 import re
 import typing
-from typing import Tuple, Union, Dict
+from typing import Dict, Tuple, Union
 
 from vkwave.bots.core.dispatching.events.base import BaseEvent
 from vkwave.bots.core.types.bot_type import BotType
 from vkwave.bots.core.types.json_types import JSONDecoder
 from vkwave.types.objects import MessagesMessageActionStatus
+
 from .base import BaseFilter, FilterResult
 
 

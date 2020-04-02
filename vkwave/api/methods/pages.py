@@ -1,4 +1,5 @@
 from vkwave.types.responses import *
+
 from ._category import Category
 
 
@@ -76,9 +77,7 @@ class Pages(Category):
         result = PagesGetHistoryResponse(**raw_result)
         return result
 
-    async def get_titles(
-        self, group_id: typing.Optional[int] = None,
-    ) -> PagesGetTitlesResponse:
+    async def get_titles(self, group_id: typing.Optional[int] = None,) -> PagesGetTitlesResponse:
         """
         :param group_id: - ID of the community that owns the wiki page.
         :return:

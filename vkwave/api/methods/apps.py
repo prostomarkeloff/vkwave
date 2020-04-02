@@ -1,4 +1,5 @@
 from vkwave.types.responses import *
+
 from ._category import Category
 
 
@@ -148,9 +149,7 @@ class Apps(Category):
         )
         return result
 
-    async def get_scopes(
-        self, type: typing.Optional[str] = None,
-    ) -> AppsGetScopesResponse:
+    async def get_scopes(self, type: typing.Optional[str] = None,) -> AppsGetScopesResponse:
         """
         :param type:
         :return:

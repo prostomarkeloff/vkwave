@@ -4,6 +4,7 @@ from typing import Any, List, Optional
 from vkwave.bots.core.dispatching.events.base import BaseEvent
 from vkwave.bots.core.dispatching.filters.base import BaseFilter
 from vkwave.bots.core.dispatching.filters.manage import FilterManager
+
 from .callback import BaseCallback
 
 FILTERS_NOT_PASSED = object()

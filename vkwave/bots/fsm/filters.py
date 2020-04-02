@@ -1,6 +1,6 @@
 from vkwave.bots.core.dispatching.events.base import BaseEvent
 from vkwave.bots.core.dispatching.filters.builtin import BaseFilter, FilterResult
-from vkwave.bots.fsm.fsm import State, ForWhat, FiniteStateMachine
+from vkwave.bots.fsm.fsm import FiniteStateMachine, ForWhat, State
 from vkwave.bots.storage.types import Key
 
 ANY_STATE = "__any_state__"

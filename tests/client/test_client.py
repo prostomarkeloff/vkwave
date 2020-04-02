@@ -4,8 +4,7 @@ from vkwave.client.abstract import AbstractAPIClient
 from vkwave.client.context import RequestContext, Signal
 from vkwave.client.factory import AbstractFactory, DefaultFactory
 from vkwave.client.types import MethodName
-from vkwave.http import AbstractHTTPClient
-from vkwave.http import AIOHTTPClient
+from vkwave.http import AbstractHTTPClient, AIOHTTPClient
 
 
 class SomeAPIException(Exception):

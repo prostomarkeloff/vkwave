@@ -5,6 +5,7 @@ from vkwave.bots.core.dispatching.dp.processing_options import ProcessEventOptio
 from vkwave.bots.core.dispatching.events.raw import ExtensionEvent
 from vkwave.bots.core.types.bot_type import BotType
 from vkwave.longpoll.bot import BotLongpoll
+
 from .base import BaseExtension
 
 if TYPE_CHECKING:

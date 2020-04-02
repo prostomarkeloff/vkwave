@@ -1,13 +1,11 @@
 from vkwave.types.responses import *
+
 from ._category import Category
 
 
 class Video(Category):
     async def add(
-        self,
-        target_id: typing.Optional[int] = None,
-        video_id: int = None,
-        owner_id: int = None,
+        self, target_id: typing.Optional[int] = None, video_id: int = None, owner_id: int = None,
     ) -> OkResponse:
         """
         :param target_id: - identifier of a user or community to add a video to. Use a negative value to designate a community ID.
@@ -357,9 +355,7 @@ class Video(Category):
         owner_id: int = None,
         video_id: int = None,
         extended: typing.Optional[BaseBoolInt] = None,
-    ) -> typing.Union[
-        VideoGetAlbumsByVideoResponse, VideoGetAlbumsByVideoExtendedResponse
-    ]:
+    ) -> typing.Union[VideoGetAlbumsByVideoResponse, VideoGetAlbumsByVideoExtendedResponse]:
         """
         :param target_id:
         :param owner_id:

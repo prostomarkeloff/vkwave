@@ -1,4 +1,5 @@
 from vkwave.types.responses import *
+
 from ._category import Category
 
 
@@ -62,9 +63,7 @@ class Users(Category):
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
-    ) -> typing.Union[
-        UsersGetSubscriptionsResponse, UsersGetSubscriptionsExtendedResponse
-    ]:
+    ) -> typing.Union[UsersGetSubscriptionsResponse, UsersGetSubscriptionsExtendedResponse]:
         """
         :param user_id: - User ID.
         :param extended: - '1' — to return a combined list of users and communities, '0' — to return separate lists of users and communities (default)
@@ -90,9 +89,7 @@ class Users(Category):
         )
         return result
 
-    async def is_app_user(
-        self, user_id: typing.Optional[int] = None,
-    ) -> UsersIsAppUserResponse:
+    async def is_app_user(self, user_id: typing.Optional[int] = None,) -> UsersIsAppUserResponse:
         """
         :param user_id:
         :return:
@@ -110,10 +107,7 @@ class Users(Category):
         return result
 
     async def report(
-        self,
-        user_id: int = None,
-        type: str = None,
-        comment: typing.Optional[str] = None,
+        self, user_id: int = None, type: str = None, comment: typing.Optional[str] = None,
     ) -> OkResponse:
         """
         :param user_id: - ID of the user about whom a complaint is being made.

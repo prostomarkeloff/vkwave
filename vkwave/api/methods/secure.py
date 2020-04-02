@@ -1,13 +1,11 @@
 from vkwave.types.responses import *
+
 from ._category import Category
 
 
 class Secure(Category):
     async def add_app_event(
-        self,
-        user_id: int = None,
-        activity_id: int = None,
-        value: typing.Optional[int] = None,
+        self, user_id: int = None, activity_id: int = None, value: typing.Optional[int] = None,
     ) -> OkResponse:
         """
         :param user_id: - ID of a user to save the data

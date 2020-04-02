@@ -1,4 +1,5 @@
 from vkwave.types.responses import *
+
 from ._category import Category
 
 
@@ -66,9 +67,7 @@ class Account(Category):
         result = AccountGetActiveOffersResponse(**raw_result)
         return result
 
-    async def get_app_permissions(
-        self, user_id: int = None,
-    ) -> AccountGetAppPermissionsResponse:
+    async def get_app_permissions(self, user_id: int = None,) -> AccountGetAppPermissionsResponse:
         """
         :param user_id: - User ID whose settings information shall be got. By default: current user.
         :return:
@@ -312,9 +311,7 @@ class Account(Category):
         result = OkResponse(**raw_result)
         return result
 
-    async def set_online(
-        self, voip: typing.Optional[BaseBoolInt] = None,
-    ) -> OkResponse:
+    async def set_online(self, voip: typing.Optional[BaseBoolInt] = None,) -> OkResponse:
         """
         :param voip: - '1' if videocalls are available for current device.
         :return:
@@ -401,9 +398,7 @@ class Account(Category):
         return result
 
     async def unregister_device(
-        self,
-        device_id: typing.Optional[str] = None,
-        sandbox: typing.Optional[bool] = None,
+        self, device_id: typing.Optional[str] = None, sandbox: typing.Optional[bool] = None,
     ) -> OkResponse:
         """
         :param device_id: - Unique device ID.

@@ -1,4 +1,5 @@
 from vkwave.types.responses import *
+
 from ._category import Category
 
 
@@ -31,9 +32,7 @@ class Board(Category):
         result = BoardAddTopicResponse(**raw_result)
         return result
 
-    async def close_topic(
-        self, group_id: int = None, topic_id: int = None,
-    ) -> OkResponse:
+    async def close_topic(self, group_id: int = None, topic_id: int = None,) -> OkResponse:
         """
         :param group_id: - ID of the community that owns the discussion board.
         :param topic_id: - Topic ID.
@@ -104,9 +103,7 @@ class Board(Category):
         result = OkResponse(**raw_result)
         return result
 
-    async def delete_topic(
-        self, group_id: int = None, topic_id: int = None,
-    ) -> OkResponse:
+    async def delete_topic(self, group_id: int = None, topic_id: int = None,) -> OkResponse:
         """
         :param group_id: - ID of the community that owns the discussion board.
         :param topic_id: - Topic ID.
@@ -173,9 +170,7 @@ class Board(Category):
         result = OkResponse(**raw_result)
         return result
 
-    async def fix_topic(
-        self, group_id: int = None, topic_id: int = None,
-    ) -> OkResponse:
+    async def fix_topic(self, group_id: int = None, topic_id: int = None,) -> OkResponse:
         """
         :param group_id: - ID of the community that owns the discussion board.
         :param topic_id: - Topic ID.
@@ -271,9 +266,7 @@ class Board(Category):
         )
         return result
 
-    async def open_topic(
-        self, group_id: int = None, topic_id: int = None,
-    ) -> OkResponse:
+    async def open_topic(self, group_id: int = None, topic_id: int = None,) -> OkResponse:
         """
         :param group_id: - ID of the community that owns the discussion board.
         :param topic_id: - Topic ID.
@@ -312,9 +305,7 @@ class Board(Category):
         result = OkResponse(**raw_result)
         return result
 
-    async def unfix_topic(
-        self, group_id: int = None, topic_id: int = None,
-    ) -> OkResponse:
+    async def unfix_topic(self, group_id: int = None, topic_id: int = None,) -> OkResponse:
         """
         :param group_id: - ID of the community that owns the discussion board.
         :param topic_id: - Topic ID.

@@ -1,4 +1,5 @@
 from vkwave.types.responses import *
+
 from ._category import Category
 
 
@@ -123,10 +124,7 @@ class Notes(Category):
         return result
 
     async def edit_comment(
-        self,
-        comment_id: int = None,
-        owner_id: typing.Optional[int] = None,
-        message: str = None,
+        self, comment_id: int = None, owner_id: typing.Optional[int] = None, message: str = None,
     ) -> OkResponse:
         """
         :param comment_id: - Comment ID.

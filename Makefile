@@ -10,7 +10,8 @@ reports_dir := reports
 
 .PHONY: install
 install:
-	$(base_python) -m pip install --user -U poetry
+	$(base_python) -m pip install setuptools wheel -U
+	$(base_python) -m pip install -U poetry --user
 	poetry install
 
 .PHONY: clean
@@ -64,13 +65,7 @@ lint: isort black flake8 mypy
 
 .PHONY: test
 test:
-	$(py) pytest --cov=vkwave --cov-config .coveragerc tests/
-
-.PHONY: test-coverage
-test-coverage:
-	mkdir -p $(reports_dir)/tests/
-	$(py) pytest --cov=vkwave --cov-config .coveragerc --html=$(reports_dir)/tests/index.html tests/
-	$(py) coverage html -d $(reports_dir)/coverage
+	$(py) pytest
 
 # =================================================================================================
 # Docs
@@ -93,7 +88,7 @@ docs-copy-reports:
 # =================================================================================================
 
 .PHONY: build
-build: clean mypy-report test-coverage docs docs-copy-reports
+build: clean mypy-report docs docs-copy-reports
 	mkdir -p site/simple
 	poetry build
 	mv dist site/simple/vkwave
