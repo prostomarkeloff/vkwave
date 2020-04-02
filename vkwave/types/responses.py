@@ -2256,11 +2256,7 @@ class NewsfeedGetCommentsResponseModel(pydantic.BaseModel):
         ..., description="",
     )
     groups: typing.List[GroupsGroupFull] = pydantic.Field(
-<<<<<<< HEAD
         ..., description="",
-=======
-        None, description="",
->>>>>>> 1fa96a359d855c76a4a2caead6b4406db418ac62
     )
     next_from: typing.Optional[str] = pydantic.Field(
         None, description="New from value",
@@ -2347,7 +2343,7 @@ class NewsfeedGetSuggestedSourcesResponseModel(pydantic.BaseModel):
         None, description="Total number",
     )
     items: typing.Optional[
-        typing.List[typing.Union[GroupsGroupFull, UsersUserXtrType,]]
+        typing.List[typing.Union[GroupsGroupFull, UsersUserXtrType, ]]
     ] = pydantic.Field(
         None, description="",
     )
@@ -3165,7 +3161,7 @@ class StorageGetKeysResponse(pydantic.BaseModel):
     )
 
 
-class StorageGetKeysResponse(pydantic.BaseModel):
+class StorageGetKeysResponseStorageValue(pydantic.BaseModel):
     response: typing.List["StorageValue"] = pydantic.Field(
         ..., description="",
     )
@@ -3726,11 +3722,7 @@ class VideoSearchExtendedResponseModel(pydantic.BaseModel):
         ..., description="",
     )
     groups: typing.List[GroupsGroupFull] = pydantic.Field(
-<<<<<<< HEAD
         ..., description="",
-=======
-        None, description="",
->>>>>>> 1fa96a359d855c76a4a2caead6b4406db418ac62
     )
 
 
