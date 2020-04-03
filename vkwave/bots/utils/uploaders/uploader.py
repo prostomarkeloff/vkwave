@@ -5,7 +5,6 @@ from io import BytesIO
 from typing import TypeVar, Generic, BinaryIO, List
 
 from vkwave.api.methods import APIOptionsRequestContext
-from vkwave.api.methods._error import APIError
 from vkwave.bots.core.types.json_types import JSONDecoder
 from vkwave.http import AbstractHTTPClient
 

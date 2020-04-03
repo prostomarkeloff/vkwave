@@ -13,9 +13,14 @@ class DocUploaderMixin(BaseUploader[DocsSaveResponseModel], ABC):
         return server_data.response.upload_url
 
     async def upload(self, upload_url: str, file_data: BinaryIO) -> DocsSaveResponseModel:
+        # really dirty hack
+        # but it works
+        if not hasattr(file_data, "name"):
+            setattr(file_data, "name", "Document.jpg")  # lol
+
         upload_data = self.json_deserialize(
             await self.client.request_text(
-                method="POST", url=upload_url, data={"file1": file_data}
+                method="POST", url=upload_url, data={"file": file_data}
             ),
         )
         # Check upload for errors
