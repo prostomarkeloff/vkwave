@@ -12,7 +12,7 @@ class Leads(Category):
         auto_start: typing.Optional[bool] = None,
         age: typing.Optional[int] = None,
         country: typing.Optional[str] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, LeadsCheckUserResponse]:
         """
         :param lead_id: - Lead ID.
@@ -21,14 +21,14 @@ class Leads(Category):
         :param auto_start:
         :param age: - User age.
         :param country: - User country code.
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("checkUser", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = LeadsCheckUserResponse(**raw_result)
@@ -39,20 +39,20 @@ class Leads(Category):
         vk_sid: str = None,
         secret: str = None,
         comment: typing.Optional[str] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, LeadsCompleteResponse]:
         """
         :param vk_sid: - Session obtained as GET parameter when session started.
         :param secret: - Secret key from the lead testing interface.
         :param comment: - Comment text.
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("complete", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = LeadsCompleteResponse(**raw_result)
@@ -64,21 +64,21 @@ class Leads(Category):
         secret: typing.Optional[str] = None,
         date_start: typing.Optional[BaseBoolInt] = None,
         date_end: typing.Optional[BaseBoolInt] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, LeadsGetStatsResponse]:
         """
         :param lead_id: - Lead ID.
         :param secret: - Secret key obtained from the lead testing interface.
         :param date_start: - Day to start stats from (YYYY_MM_DD, e.g.2011-09-17).
         :param date_end: - Day to finish stats (YYYY_MM_DD, e.g.2011-09-17).
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("getStats", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = LeadsGetStatsResponse(**raw_result)
@@ -92,7 +92,7 @@ class Leads(Category):
         count: typing.Optional[int] = None,
         status: typing.Optional[BaseBoolInt] = None,
         reverse: typing.Optional[BaseBoolInt] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, LeadsGetUsersResponse]:
         """
         :param offer_id: - Offer ID.
@@ -101,32 +101,32 @@ class Leads(Category):
         :param count: - Number of results to return.
         :param status: - Action type. Possible values: *'0' — start,, *'1' — finish,, *'2' — blocking users,, *'3' — start in a test mode,, *'4' — finish in a test mode.
         :param reverse: - Sort order. Possible values: *'1' — chronological,, *'0' — reverse chronological.
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("getUsers", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = LeadsGetUsersResponse(**raw_result)
         return result
 
     async def metric_hit(
-        self, data: str = None, raw: bool = False,
+        self, data: str = None, return_raw_response: bool = False,
     ) -> typing.Union[dict, LeadsMetricHitResponse]:
         """
         :param data: - Metric data obtained in the lead interface.
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("metricHit", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = LeadsMetricHitResponse(**raw_result)
@@ -140,7 +140,7 @@ class Leads(Category):
         aid: typing.Optional[int] = None,
         test_mode: typing.Optional[bool] = None,
         force: typing.Optional[bool] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, LeadsStartResponse]:
         """
         :param lead_id: - Lead ID.
@@ -149,14 +149,14 @@ class Leads(Category):
         :param aid:
         :param test_mode:
         :param force:
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("start", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = LeadsStartResponse(**raw_result)

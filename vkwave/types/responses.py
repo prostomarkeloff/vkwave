@@ -1979,6 +1979,9 @@ class MessagesGetConversationsByIdExtendedResponseModel(pydantic.BaseModel):
     profiles: typing.Optional[typing.List[UsersUser]] = pydantic.Field(
         None, description="",
     )
+    groups: typing.Optional[typing.List[GroupsGroupFull]] = pydantic.Field(
+        None, description="",
+    )
 
 
 class MessagesGetConversationsByIdExtendedResponse(pydantic.BaseModel):

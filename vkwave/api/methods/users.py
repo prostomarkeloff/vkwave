@@ -9,20 +9,20 @@ class Users(Category):
         user_ids: typing.Optional[typing.List[str]] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
         name_case: typing.Optional[str] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, UsersGetResponse]:
         """
         :param user_ids: - User IDs or screen names ('screen_name'). By default, current user ID.
         :param fields: - Profile fields to return. Sample values: 'nickname', 'screen_name', 'sex', 'bdate' (birthdate), 'city', 'country', 'timezone', 'photo', 'photo_medium', 'photo_big', 'has_mobile', 'contacts', 'education', 'online', 'counters', 'relation', 'last_seen', 'activity', 'can_write_private_message', 'can_see_all_posts', 'can_post', 'universities',
         :param name_case: - Case for declension of user name and surname: 'nom' — nominative (default), 'gen' — genitive , 'dat' — dative, 'acc' — accusative , 'ins' — instrumental , 'abl' — prepositional
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("get", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = UsersGetResponse(**raw_result)
@@ -35,7 +35,7 @@ class Users(Category):
         count: typing.Optional[int] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
         name_case: typing.Optional[str] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, UsersGetFollowersResponse]:
         """
         :param user_id: - User ID.
@@ -43,14 +43,14 @@ class Users(Category):
         :param count: - Number of followers to return.
         :param fields: - Profile fields to return. Sample values: 'nickname', 'screen_name', 'sex', 'bdate' (birthdate), 'city', 'country', 'timezone', 'photo', 'photo_medium', 'photo_big', 'has_mobile', 'rate', 'contacts', 'education', 'online'.
         :param name_case: - Case for declension of user name and surname: 'nom' — nominative (default), 'gen' — genitive , 'dat' — dative, 'acc' — accusative , 'ins' — instrumental , 'abl' — prepositional
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("getFollowers", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = UsersGetFollowersResponse(**raw_result)
@@ -63,7 +63,7 @@ class Users(Category):
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[
         dict, UsersGetSubscriptionsResponse, UsersGetSubscriptionsExtendedResponse
     ]:
@@ -73,14 +73,14 @@ class Users(Category):
         :param offset: - Offset needed to return a specific subset of subscriptions.
         :param count: - Number of users and communities to return.
         :param fields:
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("getSubscriptions", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = (
@@ -91,18 +91,18 @@ class Users(Category):
         return result
 
     async def is_app_user(
-        self, user_id: typing.Optional[int] = None, raw: bool = False,
+        self, user_id: typing.Optional[int] = None, return_raw_response: bool = False,
     ) -> typing.Union[dict, UsersIsAppUserResponse]:
         """
         :param user_id:
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("isAppUser", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = UsersIsAppUserResponse(**raw_result)
@@ -113,20 +113,20 @@ class Users(Category):
         user_id: int = None,
         type: str = None,
         comment: typing.Optional[str] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param user_id: - ID of the user about whom a complaint is being made.
         :param type: - Type of complaint: 'porn' – pornography, 'spam' – spamming, 'insult' – abusive behavior, 'advertisement' – disruptive advertisements
         :param comment: - Comment describing the complaint.
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("report", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = OkResponse(**raw_result)
@@ -167,7 +167,7 @@ class Users(Category):
         position: typing.Optional[str] = None,
         group_id: typing.Optional[int] = None,
         from_list: typing.Optional[typing.List[str]] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, UsersSearchResponse]:
         """
         :param q: - Search query string (e.g., 'Vasya Babich').
@@ -203,14 +203,14 @@ class Users(Category):
         :param position: - Job position.
         :param group_id: - ID of a community to search in communities.
         :param from_list:
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("search", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = UsersSearchResponse(**raw_result)

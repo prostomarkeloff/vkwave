@@ -5,17 +5,17 @@ from ._utils import get_params
 
 class Apps(Category):
     async def delete_app_requests(
-        self, raw: bool = False,
+        self, return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("deleteAppRequests", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = OkResponse(**raw_result)
@@ -30,7 +30,7 @@ class Apps(Category):
         return_friends: typing.Optional[bool] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
         name_case: typing.Optional[str] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, AppsGetResponse]:
         """
         :param app_id: - Application ID
@@ -40,14 +40,14 @@ class Apps(Category):
         :param return_friends:
         :param fields: - Profile fields to return. Sample values: 'nickname', 'screen_name', 'sex', 'bdate' (birthdate), 'city', 'country', 'timezone', 'photo', 'photo_medium', 'photo_big', 'has_mobile', 'contacts', 'education', 'online', 'counters', 'relation', 'last_seen', 'activity', 'can_write_private_message', 'can_see_all_posts', 'can_post', 'universities', (only if return_friends - 1)
         :param name_case: - Case for declension of user name and surname: 'nom' — nominative (default),, 'gen' — genitive,, 'dat' — dative,, 'acc' — accusative,, 'ins' — instrumental,, 'abl' — prepositional. (only if 'return_friends' = '1')
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("get", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = AppsGetResponse(**raw_result)
@@ -66,7 +66,7 @@ class Apps(Category):
         q: typing.Optional[str] = None,
         genre_id: typing.Optional[int] = None,
         filter: typing.Optional[str] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, AppsGetCatalogResponse]:
         """
         :param sort: - Sort order: 'popular_today' — popular for one day (default), 'visitors' — by visitors number , 'create_date' — by creation date, 'growth_rate' — by growth rate, 'popular_week' — popular for one week
@@ -80,14 +80,14 @@ class Apps(Category):
         :param q: - Search query string.
         :param genre_id:
         :param filter: - 'installed' — to return list of installed apps (only for mobile platform).
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("getCatalog", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = AppsGetCatalogResponse(**raw_result)
@@ -100,7 +100,7 @@ class Apps(Category):
         offset: typing.Optional[int] = None,
         type: typing.Optional[str] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, AppsGetFriendsListResponse]:
         """
         :param extended:
@@ -108,14 +108,14 @@ class Apps(Category):
         :param offset:
         :param type: - List type. Possible values: * 'invite' — available for invites (don't play the game),, * 'request' — available for request (play the game). By default: 'invite'.
         :param fields: - Additional profile fields, see [vk.com/dev/fields|description].
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("getFriendsList", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = AppsGetFriendsListResponse(**raw_result)
@@ -126,7 +126,7 @@ class Apps(Category):
         type: str = None,
         global_: typing.Optional[BaseBoolInt] = None,
         extended: typing.Optional[BaseBoolInt] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[
         dict, AppsGetLeaderboardResponse, AppsGetLeaderboardExtendedResponse
     ]:
@@ -134,14 +134,14 @@ class Apps(Category):
         :param type: - Leaderboard type. Possible values: *'level' — by level,, *'points' — by mission points,, *'score' — by score ().
         :param global_: - Rating type. Possible values: *'1' — global rating among all players,, *'0' — rating among user friends.
         :param extended: - 1 — to return additional info about users
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("getLeaderboard", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = (
@@ -152,36 +152,36 @@ class Apps(Category):
         return result
 
     async def get_scopes(
-        self, type: typing.Optional[str] = None, raw: bool = False,
+        self, type: typing.Optional[str] = None, return_raw_response: bool = False,
     ) -> typing.Union[dict, AppsGetScopesResponse]:
         """
         :param type:
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("getScopes", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = AppsGetScopesResponse(**raw_result)
         return result
 
     async def get_score(
-        self, user_id: int = None, raw: bool = False,
+        self, user_id: int = None, return_raw_response: bool = False,
     ) -> typing.Union[dict, AppsGetScoreResponse]:
         """
         :param user_id:
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("getScore", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = AppsGetScoreResponse(**raw_result)
@@ -195,7 +195,7 @@ class Apps(Category):
         name: typing.Optional[str] = None,
         key: typing.Optional[str] = None,
         separate: typing.Optional[bool] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, AppsSendRequestResponse]:
         """
         :param user_id: - id of the user to send a request
@@ -204,14 +204,14 @@ class Apps(Category):
         :param name:
         :param key: - special string key to be sent with the request
         :param separate:
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("sendRequest", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = AppsSendRequestResponse(**raw_result)

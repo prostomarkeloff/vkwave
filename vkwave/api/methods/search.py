@@ -12,7 +12,7 @@ class Search(Category):
         filters: typing.Optional[typing.List[str]] = None,
         fields: typing.Optional[typing.List[str]] = None,
         search_global: typing.Optional[bool] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, SearchGetHintsResponse]:
         """
         :param q: - Search query string.
@@ -21,14 +21,14 @@ class Search(Category):
         :param filters:
         :param fields:
         :param search_global:
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("getHints", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = SearchGetHintsResponse(**raw_result)

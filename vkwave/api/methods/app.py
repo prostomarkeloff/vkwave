@@ -5,19 +5,19 @@ from ._utils import get_params
 
 class App(Category):
     async def widgets_update(
-        self, code: str = None, type: str = None, raw: bool = False,
+        self, code: str = None, type: str = None, return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param code:
         :param type:
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("update", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = BaseOkResponse(**raw_result)

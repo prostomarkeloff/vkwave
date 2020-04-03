@@ -15,7 +15,7 @@ class Stats(Category):
         filters: typing.Optional[typing.List[str]] = None,
         stats_groups: typing.Optional[typing.List[str]] = None,
         extended: typing.Optional[BaseBoolInt] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, StatsGetResponse]:
         """
         :param group_id: - Community ID.
@@ -27,51 +27,54 @@ class Stats(Category):
         :param filters:
         :param stats_groups:
         :param extended:
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("get", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = StatsGetResponse(**raw_result)
         return result
 
     async def get_post_reach(
-        self, owner_id: str = None, post_id: BaseBoolInt = None, raw: bool = False,
+        self,
+        owner_id: str = None,
+        post_id: BaseBoolInt = None,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, StatsGetPostReachResponse]:
         """
         :param owner_id: - post owner community id. Specify with "-" sign.
         :param post_id: - wall post id. Note that stats are available only for '300' last (newest) posts on a community wall.
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("getPostReach", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = StatsGetPostReachResponse(**raw_result)
         return result
 
     async def track_visitor(
-        self, id: str = None, raw: bool = False,
+        self, id: str = None, return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param id:
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("trackVisitor", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = OkResponse(**raw_result)

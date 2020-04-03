@@ -13,7 +13,7 @@ class Widgets(Category):
         fields: typing.Optional[typing.List[UsersFields]] = None,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, WidgetsGetCommentsResponse]:
         """
         :param widget_api_id:
@@ -23,14 +23,14 @@ class Widgets(Category):
         :param fields:
         :param offset:
         :param count:
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("getComments", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = WidgetsGetCommentsResponse(**raw_result)
@@ -43,7 +43,7 @@ class Widgets(Category):
         period: typing.Optional[str] = None,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, WidgetsGetPagesResponse]:
         """
         :param widget_api_id:
@@ -51,14 +51,14 @@ class Widgets(Category):
         :param period:
         :param offset:
         :param count:
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("getPages", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = WidgetsGetPagesResponse(**raw_result)

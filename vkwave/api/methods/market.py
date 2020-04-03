@@ -16,7 +16,7 @@ class Market(Category):
         main_photo_id: int = None,
         photo_ids: typing.Optional[typing.List[int]] = None,
         url: typing.Optional[str] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, MarketAddResponse]:
         """
         :param owner_id: - ID of an item owner community.
@@ -29,14 +29,14 @@ class Market(Category):
         :param main_photo_id: - Cover photo ID.
         :param photo_ids: - IDs of additional photos.
         :param url: - Url for button in market item.
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("add", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = MarketAddResponse(**raw_result)
@@ -48,21 +48,21 @@ class Market(Category):
         title: str = None,
         photo_id: typing.Optional[int] = None,
         main_album: typing.Optional[BaseBoolInt] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, MarketAddAlbumResponse]:
         """
         :param owner_id: - ID of an item owner community.
         :param title: - Collection title.
         :param photo_id: - Cover photo ID.
         :param main_album: - Set as main ('1' – set, '0' – no).
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("addAlbum", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = MarketAddAlbumResponse(**raw_result)
@@ -73,20 +73,20 @@ class Market(Category):
         owner_id: int = None,
         item_id: int = None,
         album_ids: typing.List[int] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - ID of an item owner community.
         :param item_id: - Item ID.
         :param album_ids: - Collections IDs to add item to.
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("addToAlbum", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = OkResponse(**raw_result)
@@ -102,7 +102,7 @@ class Market(Category):
         reply_to_comment: typing.Optional[int] = None,
         sticker_id: typing.Optional[int] = None,
         guid: typing.Optional[str] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, MarketCreateCommentResponse]:
         """
         :param owner_id: - ID of an item owner community.
@@ -113,71 +113,80 @@ class Market(Category):
         :param reply_to_comment: - ID of a comment to reply with current comment to.
         :param sticker_id: - Sticker ID.
         :param guid: - Random value to avoid resending one comment.
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("createComment", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = MarketCreateCommentResponse(**raw_result)
         return result
 
     async def delete(
-        self, owner_id: int = None, item_id: int = None, raw: bool = False,
+        self,
+        owner_id: int = None,
+        item_id: int = None,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - ID of an item owner community.
         :param item_id: - Item ID.
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("delete", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = OkResponse(**raw_result)
         return result
 
     async def delete_album(
-        self, owner_id: int = None, album_id: int = None, raw: bool = False,
+        self,
+        owner_id: int = None,
+        album_id: int = None,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - ID of an collection owner community.
         :param album_id: - Collection ID.
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("deleteAlbum", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = OkResponse(**raw_result)
         return result
 
     async def delete_comment(
-        self, owner_id: int = None, comment_id: int = None, raw: bool = False,
+        self,
+        owner_id: int = None,
+        comment_id: int = None,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, MarketDeleteCommentResponse]:
         """
         :param owner_id: - identifier of an item owner community, "Note that community id in the 'owner_id' parameter should be negative number. For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community "
         :param comment_id: - comment id
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("deleteComment", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = MarketDeleteCommentResponse(**raw_result)
@@ -195,7 +204,7 @@ class Market(Category):
         main_photo_id: int = None,
         photo_ids: typing.Optional[typing.List[int]] = None,
         url: typing.Optional[str] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - ID of an item owner community.
@@ -208,14 +217,14 @@ class Market(Category):
         :param main_photo_id: - Cover photo ID.
         :param photo_ids: - IDs of additional photos.
         :param url: - Url for button in market item.
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("edit", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = OkResponse(**raw_result)
@@ -228,7 +237,7 @@ class Market(Category):
         title: str = None,
         photo_id: typing.Optional[int] = None,
         main_album: typing.Optional[BaseBoolInt] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - ID of an collection owner community.
@@ -236,14 +245,14 @@ class Market(Category):
         :param title: - Collection title.
         :param photo_id: - Cover photo id
         :param main_album: - Set as main ('1' – set, '0' – no).
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("editAlbum", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = OkResponse(**raw_result)
@@ -255,21 +264,21 @@ class Market(Category):
         comment_id: int = None,
         message: typing.Optional[BaseBoolInt] = None,
         attachments: typing.Optional[typing.List[str]] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - ID of an item owner community.
         :param comment_id: - Comment ID.
         :param message: - New comment text (required if 'attachments' are not specified), , 2048 symbols maximum.
         :param attachments: - Comma-separated list of objects attached to a comment. The field is submitted the following way: , "'<owner_id>_<media_id>,<owner_id>_<media_id>'", , '' - media attachment type: "'photo' - photo, 'video' - video, 'audio' - audio, 'doc' - document", , '<owner_id>' - media owner id, '<media_id>' - media attachment id, , For example: "photo100172_166443618,photo66748_265827614",
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("editComment", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = OkResponse(**raw_result)
@@ -282,7 +291,7 @@ class Market(Category):
         count: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
         extended: typing.Optional[BaseBoolInt] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, MarketGetResponse, MarketGetExtendedResponse]:
         """
         :param owner_id: - ID of an item owner community, "Note that community id in the 'owner_id' parameter should be negative number. For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community "
@@ -290,14 +299,14 @@ class Market(Category):
         :param count: - Number of items to return.
         :param offset: - Offset needed to return a specific subset of results.
         :param extended: - '1' – method will return additional fields: 'likes, can_comment, car_repost, photos'. These parameters are not returned by default.
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("get", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = (
@@ -311,19 +320,19 @@ class Market(Category):
         self,
         owner_id: int = None,
         album_ids: typing.List[int] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, MarketGetAlbumByIdResponse]:
         """
         :param owner_id: - identifier of an album owner community, "Note that community id in the 'owner_id' parameter should be negative number. For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community "
         :param album_ids: - collections identifiers to obtain data from
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("getAlbumById", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = MarketGetAlbumByIdResponse(**raw_result)
@@ -334,20 +343,20 @@ class Market(Category):
         owner_id: int = None,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, MarketGetAlbumsResponse]:
         """
         :param owner_id: - ID of an items owner community.
         :param offset: - Offset needed to return a specific subset of results.
         :param count: - Number of items to return.
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("getAlbums", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = MarketGetAlbumsResponse(**raw_result)
@@ -357,19 +366,19 @@ class Market(Category):
         self,
         item_ids: typing.List[str] = None,
         extended: typing.Optional[BaseBoolInt] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, MarketGetByIdResponse, MarketGetByIdExtendedResponse]:
         """
         :param item_ids: - Comma-separated ids list: {user id}_{item id}. If an item belongs to a community -{community id} is used. " 'Videos' value example: , '-4363_136089719,13245770_137352259'"
         :param extended: - '1' – to return additional fields: 'likes, can_comment, car_repost, photos'. By default: '0'.
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("getById", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = (
@@ -383,19 +392,19 @@ class Market(Category):
         self,
         count: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, MarketGetCategoriesResponse]:
         """
         :param count: - Number of results to return.
         :param offset: - Offset needed to return a specific subset of results.
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("getCategories", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = MarketGetCategoriesResponse(**raw_result)
@@ -412,7 +421,7 @@ class Market(Category):
         sort: typing.Optional[str] = None,
         extended: typing.Optional[BaseBoolInt] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, MarketGetCommentsResponse]:
         """
         :param owner_id: - ID of an item owner community
@@ -424,14 +433,14 @@ class Market(Category):
         :param sort: - Sort order ('asc' — from old to new, 'desc' — from new to old)
         :param extended: - '1' — comments will be returned as numbered objects, in addition lists of 'profiles' and 'groups' objects will be returned.
         :param fields: - List of additional profile fields to return. See the [vk.com/dev/fields|details]
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("getComments", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = MarketGetCommentsResponse(**raw_result)
@@ -442,20 +451,20 @@ class Market(Category):
         owner_id: int = None,
         item_id: int = None,
         album_ids: typing.List[int] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - ID of an item owner community.
         :param item_id: - Item ID.
         :param album_ids: - Collections IDs to remove item from.
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("removeFromAlbum", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = OkResponse(**raw_result)
@@ -467,21 +476,21 @@ class Market(Category):
         album_id: int = None,
         before: typing.Optional[int] = None,
         after: typing.Optional[int] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - ID of an item owner community.
         :param album_id: - Collection ID.
         :param before: - ID of a collection to place current collection before it.
         :param after: - ID of a collection to place current collection after it.
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("reorderAlbums", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = OkResponse(**raw_result)
@@ -494,7 +503,7 @@ class Market(Category):
         item_id: int = None,
         before: typing.Optional[int] = None,
         after: typing.Optional[int] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - ID of an item owner community.
@@ -502,14 +511,14 @@ class Market(Category):
         :param item_id: - Item ID.
         :param before: - ID of an item to place current item before it.
         :param after: - ID of an item to place current item after it.
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("reorderItems", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = OkResponse(**raw_result)
@@ -520,20 +529,20 @@ class Market(Category):
         owner_id: int = None,
         item_id: int = None,
         reason: typing.Optional[BaseBoolInt] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - ID of an item owner community.
         :param item_id: - Item ID.
         :param reason: - Complaint reason. Possible values: *'0' — spam,, *'1' — child porn,, *'2' — extremism,, *'3' — violence,, *'4' — drugs propaganda,, *'5' — adult materials,, *'6' — insult.
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("report", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = OkResponse(**raw_result)
@@ -544,58 +553,64 @@ class Market(Category):
         owner_id: int = None,
         comment_id: int = None,
         reason: BaseBoolInt = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - ID of an item owner community.
         :param comment_id: - Comment ID.
         :param reason: - Complaint reason. Possible values: *'0' — spam,, *'1' — child porn,, *'2' — extremism,, *'3' — violence,, *'4' — drugs propaganda,, *'5' — adult materials,, *'6' — insult.
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("reportComment", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = OkResponse(**raw_result)
         return result
 
     async def restore(
-        self, owner_id: int = None, item_id: int = None, raw: bool = False,
+        self,
+        owner_id: int = None,
+        item_id: int = None,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - ID of an item owner community.
         :param item_id: - Deleted item ID.
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("restore", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = OkResponse(**raw_result)
         return result
 
     async def restore_comment(
-        self, owner_id: int = None, comment_id: int = None, raw: bool = False,
+        self,
+        owner_id: int = None,
+        comment_id: int = None,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, MarketRestoreCommentResponse]:
         """
         :param owner_id: - identifier of an item owner community, "Note that community id in the 'owner_id' parameter should be negative number. For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community "
         :param comment_id: - deleted comment id
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("restoreComment", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = MarketRestoreCommentResponse(**raw_result)
@@ -615,7 +630,7 @@ class Market(Category):
         count: typing.Optional[int] = None,
         extended: typing.Optional[BaseBoolInt] = None,
         status: typing.Optional[int] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, MarketSearchResponse, MarketSearchExtendedResponse]:
         """
         :param owner_id: - ID of an items owner community.
@@ -630,14 +645,14 @@ class Market(Category):
         :param count: - Number of items to return.
         :param extended: - '1' – to return additional fields: 'likes, can_comment, car_repost, photos'. By default: '0'.
         :param status:
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("search", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = (

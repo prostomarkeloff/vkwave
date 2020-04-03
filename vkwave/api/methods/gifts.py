@@ -9,20 +9,20 @@ class Gifts(Category):
         user_id: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, GiftsGetResponse]:
         """
         :param user_id: - User ID.
         :param count: - Number of gifts to return.
         :param offset: - Offset needed to return a specific subset of results.
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("get", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = GiftsGetResponse(**raw_result)

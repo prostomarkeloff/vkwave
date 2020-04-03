@@ -13,7 +13,7 @@ class Pretty(Category):
         price: typing.Optional[str] = None,
         price_old: typing.Optional[str] = None,
         button: typing.Optional[str] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, PrettyCardsCreateResponse]:
         """
         :param owner_id:
@@ -23,33 +23,36 @@ class Pretty(Category):
         :param price:
         :param price_old:
         :param button:
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("create", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = PrettyCardsCreateResponse(**raw_result)
         return result
 
     async def cards_delete(
-        self, owner_id: int = None, card_id: int = None, raw: bool = False,
+        self,
+        owner_id: int = None,
+        card_id: int = None,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, PrettyCardsDeleteResponse]:
         """
         :param owner_id:
         :param card_id:
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("delete", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = PrettyCardsDeleteResponse(**raw_result)
@@ -65,7 +68,7 @@ class Pretty(Category):
         price: typing.Optional[str] = None,
         price_old: typing.Optional[str] = None,
         button: typing.Optional[str] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, PrettyCardsEditResponse]:
         """
         :param owner_id:
@@ -76,14 +79,14 @@ class Pretty(Category):
         :param price:
         :param price_old:
         :param button:
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("edit", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = PrettyCardsEditResponse(**raw_result)
@@ -94,20 +97,20 @@ class Pretty(Category):
         owner_id: int = None,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, PrettyCardsGetResponse]:
         """
         :param owner_id:
         :param offset:
         :param count:
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("get", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = PrettyCardsGetResponse(**raw_result)
@@ -117,36 +120,36 @@ class Pretty(Category):
         self,
         owner_id: int = None,
         card_ids: typing.List[int] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, PrettyCardsGetByIdResponse]:
         """
         :param owner_id:
         :param card_ids:
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("getById", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = PrettyCardsGetByIdResponse(**raw_result)
         return result
 
     async def cards_get_upload_u_r_l(
-        self, raw: bool = False,
+        self, return_raw_response: bool = False,
     ) -> typing.Union[dict, PrettyCardsGetUploadURLResponse]:
         """
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("getUploadURL", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = PrettyCardsGetUploadURLResponse(**raw_result)

@@ -5,37 +5,40 @@ from ._utils import get_params
 
 class Stories(Category):
     async def ban_owner(
-        self, owners_ids: typing.List[int] = None, raw: bool = False,
+        self, owners_ids: typing.List[int] = None, return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owners_ids: - List of sources IDs
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("banOwner", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = OkResponse(**raw_result)
         return result
 
     async def delete(
-        self, owner_id: int = None, story_id: int = None, raw: bool = False,
+        self,
+        owner_id: int = None,
+        story_id: int = None,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - Story owner's ID. Current user id is used by default.
         :param story_id: - Story ID.
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("delete", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = OkResponse(**raw_result)
@@ -45,19 +48,19 @@ class Stories(Category):
         self,
         owner_id: typing.Optional[int] = None,
         extended: typing.Optional[BaseBoolInt] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, StoriesGetResponse, StoriesGetExtendedResponse]:
         """
         :param owner_id: - Owner ID.
         :param extended: - '1' — to return additional fields for users and communities. Default value is 0.
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("get", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = (
@@ -71,19 +74,19 @@ class Stories(Category):
         self,
         extended: typing.Optional[BaseBoolInt] = None,
         fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, StoriesGetBannedResponse, StoriesGetBannedExtendedResponse]:
         """
         :param extended: - '1' — to return additional fields for users and communities. Default value is 0.
         :param fields: - Additional fields to return
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("getBanned", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = (
@@ -98,20 +101,20 @@ class Stories(Category):
         stories: typing.List[str] = None,
         extended: typing.Optional[BaseBoolInt] = None,
         fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, StoriesGetByIdResponse, StoriesGetByIdExtendedResponse]:
         """
         :param stories: - Stories IDs separated by commas. Use format {owner_id}+'_'+{story_id}, for example, 12345_54331.
         :param extended: - '1' — to return additional fields for users and communities. Default value is 0.
         :param fields: - Additional fields to return
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("getById", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = (
@@ -129,7 +132,7 @@ class Stories(Category):
         link_text: typing.Optional[str] = None,
         link_url: typing.Optional[str] = None,
         group_id: typing.Optional[int] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, StoriesGetPhotoUploadServerResponse]:
         """
         :param add_to_news: - 1 — to add the story to friend's feed.
@@ -138,14 +141,14 @@ class Stories(Category):
         :param link_text: - Link text (for community's stories only).
         :param link_url: - Link URL. Internal links on https://vk.com only.
         :param group_id: - ID of the community to upload the story (should be verified or with the "fire" icon).
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("getPhotoUploadServer", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = StoriesGetPhotoUploadServerResponse(**raw_result)
@@ -158,7 +161,7 @@ class Stories(Category):
         access_key: typing.Optional[str] = None,
         extended: typing.Optional[BaseBoolInt] = None,
         fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[
         dict, StoriesGetRepliesResponse, StoriesGetRepliesExtendedResponse
     ]:
@@ -168,14 +171,14 @@ class Stories(Category):
         :param access_key: - Access key for the private object.
         :param extended: - '1' — to return additional fields for users and communities. Default value is 0.
         :param fields: - Additional fields to return
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("getReplies", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = (
@@ -186,19 +189,22 @@ class Stories(Category):
         return result
 
     async def get_stats(
-        self, owner_id: int = None, story_id: int = None, raw: bool = False,
+        self,
+        owner_id: int = None,
+        story_id: int = None,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, StoriesGetStatsResponse]:
         """
         :param owner_id: - Story owner ID. 
         :param story_id: - Story ID.
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("getStats", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = StoriesGetStatsResponse(**raw_result)
@@ -212,7 +218,7 @@ class Stories(Category):
         link_text: typing.Optional[str] = None,
         link_url: typing.Optional[str] = None,
         group_id: typing.Optional[int] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, StoriesGetVideoUploadServerResponse]:
         """
         :param add_to_news: - 1 — to add the story to friend's feed.
@@ -221,14 +227,14 @@ class Stories(Category):
         :param link_text: - Link text (for community's stories only).
         :param link_url: - Link URL. Internal links on https://vk.com only.
         :param group_id: - ID of the community to upload the story (should be verified or with the "fire" icon).
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("getVideoUploadServer", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = StoriesGetVideoUploadServerResponse(**raw_result)
@@ -241,7 +247,7 @@ class Stories(Category):
         count: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
         extended: typing.Optional[BaseBoolInt] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[
         dict, StoriesGetViewersResponse, StoriesGetViewersExtendedResponse
     ]:
@@ -251,14 +257,14 @@ class Stories(Category):
         :param count: - Maximum number of results.
         :param offset: - Offset needed to return a specific subset of results.
         :param extended: - '1' — to return detailed information about photos
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("getViewers", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = (
@@ -272,79 +278,82 @@ class Stories(Category):
         self,
         owner_id: int = None,
         group_id: typing.Optional[int] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - ID of the user whose replies should be hidden.
         :param group_id:
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("hideAllReplies", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = OkResponse(**raw_result)
         return result
 
     async def hide_reply(
-        self, owner_id: int = None, story_id: int = None, raw: bool = False,
+        self,
+        owner_id: int = None,
+        story_id: int = None,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - ID of the user whose replies should be hidden.
         :param story_id: - Story ID.
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("hideReply", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = OkResponse(**raw_result)
         return result
 
     async def unban_owner(
-        self, owners_ids: typing.List[int] = None, raw: bool = False,
+        self, owners_ids: typing.List[int] = None, return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owners_ids: - List of hidden sources to show stories from.
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("unbanOwner", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = OkResponse(**raw_result)
         return result
 
     async def search(
-        self,
-        q: str,
-        place_id: typing.Optional[int] = None,
-        latitude: typing.Optional[int] = None,
-        longitude: typing.Optional[int] = None,
-        radius: typing.Optional[int] = None,
-        mentioned_id: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-        extended: typing.Optional[BaseBoolInt] = None,
-        fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
-        raw: bool = False,
-    ) -> StoriesSearchResponseModel:
+            self,
+            q: str,
+            place_id: typing.Optional[int] = None,
+            latitude: typing.Optional[int] = None,
+            longitude: typing.Optional[int] = None,
+            radius: typing.Optional[int] = None,
+            mentioned_id: typing.Optional[int] = None,
+            count: typing.Optional[int] = None,
+            extended: typing.Optional[BaseBoolInt] = None,
+            fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
+            return_raw_response: bool = False,
+    ) -> typing.Union[dict, StoriesSearchResponseModel]:
 
         params = get_params(locals())
 
         raw_result = await self.api_request("search", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = StoriesSearchResponseModel(**raw_result)

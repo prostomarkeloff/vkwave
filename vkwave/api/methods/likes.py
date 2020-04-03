@@ -10,21 +10,21 @@ class Likes(Category):
         owner_id: typing.Optional[int] = None,
         item_id: int = None,
         access_key: typing.Optional[str] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, LikesAddResponse]:
         """
         :param type: - Object type: 'post' — post on user or community wall, 'comment' — comment on a wall post, 'photo' — photo, 'audio' — audio, 'video' — video, 'note' — note, 'photo_comment' — comment on the photo, 'video_comment' — comment on the video, 'topic_comment' — comment in the discussion, 'sitepage' — page of the site where the [vk.com/dev/Like|Like widget] is installed
         :param owner_id: - ID of the user or community that owns the object.
         :param item_id: - Object ID.
         :param access_key: - Access key required for an object owned by a private entity.
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("add", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = LikesAddResponse(**raw_result)
@@ -35,20 +35,20 @@ class Likes(Category):
         type: str = None,
         owner_id: typing.Optional[int] = None,
         item_id: int = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, LikesDeleteResponse]:
         """
         :param type: - Object type: 'post' — post on user or community wall, 'comment' — comment on a wall post, 'photo' — photo, 'audio' — audio, 'video' — video, 'note' — note, 'photo_comment' — comment on the photo, 'video_comment' — comment on the video, 'topic_comment' — comment in the discussion, 'sitepage' — page of the site where the [vk.com/dev/Like|Like widget] is installed
         :param owner_id: - ID of the user or community that owns the object.
         :param item_id: - Object ID.
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("delete", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = LikesDeleteResponse(**raw_result)
@@ -66,7 +66,7 @@ class Likes(Category):
         offset: typing.Optional[int] = None,
         count: typing.Optional[BaseBoolInt] = None,
         skip_own: typing.Optional[bool] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, LikesGetListResponse, LikesGetListExtendedResponse]:
         """
         :param type: - , Object type: 'post' — post on user or community wall, 'comment' — comment on a wall post, 'photo' — photo, 'audio' — audio, 'video' — video, 'note' — note, 'photo_comment' — comment on the photo, 'video_comment' — comment on the video, 'topic_comment' — comment in the discussion, 'sitepage' — page of the site where the [vk.com/dev/Like|Like widget] is installed
@@ -79,14 +79,14 @@ class Likes(Category):
         :param offset: - Offset needed to select a specific subset of users.
         :param count: - Number of user IDs to return (maximum '1000'). Default is '100' if 'friends_only' is set to '0', otherwise, the default is '10' if 'friends_only' is set to '1'.
         :param skip_own:
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("getList", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = (
@@ -102,21 +102,21 @@ class Likes(Category):
         type: str = None,
         owner_id: typing.Optional[int] = None,
         item_id: int = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, LikesIsLikedResponse]:
         """
         :param user_id: - User ID.
         :param type: - Object type: 'post' — post on user or community wall, 'comment' — comment on a wall post, 'photo' — photo, 'audio' — audio, 'video' — video, 'note' — note, 'photo_comment' — comment on the photo, 'video_comment' — comment on the video, 'topic_comment' — comment in the discussion
         :param owner_id: - ID of the user or community that owns the object.
         :param item_id: - Object ID.
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("isLiked", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = LikesIsLikedResponse(**raw_result)

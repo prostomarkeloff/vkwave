@@ -9,20 +9,20 @@ class Video(Category):
         target_id: typing.Optional[int] = None,
         video_id: int = None,
         owner_id: int = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param target_id: - identifier of a user or community to add a video to. Use a negative value to designate a community ID.
         :param video_id: - Video ID.
         :param owner_id: - ID of the user or community that owns the video. Use a negative value to designate a community ID.
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("add", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = OkResponse(**raw_result)
@@ -33,20 +33,20 @@ class Video(Category):
         group_id: typing.Optional[int] = None,
         title: typing.Optional[str] = None,
         privacy: typing.Optional[typing.List[str]] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, VideoAddAlbumResponse]:
         """
         :param group_id: - Community ID (if the album will be created in a community).
         :param title: - Album title.
         :param privacy: - new access permissions for the album. Possible values: , *'0' – all users,, *'1' – friends only,, *'2' – friends and friends of friends,, *'3' – "only me".
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("addAlbum", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = VideoAddAlbumResponse(**raw_result)
@@ -59,7 +59,7 @@ class Video(Category):
         album_ids: typing.Optional[typing.List[int]] = None,
         owner_id: int = None,
         video_id: int = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param target_id:
@@ -67,14 +67,14 @@ class Video(Category):
         :param album_ids:
         :param owner_id:
         :param video_id:
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("addToAlbum", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = OkResponse(**raw_result)
@@ -90,7 +90,7 @@ class Video(Category):
         reply_to_comment: typing.Optional[int] = None,
         sticker_id: typing.Optional[int] = None,
         guid: typing.Optional[str] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, VideoCreateCommentResponse]:
         """
         :param owner_id: - ID of the user or community that owns the video.
@@ -101,14 +101,14 @@ class Video(Category):
         :param reply_to_comment:
         :param sticker_id:
         :param guid:
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("createComment", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = VideoCreateCommentResponse(**raw_result)
@@ -119,20 +119,20 @@ class Video(Category):
         video_id: int = None,
         owner_id: typing.Optional[int] = None,
         target_id: typing.Optional[int] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param video_id: - Video ID.
         :param owner_id: - ID of the user or community that owns the video.
         :param target_id:
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("delete", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = OkResponse(**raw_result)
@@ -142,19 +142,19 @@ class Video(Category):
         self,
         group_id: typing.Optional[int] = None,
         album_id: int = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param group_id: - Community ID (if the album is owned by a community).
         :param album_id: - Album ID.
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("deleteAlbum", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = OkResponse(**raw_result)
@@ -164,19 +164,19 @@ class Video(Category):
         self,
         owner_id: typing.Optional[int] = None,
         comment_id: int = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - ID of the user or community that owns the video.
         :param comment_id: - ID of the comment to be deleted.
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("deleteComment", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = OkResponse(**raw_result)
@@ -192,7 +192,7 @@ class Video(Category):
         privacy_comment: typing.Optional[typing.List[str]] = None,
         no_comments: typing.Optional[bool] = None,
         repeat: typing.Optional[BaseBoolInt] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - ID of the user or community that owns the video.
@@ -203,14 +203,14 @@ class Video(Category):
         :param privacy_comment: - Privacy settings for comments in a [vk.com/dev/privacy_setting|special format].
         :param no_comments: - Disable comments for the group video.
         :param repeat: - '1' — to repeat the playback of the video, '0' — to play the video once,
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("edit", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = OkResponse(**raw_result)
@@ -222,21 +222,21 @@ class Video(Category):
         album_id: int = None,
         title: str = None,
         privacy: typing.Optional[typing.List[str]] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param group_id: - Community ID (if the album edited is owned by a community).
         :param album_id: - Album ID.
         :param title: - New album title.
         :param privacy: - new access permissions for the album. Possible values: , *'0' – all users,, *'1' – friends only,, *'2' – friends and friends of friends,, *'3' – "only me".
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("editAlbum", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = OkResponse(**raw_result)
@@ -248,21 +248,21 @@ class Video(Category):
         comment_id: int = None,
         message: typing.Optional[str] = None,
         attachments: typing.Optional[typing.List[str]] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - ID of the user or community that owns the video.
         :param comment_id: - Comment ID.
         :param message: - New comment text.
         :param attachments: - List of objects attached to the comment, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", '' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — ID of the media attachment owner. '<media_id>' — Media attachment ID. Example: "photo100172_166443618,photo66748_265827614"
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("editComment", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = OkResponse(**raw_result)
@@ -276,7 +276,7 @@ class Video(Category):
         count: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
         extended: typing.Optional[BaseBoolInt] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, VideoGetResponse, VideoGetExtendedResponse]:
         """
         :param owner_id: - ID of the user or community that owns the video(s).
@@ -285,14 +285,14 @@ class Video(Category):
         :param count: - Number of videos to return.
         :param offset: - Offset needed to return a specific subset of videos.
         :param extended: - '1' — to return an extended response with additional fields
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("get", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = (
@@ -306,19 +306,19 @@ class Video(Category):
         self,
         owner_id: typing.Optional[int] = None,
         album_id: int = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, VideoGetAlbumByIdResponse]:
         """
         :param owner_id: - identifier of a user or community to add a video to. Use a negative value to designate a community ID.
         :param album_id: - Album ID.
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("getAlbumById", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = VideoGetAlbumByIdResponse(**raw_result)
@@ -331,7 +331,7 @@ class Video(Category):
         count: typing.Optional[int] = None,
         extended: typing.Optional[BaseBoolInt] = None,
         need_system: typing.Optional[bool] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, VideoGetAlbumsResponse, VideoGetAlbumsExtendedResponse]:
         """
         :param owner_id: - ID of the user or community that owns the video album(s).
@@ -339,14 +339,14 @@ class Video(Category):
         :param count: - Number of video albums to return.
         :param extended: - '1' — to return additional information about album privacy settings for the current user
         :param need_system:
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("getAlbums", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = (
@@ -362,7 +362,7 @@ class Video(Category):
         owner_id: int = None,
         video_id: int = None,
         extended: typing.Optional[BaseBoolInt] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[
         dict, VideoGetAlbumsByVideoResponse, VideoGetAlbumsByVideoExtendedResponse
     ]:
@@ -371,14 +371,14 @@ class Video(Category):
         :param owner_id:
         :param video_id:
         :param extended:
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("getAlbumsByVideo", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = (
@@ -399,7 +399,7 @@ class Video(Category):
         sort: typing.Optional[str] = None,
         extended: typing.Optional[BaseBoolInt] = None,
         fields: typing.Optional[typing.List[str]] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, VideoGetCommentsResponse, VideoGetCommentsExtendedResponse]:
         """
         :param owner_id: - ID of the user or community that owns the video.
@@ -411,14 +411,14 @@ class Video(Category):
         :param sort: - Sort order: 'asc' — oldest comment first, 'desc' — newest comment first
         :param extended:
         :param fields:
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("getComments", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = (
@@ -435,7 +435,7 @@ class Video(Category):
         album_ids: typing.Optional[typing.List[int]] = None,
         owner_id: int = None,
         video_id: int = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param target_id:
@@ -443,14 +443,14 @@ class Video(Category):
         :param album_ids:
         :param owner_id:
         :param video_id:
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("removeFromAlbum", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = OkResponse(**raw_result)
@@ -462,21 +462,21 @@ class Video(Category):
         album_id: int = None,
         before: typing.Optional[int] = None,
         after: typing.Optional[int] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - ID of the user or community that owns the albums..
         :param album_id: - Album ID.
         :param before: - ID of the album before which the album in question shall be placed.
         :param after: - ID of the album after which the album in question shall be placed.
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("reorderAlbums", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = OkResponse(**raw_result)
@@ -492,7 +492,7 @@ class Video(Category):
         before_video_id: typing.Optional[int] = None,
         after_owner_id: typing.Optional[int] = None,
         after_video_id: typing.Optional[int] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param target_id: - ID of the user or community that owns the album with videos.
@@ -503,14 +503,14 @@ class Video(Category):
         :param before_video_id: - ID of the video before which the video in question shall be placed.
         :param after_owner_id: - ID of the user or community that owns the video after which the photo in question shall be placed.
         :param after_video_id: - ID of the video after which the photo in question shall be placed.
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("reorderVideos", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = OkResponse(**raw_result)
@@ -523,7 +523,7 @@ class Video(Category):
         reason: typing.Optional[BaseBoolInt] = None,
         comment: typing.Optional[str] = None,
         search_query: typing.Optional[str] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - ID of the user or community that owns the video.
@@ -531,14 +531,14 @@ class Video(Category):
         :param reason: - Reason for the complaint: '0' – spam, '1' – child pornography, '2' – extremism, '3' – violence, '4' – drug propaganda, '5' – adult material, '6' – insult, abuse
         :param comment: - Comment describing the complaint.
         :param search_query: - (If the video was found in search results.) Search query string.
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("report", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = OkResponse(**raw_result)
@@ -549,20 +549,20 @@ class Video(Category):
         owner_id: int = None,
         comment_id: int = None,
         reason: typing.Optional[BaseBoolInt] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - ID of the user or community that owns the video.
         :param comment_id: - ID of the comment being reported.
         :param reason: - Reason for the complaint: , 0 – spam , 1 – child pornography , 2 – extremism , 3 – violence , 4 – drug propaganda , 5 – adult material , 6 – insult, abuse
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("reportComment", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = OkResponse(**raw_result)
@@ -572,19 +572,19 @@ class Video(Category):
         self,
         video_id: int = None,
         owner_id: typing.Optional[int] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param video_id: - Video ID.
         :param owner_id: - ID of the user or community that owns the video.
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("restore", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = OkResponse(**raw_result)
@@ -594,19 +594,19 @@ class Video(Category):
         self,
         owner_id: typing.Optional[int] = None,
         comment_id: int = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, VideoRestoreCommentResponse]:
         """
         :param owner_id: - ID of the user or community that owns the video.
         :param comment_id: - ID of the deleted comment.
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("restoreComment", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = VideoRestoreCommentResponse(**raw_result)
@@ -626,7 +626,7 @@ class Video(Category):
         no_comments: typing.Optional[bool] = None,
         repeat: typing.Optional[BaseBoolInt] = None,
         compression: typing.Optional[bool] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, VideoSaveResponse]:
         """
         :param name: - Name of the video.
@@ -641,14 +641,14 @@ class Video(Category):
         :param no_comments:
         :param repeat: - '1' — to repeat the playback of the video, '0' — to play the video once,
         :param compression:
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("save", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = VideoSaveResponse(**raw_result)
@@ -667,7 +667,7 @@ class Video(Category):
         shorter: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
         extended: typing.Optional[BaseBoolInt] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, VideoSearchResponse, VideoSearchExtendedResponse]:
         """
         :param q: - Search query string (e.g., 'The Beatles').
@@ -681,14 +681,14 @@ class Video(Category):
         :param shorter:
         :param count: - Number of videos to return.
         :param extended:
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("search", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = (

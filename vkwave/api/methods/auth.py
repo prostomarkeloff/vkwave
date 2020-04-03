@@ -10,40 +10,43 @@ class Auth(Category):
         client_id: typing.Optional[int] = None,
         client_secret: typing.Optional[str] = None,
         auth_by_phone: typing.Optional[bool] = None,
-        raw: bool = False,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param phone: - Phone number.
         :param client_id: - User ID.
         :param client_secret:
         :param auth_by_phone:
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("checkPhone", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = OkResponse(**raw_result)
         return result
 
     async def restore(
-        self, phone: str = None, last_name: str = None, raw: bool = False,
+        self,
+        phone: str = None,
+        last_name: str = None,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, AuthRestoreResponse]:
         """
         :param phone: - User phone number.
         :param last_name: - User last name.
-        :param raw: - return result at dict
+        :param return_raw_response: - return result at dict
         :return:
         """
 
         params = get_params(locals())
 
         raw_result = await self.api_request("restore", params)
-        if raw:
+        if return_raw_response:
             return raw_result
 
         result = AuthRestoreResponse(**raw_result)
