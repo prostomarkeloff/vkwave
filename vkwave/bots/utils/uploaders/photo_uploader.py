@@ -9,7 +9,9 @@ class PhotoUploader(BaseUploader[typing.List[PhotosPhoto]]):
         server_data = await self.api_context.photos.get_messages_upload_server(peer_id=peer_id)
         return server_data.response.upload_url
 
-    async def upload(self, upload_url: str, file_data: typing.BinaryIO) -> typing.List[PhotosPhoto]:
+    async def upload(
+        self, upload_url: str, file_data: typing.BinaryIO
+    ) -> typing.List[PhotosPhoto]:
         # really dirty hack
         # but it works
         if not hasattr(file_data, "name"):
@@ -21,7 +23,6 @@ class PhotoUploader(BaseUploader[typing.List[PhotosPhoto]]):
             )
         )
 
-        print(upload_data)
         self.handle_error(upload_data)
 
         photo_sizes = (
@@ -33,5 +34,8 @@ class PhotoUploader(BaseUploader[typing.List[PhotosPhoto]]):
 
     def attachment_name(self, photo: typing.List[PhotosPhoto]) -> str:
         p = photo[-1]
-        return f"photo{p.owner_id}_{p.id}" if not p.access_key \
+        return (
+            f"photo{p.owner_id}_{p.id}"
+            if not p.access_key
             else f"photo{p.owner_id}_{p.id}_{p.access_key}"
+        )

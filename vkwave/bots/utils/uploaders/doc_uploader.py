@@ -23,6 +23,7 @@ class DocUploaderMixin(BaseUploader[DocsSaveResponseModel], ABC):
                 method="POST", url=upload_url, data={"file": file_data}
             ),
         )
+
         # Check upload for errors
         self.handle_error(upload_data)
 
@@ -42,8 +43,11 @@ class DocUploaderMixin(BaseUploader[DocsSaveResponseModel], ABC):
         else:
             raise TypeError("Unknown document type %s" % doc.type.value)
 
-        return f"doc{d.owner_id}_{d.id}" if not d.access_key \
+        return (
+            f"doc{d.owner_id}_{d.id}"
+            if not d.access_key
             else f"doc{d.owner_id}_{d.id}_{d.access_key}"
+        )
 
 
 class VoiceUploader(DocUploaderMixin):

@@ -17,10 +17,10 @@ class UploadException(Exception):
 
 class BaseUploader(ABC, Generic[UploadResult]):
     def __init__(
-            self,
-            api_context: APIOptionsRequestContext,
-            client: typing.Optional[AbstractHTTPClient] = None,
-            json_deserialize: JSONDecoder = json.loads,
+        self,
+        api_context: APIOptionsRequestContext,
+        client: typing.Optional[AbstractHTTPClient] = None,
+        json_deserialize: JSONDecoder = json.loads,
     ):
         self.api_context = api_context
         self.client: AbstractHTTPClient = client or api_context.api_options.get_client().http_client
