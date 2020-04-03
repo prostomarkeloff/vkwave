@@ -1,6 +1,6 @@
 from vkwave.types.responses import *
-
 from ._category import Category
+from ._utils import get_params
 
 
 class Notifications(Category):
@@ -11,40 +11,41 @@ class Notifications(Category):
         filters: typing.Optional[typing.List[str]] = None,
         start_time: typing.Optional[int] = None,
         end_time: typing.Optional[int] = None,
-    ) -> NotificationsGetResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, NotificationsGetResponse]:
         """
         :param count: - Number of notifications to return.
         :param start_from:
         :param filters: - Type of notifications to return: 'wall' — wall posts, 'mentions' — mentions in wall posts, comments, or topics, 'comments' — comments to wall posts, photos, and videos, 'likes' — likes, 'reposted' — wall posts that are copied from the current user's wall, 'followers' — new followers, 'friends' — accepted friend requests
         :param start_time: - Earliest timestamp (in Unix time) of a notification to return. By default, 24 hours ago.
         :param end_time: - Latest timestamp (in Unix time) of a notification to return. By default, the current time.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("get", params)
+        if raw:
+            return raw_result
+
         result = NotificationsGetResponse(**raw_result)
         return result
 
-    async def mark_as_viewed(self,) -> NotificationsMarkAsViewedResponse:
+    async def mark_as_viewed(
+        self, raw: bool = False,
+    ) -> typing.Union[dict, NotificationsMarkAsViewedResponse]:
         """
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("markAsViewed", params)
+        if raw:
+            return raw_result
+
         result = NotificationsMarkAsViewedResponse(**raw_result)
         return result
 
@@ -54,22 +55,22 @@ class Notifications(Category):
         message: str = None,
         fragment: typing.Optional[str] = None,
         group_id: typing.Optional[int] = None,
-    ) -> NotificationsSendMessageResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, NotificationsSendMessageResponse]:
         """
         :param user_ids:
         :param message:
         :param fragment:
         :param group_id:
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("sendMessage", params)
+        if raw:
+            return raw_result
+
         result = NotificationsSendMessageResponse(**raw_result)
         return result

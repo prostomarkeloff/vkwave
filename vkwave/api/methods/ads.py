@@ -1,26 +1,25 @@
 from vkwave.types.responses import *
-
 from ._category import Category
+from ._utils import get_params
 
 
 class Ads(Category):
     async def add_office_users(
-        self, account_id: int = None, data: str = None,
-    ) -> AdsAddOfficeUsersResponse:
+        self, account_id: int = None, data: str = None, raw: bool = False,
+    ) -> typing.Union[dict, AdsAddOfficeUsersResponse]:
         """
         :param account_id: - Advertising account ID.
         :param data: - Serialized JSON array of objects that describe added managers. Description of 'user_specification' objects see below.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("addOfficeUsers", params)
+        if raw:
+            return raw_result
+
         result = AdsAddOfficeUsersResponse(**raw_result)
         return result
 
@@ -30,81 +29,80 @@ class Ads(Category):
         link_type: str = None,
         link_url: str = None,
         campaign_id: typing.Optional[int] = None,
-    ) -> AdsCheckLinkResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, AdsCheckLinkResponse]:
         """
         :param account_id: - Advertising account ID.
         :param link_type: - Object type: *'community' — community,, *'post' — community post,, *'application' — VK application,, *'video' — video,, *'site' — external site.
         :param link_url: - Object URL.
         :param campaign_id: - Campaign ID
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("checkLink", params)
+        if raw:
+            return raw_result
+
         result = AdsCheckLinkResponse(**raw_result)
         return result
 
-    async def create_ads(self, account_id: int = None, data: str = None,) -> AdsCreateAdsResponse:
+    async def create_ads(
+        self, account_id: int = None, data: str = None, raw: bool = False,
+    ) -> typing.Union[dict, AdsCreateAdsResponse]:
         """
         :param account_id: - Advertising account ID.
         :param data: - Serialized JSON array of objects that describe created ads. Description of 'ad_specification' objects see below.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("createAds", params)
+        if raw:
+            return raw_result
+
         result = AdsCreateAdsResponse(**raw_result)
         return result
 
     async def create_campaigns(
-        self, account_id: int = None, data: str = None,
-    ) -> AdsCreateCampaignsResponse:
+        self, account_id: int = None, data: str = None, raw: bool = False,
+    ) -> typing.Union[dict, AdsCreateCampaignsResponse]:
         """
         :param account_id: - Advertising account ID.
         :param data: - Serialized JSON array of objects that describe created campaigns. Description of 'campaign_specification' objects see below.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("createCampaigns", params)
+        if raw:
+            return raw_result
+
         result = AdsCreateCampaignsResponse(**raw_result)
         return result
 
     async def create_clients(
-        self, account_id: int = None, data: str = None,
-    ) -> AdsCreateClientsResponse:
+        self, account_id: int = None, data: str = None, raw: bool = False,
+    ) -> typing.Union[dict, AdsCreateClientsResponse]:
         """
         :param account_id: - Advertising account ID.
         :param data: - Serialized JSON array of objects that describe created campaigns. Description of 'client_specification' objects see below.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("createClients", params)
+        if raw:
+            return raw_result
+
         result = AdsCreateClientsResponse(**raw_result)
         return result
 
@@ -116,7 +114,8 @@ class Ads(Category):
         lifetime: typing.Optional[int] = None,
         target_pixel_id: typing.Optional[int] = None,
         target_pixel_rules: typing.Optional[str] = None,
-    ) -> AdsCreateTargetGroupResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, AdsCreateTargetGroupResponse]:
         """
         :param account_id: - Advertising account ID.
         :param client_id: - 'Only for advertising agencies.', ID of the client with the advertising account where the group will be created.
@@ -124,75 +123,73 @@ class Ads(Category):
         :param lifetime: - 'For groups with auditory created with pixel code only.', , Number of days after that users will be automatically removed from the group.
         :param target_pixel_id:
         :param target_pixel_rules:
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("createTargetGroup", params)
+        if raw:
+            return raw_result
+
         result = AdsCreateTargetGroupResponse(**raw_result)
         return result
 
-    async def delete_ads(self, account_id: int = None, ids: str = None,) -> AdsDeleteAdsResponse:
+    async def delete_ads(
+        self, account_id: int = None, ids: str = None, raw: bool = False,
+    ) -> typing.Union[dict, AdsDeleteAdsResponse]:
         """
         :param account_id: - Advertising account ID.
         :param ids: - Serialized JSON array with ad IDs.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("deleteAds", params)
+        if raw:
+            return raw_result
+
         result = AdsDeleteAdsResponse(**raw_result)
         return result
 
     async def delete_campaigns(
-        self, account_id: int = None, ids: str = None,
-    ) -> AdsDeleteCampaignsResponse:
+        self, account_id: int = None, ids: str = None, raw: bool = False,
+    ) -> typing.Union[dict, AdsDeleteCampaignsResponse]:
         """
         :param account_id: - Advertising account ID.
         :param ids: - Serialized JSON array with IDs of deleted campaigns.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("deleteCampaigns", params)
+        if raw:
+            return raw_result
+
         result = AdsDeleteCampaignsResponse(**raw_result)
         return result
 
     async def delete_clients(
-        self, account_id: int = None, ids: str = None,
-    ) -> AdsDeleteClientsResponse:
+        self, account_id: int = None, ids: str = None, raw: bool = False,
+    ) -> typing.Union[dict, AdsDeleteClientsResponse]:
         """
         :param account_id: - Advertising account ID.
         :param ids: - Serialized JSON array with IDs of deleted clients.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("deleteClients", params)
+        if raw:
+            return raw_result
+
         result = AdsDeleteClientsResponse(**raw_result)
         return result
 
@@ -201,38 +198,39 @@ class Ads(Category):
         account_id: int = None,
         client_id: typing.Optional[int] = None,
         target_group_id: int = None,
-    ) -> OkResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, OkResponse]:
         """
         :param account_id: - Advertising account ID.
         :param client_id: - 'Only for advertising agencies.' , ID of the client with the advertising account where the group will be created.
         :param target_group_id: - Group ID.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("deleteTargetGroup", params)
+        if raw:
+            return raw_result
+
         result = OkResponse(**raw_result)
         return result
 
-    async def get_accounts(self,) -> AdsGetAccountsResponse:
+    async def get_accounts(
+        self, raw: bool = False,
+    ) -> typing.Union[dict, AdsGetAccountsResponse]:
         """
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getAccounts", params)
+        if raw:
+            return raw_result
+
         result = AdsGetAccountsResponse(**raw_result)
         return result
 
@@ -245,7 +243,8 @@ class Ads(Category):
         include_deleted: typing.Optional[BaseBoolInt] = None,
         limit: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
-    ) -> AdsGetAdsResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, AdsGetAdsResponse]:
         """
         :param account_id: - Advertising account ID.
         :param ad_ids: - Filter by ads. Serialized JSON array with ad IDs. If the parameter is null, all ads will be shown.
@@ -254,17 +253,16 @@ class Ads(Category):
         :param include_deleted: - Flag that specifies whether archived ads shall be shown: *0 — show only active ads,, *1 — show all ads.
         :param limit: - Limit of number of returned ads. Used only if ad_ids parameter is null, and 'campaign_ids' parameter contains ID of only one campaign.
         :param offset: - Offset. Used in the same cases as 'limit' parameter.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getAds", params)
+        if raw:
+            return raw_result
+
         result = AdsGetAdsResponse(**raw_result)
         return result
 
@@ -277,7 +275,8 @@ class Ads(Category):
         include_deleted: typing.Optional[BaseBoolInt] = None,
         limit: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
-    ) -> AdsGetAdsLayoutResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, AdsGetAdsLayoutResponse]:
         """
         :param account_id: - Advertising account ID.
         :param ad_ids: - Filter by ads. Serialized JSON array with ad IDs. If the parameter is null, all ads will be shown.
@@ -286,17 +285,16 @@ class Ads(Category):
         :param include_deleted: - Flag that specifies whether archived ads shall be shown. *0 — show only active ads,, *1 — show all ads.
         :param limit: - Limit of number of returned ads. Used only if 'ad_ids' parameter is null, and 'campaign_ids' parameter contains ID of only one campaign.
         :param offset: - Offset. Used in the same cases as 'limit' parameter.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getAdsLayout", params)
+        if raw:
+            return raw_result
+
         result = AdsGetAdsLayoutResponse(**raw_result)
         return result
 
@@ -309,7 +307,8 @@ class Ads(Category):
         include_deleted: typing.Optional[BaseBoolInt] = None,
         limit: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
-    ) -> AdsGetAdsTargetingResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, AdsGetAdsTargetingResponse]:
         """
         :param account_id: - Advertising account ID.
         :param ad_ids: - Filter by ads. Serialized JSON array with ad IDs. If the parameter is null, all ads will be shown.
@@ -318,34 +317,34 @@ class Ads(Category):
         :param include_deleted: - flag that specifies whether archived ads shall be shown: *0 — show only active ads,, *1 — show all ads.
         :param limit: - Limit of number of returned ads. Used only if 'ad_ids' parameter is null, and 'campaign_ids' parameter contains ID of only one campaign.
         :param offset: - Offset needed to return a specific subset of results.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getAdsTargeting", params)
+        if raw:
+            return raw_result
+
         result = AdsGetAdsTargetingResponse(**raw_result)
         return result
 
-    async def get_budget(self, account_id: int = None,) -> AdsGetBudgetResponse:
+    async def get_budget(
+        self, account_id: int = None, raw: bool = False,
+    ) -> typing.Union[dict, AdsGetBudgetResponse]:
         """
         :param account_id: - Advertising account ID.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getBudget", params)
+        if raw:
+            return raw_result
+
         result = AdsGetBudgetResponse(**raw_result)
         return result
 
@@ -355,57 +354,59 @@ class Ads(Category):
         client_id: typing.Optional[int] = None,
         include_deleted: typing.Optional[BaseBoolInt] = None,
         campaign_ids: typing.Optional[str] = None,
-    ) -> AdsGetCampaignsResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, AdsGetCampaignsResponse]:
         """
         :param account_id: - Advertising account ID.
         :param client_id: - 'For advertising agencies'. ID of the client advertising campaigns are retrieved from.
         :param include_deleted: - Flag that specifies whether archived ads shall be shown. *0 — show only active campaigns,, *1 — show all campaigns.
         :param campaign_ids: - Filter of advertising campaigns to show. Serialized JSON array with campaign IDs. Only campaigns that exist in 'campaign_ids' and belong to the specified advertising account will be shown. If the parameter is null, all campaigns will be shown.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getCampaigns", params)
+        if raw:
+            return raw_result
+
         result = AdsGetCampaignsResponse(**raw_result)
         return result
 
-    async def get_categories(self, lang: typing.Optional[str] = None,) -> AdsGetCategoriesResponse:
+    async def get_categories(
+        self, lang: typing.Optional[str] = None, raw: bool = False,
+    ) -> typing.Union[dict, AdsGetCategoriesResponse]:
         """
         :param lang: - Language. The full list of supported languages is [vk.com/dev/api_requests|here].
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getCategories", params)
+        if raw:
+            return raw_result
+
         result = AdsGetCategoriesResponse(**raw_result)
         return result
 
-    async def get_clients(self, account_id: int = None,) -> AdsGetClientsResponse:
+    async def get_clients(
+        self, account_id: int = None, raw: bool = False,
+    ) -> typing.Union[dict, AdsGetClientsResponse]:
         """
         :param account_id: - Advertising account ID.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getClients", params)
+        if raw:
+            return raw_result
+
         result = AdsGetClientsResponse(**raw_result)
         return result
 
@@ -417,7 +418,8 @@ class Ads(Category):
         period: str = None,
         date_from: BaseBoolInt = None,
         date_to: BaseBoolInt = None,
-    ) -> AdsGetDemographicsResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, AdsGetDemographicsResponse]:
         """
         :param account_id: - Advertising account ID.
         :param ids_type: - Type of requested objects listed in 'ids' parameter: *ad — ads,, *campaign — campaigns.
@@ -425,92 +427,95 @@ class Ads(Category):
         :param period: - Data grouping by dates: *day — statistics by days,, *month — statistics by months,, *overall — overall statistics. 'date_from' and 'date_to' parameters set temporary limits.
         :param date_from: - Date to show statistics from. For different value of 'period' different date format is used: *day: YYYY-MM-DD, example: 2011-09-27 — September 27, 2011, **0 — day it was created on,, *month: YYYY-MM, example: 2011-09 — September 2011, **0 — month it was created in,, *overall: 0.
         :param date_to: - Date to show statistics to. For different value of 'period' different date format is used: *day: YYYY-MM-DD, example: 2011-09-27 — September 27, 2011, **0 — current day,, *month: YYYY-MM, example: 2011-09 — September 2011, **0 — current month,, *overall: 0.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getDemographics", params)
+        if raw:
+            return raw_result
+
         result = AdsGetDemographicsResponse(**raw_result)
         return result
 
-    async def get_flood_stats(self, account_id: int = None,) -> AdsGetFloodStatsResponse:
+    async def get_flood_stats(
+        self, account_id: int = None, raw: bool = False,
+    ) -> typing.Union[dict, AdsGetFloodStatsResponse]:
         """
         :param account_id: - Advertising account ID.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getFloodStats", params)
+        if raw:
+            return raw_result
+
         result = AdsGetFloodStatsResponse(**raw_result)
         return result
 
-    async def get_office_users(self, account_id: int = None,) -> AdsGetOfficeUsersResponse:
+    async def get_office_users(
+        self, account_id: int = None, raw: bool = False,
+    ) -> typing.Union[dict, AdsGetOfficeUsersResponse]:
         """
         :param account_id: - Advertising account ID.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getOfficeUsers", params)
+        if raw:
+            return raw_result
+
         result = AdsGetOfficeUsersResponse(**raw_result)
         return result
 
     async def get_posts_reach(
-        self, account_id: int = None, ids_type: str = None, ids: BaseBoolInt = None,
-    ) -> AdsGetPostsReachResponse:
+        self,
+        account_id: int = None,
+        ids_type: str = None,
+        ids: BaseBoolInt = None,
+        raw: bool = False,
+    ) -> typing.Union[dict, AdsGetPostsReachResponse]:
         """
         :param account_id: - Advertising account ID.
         :param ids_type: - Type of requested objects listed in 'ids' parameter: *ad — ads,, *campaign — campaigns.
         :param ids: - IDs requested ads or campaigns, separated with a comma, depending on the value set in 'ids_type'. Maximum 100 objects.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getPostsReach", params)
+        if raw:
+            return raw_result
+
         result = AdsGetPostsReachResponse(**raw_result)
         return result
 
     async def get_rejection_reason(
-        self, account_id: int = None, ad_id: int = None,
-    ) -> AdsGetRejectionReasonResponse:
+        self, account_id: int = None, ad_id: int = None, raw: bool = False,
+    ) -> typing.Union[dict, AdsGetRejectionReasonResponse]:
         """
         :param account_id: - Advertising account ID.
         :param ad_id: - Ad ID.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getRejectionReason", params)
+        if raw:
+            return raw_result
+
         result = AdsGetRejectionReasonResponse(**raw_result)
         return result
 
@@ -522,7 +527,8 @@ class Ads(Category):
         period: str = None,
         date_from: BaseBoolInt = None,
         date_to: BaseBoolInt = None,
-    ) -> AdsGetStatisticsResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, AdsGetStatisticsResponse]:
         """
         :param account_id: - Advertising account ID.
         :param ids_type: - Type of requested objects listed in 'ids' parameter: *ad — ads,, *campaign — campaigns,, *client — clients,, *office — account.
@@ -530,17 +536,16 @@ class Ads(Category):
         :param period: - Data grouping by dates: *day — statistics by days,, *month — statistics by months,, *overall — overall statistics. 'date_from' and 'date_to' parameters set temporary limits.
         :param date_from: - Date to show statistics from. For different value of 'period' different date format is used: *day: YYYY-MM-DD, example: 2011-09-27 — September 27, 2011, **0 — day it was created on,, *month: YYYY-MM, example: 2011-09 — September 2011, **0 — month it was created in,, *overall: 0.
         :param date_to: - Date to show statistics to. For different value of 'period' different date format is used: *day: YYYY-MM-DD, example: 2011-09-27 — September 27, 2011, **0 — current day,, *month: YYYY-MM, example: 2011-09 — September 2011, **0 — current month,, *overall: 0.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getStatistics", params)
+        if raw:
+            return raw_result
+
         result = AdsGetStatisticsResponse(**raw_result)
         return result
 
@@ -552,7 +557,8 @@ class Ads(Category):
         country: typing.Optional[int] = None,
         cities: typing.Optional[str] = None,
         lang: typing.Optional[str] = None,
-    ) -> AdsGetSuggestionsResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, AdsGetSuggestionsResponse]:
         """
         :param section: - Section, suggestions are retrieved in. Available values: *countries — request of a list of countries. If q is not set or blank, a short list of countries is shown. Otherwise, a full list of countries is shown. *regions — requested list of regions. 'country' parameter is required. *cities — requested list of cities. 'country' parameter is required. *districts — requested list of districts. 'cities' parameter is required. *stations — requested list of subway stations. 'cities' parameter is required. *streets — requested list of streets. 'cities' parameter is required. *schools — requested list of educational organizations. 'cities' parameter is required. *interests — requested list of interests. *positions — requested list of positions (professions). *group_types — requested list of group types. *religions — requested list of religious commitments. *browsers — requested list of browsers and mobile devices.
         :param ids: - Objects IDs separated by commas. If the parameter is passed, 'q, country, cities' should not be passed.
@@ -560,17 +566,16 @@ class Ads(Category):
         :param country: - ID of the country objects are searched in.
         :param cities: - IDs of cities where objects are searched in, separated with a comma.
         :param lang: - Language of the returned string values. Supported languages: *ru — Russian,, *ua — Ukrainian,, *en — English.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getSuggestions", params)
+        if raw:
+            return raw_result
+
         result = AdsGetSuggestionsResponse(**raw_result)
         return result
 
@@ -579,22 +584,22 @@ class Ads(Category):
         account_id: int = None,
         client_id: typing.Optional[int] = None,
         extended: typing.Optional[BaseBoolInt] = None,
-    ) -> AdsGetTargetGroupsResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, AdsGetTargetGroupsResponse]:
         """
         :param account_id: - Advertising account ID.
         :param client_id: - 'Only for advertising agencies.', ID of the client with the advertising account where the group will be created.
         :param extended: - '1' — to return pixel code.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getTargetGroups", params)
+        if raw:
+            return raw_result
+
         result = AdsGetTargetGroupsResponse(**raw_result)
         return result
 
@@ -610,7 +615,8 @@ class Ads(Category):
         ad_platform_no_ad_network: typing.Optional[str] = None,
         link_url: str = None,
         link_domain: typing.Optional[str] = None,
-    ) -> AdsGetTargetingStatsResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, AdsGetTargetingStatsResponse]:
         """
         :param account_id: - Advertising account ID.
         :param client_id:
@@ -622,53 +628,55 @@ class Ads(Category):
         :param ad_platform_no_ad_network:
         :param link_url: - URL for the advertised object.
         :param link_domain: - Domain of the advertised object.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getTargetingStats", params)
+        if raw:
+            return raw_result
+
         result = AdsGetTargetingStatsResponse(**raw_result)
         return result
 
     async def get_upload_u_r_l(
-        self, ad_format: int = None, icon: typing.Optional[int] = None,
-    ) -> AdsGetUploadURLResponse:
+        self,
+        ad_format: int = None,
+        icon: typing.Optional[int] = None,
+        raw: bool = False,
+    ) -> typing.Union[dict, AdsGetUploadURLResponse]:
         """
         :param ad_format: - Ad format: *1 — image and text,, *2 — big image,, *3 — exclusive format,, *4 — community, square image,, *7 — special app format.
         :param icon:
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getUploadURL", params)
+        if raw:
+            return raw_result
+
         result = AdsGetUploadURLResponse(**raw_result)
         return result
 
-    async def get_video_upload_u_r_l(self,) -> AdsGetVideoUploadURLResponse:
+    async def get_video_upload_u_r_l(
+        self, raw: bool = False,
+    ) -> typing.Union[dict, AdsGetVideoUploadURLResponse]:
         """
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getVideoUploadURL", params)
+        if raw:
+            return raw_result
+
         result = AdsGetVideoUploadURLResponse(**raw_result)
         return result
 
@@ -678,101 +686,99 @@ class Ads(Category):
         client_id: typing.Optional[int] = None,
         target_group_id: int = None,
         contacts: str = None,
-    ) -> AdsImportTargetContactsResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, AdsImportTargetContactsResponse]:
         """
         :param account_id: - Advertising account ID.
         :param client_id: - 'Only for advertising agencies.' , ID of the client with the advertising account where the group will be created.
         :param target_group_id: - Target group ID.
         :param contacts: - List of phone numbers, emails or user IDs separated with a comma.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("importTargetContacts", params)
+        if raw:
+            return raw_result
+
         result = AdsImportTargetContactsResponse(**raw_result)
         return result
 
     async def remove_office_users(
-        self, account_id: int = None, ids: str = None,
-    ) -> AdsRemoveOfficeUsersResponse:
+        self, account_id: int = None, ids: str = None, raw: bool = False,
+    ) -> typing.Union[dict, AdsRemoveOfficeUsersResponse]:
         """
         :param account_id: - Advertising account ID.
         :param ids: - Serialized JSON array with IDs of deleted managers.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("removeOfficeUsers", params)
+        if raw:
+            return raw_result
+
         result = AdsRemoveOfficeUsersResponse(**raw_result)
         return result
 
-    async def update_ads(self, account_id: int = None, data: str = None,) -> AdsUpdateAdsResponse:
+    async def update_ads(
+        self, account_id: int = None, data: str = None, raw: bool = False,
+    ) -> typing.Union[dict, AdsUpdateAdsResponse]:
         """
         :param account_id: - Advertising account ID.
         :param data: - Serialized JSON array of objects that describe changes in ads. Description of 'ad_edit_specification' objects see below.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("updateAds", params)
+        if raw:
+            return raw_result
+
         result = AdsUpdateAdsResponse(**raw_result)
         return result
 
     async def update_campaigns(
-        self, account_id: int = None, data: str = None,
-    ) -> AdsUpdateCampaignsResponse:
+        self, account_id: int = None, data: str = None, raw: bool = False,
+    ) -> typing.Union[dict, AdsUpdateCampaignsResponse]:
         """
         :param account_id: - Advertising account ID.
         :param data: - Serialized JSON array of objects that describe changes in campaigns. Description of 'campaign_mod' objects see below.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("updateCampaigns", params)
+        if raw:
+            return raw_result
+
         result = AdsUpdateCampaignsResponse(**raw_result)
         return result
 
     async def update_clients(
-        self, account_id: int = None, data: str = None,
-    ) -> AdsUpdateClientsResponse:
+        self, account_id: int = None, data: str = None, raw: bool = False,
+    ) -> typing.Union[dict, AdsUpdateClientsResponse]:
         """
         :param account_id: - Advertising account ID.
         :param data: - Serialized JSON array of objects that describe changes in clients. Description of 'client_mod' objects see below.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("updateClients", params)
+        if raw:
+            return raw_result
+
         result = AdsUpdateClientsResponse(**raw_result)
         return result
 
@@ -786,7 +792,8 @@ class Ads(Category):
         lifetime: typing.Optional[BaseBoolInt] = None,
         target_pixel_id: typing.Optional[int] = None,
         target_pixel_rules: typing.Optional[str] = None,
-    ) -> OkResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, OkResponse]:
         """
         :param account_id: - Advertising account ID.
         :param client_id: - 'Only for advertising agencies.' , ID of the client with the advertising account where the group will be created.
@@ -796,16 +803,15 @@ class Ads(Category):
         :param lifetime: - 'Only for the groups that get audience from sites with user accounting code.', Time in days when users added to a retarget group will be automatically excluded from it. '0' – automatic exclusion is off.
         :param target_pixel_id:
         :param target_pixel_rules:
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("updateTargetGroup", params)
+        if raw:
+            return raw_result
+
         result = OkResponse(**raw_result)
         return result

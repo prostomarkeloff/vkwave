@@ -1,6 +1,6 @@
 from vkwave.types.responses import *
-
 from ._category import Category
+from ._utils import get_params
 
 
 class Polls(Category):
@@ -10,23 +10,23 @@ class Polls(Category):
         poll_id: int = None,
         answer_ids: typing.List[int] = None,
         is_board: typing.Optional[bool] = None,
-    ) -> PollsAddVoteResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, PollsAddVoteResponse]:
         """
         :param owner_id: - ID of the user or community that owns the poll. Use a negative value to designate a community ID.
         :param poll_id: - Poll ID.
         :param answer_ids:
         :param is_board:
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("addVote", params)
+        if raw:
+            return raw_result
+
         result = PollsAddVoteResponse(**raw_result)
         return result
 
@@ -40,7 +40,8 @@ class Polls(Category):
         add_answers: typing.Optional[BaseBoolInt] = None,
         photo_id: typing.Optional[int] = None,
         background_id: typing.Optional[str] = None,
-    ) -> PollsCreateResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, PollsCreateResponse]:
         """
         :param question: - question text
         :param is_anonymous: - '1' – anonymous poll, participants list is hidden,, '0' – public poll, participants list is available,, Default value is '0'.
@@ -50,17 +51,16 @@ class Polls(Category):
         :param add_answers: - available answers list, for example: " ["yes","no","maybe"]", There can be from 1 to 10 answers.
         :param photo_id:
         :param background_id:
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("create", params)
+        if raw:
+            return raw_result
+
         result = PollsCreateResponse(**raw_result)
         return result
 
@@ -70,23 +70,23 @@ class Polls(Category):
         poll_id: int = None,
         answer_id: int = None,
         is_board: typing.Optional[bool] = None,
-    ) -> PollsDeleteVoteResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, PollsDeleteVoteResponse]:
         """
         :param owner_id: - ID of the user or community that owns the poll. Use a negative value to designate a community ID.
         :param poll_id: - Poll ID.
         :param answer_id: - Answer ID.
         :param is_board:
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("deleteVote", params)
+        if raw:
+            return raw_result
+
         result = PollsDeleteVoteResponse(**raw_result)
         return result
 
@@ -101,7 +101,8 @@ class Polls(Category):
         end_date: typing.Optional[int] = None,
         photo_id: typing.Optional[int] = None,
         background_id: typing.Optional[str] = None,
-    ) -> OkResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - poll owner id
         :param poll_id: - edited poll's id
@@ -112,17 +113,16 @@ class Polls(Category):
         :param end_date:
         :param photo_id:
         :param background_id:
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("edit", params)
+        if raw:
+            return raw_result
+
         result = OkResponse(**raw_result)
         return result
 
@@ -135,7 +135,8 @@ class Polls(Category):
         friends_count: typing.Optional[int] = None,
         fields: typing.Optional[typing.List[str]] = None,
         name_case: typing.Optional[str] = None,
-    ) -> PollsGetByIdResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, PollsGetByIdResponse]:
         """
         :param owner_id: - ID of the user or community that owns the poll. Use a negative value to designate a community ID.
         :param is_board: - '1' – poll is in a board, '0' – poll is on a wall. '0' by default.
@@ -144,17 +145,16 @@ class Polls(Category):
         :param friends_count:
         :param fields:
         :param name_case:
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getById", params)
+        if raw:
+            return raw_result
+
         result = PollsGetByIdResponse(**raw_result)
         return result
 
@@ -169,7 +169,8 @@ class Polls(Category):
         count: typing.Optional[BaseBoolInt] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
         name_case: typing.Optional[str] = None,
-    ) -> PollsGetVotersResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, PollsGetVotersResponse]:
         """
         :param owner_id: - ID of the user or community that owns the poll. Use a negative value to designate a community ID.
         :param poll_id: - Poll ID.
@@ -180,16 +181,15 @@ class Polls(Category):
         :param count: - Number of user IDs to return (if the 'friends_only' parameter is not set, maximum '1000', otherwise '10'). '100' — (default)
         :param fields: - Profile fields to return. Sample values: 'nickname', 'screen_name', 'sex', 'bdate (birthdate)', 'city', 'country', 'timezone', 'photo', 'photo_medium', 'photo_big', 'has_mobile', 'rate', 'contacts', 'education', 'online', 'counters'.
         :param name_case: - Case for declension of user name and surname: , 'nom' — nominative (default) , 'gen' — genitive , 'dat' — dative , 'acc' — accusative , 'ins' — instrumental , 'abl' — prepositional
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getVoters", params)
+        if raw:
+            return raw_result
+
         result = PollsGetVotersResponse(**raw_result)
         return result

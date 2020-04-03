@@ -1,6 +1,6 @@
 from vkwave.types.responses import *
-
 from ._category import Category
+from ._utils import get_params
 
 
 class Friends(Category):
@@ -9,132 +9,141 @@ class Friends(Category):
         user_id: typing.Optional[int] = None,
         text: typing.Optional[BaseBoolInt] = None,
         follow: typing.Optional[BaseBoolInt] = None,
-    ) -> FriendsAddResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, FriendsAddResponse]:
         """
         :param user_id: - ID of the user whose friend request will be approved or to whom a friend request will be sent.
         :param text: - Text of the message (up to 500 characters) for the friend request, if any.
         :param follow: - '1' to pass an incoming request to followers list.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("add", params)
+        if raw:
+            return raw_result
+
         result = FriendsAddResponse(**raw_result)
         return result
 
     async def add_list(
-        self, name: str = None, user_ids: typing.Optional[typing.List[int]] = None,
-    ) -> FriendsAddListResponse:
+        self,
+        name: str = None,
+        user_ids: typing.Optional[typing.List[int]] = None,
+        raw: bool = False,
+    ) -> typing.Union[dict, FriendsAddListResponse]:
         """
         :param name: - Name of the friend list.
         :param user_ids: - IDs of users to be added to the friend list.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("addList", params)
+        if raw:
+            return raw_result
+
         result = FriendsAddListResponse(**raw_result)
         return result
 
     async def are_friends(
-        self, user_ids: typing.List[int] = None, need_sign: typing.Optional[BaseBoolInt] = None,
-    ) -> FriendsAreFriendsResponse:
+        self,
+        user_ids: typing.List[int] = None,
+        need_sign: typing.Optional[BaseBoolInt] = None,
+        raw: bool = False,
+    ) -> typing.Union[dict, FriendsAreFriendsResponse]:
         """
         :param user_ids: - IDs of the users whose friendship status to check.
         :param need_sign: - '1' — to return 'sign' field. 'sign' is md5("{id}_{user_id}_{friends_status}_{application_secret}"), where id is current user ID. This field allows to check that data has not been modified by the client. By default: '0'.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("areFriends", params)
+        if raw:
+            return raw_result
+
         result = FriendsAreFriendsResponse(**raw_result)
         return result
 
-    async def delete(self, user_id: typing.Optional[int] = None,) -> FriendsDeleteResponse:
+    async def delete(
+        self, user_id: typing.Optional[int] = None, raw: bool = False,
+    ) -> typing.Union[dict, FriendsDeleteResponse]:
         """
         :param user_id: - ID of the user whose friend request is to be declined or who is to be deleted from the current user's friend list.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("delete", params)
+        if raw:
+            return raw_result
+
         result = FriendsDeleteResponse(**raw_result)
         return result
 
-    async def delete_all_requests(self,) -> OkResponse:
+    async def delete_all_requests(
+        self, raw: bool = False,
+    ) -> typing.Union[dict, OkResponse]:
         """
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("deleteAllRequests", params)
+        if raw:
+            return raw_result
+
         result = OkResponse(**raw_result)
         return result
 
-    async def delete_list(self, list_id: int = None,) -> OkResponse:
+    async def delete_list(
+        self, list_id: int = None, raw: bool = False,
+    ) -> typing.Union[dict, OkResponse]:
         """
         :param list_id: - ID of the friend list to delete.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("deleteList", params)
+        if raw:
+            return raw_result
+
         result = OkResponse(**raw_result)
         return result
 
     async def edit(
-        self, user_id: int = None, list_ids: typing.Optional[typing.List[int]] = None,
-    ) -> OkResponse:
+        self,
+        user_id: int = None,
+        list_ids: typing.Optional[typing.List[int]] = None,
+        raw: bool = False,
+    ) -> typing.Union[dict, OkResponse]:
         """
         :param user_id: - ID of the user whose friend list is to be edited.
         :param list_ids: - IDs of the friend lists to which to add the user.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("edit", params)
+        if raw:
+            return raw_result
+
         result = OkResponse(**raw_result)
         return result
 
@@ -145,24 +154,24 @@ class Friends(Category):
         user_ids: typing.Optional[typing.List[int]] = None,
         add_user_ids: typing.Optional[typing.List[int]] = None,
         delete_user_ids: typing.Optional[typing.List[int]] = None,
-    ) -> OkResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, OkResponse]:
         """
         :param name: - Name of the friend list.
         :param list_id: - Friend list ID.
         :param user_ids: - IDs of users in the friend list.
         :param add_user_ids: - (Applies if 'user_ids' parameter is not set.), User IDs to add to the friend list.
         :param delete_user_ids: - (Applies if 'user_ids' parameter is not set.), User IDs to delete from the friend list.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("editList", params)
+        if raw:
+            return raw_result
+
         result = OkResponse(**raw_result)
         return result
 
@@ -176,7 +185,8 @@ class Friends(Category):
         fields: typing.Optional[typing.List[UsersFields]] = None,
         name_case: typing.Optional[str] = None,
         ref: typing.Optional[str] = None,
-    ) -> FriendsGetResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, FriendsGetResponse]:
         """
         :param user_id: - User ID. By default, the current user ID.
         :param order: - Sort order: , 'name' — by name (enabled only if the 'fields' parameter is used), 'hints' — by rating, similar to how friends are sorted in My friends section, , This parameter is available only for [vk.com/dev/standalone|desktop applications].
@@ -186,33 +196,33 @@ class Friends(Category):
         :param fields: - Profile fields to return. Sample values: 'uid', 'first_name', 'last_name', 'nickname', 'sex', 'bdate' (birthdate), 'city', 'country', 'timezone', 'photo', 'photo_medium', 'photo_big', 'domain', 'has_mobile', 'rate', 'contacts', 'education'.
         :param name_case: - Case for declension of user name and surname: , 'nom' — nominative (default) , 'gen' — genitive , 'dat' — dative , 'acc' — accusative , 'ins' — instrumental , 'abl' — prepositional
         :param ref:
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("get", params)
+        if raw:
+            return raw_result
+
         result = FriendsGetResponse(**raw_result)
         return result
 
-    async def get_app_users(self,) -> FriendsGetAppUsersResponse:
+    async def get_app_users(
+        self, raw: bool = False,
+    ) -> typing.Union[dict, FriendsGetAppUsersResponse]:
         """
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getAppUsers", params)
+        if raw:
+            return raw_result
+
         result = FriendsGetAppUsersResponse(**raw_result)
         return result
 
@@ -220,21 +230,21 @@ class Friends(Category):
         self,
         phones: typing.Optional[typing.List[str]] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
-    ) -> FriendsGetByPhonesResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, FriendsGetByPhonesResponse]:
         """
         :param phones: - List of phone numbers in MSISDN format (maximum 1000). Example: "+79219876543,+79111234567"
         :param fields: - Profile fields to return. Sample values: 'nickname', 'screen_name', 'sex', 'bdate' (birthdate), 'city', 'country', 'timezone', 'photo', 'photo_medium', 'photo_big', 'has_mobile', 'rate', 'contacts', 'education', 'online, counters'.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getByPhones", params)
+        if raw:
+            return raw_result
+
         result = FriendsGetByPhonesResponse(**raw_result)
         return result
 
@@ -242,21 +252,21 @@ class Friends(Category):
         self,
         user_id: typing.Optional[int] = None,
         return_system: typing.Optional[BaseBoolInt] = None,
-    ) -> FriendsGetListsResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, FriendsGetListsResponse]:
         """
         :param user_id: - User ID.
         :param return_system: - '1' — to return system friend lists. By default: '0'.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getLists", params)
+        if raw:
+            return raw_result
+
         result = FriendsGetListsResponse(**raw_result)
         return result
 
@@ -268,7 +278,8 @@ class Friends(Category):
         order: typing.Optional[str] = None,
         count: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
-    ) -> FriendsGetMutualResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, FriendsGetMutualResponse]:
         """
         :param source_uid: - ID of the user whose friends will be checked against the friends of the user specified in 'target_uid'.
         :param target_uid: - ID of the user whose friends will be checked against the friends of the user specified in 'source_uid'.
@@ -276,17 +287,16 @@ class Friends(Category):
         :param order: - Sort order: 'random' — random order
         :param count: - Number of mutual friends to return.
         :param offset: - Offset needed to return a specific subset of mutual friends.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getMutual", params)
+        if raw:
+            return raw_result
+
         result = FriendsGetMutualResponse(**raw_result)
         return result
 
@@ -298,7 +308,8 @@ class Friends(Category):
         order: typing.Optional[str] = None,
         count: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
-    ) -> FriendsGetOnlineResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, FriendsGetOnlineResponse]:
         """
         :param user_id: - User ID.
         :param list_id: - Friend list ID. If this parameter is not set, information about all online friends is returned.
@@ -306,34 +317,34 @@ class Friends(Category):
         :param order: - Sort order: 'random' — random order
         :param count: - Number of friends to return.
         :param offset: - Offset needed to return a specific subset of friends.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getOnline", params)
+        if raw:
+            return raw_result
+
         result = FriendsGetOnlineResponse(**raw_result)
         return result
 
-    async def get_recent(self, count: typing.Optional[int] = None,) -> FriendsGetRecentResponse:
+    async def get_recent(
+        self, count: typing.Optional[int] = None, raw: bool = False,
+    ) -> typing.Union[dict, FriendsGetRecentResponse]:
         """
         :param count: - Number of recently added friends to return.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getRecent", params)
+        if raw:
+            return raw_result
+
         result = FriendsGetRecentResponse(**raw_result)
         return result
 
@@ -349,7 +360,10 @@ class Friends(Category):
         suggested: typing.Optional[BaseBoolInt] = None,
         ref: typing.Optional[str] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
-    ) -> typing.Union[FriendsGetRequestsResponse, FriendsGetRequestsExtendedResponse]:
+        raw: bool = False,
+    ) -> typing.Union[
+        dict, FriendsGetRequestsResponse, FriendsGetRequestsExtendedResponse
+    ]:
         """
         :param offset: - Offset needed to return a specific subset of friend requests.
         :param count: - Number of friend requests to return (default 100, maximum 1000).
@@ -361,17 +375,15 @@ class Friends(Category):
         :param suggested: - '1' — to return a list of suggested friends, '0' — to return friend requests (default)
         :param ref:
         :param fields:
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getRequests", params)
+        if raw:
+            return raw_result
 
         result = (
             FriendsGetRequestsResponse(**raw_result)
@@ -387,24 +399,24 @@ class Friends(Category):
         offset: typing.Optional[int] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
         name_case: typing.Optional[str] = None,
-    ) -> FriendsGetSuggestionsResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, FriendsGetSuggestionsResponse]:
         """
         :param filter: - Types of potential friends to return: 'mutual' — users with many mutual friends , 'contacts' — users found with the [vk.com/dev/account.importContacts|account.importContacts] method , 'mutual_contacts' — users who imported the same contacts as the current user with the [vk.com/dev/account.importContacts|account.importContacts] method
         :param count: - Number of suggestions to return.
         :param offset: - Offset needed to return a specific subset of suggestions.
         :param fields: - Profile fields to return. Sample values: 'nickname', 'screen_name', 'sex', 'bdate' (birthdate), 'city', 'country', 'timezone', 'photo', 'photo_medium', 'photo_big', 'has_mobile', 'rate', 'contacts', 'education', 'online', 'counters'.
         :param name_case: - Case for declension of user name and surname: , 'nom' — nominative (default) , 'gen' — genitive , 'dat' — dative , 'acc' — accusative , 'ins' — instrumental , 'abl' — prepositional
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getSuggestions", params)
+        if raw:
+            return raw_result
+
         result = FriendsGetSuggestionsResponse(**raw_result)
         return result
 
@@ -416,7 +428,8 @@ class Friends(Category):
         name_case: typing.Optional[str] = None,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
-    ) -> FriendsSearchResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, FriendsSearchResponse]:
         """
         :param user_id: - User ID.
         :param q: - Search query string (e.g., 'Vasya Babich').
@@ -424,16 +437,15 @@ class Friends(Category):
         :param name_case: - Case for declension of user name and surname: 'nom' — nominative (default), 'gen' — genitive , 'dat' — dative, 'acc' — accusative , 'ins' — instrumental , 'abl' — prepositional
         :param offset: - Offset needed to return a specific subset of friends.
         :param count: - Number of friends to return.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("search", params)
+        if raw:
+            return raw_result
+
         result = FriendsSearchResponse(**raw_result)
         return result

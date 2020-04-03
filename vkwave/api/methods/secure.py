@@ -1,63 +1,69 @@
 from vkwave.types.responses import *
-
 from ._category import Category
+from ._utils import get_params
 
 
 class Secure(Category):
     async def add_app_event(
-        self, user_id: int = None, activity_id: int = None, value: typing.Optional[int] = None,
-    ) -> OkResponse:
+        self,
+        user_id: int = None,
+        activity_id: int = None,
+        value: typing.Optional[int] = None,
+        raw: bool = False,
+    ) -> typing.Union[dict, OkResponse]:
         """
         :param user_id: - ID of a user to save the data
         :param activity_id: - there are 2 default activities: , * 1 – level. Works similar to ,, * 2 – points, saves points amount, Any other value is for saving completed missions
         :param value: - depends on activity_id: * 1 – number, current level number,, * 2 – number, current user's points amount, , Any other value is ignored
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("addAppEvent", params)
+        if raw:
+            return raw_result
+
         result = OkResponse(**raw_result)
         return result
 
     async def check_token(
-        self, token: typing.Optional[str] = None, ip: typing.Optional[str] = None,
-    ) -> SecureCheckTokenResponse:
+        self,
+        token: typing.Optional[str] = None,
+        ip: typing.Optional[str] = None,
+        raw: bool = False,
+    ) -> typing.Union[dict, SecureCheckTokenResponse]:
         """
         :param token: - client 'access_token'
         :param ip: - user 'ip address'. Note that user may access using the 'ipv6' address, in this case it is required to transmit the 'ipv6' address. If not transmitted, the address will not be checked.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("checkToken", params)
+        if raw:
+            return raw_result
+
         result = SecureCheckTokenResponse(**raw_result)
         return result
 
-    async def get_app_balance(self,) -> SecureGetAppBalanceResponse:
+    async def get_app_balance(
+        self, raw: bool = False,
+    ) -> typing.Union[dict, SecureGetAppBalanceResponse]:
         """
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getAppBalance", params)
+        if raw:
+            return raw_result
+
         result = SecureGetAppBalanceResponse(**raw_result)
         return result
 
@@ -67,23 +73,23 @@ class Secure(Category):
         date_from: typing.Optional[int] = None,
         date_to: typing.Optional[int] = None,
         limit: typing.Optional[BaseBoolInt] = None,
-    ) -> SecureGetSMSHistoryResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, SecureGetSMSHistoryResponse]:
         """
         :param user_id:
         :param date_from: - filter by start date. It is set as UNIX-time.
         :param date_to: - filter by end date. It is set as UNIX-time.
         :param limit: - number of returned posts. By default — 1000.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getSMSHistory", params)
+        if raw:
+            return raw_result
+
         result = SecureGetSMSHistoryResponse(**raw_result)
         return result
 
@@ -95,7 +101,8 @@ class Secure(Category):
         date_from: typing.Optional[int] = None,
         date_to: typing.Optional[int] = None,
         limit: typing.Optional[int] = None,
-    ) -> SecureGetTransactionsHistoryResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, SecureGetTransactionsHistoryResponse]:
         """
         :param type:
         :param uid_from:
@@ -103,56 +110,56 @@ class Secure(Category):
         :param date_from:
         :param date_to:
         :param limit:
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getTransactionsHistory", params)
+        if raw:
+            return raw_result
+
         result = SecureGetTransactionsHistoryResponse(**raw_result)
         return result
 
     async def get_user_level(
-        self, user_ids: typing.List[int] = None,
-    ) -> SecureGetUserLevelResponse:
+        self, user_ids: typing.List[int] = None, raw: bool = False,
+    ) -> typing.Union[dict, SecureGetUserLevelResponse]:
         """
         :param user_ids:
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getUserLevel", params)
+        if raw:
+            return raw_result
+
         result = SecureGetUserLevelResponse(**raw_result)
         return result
 
     async def give_event_sticker(
-        self, user_ids: typing.List[int] = None, achievement_id: int = None,
-    ) -> SecureGiveEventStickerResponse:
+        self,
+        user_ids: typing.List[int] = None,
+        achievement_id: int = None,
+        raw: bool = False,
+    ) -> typing.Union[dict, SecureGiveEventStickerResponse]:
         """
         :param user_ids:
         :param achievement_id:
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("giveEventSticker", params)
+        if raw:
+            return raw_result
+
         result = SecureGiveEventStickerResponse(**raw_result)
         return result
 
@@ -161,42 +168,41 @@ class Secure(Category):
         user_ids: typing.Optional[typing.List[int]] = None,
         user_id: typing.Optional[int] = None,
         message: str = None,
-    ) -> SecureSendNotificationResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, SecureSendNotificationResponse]:
         """
         :param user_ids:
         :param user_id:
         :param message: - notification text which should be sent in 'UTF-8' encoding ('254' characters maximum).
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("sendNotification", params)
+        if raw:
+            return raw_result
+
         result = SecureSendNotificationResponse(**raw_result)
         return result
 
     async def send_s_m_s_notification(
-        self, user_id: int = None, message: BaseBoolInt = None,
-    ) -> OkResponse:
+        self, user_id: int = None, message: BaseBoolInt = None, raw: bool = False,
+    ) -> typing.Union[dict, OkResponse]:
         """
         :param user_id: - ID of the user to whom SMS notification is sent. The user shall allow the application to send him/her notifications (, +1).
         :param message: - 'SMS' text to be sent in 'UTF-8' encoding. Only Latin letters and numbers are allowed. Maximum size is '160' characters.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("sendSMSNotification", params)
+        if raw:
+            return raw_result
+
         result = OkResponse(**raw_result)
         return result
 
@@ -206,22 +212,22 @@ class Secure(Category):
         user_id: typing.Optional[int] = None,
         counter: typing.Optional[int] = None,
         increment: typing.Optional[bool] = None,
-    ) -> OkResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, OkResponse]:
         """
         :param counters:
         :param user_id:
         :param counter: - counter value.
         :param increment:
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("setCounter", params)
+        if raw:
+            return raw_result
+
         result = OkResponse(**raw_result)
         return result

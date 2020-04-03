@@ -1,6 +1,6 @@
 from vkwave.types.responses import *
-
 from ._category import Category
+from ._utils import get_params
 
 
 class Stats(Category):
@@ -15,7 +15,8 @@ class Stats(Category):
         filters: typing.Optional[typing.List[str]] = None,
         stats_groups: typing.Optional[typing.List[str]] = None,
         extended: typing.Optional[BaseBoolInt] = None,
-    ) -> StatsGetResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, StatsGetResponse]:
         """
         :param group_id: - Community ID.
         :param app_id: - Application ID.
@@ -26,53 +27,52 @@ class Stats(Category):
         :param filters:
         :param stats_groups:
         :param extended:
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("get", params)
+        if raw:
+            return raw_result
+
         result = StatsGetResponse(**raw_result)
         return result
 
     async def get_post_reach(
-        self, owner_id: str = None, post_id: BaseBoolInt = None,
-    ) -> StatsGetPostReachResponse:
+        self, owner_id: str = None, post_id: BaseBoolInt = None, raw: bool = False,
+    ) -> typing.Union[dict, StatsGetPostReachResponse]:
         """
         :param owner_id: - post owner community id. Specify with "-" sign.
         :param post_id: - wall post id. Note that stats are available only for '300' last (newest) posts on a community wall.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getPostReach", params)
+        if raw:
+            return raw_result
+
         result = StatsGetPostReachResponse(**raw_result)
         return result
 
-    async def track_visitor(self, id: str = None,) -> OkResponse:
+    async def track_visitor(
+        self, id: str = None, raw: bool = False,
+    ) -> typing.Union[dict, OkResponse]:
         """
         :param id:
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("trackVisitor", params)
+        if raw:
+            return raw_result
+
         result = OkResponse(**raw_result)
         return result

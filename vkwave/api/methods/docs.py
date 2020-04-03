@@ -1,6 +1,6 @@
 from vkwave.types.responses import *
-
 from ._category import Category
+from ._utils import get_params
 
 
 class Docs(Category):
@@ -9,40 +9,41 @@ class Docs(Category):
         owner_id: int = None,
         doc_id: int = None,
         access_key: typing.Optional[str] = None,
-    ) -> DocsAddResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, DocsAddResponse]:
         """
         :param owner_id: - ID of the user or community that owns the document. Use a negative value to designate a community ID.
         :param doc_id: - Document ID.
         :param access_key: - Access key. This parameter is required if 'access_key' was returned with the document's data.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("add", params)
+        if raw:
+            return raw_result
+
         result = DocsAddResponse(**raw_result)
         return result
 
-    async def delete(self, owner_id: int = None, doc_id: int = None,) -> OkResponse:
+    async def delete(
+        self, owner_id: int = None, doc_id: int = None, raw: bool = False,
+    ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - ID of the user or community that owns the document. Use a negative value to designate a community ID.
         :param doc_id: - Document ID.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("delete", params)
+        if raw:
+            return raw_result
+
         result = OkResponse(**raw_result)
         return result
 
@@ -52,23 +53,23 @@ class Docs(Category):
         doc_id: int = None,
         title: typing.Optional[str] = None,
         tags: typing.Optional[typing.List[str]] = None,
-    ) -> OkResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - User ID or community ID. Use a negative value to designate a community ID.
         :param doc_id: - Document ID.
         :param title: - Document title.
         :param tags: - Document tags.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("edit", params)
+        if raw:
+            return raw_result
+
         result = OkResponse(**raw_result)
         return result
 
@@ -78,40 +79,41 @@ class Docs(Category):
         offset: typing.Optional[int] = None,
         type: typing.Optional[int] = None,
         owner_id: typing.Optional[int] = None,
-    ) -> DocsGetResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, DocsGetResponse]:
         """
         :param count: - Number of documents to return. By default, all documents.
         :param offset: - Offset needed to return a specific subset of documents.
         :param type:
         :param owner_id: - ID of the user or community that owns the documents. Use a negative value to designate a community ID.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("get", params)
+        if raw:
+            return raw_result
+
         result = DocsGetResponse(**raw_result)
         return result
 
-    async def get_by_id(self, docs: typing.List[str] = None,) -> DocsGetByIdResponse:
+    async def get_by_id(
+        self, docs: typing.List[str] = None, raw: bool = False,
+    ) -> typing.Union[dict, DocsGetByIdResponse]:
         """
         :param docs: - Document IDs. Example: , "66748_91488,66748_91455",
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getById", params)
+        if raw:
+            return raw_result
+
         result = DocsGetByIdResponse(**raw_result)
         return result
 
@@ -119,76 +121,75 @@ class Docs(Category):
         self,
         type: typing.Optional[str] = None,
         peer_id: typing.Optional[BaseBoolInt] = None,
-    ) -> BaseGetUploadServerResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, BaseGetUploadServerResponse]:
         """
         :param type: - Document type.
         :param peer_id: - Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'Chat ID', e.g. '2000000001'. For community: '- Community ID', e.g. '-12345'. "
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getMessagesUploadServer", params)
+        if raw:
+            return raw_result
+
         result = BaseGetUploadServerResponse(**raw_result)
         return result
 
-    async def get_types(self, owner_id: int = None,) -> DocsGetTypesResponse:
+    async def get_types(
+        self, owner_id: int = None, raw: bool = False,
+    ) -> typing.Union[dict, DocsGetTypesResponse]:
         """
         :param owner_id: - ID of the user or community that owns the documents. Use a negative value to designate a community ID.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getTypes", params)
+        if raw:
+            return raw_result
+
         result = DocsGetTypesResponse(**raw_result)
         return result
 
     async def get_upload_server(
-        self, group_id: typing.Optional[int] = None,
-    ) -> DocsGetUploadServer:
+        self, group_id: typing.Optional[int] = None, raw: bool = False,
+    ) -> typing.Union[dict, DocsGetUploadServer]:
         """
         :param group_id: - Community ID (if the document will be uploaded to the community).
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getUploadServer", params)
+        if raw:
+            return raw_result
+
         result = DocsGetUploadServer(**raw_result)
         return result
 
     async def get_wall_upload_server(
-        self, group_id: typing.Optional[int] = None,
-    ) -> BaseGetUploadServerResponse:
+        self, group_id: typing.Optional[int] = None, raw: bool = False,
+    ) -> typing.Union[dict, BaseGetUploadServerResponse]:
         """
         :param group_id: - Community ID (if the document will be uploaded to the community).
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getWallUploadServer", params)
+        if raw:
+            return raw_result
+
         result = BaseGetUploadServerResponse(**raw_result)
         return result
 
@@ -197,22 +198,22 @@ class Docs(Category):
         file: str = None,
         title: typing.Optional[str] = None,
         tags: typing.Optional[str] = None,
-    ) -> DocsSaveResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, DocsSaveResponse]:
         """
         :param file: - This parameter is returned when the file is [vk.com/dev/upload_files_2|uploaded to the server].
         :param title: - Document title.
         :param tags: - Document tags.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("save", params)
+        if raw:
+            return raw_result
+
         result = DocsSaveResponse(**raw_result)
         return result
 
@@ -222,22 +223,22 @@ class Docs(Category):
         search_own: typing.Optional[bool] = None,
         count: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
-    ) -> DocsSearchResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, DocsSearchResponse]:
         """
         :param q: - Search query string.
         :param search_own:
         :param count: - Number of results to return.
         :param offset: - Offset needed to return a specific subset of results.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("search", params)
+        if raw:
+            return raw_result
+
         result = DocsSearchResponse(**raw_result)
         return result

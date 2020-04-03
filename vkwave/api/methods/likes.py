@@ -1,6 +1,6 @@
 from vkwave.types.responses import *
-
 from ._category import Category
+from ._utils import get_params
 
 
 class Likes(Category):
@@ -10,44 +10,47 @@ class Likes(Category):
         owner_id: typing.Optional[int] = None,
         item_id: int = None,
         access_key: typing.Optional[str] = None,
-    ) -> LikesAddResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, LikesAddResponse]:
         """
         :param type: - Object type: 'post' — post on user or community wall, 'comment' — comment on a wall post, 'photo' — photo, 'audio' — audio, 'video' — video, 'note' — note, 'photo_comment' — comment on the photo, 'video_comment' — comment on the video, 'topic_comment' — comment in the discussion, 'sitepage' — page of the site where the [vk.com/dev/Like|Like widget] is installed
         :param owner_id: - ID of the user or community that owns the object.
         :param item_id: - Object ID.
         :param access_key: - Access key required for an object owned by a private entity.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("add", params)
+        if raw:
+            return raw_result
+
         result = LikesAddResponse(**raw_result)
         return result
 
     async def delete(
-        self, type: str = None, owner_id: typing.Optional[int] = None, item_id: int = None,
-    ) -> LikesDeleteResponse:
+        self,
+        type: str = None,
+        owner_id: typing.Optional[int] = None,
+        item_id: int = None,
+        raw: bool = False,
+    ) -> typing.Union[dict, LikesDeleteResponse]:
         """
         :param type: - Object type: 'post' — post on user or community wall, 'comment' — comment on a wall post, 'photo' — photo, 'audio' — audio, 'video' — video, 'note' — note, 'photo_comment' — comment on the photo, 'video_comment' — comment on the video, 'topic_comment' — comment in the discussion, 'sitepage' — page of the site where the [vk.com/dev/Like|Like widget] is installed
         :param owner_id: - ID of the user or community that owns the object.
         :param item_id: - Object ID.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("delete", params)
+        if raw:
+            return raw_result
+
         result = LikesDeleteResponse(**raw_result)
         return result
 
@@ -63,7 +66,8 @@ class Likes(Category):
         offset: typing.Optional[int] = None,
         count: typing.Optional[BaseBoolInt] = None,
         skip_own: typing.Optional[bool] = None,
-    ) -> typing.Union[LikesGetListResponse, LikesGetListExtendedResponse]:
+        raw: bool = False,
+    ) -> typing.Union[dict, LikesGetListResponse, LikesGetListExtendedResponse]:
         """
         :param type: - , Object type: 'post' — post on user or community wall, 'comment' — comment on a wall post, 'photo' — photo, 'audio' — audio, 'video' — video, 'note' — note, 'photo_comment' — comment on the photo, 'video_comment' — comment on the video, 'topic_comment' — comment in the discussion, 'sitepage' — page of the site where the [vk.com/dev/Like|Like widget] is installed
         :param owner_id: - ID of the user, community, or application that owns the object. If the 'type' parameter is set as 'sitepage', the application ID is passed as 'owner_id'. Use negative value for a community id. If the 'type' parameter is not set, the 'owner_id' is assumed to be either the current user or the same application ID as if the 'type' parameter was set to 'sitepage'.
@@ -75,17 +79,15 @@ class Likes(Category):
         :param offset: - Offset needed to select a specific subset of users.
         :param count: - Number of user IDs to return (maximum '1000'). Default is '100' if 'friends_only' is set to '0', otherwise, the default is '10' if 'friends_only' is set to '1'.
         :param skip_own:
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getList", params)
+        if raw:
+            return raw_result
 
         result = (
             LikesGetListResponse(**raw_result)
@@ -100,22 +102,22 @@ class Likes(Category):
         type: str = None,
         owner_id: typing.Optional[int] = None,
         item_id: int = None,
-    ) -> LikesIsLikedResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, LikesIsLikedResponse]:
         """
         :param user_id: - User ID.
         :param type: - Object type: 'post' — post on user or community wall, 'comment' — comment on a wall post, 'photo' — photo, 'audio' — audio, 'video' — video, 'note' — note, 'photo_comment' — comment on the photo, 'video_comment' — comment on the video, 'topic_comment' — comment in the discussion
         :param owner_id: - ID of the user or community that owns the object.
         :param item_id: - Object ID.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("isLiked", params)
+        if raw:
+            return raw_result
+
         result = LikesIsLikedResponse(**raw_result)
         return result

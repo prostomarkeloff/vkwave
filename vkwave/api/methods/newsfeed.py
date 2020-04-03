@@ -1,6 +1,6 @@
 from vkwave.types.responses import *
-
 from ._category import Category
+from ._utils import get_params
 
 
 class Newsfeed(Category):
@@ -8,21 +8,21 @@ class Newsfeed(Category):
         self,
         user_ids: typing.Optional[typing.List[int]] = None,
         group_ids: typing.Optional[typing.List[int]] = None,
-    ) -> OkResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, OkResponse]:
         """
         :param user_ids:
         :param group_ids:
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("addBan", params)
+        if raw:
+            return raw_result
+
         result = OkResponse(**raw_result)
         return result
 
@@ -30,38 +30,39 @@ class Newsfeed(Category):
         self,
         user_ids: typing.Optional[typing.List[int]] = None,
         group_ids: typing.Optional[typing.List[int]] = None,
-    ) -> OkResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, OkResponse]:
         """
         :param user_ids:
         :param group_ids:
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("deleteBan", params)
+        if raw:
+            return raw_result
+
         result = OkResponse(**raw_result)
         return result
 
-    async def delete_list(self, list_id: int = None,) -> OkResponse:
+    async def delete_list(
+        self, list_id: int = None, raw: bool = False,
+    ) -> typing.Union[dict, OkResponse]:
         """
         :param list_id:
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("deleteList", params)
+        if raw:
+            return raw_result
+
         result = OkResponse(**raw_result)
         return result
 
@@ -77,7 +78,8 @@ class Newsfeed(Category):
         count: typing.Optional[BaseBoolInt] = None,
         fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
         section: typing.Optional[str] = None,
-    ) -> NewsfeedGetResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, NewsfeedGetResponse]:
         """
         :param filters: - Filters to apply: 'post' — new wall posts, 'photo' — new photos, 'photo_tag' — new photo tags, 'wall_photo' — new wall photos, 'friend' — new friends, 'note' — new notes
         :param return_banned: - '1' — to return news items from banned sources
@@ -89,17 +91,16 @@ class Newsfeed(Category):
         :param count: - Number of news items to return (default 50, maximum 100). For auto feed, you can use the 'new_offset' parameter returned by this method.
         :param fields: - Additional fields of [vk.com/dev/fields|profiles] and [vk.com/dev/fields_groups|communities] to return.
         :param section:
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("get", params)
+        if raw:
+            return raw_result
+
         result = NewsfeedGetResponse(**raw_result)
         return result
 
@@ -108,22 +109,23 @@ class Newsfeed(Category):
         extended: typing.Optional[BaseBoolInt] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
         name_case: typing.Optional[str] = None,
-    ) -> typing.Union[NewsfeedGetBannedResponse, NewsfeedGetBannedExtendedResponse]:
+        raw: bool = False,
+    ) -> typing.Union[
+        dict, NewsfeedGetBannedResponse, NewsfeedGetBannedExtendedResponse
+    ]:
         """
         :param extended: - '1' — return extra information about users and communities
         :param fields: - Profile fields to return.
         :param name_case: - Case for declension of user name and surname: 'nom' — nominative (default), 'gen' — genitive , 'dat' — dative, 'acc' — accusative , 'ins' — instrumental , 'abl' — prepositional
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getBanned", params)
+        if raw:
+            return raw_result
 
         result = (
             NewsfeedGetBannedResponse(**raw_result)
@@ -142,7 +144,8 @@ class Newsfeed(Category):
         last_comments_count: typing.Optional[int] = None,
         start_from: typing.Optional[str] = None,
         fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
-    ) -> NewsfeedGetCommentsResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, NewsfeedGetCommentsResponse]:
         """
         :param count: - Number of comments to return. For auto feed, you can use the 'new_offset' parameter returned by this method.
         :param filters: - Filters to apply: 'post' — new comments on wall posts, 'photo' — new comments on photos, 'video' — new comments on videos, 'topic' — new comments on discussions, 'note' — new comments on notes,
@@ -152,17 +155,16 @@ class Newsfeed(Category):
         :param last_comments_count:
         :param start_from: - Identificator needed to return the next page with results. Value for this parameter returns in 'next_from' field.
         :param fields: - Additional fields of [vk.com/dev/fields|profiles] and [vk.com/dev/fields_groups|communities] to return.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getComments", params)
+        if raw:
+            return raw_result
+
         result = NewsfeedGetCommentsResponse(**raw_result)
         return result
 
@@ -170,21 +172,20 @@ class Newsfeed(Category):
         self,
         list_ids: typing.Optional[typing.List[int]] = None,
         extended: typing.Optional[BaseBoolInt] = None,
-    ) -> typing.Union[NewsfeedGetListsResponse, NewsfeedGetListsExtendedResponse]:
+        raw: bool = False,
+    ) -> typing.Union[dict, NewsfeedGetListsResponse, NewsfeedGetListsExtendedResponse]:
         """
         :param list_ids: - numeric list identifiers.
         :param extended: - Return additional list info
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getLists", params)
+        if raw:
+            return raw_result
 
         result = (
             NewsfeedGetListsResponse(**raw_result)
@@ -200,24 +201,24 @@ class Newsfeed(Category):
         end_time: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
-    ) -> NewsfeedGetMentionsResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, NewsfeedGetMentionsResponse]:
         """
         :param owner_id: - Owner ID.
         :param start_time: - Earliest timestamp (in Unix time) of a post to return. By default, 24 hours ago.
         :param end_time: - Latest timestamp (in Unix time) of a post to return. By default, the current time.
         :param offset: - Offset needed to return a specific subset of posts.
         :param count: - Number of posts to return.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getMentions", params)
+        if raw:
+            return raw_result
+
         result = NewsfeedGetMentionsResponse(**raw_result)
         return result
 
@@ -229,7 +230,8 @@ class Newsfeed(Category):
         start_from: typing.Optional[str] = None,
         count: typing.Optional[int] = None,
         fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
-    ) -> NewsfeedGetRecommendedResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, NewsfeedGetRecommendedResponse]:
         """
         :param start_time: - Earliest timestamp (in Unix time) of a news item to return. By default, 24 hours ago.
         :param end_time: - Latest timestamp (in Unix time) of a news item to return. By default, the current time.
@@ -237,17 +239,16 @@ class Newsfeed(Category):
         :param start_from: - 'new_from' value obtained in previous call.
         :param count: - Number of news items to return.
         :param fields: - Additional fields of [vk.com/dev/fields|profiles] and [vk.com/dev/fields_groups|communities] to return.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getRecommended", params)
+        if raw:
+            return raw_result
+
         result = NewsfeedGetRecommendedResponse(**raw_result)
         return result
 
@@ -257,44 +258,47 @@ class Newsfeed(Category):
         count: typing.Optional[int] = None,
         shuffle: typing.Optional[bool] = None,
         fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
-    ) -> NewsfeedGetSuggestedSourcesResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, NewsfeedGetSuggestedSourcesResponse]:
         """
         :param offset: - offset required to choose a particular subset of communities or users.
         :param count: - amount of communities or users to return.
         :param shuffle: - shuffle the returned list or not.
         :param fields: - list of extra fields to be returned. See available fields for [vk.com/dev/fields|users] and [vk.com/dev/fields_groups|communities].
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getSuggestedSources", params)
+        if raw:
+            return raw_result
+
         result = NewsfeedGetSuggestedSourcesResponse(**raw_result)
         return result
 
     async def ignore_item(
-        self, type: str = None, owner_id: int = None, item_id: int = None,
-    ) -> OkResponse:
+        self,
+        type: str = None,
+        owner_id: int = None,
+        item_id: int = None,
+        raw: bool = False,
+    ) -> typing.Union[dict, OkResponse]:
         """
         :param type: - Item type. Possible values: *'wall' – post on the wall,, *'tag' – tag on a photo,, *'profilephoto' – profile photo,, *'video' – video,, *'audio' – audio.
         :param owner_id: - Item owner's identifier (user or community), "Note that community id must be negative. 'owner_id=1' – user , 'owner_id=-1' – community "
         :param item_id: - Item identifier
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("ignoreItem", params)
+        if raw:
+            return raw_result
+
         result = OkResponse(**raw_result)
         return result
 
@@ -304,23 +308,23 @@ class Newsfeed(Category):
         title: str = None,
         source_ids: typing.Optional[typing.List[int]] = None,
         no_reposts: typing.Optional[BaseBoolInt] = None,
-    ) -> NewsfeedSaveListResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, NewsfeedSaveListResponse]:
         """
         :param list_id: - numeric list identifier (if not sent, will be set automatically).
         :param title: - list name.
         :param source_ids: - users and communities identifiers to be added to the list. Community identifiers must be negative numbers.
         :param no_reposts: - reposts display on and off ('1' is for off).
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("saveList", params)
+        if raw:
+            return raw_result
+
         result = NewsfeedSaveListResponse(**raw_result)
         return result
 
@@ -335,7 +339,8 @@ class Newsfeed(Category):
         end_time: typing.Optional[int] = None,
         start_from: typing.Optional[str] = None,
         fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
-    ) -> typing.Union[NewsfeedSearchResponse, NewsfeedSearchExtendedResponse]:
+        raw: bool = False,
+    ) -> typing.Union[dict, NewsfeedSearchResponse, NewsfeedSearchExtendedResponse]:
         """
         :param q: - Search query string (e.g., 'New Year').
         :param extended: - '1' — to return additional information about the user or community that placed the post.
@@ -346,17 +351,15 @@ class Newsfeed(Category):
         :param end_time: - Latest timestamp (in Unix time) of a news item to return. By default, the current time.
         :param start_from:
         :param fields: - Additional fields of [vk.com/dev/fields|profiles] and [vk.com/dev/fields_groups|communities] to return.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("search", params)
+        if raw:
+            return raw_result
 
         result = (
             NewsfeedSearchResponse(**raw_result)
@@ -366,43 +369,49 @@ class Newsfeed(Category):
         return result
 
     async def unignore_item(
-        self, type: str = None, owner_id: int = None, item_id: int = None,
-    ) -> OkResponse:
+        self,
+        type: str = None,
+        owner_id: int = None,
+        item_id: int = None,
+        raw: bool = False,
+    ) -> typing.Union[dict, OkResponse]:
         """
         :param type: - Item type. Possible values: *'wall' – post on the wall,, *'tag' – tag on a photo,, *'profilephoto' – profile photo,, *'video' – video,, *'audio' – audio.
         :param owner_id: - Item owner's identifier (user or community), "Note that community id must be negative. 'owner_id=1' – user , 'owner_id=-1' – community "
         :param item_id: - Item identifier
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("unignoreItem", params)
+        if raw:
+            return raw_result
+
         result = OkResponse(**raw_result)
         return result
 
     async def unsubscribe(
-        self, type: str = None, owner_id: typing.Optional[int] = None, item_id: int = None,
-    ) -> OkResponse:
+        self,
+        type: str = None,
+        owner_id: typing.Optional[int] = None,
+        item_id: int = None,
+        raw: bool = False,
+    ) -> typing.Union[dict, OkResponse]:
         """
         :param type: - Type of object from which to unsubscribe: 'note' — note, 'photo' — photo, 'post' — post on user wall or community wall, 'topic' — topic, 'video' — video
         :param owner_id: - Object owner ID.
         :param item_id: - Object ID.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("unsubscribe", params)
+        if raw:
+            return raw_result
+
         result = OkResponse(**raw_result)
         return result

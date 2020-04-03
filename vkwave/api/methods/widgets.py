@@ -1,6 +1,6 @@
 from vkwave.types.responses import *
-
 from ._category import Category
+from ._utils import get_params
 
 
 class Widgets(Category):
@@ -13,7 +13,8 @@ class Widgets(Category):
         fields: typing.Optional[typing.List[UsersFields]] = None,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
-    ) -> WidgetsGetCommentsResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, WidgetsGetCommentsResponse]:
         """
         :param widget_api_id:
         :param url:
@@ -22,17 +23,16 @@ class Widgets(Category):
         :param fields:
         :param offset:
         :param count:
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getComments", params)
+        if raw:
+            return raw_result
+
         result = WidgetsGetCommentsResponse(**raw_result)
         return result
 
@@ -43,23 +43,23 @@ class Widgets(Category):
         period: typing.Optional[str] = None,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
-    ) -> WidgetsGetPagesResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, WidgetsGetPagesResponse]:
         """
         :param widget_api_id:
         :param order:
         :param period:
         :param offset:
         :param count:
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getPages", params)
+        if raw:
+            return raw_result
+
         result = WidgetsGetPagesResponse(**raw_result)
         return result

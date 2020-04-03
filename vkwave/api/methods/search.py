@@ -1,6 +1,6 @@
 from vkwave.types.responses import *
-
 from ._category import Category
+from ._utils import get_params
 
 
 class Search(Category):
@@ -12,7 +12,8 @@ class Search(Category):
         filters: typing.Optional[typing.List[str]] = None,
         fields: typing.Optional[typing.List[str]] = None,
         search_global: typing.Optional[bool] = None,
-    ) -> SearchGetHintsResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, SearchGetHintsResponse]:
         """
         :param q: - Search query string.
         :param offset: - Offset for querying specific result subset
@@ -20,16 +21,15 @@ class Search(Category):
         :param filters:
         :param fields:
         :param search_global:
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getHints", params)
+        if raw:
+            return raw_result
+
         result = SearchGetHintsResponse(**raw_result)
         return result

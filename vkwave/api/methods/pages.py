@@ -1,23 +1,24 @@
 from vkwave.types.responses import *
-
 from ._category import Category
+from ._utils import get_params
 
 
 class Pages(Category):
-    async def clear_cache(self, url: str = None,) -> OkResponse:
+    async def clear_cache(
+        self, url: str = None, raw: bool = False,
+    ) -> typing.Union[dict, OkResponse]:
         """
         :param url: - Address of the page where you need to refesh the cached version
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("clearCache", params)
+        if raw:
+            return raw_result
+
         result = OkResponse(**raw_result)
         return result
 
@@ -30,7 +31,8 @@ class Pages(Category):
         title: typing.Optional[str] = None,
         need_source: typing.Optional[bool] = None,
         need_html: typing.Optional[BaseBoolInt] = None,
-    ) -> PagesGetResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, PagesGetResponse]:
         """
         :param owner_id: - Page owner ID.
         :param page_id: - Wiki page ID.
@@ -39,17 +41,16 @@ class Pages(Category):
         :param title: - Wiki page title.
         :param need_source:
         :param need_html: - '1' — to return the page as HTML,
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("get", params)
+        if raw:
+            return raw_result
+
         result = PagesGetResponse(**raw_result)
         return result
 
@@ -58,39 +59,40 @@ class Pages(Category):
         page_id: int = None,
         group_id: typing.Optional[int] = None,
         user_id: typing.Optional[int] = None,
-    ) -> PagesGetHistoryResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, PagesGetHistoryResponse]:
         """
         :param page_id: - Wiki page ID.
         :param group_id: - ID of the community that owns the wiki page.
         :param user_id:
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getHistory", params)
+        if raw:
+            return raw_result
+
         result = PagesGetHistoryResponse(**raw_result)
         return result
 
-    async def get_titles(self, group_id: typing.Optional[int] = None,) -> PagesGetTitlesResponse:
+    async def get_titles(
+        self, group_id: typing.Optional[int] = None, raw: bool = False,
+    ) -> typing.Union[dict, PagesGetTitlesResponse]:
         """
         :param group_id: - ID of the community that owns the wiki page.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getTitles", params)
+        if raw:
+            return raw_result
+
         result = PagesGetTitlesResponse(**raw_result)
         return result
 
@@ -100,43 +102,45 @@ class Pages(Category):
         group_id: typing.Optional[int] = None,
         user_id: typing.Optional[int] = None,
         need_html: typing.Optional[BaseBoolInt] = None,
-    ) -> PagesGetVersionResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, PagesGetVersionResponse]:
         """
         :param version_id:
         :param group_id: - ID of the community that owns the wiki page.
         :param user_id:
         :param need_html: - '1' — to return the page as HTML
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getVersion", params)
+        if raw:
+            return raw_result
+
         result = PagesGetVersionResponse(**raw_result)
         return result
 
     async def parse_wiki(
-        self, text: str = None, group_id: typing.Optional[int] = None,
-    ) -> PagesParseWikiResponse:
+        self,
+        text: str = None,
+        group_id: typing.Optional[int] = None,
+        raw: bool = False,
+    ) -> typing.Union[dict, PagesParseWikiResponse]:
         """
         :param text: - Text of the wiki page.
         :param group_id: - ID of the group in the context of which this markup is interpreted.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("parseWiki", params)
+        if raw:
+            return raw_result
+
         result = PagesParseWikiResponse(**raw_result)
         return result
 
@@ -147,24 +151,24 @@ class Pages(Category):
         group_id: typing.Optional[int] = None,
         user_id: typing.Optional[int] = None,
         title: typing.Optional[str] = None,
-    ) -> PagesSaveResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, PagesSaveResponse]:
         """
         :param text: - Text of the wiki page in wiki-format.
         :param page_id: - Wiki page ID. The 'title' parameter can be passed instead of 'pid'.
         :param group_id: - ID of the community that owns the wiki page.
         :param user_id: - User ID
         :param title: - Wiki page title.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("save", params)
+        if raw:
+            return raw_result
+
         result = PagesSaveResponse(**raw_result)
         return result
 
@@ -175,23 +179,23 @@ class Pages(Category):
         user_id: typing.Optional[int] = None,
         view: typing.Optional[BaseBoolInt] = None,
         edit: typing.Optional[BaseBoolInt] = None,
-    ) -> PagesSaveAccessResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, PagesSaveAccessResponse]:
         """
         :param page_id: - Wiki page ID.
         :param group_id: - ID of the community that owns the wiki page.
         :param user_id:
         :param view: - Who can view the wiki page: '1' — only community members, '2' — all users can view the page, '0' — only community managers
         :param edit: - Who can edit the wiki page: '1' — only community members, '2' — all users can edit the page, '0' — only community managers
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("saveAccess", params)
+        if raw:
+            return raw_result
+
         result = PagesSaveAccessResponse(**raw_result)
         return result

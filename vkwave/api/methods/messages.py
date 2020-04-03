@@ -1,46 +1,47 @@
 from vkwave.types.responses import *
-
 from ._category import Category
+from ._utils import get_params
 
 
 class Messages(Category):
     async def add_chat_user(
-        self, chat_id: int = None, user_id: typing.Optional[int] = None,
-    ) -> OkResponse:
+        self,
+        chat_id: int = None,
+        user_id: typing.Optional[int] = None,
+        raw: bool = False,
+    ) -> typing.Union[dict, OkResponse]:
         """
         :param chat_id: - Chat ID.
         :param user_id: - ID of the user to be added to the chat.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("addChatUser", params)
+        if raw:
+            return raw_result
+
         result = OkResponse(**raw_result)
         return result
 
     async def allow_messages_from_group(
-        self, group_id: int = None, key: typing.Optional[str] = None,
-    ) -> OkResponse:
+        self, group_id: int = None, key: typing.Optional[str] = None, raw: bool = False,
+    ) -> typing.Union[dict, OkResponse]:
         """
         :param group_id: - Group ID.
         :param key:
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("allowMessagesFromGroup", params)
+        if raw:
+            return raw_result
+
         result = OkResponse(**raw_result)
         return result
 
@@ -48,21 +49,21 @@ class Messages(Category):
         self,
         user_ids: typing.Optional[typing.List[int]] = None,
         title: typing.Optional[str] = None,
-    ) -> MessagesCreateChatResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, MessagesCreateChatResponse]:
         """
         :param user_ids: - IDs of the users to be added to the chat.
         :param title: - Chat title.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("createChat", params)
+        if raw:
+            return raw_result
+
         result = MessagesCreateChatResponse(**raw_result)
         return result
 
@@ -72,43 +73,45 @@ class Messages(Category):
         spam: typing.Optional[BaseBoolInt] = None,
         group_id: typing.Optional[int] = None,
         delete_for_all: typing.Optional[BaseBoolInt] = None,
-    ) -> MessagesDeleteResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, MessagesDeleteResponse]:
         """
         :param message_ids: - Message IDs.
         :param spam: - '1' — to mark message as spam.
         :param group_id: - Group ID (for group messages with user access token)
         :param delete_for_all: - '1' — delete message for for all.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("delete", params)
+        if raw:
+            return raw_result
+
         result = MessagesDeleteResponse(**raw_result)
         return result
 
     async def delete_chat_photo(
-        self, chat_id: int = None, group_id: typing.Optional[int] = None,
-    ) -> MessagesDeleteChatPhotoResponse:
+        self,
+        chat_id: int = None,
+        group_id: typing.Optional[int] = None,
+        raw: bool = False,
+    ) -> typing.Union[dict, MessagesDeleteChatPhotoResponse]:
         """
         :param chat_id: - Chat ID.
         :param group_id:
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("deleteChatPhoto", params)
+        if raw:
+            return raw_result
+
         result = MessagesDeleteChatPhotoResponse(**raw_result)
         return result
 
@@ -117,39 +120,40 @@ class Messages(Category):
         user_id: typing.Optional[int] = None,
         peer_id: typing.Optional[BaseBoolInt] = None,
         group_id: typing.Optional[int] = None,
-    ) -> MessagesDeleteConversationResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, MessagesDeleteConversationResponse]:
         """
         :param user_id: - User ID. To clear a chat history use 'chat_id'
         :param peer_id: - Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "
         :param group_id: - Group ID (for group messages with user access token)
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("deleteConversation", params)
+        if raw:
+            return raw_result
+
         result = MessagesDeleteConversationResponse(**raw_result)
         return result
 
-    async def deny_messages_from_group(self, group_id: int = None,) -> OkResponse:
+    async def deny_messages_from_group(
+        self, group_id: int = None, raw: bool = False,
+    ) -> typing.Union[dict, OkResponse]:
         """
         :param group_id: - Group ID.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("denyMessagesFromGroup", params)
+        if raw:
+            return raw_result
+
         result = OkResponse(**raw_result)
         return result
 
@@ -165,7 +169,8 @@ class Messages(Category):
         keep_snippets: typing.Optional[BaseBoolInt] = None,
         group_id: typing.Optional[int] = None,
         dont_parse_links: typing.Optional[bool] = None,
-    ) -> MessagesEditResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, MessagesEditResponse]:
         """
         :param peer_id: - Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "
         :param message: - (Required if 'attachments' is not set.) Text of the message.
@@ -177,35 +182,35 @@ class Messages(Category):
         :param keep_snippets: - '1' — to keep attached snippets.
         :param group_id: - Group ID (for group messages with user access token)
         :param dont_parse_links:
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("edit", params)
+        if raw:
+            return raw_result
+
         result = MessagesEditResponse(**raw_result)
         return result
 
-    async def edit_chat(self, chat_id: int = None, title: str = None,) -> OkResponse:
+    async def edit_chat(
+        self, chat_id: int = None, title: str = None, raw: bool = False,
+    ) -> typing.Union[dict, OkResponse]:
         """
         :param chat_id: - Chat ID.
         :param title: - New title of the chat.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("editChat", params)
+        if raw:
+            return raw_result
+
         result = OkResponse(**raw_result)
         return result
 
@@ -216,24 +221,24 @@ class Messages(Category):
         extended: typing.Optional[BaseBoolInt] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
         group_id: typing.Optional[int] = None,
-    ) -> MessagesGetByConversationMessageIdResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, MessagesGetByConversationMessageIdResponse]:
         """
         :param peer_id: - Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "
         :param conversation_message_ids: - Conversation message IDs.
         :param extended: - Information whether the response should be extended
         :param fields: - Profile fields to return.
         :param group_id: - Group ID (for group messages with group access token)
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getByConversationMessageId", params)
+        if raw:
+            return raw_result
+
         result = MessagesGetByConversationMessageIdResponse(**raw_result)
         return result
 
@@ -244,24 +249,23 @@ class Messages(Category):
         extended: typing.Optional[BaseBoolInt] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
         group_id: typing.Optional[int] = None,
-    ) -> typing.Union[MessagesGetByIdResponse, MessagesGetByIdExtendedResponse]:
+        raw: bool = False,
+    ) -> typing.Union[dict, MessagesGetByIdResponse, MessagesGetByIdExtendedResponse]:
         """
         :param message_ids: - Message IDs.
         :param preview_length: - Number of characters after which to truncate a previewed message. To preview the full message, specify '0'. "NOTE: Messages are not truncated by default. Messages are truncated by words."
         :param extended: - Information whether the response should be extended
         :param fields: - Profile fields to return.
         :param group_id: - Group ID (for group messages with group access token)
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getById", params)
+        if raw:
+            return raw_result
 
         result = (
             MessagesGetByIdResponse(**raw_result)
@@ -275,22 +279,22 @@ class Messages(Category):
         peer_id: typing.Optional[int] = None,
         link: typing.Optional[str] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
-    ) -> MessagesGetChatPreviewResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, MessagesGetChatPreviewResponse]:
         """
         :param peer_id:
         :param link: - Invitation link.
         :param fields: - Profile fields to return.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getChatPreview", params)
+        if raw:
+            return raw_result
+
         result = MessagesGetChatPreviewResponse(**raw_result)
         return result
 
@@ -299,22 +303,22 @@ class Messages(Category):
         peer_id: int = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
         group_id: typing.Optional[int] = None,
-    ) -> MessagesGetConversationMembersResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, MessagesGetConversationMembersResponse]:
         """
         :param peer_id: - Peer ID.
         :param fields: - Profile fields to return.
         :param group_id: - Group ID (for group messages with group access token)
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getConversationMembers", params)
+        if raw:
+            return raw_result
+
         result = MessagesGetConversationMembersResponse(**raw_result)
         return result
 
@@ -327,7 +331,8 @@ class Messages(Category):
         start_message_id: typing.Optional[int] = None,
         fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
         group_id: typing.Optional[int] = None,
-    ) -> MessagesGetConversationsResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, MessagesGetConversationsResponse]:
         """
         :param offset: - Offset needed to return a specific subset of conversations.
         :param count: - Number of conversations to return.
@@ -336,17 +341,16 @@ class Messages(Category):
         :param start_message_id: - ID of the message from what to return dialogs.
         :param fields: - Profile and communities fields to return.
         :param group_id: - Group ID (for group messages with group access token)
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getConversations", params)
+        if raw:
+            return raw_result
+
         result = MessagesGetConversationsResponse(**raw_result)
         return result
 
@@ -356,25 +360,26 @@ class Messages(Category):
         extended: typing.Optional[BaseBoolInt] = None,
         fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
         group_id: typing.Optional[int] = None,
+        raw: bool = False,
     ) -> typing.Union[
-        MessagesGetConversationsByIdResponse, MessagesGetConversationsByIdExtendedResponse,
+        dict,
+        MessagesGetConversationsByIdResponse,
+        MessagesGetConversationsByIdExtendedResponse,
     ]:
         """
         :param peer_ids: - Destination IDs. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "
         :param extended: - Return extended properties
         :param fields: - Profile and communities fields to return.
         :param group_id: - Group ID (for group messages with group access token)
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getConversationsById", params)
+        if raw:
+            return raw_result
 
         result = (
             MessagesGetConversationsByIdResponse(**raw_result)
@@ -394,7 +399,8 @@ class Messages(Category):
         extended: typing.Optional[BaseBoolInt] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
         group_id: typing.Optional[int] = None,
-    ) -> MessagesGetHistoryResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, MessagesGetHistoryResponse]:
         """
         :param offset: - Offset needed to return a specific subset of messages.
         :param count: - Number of messages to return.
@@ -405,17 +411,16 @@ class Messages(Category):
         :param extended: - Information whether the response should be extended
         :param fields: - Profile fields to return.
         :param group_id: - Group ID (for group messages with group access token)
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getHistory", params)
+        if raw:
+            return raw_result
+
         result = MessagesGetHistoryResponse(**raw_result)
         return result
 
@@ -430,7 +435,8 @@ class Messages(Category):
         group_id: typing.Optional[int] = None,
         preserve_order: typing.Optional[bool] = None,
         max_forwards_level: typing.Optional[int] = None,
-    ) -> MessagesGetHistoryAttachmentsResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, MessagesGetHistoryAttachmentsResponse]:
         """
         :param peer_id: - Peer ID. ", For group chat: '2000000000 + chat ID' , , For community: '-community ID'"
         :param media_type: - Type of media files to return: *'photo',, *'video',, *'audio',, *'doc',, *'link'.,*'market'.,*'wall'.,*'share'
@@ -441,17 +447,16 @@ class Messages(Category):
         :param group_id: - Group ID (for group messages with group access token)
         :param preserve_order:
         :param max_forwards_level:
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getHistoryAttachments", params)
+        if raw:
+            return raw_result
+
         result = MessagesGetHistoryAttachmentsResponse(**raw_result)
         return result
 
@@ -460,39 +465,40 @@ class Messages(Category):
         peer_id: int = None,
         reset: typing.Optional[BaseBoolInt] = None,
         group_id: typing.Optional[int] = None,
-    ) -> MessagesGetInviteLinkResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, MessagesGetInviteLinkResponse]:
         """
         :param peer_id: - Destination ID.
         :param reset: - 1 — to generate new link (revoke previous), 0 — to return previous link.
         :param group_id: - Group ID
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getInviteLink", params)
+        if raw:
+            return raw_result
+
         result = MessagesGetInviteLinkResponse(**raw_result)
         return result
 
-    async def get_last_activity(self, user_id: int = None,) -> MessagesGetLastActivityResponse:
+    async def get_last_activity(
+        self, user_id: int = None, raw: bool = False,
+    ) -> typing.Union[dict, MessagesGetLastActivityResponse]:
         """
         :param user_id: - User ID.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getLastActivity", params)
+        if raw:
+            return raw_result
+
         result = MessagesGetLastActivityResponse(**raw_result)
         return result
 
@@ -510,7 +516,8 @@ class Messages(Category):
         lp_version: typing.Optional[int] = None,
         last_n: typing.Optional[int] = None,
         credentials: typing.Optional[bool] = None,
-    ) -> MessagesGetLongPollHistoryResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, MessagesGetLongPollHistoryResponse]:
         """
         :param ts: - Last value of the 'ts' parameter returned from the Long Poll server or by using [vk.com/dev/messages.getLongPollHistory|messages.getLongPollHistory] method.
         :param pts: - Lsat value of 'pts' parameter returned from the Long Poll server or by using [vk.com/dev/messages.getLongPollHistory|messages.getLongPollHistory] method.
@@ -524,17 +531,16 @@ class Messages(Category):
         :param lp_version:
         :param last_n:
         :param credentials:
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getLongPollHistory", params)
+        if raw:
+            return raw_result
+
         result = MessagesGetLongPollHistoryResponse(**raw_result)
         return result
 
@@ -543,61 +549,59 @@ class Messages(Category):
         need_pts: typing.Optional[BaseBoolInt] = None,
         group_id: typing.Optional[int] = None,
         lp_version: typing.Optional[int] = None,
-    ) -> MessagesGetLongPollServerResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, MessagesGetLongPollServerResponse]:
         """
         :param need_pts: - '1' — to return the 'pts' field, needed for the [vk.com/dev/messages.getLongPollHistory|messages.getLongPollHistory] method.
         :param group_id: - Group ID (for group messages with user access token)
         :param lp_version: - Long poll version
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getLongPollServer", params)
+        if raw:
+            return raw_result
+
         result = MessagesGetLongPollServerResponse(**raw_result)
         return result
 
     async def is_messages_from_group_allowed(
-        self, group_id: int = None, user_id: int = None,
-    ) -> MessagesIsMessagesFromGroupAllowedResponse:
+        self, group_id: int = None, user_id: int = None, raw: bool = False,
+    ) -> typing.Union[dict, MessagesIsMessagesFromGroupAllowedResponse]:
         """
         :param group_id: - Group ID.
         :param user_id: - User ID.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("isMessagesFromGroupAllowed", params)
+        if raw:
+            return raw_result
+
         result = MessagesIsMessagesFromGroupAllowedResponse(**raw_result)
         return result
 
     async def join_chat_by_invite_link(
-        self, link: str = None,
-    ) -> MessagesJoinChatByInviteLinkResponse:
+        self, link: str = None, raw: bool = False,
+    ) -> typing.Union[dict, MessagesJoinChatByInviteLinkResponse]:
         """
         :param link: - Invitation link.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("joinChatByInviteLink", params)
+        if raw:
+            return raw_result
+
         result = MessagesJoinChatByInviteLinkResponse(**raw_result)
         return result
 
@@ -606,22 +610,22 @@ class Messages(Category):
         peer_id: int = None,
         answered: typing.Optional[BaseBoolInt] = None,
         group_id: typing.Optional[int] = None,
-    ) -> OkResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, OkResponse]:
         """
         :param peer_id: - ID of conversation to mark as important.
         :param answered: - '1' — to mark as answered, '0' — to remove the mark
         :param group_id: - Group ID (for group messages with group access token)
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("markAsAnsweredConversation", params)
+        if raw:
+            return raw_result
+
         result = OkResponse(**raw_result)
         return result
 
@@ -629,21 +633,21 @@ class Messages(Category):
         self,
         message_ids: typing.Optional[typing.List[int]] = None,
         important: typing.Optional[BaseBoolInt] = None,
-    ) -> MessagesMarkAsImportantResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, MessagesMarkAsImportantResponse]:
         """
         :param message_ids: - IDs of messages to mark as important.
         :param important: - '1' — to add a star (mark as important), '0' — to remove the star
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("markAsImportant", params)
+        if raw:
+            return raw_result
+
         result = MessagesMarkAsImportantResponse(**raw_result)
         return result
 
@@ -652,22 +656,22 @@ class Messages(Category):
         peer_id: int = None,
         important: typing.Optional[BaseBoolInt] = None,
         group_id: typing.Optional[int] = None,
-    ) -> OkResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, OkResponse]:
         """
         :param peer_id: - ID of conversation to mark as important.
         :param important: - '1' — to add a star (mark as important), '0' — to remove the star
         :param group_id: - Group ID (for group messages with group access token)
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("markAsImportantConversation", params)
+        if raw:
+            return raw_result
+
         result = OkResponse(**raw_result)
         return result
 
@@ -677,43 +681,45 @@ class Messages(Category):
         peer_id: typing.Optional[BaseBoolInt] = None,
         start_message_id: typing.Optional[int] = None,
         group_id: typing.Optional[int] = None,
-    ) -> OkResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, OkResponse]:
         """
         :param message_ids: - IDs of messages to mark as read.
         :param peer_id: - Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "
         :param start_message_id: - Message ID to start from.
         :param group_id: - Group ID (for group messages with user access token)
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("markAsRead", params)
+        if raw:
+            return raw_result
+
         result = OkResponse(**raw_result)
         return result
 
     async def pin(
-        self, peer_id: BaseBoolInt = None, message_id: typing.Optional[int] = None,
-    ) -> MessagesPinResponse:
+        self,
+        peer_id: BaseBoolInt = None,
+        message_id: typing.Optional[int] = None,
+        raw: bool = False,
+    ) -> typing.Union[dict, MessagesPinResponse]:
         """
         :param peer_id: - Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'Chat ID', e.g. '2000000001'. For community: '- Community ID', e.g. '-12345'. "
         :param message_id:
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("pin", params)
+        if raw:
+            return raw_result
+
         result = MessagesPinResponse(**raw_result)
         return result
 
@@ -722,42 +728,44 @@ class Messages(Category):
         chat_id: int = None,
         user_id: typing.Optional[int] = None,
         member_id: typing.Optional[int] = None,
-    ) -> OkResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, OkResponse]:
         """
         :param chat_id: - Chat ID.
         :param user_id: - ID of the user to be removed from the chat.
         :param member_id:
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("removeChatUser", params)
+        if raw:
+            return raw_result
+
         result = OkResponse(**raw_result)
         return result
 
     async def restore(
-        self, message_id: int = None, group_id: typing.Optional[int] = None,
-    ) -> OkResponse:
+        self,
+        message_id: int = None,
+        group_id: typing.Optional[int] = None,
+        raw: bool = False,
+    ) -> typing.Union[dict, OkResponse]:
         """
         :param message_id: - ID of a previously-deleted message to restore.
         :param group_id: - Group ID (for group messages with user access token)
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("restore", params)
+        if raw:
+            return raw_result
+
         result = OkResponse(**raw_result)
         return result
 
@@ -772,7 +780,8 @@ class Messages(Category):
         extended: typing.Optional[BaseBoolInt] = None,
         fields: typing.Optional[typing.List[str]] = None,
         group_id: typing.Optional[int] = None,
-    ) -> MessagesSearchResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, MessagesSearchResponse]:
         """
         :param q: - Search query string.
         :param peer_id: - Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "
@@ -783,17 +792,16 @@ class Messages(Category):
         :param extended:
         :param fields:
         :param group_id: - Group ID (for group messages with group access token)
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("search", params)
+        if raw:
+            return raw_result
+
         result = MessagesSearchResponse(**raw_result)
         return result
 
@@ -804,24 +812,24 @@ class Messages(Category):
         extended: typing.Optional[BaseBoolInt] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
         group_id: typing.Optional[int] = None,
-    ) -> MessagesSearchConversationsResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, MessagesSearchConversationsResponse]:
         """
         :param q: - Search query string.
         :param count: - Maximum number of results.
         :param extended: - '1' — return extra information about users and communities
         :param fields: - Profile fields to return.
         :param group_id: - Group ID (for group messages with user access token)
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("searchConversations", params)
+        if raw:
+            return raw_result
+
         result = MessagesSearchConversationsResponse(**raw_result)
         return result
 
@@ -846,7 +854,8 @@ class Messages(Category):
         payload: typing.Optional[str] = None,
         dont_parse_links: typing.Optional[bool] = None,
         disable_mentions: typing.Optional[bool] = None,
-    ) -> MessagesSendResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, MessagesSendResponse]:
         """
         :param user_id: - User ID (by default — current user).
         :param random_id: - Unique identifier to avoid resending the message.
@@ -867,17 +876,16 @@ class Messages(Category):
         :param payload:
         :param dont_parse_links:
         :param disable_mentions:
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("send", params)
+        if raw:
+            return raw_result
+
         result = MessagesSendResponse(**raw_result)
         return result
 
@@ -887,59 +895,62 @@ class Messages(Category):
         type: typing.Optional[str] = None,
         peer_id: typing.Optional[BaseBoolInt] = None,
         group_id: typing.Optional[int] = None,
-    ) -> OkResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, OkResponse]:
         """
         :param user_id: - User ID.
         :param type: - 'typing' — user has started to type.
         :param peer_id: - Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "
         :param group_id: - Group ID (for group messages with group access token)
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("setActivity", params)
+        if raw:
+            return raw_result
+
         result = OkResponse(**raw_result)
         return result
 
-    async def set_chat_photo(self, file: str = None,) -> MessagesSetChatPhotoResponse:
+    async def set_chat_photo(
+        self, file: str = None, raw: bool = False,
+    ) -> typing.Union[dict, MessagesSetChatPhotoResponse]:
         """
         :param file: - Upload URL from the 'response' field returned by the [vk.com/dev/photos.getChatUploadServer|photos.getChatUploadServer] method upon successfully uploading an image.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("setChatPhoto", params)
+        if raw:
+            return raw_result
+
         result = MessagesSetChatPhotoResponse(**raw_result)
         return result
 
     async def unpin(
-        self, peer_id: int = None, group_id: typing.Optional[int] = None,
-    ) -> OkResponse:
+        self,
+        peer_id: int = None,
+        group_id: typing.Optional[int] = None,
+        raw: bool = False,
+    ) -> typing.Union[dict, OkResponse]:
         """
         :param peer_id:
         :param group_id:
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("unpin", params)
+        if raw:
+            return raw_result
+
         result = OkResponse(**raw_result)
         return result

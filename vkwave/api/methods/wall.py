@@ -1,24 +1,25 @@
 from vkwave.types.responses import *
-
 from ._category import Category
+from ._utils import get_params
 
 
 class Wall(Category):
-    async def close_comments(self, owner_id: int = None, post_id: int = None,) -> BaseBoolResponse:
+    async def close_comments(
+        self, owner_id: int = None, post_id: int = None, raw: bool = False,
+    ) -> typing.Union[dict, BaseBoolResponse]:
         """
         :param owner_id:
         :param post_id:
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("closeComments", params)
+        if raw:
+            return raw_result
+
         result = BaseBoolResponse(**raw_result)
         return result
 
@@ -32,7 +33,8 @@ class Wall(Category):
         attachments: typing.Optional[typing.List[str]] = None,
         sticker_id: typing.Optional[int] = None,
         guid: typing.Optional[str] = None,
-    ) -> WallCreateCommentResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, WallCreateCommentResponse]:
         """
         :param owner_id: - User ID or community ID. Use a negative value to designate a community ID.
         :param post_id: - Post ID.
@@ -42,57 +44,60 @@ class Wall(Category):
         :param attachments: - (Required if 'message' is not set.) List of media objects attached to the comment, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", '' — Type of media ojbect: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — ID of the media owner. '<media_id>' — Media ID. For example: "photo100172_166443618,photo66748_265827614"
         :param sticker_id: - Sticker ID.
         :param guid: - Unique identifier to avoid repeated comments.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("createComment", params)
+        if raw:
+            return raw_result
+
         result = WallCreateCommentResponse(**raw_result)
         return result
 
     async def delete(
-        self, owner_id: typing.Optional[int] = None, post_id: typing.Optional[int] = None,
-    ) -> OkResponse:
+        self,
+        owner_id: typing.Optional[int] = None,
+        post_id: typing.Optional[int] = None,
+        raw: bool = False,
+    ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - User ID or community ID. Use a negative value to designate a community ID.
         :param post_id: - ID of the post to be deleted.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("delete", params)
+        if raw:
+            return raw_result
+
         result = OkResponse(**raw_result)
         return result
 
     async def delete_comment(
-        self, owner_id: typing.Optional[int] = None, comment_id: int = None,
-    ) -> OkResponse:
+        self,
+        owner_id: typing.Optional[int] = None,
+        comment_id: int = None,
+        raw: bool = False,
+    ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - User ID or community ID. Use a negative value to designate a community ID.
         :param comment_id: - Comment ID.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("deleteComment", params)
+        if raw:
+            return raw_result
+
         result = OkResponse(**raw_result)
         return result
 
@@ -114,7 +119,8 @@ class Wall(Category):
         poster_bkg_id: typing.Optional[int] = None,
         poster_bkg_owner_id: typing.Optional[int] = None,
         poster_bkg_access_hash: typing.Optional[str] = None,
-    ) -> WallEditResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, WallEditResponse]:
         """
         :param owner_id: - User ID or community ID. Use a negative value to designate a community ID.
         :param post_id:
@@ -132,17 +138,16 @@ class Wall(Category):
         :param poster_bkg_id:
         :param poster_bkg_owner_id:
         :param poster_bkg_access_hash:
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("edit", params)
+        if raw:
+            return raw_result
+
         result = WallEditResponse(**raw_result)
         return result
 
@@ -160,7 +165,8 @@ class Wall(Category):
         link_title: typing.Optional[str] = None,
         link_image: typing.Optional[str] = None,
         link_video: typing.Optional[str] = None,
-    ) -> OkResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - User ID or community ID. Use a negative value to designate a community ID.
         :param post_id: - Post ID. Used for publishing of scheduled and suggested posts.
@@ -174,17 +180,16 @@ class Wall(Category):
         :param link_title: - Link title
         :param link_image: - Link image url
         :param link_video: - Link video ID in format "<owner_id>_<media_id>"
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("editAdsStealth", params)
+        if raw:
+            return raw_result
+
         result = OkResponse(**raw_result)
         return result
 
@@ -194,23 +199,23 @@ class Wall(Category):
         comment_id: int = None,
         message: typing.Optional[str] = None,
         attachments: typing.Optional[typing.List[str]] = None,
-    ) -> OkResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - User ID or community ID. Use a negative value to designate a community ID.
         :param comment_id: - Comment ID.
         :param message: - New comment text.
         :param attachments: - List of objects attached to the comment, in the following format: , "<owner_id>_<media_id>,<owner_id>_<media_id>", '' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — ID of the media attachment owner. '<media_id>' — Media attachment ID. For example: "photo100172_166443618,photo66748_265827614"
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("editComment", params)
+        if raw:
+            return raw_result
+
         result = OkResponse(**raw_result)
         return result
 
@@ -223,7 +228,8 @@ class Wall(Category):
         filter: typing.Optional[str] = None,
         extended: typing.Optional[BaseBoolInt] = None,
         fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
-    ) -> typing.Union[WallGetResponse, WallGetExtendedResponse]:
+        raw: bool = False,
+    ) -> typing.Union[dict, WallGetResponse, WallGetExtendedResponse]:
         """
         :param owner_id: - ID of the user or community that owns the wall. By default, current user ID. Use a negative value to designate a community ID.
         :param domain: - User or community short address.
@@ -232,17 +238,15 @@ class Wall(Category):
         :param filter: - Filter to apply: 'owner' — posts by the wall owner, 'others' — posts by someone else, 'all' — posts by the wall owner and others (default), 'postponed' — timed posts (only available for calls with an 'access_token'), 'suggests' — suggested posts on a community wall
         :param extended: - '1' — to return 'wall', 'profiles', and 'groups' fields, '0' — to return no additional fields (default)
         :param fields:
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("get", params)
+        if raw:
+            return raw_result
 
         result = (
             WallGetResponse(**raw_result)
@@ -257,23 +261,22 @@ class Wall(Category):
         extended: typing.Optional[BaseBoolInt] = None,
         copy_history_depth: typing.Optional[int] = None,
         fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
-    ) -> typing.Union[WallGetByIdResponse, WallGetByIdExtendedResponse]:
+        raw: bool = False,
+    ) -> typing.Union[dict, WallGetByIdResponse, WallGetByIdExtendedResponse]:
         """
         :param posts: - User or community IDs and post IDs, separated by underscores. Use a negative value to designate a community ID. Example: "93388_21539,93388_20904,2943_4276,-1_1"
         :param extended: - '1' — to return user and community objects needed to display posts, '0' — no additional fields are returned (default)
         :param copy_history_depth: - Sets the number of parent elements to include in the array 'copy_history' that is returned if the post is a repost from another wall.
         :param fields:
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getById", params)
+        if raw:
+            return raw_result
 
         result = (
             WallGetByIdResponse(**raw_result)
@@ -296,7 +299,8 @@ class Wall(Category):
         fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
         comment_id: typing.Optional[int] = None,
         thread_items_count: typing.Optional[int] = None,
-    ) -> typing.Union[WallGetCommentsResponse, WallGetCommentsExtendedResponse]:
+        raw: bool = False,
+    ) -> typing.Union[dict, WallGetCommentsResponse, WallGetCommentsExtendedResponse]:
         """
         :param owner_id: - User ID or community ID. Use a negative value to designate a community ID.
         :param post_id: - Post ID.
@@ -310,17 +314,15 @@ class Wall(Category):
         :param fields:
         :param comment_id: - Comment ID.
         :param thread_items_count: - Count items in threads.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getComments", params)
+        if raw:
+            return raw_result
 
         result = (
             WallGetCommentsResponse(**raw_result)
@@ -335,59 +337,64 @@ class Wall(Category):
         post_id: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
-    ) -> WallGetRepostsResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, WallGetRepostsResponse]:
         """
         :param owner_id: - User ID or community ID. By default, current user ID. Use a negative value to designate a community ID.
         :param post_id: - Post ID.
         :param offset: - Offset needed to return a specific subset of reposts.
         :param count: - Number of reposts to return.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getReposts", params)
+        if raw:
+            return raw_result
+
         result = WallGetRepostsResponse(**raw_result)
         return result
 
-    async def open_comments(self, owner_id: int = None, post_id: int = None,) -> BaseBoolResponse:
+    async def open_comments(
+        self, owner_id: int = None, post_id: int = None, raw: bool = False,
+    ) -> typing.Union[dict, BaseBoolResponse]:
         """
         :param owner_id:
         :param post_id:
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("openComments", params)
+        if raw:
+            return raw_result
+
         result = BaseBoolResponse(**raw_result)
         return result
 
-    async def pin(self, owner_id: typing.Optional[int] = None, post_id: int = None,) -> OkResponse:
+    async def pin(
+        self,
+        owner_id: typing.Optional[int] = None,
+        post_id: int = None,
+        raw: bool = False,
+    ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - ID of the user or community that owns the wall. By default, current user ID. Use a negative value to designate a community ID.
         :param post_id: - Post ID.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("pin", params)
+        if raw:
+            return raw_result
+
         result = OkResponse(**raw_result)
         return result
 
@@ -409,7 +416,8 @@ class Wall(Category):
         mark_as_ads: typing.Optional[bool] = None,
         close_comments: typing.Optional[bool] = None,
         mute_notifications: typing.Optional[bool] = None,
-    ) -> WallPostResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, WallPostResponse]:
         """
         :param owner_id: - User ID or community ID. Use a negative value to designate a community ID.
         :param friends_only: - '1' — post will be available to friends only, '0' — post will be available to all users (default)
@@ -427,17 +435,16 @@ class Wall(Category):
         :param mark_as_ads:
         :param close_comments:
         :param mute_notifications:
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("post", params)
+        if raw:
+            return raw_result
+
         result = WallPostResponse(**raw_result)
         return result
 
@@ -455,7 +462,8 @@ class Wall(Category):
         link_title: typing.Optional[str] = None,
         link_image: typing.Optional[str] = None,
         link_video: typing.Optional[str] = None,
-    ) -> WallPostAdsStealthResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, WallPostAdsStealthResponse]:
         """
         :param owner_id: - User ID or community ID. Use a negative value to designate a community ID.
         :param message: - (Required if 'attachments' is not set.) Text of the post.
@@ -469,17 +477,16 @@ class Wall(Category):
         :param link_title: - Link title
         :param link_image: - Link image url
         :param link_video: - Link video ID in format "<owner_id>_<media_id>"
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("postAdsStealth", params)
+        if raw:
+            return raw_result
+
         result = WallPostAdsStealthResponse(**raw_result)
         return result
 
@@ -488,22 +495,22 @@ class Wall(Category):
         owner_id: int = None,
         comment_id: int = None,
         reason: typing.Optional[BaseBoolInt] = None,
-    ) -> OkResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - ID of the user or community that owns the wall.
         :param comment_id: - Comment ID.
         :param reason: - Reason for the complaint: '0' – spam, '1' – child pornography, '2' – extremism, '3' – violence, '4' – drug propaganda, '5' – adult material, '6' – insult, abuse
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("reportComment", params)
+        if raw:
+            return raw_result
+
         result = OkResponse(**raw_result)
         return result
 
@@ -512,22 +519,22 @@ class Wall(Category):
         owner_id: int = None,
         post_id: int = None,
         reason: typing.Optional[BaseBoolInt] = None,
-    ) -> OkResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - ID of the user or community that owns the wall.
         :param post_id: - Post ID.
         :param reason: - Reason for the complaint: '0' – spam, '1' – child pornography, '2' – extremism, '3' – violence, '4' – drug propaganda, '5' – adult material, '6' – insult, abuse
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("reportPost", params)
+        if raw:
+            return raw_result
+
         result = OkResponse(**raw_result)
         return result
 
@@ -538,64 +545,68 @@ class Wall(Category):
         group_id: typing.Optional[int] = None,
         mark_as_ads: typing.Optional[bool] = None,
         mute_notifications: typing.Optional[bool] = None,
-    ) -> WallRepostResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, WallRepostResponse]:
         """
         :param object: - ID of the object to be reposted on the wall. Example: "wall66748_3675"
         :param message: - Comment to be added along with the reposted object.
         :param group_id: - Target community ID when reposting to a community.
         :param mark_as_ads:
         :param mute_notifications:
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("repost", params)
+        if raw:
+            return raw_result
+
         result = WallRepostResponse(**raw_result)
         return result
 
     async def restore(
-        self, owner_id: typing.Optional[int] = None, post_id: typing.Optional[int] = None,
-    ) -> OkResponse:
+        self,
+        owner_id: typing.Optional[int] = None,
+        post_id: typing.Optional[int] = None,
+        raw: bool = False,
+    ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - User ID or community ID from whose wall the post was deleted. Use a negative value to designate a community ID.
         :param post_id: - ID of the post to be restored.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("restore", params)
+        if raw:
+            return raw_result
+
         result = OkResponse(**raw_result)
         return result
 
     async def restore_comment(
-        self, owner_id: typing.Optional[int] = None, comment_id: int = None,
-    ) -> OkResponse:
+        self,
+        owner_id: typing.Optional[int] = None,
+        comment_id: int = None,
+        raw: bool = False,
+    ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - User ID or community ID. Use a negative value to designate a community ID.
         :param comment_id: - Comment ID.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("restoreComment", params)
+        if raw:
+            return raw_result
+
         result = OkResponse(**raw_result)
         return result
 
@@ -609,7 +620,8 @@ class Wall(Category):
         offset: typing.Optional[int] = None,
         extended: typing.Optional[BaseBoolInt] = None,
         fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
-    ) -> typing.Union[WallSearchResponse, WallSearchExtendedResponse]:
+        raw: bool = False,
+    ) -> typing.Union[dict, WallSearchResponse, WallSearchExtendedResponse]:
         """
         :param owner_id: - user or community id. "Remember that for a community 'owner_id' must be negative."
         :param domain: - user or community screen name.
@@ -619,17 +631,15 @@ class Wall(Category):
         :param offset: - Offset needed to return a specific subset of posts.
         :param extended: - show extended post info.
         :param fields:
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("search", params)
+        if raw:
+            return raw_result
 
         result = (
             WallSearchResponse(**raw_result)
@@ -639,21 +649,23 @@ class Wall(Category):
         return result
 
     async def unpin(
-        self, owner_id: typing.Optional[int] = None, post_id: int = None,
-    ) -> OkResponse:
+        self,
+        owner_id: typing.Optional[int] = None,
+        post_id: int = None,
+        raw: bool = False,
+    ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - ID of the user or community that owns the wall. By default, current user ID. Use a negative value to designate a community ID.
         :param post_id: - Post ID.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("unpin", params)
+        if raw:
+            return raw_result
+
         result = OkResponse(**raw_result)
         return result

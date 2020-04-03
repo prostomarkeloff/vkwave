@@ -1,48 +1,54 @@
 from vkwave.types.responses import *
-
 from ._category import Category
+from ._utils import get_params
 
 
 class Photos(Category):
     async def confirm_tag(
-        self, owner_id: typing.Optional[int] = None, photo_id: str = None, tag_id: int = None,
-    ) -> OkResponse:
+        self,
+        owner_id: typing.Optional[int] = None,
+        photo_id: str = None,
+        tag_id: int = None,
+        raw: bool = False,
+    ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - ID of the user or community that owns the photo.
         :param photo_id: - Photo ID.
         :param tag_id: - Tag ID.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("confirmTag", params)
+        if raw:
+            return raw_result
+
         result = OkResponse(**raw_result)
         return result
 
     async def copy(
-        self, owner_id: int = None, photo_id: int = None, access_key: typing.Optional[str] = None,
-    ) -> PhotosCopyResponse:
+        self,
+        owner_id: int = None,
+        photo_id: int = None,
+        access_key: typing.Optional[str] = None,
+        raw: bool = False,
+    ) -> typing.Union[dict, PhotosCopyResponse]:
         """
         :param owner_id: - photo's owner ID
         :param photo_id: - photo ID
         :param access_key: - for private photos
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("copy", params)
+        if raw:
+            return raw_result
+
         result = PhotosCopyResponse(**raw_result)
         return result
 
@@ -55,7 +61,8 @@ class Photos(Category):
         privacy_comment: typing.Optional[typing.List[str]] = None,
         upload_by_admins_only: typing.Optional[bool] = None,
         comments_disabled: typing.Optional[bool] = None,
-    ) -> PhotosCreateAlbumResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, PhotosCreateAlbumResponse]:
         """
         :param title: - Album title.
         :param group_id: - ID of the community in which the album will be created.
@@ -64,17 +71,16 @@ class Photos(Category):
         :param privacy_comment:
         :param upload_by_admins_only:
         :param comments_disabled:
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("createAlbum", params)
+        if raw:
+            return raw_result
+
         result = PhotosCreateAlbumResponse(**raw_result)
         return result
 
@@ -89,7 +95,8 @@ class Photos(Category):
         sticker_id: typing.Optional[int] = None,
         access_key: typing.Optional[str] = None,
         guid: typing.Optional[str] = None,
-    ) -> PhotosCreateCommentResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, PhotosCreateCommentResponse]:
         """
         :param owner_id: - ID of the user or community that owns the photo.
         :param photo_id: - Photo ID.
@@ -100,77 +107,82 @@ class Photos(Category):
         :param sticker_id:
         :param access_key:
         :param guid:
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("createComment", params)
+        if raw:
+            return raw_result
+
         result = PhotosCreateCommentResponse(**raw_result)
         return result
 
     async def delete(
-        self, owner_id: typing.Optional[int] = None, photo_id: int = None,
-    ) -> OkResponse:
+        self,
+        owner_id: typing.Optional[int] = None,
+        photo_id: int = None,
+        raw: bool = False,
+    ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - ID of the user or community that owns the photo.
         :param photo_id: - Photo ID.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("delete", params)
+        if raw:
+            return raw_result
+
         result = OkResponse(**raw_result)
         return result
 
     async def delete_album(
-        self, album_id: int = None, group_id: typing.Optional[int] = None,
-    ) -> OkResponse:
+        self,
+        album_id: int = None,
+        group_id: typing.Optional[int] = None,
+        raw: bool = False,
+    ) -> typing.Union[dict, OkResponse]:
         """
         :param album_id: - Album ID.
         :param group_id: - ID of the community that owns the album.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("deleteAlbum", params)
+        if raw:
+            return raw_result
+
         result = OkResponse(**raw_result)
         return result
 
     async def delete_comment(
-        self, owner_id: typing.Optional[int] = None, comment_id: int = None,
-    ) -> PhotosDeleteCommentResponse:
+        self,
+        owner_id: typing.Optional[int] = None,
+        comment_id: int = None,
+        raw: bool = False,
+    ) -> typing.Union[dict, PhotosDeleteCommentResponse]:
         """
         :param owner_id: - ID of the user or community that owns the photo.
         :param comment_id: - Comment ID.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("deleteComment", params)
+        if raw:
+            return raw_result
+
         result = PhotosDeleteCommentResponse(**raw_result)
         return result
 
@@ -184,7 +196,8 @@ class Photos(Category):
         place_str: typing.Optional[str] = None,
         foursquare_id: typing.Optional[str] = None,
         delete_place: typing.Optional[bool] = None,
-    ) -> OkResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - ID of the user or community that owns the photo.
         :param photo_id: - Photo ID.
@@ -194,17 +207,16 @@ class Photos(Category):
         :param place_str:
         :param foursquare_id:
         :param delete_place:
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("edit", params)
+        if raw:
+            return raw_result
+
         result = OkResponse(**raw_result)
         return result
 
@@ -218,7 +230,8 @@ class Photos(Category):
         privacy_comment: typing.Optional[typing.List[str]] = None,
         upload_by_admins_only: typing.Optional[bool] = None,
         comments_disabled: typing.Optional[bool] = None,
-    ) -> OkResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, OkResponse]:
         """
         :param album_id: - ID of the photo album to be edited.
         :param title: - New album title.
@@ -228,17 +241,16 @@ class Photos(Category):
         :param privacy_comment:
         :param upload_by_admins_only:
         :param comments_disabled:
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("editAlbum", params)
+        if raw:
+            return raw_result
+
         result = OkResponse(**raw_result)
         return result
 
@@ -248,23 +260,23 @@ class Photos(Category):
         comment_id: int = None,
         message: typing.Optional[str] = None,
         attachments: typing.Optional[typing.List[str]] = None,
-    ) -> OkResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - ID of the user or community that owns the photo.
         :param comment_id: - Comment ID.
         :param message: - New text of the comment.
         :param attachments: - (Required if 'message' is not set.) List of objects attached to the post, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", '' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — Media attachment owner ID. '<media_id>' — Media attachment ID. Example: "photo100172_166443618,photo66748_265827614"
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("editComment", params)
+        if raw:
+            return raw_result
+
         result = OkResponse(**raw_result)
         return result
 
@@ -280,7 +292,8 @@ class Photos(Category):
         photo_sizes: typing.Optional[BaseBoolInt] = None,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
-    ) -> typing.Union[PhotosGetResponse, PhotosGetExtendedResponse]:
+        raw: bool = False,
+    ) -> typing.Union[dict, PhotosGetResponse, PhotosGetExtendedResponse]:
         """
         :param owner_id: - ID of the user or community that owns the photos. Use a negative value to designate a community ID.
         :param album_id: - Photo album ID. To return information about photos from service albums, use the following string values: 'profile, wall, saved'.
@@ -292,17 +305,15 @@ class Photos(Category):
         :param photo_sizes: - '1' — to return photo sizes in a [vk.com/dev/photo_sizes|special format]
         :param offset:
         :param count:
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("get", params)
+        if raw:
+            return raw_result
 
         result = (
             PhotosGetResponse(**raw_result)
@@ -320,7 +331,8 @@ class Photos(Category):
         need_system: typing.Optional[BaseBoolInt] = None,
         need_covers: typing.Optional[BaseBoolInt] = None,
         photo_sizes: typing.Optional[BaseBoolInt] = None,
-    ) -> PhotosGetAlbumsResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, PhotosGetAlbumsResponse]:
         """
         :param owner_id: - ID of the user or community that owns the albums.
         :param album_ids: - Album IDs.
@@ -329,37 +341,38 @@ class Photos(Category):
         :param need_system: - '1' — to return system albums with negative IDs
         :param need_covers: - '1' — to return an additional 'thumb_src' field, '0' — (default)
         :param photo_sizes: - '1' — to return photo sizes in a
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getAlbums", params)
+        if raw:
+            return raw_result
+
         result = PhotosGetAlbumsResponse(**raw_result)
         return result
 
     async def get_albums_count(
-        self, user_id: typing.Optional[int] = None, group_id: typing.Optional[int] = None,
-    ) -> PhotosGetAlbumsCountResponse:
+        self,
+        user_id: typing.Optional[int] = None,
+        group_id: typing.Optional[int] = None,
+        raw: bool = False,
+    ) -> typing.Union[dict, PhotosGetAlbumsCountResponse]:
         """
         :param user_id: - User ID.
         :param group_id: - Community ID.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getAlbumsCount", params)
+        if raw:
+            return raw_result
+
         result = PhotosGetAlbumsCountResponse(**raw_result)
         return result
 
@@ -373,7 +386,8 @@ class Photos(Category):
         no_service_albums: typing.Optional[BaseBoolInt] = None,
         need_hidden: typing.Optional[BaseBoolInt] = None,
         skip_hidden: typing.Optional[BaseBoolInt] = None,
-    ) -> typing.Union[PhotosGetAllResponse, PhotosGetAllExtendedResponse]:
+        raw: bool = False,
+    ) -> typing.Union[dict, PhotosGetAllResponse, PhotosGetAllExtendedResponse]:
         """
         :param owner_id: - ID of a user or community that owns the photos. Use a negative value to designate a community ID.
         :param extended: - '1' — to return detailed information about photos
@@ -383,17 +397,15 @@ class Photos(Category):
         :param no_service_albums: - '1' – to return photos only from standard albums, '0' – to return all photos including those in service albums, e.g., 'My wall photos' (default)
         :param need_hidden: - '1' – to show information about photos being hidden from the block above the wall.
         :param skip_hidden: - '1' – not to return photos being hidden from the block above the wall. Works only with owner_id>0, no_service_albums is ignored.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getAll", params)
+        if raw:
+            return raw_result
 
         result = (
             PhotosGetAllResponse(**raw_result)
@@ -409,24 +421,24 @@ class Photos(Category):
         need_likes: typing.Optional[BaseBoolInt] = None,
         offset: typing.Optional[BaseBoolInt] = None,
         count: typing.Optional[BaseBoolInt] = None,
-    ) -> PhotosGetAllCommentsResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, PhotosGetAllCommentsResponse]:
         """
         :param owner_id: - ID of the user or community that owns the album(s).
         :param album_id: - Album ID. If the parameter is not set, comments on all of the user's albums will be returned.
         :param need_likes: - '1' — to return an additional 'likes' field, '0' — (default)
         :param offset: - Offset needed to return a specific subset of comments. By default, '0'.
         :param count: - Number of comments to return. By default, '20'. Maximum value, '100'.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getAllComments", params)
+        if raw:
+            return raw_result
+
         result = PhotosGetAllCommentsResponse(**raw_result)
         return result
 
@@ -435,22 +447,21 @@ class Photos(Category):
         photos: typing.List[str] = None,
         extended: typing.Optional[BaseBoolInt] = None,
         photo_sizes: typing.Optional[BaseBoolInt] = None,
-    ) -> typing.Union[PhotosGetByIdResponse, PhotosGetByIdExtendedResponse]:
+        raw: bool = False,
+    ) -> typing.Union[dict, PhotosGetByIdResponse, PhotosGetByIdExtendedResponse]:
         """
         :param photos: - IDs separated with a comma, that are IDs of users who posted photos and IDs of photos themselves with an underscore character between such IDs. To get information about a photo in the group album, you shall specify group ID instead of user ID. Example: "1_129207899,6492_135055734, , -20629724_271945303"
         :param extended: - '1' — to return additional fields, '0' — (default)
         :param photo_sizes: - '1' — to return photo sizes in a
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getById", params)
+        if raw:
+            return raw_result
 
         result = (
             PhotosGetByIdResponse(**raw_result)
@@ -465,23 +476,23 @@ class Photos(Category):
         crop_x: typing.Optional[int] = None,
         crop_y: typing.Optional[int] = None,
         crop_width: typing.Optional[int] = None,
-    ) -> BaseGetUploadServerResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, BaseGetUploadServerResponse]:
         """
         :param chat_id: - ID of the chat for which you want to upload a cover photo.
         :param crop_x:
         :param crop_y:
         :param crop_width: - Width (in pixels) of the photo after cropping.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getChatUploadServer", params)
+        if raw:
+            return raw_result
+
         result = BaseGetUploadServerResponse(**raw_result)
         return result
 
@@ -497,7 +508,10 @@ class Photos(Category):
         access_key: typing.Optional[str] = None,
         extended: typing.Optional[BaseBoolInt] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
-    ) -> typing.Union[PhotosGetCommentsResponse, PhotosGetCommentsExtendedResponse]:
+        raw: bool = False,
+    ) -> typing.Union[
+        dict, PhotosGetCommentsResponse, PhotosGetCommentsExtendedResponse
+    ]:
         """
         :param owner_id: - ID of the user or community that owns the photo.
         :param photo_id: - Photo ID.
@@ -509,17 +523,15 @@ class Photos(Category):
         :param access_key:
         :param extended:
         :param fields:
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getComments", params)
+        if raw:
+            return raw_result
 
         result = (
             PhotosGetCommentsResponse(**raw_result)
@@ -529,21 +541,20 @@ class Photos(Category):
         return result
 
     async def get_market_album_upload_server(
-        self, group_id: int = None,
-    ) -> BaseGetUploadServerResponse:
+        self, group_id: int = None, raw: bool = False,
+    ) -> typing.Union[dict, BaseGetUploadServerResponse]:
         """
         :param group_id: - Community ID.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getMarketAlbumUploadServer", params)
+        if raw:
+            return raw_result
+
         result = BaseGetUploadServerResponse(**raw_result)
         return result
 
@@ -554,63 +565,64 @@ class Photos(Category):
         crop_x: typing.Optional[int] = None,
         crop_y: typing.Optional[int] = None,
         crop_width: typing.Optional[int] = None,
-    ) -> PhotosGetMarketUploadServerResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, PhotosGetMarketUploadServerResponse]:
         """
         :param group_id: - Community ID.
         :param main_photo: - '1' if you want to upload the main item photo.
         :param crop_x: - X coordinate of the crop left upper corner.
         :param crop_y: - Y coordinate of the crop left upper corner.
         :param crop_width: - Width of the cropped photo in px.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getMarketUploadServer", params)
+        if raw:
+            return raw_result
+
         result = PhotosGetMarketUploadServerResponse(**raw_result)
         return result
 
     async def get_messages_upload_server(
-        self, peer_id: typing.Optional[BaseBoolInt] = None,
-    ) -> PhotosGetMessagesUploadServerResponse:
+        self, peer_id: typing.Optional[BaseBoolInt] = None, raw: bool = False,
+    ) -> typing.Union[dict, PhotosGetMessagesUploadServerResponse]:
         """
         :param peer_id: - Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'Chat ID', e.g. '2000000001'. For community: '- Community ID', e.g. '-12345'. "
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getMessagesUploadServer", params)
+        if raw:
+            return raw_result
+
         result = PhotosGetMessagesUploadServerResponse(**raw_result)
         return result
 
     async def get_new_tags(
-        self, offset: typing.Optional[int] = None, count: typing.Optional[int] = None,
-    ) -> PhotosGetNewTagsResponse:
+        self,
+        offset: typing.Optional[int] = None,
+        count: typing.Optional[int] = None,
+        raw: bool = False,
+    ) -> typing.Union[dict, PhotosGetNewTagsResponse]:
         """
         :param offset: - Offset needed to return a specific subset of photos.
         :param count: - Number of photos to return.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getNewTags", params)
+        if raw:
+            return raw_result
+
         result = PhotosGetNewTagsResponse(**raw_result)
         return result
 
@@ -621,43 +633,42 @@ class Photos(Category):
         crop_y: typing.Optional[int] = None,
         crop_x2: typing.Optional[int] = None,
         crop_y2: typing.Optional[int] = None,
-    ) -> BaseGetUploadServerResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, BaseGetUploadServerResponse]:
         """
         :param group_id: - ID of community that owns the album (if the photo will be uploaded to a community album).
         :param crop_x: - X coordinate of the left-upper corner
         :param crop_y: - Y coordinate of the left-upper corner
         :param crop_x2: - X coordinate of the right-bottom corner
         :param crop_y2: - Y coordinate of the right-bottom corner
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getOwnerCoverPhotoUploadServer", params)
+        if raw:
+            return raw_result
+
         result = BaseGetUploadServerResponse(**raw_result)
         return result
 
     async def get_owner_photo_upload_server(
-        self, owner_id: typing.Optional[int] = None,
-    ) -> BaseGetUploadServerResponse:
+        self, owner_id: typing.Optional[int] = None, raw: bool = False,
+    ) -> typing.Union[dict, BaseGetUploadServerResponse]:
         """
         :param owner_id: - identifier of a community or current user. "Note that community id must be negative. 'owner_id=1' – user, 'owner_id=-1' – community, "
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getOwnerPhotoUploadServer", params)
+        if raw:
+            return raw_result
+
         result = BaseGetUploadServerResponse(**raw_result)
         return result
 
@@ -666,42 +677,44 @@ class Photos(Category):
         owner_id: typing.Optional[int] = None,
         photo_id: int = None,
         access_key: typing.Optional[str] = None,
-    ) -> PhotosGetTagsResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, PhotosGetTagsResponse]:
         """
         :param owner_id: - ID of the user or community that owns the photo.
         :param photo_id: - Photo ID.
         :param access_key:
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getTags", params)
+        if raw:
+            return raw_result
+
         result = PhotosGetTagsResponse(**raw_result)
         return result
 
     async def get_upload_server(
-        self, group_id: typing.Optional[int] = None, album_id: typing.Optional[int] = None,
-    ) -> PhotosGetUploadServerResponse:
+        self,
+        group_id: typing.Optional[int] = None,
+        album_id: typing.Optional[int] = None,
+        raw: bool = False,
+    ) -> typing.Union[dict, PhotosGetUploadServerResponse]:
         """
         :param group_id: - ID of community that owns the album (if the photo will be uploaded to a community album).
         :param album_id:
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getUploadServer", params)
+        if raw:
+            return raw_result
+
         result = PhotosGetUploadServerResponse(**raw_result)
         return result
 
@@ -712,24 +725,25 @@ class Photos(Category):
         count: typing.Optional[BaseBoolInt] = None,
         extended: typing.Optional[BaseBoolInt] = None,
         sort: typing.Optional[BaseBoolInt] = None,
-    ) -> typing.Union[PhotosGetUserPhotosResponse, PhotosGetUserPhotosExtendedResponse]:
+        raw: bool = False,
+    ) -> typing.Union[
+        dict, PhotosGetUserPhotosResponse, PhotosGetUserPhotosExtendedResponse
+    ]:
         """
         :param user_id: - User ID.
         :param offset: - Offset needed to return a specific subset of photos. By default, '0'.
         :param count: - Number of photos to return. Maximum value is 1000.
         :param extended: - '1' — to return an additional 'likes' field, '0' — (default)
         :param sort: - Sort order: '1' — by date the tag was added in ascending order, '0' — by date the tag was added in descending order
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getUserPhotos", params)
+        if raw:
+            return raw_result
 
         result = (
             PhotosGetUserPhotosResponse(**raw_result)
@@ -739,21 +753,20 @@ class Photos(Category):
         return result
 
     async def get_wall_upload_server(
-        self, group_id: typing.Optional[int] = None,
-    ) -> PhotosGetWallUploadServerResponse:
+        self, group_id: typing.Optional[int] = None, raw: bool = False,
+    ) -> typing.Union[dict, PhotosGetWallUploadServerResponse]:
         """
         :param group_id: - ID of community to whose wall the photo will be uploaded.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("getWallUploadServer", params)
+        if raw:
+            return raw_result
+
         result = PhotosGetWallUploadServerResponse(**raw_result)
         return result
 
@@ -762,22 +775,22 @@ class Photos(Category):
         owner_id: typing.Optional[int] = None,
         photo_id: int = None,
         album_id: typing.Optional[int] = None,
-    ) -> OkResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - ID of the user or community that owns the photo.
         :param photo_id: - Photo ID.
         :param album_id: - Album ID.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("makeCover", params)
+        if raw:
+            return raw_result
+
         result = OkResponse(**raw_result)
         return result
 
@@ -786,22 +799,22 @@ class Photos(Category):
         owner_id: typing.Optional[int] = None,
         target_album_id: int = None,
         photo_id: int = None,
-    ) -> OkResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - ID of the user or community that owns the photo.
         :param target_album_id: - ID of the album to which the photo will be moved.
         :param photo_id: - Photo ID.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("move", params)
+        if raw:
+            return raw_result
+
         result = OkResponse(**raw_result)
         return result
 
@@ -814,7 +827,8 @@ class Photos(Category):
         y: typing.Optional[int] = None,
         x2: typing.Optional[int] = None,
         y2: typing.Optional[int] = None,
-    ) -> PhotosPutTagResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, PhotosPutTagResponse]:
         """
         :param owner_id: - ID of the user or community that owns the photo.
         :param photo_id: - Photo ID.
@@ -823,38 +837,40 @@ class Photos(Category):
         :param y: - Upper left-corner coordinate of the tagged area (as a percentage of the photo's height).
         :param x2: - Lower right-corner coordinate of the tagged area (as a percentage of the photo's width).
         :param y2: - Lower right-corner coordinate of the tagged area (as a percentage of the photo's height).
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("putTag", params)
+        if raw:
+            return raw_result
+
         result = PhotosPutTagResponse(**raw_result)
         return result
 
     async def remove_tag(
-        self, owner_id: typing.Optional[int] = None, photo_id: int = None, tag_id: int = None,
-    ) -> OkResponse:
+        self,
+        owner_id: typing.Optional[int] = None,
+        photo_id: int = None,
+        tag_id: int = None,
+        raw: bool = False,
+    ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - ID of the user or community that owns the photo.
         :param photo_id: - Photo ID.
         :param tag_id: - Tag ID.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("removeTag", params)
+        if raw:
+            return raw_result
+
         result = OkResponse(**raw_result)
         return result
 
@@ -864,23 +880,23 @@ class Photos(Category):
         album_id: int = None,
         before: typing.Optional[int] = None,
         after: typing.Optional[int] = None,
-    ) -> OkResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - ID of the user or community that owns the album.
         :param album_id: - Album ID.
         :param before: - ID of the album before which the album in question shall be placed.
         :param after: - ID of the album after which the album in question shall be placed.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("reorderAlbums", params)
+        if raw:
+            return raw_result
+
         result = OkResponse(**raw_result)
         return result
 
@@ -890,23 +906,23 @@ class Photos(Category):
         photo_id: int = None,
         before: typing.Optional[int] = None,
         after: typing.Optional[int] = None,
-    ) -> OkResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - ID of the user or community that owns the photo.
         :param photo_id: - Photo ID.
         :param before: - ID of the photo before which the photo in question shall be placed.
         :param after: - ID of the photo after which the photo in question shall be placed.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("reorderPhotos", params)
+        if raw:
+            return raw_result
+
         result = OkResponse(**raw_result)
         return result
 
@@ -915,22 +931,22 @@ class Photos(Category):
         owner_id: int = None,
         photo_id: int = None,
         reason: typing.Optional[BaseBoolInt] = None,
-    ) -> OkResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - ID of the user or community that owns the photo.
         :param photo_id: - Photo ID.
         :param reason: - Reason for the complaint: '0' – spam, '1' – child pornography, '2' – extremism, '3' – violence, '4' – drug propaganda, '5' – adult material, '6' – insult, abuse
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("report", params)
+        if raw:
+            return raw_result
+
         result = OkResponse(**raw_result)
         return result
 
@@ -939,62 +955,66 @@ class Photos(Category):
         owner_id: int = None,
         comment_id: int = None,
         reason: typing.Optional[BaseBoolInt] = None,
-    ) -> OkResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - ID of the user or community that owns the photo.
         :param comment_id: - ID of the comment being reported.
         :param reason: - Reason for the complaint: '0' – spam, '1' – child pornography, '2' – extremism, '3' – violence, '4' – drug propaganda, '5' – adult material, '6' – insult, abuse
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("reportComment", params)
+        if raw:
+            return raw_result
+
         result = OkResponse(**raw_result)
         return result
 
     async def restore(
-        self, owner_id: typing.Optional[int] = None, photo_id: int = None,
-    ) -> OkResponse:
+        self,
+        owner_id: typing.Optional[int] = None,
+        photo_id: int = None,
+        raw: bool = False,
+    ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - ID of the user or community that owns the photo.
         :param photo_id: - Photo ID.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("restore", params)
+        if raw:
+            return raw_result
+
         result = OkResponse(**raw_result)
         return result
 
     async def restore_comment(
-        self, owner_id: typing.Optional[int] = None, comment_id: int = None,
-    ) -> PhotosRestoreCommentResponse:
+        self,
+        owner_id: typing.Optional[int] = None,
+        comment_id: int = None,
+        raw: bool = False,
+    ) -> typing.Union[dict, PhotosRestoreCommentResponse]:
         """
         :param owner_id: - ID of the user or community that owns the photo.
         :param comment_id: - ID of the deleted comment.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("restoreComment", params)
+        if raw:
+            return raw_result
+
         result = PhotosRestoreCommentResponse(**raw_result)
         return result
 
@@ -1008,7 +1028,8 @@ class Photos(Category):
         latitude: typing.Optional[BaseBoolInt] = None,
         longitude: typing.Optional[BaseBoolInt] = None,
         caption: typing.Optional[BaseBoolInt] = None,
-    ) -> PhotosSaveResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, PhotosSaveResponse]:
         """
         :param album_id: - ID of the album to save photos to.
         :param group_id: - ID of the community to save photos to.
@@ -1018,39 +1039,42 @@ class Photos(Category):
         :param latitude: - Geographical latitude, in degrees (from '-90' to '90').
         :param longitude: - Geographical longitude, in degrees (from '-180' to '180').
         :param caption: - Text describing the photo. 2048 digits max.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("save", params)
+        if raw:
+            return raw_result
+
         result = PhotosSaveResponse(**raw_result)
         return result
 
     async def save_market_album_photo(
-        self, group_id: int = None, photo: str = None, server: int = None, hash: str = None,
-    ) -> PhotosSaveMarketAlbumPhotoResponse:
+        self,
+        group_id: int = None,
+        photo: str = None,
+        server: int = None,
+        hash: str = None,
+        raw: bool = False,
+    ) -> typing.Union[dict, PhotosSaveMarketAlbumPhotoResponse]:
         """
         :param group_id: - Community ID.
         :param photo: - Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
         :param server: - Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
         :param hash: - Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("saveMarketAlbumPhoto", params)
+        if raw:
+            return raw_result
+
         result = PhotosSaveMarketAlbumPhotoResponse(**raw_result)
         return result
 
@@ -1062,7 +1086,8 @@ class Photos(Category):
         hash: str = None,
         crop_data: typing.Optional[str] = None,
         crop_hash: typing.Optional[str] = None,
-    ) -> PhotosSaveMarketPhotoResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, PhotosSaveMarketPhotoResponse]:
         """
         :param group_id: - Community ID.
         :param photo: - Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
@@ -1070,17 +1095,16 @@ class Photos(Category):
         :param hash: - Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
         :param crop_data: - Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
         :param crop_hash: - Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("saveMarketPhoto", params)
+        if raw:
+            return raw_result
+
         result = PhotosSaveMarketPhotoResponse(**raw_result)
         return result
 
@@ -1089,42 +1113,41 @@ class Photos(Category):
         photo: str = None,
         server: typing.Optional[int] = None,
         hash: typing.Optional[str] = None,
-    ) -> PhotosSaveMessagesPhotoResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, PhotosSaveMessagesPhotoResponse]:
         """
         :param photo: - Parameter returned when the photo is [vk.com/dev/upload_files|uploaded to the server].
         :param server:
         :param hash:
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("saveMessagesPhoto", params)
+        if raw:
+            return raw_result
+
         result = PhotosSaveMessagesPhotoResponse(**raw_result)
         return result
 
     async def save_owner_cover_photo(
-        self, hash: str = None, photo: str = None,
-    ) -> PhotosSaveOwnerCoverPhotoResponse:
+        self, hash: str = None, photo: str = None, raw: bool = False,
+    ) -> typing.Union[dict, PhotosSaveOwnerCoverPhotoResponse]:
         """
         :param hash: - Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
         :param photo: - Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("saveOwnerCoverPhoto", params)
+        if raw:
+            return raw_result
+
         result = PhotosSaveOwnerCoverPhotoResponse(**raw_result)
         return result
 
@@ -1133,22 +1156,22 @@ class Photos(Category):
         server: typing.Optional[str] = None,
         hash: typing.Optional[str] = None,
         photo: typing.Optional[str] = None,
-    ) -> PhotosSaveOwnerPhotoResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, PhotosSaveOwnerPhotoResponse]:
         """
         :param server: - parameter returned after [vk.com/dev/upload_files|photo upload].
         :param hash: - parameter returned after [vk.com/dev/upload_files|photo upload].
         :param photo: - parameter returned after [vk.com/dev/upload_files|photo upload].
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("saveOwnerPhoto", params)
+        if raw:
+            return raw_result
+
         result = PhotosSaveOwnerPhotoResponse(**raw_result)
         return result
 
@@ -1162,7 +1185,8 @@ class Photos(Category):
         latitude: typing.Optional[BaseBoolInt] = None,
         longitude: typing.Optional[BaseBoolInt] = None,
         caption: typing.Optional[BaseBoolInt] = None,
-    ) -> PhotosSaveWallPhotoResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, PhotosSaveWallPhotoResponse]:
         """
         :param user_id: - ID of the user on whose wall the photo will be saved.
         :param group_id: - ID of community on whose wall the photo will be saved.
@@ -1172,17 +1196,16 @@ class Photos(Category):
         :param latitude: - Geographical latitude, in degrees (from '-90' to '90').
         :param longitude: - Geographical longitude, in degrees (from '-180' to '180').
         :param caption: - Text describing the photo. 2048 digits max.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("saveWallPhoto", params)
+        if raw:
+            return raw_result
+
         result = PhotosSaveWallPhotoResponse(**raw_result)
         return result
 
@@ -1197,7 +1220,8 @@ class Photos(Category):
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
         radius: typing.Optional[BaseBoolInt] = None,
-    ) -> PhotosSearchResponse:
+        raw: bool = False,
+    ) -> typing.Union[dict, PhotosSearchResponse]:
         """
         :param q: - Search query string.
         :param lat: - Geographical latitude, in degrees (from '-90' to '90').
@@ -1208,16 +1232,15 @@ class Photos(Category):
         :param offset: - Offset needed to return a specific subset of photos.
         :param count: - Number of photos to return.
         :param radius: - Radius of search in meters (works very approximately). Available values: '10', '100', '800', '6000', '50000'.
+        :param raw: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value_ in locals().items():
-            if key not in ["self", "params"] and value_ is not None:
-                if isinstance(value_, list):
-                    value_ = ",".join(str(item) for item in value_)
-                params[key] = value_
+        params = get_params(locals())
 
         raw_result = await self.api_request("search", params)
+        if raw:
+            return raw_result
+
         result = PhotosSearchResponse(**raw_result)
         return result

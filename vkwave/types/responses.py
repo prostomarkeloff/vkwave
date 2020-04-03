@@ -4015,3 +4015,20 @@ class WidgetsGetPagesResponse(pydantic.BaseModel):
     response: "WidgetsGetPagesResponseModel" = pydantic.Field(
         ..., description="",
     )
+
+
+class StoriesSearchResponseModel(pydantic.BaseModel):
+    count: int = pydantic.Field(
+        None, description="Stories count",
+    )
+    items: typing.List[StoriesStory] = pydantic.Field(
+        None, description="",
+    )
+
+    profiles: typing.List[UsersUser] = pydantic.Field(
+        None, description="",
+    )
+    groups: typing.List[GroupsGroup] = pydantic.Field(
+        None, description="",
+    )
+
