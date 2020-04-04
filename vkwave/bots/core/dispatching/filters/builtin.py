@@ -64,6 +64,8 @@ class TextFilter(BaseFilter):
         if event.bot_type is BotType.USER:
             text = event.object.object.text
         else:
+            if event.object.object.dict().get("message") is None:
+                return FilterResult(False)
             text = event.object.object.message.text
         if self.ic:
             text = text.lower()
