@@ -51,6 +51,9 @@ class ErrorDispatcher:
     def __init__(self):
         self.handlers: typing.Dict[int, ErrorHandlerCallable] = {}
 
+    def add_handler(self, code: int, handler: ErrorHandlerCallable):
+        self.handlers[code] = handler
+
     async def _run_handler(
         self,
         code: int,
