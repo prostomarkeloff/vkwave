@@ -19,7 +19,9 @@ class TaskManager:
 
         [await self.loop.create_task(task()) for task in self.tasks]
 
-    def run(self, on_shutdown: typing.Callable = None, on_startup: typing.Callable = None,):
+    def run(
+        self, on_shutdown: typing.Callable = None, on_startup: typing.Callable = None,
+    ):
         try:
             if on_startup is not None:
                 self.loop.run_until_complete(on_startup())

@@ -2,7 +2,7 @@ import os
 
 import pytest
 
-from vkwave.bots.utils.uploaders import PhotoUploader, DocUploader
+from vkwave.bots.utils.uploaders import DocUploader, PhotoUploader
 from vkwave.easy import create_bot_aiohttp
 
 

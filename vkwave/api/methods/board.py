@@ -1,4 +1,5 @@
 from vkwave.types.responses import *
+
 from ._category import Category
 from ._utils import get_params
 
@@ -33,10 +34,7 @@ class Board(Category):
         return result
 
     async def close_topic(
-        self,
-        group_id: int = None,
-        topic_id: int = None,
-        return_raw_response: bool = False,
+        self, group_id: int = None, topic_id: int = None, return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param group_id: - ID of the community that owns the discussion board.
@@ -111,10 +109,7 @@ class Board(Category):
         return result
 
     async def delete_topic(
-        self,
-        group_id: int = None,
-        topic_id: int = None,
-        return_raw_response: bool = False,
+        self, group_id: int = None, topic_id: int = None, return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param group_id: - ID of the community that owns the discussion board.
@@ -185,10 +180,7 @@ class Board(Category):
         return result
 
     async def fix_topic(
-        self,
-        group_id: int = None,
-        topic_id: int = None,
-        return_raw_response: bool = False,
+        self, group_id: int = None, topic_id: int = None, return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param group_id: - ID of the community that owns the discussion board.
@@ -283,10 +275,7 @@ class Board(Category):
         return result
 
     async def open_topic(
-        self,
-        group_id: int = None,
-        topic_id: int = None,
-        return_raw_response: bool = False,
+        self, group_id: int = None, topic_id: int = None, return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param group_id: - ID of the community that owns the discussion board.
@@ -329,10 +318,7 @@ class Board(Category):
         return result
 
     async def unfix_topic(
-        self,
-        group_id: int = None,
-        topic_id: int = None,
-        return_raw_response: bool = False,
+        self, group_id: int = None, topic_id: int = None, return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param group_id: - ID of the community that owns the discussion board.

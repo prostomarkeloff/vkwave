@@ -1,4 +1,5 @@
 from vkwave.types.responses import *
+
 from ._category import Category
 from ._utils import get_params
 
@@ -361,9 +362,7 @@ class Friends(Category):
         ref: typing.Optional[str] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
         return_raw_response: bool = False,
-    ) -> typing.Union[
-        dict, FriendsGetRequestsResponse, FriendsGetRequestsExtendedResponse
-    ]:
+    ) -> typing.Union[dict, FriendsGetRequestsResponse, FriendsGetRequestsExtendedResponse]:
         """
         :param offset: - Offset needed to return a specific subset of friend requests.
         :param count: - Number of friend requests to return (default 100, maximum 1000).

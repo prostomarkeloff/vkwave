@@ -1,14 +1,12 @@
 from vkwave.types.responses import *
+
 from ._category import Category
 from ._utils import get_params
 
 
 class Wall(Category):
     async def close_comments(
-        self,
-        owner_id: int = None,
-        post_id: int = None,
-        return_raw_response: bool = False,
+        self, owner_id: int = None, post_id: int = None, return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseBoolResponse]:
         """
         :param owner_id:
@@ -361,10 +359,7 @@ class Wall(Category):
         return result
 
     async def open_comments(
-        self,
-        owner_id: int = None,
-        post_id: int = None,
-        return_raw_response: bool = False,
+        self, owner_id: int = None, post_id: int = None, return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseBoolResponse]:
         """
         :param owner_id:

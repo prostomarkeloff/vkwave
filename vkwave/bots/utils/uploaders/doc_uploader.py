@@ -3,7 +3,7 @@ from abc import ABC
 from typing import BinaryIO
 
 from vkwave.bots.utils.uploaders.uploader import BaseUploader
-from vkwave.types.responses import DocsSaveResponseModel, DocsDocAttachmentType
+from vkwave.types.responses import DocsDocAttachmentType, DocsSaveResponseModel
 
 
 class DocUploaderMixin(BaseUploader[DocsSaveResponseModel], ABC):

@@ -1,4 +1,5 @@
 from vkwave.types.responses import *
+
 from ._category import Category
 from ._utils import get_params
 
@@ -127,9 +128,7 @@ class Apps(Category):
         global_: typing.Optional[BaseBoolInt] = None,
         extended: typing.Optional[BaseBoolInt] = None,
         return_raw_response: bool = False,
-    ) -> typing.Union[
-        dict, AppsGetLeaderboardResponse, AppsGetLeaderboardExtendedResponse
-    ]:
+    ) -> typing.Union[dict, AppsGetLeaderboardResponse, AppsGetLeaderboardExtendedResponse]:
         """
         :param type: - Leaderboard type. Possible values: *'level' — by level,, *'points' — by mission points,, *'score' — by score ().
         :param global_: - Rating type. Possible values: *'1' — global rating among all players,, *'0' — rating among user friends.

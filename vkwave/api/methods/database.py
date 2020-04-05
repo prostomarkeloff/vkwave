@@ -1,4 +1,5 @@
 from vkwave.types.responses import *
+
 from ._category import Category
 from ._utils import get_params
 
@@ -221,9 +222,7 @@ class Database(Category):
         return result
 
     async def get_school_classes(
-        self,
-        country_id: typing.Optional[int] = None,
-        return_raw_response: bool = False,
+        self, country_id: typing.Optional[int] = None, return_raw_response: bool = False,
     ) -> typing.Union[dict, DatabaseGetSchoolClassesResponse]:
         """
         :param country_id: - Country ID.

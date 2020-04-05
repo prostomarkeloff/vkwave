@@ -1,4 +1,5 @@
 from vkwave.types.responses import *
+
 from ._category import Category
 from ._utils import get_params
 
@@ -111,9 +112,7 @@ class Account(Category):
         return result
 
     async def get_counters(
-        self,
-        filter: typing.Optional[typing.List[str]] = None,
-        return_raw_response: bool = False,
+        self, filter: typing.Optional[typing.List[str]] = None, return_raw_response: bool = False,
     ) -> typing.Union[dict, AccountGetCountersResponse]:
         """
         :param filter: - Counters to be returned.
@@ -131,9 +130,7 @@ class Account(Category):
         return result
 
     async def get_info(
-        self,
-        fields: typing.Optional[typing.List[str]] = None,
-        return_raw_response: bool = False,
+        self, fields: typing.Optional[typing.List[str]] = None, return_raw_response: bool = False,
     ) -> typing.Union[dict, AccountGetInfoResponse]:
         """
         :param fields: - Fields to return. Possible values: *'country' — user country,, *'https_required' — is "HTTPS only" option enabled,, *'own_posts_default' — is "Show my posts only" option is enabled,, *'no_wall_replies' — are wall replies disabled or not,, *'intro' — is intro passed by user or not,, *'lang' — user language. By default: all.
@@ -325,9 +322,7 @@ class Account(Category):
         return result
 
     async def set_online(
-        self,
-        voip: typing.Optional[BaseBoolInt] = None,
-        return_raw_response: bool = False,
+        self, voip: typing.Optional[BaseBoolInt] = None, return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param voip: - '1' if videocalls are available for current device.

@@ -46,10 +46,13 @@ class APIError(Exception):
         self.message = f"[{code}] {message}"
         super().__init__(self.message)
 
+
 _NO_DEFAULT_HANDLER = object()
+
 
 async def _noop_default_handler(error: Error, ctx: "APIOptionsRequestContext"):
     return _NO_DEFAULT_HANDLER
+
 
 class ErrorDispatcher:
     def __init__(self):

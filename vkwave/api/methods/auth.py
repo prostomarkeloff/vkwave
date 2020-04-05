@@ -1,4 +1,5 @@
 from vkwave.types.responses import *
+
 from ._category import Category
 from ._utils import get_params
 
@@ -31,10 +32,7 @@ class Auth(Category):
         return result
 
     async def restore(
-        self,
-        phone: str = None,
-        last_name: str = None,
-        return_raw_response: bool = False,
+        self, phone: str = None, last_name: str = None, return_raw_response: bool = False,
     ) -> typing.Union[dict, AuthRestoreResponse]:
         """
         :param phone: - User phone number.

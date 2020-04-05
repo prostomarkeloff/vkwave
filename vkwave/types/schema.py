@@ -1,7 +1,7 @@
 import typing
+from enum import Enum
 
 import pydantic
-from enum import Enum
 
 
 class ParameterTypesEnum(str, Enum):

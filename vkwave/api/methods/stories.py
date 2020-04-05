@@ -1,4 +1,5 @@
 from vkwave.types.responses import *
+
 from ._category import Category
 from ._utils import get_params
 
@@ -23,10 +24,7 @@ class Stories(Category):
         return result
 
     async def delete(
-        self,
-        owner_id: int = None,
-        story_id: int = None,
-        return_raw_response: bool = False,
+        self, owner_id: int = None, story_id: int = None, return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - Story owner's ID. Current user id is used by default.
@@ -162,9 +160,7 @@ class Stories(Category):
         extended: typing.Optional[BaseBoolInt] = None,
         fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
         return_raw_response: bool = False,
-    ) -> typing.Union[
-        dict, StoriesGetRepliesResponse, StoriesGetRepliesExtendedResponse
-    ]:
+    ) -> typing.Union[dict, StoriesGetRepliesResponse, StoriesGetRepliesExtendedResponse]:
         """
         :param owner_id: - Story owner ID.
         :param story_id: - Story ID.
@@ -189,10 +185,7 @@ class Stories(Category):
         return result
 
     async def get_stats(
-        self,
-        owner_id: int = None,
-        story_id: int = None,
-        return_raw_response: bool = False,
+        self, owner_id: int = None, story_id: int = None, return_raw_response: bool = False,
     ) -> typing.Union[dict, StoriesGetStatsResponse]:
         """
         :param owner_id: - Story owner ID. 
@@ -248,9 +241,7 @@ class Stories(Category):
         offset: typing.Optional[int] = None,
         extended: typing.Optional[BaseBoolInt] = None,
         return_raw_response: bool = False,
-    ) -> typing.Union[
-        dict, StoriesGetViewersResponse, StoriesGetViewersExtendedResponse
-    ]:
+    ) -> typing.Union[dict, StoriesGetViewersResponse, StoriesGetViewersExtendedResponse]:
         """
         :param owner_id: - Story owner ID.
         :param story_id: - Story ID.
@@ -297,10 +288,7 @@ class Stories(Category):
         return result
 
     async def hide_reply(
-        self,
-        owner_id: int = None,
-        story_id: int = None,
-        return_raw_response: bool = False,
+        self, owner_id: int = None, story_id: int = None, return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - ID of the user whose replies should be hidden.
@@ -337,17 +325,17 @@ class Stories(Category):
         return result
 
     async def search(
-            self,
-            q: str,
-            place_id: typing.Optional[int] = None,
-            latitude: typing.Optional[int] = None,
-            longitude: typing.Optional[int] = None,
-            radius: typing.Optional[int] = None,
-            mentioned_id: typing.Optional[int] = None,
-            count: typing.Optional[int] = None,
-            extended: typing.Optional[BaseBoolInt] = None,
-            fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
-            return_raw_response: bool = False,
+        self,
+        q: str,
+        place_id: typing.Optional[int] = None,
+        latitude: typing.Optional[int] = None,
+        longitude: typing.Optional[int] = None,
+        radius: typing.Optional[int] = None,
+        mentioned_id: typing.Optional[int] = None,
+        count: typing.Optional[int] = None,
+        extended: typing.Optional[BaseBoolInt] = None,
+        fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, StoriesSearchResponseModel]:
 
         params = get_params(locals())

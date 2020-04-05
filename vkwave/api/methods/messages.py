@@ -1,4 +1,5 @@
 from vkwave.types.responses import *
+
 from ._category import Category
 from ._utils import get_params
 
@@ -365,9 +366,7 @@ class Messages(Category):
         group_id: typing.Optional[int] = None,
         return_raw_response: bool = False,
     ) -> typing.Union[
-        dict,
-        MessagesGetConversationsByIdResponse,
-        MessagesGetConversationsByIdExtendedResponse,
+        dict, MessagesGetConversationsByIdResponse, MessagesGetConversationsByIdExtendedResponse,
     ]:
         """
         :param peer_ids: - Destination IDs. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "
@@ -572,10 +571,7 @@ class Messages(Category):
         return result
 
     async def is_messages_from_group_allowed(
-        self,
-        group_id: int = None,
-        user_id: int = None,
-        return_raw_response: bool = False,
+        self, group_id: int = None, user_id: int = None, return_raw_response: bool = False,
     ) -> typing.Union[dict, MessagesIsMessagesFromGroupAllowedResponse]:
         """
         :param group_id: - Group ID.

@@ -1,4 +1,5 @@
 from vkwave.types.responses import *
+
 from ._category import Category
 from ._utils import get_params
 
@@ -270,10 +271,7 @@ class Fave(Category):
         return result
 
     async def remove_article(
-        self,
-        owner_id: int = None,
-        article_id: int = None,
-        return_raw_response: bool = False,
+        self, owner_id: int = None, article_id: int = None, return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseBoolResponse]:
         """
         :param owner_id:

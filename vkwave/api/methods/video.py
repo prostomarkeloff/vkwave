@@ -1,4 +1,5 @@
 from vkwave.types.responses import *
+
 from ._category import Category
 from ._utils import get_params
 
@@ -363,9 +364,7 @@ class Video(Category):
         video_id: int = None,
         extended: typing.Optional[BaseBoolInt] = None,
         return_raw_response: bool = False,
-    ) -> typing.Union[
-        dict, VideoGetAlbumsByVideoResponse, VideoGetAlbumsByVideoExtendedResponse
-    ]:
+    ) -> typing.Union[dict, VideoGetAlbumsByVideoResponse, VideoGetAlbumsByVideoExtendedResponse]:
         """
         :param target_id:
         :param owner_id:

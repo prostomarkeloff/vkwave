@@ -1,4 +1,5 @@
 from vkwave.types.responses import *
+
 from ._category import Category
 from ._utils import get_params
 
@@ -99,10 +100,7 @@ class Groups(Category):
         return result
 
     async def approve_request(
-        self,
-        group_id: int = None,
-        user_id: int = None,
-        return_raw_response: bool = False,
+        self, group_id: int = None, user_id: int = None, return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param group_id: - Community ID.
@@ -179,10 +177,7 @@ class Groups(Category):
         return result
 
     async def delete_callback_server(
-        self,
-        group_id: int = None,
-        server_id: int = None,
-        return_raw_response: bool = False,
+        self, group_id: int = None, server_id: int = None, return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param group_id:
@@ -201,10 +196,7 @@ class Groups(Category):
         return result
 
     async def delete_link(
-        self,
-        group_id: int = None,
-        link_id: int = None,
-        return_raw_response: bool = False,
+        self, group_id: int = None, link_id: int = None, return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param group_id: - Community ID.
@@ -703,9 +695,7 @@ class Groups(Category):
         extended: typing.Optional[BaseBoolInt] = None,
         subcategories: typing.Optional[BaseBoolInt] = None,
         return_raw_response: bool = False,
-    ) -> typing.Union[
-        dict, GroupsGetCatalogInfoResponse, GroupsGetCatalogInfoExtendedResponse
-    ]:
+    ) -> typing.Union[dict, GroupsGetCatalogInfoResponse, GroupsGetCatalogInfoExtendedResponse]:
         """
         :param extended: - 1 – to return communities count and three communities for preview. By default: 0.
         :param subcategories: - 1 – to return subcategories info. By default: 0.
@@ -910,10 +900,7 @@ class Groups(Category):
         return result
 
     async def invite(
-        self,
-        group_id: int = None,
-        user_id: int = None,
-        return_raw_response: bool = False,
+        self, group_id: int = None, user_id: int = None, return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param group_id: - Community ID.
@@ -1002,10 +989,7 @@ class Groups(Category):
         return result
 
     async def remove_user(
-        self,
-        group_id: int = None,
-        user_id: int = None,
-        return_raw_response: bool = False,
+        self, group_id: int = None, user_id: int = None, return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param group_id: - Community ID.

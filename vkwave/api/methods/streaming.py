@@ -1,4 +1,5 @@
 from vkwave.types.responses import *
+
 from ._category import Category
 from ._utils import get_params
 
@@ -22,9 +23,7 @@ class Streaming(Category):
         return result
 
     async def set_settings(
-        self,
-        monthly_tier: typing.Optional[str] = None,
-        return_raw_response: bool = False,
+        self, monthly_tier: typing.Optional[str] = None, return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param monthly_tier:

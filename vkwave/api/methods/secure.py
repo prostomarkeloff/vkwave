@@ -1,4 +1,5 @@
 from vkwave.types.responses import *
+
 from ._category import Category
 from ._utils import get_params
 
@@ -188,10 +189,7 @@ class Secure(Category):
         return result
 
     async def send_s_m_s_notification(
-        self,
-        user_id: int = None,
-        message: BaseBoolInt = None,
-        return_raw_response: bool = False,
+        self, user_id: int = None, message: BaseBoolInt = None, return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param user_id: - ID of the user to whom SMS notification is sent. The user shall allow the application to send him/her notifications (, +1).

@@ -1,4 +1,5 @@
 from vkwave.types.responses import *
+
 from ._category import Category
 from ._utils import get_params
 
@@ -127,10 +128,7 @@ class Market(Category):
         return result
 
     async def delete(
-        self,
-        owner_id: int = None,
-        item_id: int = None,
-        return_raw_response: bool = False,
+        self, owner_id: int = None, item_id: int = None, return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - ID of an item owner community.
@@ -149,10 +147,7 @@ class Market(Category):
         return result
 
     async def delete_album(
-        self,
-        owner_id: int = None,
-        album_id: int = None,
-        return_raw_response: bool = False,
+        self, owner_id: int = None, album_id: int = None, return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - ID of an collection owner community.
@@ -171,10 +166,7 @@ class Market(Category):
         return result
 
     async def delete_comment(
-        self,
-        owner_id: int = None,
-        comment_id: int = None,
-        return_raw_response: bool = False,
+        self, owner_id: int = None, comment_id: int = None, return_raw_response: bool = False,
     ) -> typing.Union[dict, MarketDeleteCommentResponse]:
         """
         :param owner_id: - identifier of an item owner community, "Note that community id in the 'owner_id' parameter should be negative number. For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community "
@@ -573,10 +565,7 @@ class Market(Category):
         return result
 
     async def restore(
-        self,
-        owner_id: int = None,
-        item_id: int = None,
-        return_raw_response: bool = False,
+        self, owner_id: int = None, item_id: int = None, return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - ID of an item owner community.
@@ -595,10 +584,7 @@ class Market(Category):
         return result
 
     async def restore_comment(
-        self,
-        owner_id: int = None,
-        comment_id: int = None,
-        return_raw_response: bool = False,
+        self, owner_id: int = None, comment_id: int = None, return_raw_response: bool = False,
     ) -> typing.Union[dict, MarketRestoreCommentResponse]:
         """
         :param owner_id: - identifier of an item owner community, "Note that community id in the 'owner_id' parameter should be negative number. For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community "

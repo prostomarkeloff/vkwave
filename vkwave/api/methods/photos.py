@@ -1,4 +1,5 @@
 from vkwave.types.responses import *
+
 from ._category import Category
 from ._utils import get_params
 
@@ -509,9 +510,7 @@ class Photos(Category):
         extended: typing.Optional[BaseBoolInt] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
         return_raw_response: bool = False,
-    ) -> typing.Union[
-        dict, PhotosGetCommentsResponse, PhotosGetCommentsExtendedResponse
-    ]:
+    ) -> typing.Union[dict, PhotosGetCommentsResponse, PhotosGetCommentsExtendedResponse]:
         """
         :param owner_id: - ID of the user or community that owns the photo.
         :param photo_id: - Photo ID.
@@ -587,9 +586,7 @@ class Photos(Category):
         return result
 
     async def get_messages_upload_server(
-        self,
-        peer_id: typing.Optional[BaseBoolInt] = None,
-        return_raw_response: bool = False,
+        self, peer_id: typing.Optional[BaseBoolInt] = None, return_raw_response: bool = False,
     ) -> typing.Union[dict, PhotosGetMessagesUploadServerResponse]:
         """
         :param peer_id: - Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'Chat ID', e.g. '2000000001'. For community: '- Community ID', e.g. '-12345'. "
@@ -728,9 +725,7 @@ class Photos(Category):
         extended: typing.Optional[BaseBoolInt] = None,
         sort: typing.Optional[BaseBoolInt] = None,
         return_raw_response: bool = False,
-    ) -> typing.Union[
-        dict, PhotosGetUserPhotosResponse, PhotosGetUserPhotosExtendedResponse
-    ]:
+    ) -> typing.Union[dict, PhotosGetUserPhotosResponse, PhotosGetUserPhotosExtendedResponse]:
         """
         :param user_id: - User ID.
         :param offset: - Offset needed to return a specific subset of photos. By default, '0'.

@@ -1,4 +1,5 @@
 from vkwave.types.responses import *
+
 from ._category import Category
 from ._utils import get_params
 
@@ -41,10 +42,7 @@ class Stats(Category):
         return result
 
     async def get_post_reach(
-        self,
-        owner_id: str = None,
-        post_id: BaseBoolInt = None,
-        return_raw_response: bool = False,
+        self, owner_id: str = None, post_id: BaseBoolInt = None, return_raw_response: bool = False,
     ) -> typing.Union[dict, StatsGetPostReachResponse]:
         """
         :param owner_id: - post owner community id. Specify with "-" sign.

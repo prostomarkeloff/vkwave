@@ -2,7 +2,7 @@ import json
 import typing
 from abc import ABC, abstractmethod
 from io import BytesIO
-from typing import TypeVar, Generic, BinaryIO, List
+from typing import BinaryIO, Generic, List, TypeVar
 
 from vkwave.api.methods import APIOptionsRequestContext
 from vkwave.bots.core.types.json_types import JSONDecoder

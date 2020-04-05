@@ -1,4 +1,5 @@
 from vkwave.types.responses import *
+
 from ._category import Category
 from ._utils import get_params
 
@@ -64,9 +65,7 @@ class Users(Category):
         count: typing.Optional[int] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
         return_raw_response: bool = False,
-    ) -> typing.Union[
-        dict, UsersGetSubscriptionsResponse, UsersGetSubscriptionsExtendedResponse
-    ]:
+    ) -> typing.Union[dict, UsersGetSubscriptionsResponse, UsersGetSubscriptionsExtendedResponse]:
         """
         :param user_id: - User ID.
         :param extended: - '1' — to return a combined list of users and communities, '0' — to return separate lists of users and communities (default)
