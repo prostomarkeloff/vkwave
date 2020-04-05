@@ -14,7 +14,7 @@ class ForWhat(Enum):
     FOR_USER_IN_CHAT = auto()  # default
 
 
-def create_state_id(event: BaseEvent, for_what: ForWhat) -> StateId:
+def create_state_id(event: BaseEvent, for_what: ForWhat = ForWhat.FOR_USER_IN_CHAT) -> StateId:
     res: str
 
     template = "__vkwave_{for_what}_{peer_id}_{from_id}__"
