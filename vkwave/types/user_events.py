@@ -226,7 +226,7 @@ class ChangedUnreadDialogsCountModel(BaseUserEvent):
     object: ChangedUnreadDialogsCountEventObject = pydantic.Field(None)
 
 
-class EventId:
+class EventId(enum.Enum):
     MESSAGE_EVENT = (3, 4, 5, 18)
     SET_FLAGS = 2
     READ_INCOMING_MESSAGES = 6
