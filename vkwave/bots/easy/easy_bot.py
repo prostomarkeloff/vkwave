@@ -65,11 +65,11 @@ class SimpleLongPollBot:
         self.command_filter = CommandsFilter
         self.regex_filter = RegexFilter
 
-    async def _run(self):
+    async def run(self):
         await self.dispatcher.cache_potential_tokens()
         await self._lp.start()
 
-    def run(self, loop: asyncio.AbstractEventLoop = None):
+    def run_forever(self, loop: asyncio.AbstractEventLoop = None):
         loop = loop or asyncio.get_event_loop()
-        loop.create_task(self._run())
+        loop.create_task(self.run())
         loop.run_forever()
