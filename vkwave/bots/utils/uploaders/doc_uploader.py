@@ -1,3 +1,4 @@
+import typing
 from abc import ABC
 from typing import BinaryIO
 
@@ -16,7 +17,7 @@ class DocUploaderMixin(BaseUploader[DocsSaveResponseModel], ABC):
         # really dirty hack
         # but it works
         if not hasattr(file_data, "name"):
-            setattr(file_data, "name", "Document.jpg")  # lol
+            setattr(file_data, "name", "Document.jpg")
 
         upload_data = self.json_deserialize(
             await self.client.request_text(
@@ -30,7 +31,7 @@ class DocUploaderMixin(BaseUploader[DocsSaveResponseModel], ABC):
         doc_save = (await self.api_context.docs.save(file=upload_data["file"])).response
         return doc_save
 
-    def attachment_name(self, doc: DocsSaveResponseModel) -> str:
+    def attachment_name(self, doc: DocsSaveResponseModel) -> typing.Union[str, typing.NoReturn]:
         if not doc.type:
             raise TypeError("Invalid document type")
 

@@ -18,8 +18,7 @@ class FilterCaster(DefaultCaster[BaseFilter]):
         if iscoroutinefunction(something) or isawaitable(something):
             filter = AsyncFuncFilter(something)
             return filter
-
-        elif isfunction(something):
+        if isfunction(something):
             filter = SyncFuncFilter(something)
             return filter
 

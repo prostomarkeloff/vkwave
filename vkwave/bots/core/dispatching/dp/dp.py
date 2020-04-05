@@ -54,7 +54,10 @@ class Dispatcher:
         else:
             revent.raw_event = cast(list, revent.raw_event)
             obj = user_get_event_object(revent.raw_event)
+
+            # TODO: fix it
             user_id = obj.peer_id
+
             token = await self.token_storage.get_token(UserId(user_id))
             event = UserEvent(obj, self.api.with_token(token))
 

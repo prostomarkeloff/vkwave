@@ -1,3 +1,4 @@
+import typing
 from abc import ABC, abstractmethod
 from typing import Awaitable, Callable, NewType
 
@@ -50,16 +51,14 @@ class OrFilter(BaseFilter):
         self.funcs = sfilters
 
     async def check(self, event: BaseEvent) -> FilterResult:
-        res: bool = True
+        res: typing.List[bool] = []
         for func in self.funcs:
             if await func.check(event):
-                res = True
-                break
-            else:
-                res = False
-                break
+                res.append(True)
+                continue
+            res.append(False)
 
-        return FilterResult(res)
+        return FilterResult(any(res))
 
 
 class SyncFuncFilter(BaseFilter):
