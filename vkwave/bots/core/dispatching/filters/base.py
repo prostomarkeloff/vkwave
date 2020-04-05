@@ -51,14 +51,11 @@ class OrFilter(BaseFilter):
         self.funcs = sfilters
 
     async def check(self, event: BaseEvent) -> FilterResult:
-        res: typing.List[bool] = []
         for func in self.funcs:
             if await func.check(event):
-                res.append(True)
-                continue
-            res.append(False)
+                return FilterResult(True)
 
-        return FilterResult(any(res))
+        return FilterResult(False)
 
 
 class SyncFuncFilter(BaseFilter):
