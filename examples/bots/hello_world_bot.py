@@ -8,4 +8,4 @@ def handle(_) -> str:
     return "Hello world!"
 
 
-bot.run()
+bot.run_forever()

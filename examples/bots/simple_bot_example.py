@@ -1,4 +1,4 @@
-from vkwave.bots.easy import SimpleLongPollBot
+from vkwave.bots.easy import SimpleLongPollBot, TaskManager
 
 
 bot = SimpleLongPollBot(tokens="MyToken", group_id=123456789)
@@ -27,4 +27,9 @@ async def start(event: bot.BaseEvent):
     )
 
 
-bot.run()
+bot.run_forever()
+
+# or
+# task_manager = TaskManager()
+# task_manager.add_task(bot.run)
+# task_manager.run()

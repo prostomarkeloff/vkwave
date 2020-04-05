@@ -4,7 +4,7 @@
 
 
 ```python
-from vkwave.bots.easy import SimpleLongPollBot
+from vkwave.bots.easy.easy_bot import SimpleLongPollBot
 
 bot = SimpleLongPollBot(tokens="MyToken", group_id=123456789)
 
@@ -12,7 +12,8 @@ bot = SimpleLongPollBot(tokens="MyToken", group_id=123456789)
 def handle(_) -> str:
     return "Hello world!"
 
-bot.run()
+bot.run_forever()
+
 ```
 
 [Русская версия](https://github.com/fscdev/vkwave/blob/master/readme_ru.md)
