@@ -59,6 +59,6 @@ nav:
       - types/index.md
   - HTTP:
       - http/index.md
-  Build reports:
+  - Build reports:
     - Tests result: /reports/tests
     - mypy results: /reports/typechecking
