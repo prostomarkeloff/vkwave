@@ -1,4 +1,5 @@
 import asyncio
+import typing
 
 from vkwave.bots.core.dispatching.events.base import BaseEvent
 from vkwave.api.methods import API
@@ -21,10 +22,14 @@ from vkwave.bots.core.dispatching.filters.builtin import (
 
 
 class _APIContextManager:
-    def __init__(self, token: str):
+    def __init__(self, tokens: typing.Union[str, typing.List[str]]):
         self.client = AIOHTTPClient()
-        self.token = BotSyncSingleToken(Token(token))
-        self.api = API(clients=self.client, tokens=self.token)
+        self.tokens = (
+            BotSyncSingleToken(Token(tokens))
+            if isinstance(tokens, str)
+            else [BotSyncSingleToken(Token(token)) for token in tokens]
+        )
+        self.api = API(clients=self.client, tokens=self.tokens)
 
     async def __aenter__(self):
         return self.api.get_context()
@@ -40,10 +45,10 @@ def create_api_session_aiohttp(token: str) -> _APIContextManager:
     return _APIContextManager(token)
 
 
-class SimpleBot:
-    def __init__(self, token: str, group_id: int):
+class SimpleLongPollBot:
+    def __init__(self, tokens: typing.Union[str, typing.List[str]], group_id: int):
         self.BaseEvent = BaseEvent
-        self.api_session = create_api_session_aiohttp(token)
+        self.api_session = create_api_session_aiohttp(tokens)
         self.api_context = self.api_session.api.get_context()
         self._lp = BotLongpoll(self.api_context, BotLongpollData(group_id))
         self._token_storage = TokenStorage[GroupId]()
