@@ -2,6 +2,19 @@
 
 > It's time to carry out vk_api & vkbottle. VKWave is here.
 
+
+```python
+from vkwave.bots.easy import SimpleBot
+
+bot = SimpleBot(token="MyToken", group_id=123456789)
+
+@bot.message_handler()
+def handle(_) -> str:
+    return "Hello world!"
+
+bot.run()
+```
+
 [Русская версия](https://github.com/fscdev/vkwave/blob/master/readme_ru.md)
 # What is it?
 
