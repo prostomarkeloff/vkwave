@@ -16,10 +16,10 @@ def get_subs_names(api: APIOptionsRequestContext, group_id: int):
     subscribers = api.groups.getMembers(group_id=group_id)
     subscribers = subscribers.items
 
-    while subscribers:
-        subscriber_id = subscribers.pop()
-        subscriber_data = api.users.get(user_ids=subscriber_id)
+    for sub_id in subscribers:
+        subscriber_data = api.users.get(user_ids=sub_id)
         subs_names.append(subscriber_data[0].first_name)
+
     return subs_names
 
 
@@ -34,12 +34,12 @@ async def simple(event: bot.BaseEvent):
     print(get_subs_names.build(api=event.api_ctx, group_id=check_group))
     """
     var subs_names=[];
-    var subscribers=API.groups.getMembers({group_id:191949777});
+    var subscribers=API.groups.getMembers({group_id:1});
     var subscribers=subscribers.items;
-    while(subscribers){
-            var subscriber_id=subscribers.pop();
-            var subscriber_data=API.users.get({user_ids:subscriber_id});
-            subs_names.push(subscriber_data[0].first_name);
+    while(subscribers.length > 0){
+        var sub_id=subscribers.pop();
+        var subscriber_data=API.users.get({user_ids:sub_id});
+        subs_names.push(subscriber_data[0].first_name);
     };
     return subs_names;
     """
