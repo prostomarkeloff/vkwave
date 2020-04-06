@@ -16,6 +16,7 @@ from .auth import Auth
 from .board import Board
 from .database import Database
 from .docs import Docs
+from .execute import Execute
 from .fave import Fave
 from .friends import Friends
 from .gifts import Gifts
@@ -96,6 +97,7 @@ class APIOptionsRequestContext:
         self.board = Board("board", self)
         self.database = Database("database", self)
         self.docs = Docs("docs", self)
+        self.execute = Execute("execute", self)
         self.fave = Fave("fave", self)
         self.friends = Friends("friends", self)
         self.gifts = Gifts("gifts", self)

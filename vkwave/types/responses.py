@@ -4033,3 +4033,7 @@ class StoriesSearchResponseModel(pydantic.BaseModel):
     groups: typing.List[GroupsGroup] = pydantic.Field(
         None, description="",
     )
+
+
+class ExecuteResponse(pydantic.BaseModel):
+    response: int = pydantic.Field(..., description="")

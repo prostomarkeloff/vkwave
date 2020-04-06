@@ -2,6 +2,7 @@ import ast
 import inspect
 import types
 
+from vkwave.api.methods import APIOptionsRequestContext
 from vkwave.bots.vkscript.converter import Scope
 from vkwave.bots.vkscript.converter import VKScriptConverter
 
@@ -46,10 +47,9 @@ class Execute:
             return await self._preprocessor(*args, **kwargs)
         return await self.execute(*args, **kwargs)
 
-    async def execute(self, *args, **kwargs):
-        vk = _get_vk().get_current()
+    async def execute(self, api: APIOptionsRequestContext, *args, **kwargs):
         code = self.build(*args, **kwargs)
-        response = await vk.api_request("execute", {"code": code})
+        response = await api.execute(code=code)
         return response
 
     e = execute
