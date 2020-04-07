@@ -1,6 +1,6 @@
 from vkwave.api.methods import APIOptionsRequestContext
 from vkwave.bots.easy import SimpleLongPollBot, TaskManager
-from vkwave.bots.vkscript import execute
+from vkwave.vkscript import execute
 from vkwave.types.responses import ExecuteResponse
 
 bot = SimpleLongPollBot(
