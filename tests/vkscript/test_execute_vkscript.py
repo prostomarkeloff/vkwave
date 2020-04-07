@@ -2,7 +2,7 @@ import string
 
 import pytest
 
-from vkwave.bots.vkscript import execute
+from vkwave.vkscript import execute
 
 TEST_STRING = string.printable
 
