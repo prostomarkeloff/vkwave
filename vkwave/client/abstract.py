@@ -9,9 +9,8 @@ from .types import MethodName
 
 class AbstractAPIClient(ABC):
     @property
-    @abstractmethod
     def http_client(self) -> AbstractHTTPClient:
-        ...
+        raise NotImplementedError("This client probably doesn't implement 'http_client' property.")
 
     @abstractmethod
     def set_context_factory(self, factory: AbstractFactory) -> None:
