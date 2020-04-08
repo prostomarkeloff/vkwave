@@ -4,7 +4,6 @@ from vkwave.client.abstract import AbstractAPIClient
 from vkwave.client.context import RequestContext, Signal
 from vkwave.client.factory import AbstractFactory, DefaultFactory
 from vkwave.client.types import MethodName
-from vkwave.http import AbstractHTTPClient, AIOHTTPClient
 
 
 class SomeAPIException(Exception):
@@ -24,11 +23,6 @@ def client():
     class TestAPIClient(AbstractAPIClient):
         def __init__(self):
             self._factory = DefaultFactory()
-            self._http_client = AIOHTTPClient()
-
-        @property
-        def http_client(self) -> AbstractHTTPClient:
-            return self._http_client
 
         @property
         def context_factory(self) -> AbstractFactory:
@@ -101,3 +95,9 @@ async def test_signals(client):
     assert ctx.result.exception is not None
     assert ctx.result.exception_data["captured"] == "by signal"
     assert ctx.result.data is None
+
+@pytest.mark.asyncio
+async def test_no_http_client(client):
+    with pytest.raises(NotImplementedError):
+        client.http_client
+
