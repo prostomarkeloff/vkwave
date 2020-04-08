@@ -3,7 +3,6 @@ import string
 
 from ..converter import VKScriptConverter
 
-
 OPS = {
     ast.Add: "+",
     ast.Sub: "-",

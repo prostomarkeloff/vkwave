@@ -1,5 +1,6 @@
-from ._category import Category
 from vkwave.types.responses import ExecuteResponse
+
+from ._category import Category
 
 
 class Execute(Category):
