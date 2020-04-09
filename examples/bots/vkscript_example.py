@@ -24,7 +24,7 @@ def get_subs_names(api: APIOptionsRequestContext, group_id: int):
 
 
 @bot.message_handler(bot.text_filter("follow"))
-async def simple(event: bot.BaseEvent):
+async def simple(event: bot.SimpleEvent):
     """
     Get name of each subscriber
     """
@@ -46,9 +46,7 @@ async def simple(event: bot.BaseEvent):
 
     execute_data: ExecuteResponse = await get_subs_names(api=event.api_ctx, group_id=check_group)
     print(execute_data)
-    await event.api_ctx.messages.send(
-        peer_id=event.object.object.message.peer_id, message=execute_data.response, random_id=0,
-    )
+    await event.answer(execute_data.response)
 
 
 tm = TaskManager()
