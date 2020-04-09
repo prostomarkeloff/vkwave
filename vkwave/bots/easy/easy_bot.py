@@ -49,7 +49,7 @@ def create_api_session_aiohttp(token: str) -> _APIContextManager:
     return _APIContextManager(token)
 
 
-class SimpleEvent(BotEvent):
+class SimpleBotEvent(BotEvent):
     def __init__(self, event: BotEvent):
         super().__init__(event.object, event.api_ctx)
 
@@ -88,11 +88,11 @@ class SimpleEvent(BotEvent):
         )
 
 
-class SimpleLongPollGroupBot:
+class SimpleLongPollBot:
     def __init__(
         self, tokens: typing.Union[str, typing.List[str]], group_id: int,
     ):
-        self.SimpleEvent = SimpleEvent
+        self.SimpleBotEvent = SimpleBotEvent
         self.api_session = create_api_session_aiohttp(tokens)
         self.api_context = self.api_session.api.get_context()
         self._lp = BotLongpoll(self.api_context, BotLongpollData(group_id))
@@ -115,7 +115,7 @@ class SimpleLongPollGroupBot:
             self.func = func
 
         async def execute(self, event: BotEvent) -> typing.Any:
-            new_event = SimpleEvent(event)
+            new_event = SimpleBotEvent(event)
             return await self.func(new_event)
 
     def message_handler(self, *filters: BaseFilter):
@@ -145,10 +145,10 @@ class ClonesBot:
     Create many bots with the same functionality
     """
 
-    def __init__(self, base_bot: SimpleLongPollGroupBot, *clones: SimpleLongPollGroupBot):
+    def __init__(self, base_bot: SimpleLongPollBot, *clones: SimpleLongPollBot):
         self.base_bot = base_bot
         self.router = self.base_bot.router
-        self.clones: typing.Tuple[SimpleLongPollGroupBot] = clones
+        self.clones: typing.Tuple[SimpleLongPollBot] = clones
 
     def run_all_bots(self, loop: typing.Optional[asyncio.AbstractEventLoop] = None):
         loop = loop or asyncio.get_event_loop()

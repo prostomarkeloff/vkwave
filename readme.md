@@ -4,7 +4,7 @@
 
 
 ```python
-from vkwave.bots.easy.easy_bot import SimpleLongPollGroupBot
+from vkwave.bots.easy.easy_bot import SimpleLongPollBot
 
 bot = SimpleLongPollBot(tokens="MyToken", group_id=123456789)
 

@@ -1,2 +1,2 @@
-from .easy_bot import SimpleLongPollGroupBot, ClonesBot
+from .easy_bot import SimpleLongPollBot, ClonesBot
 from .task_manager import TaskManager

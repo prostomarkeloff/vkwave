@@ -1,9 +1,9 @@
 from vkwave.api.methods import APIOptionsRequestContext
-from vkwave.bots.easy import SimpleLongPollGroupBot, TaskManager
+from vkwave.bots.easy import SimpleLongPollBot, TaskManager
 from vkwave.vkscript import execute
 from vkwave.types.responses import ExecuteResponse
 
-bot = SimpleLongPollGroupBot(
+bot = SimpleLongPollBot(
     tokens=["123"],
     group_id=456,
 )
@@ -24,7 +24,7 @@ def get_subs_names(api: APIOptionsRequestContext, group_id: int):
 
 
 @bot.message_handler(bot.text_filter("follow"))
-async def simple(event: bot.SimpleEvent):
+async def simple(event: bot.SimpleBotEvent):
     """
     Get name of each subscriber
     """

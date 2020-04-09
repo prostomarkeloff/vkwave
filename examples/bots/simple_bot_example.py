@@ -1,19 +1,19 @@
-from vkwave.bots.easy import SimpleLongPollGroupBot, TaskManager
+from vkwave.bots.easy import SimpleLongPollBot, TaskManager
 
 
-bot = SimpleLongPollGroupBot(tokens="MyToken", group_id=123456789)
+bot = SimpleLongPollBot(tokens="MyToken", group_id=123456789)
 
 # or if you want do a lot of requests without 'to many requests' errors
 # bot = SimpleLongPollBot(tokens=["MyToken1", "MyToken2", "MyToken3"], group_id=123456789)
 
 
 @bot.message_handler(bot.text_filter("hello"))
-async def simple(event: bot.SimpleEvent):
+async def simple(event: bot.SimpleBotEvent):
     await event.answer("hello from vkwave!")
 
 
 @bot.message_handler(bot.command_filter(commands=["start"]))
-async def start(event: bot.SimpleEvent):
+async def start(event: bot.SimpleBotEvent):
     user_data = (
         await bot.api_context.users.get(user_ids=event.object.object.message.peer_id)
     ).response[0]
