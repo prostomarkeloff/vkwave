@@ -1,9 +1,9 @@
 from vkwave.api.methods import APIOptionsRequestContext
-from vkwave.bots.easy import SimpleLongPollBot, TaskManager
+from vkwave.bots.easy import GroupBot, TaskManager
 from vkwave.vkscript import execute
 from vkwave.types.responses import ExecuteResponse
 
-bot = SimpleLongPollBot(
+bot = GroupBot(
     tokens=["123"],
     group_id=456,
 )

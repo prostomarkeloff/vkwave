@@ -21,7 +21,7 @@ from vkwave.bots.core.tokens.storage import TokenStorage
 from vkwave.bots.core.tokens.types import GroupId
 from vkwave.client.default import AIOHTTPClient
 from vkwave.longpoll.bot import BotLongpoll, BotLongpollData
-from vkwave.types.bot_events import BotEventType, BaseBotEvent
+from vkwave.types.bot_events import BotEventType
 from vkwave.types.objects import BaseBoolInt
 
 
@@ -88,14 +88,10 @@ class SimpleEvent(BotEvent):
         )
 
 
-class SimpleLongPollBot:
+class GroupBot:
     def __init__(
-        self,
-        tokens: typing.Union[str, typing.List[str]],
-        group_id: int,
-        loop: asyncio.AbstractEventLoop = None,
+        self, tokens: typing.Union[str, typing.List[str]], group_id: int,
     ):
-        self.loop = asyncio.get_event_loop() or loop
         self.SimpleEvent = SimpleEvent
         self.api_session = create_api_session_aiohttp(tokens)
         self.api_context = self.api_session.api.get_context()
@@ -138,6 +134,27 @@ class SimpleLongPollBot:
         await self.dispatcher.cache_potential_tokens()
         await self._lp.start()
 
-    def run_forever(self):
-        self.loop.create_task(self.run())
-        self.loop.run_forever()
+    def run_forever(self, loop: asyncio.AbstractEventLoop = None):
+        loop = loop or asyncio.get_event_loop()
+        loop.create_task(self.run())
+        loop.run_forever()
+
+
+class ClonesBot:
+    """
+    Create many bots with same functionality
+    """
+
+    def __init__(self, base_bot: GroupBot, *clones: GroupBot):
+        self.base_bot = base_bot
+        self.router = self.base_bot.router
+        self.clones: typing.Tuple[GroupBot] = clones
+
+    def run_all_bots(self, loop: asyncio.AbstractEventLoop = None):
+        loop = loop or asyncio.get_event_loop()
+        loop.create_task(self.base_bot.run())
+        for clone in self.clones:
+            clone.router.registrar.handlers.extend(self.router.registrar.handlers)
+            clone.router.registrar.handlers = list(set(clone.router.registrar.handlers))
+            loop.create_task(clone.run())
+        loop.run_forever()
