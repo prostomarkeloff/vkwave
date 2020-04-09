@@ -1,5 +1,5 @@
 """
-create many bots with same functionality
+create many bots with the same functionality
 """
 
 from vkwave.bots.easy import SimpleLongPollGroupBot, TaskManager, ClonesBot

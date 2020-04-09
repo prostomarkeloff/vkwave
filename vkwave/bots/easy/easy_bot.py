@@ -2,7 +2,7 @@ import asyncio
 import typing
 
 from vkwave.api.methods import API
-from vkwave.api.token.token import BotSyncSingleToken, Token
+from vkwave.api.token.token import BotSyncSingleToken, Token, BotSyncPoolTokens
 from vkwave.bots.core import BaseFilter
 from vkwave.bots.core.dispatching.dp.dp import Dispatcher
 from vkwave.bots.core.dispatching.events.base import BaseEvent, BotEvent
@@ -31,7 +31,7 @@ class _APIContextManager:
         self.tokens = (
             BotSyncSingleToken(Token(tokens))
             if isinstance(tokens, str)
-            else [BotSyncSingleToken(Token(token)) for token in tokens]
+            else BotSyncPoolTokens([Token(token) for token in tokens])
         )
         self.api = API(clients=self.client, tokens=self.tokens)
 
@@ -142,7 +142,7 @@ class SimpleLongPollGroupBot:
 
 class ClonesBot:
     """
-    Create many bots with same functionality
+    Create many bots with the same functionality
     """
 
     def __init__(self, base_bot: SimpleLongPollGroupBot, *clones: SimpleLongPollGroupBot):
