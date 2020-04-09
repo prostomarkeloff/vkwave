@@ -1,6 +1,6 @@
-from vkwave.bots.easy import GroupBot
+from vkwave.bots.easy import SimpleLongPollGroupBot
 
-bot = GroupBot(tokens="MyToken", group_id=123456789)
+bot = SimpleLongPollGroupBot(tokens="MyToken", group_id=123456789)
 
 
 @bot.message_handler()

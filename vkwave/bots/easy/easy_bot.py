@@ -88,7 +88,7 @@ class SimpleEvent(BotEvent):
         )
 
 
-class GroupBot:
+class SimpleLongPollGroupBot:
     def __init__(
         self, tokens: typing.Union[str, typing.List[str]], group_id: int,
     ):
@@ -134,7 +134,7 @@ class GroupBot:
         await self.dispatcher.cache_potential_tokens()
         await self._lp.start()
 
-    def run_forever(self, loop: asyncio.AbstractEventLoop = None):
+    def run_forever(self, loop: typing.Optional[asyncio.AbstractEventLoop] = None):
         loop = loop or asyncio.get_event_loop()
         loop.create_task(self.run())
         loop.run_forever()
@@ -145,12 +145,12 @@ class ClonesBot:
     Create many bots with same functionality
     """
 
-    def __init__(self, base_bot: GroupBot, *clones: GroupBot):
+    def __init__(self, base_bot: SimpleLongPollGroupBot, *clones: SimpleLongPollGroupBot):
         self.base_bot = base_bot
         self.router = self.base_bot.router
-        self.clones: typing.Tuple[GroupBot] = clones
+        self.clones: typing.Tuple[SimpleLongPollGroupBot] = clones
 
-    def run_all_bots(self, loop: asyncio.AbstractEventLoop = None):
+    def run_all_bots(self, loop: typing.Optional[asyncio.AbstractEventLoop] = None):
         loop = loop or asyncio.get_event_loop()
         loop.create_task(self.base_bot.run())
         for clone in self.clones:

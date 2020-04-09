@@ -1,7 +1,7 @@
-from vkwave.bots.easy import GroupBot, TaskManager
+from vkwave.bots.easy import SimpleLongPollGroupBot, TaskManager
 
 
-bot = GroupBot(tokens="MyToken", group_id=123456789)
+bot = SimpleLongPollGroupBot(tokens="MyToken", group_id=123456789)
 
 # or if you want do a lot of requests without 'to many requests' errors
 # bot = SimpleLongPollBot(tokens=["MyToken1", "MyToken2", "MyToken3"], group_id=123456789)
