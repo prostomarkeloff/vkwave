@@ -26,6 +26,9 @@ class TokenStorage(Generic[T]):
         return self.tokens.get(id_to_check)
 
     async def get_token(self, id_to_check: T) -> AnyABCToken:
-        return self._get_cached(id_to_check) or (
-            await self.get_token_strategy.get_token(id_to_check)
-        )
+        cached = self._get_cached(id_to_check)
+        if cached:
+            return cached
+        token = await self.get_token_strategy.get_token(id_to_check)
+        self.tokens[id_to_check] = token
+        return token
