@@ -1,5 +1,6 @@
 import asyncio
 import typing
+import inspect
 
 from vkwave.api.methods import API
 from vkwave.api.token.token import BotSyncPoolTokens, BotSyncSingleToken, Token
@@ -118,7 +119,9 @@ class SimpleLongPollBot:
 
         async def execute(self, event: BotEvent) -> typing.Any:
             new_event = SimpleBotEvent(event)
-            return await self.func(new_event)
+            if inspect.iscoroutinefunction(self.func):
+                return await self.func(new_event)
+            return self.func(new_event)
 
     def message_handler(self, *filters: BaseFilter):
         def decorator(func: typing.Callable[..., typing.Any]):
