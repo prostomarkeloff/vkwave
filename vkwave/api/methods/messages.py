@@ -1,4 +1,5 @@
 from vkwave.types.responses import *
+
 from ._category import Category
 from ._utils import get_params
 
@@ -27,10 +28,7 @@ class Messages(Category):
         return result
 
     async def allow_messages_from_group(
-        self,
-        group_id: int,
-        return_raw_response: bool = False,
-        key: typing.Optional[str] = None,
+        self, group_id: int, return_raw_response: bool = False, key: typing.Optional[str] = None,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param group_id: - Group ID.
@@ -365,9 +363,7 @@ class Messages(Category):
         fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
         group_id: typing.Optional[int] = None,
     ) -> typing.Union[
-        dict,
-        MessagesGetConversationsByIdResponse,
-        MessagesGetConversationsByIdExtendedResponse,
+        dict, MessagesGetConversationsByIdResponse, MessagesGetConversationsByIdExtendedResponse,
     ]:
         """
         :param peer_ids: - Destination IDs. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "

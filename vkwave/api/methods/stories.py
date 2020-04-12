@@ -1,4 +1,5 @@
 from vkwave.types.responses import *
+
 from ._category import Category
 from ._utils import get_params
 
@@ -159,9 +160,7 @@ class Stories(Category):
         access_key: typing.Optional[str] = None,
         extended: typing.Optional[BaseBoolInt] = None,
         fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
-    ) -> typing.Union[
-        dict, StoriesGetRepliesResponse, StoriesGetRepliesExtendedResponse
-    ]:
+    ) -> typing.Union[dict, StoriesGetRepliesResponse, StoriesGetRepliesExtendedResponse]:
         """
         :param owner_id: - Story owner ID.
         :param story_id: - Story ID.
@@ -242,9 +241,7 @@ class Stories(Category):
         count: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
         extended: typing.Optional[BaseBoolInt] = None,
-    ) -> typing.Union[
-        dict, StoriesGetViewersResponse, StoriesGetViewersExtendedResponse
-    ]:
+    ) -> typing.Union[dict, StoriesGetViewersResponse, StoriesGetViewersExtendedResponse]:
         """
         :param owner_id: - Story owner ID.
         :param story_id: - Story ID.
@@ -328,17 +325,17 @@ class Stories(Category):
         return result
 
     async def search(
-            self,
-            q: str,
-            place_id: typing.Optional[int] = None,
-            latitude: typing.Optional[int] = None,
-            longitude: typing.Optional[int] = None,
-            radius: typing.Optional[int] = None,
-            mentioned_id: typing.Optional[int] = None,
-            count: typing.Optional[int] = None,
-            extended: typing.Optional[BaseBoolInt] = None,
-            fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
-            return_raw_response: bool = False,
+        self,
+        q: str,
+        place_id: typing.Optional[int] = None,
+        latitude: typing.Optional[int] = None,
+        longitude: typing.Optional[int] = None,
+        radius: typing.Optional[int] = None,
+        mentioned_id: typing.Optional[int] = None,
+        count: typing.Optional[int] = None,
+        extended: typing.Optional[BaseBoolInt] = None,
+        fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, StoriesSearchResponseModel]:
 
         params = get_params(locals())

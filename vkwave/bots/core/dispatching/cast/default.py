@@ -1,4 +1,4 @@
-from typing import Optional, Any, Callable, List, TypeVar, cast
+from typing import Any, Callable, List, Optional, TypeVar, cast
 
 from .caster import AbstractCaster
 
@@ -19,4 +19,3 @@ class DefaultCaster(AbstractCaster[IT]):
             if result is not None:
                 return result
         return None
-

@@ -1,4 +1,5 @@
 from vkwave.types.responses import *
+
 from ._category import Category
 from ._utils import get_params
 
@@ -694,9 +695,7 @@ class Groups(Category):
         return_raw_response: bool = False,
         extended: typing.Optional[BaseBoolInt] = None,
         subcategories: typing.Optional[BaseBoolInt] = None,
-    ) -> typing.Union[
-        dict, GroupsGetCatalogInfoResponse, GroupsGetCatalogInfoExtendedResponse
-    ]:
+    ) -> typing.Union[dict, GroupsGetCatalogInfoResponse, GroupsGetCatalogInfoExtendedResponse]:
         """
         :param extended: - 1 – to return communities count and three communities for preview. By default: 0.
         :param subcategories: - 1 – to return subcategories info. By default: 0.

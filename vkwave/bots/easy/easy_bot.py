@@ -2,7 +2,7 @@ import asyncio
 import typing
 
 from vkwave.api.methods import API
-from vkwave.api.token.token import BotSyncSingleToken, Token, BotSyncPoolTokens
+from vkwave.api.token.token import BotSyncPoolTokens, BotSyncSingleToken, Token
 from vkwave.bots.core import BaseFilter
 from vkwave.bots.core.dispatching.dp.dp import Dispatcher
 from vkwave.bots.core.dispatching.events.base import BaseEvent, BotEvent

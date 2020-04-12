@@ -1,4 +1,5 @@
 from vkwave.types.responses import *
+
 from ._category import Category
 from ._utils import get_params
 
@@ -114,10 +115,7 @@ class Pretty(Category):
         return result
 
     async def cards_get_by_id(
-        self,
-        owner_id: int,
-        card_ids: typing.List[int],
-        return_raw_response: bool = False,
+        self, owner_id: int, card_ids: typing.List[int], return_raw_response: bool = False,
     ) -> typing.Union[dict, PrettyCardsGetByIdResponse]:
         """
         :param owner_id:

@@ -1,4 +1,5 @@
 from vkwave.types.responses import *
+
 from ._category import Category
 from ._utils import get_params
 
@@ -477,11 +478,7 @@ class Ads(Category):
         return result
 
     async def get_posts_reach(
-        self,
-        account_id: int,
-        ids_type: str,
-        ids: BaseBoolInt,
-        return_raw_response: bool = False,
+        self, account_id: int, ids_type: str, ids: BaseBoolInt, return_raw_response: bool = False,
     ) -> typing.Union[dict, AdsGetPostsReachResponse]:
         """
         :param account_id: - Advertising account ID.
@@ -642,10 +639,7 @@ class Ads(Category):
         return result
 
     async def get_upload_u_r_l(
-        self,
-        ad_format: int,
-        return_raw_response: bool = False,
-        icon: typing.Optional[int] = None,
+        self, ad_format: int, return_raw_response: bool = False, icon: typing.Optional[int] = None,
     ) -> typing.Union[dict, AdsGetUploadURLResponse]:
         """
         :param ad_format: - Ad format: *1 — image and text,, *2 — big image,, *3 — exclusive format,, *4 — community, square image,, *7 — special app format.
