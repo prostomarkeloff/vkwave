@@ -327,6 +327,8 @@ _changed_unread_dialogs_count = {
     0: "event_id",
     1: "count",
     2: "count_with_notifications",
+    3: "extra",
+    4: "extra2",
 }
 
 _events_dict = {

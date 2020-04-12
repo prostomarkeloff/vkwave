@@ -8,23 +8,17 @@ bot = SimpleLongPollBot(tokens="MyToken", group_id=123456789)
 
 
 @bot.message_handler(bot.text_filter("hello"))
-async def simple(event: bot.BaseEvent):
-    await event.api_ctx.messages.send(
-        peer_id=event.object.object.message.peer_id, message="hello from vkwave!", random_id=0,
-    )
+async def simple(event: bot.SimpleBotEvent):
+    await event.answer("hello from vkwave!")
 
 
 @bot.message_handler(bot.command_filter(commands=["start"]))
-async def start(event: bot.BaseEvent):
+async def start(event: bot.SimpleBotEvent):
     user_data = (
         await bot.api_context.users.get(user_ids=event.object.object.message.peer_id)
     ).response[0]
     user_name = user_data.first_name
-    await event.api_ctx.messages.send(
-        peer_id=event.object.object.message.peer_id,
-        message=f"You just started, {user_name}",
-        random_id=0,
-    )
+    await event.answer(f"You just started, {user_name}")
 
 
 bot.run_forever()
