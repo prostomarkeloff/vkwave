@@ -15,6 +15,7 @@ from vkwave.bots.core.dispatching.filters.builtin import (
     RegexFilter,
     TextFilter,
 )
+from vkwave.bots.fsm.filters import StateFilter
 from vkwave.bots.core.dispatching.handler.callback import BaseCallback
 from vkwave.bots.core.dispatching.router.router import DefaultRouter
 from vkwave.bots.core.tokens.storage import TokenStorage
@@ -109,6 +110,7 @@ class SimpleLongPollBot:
         self.chat_action_filter = ChatActionFilter
         self.command_filter = CommandsFilter
         self.regex_filter = RegexFilter
+        self.state_filter = StateFilter
 
     class SimpleBotCallback(BaseCallback):
         def __init__(self, func: typing.Callable[[BaseEvent], typing.Awaitable[typing.Any]]):
