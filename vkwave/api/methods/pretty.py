@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 from ._utils import get_params
 
@@ -7,14 +6,14 @@ from ._utils import get_params
 class Pretty(Category):
     async def cards_create(
         self,
-        owner_id: int = None,
-        photo: str = None,
-        title: str = None,
-        link: str = None,
+        owner_id: int,
+        photo: str,
+        title: str,
+        link: str,
+        return_raw_response: bool = False,
         price: typing.Optional[str] = None,
         price_old: typing.Optional[str] = None,
         button: typing.Optional[str] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, PrettyCardsCreateResponse]:
         """
         :param owner_id:
@@ -38,7 +37,7 @@ class Pretty(Category):
         return result
 
     async def cards_delete(
-        self, owner_id: int = None, card_id: int = None, return_raw_response: bool = False,
+        self, owner_id: int, card_id: int, return_raw_response: bool = False,
     ) -> typing.Union[dict, PrettyCardsDeleteResponse]:
         """
         :param owner_id:
@@ -58,15 +57,15 @@ class Pretty(Category):
 
     async def cards_edit(
         self,
-        owner_id: int = None,
-        card_id: int = None,
+        owner_id: int,
+        card_id: int,
+        return_raw_response: bool = False,
         photo: typing.Optional[str] = None,
         title: typing.Optional[str] = None,
         link: typing.Optional[str] = None,
         price: typing.Optional[str] = None,
         price_old: typing.Optional[str] = None,
         button: typing.Optional[str] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, PrettyCardsEditResponse]:
         """
         :param owner_id:
@@ -92,10 +91,10 @@ class Pretty(Category):
 
     async def cards_get(
         self,
-        owner_id: int = None,
+        owner_id: int,
+        return_raw_response: bool = False,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, PrettyCardsGetResponse]:
         """
         :param owner_id:
@@ -116,8 +115,8 @@ class Pretty(Category):
 
     async def cards_get_by_id(
         self,
-        owner_id: int = None,
-        card_ids: typing.List[int] = None,
+        owner_id: int,
+        card_ids: typing.List[int],
         return_raw_response: bool = False,
     ) -> typing.Union[dict, PrettyCardsGetByIdResponse]:
         """

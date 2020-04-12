@@ -1,12 +1,11 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 from ._utils import get_params
 
 
 class Pages(Category):
     async def clear_cache(
-        self, url: str = None, return_raw_response: bool = False,
+        self, url: str, return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param url: - Address of the page where you need to refesh the cached version
@@ -25,6 +24,7 @@ class Pages(Category):
 
     async def get(
         self,
+        return_raw_response: bool = False,
         owner_id: typing.Optional[int] = None,
         page_id: typing.Optional[int] = None,
         global_: typing.Optional[BaseBoolInt] = None,
@@ -32,7 +32,6 @@ class Pages(Category):
         title: typing.Optional[str] = None,
         need_source: typing.Optional[bool] = None,
         need_html: typing.Optional[BaseBoolInt] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, PagesGetResponse]:
         """
         :param owner_id: - Page owner ID.
@@ -57,10 +56,10 @@ class Pages(Category):
 
     async def get_history(
         self,
-        page_id: int = None,
+        page_id: int,
+        return_raw_response: bool = False,
         group_id: typing.Optional[int] = None,
         user_id: typing.Optional[int] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, PagesGetHistoryResponse]:
         """
         :param page_id: - Wiki page ID.
@@ -80,7 +79,7 @@ class Pages(Category):
         return result
 
     async def get_titles(
-        self, group_id: typing.Optional[int] = None, return_raw_response: bool = False,
+        self, return_raw_response: bool = False, group_id: typing.Optional[int] = None,
     ) -> typing.Union[dict, PagesGetTitlesResponse]:
         """
         :param group_id: - ID of the community that owns the wiki page.
@@ -99,11 +98,11 @@ class Pages(Category):
 
     async def get_version(
         self,
-        version_id: int = None,
+        version_id: int,
+        return_raw_response: bool = False,
         group_id: typing.Optional[int] = None,
         user_id: typing.Optional[int] = None,
         need_html: typing.Optional[BaseBoolInt] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, PagesGetVersionResponse]:
         """
         :param version_id:
@@ -125,9 +124,9 @@ class Pages(Category):
 
     async def parse_wiki(
         self,
-        text: str = None,
-        group_id: typing.Optional[int] = None,
+        text: str,
         return_raw_response: bool = False,
+        group_id: typing.Optional[int] = None,
     ) -> typing.Union[dict, PagesParseWikiResponse]:
         """
         :param text: - Text of the wiki page.
@@ -147,12 +146,12 @@ class Pages(Category):
 
     async def save(
         self,
+        return_raw_response: bool = False,
         text: typing.Optional[str] = None,
         page_id: typing.Optional[int] = None,
         group_id: typing.Optional[int] = None,
         user_id: typing.Optional[int] = None,
         title: typing.Optional[str] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, PagesSaveResponse]:
         """
         :param text: - Text of the wiki page in wiki-format.
@@ -175,12 +174,12 @@ class Pages(Category):
 
     async def save_access(
         self,
-        page_id: int = None,
+        page_id: int,
+        return_raw_response: bool = False,
         group_id: typing.Optional[int] = None,
         user_id: typing.Optional[int] = None,
         view: typing.Optional[BaseBoolInt] = None,
         edit: typing.Optional[BaseBoolInt] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, PagesSaveAccessResponse]:
         """
         :param page_id: - Wiki page ID.

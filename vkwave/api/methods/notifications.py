@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 from ._utils import get_params
 
@@ -7,12 +6,12 @@ from ._utils import get_params
 class Notifications(Category):
     async def get(
         self,
+        return_raw_response: bool = False,
         count: typing.Optional[int] = None,
         start_from: typing.Optional[str] = None,
         filters: typing.Optional[typing.List[str]] = None,
         start_time: typing.Optional[int] = None,
         end_time: typing.Optional[int] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, NotificationsGetResponse]:
         """
         :param count: - Number of notifications to return.
@@ -52,11 +51,11 @@ class Notifications(Category):
 
     async def send_message(
         self,
-        user_ids: typing.List[int] = None,
-        message: str = None,
+        user_ids: typing.List[int],
+        message: str,
+        return_raw_response: bool = False,
         fragment: typing.Optional[str] = None,
         group_id: typing.Optional[int] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, NotificationsSendMessageResponse]:
         """
         :param user_ids:

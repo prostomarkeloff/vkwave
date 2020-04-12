@@ -2,7 +2,6 @@
 
 Wrapper over vkwave.bots for faster bot creating.
 
-
 ```python
 from vkwave.bots.easy.easy_bot import SimpleLongPollBot
 
@@ -16,6 +15,19 @@ bot.run_forever()
 ```
 
 **vkwave.bots.easy** supports:
+
+- Simple session
+
+
+```python
+from vkwave.bots.easy.easy_bot import create_api_session_aiohttp
+
+api_session = create_api_session_aiohttp("TOKEN")
+
+# api_session.api.get_context().users.get()
+```
+
+
  - Tokens pool
 
 ```python

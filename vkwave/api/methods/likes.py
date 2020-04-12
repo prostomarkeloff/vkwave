@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 from ._utils import get_params
 
@@ -7,11 +6,11 @@ from ._utils import get_params
 class Likes(Category):
     async def add(
         self,
-        type: str = None,
-        owner_id: typing.Optional[int] = None,
-        item_id: int = None,
-        access_key: typing.Optional[str] = None,
+        type: str,
+        item_id: int,
         return_raw_response: bool = False,
+        owner_id: typing.Optional[int] = None,
+        access_key: typing.Optional[str] = None,
     ) -> typing.Union[dict, LikesAddResponse]:
         """
         :param type: - Object type: 'post' — post on user or community wall, 'comment' — comment on a wall post, 'photo' — photo, 'audio' — audio, 'video' — video, 'note' — note, 'photo_comment' — comment on the photo, 'video_comment' — comment on the video, 'topic_comment' — comment in the discussion, 'sitepage' — page of the site where the [vk.com/dev/Like|Like widget] is installed
@@ -33,10 +32,10 @@ class Likes(Category):
 
     async def delete(
         self,
-        type: str = None,
-        owner_id: typing.Optional[int] = None,
-        item_id: int = None,
+        type: str,
+        item_id: int,
         return_raw_response: bool = False,
+        owner_id: typing.Optional[int] = None,
     ) -> typing.Union[dict, LikesDeleteResponse]:
         """
         :param type: - Object type: 'post' — post on user or community wall, 'comment' — comment on a wall post, 'photo' — photo, 'audio' — audio, 'video' — video, 'note' — note, 'photo_comment' — comment on the photo, 'video_comment' — comment on the video, 'topic_comment' — comment in the discussion, 'sitepage' — page of the site where the [vk.com/dev/Like|Like widget] is installed
@@ -57,7 +56,8 @@ class Likes(Category):
 
     async def get_list(
         self,
-        type: str = None,
+        type: str,
+        return_raw_response: bool = False,
         owner_id: typing.Optional[int] = None,
         item_id: typing.Optional[int] = None,
         page_url: typing.Optional[str] = None,
@@ -67,7 +67,6 @@ class Likes(Category):
         offset: typing.Optional[int] = None,
         count: typing.Optional[BaseBoolInt] = None,
         skip_own: typing.Optional[bool] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, LikesGetListResponse, LikesGetListExtendedResponse]:
         """
         :param type: - , Object type: 'post' — post on user or community wall, 'comment' — comment on a wall post, 'photo' — photo, 'audio' — audio, 'video' — video, 'note' — note, 'photo_comment' — comment on the photo, 'video_comment' — comment on the video, 'topic_comment' — comment in the discussion, 'sitepage' — page of the site where the [vk.com/dev/Like|Like widget] is installed
@@ -99,11 +98,11 @@ class Likes(Category):
 
     async def is_liked(
         self,
-        user_id: typing.Optional[int] = None,
-        type: str = None,
-        owner_id: typing.Optional[int] = None,
-        item_id: int = None,
+        type: str,
+        item_id: int,
         return_raw_response: bool = False,
+        user_id: typing.Optional[int] = None,
+        owner_id: typing.Optional[int] = None,
     ) -> typing.Union[dict, LikesIsLikedResponse]:
         """
         :param user_id: - User ID.

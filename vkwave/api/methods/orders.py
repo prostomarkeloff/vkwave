@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 from ._utils import get_params
 
@@ -7,10 +6,10 @@ from ._utils import get_params
 class Orders(Category):
     async def cancel_subscription(
         self,
-        user_id: int = None,
-        subscription_id: int = None,
-        pending_cancel: typing.Optional[bool] = None,
+        user_id: int,
+        subscription_id: int,
         return_raw_response: bool = False,
+        pending_cancel: typing.Optional[bool] = None,
     ) -> typing.Union[dict, OrdersCancelSubscriptionResponse]:
         """
         :param user_id:
@@ -31,11 +30,11 @@ class Orders(Category):
 
     async def change_state(
         self,
-        order_id: int = None,
-        action: str = None,
+        order_id: int,
+        action: str,
+        return_raw_response: bool = False,
         app_order_id: typing.Optional[int] = None,
         test_mode: typing.Optional[BaseBoolInt] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, OrdersChangeStateResponse]:
         """
         :param order_id: - order ID.
@@ -57,10 +56,10 @@ class Orders(Category):
 
     async def get(
         self,
+        return_raw_response: bool = False,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
         test_mode: typing.Optional[BaseBoolInt] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, OrdersGetResponse]:
         """
         :param offset:
@@ -80,10 +79,7 @@ class Orders(Category):
         return result
 
     async def get_amount(
-        self,
-        user_id: int = None,
-        votes: typing.List[str] = None,
-        return_raw_response: bool = False,
+        self, user_id: int, votes: typing.List[str], return_raw_response: bool = False,
     ) -> typing.Union[dict, OrdersGetAmountResponse]:
         """
         :param user_id:
@@ -103,10 +99,10 @@ class Orders(Category):
 
     async def get_by_id(
         self,
+        return_raw_response: bool = False,
         order_id: typing.Optional[int] = None,
         order_ids: typing.Optional[typing.List[int]] = None,
         test_mode: typing.Optional[BaseBoolInt] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, OrdersGetByIdResponse]:
         """
         :param order_id: - order ID.
@@ -126,7 +122,7 @@ class Orders(Category):
         return result
 
     async def get_user_subscription_by_id(
-        self, user_id: int = None, subscription_id: int = None, return_raw_response: bool = False,
+        self, user_id: int, subscription_id: int, return_raw_response: bool = False,
     ) -> typing.Union[dict, OrdersGetUserSubscriptionByIdResponse]:
         """
         :param user_id:
@@ -145,7 +141,7 @@ class Orders(Category):
         return result
 
     async def get_user_subscriptions(
-        self, user_id: int = None, return_raw_response: bool = False,
+        self, user_id: int, return_raw_response: bool = False,
     ) -> typing.Union[dict, OrdersGetUserSubscriptionsResponse]:
         """
         :param user_id:
@@ -164,9 +160,9 @@ class Orders(Category):
 
     async def update_subscription(
         self,
-        user_id: int = None,
-        subscription_id: int = None,
-        price: int = None,
+        user_id: int,
+        subscription_id: int,
+        price: int,
         return_raw_response: bool = False,
     ) -> typing.Union[dict, OrdersUpdateSubscriptionResponse]:
         """

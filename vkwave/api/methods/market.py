@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 from ._utils import get_params
 
@@ -7,17 +6,17 @@ from ._utils import get_params
 class Market(Category):
     async def add(
         self,
-        owner_id: int = None,
-        name: str = None,
-        description: str = None,
-        category_id: int = None,
+        owner_id: int,
+        name: str,
+        description: str,
+        category_id: int,
+        main_photo_id: int,
+        return_raw_response: bool = False,
         price: typing.Optional[int] = None,
         old_price: typing.Optional[int] = None,
         deleted: typing.Optional[BaseBoolInt] = None,
-        main_photo_id: int = None,
         photo_ids: typing.Optional[typing.List[int]] = None,
         url: typing.Optional[str] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, MarketAddResponse]:
         """
         :param owner_id: - ID of an item owner community.
@@ -45,11 +44,11 @@ class Market(Category):
 
     async def add_album(
         self,
-        owner_id: int = None,
-        title: str = None,
+        owner_id: int,
+        title: str,
+        return_raw_response: bool = False,
         photo_id: typing.Optional[int] = None,
         main_album: typing.Optional[BaseBoolInt] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, MarketAddAlbumResponse]:
         """
         :param owner_id: - ID of an item owner community.
@@ -71,9 +70,9 @@ class Market(Category):
 
     async def add_to_album(
         self,
-        owner_id: int = None,
-        item_id: int = None,
-        album_ids: typing.List[int] = None,
+        owner_id: int,
+        item_id: int,
+        album_ids: typing.List[int],
         return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
@@ -95,15 +94,15 @@ class Market(Category):
 
     async def create_comment(
         self,
-        owner_id: int = None,
-        item_id: int = None,
+        owner_id: int,
+        item_id: int,
+        return_raw_response: bool = False,
         message: typing.Optional[str] = None,
         attachments: typing.Optional[typing.List[str]] = None,
         from_group: typing.Optional[BaseBoolInt] = None,
         reply_to_comment: typing.Optional[int] = None,
         sticker_id: typing.Optional[int] = None,
         guid: typing.Optional[str] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, MarketCreateCommentResponse]:
         """
         :param owner_id: - ID of an item owner community.
@@ -128,7 +127,7 @@ class Market(Category):
         return result
 
     async def delete(
-        self, owner_id: int = None, item_id: int = None, return_raw_response: bool = False,
+        self, owner_id: int, item_id: int, return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - ID of an item owner community.
@@ -147,7 +146,7 @@ class Market(Category):
         return result
 
     async def delete_album(
-        self, owner_id: int = None, album_id: int = None, return_raw_response: bool = False,
+        self, owner_id: int, album_id: int, return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - ID of an collection owner community.
@@ -166,7 +165,7 @@ class Market(Category):
         return result
 
     async def delete_comment(
-        self, owner_id: int = None, comment_id: int = None, return_raw_response: bool = False,
+        self, owner_id: int, comment_id: int, return_raw_response: bool = False,
     ) -> typing.Union[dict, MarketDeleteCommentResponse]:
         """
         :param owner_id: - identifier of an item owner community, "Note that community id in the 'owner_id' parameter should be negative number. For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community "
@@ -186,17 +185,17 @@ class Market(Category):
 
     async def edit(
         self,
-        owner_id: int = None,
-        item_id: int = None,
-        name: str = None,
-        description: str = None,
-        category_id: int = None,
-        price: int = None,
+        owner_id: int,
+        item_id: int,
+        name: str,
+        description: str,
+        category_id: int,
+        price: int,
+        main_photo_id: int,
+        return_raw_response: bool = False,
         deleted: typing.Optional[BaseBoolInt] = None,
-        main_photo_id: int = None,
         photo_ids: typing.Optional[typing.List[int]] = None,
         url: typing.Optional[str] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - ID of an item owner community.
@@ -224,12 +223,12 @@ class Market(Category):
 
     async def edit_album(
         self,
-        owner_id: int = None,
-        album_id: int = None,
-        title: str = None,
+        owner_id: int,
+        album_id: int,
+        title: str,
+        return_raw_response: bool = False,
         photo_id: typing.Optional[int] = None,
         main_album: typing.Optional[BaseBoolInt] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - ID of an collection owner community.
@@ -252,11 +251,11 @@ class Market(Category):
 
     async def edit_comment(
         self,
-        owner_id: int = None,
-        comment_id: int = None,
+        owner_id: int,
+        comment_id: int,
+        return_raw_response: bool = False,
         message: typing.Optional[BaseBoolInt] = None,
         attachments: typing.Optional[typing.List[str]] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - ID of an item owner community.
@@ -278,12 +277,12 @@ class Market(Category):
 
     async def get(
         self,
-        owner_id: int = None,
+        owner_id: int,
+        return_raw_response: bool = False,
         album_id: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
         extended: typing.Optional[BaseBoolInt] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, MarketGetResponse, MarketGetExtendedResponse]:
         """
         :param owner_id: - ID of an item owner community, "Note that community id in the 'owner_id' parameter should be negative number. For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community "
@@ -310,8 +309,8 @@ class Market(Category):
 
     async def get_album_by_id(
         self,
-        owner_id: int = None,
-        album_ids: typing.List[int] = None,
+        owner_id: int,
+        album_ids: typing.List[int],
         return_raw_response: bool = False,
     ) -> typing.Union[dict, MarketGetAlbumByIdResponse]:
         """
@@ -332,10 +331,10 @@ class Market(Category):
 
     async def get_albums(
         self,
-        owner_id: int = None,
+        owner_id: int,
+        return_raw_response: bool = False,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, MarketGetAlbumsResponse]:
         """
         :param owner_id: - ID of an items owner community.
@@ -356,9 +355,9 @@ class Market(Category):
 
     async def get_by_id(
         self,
-        item_ids: typing.List[str] = None,
-        extended: typing.Optional[BaseBoolInt] = None,
+        item_ids: typing.List[str],
         return_raw_response: bool = False,
+        extended: typing.Optional[BaseBoolInt] = None,
     ) -> typing.Union[dict, MarketGetByIdResponse, MarketGetByIdExtendedResponse]:
         """
         :param item_ids: - Comma-separated ids list: {user id}_{item id}. If an item belongs to a community -{community id} is used. " 'Videos' value example: , '-4363_136089719,13245770_137352259'"
@@ -382,9 +381,9 @@ class Market(Category):
 
     async def get_categories(
         self,
+        return_raw_response: bool = False,
         count: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, MarketGetCategoriesResponse]:
         """
         :param count: - Number of results to return.
@@ -404,8 +403,9 @@ class Market(Category):
 
     async def get_comments(
         self,
-        owner_id: int = None,
-        item_id: int = None,
+        owner_id: int,
+        item_id: int,
+        return_raw_response: bool = False,
         need_likes: typing.Optional[BaseBoolInt] = None,
         start_comment_id: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
@@ -413,7 +413,6 @@ class Market(Category):
         sort: typing.Optional[str] = None,
         extended: typing.Optional[BaseBoolInt] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, MarketGetCommentsResponse]:
         """
         :param owner_id: - ID of an item owner community
@@ -440,9 +439,9 @@ class Market(Category):
 
     async def remove_from_album(
         self,
-        owner_id: int = None,
-        item_id: int = None,
-        album_ids: typing.List[int] = None,
+        owner_id: int,
+        item_id: int,
+        album_ids: typing.List[int],
         return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
@@ -464,11 +463,11 @@ class Market(Category):
 
     async def reorder_albums(
         self,
-        owner_id: int = None,
-        album_id: int = None,
+        owner_id: int,
+        album_id: int,
+        return_raw_response: bool = False,
         before: typing.Optional[int] = None,
         after: typing.Optional[int] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - ID of an item owner community.
@@ -490,12 +489,12 @@ class Market(Category):
 
     async def reorder_items(
         self,
-        owner_id: int = None,
+        owner_id: int,
+        item_id: int,
+        return_raw_response: bool = False,
         album_id: typing.Optional[BaseBoolInt] = None,
-        item_id: int = None,
         before: typing.Optional[int] = None,
         after: typing.Optional[int] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - ID of an item owner community.
@@ -518,10 +517,10 @@ class Market(Category):
 
     async def report(
         self,
-        owner_id: int = None,
-        item_id: int = None,
-        reason: typing.Optional[BaseBoolInt] = None,
+        owner_id: int,
+        item_id: int,
         return_raw_response: bool = False,
+        reason: typing.Optional[BaseBoolInt] = None,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - ID of an item owner community.
@@ -542,9 +541,9 @@ class Market(Category):
 
     async def report_comment(
         self,
-        owner_id: int = None,
-        comment_id: int = None,
-        reason: BaseBoolInt = None,
+        owner_id: int,
+        comment_id: int,
+        reason: BaseBoolInt,
         return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
@@ -565,7 +564,7 @@ class Market(Category):
         return result
 
     async def restore(
-        self, owner_id: int = None, item_id: int = None, return_raw_response: bool = False,
+        self, owner_id: int, item_id: int, return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - ID of an item owner community.
@@ -584,7 +583,7 @@ class Market(Category):
         return result
 
     async def restore_comment(
-        self, owner_id: int = None, comment_id: int = None, return_raw_response: bool = False,
+        self, owner_id: int, comment_id: int, return_raw_response: bool = False,
     ) -> typing.Union[dict, MarketRestoreCommentResponse]:
         """
         :param owner_id: - identifier of an item owner community, "Note that community id in the 'owner_id' parameter should be negative number. For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community "
@@ -604,7 +603,8 @@ class Market(Category):
 
     async def search(
         self,
-        owner_id: int = None,
+        owner_id: int,
+        return_raw_response: bool = False,
         album_id: typing.Optional[int] = None,
         q: typing.Optional[str] = None,
         price_from: typing.Optional[int] = None,
@@ -616,7 +616,6 @@ class Market(Category):
         count: typing.Optional[int] = None,
         extended: typing.Optional[BaseBoolInt] = None,
         status: typing.Optional[int] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, MarketSearchResponse, MarketSearchExtendedResponse]:
         """
         :param owner_id: - ID of an items owner community.

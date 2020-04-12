@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 from ._utils import get_params
 
@@ -7,9 +6,9 @@ from ._utils import get_params
 class Newsfeed(Category):
     async def add_ban(
         self,
+        return_raw_response: bool = False,
         user_ids: typing.Optional[typing.List[int]] = None,
         group_ids: typing.Optional[typing.List[int]] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param user_ids:
@@ -29,9 +28,9 @@ class Newsfeed(Category):
 
     async def delete_ban(
         self,
+        return_raw_response: bool = False,
         user_ids: typing.Optional[typing.List[int]] = None,
         group_ids: typing.Optional[typing.List[int]] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param user_ids:
@@ -50,7 +49,7 @@ class Newsfeed(Category):
         return result
 
     async def delete_list(
-        self, list_id: int = None, return_raw_response: bool = False,
+        self, list_id: int, return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param list_id:
@@ -69,6 +68,7 @@ class Newsfeed(Category):
 
     async def get(
         self,
+        return_raw_response: bool = False,
         filters: typing.Optional[typing.List[NewsfeedFilters]] = None,
         return_banned: typing.Optional[BaseBoolInt] = None,
         start_time: typing.Optional[int] = None,
@@ -79,7 +79,6 @@ class Newsfeed(Category):
         count: typing.Optional[BaseBoolInt] = None,
         fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
         section: typing.Optional[str] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, NewsfeedGetResponse]:
         """
         :param filters: - Filters to apply: 'post' — new wall posts, 'photo' — new photos, 'photo_tag' — new photo tags, 'wall_photo' — new wall photos, 'friend' — new friends, 'note' — new notes
@@ -107,11 +106,13 @@ class Newsfeed(Category):
 
     async def get_banned(
         self,
+        return_raw_response: bool = False,
         extended: typing.Optional[BaseBoolInt] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
         name_case: typing.Optional[str] = None,
-        return_raw_response: bool = False,
-    ) -> typing.Union[dict, NewsfeedGetBannedResponse, NewsfeedGetBannedExtendedResponse]:
+    ) -> typing.Union[
+        dict, NewsfeedGetBannedResponse, NewsfeedGetBannedExtendedResponse
+    ]:
         """
         :param extended: - '1' — return extra information about users and communities
         :param fields: - Profile fields to return.
@@ -135,6 +136,7 @@ class Newsfeed(Category):
 
     async def get_comments(
         self,
+        return_raw_response: bool = False,
         count: typing.Optional[int] = None,
         filters: typing.Optional[typing.List[NewsfeedCommentsFilters]] = None,
         reposts: typing.Optional[str] = None,
@@ -143,7 +145,6 @@ class Newsfeed(Category):
         last_comments_count: typing.Optional[int] = None,
         start_from: typing.Optional[str] = None,
         fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, NewsfeedGetCommentsResponse]:
         """
         :param count: - Number of comments to return. For auto feed, you can use the 'new_offset' parameter returned by this method.
@@ -169,9 +170,9 @@ class Newsfeed(Category):
 
     async def get_lists(
         self,
+        return_raw_response: bool = False,
         list_ids: typing.Optional[typing.List[int]] = None,
         extended: typing.Optional[BaseBoolInt] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, NewsfeedGetListsResponse, NewsfeedGetListsExtendedResponse]:
         """
         :param list_ids: - numeric list identifiers.
@@ -195,12 +196,12 @@ class Newsfeed(Category):
 
     async def get_mentions(
         self,
+        return_raw_response: bool = False,
         owner_id: typing.Optional[int] = None,
         start_time: typing.Optional[int] = None,
         end_time: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, NewsfeedGetMentionsResponse]:
         """
         :param owner_id: - Owner ID.
@@ -223,13 +224,13 @@ class Newsfeed(Category):
 
     async def get_recommended(
         self,
+        return_raw_response: bool = False,
         start_time: typing.Optional[int] = None,
         end_time: typing.Optional[int] = None,
         max_photos: typing.Optional[int] = None,
         start_from: typing.Optional[str] = None,
         count: typing.Optional[int] = None,
         fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, NewsfeedGetRecommendedResponse]:
         """
         :param start_time: - Earliest timestamp (in Unix time) of a news item to return. By default, 24 hours ago.
@@ -253,11 +254,11 @@ class Newsfeed(Category):
 
     async def get_suggested_sources(
         self,
+        return_raw_response: bool = False,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
         shuffle: typing.Optional[bool] = None,
         fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, NewsfeedGetSuggestedSourcesResponse]:
         """
         :param offset: - offset required to choose a particular subset of communities or users.
@@ -278,11 +279,7 @@ class Newsfeed(Category):
         return result
 
     async def ignore_item(
-        self,
-        type: str = None,
-        owner_id: int = None,
-        item_id: int = None,
-        return_raw_response: bool = False,
+        self, type: str, owner_id: int, item_id: int, return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param type: - Item type. Possible values: *'wall' – post on the wall,, *'tag' – tag on a photo,, *'profilephoto' – profile photo,, *'video' – video,, *'audio' – audio.
@@ -303,11 +300,11 @@ class Newsfeed(Category):
 
     async def save_list(
         self,
+        title: str,
+        return_raw_response: bool = False,
         list_id: typing.Optional[int] = None,
-        title: str = None,
         source_ids: typing.Optional[typing.List[int]] = None,
         no_reposts: typing.Optional[BaseBoolInt] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, NewsfeedSaveListResponse]:
         """
         :param list_id: - numeric list identifier (if not sent, will be set automatically).
@@ -329,6 +326,7 @@ class Newsfeed(Category):
 
     async def search(
         self,
+        return_raw_response: bool = False,
         q: typing.Optional[str] = None,
         extended: typing.Optional[BaseBoolInt] = None,
         count: typing.Optional[int] = None,
@@ -338,7 +336,6 @@ class Newsfeed(Category):
         end_time: typing.Optional[int] = None,
         start_from: typing.Optional[str] = None,
         fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, NewsfeedSearchResponse, NewsfeedSearchExtendedResponse]:
         """
         :param q: - Search query string (e.g., 'New Year').
@@ -368,11 +365,7 @@ class Newsfeed(Category):
         return result
 
     async def unignore_item(
-        self,
-        type: str = None,
-        owner_id: int = None,
-        item_id: int = None,
-        return_raw_response: bool = False,
+        self, type: str, owner_id: int, item_id: int, return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param type: - Item type. Possible values: *'wall' – post on the wall,, *'tag' – tag on a photo,, *'profilephoto' – profile photo,, *'video' – video,, *'audio' – audio.
@@ -393,10 +386,10 @@ class Newsfeed(Category):
 
     async def unsubscribe(
         self,
-        type: str = None,
-        owner_id: typing.Optional[int] = None,
-        item_id: int = None,
+        type: str,
+        item_id: int,
         return_raw_response: bool = False,
+        owner_id: typing.Optional[int] = None,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param type: - Type of object from which to unsubscribe: 'note' — note, 'photo' — photo, 'post' — post on user wall or community wall, 'topic' — topic, 'video' — video

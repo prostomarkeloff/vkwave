@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 from ._utils import get_params
 
@@ -24,6 +23,7 @@ class Apps(Category):
 
     async def get(
         self,
+        return_raw_response: bool = False,
         app_id: typing.Optional[int] = None,
         app_ids: typing.Optional[typing.List[str]] = None,
         platform: typing.Optional[str] = None,
@@ -31,7 +31,6 @@ class Apps(Category):
         return_friends: typing.Optional[bool] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
         name_case: typing.Optional[str] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, AppsGetResponse]:
         """
         :param app_id: - Application ID
@@ -56,9 +55,10 @@ class Apps(Category):
 
     async def get_catalog(
         self,
+        count: int,
+        return_raw_response: bool = False,
         sort: typing.Optional[str] = None,
         offset: typing.Optional[int] = None,
-        count: int = None,
         platform: typing.Optional[str] = None,
         extended: typing.Optional[BaseBoolInt] = None,
         return_friends: typing.Optional[bool] = None,
@@ -67,7 +67,6 @@ class Apps(Category):
         q: typing.Optional[str] = None,
         genre_id: typing.Optional[int] = None,
         filter: typing.Optional[str] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, AppsGetCatalogResponse]:
         """
         :param sort: - Sort order: 'popular_today' — popular for one day (default), 'visitors' — by visitors number , 'create_date' — by creation date, 'growth_rate' — by growth rate, 'popular_week' — popular for one week
@@ -96,12 +95,12 @@ class Apps(Category):
 
     async def get_friends_list(
         self,
+        return_raw_response: bool = False,
         extended: typing.Optional[BaseBoolInt] = None,
         count: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
         type: typing.Optional[str] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, AppsGetFriendsListResponse]:
         """
         :param extended:
@@ -124,11 +123,13 @@ class Apps(Category):
 
     async def get_leaderboard(
         self,
-        type: str = None,
+        type: str,
+        return_raw_response: bool = False,
         global_: typing.Optional[BaseBoolInt] = None,
         extended: typing.Optional[BaseBoolInt] = None,
-        return_raw_response: bool = False,
-    ) -> typing.Union[dict, AppsGetLeaderboardResponse, AppsGetLeaderboardExtendedResponse]:
+    ) -> typing.Union[
+        dict, AppsGetLeaderboardResponse, AppsGetLeaderboardExtendedResponse
+    ]:
         """
         :param type: - Leaderboard type. Possible values: *'level' — by level,, *'points' — by mission points,, *'score' — by score ().
         :param global_: - Rating type. Possible values: *'1' — global rating among all players,, *'0' — rating among user friends.
@@ -151,7 +152,7 @@ class Apps(Category):
         return result
 
     async def get_scopes(
-        self, type: typing.Optional[str] = None, return_raw_response: bool = False,
+        self, return_raw_response: bool = False, type: typing.Optional[str] = None,
     ) -> typing.Union[dict, AppsGetScopesResponse]:
         """
         :param type:
@@ -169,7 +170,7 @@ class Apps(Category):
         return result
 
     async def get_score(
-        self, user_id: int = None, return_raw_response: bool = False,
+        self, user_id: int, return_raw_response: bool = False,
     ) -> typing.Union[dict, AppsGetScoreResponse]:
         """
         :param user_id:
@@ -188,13 +189,13 @@ class Apps(Category):
 
     async def send_request(
         self,
-        user_id: int = None,
+        user_id: int,
+        return_raw_response: bool = False,
         text: typing.Optional[str] = None,
         type: typing.Optional[str] = None,
         name: typing.Optional[str] = None,
         key: typing.Optional[str] = None,
         separate: typing.Optional[bool] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, AppsSendRequestResponse]:
         """
         :param user_id: - id of the user to send a request

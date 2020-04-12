@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 from ._utils import get_params
 
@@ -7,11 +6,11 @@ from ._utils import get_params
 class Notes(Category):
     async def add(
         self,
-        title: str = None,
-        text: str = None,
+        title: str,
+        text: str,
+        return_raw_response: bool = False,
         privacy_view: typing.Optional[typing.List[str]] = None,
         privacy_comment: typing.Optional[typing.List[str]] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, NotesAddResponse]:
         """
         :param title: - Note title.
@@ -33,12 +32,12 @@ class Notes(Category):
 
     async def create_comment(
         self,
-        note_id: int = None,
+        note_id: int,
+        message: str,
+        return_raw_response: bool = False,
         owner_id: typing.Optional[int] = None,
         reply_to: typing.Optional[int] = None,
-        message: str = None,
         guid: typing.Optional[str] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, NotesCreateCommentResponse]:
         """
         :param note_id: - Note ID.
@@ -60,7 +59,7 @@ class Notes(Category):
         return result
 
     async def delete(
-        self, note_id: int = None, return_raw_response: bool = False,
+        self, note_id: int, return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param note_id: - Note ID.
@@ -79,9 +78,9 @@ class Notes(Category):
 
     async def delete_comment(
         self,
-        comment_id: int = None,
-        owner_id: typing.Optional[int] = None,
+        comment_id: int,
         return_raw_response: bool = False,
+        owner_id: typing.Optional[int] = None,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param comment_id: - Comment ID.
@@ -101,12 +100,12 @@ class Notes(Category):
 
     async def edit(
         self,
-        note_id: int = None,
-        title: str = None,
-        text: str = None,
+        note_id: int,
+        title: str,
+        text: str,
+        return_raw_response: bool = False,
         privacy_view: typing.Optional[typing.List[str]] = None,
         privacy_comment: typing.Optional[typing.List[str]] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param note_id: - Note ID.
@@ -129,10 +128,10 @@ class Notes(Category):
 
     async def edit_comment(
         self,
-        comment_id: int = None,
-        owner_id: typing.Optional[int] = None,
-        message: str = None,
+        comment_id: int,
+        message: str,
         return_raw_response: bool = False,
+        owner_id: typing.Optional[int] = None,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param comment_id: - Comment ID.
@@ -153,12 +152,12 @@ class Notes(Category):
 
     async def get(
         self,
+        return_raw_response: bool = False,
         note_ids: typing.Optional[typing.List[int]] = None,
         user_id: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
         sort: typing.Optional[int] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, NotesGetResponse]:
         """
         :param note_ids: - Note IDs.
@@ -181,10 +180,10 @@ class Notes(Category):
 
     async def get_by_id(
         self,
-        note_id: int = None,
+        note_id: int,
+        return_raw_response: bool = False,
         owner_id: typing.Optional[int] = None,
         need_wiki: typing.Optional[bool] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, NotesGetByIdResponse]:
         """
         :param note_id: - Note ID.
@@ -205,12 +204,12 @@ class Notes(Category):
 
     async def get_comments(
         self,
-        note_id: int = None,
+        note_id: int,
+        return_raw_response: bool = False,
         owner_id: typing.Optional[int] = None,
         sort: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, NotesGetCommentsResponse]:
         """
         :param note_id: - Note ID.
@@ -233,9 +232,9 @@ class Notes(Category):
 
     async def restore_comment(
         self,
-        comment_id: int = None,
-        owner_id: typing.Optional[int] = None,
+        comment_id: int,
         return_raw_response: bool = False,
+        owner_id: typing.Optional[int] = None,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param comment_id: - Comment ID.

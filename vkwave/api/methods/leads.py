@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 from ._utils import get_params
 
@@ -7,13 +6,13 @@ from ._utils import get_params
 class Leads(Category):
     async def check_user(
         self,
-        lead_id: int = None,
+        lead_id: int,
+        return_raw_response: bool = False,
         test_result: typing.Optional[int] = None,
         test_mode: typing.Optional[bool] = None,
         auto_start: typing.Optional[bool] = None,
         age: typing.Optional[int] = None,
         country: typing.Optional[str] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, LeadsCheckUserResponse]:
         """
         :param lead_id: - Lead ID.
@@ -37,10 +36,10 @@ class Leads(Category):
 
     async def complete(
         self,
-        vk_sid: str = None,
-        secret: str = None,
-        comment: typing.Optional[str] = None,
+        vk_sid: str,
+        secret: str,
         return_raw_response: bool = False,
+        comment: typing.Optional[str] = None,
     ) -> typing.Union[dict, LeadsCompleteResponse]:
         """
         :param vk_sid: - Session obtained as GET parameter when session started.
@@ -61,11 +60,11 @@ class Leads(Category):
 
     async def get_stats(
         self,
-        lead_id: int = None,
+        lead_id: int,
+        return_raw_response: bool = False,
         secret: typing.Optional[str] = None,
         date_start: typing.Optional[BaseBoolInt] = None,
         date_end: typing.Optional[BaseBoolInt] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, LeadsGetStatsResponse]:
         """
         :param lead_id: - Lead ID.
@@ -87,13 +86,13 @@ class Leads(Category):
 
     async def get_users(
         self,
-        offer_id: int = None,
-        secret: str = None,
+        offer_id: int,
+        secret: str,
+        return_raw_response: bool = False,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
         status: typing.Optional[BaseBoolInt] = None,
         reverse: typing.Optional[BaseBoolInt] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, LeadsGetUsersResponse]:
         """
         :param offer_id: - Offer ID.
@@ -116,7 +115,7 @@ class Leads(Category):
         return result
 
     async def metric_hit(
-        self, data: str = None, return_raw_response: bool = False,
+        self, data: str, return_raw_response: bool = False,
     ) -> typing.Union[dict, LeadsMetricHitResponse]:
         """
         :param data: - Metric data obtained in the lead interface.
@@ -135,13 +134,13 @@ class Leads(Category):
 
     async def start(
         self,
-        lead_id: int = None,
-        secret: str = None,
+        lead_id: int,
+        secret: str,
+        return_raw_response: bool = False,
         uid: typing.Optional[int] = None,
         aid: typing.Optional[int] = None,
         test_mode: typing.Optional[bool] = None,
         force: typing.Optional[bool] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, LeadsStartResponse]:
         """
         :param lead_id: - Lead ID.

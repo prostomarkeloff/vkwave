@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 from ._utils import get_params
 
@@ -7,13 +6,13 @@ from ._utils import get_params
 class Search(Category):
     async def get_hints(
         self,
+        return_raw_response: bool = False,
         q: typing.Optional[str] = None,
         offset: typing.Optional[int] = None,
         limit: typing.Optional[int] = None,
         filters: typing.Optional[typing.List[str]] = None,
         fields: typing.Optional[typing.List[str]] = None,
         search_global: typing.Optional[bool] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, SearchGetHintsResponse]:
         """
         :param q: - Search query string.

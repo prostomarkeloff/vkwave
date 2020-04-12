@@ -1,12 +1,11 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 from ._utils import get_params
 
 
 class Fave(Category):
     async def add_article(
-        self, url: str = None, return_raw_response: bool = False,
+        self, url: str, return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseBoolResponse]:
         """
         :param url:
@@ -24,7 +23,7 @@ class Fave(Category):
         return result
 
     async def add_link(
-        self, link: str = None, return_raw_response: bool = False,
+        self, link: str, return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param link: - Link URL.
@@ -43,9 +42,9 @@ class Fave(Category):
 
     async def add_page(
         self,
+        return_raw_response: bool = False,
         user_id: typing.Optional[int] = None,
         group_id: typing.Optional[int] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param user_id:
@@ -65,10 +64,10 @@ class Fave(Category):
 
     async def add_post(
         self,
-        owner_id: int = None,
-        id: int = None,
-        access_key: typing.Optional[str] = None,
+        owner_id: int,
+        id: int,
         return_raw_response: bool = False,
+        access_key: typing.Optional[str] = None,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id:
@@ -89,10 +88,10 @@ class Fave(Category):
 
     async def add_product(
         self,
-        owner_id: int = None,
-        id: int = None,
-        access_key: typing.Optional[str] = None,
+        owner_id: int,
+        id: int,
         return_raw_response: bool = False,
+        access_key: typing.Optional[str] = None,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id:
@@ -112,7 +111,7 @@ class Fave(Category):
         return result
 
     async def add_tag(
-        self, name: typing.Optional[str] = None, return_raw_response: bool = False,
+        self, return_raw_response: bool = False, name: typing.Optional[str] = None,
     ) -> typing.Union[dict, FaveAddTagResponse]:
         """
         :param name:
@@ -131,10 +130,10 @@ class Fave(Category):
 
     async def add_video(
         self,
-        owner_id: int = None,
-        id: int = None,
-        access_key: typing.Optional[str] = None,
+        owner_id: int,
+        id: int,
         return_raw_response: bool = False,
+        access_key: typing.Optional[str] = None,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id:
@@ -154,7 +153,7 @@ class Fave(Category):
         return result
 
     async def edit_tag(
-        self, id: int = None, name: str = None, return_raw_response: bool = False,
+        self, id: int, name: str, return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param id:
@@ -174,6 +173,7 @@ class Fave(Category):
 
     async def get(
         self,
+        return_raw_response: bool = False,
         extended: typing.Optional[BaseBoolInt] = None,
         item_type: typing.Optional[str] = None,
         tag_id: typing.Optional[int] = None,
@@ -181,7 +181,6 @@ class Fave(Category):
         count: typing.Optional[int] = None,
         fields: typing.Optional[str] = None,
         is_from_snackbar: typing.Optional[bool] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, FaveGetResponse, FaveGetExtendedResponse]:
         """
         :param extended: - '1' — to return additional 'wall', 'profiles', and 'groups' fields. By default: '0'.
@@ -210,12 +209,12 @@ class Fave(Category):
 
     async def get_pages(
         self,
+        return_raw_response: bool = False,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
         type: typing.Optional[str] = None,
         fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
         tag_id: typing.Optional[int] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, FaveGetPagesResponse]:
         """
         :param offset:
@@ -271,7 +270,7 @@ class Fave(Category):
         return result
 
     async def remove_article(
-        self, owner_id: int = None, article_id: int = None, return_raw_response: bool = False,
+        self, owner_id: int, article_id: int, return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseBoolResponse]:
         """
         :param owner_id:
@@ -291,9 +290,9 @@ class Fave(Category):
 
     async def remove_link(
         self,
+        return_raw_response: bool = False,
         link_id: typing.Optional[str] = None,
         link: typing.Optional[str] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param link_id: - Link ID (can be obtained by [vk.com/dev/faves.getLinks|faves.getLinks] method).
@@ -313,9 +312,9 @@ class Fave(Category):
 
     async def remove_page(
         self,
+        return_raw_response: bool = False,
         user_id: typing.Optional[int] = None,
         group_id: typing.Optional[int] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param user_id:
@@ -334,7 +333,7 @@ class Fave(Category):
         return result
 
     async def remove_post(
-        self, owner_id: int = None, id: int = None, return_raw_response: bool = False,
+        self, owner_id: int, id: int, return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id:
@@ -353,7 +352,7 @@ class Fave(Category):
         return result
 
     async def remove_product(
-        self, owner_id: int = None, id: int = None, return_raw_response: bool = False,
+        self, owner_id: int, id: int, return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id:
@@ -372,7 +371,7 @@ class Fave(Category):
         return result
 
     async def remove_tag(
-        self, id: int = None, return_raw_response: bool = False,
+        self, id: int, return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param id:
@@ -390,7 +389,7 @@ class Fave(Category):
         return result
 
     async def reorder_tags(
-        self, ids: typing.List[int] = None, return_raw_response: bool = False,
+        self, ids: typing.List[int], return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param ids:
@@ -409,10 +408,10 @@ class Fave(Category):
 
     async def set_page_tags(
         self,
+        return_raw_response: bool = False,
         user_id: typing.Optional[int] = None,
         group_id: typing.Optional[int] = None,
         tag_ids: typing.Optional[typing.List[int]] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param user_id:
@@ -433,13 +432,13 @@ class Fave(Category):
 
     async def set_tags(
         self,
+        return_raw_response: bool = False,
         item_type: typing.Optional[str] = None,
         item_owner_id: typing.Optional[int] = None,
         item_id: typing.Optional[int] = None,
         tag_ids: typing.Optional[typing.List[int]] = None,
         link_id: typing.Optional[str] = None,
         link_url: typing.Optional[str] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param item_type:
@@ -463,9 +462,9 @@ class Fave(Category):
 
     async def track_page_interaction(
         self,
+        return_raw_response: bool = False,
         user_id: typing.Optional[int] = None,
         group_id: typing.Optional[int] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param user_id:

@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 from ._utils import get_params
 
@@ -7,10 +6,10 @@ from ._utils import get_params
 class Docs(Category):
     async def add(
         self,
-        owner_id: int = None,
-        doc_id: int = None,
-        access_key: typing.Optional[str] = None,
+        owner_id: int,
+        doc_id: int,
         return_raw_response: bool = False,
+        access_key: typing.Optional[str] = None,
     ) -> typing.Union[dict, DocsAddResponse]:
         """
         :param owner_id: - ID of the user or community that owns the document. Use a negative value to designate a community ID.
@@ -30,10 +29,7 @@ class Docs(Category):
         return result
 
     async def delete(
-        self,
-        owner_id: int = None,
-        doc_id: int = None,
-        return_raw_response: bool = False,
+        self, owner_id: int, doc_id: int, return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - ID of the user or community that owns the document. Use a negative value to designate a community ID.
@@ -53,11 +49,11 @@ class Docs(Category):
 
     async def edit(
         self,
-        owner_id: int = None,
-        doc_id: int = None,
+        owner_id: int,
+        doc_id: int,
+        return_raw_response: bool = False,
         title: typing.Optional[str] = None,
         tags: typing.Optional[typing.List[str]] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - User ID or community ID. Use a negative value to designate a community ID.
@@ -79,11 +75,11 @@ class Docs(Category):
 
     async def get(
         self,
+        return_raw_response: bool = False,
         count: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
         type: typing.Optional[int] = None,
         owner_id: typing.Optional[int] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, DocsGetResponse]:
         """
         :param count: - Number of documents to return. By default, all documents.
@@ -104,7 +100,7 @@ class Docs(Category):
         return result
 
     async def get_by_id(
-        self, docs: typing.List[str] = None, return_raw_response: bool = False,
+        self, docs: typing.List[str], return_raw_response: bool = False,
     ) -> typing.Union[dict, DocsGetByIdResponse]:
         """
         :param docs: - Document IDs. Example: , "66748_91488,66748_91455",
@@ -123,9 +119,9 @@ class Docs(Category):
 
     async def get_messages_upload_server(
         self,
+        return_raw_response: bool = False,
         type: typing.Optional[str] = None,
         peer_id: typing.Optional[BaseBoolInt] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseGetUploadServerResponse]:
         """
         :param type: - Document type.
@@ -144,7 +140,7 @@ class Docs(Category):
         return result
 
     async def get_types(
-        self, owner_id: int = None, return_raw_response: bool = False,
+        self, owner_id: int, return_raw_response: bool = False,
     ) -> typing.Union[dict, DocsGetTypesResponse]:
         """
         :param owner_id: - ID of the user or community that owns the documents. Use a negative value to designate a community ID.
@@ -162,7 +158,7 @@ class Docs(Category):
         return result
 
     async def get_upload_server(
-        self, group_id: typing.Optional[int] = None, return_raw_response: bool = False,
+        self, return_raw_response: bool = False, group_id: typing.Optional[int] = None,
     ) -> typing.Union[dict, DocsGetUploadServer]:
         """
         :param group_id: - Community ID (if the document will be uploaded to the community).
@@ -180,7 +176,7 @@ class Docs(Category):
         return result
 
     async def get_wall_upload_server(
-        self, group_id: typing.Optional[int] = None, return_raw_response: bool = False,
+        self, return_raw_response: bool = False, group_id: typing.Optional[int] = None,
     ) -> typing.Union[dict, BaseGetUploadServerResponse]:
         """
         :param group_id: - Community ID (if the document will be uploaded to the community).
@@ -199,10 +195,10 @@ class Docs(Category):
 
     async def save(
         self,
-        file: str = None,
+        file: str,
+        return_raw_response: bool = False,
         title: typing.Optional[str] = None,
         tags: typing.Optional[str] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, DocsSaveResponse]:
         """
         :param file: - This parameter is returned when the file is [vk.com/dev/upload_files_2|uploaded to the server].
@@ -223,11 +219,11 @@ class Docs(Category):
 
     async def search(
         self,
-        q: str = None,
+        q: str,
+        return_raw_response: bool = False,
         search_own: typing.Optional[bool] = None,
         count: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, DocsSearchResponse]:
         """
         :param q: - Search query string.

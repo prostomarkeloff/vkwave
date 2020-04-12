@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 from ._utils import get_params
 
@@ -7,10 +6,10 @@ from ._utils import get_params
 class Secure(Category):
     async def add_app_event(
         self,
-        user_id: int = None,
-        activity_id: int = None,
-        value: typing.Optional[int] = None,
+        user_id: int,
+        activity_id: int,
         return_raw_response: bool = False,
+        value: typing.Optional[int] = None,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param user_id: - ID of a user to save the data
@@ -31,9 +30,9 @@ class Secure(Category):
 
     async def check_token(
         self,
+        return_raw_response: bool = False,
         token: typing.Optional[str] = None,
         ip: typing.Optional[str] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, SecureCheckTokenResponse]:
         """
         :param token: - client 'access_token'
@@ -70,11 +69,11 @@ class Secure(Category):
 
     async def get_s_m_s_history(
         self,
+        return_raw_response: bool = False,
         user_id: typing.Optional[int] = None,
         date_from: typing.Optional[int] = None,
         date_to: typing.Optional[int] = None,
         limit: typing.Optional[BaseBoolInt] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, SecureGetSMSHistoryResponse]:
         """
         :param user_id:
@@ -96,13 +95,13 @@ class Secure(Category):
 
     async def get_transactions_history(
         self,
+        return_raw_response: bool = False,
         type: typing.Optional[int] = None,
         uid_from: typing.Optional[int] = None,
         uid_to: typing.Optional[int] = None,
         date_from: typing.Optional[int] = None,
         date_to: typing.Optional[int] = None,
         limit: typing.Optional[int] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, SecureGetTransactionsHistoryResponse]:
         """
         :param type:
@@ -125,7 +124,7 @@ class Secure(Category):
         return result
 
     async def get_user_level(
-        self, user_ids: typing.List[int] = None, return_raw_response: bool = False,
+        self, user_ids: typing.List[int], return_raw_response: bool = False,
     ) -> typing.Union[dict, SecureGetUserLevelResponse]:
         """
         :param user_ids:
@@ -144,8 +143,8 @@ class Secure(Category):
 
     async def give_event_sticker(
         self,
-        user_ids: typing.List[int] = None,
-        achievement_id: int = None,
+        user_ids: typing.List[int],
+        achievement_id: int,
         return_raw_response: bool = False,
     ) -> typing.Union[dict, SecureGiveEventStickerResponse]:
         """
@@ -166,10 +165,10 @@ class Secure(Category):
 
     async def send_notification(
         self,
+        message: str,
+        return_raw_response: bool = False,
         user_ids: typing.Optional[typing.List[int]] = None,
         user_id: typing.Optional[int] = None,
-        message: str = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, SecureSendNotificationResponse]:
         """
         :param user_ids:
@@ -189,7 +188,7 @@ class Secure(Category):
         return result
 
     async def send_s_m_s_notification(
-        self, user_id: int = None, message: BaseBoolInt = None, return_raw_response: bool = False,
+        self, user_id: int, message: BaseBoolInt, return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param user_id: - ID of the user to whom SMS notification is sent. The user shall allow the application to send him/her notifications (, +1).
@@ -209,11 +208,11 @@ class Secure(Category):
 
     async def set_counter(
         self,
+        return_raw_response: bool = False,
         counters: typing.Optional[typing.List[str]] = None,
         user_id: typing.Optional[int] = None,
         counter: typing.Optional[int] = None,
         increment: typing.Optional[bool] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param counters:

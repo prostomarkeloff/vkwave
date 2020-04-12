@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 from ._utils import get_params
 
@@ -7,10 +6,10 @@ from ._utils import get_params
 class Users(Category):
     async def get(
         self,
+        return_raw_response: bool = False,
         user_ids: typing.Optional[typing.List[str]] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
         name_case: typing.Optional[str] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, UsersGetResponse]:
         """
         :param user_ids: - User IDs or screen names ('screen_name'). By default, current user ID.
@@ -31,12 +30,12 @@ class Users(Category):
 
     async def get_followers(
         self,
+        return_raw_response: bool = False,
         user_id: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
         name_case: typing.Optional[str] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, UsersGetFollowersResponse]:
         """
         :param user_id: - User ID.
@@ -59,13 +58,15 @@ class Users(Category):
 
     async def get_subscriptions(
         self,
+        return_raw_response: bool = False,
         user_id: typing.Optional[int] = None,
         extended: typing.Optional[BaseBoolInt] = None,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
-        return_raw_response: bool = False,
-    ) -> typing.Union[dict, UsersGetSubscriptionsResponse, UsersGetSubscriptionsExtendedResponse]:
+    ) -> typing.Union[
+        dict, UsersGetSubscriptionsResponse, UsersGetSubscriptionsExtendedResponse
+    ]:
         """
         :param user_id: - User ID.
         :param extended: - '1' — to return a combined list of users and communities, '0' — to return separate lists of users and communities (default)
@@ -90,7 +91,7 @@ class Users(Category):
         return result
 
     async def is_app_user(
-        self, user_id: typing.Optional[int] = None, return_raw_response: bool = False,
+        self, return_raw_response: bool = False, user_id: typing.Optional[int] = None,
     ) -> typing.Union[dict, UsersIsAppUserResponse]:
         """
         :param user_id:
@@ -109,10 +110,10 @@ class Users(Category):
 
     async def report(
         self,
-        user_id: int = None,
-        type: str = None,
-        comment: typing.Optional[str] = None,
+        user_id: int,
+        type: str,
         return_raw_response: bool = False,
+        comment: typing.Optional[str] = None,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param user_id: - ID of the user about whom a complaint is being made.
@@ -133,6 +134,7 @@ class Users(Category):
 
     async def search(
         self,
+        return_raw_response: bool = False,
         q: typing.Optional[str] = None,
         sort: typing.Optional[BaseBoolInt] = None,
         offset: typing.Optional[int] = None,
@@ -166,7 +168,6 @@ class Users(Category):
         position: typing.Optional[str] = None,
         group_id: typing.Optional[int] = None,
         from_list: typing.Optional[typing.List[str]] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, UsersSearchResponse]:
         """
         :param q: - Search query string (e.g., 'Vasya Babich').

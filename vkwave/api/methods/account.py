@@ -1,12 +1,11 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 from ._utils import get_params
 
 
 class Account(Category):
     async def ban(
-        self, owner_id: typing.Optional[int] = None, return_raw_response: bool = False,
+        self, return_raw_response: bool = False, owner_id: typing.Optional[int] = None,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id:
@@ -25,11 +24,11 @@ class Account(Category):
 
     async def change_password(
         self,
+        new_password: str,
+        return_raw_response: bool = False,
         restore_sid: typing.Optional[str] = None,
         change_password_hash: typing.Optional[str] = None,
         old_password: typing.Optional[str] = None,
-        new_password: str = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, AccountChangePasswordResponse]:
         """
         :param restore_sid: - Session id received after the [vk.com/dev/auth.restore|auth.restore] method is executed. (If the password is changed right after the access was restored)
@@ -51,9 +50,9 @@ class Account(Category):
 
     async def get_active_offers(
         self,
+        return_raw_response: bool = False,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, AccountGetActiveOffersResponse]:
         """
         :param offset:
@@ -72,7 +71,7 @@ class Account(Category):
         return result
 
     async def get_app_permissions(
-        self, user_id: int = None, return_raw_response: bool = False,
+        self, user_id: int, return_raw_response: bool = False,
     ) -> typing.Union[dict, AccountGetAppPermissionsResponse]:
         """
         :param user_id: - User ID whose settings information shall be got. By default: current user.
@@ -91,9 +90,9 @@ class Account(Category):
 
     async def get_banned(
         self,
+        return_raw_response: bool = False,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, AccountGetBannedResponse]:
         """
         :param offset: - Offset needed to return a specific subset of results.
@@ -112,7 +111,9 @@ class Account(Category):
         return result
 
     async def get_counters(
-        self, filter: typing.Optional[typing.List[str]] = None, return_raw_response: bool = False,
+        self,
+        return_raw_response: bool = False,
+        filter: typing.Optional[typing.List[str]] = None,
     ) -> typing.Union[dict, AccountGetCountersResponse]:
         """
         :param filter: - Counters to be returned.
@@ -130,7 +131,9 @@ class Account(Category):
         return result
 
     async def get_info(
-        self, fields: typing.Optional[typing.List[str]] = None, return_raw_response: bool = False,
+        self,
+        return_raw_response: bool = False,
+        fields: typing.Optional[typing.List[str]] = None,
     ) -> typing.Union[dict, AccountGetInfoResponse]:
         """
         :param fields: - Fields to return. Possible values: *'country' — user country,, *'https_required' — is "HTTPS only" option enabled,, *'own_posts_default' — is "Show my posts only" option is enabled,, *'no_wall_replies' — are wall replies disabled or not,, *'intro' — is intro passed by user or not,, *'lang' — user language. By default: all.
@@ -165,7 +168,7 @@ class Account(Category):
         return result
 
     async def get_push_settings(
-        self, device_id: typing.Optional[str] = None, return_raw_response: bool = False,
+        self, return_raw_response: bool = False, device_id: typing.Optional[str] = None,
     ) -> typing.Union[dict, AccountGetPushSettingsResponse]:
         """
         :param device_id: - Unique device ID.
@@ -184,14 +187,14 @@ class Account(Category):
 
     async def register_device(
         self,
-        token: str = None,
+        token: str,
+        device_id: str,
+        return_raw_response: bool = False,
         device_model: typing.Optional[str] = None,
         device_year: typing.Optional[int] = None,
-        device_id: str = None,
         system_version: typing.Optional[str] = None,
         settings: typing.Optional[str] = None,
         sandbox: typing.Optional[bool] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param token: - Device token used to send notifications. (for mpns, the token shall be URL for sending of notifications)
@@ -216,6 +219,7 @@ class Account(Category):
 
     async def save_profile_info(
         self,
+        return_raw_response: bool = False,
         first_name: typing.Optional[str] = None,
         last_name: typing.Optional[str] = None,
         maiden_name: typing.Optional[str] = None,
@@ -230,7 +234,6 @@ class Account(Category):
         country_id: typing.Optional[int] = None,
         city_id: typing.Optional[int] = None,
         status: typing.Optional[str] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, AccountSaveProfileInfoResponse]:
         """
         :param first_name: - User first name.
@@ -262,9 +265,9 @@ class Account(Category):
 
     async def set_info(
         self,
+        return_raw_response: bool = False,
         name: typing.Optional[str] = None,
         value: typing.Optional[str] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param name: - Setting name.
@@ -284,9 +287,9 @@ class Account(Category):
 
     async def set_name_in_menu(
         self,
-        user_id: int = None,
-        name: typing.Optional[str] = None,
+        user_id: int,
         return_raw_response: bool = False,
+        name: typing.Optional[str] = None,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param user_id: - User ID.
@@ -322,7 +325,9 @@ class Account(Category):
         return result
 
     async def set_online(
-        self, voip: typing.Optional[BaseBoolInt] = None, return_raw_response: bool = False,
+        self,
+        return_raw_response: bool = False,
+        voip: typing.Optional[BaseBoolInt] = None,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param voip: - '1' if videocalls are available for current device.
@@ -341,11 +346,11 @@ class Account(Category):
 
     async def set_push_settings(
         self,
-        device_id: str = None,
+        device_id: str,
+        return_raw_response: bool = False,
         settings: typing.Optional[str] = None,
         key: typing.Optional[str] = None,
         value: typing.Optional[typing.List[str]] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param device_id: - Unique device ID.
@@ -367,11 +372,11 @@ class Account(Category):
 
     async def set_silence_mode(
         self,
+        return_raw_response: bool = False,
         device_id: typing.Optional[str] = None,
         time: typing.Optional[int] = None,
         peer_id: typing.Optional[BaseBoolInt] = None,
         sound: typing.Optional[BaseBoolInt] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param device_id: - Unique device ID.
@@ -392,7 +397,7 @@ class Account(Category):
         return result
 
     async def unban(
-        self, owner_id: typing.Optional[int] = None, return_raw_response: bool = False,
+        self, return_raw_response: bool = False, owner_id: typing.Optional[int] = None,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id:
@@ -411,9 +416,9 @@ class Account(Category):
 
     async def unregister_device(
         self,
+        return_raw_response: bool = False,
         device_id: typing.Optional[str] = None,
         sandbox: typing.Optional[bool] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param device_id: - Unique device ID.

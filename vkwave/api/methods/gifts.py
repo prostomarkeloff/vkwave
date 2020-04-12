@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 from ._utils import get_params
 
@@ -7,10 +6,10 @@ from ._utils import get_params
 class Gifts(Category):
     async def get(
         self,
+        return_raw_response: bool = False,
         user_id: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, GiftsGetResponse]:
         """
         :param user_id: - User ID.

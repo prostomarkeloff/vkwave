@@ -1,12 +1,11 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 from ._utils import get_params
 
 
 class Utils(Category):
     async def check_link(
-        self, url: str = None, return_raw_response: bool = False,
+        self, url: str, return_raw_response: bool = False,
     ) -> typing.Union[dict, UtilsCheckLinkResponse]:
         """
         :param url: - Link to check (e.g., 'http://google.com').
@@ -24,7 +23,7 @@ class Utils(Category):
         return result
 
     async def delete_from_last_shortened(
-        self, key: str = None, return_raw_response: bool = False,
+        self, key: str, return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param key: - Link key (characters after vk.cc/).
@@ -43,9 +42,9 @@ class Utils(Category):
 
     async def get_last_shortened_links(
         self,
+        return_raw_response: bool = False,
         count: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, UtilsGetLastShortenedLinksResponse]:
         """
         :param count: - Number of links to return.
@@ -65,14 +64,16 @@ class Utils(Category):
 
     async def get_link_stats(
         self,
-        key: str = None,
+        key: str,
+        return_raw_response: bool = False,
         source: typing.Optional[str] = None,
         access_key: typing.Optional[str] = None,
         interval: typing.Optional[str] = None,
         intervals_count: typing.Optional[int] = None,
         extended: typing.Optional[BaseBoolInt] = None,
-        return_raw_response: bool = False,
-    ) -> typing.Union[dict, UtilsGetLinkStatsResponse, UtilsGetLinkStatsExtendedResponse]:
+    ) -> typing.Union[
+        dict, UtilsGetLinkStatsResponse, UtilsGetLinkStatsExtendedResponse
+    ]:
         """
         :param key: - Link key (characters after vk.cc/).
         :param source: - Source of scope
@@ -116,9 +117,9 @@ class Utils(Category):
 
     async def get_short_link(
         self,
-        url: str = None,
-        private: typing.Optional[BaseBoolInt] = None,
+        url: str,
         return_raw_response: bool = False,
+        private: typing.Optional[BaseBoolInt] = None,
     ) -> typing.Union[dict, UtilsGetShortLinkResponse]:
         """
         :param url: - URL to be shortened.
@@ -137,7 +138,7 @@ class Utils(Category):
         return result
 
     async def resolve_screen_name(
-        self, screen_name: str = None, return_raw_response: bool = False,
+        self, screen_name: str, return_raw_response: bool = False,
     ) -> typing.Union[dict, UtilsResolveScreenNameResponse]:
         """
         :param screen_name: - Screen name of the user, community (e.g., 'apiclub,' 'andrew', or 'rules_of_war'), or application.

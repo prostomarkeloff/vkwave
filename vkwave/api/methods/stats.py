@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 from ._utils import get_params
 
@@ -7,6 +6,7 @@ from ._utils import get_params
 class Stats(Category):
     async def get(
         self,
+        return_raw_response: bool = False,
         group_id: typing.Optional[int] = None,
         app_id: typing.Optional[int] = None,
         timestamp_from: typing.Optional[int] = None,
@@ -16,7 +16,6 @@ class Stats(Category):
         filters: typing.Optional[typing.List[str]] = None,
         stats_groups: typing.Optional[typing.List[str]] = None,
         extended: typing.Optional[BaseBoolInt] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, StatsGetResponse]:
         """
         :param group_id: - Community ID.
@@ -42,7 +41,7 @@ class Stats(Category):
         return result
 
     async def get_post_reach(
-        self, owner_id: str = None, post_id: BaseBoolInt = None, return_raw_response: bool = False,
+        self, owner_id: str, post_id: BaseBoolInt, return_raw_response: bool = False,
     ) -> typing.Union[dict, StatsGetPostReachResponse]:
         """
         :param owner_id: - post owner community id. Specify with "-" sign.
@@ -61,7 +60,7 @@ class Stats(Category):
         return result
 
     async def track_visitor(
-        self, id: str = None, return_raw_response: bool = False,
+        self, id: str, return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param id:

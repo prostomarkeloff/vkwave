@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 from ._utils import get_params
 
@@ -7,11 +6,11 @@ from ._utils import get_params
 class Storage(Category):
     async def get(
         self,
+        return_raw_response: bool = False,
         key: typing.Optional[str] = None,
         keys: typing.Optional[typing.List[str]] = None,
         user_id: typing.Optional[int] = None,
         global_: typing.Optional[bool] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param key:
@@ -33,11 +32,11 @@ class Storage(Category):
 
     async def get_keys(
         self,
+        return_raw_response: bool = False,
         user_id: typing.Optional[int] = None,
         global_: typing.Optional[bool] = None,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, StorageGetKeysResponse]:
         """
         :param user_id: - user id, whose variables names are returned if they were requested with a server method.
@@ -59,11 +58,11 @@ class Storage(Category):
 
     async def set(
         self,
-        key: str = None,
+        key: str,
+        return_raw_response: bool = False,
         value: typing.Optional[str] = None,
         user_id: typing.Optional[int] = None,
         global_: typing.Optional[bool] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param key:

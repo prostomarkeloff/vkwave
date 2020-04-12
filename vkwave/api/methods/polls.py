@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 from ._utils import get_params
 
@@ -7,11 +6,11 @@ from ._utils import get_params
 class Polls(Category):
     async def add_vote(
         self,
-        owner_id: typing.Optional[int] = None,
-        poll_id: int = None,
-        answer_ids: typing.List[int] = None,
-        is_board: typing.Optional[bool] = None,
+        poll_id: int,
+        answer_ids: typing.List[int],
         return_raw_response: bool = False,
+        owner_id: typing.Optional[int] = None,
+        is_board: typing.Optional[bool] = None,
     ) -> typing.Union[dict, PollsAddVoteResponse]:
         """
         :param owner_id: - ID of the user or community that owns the poll. Use a negative value to designate a community ID.
@@ -33,6 +32,7 @@ class Polls(Category):
 
     async def create(
         self,
+        return_raw_response: bool = False,
         question: typing.Optional[str] = None,
         is_anonymous: typing.Optional[BaseBoolInt] = None,
         is_multiple: typing.Optional[bool] = None,
@@ -41,7 +41,6 @@ class Polls(Category):
         add_answers: typing.Optional[BaseBoolInt] = None,
         photo_id: typing.Optional[int] = None,
         background_id: typing.Optional[str] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, PollsCreateResponse]:
         """
         :param question: - question text
@@ -67,11 +66,11 @@ class Polls(Category):
 
     async def delete_vote(
         self,
-        owner_id: typing.Optional[int] = None,
-        poll_id: int = None,
-        answer_id: int = None,
-        is_board: typing.Optional[bool] = None,
+        poll_id: int,
+        answer_id: int,
         return_raw_response: bool = False,
+        owner_id: typing.Optional[int] = None,
+        is_board: typing.Optional[bool] = None,
     ) -> typing.Union[dict, PollsDeleteVoteResponse]:
         """
         :param owner_id: - ID of the user or community that owns the poll. Use a negative value to designate a community ID.
@@ -93,8 +92,9 @@ class Polls(Category):
 
     async def edit(
         self,
+        poll_id: int,
+        return_raw_response: bool = False,
         owner_id: typing.Optional[int] = None,
-        poll_id: int = None,
         question: typing.Optional[str] = None,
         add_answers: typing.Optional[str] = None,
         edit_answers: typing.Optional[BaseBoolInt] = None,
@@ -102,7 +102,6 @@ class Polls(Category):
         end_date: typing.Optional[int] = None,
         photo_id: typing.Optional[int] = None,
         background_id: typing.Optional[str] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - poll owner id
@@ -129,14 +128,14 @@ class Polls(Category):
 
     async def get_by_id(
         self,
+        poll_id: int,
+        return_raw_response: bool = False,
         owner_id: typing.Optional[int] = None,
         is_board: typing.Optional[BaseBoolInt] = None,
-        poll_id: int = None,
         extended: typing.Optional[BaseBoolInt] = None,
         friends_count: typing.Optional[int] = None,
         fields: typing.Optional[typing.List[str]] = None,
         name_case: typing.Optional[str] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, PollsGetByIdResponse]:
         """
         :param owner_id: - ID of the user or community that owns the poll. Use a negative value to designate a community ID.
@@ -161,16 +160,16 @@ class Polls(Category):
 
     async def get_voters(
         self,
+        poll_id: int,
+        answer_ids: typing.List[int],
+        return_raw_response: bool = False,
         owner_id: typing.Optional[int] = None,
-        poll_id: int = None,
-        answer_ids: typing.List[int] = None,
         is_board: typing.Optional[bool] = None,
         friends_only: typing.Optional[BaseBoolInt] = None,
         offset: typing.Optional[BaseBoolInt] = None,
         count: typing.Optional[BaseBoolInt] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
         name_case: typing.Optional[str] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, PollsGetVotersResponse]:
         """
         :param owner_id: - ID of the user or community that owns the poll. Use a negative value to designate a community ID.

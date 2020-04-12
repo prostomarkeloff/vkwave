@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 from ._utils import get_params
 
@@ -7,9 +6,9 @@ from ._utils import get_params
 class Status(Category):
     async def get(
         self,
+        return_raw_response: bool = False,
         user_id: typing.Optional[int] = None,
         group_id: typing.Optional[int] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, StatusGetResponse]:
         """
         :param user_id: - User ID or community ID. Use a negative value to designate a community ID.
@@ -29,9 +28,9 @@ class Status(Category):
 
     async def set(
         self,
+        return_raw_response: bool = False,
         text: typing.Optional[str] = None,
         group_id: typing.Optional[int] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param text: - Text of the new status.

@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 from ._utils import get_params
 
@@ -7,12 +6,12 @@ from ._utils import get_params
 class Board(Category):
     async def add_topic(
         self,
-        group_id: int = None,
-        title: str = None,
+        group_id: int,
+        title: str,
+        return_raw_response: bool = False,
         text: typing.Optional[str] = None,
         from_group: typing.Optional[BaseBoolInt] = None,
         attachments: typing.Optional[typing.List[str]] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, BoardAddTopicResponse]:
         """
         :param group_id: - ID of the community that owns the discussion board.
@@ -34,7 +33,7 @@ class Board(Category):
         return result
 
     async def close_topic(
-        self, group_id: int = None, topic_id: int = None, return_raw_response: bool = False,
+        self, group_id: int, topic_id: int, return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param group_id: - ID of the community that owns the discussion board.
@@ -54,14 +53,14 @@ class Board(Category):
 
     async def create_comment(
         self,
-        group_id: int = None,
-        topic_id: int = None,
+        group_id: int,
+        topic_id: int,
+        return_raw_response: bool = False,
         message: typing.Optional[str] = None,
         attachments: typing.Optional[typing.List[str]] = None,
         from_group: typing.Optional[BaseBoolInt] = None,
         sticker_id: typing.Optional[int] = None,
         guid: typing.Optional[str] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, BoardCreateCommentResponse]:
         """
         :param group_id: - ID of the community that owns the discussion board.
@@ -86,9 +85,9 @@ class Board(Category):
 
     async def delete_comment(
         self,
-        group_id: int = None,
-        topic_id: int = None,
-        comment_id: int = None,
+        group_id: int,
+        topic_id: int,
+        comment_id: int,
         return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
@@ -109,7 +108,7 @@ class Board(Category):
         return result
 
     async def delete_topic(
-        self, group_id: int = None, topic_id: int = None, return_raw_response: bool = False,
+        self, group_id: int, topic_id: int, return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param group_id: - ID of the community that owns the discussion board.
@@ -129,12 +128,12 @@ class Board(Category):
 
     async def edit_comment(
         self,
-        group_id: int = None,
-        topic_id: int = None,
-        comment_id: int = None,
+        group_id: int,
+        topic_id: int,
+        comment_id: int,
+        return_raw_response: bool = False,
         message: typing.Optional[str] = None,
         attachments: typing.Optional[typing.List[str]] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param group_id: - ID of the community that owns the discussion board.
@@ -157,9 +156,9 @@ class Board(Category):
 
     async def edit_topic(
         self,
-        group_id: int = None,
-        topic_id: int = None,
-        title: str = None,
+        group_id: int,
+        topic_id: int,
+        title: str,
         return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
@@ -180,7 +179,7 @@ class Board(Category):
         return result
 
     async def fix_topic(
-        self, group_id: int = None, topic_id: int = None, return_raw_response: bool = False,
+        self, group_id: int, topic_id: int, return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param group_id: - ID of the community that owns the discussion board.
@@ -200,15 +199,15 @@ class Board(Category):
 
     async def get_comments(
         self,
-        group_id: int = None,
-        topic_id: int = None,
+        group_id: int,
+        topic_id: int,
+        return_raw_response: bool = False,
         need_likes: typing.Optional[BaseBoolInt] = None,
         start_comment_id: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
         extended: typing.Optional[BaseBoolInt] = None,
         sort: typing.Optional[str] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, BoardGetCommentsResponse, BoardGetCommentsExtendedResponse]:
         """
         :param group_id: - ID of the community that owns the discussion board.
@@ -238,7 +237,8 @@ class Board(Category):
 
     async def get_topics(
         self,
-        group_id: int = None,
+        group_id: int,
+        return_raw_response: bool = False,
         topic_ids: typing.Optional[typing.List[int]] = None,
         order: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
@@ -246,7 +246,6 @@ class Board(Category):
         extended: typing.Optional[BaseBoolInt] = None,
         preview: typing.Optional[BaseBoolInt] = None,
         preview_length: typing.Optional[BaseBoolInt] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, BoardGetTopicsResponse, BoardGetTopicsExtendedResponse]:
         """
         :param group_id: - ID of the community that owns the discussion board.
@@ -275,7 +274,7 @@ class Board(Category):
         return result
 
     async def open_topic(
-        self, group_id: int = None, topic_id: int = None, return_raw_response: bool = False,
+        self, group_id: int, topic_id: int, return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param group_id: - ID of the community that owns the discussion board.
@@ -295,9 +294,9 @@ class Board(Category):
 
     async def restore_comment(
         self,
-        group_id: int = None,
-        topic_id: int = None,
-        comment_id: int = None,
+        group_id: int,
+        topic_id: int,
+        comment_id: int,
         return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
@@ -318,7 +317,7 @@ class Board(Category):
         return result
 
     async def unfix_topic(
-        self, group_id: int = None, topic_id: int = None, return_raw_response: bool = False,
+        self, group_id: int, topic_id: int, return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param group_id: - ID of the community that owns the discussion board.

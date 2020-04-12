@@ -1,12 +1,11 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 from ._utils import get_params
 
 
 class Wall(Category):
     async def close_comments(
-        self, owner_id: int = None, post_id: int = None, return_raw_response: bool = False,
+        self, owner_id: int, post_id: int, return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseBoolResponse]:
         """
         :param owner_id:
@@ -26,15 +25,15 @@ class Wall(Category):
 
     async def create_comment(
         self,
+        post_id: int,
+        return_raw_response: bool = False,
         owner_id: typing.Optional[int] = None,
-        post_id: int = None,
         from_group: typing.Optional[int] = None,
         message: typing.Optional[str] = None,
         reply_to_comment: typing.Optional[int] = None,
         attachments: typing.Optional[typing.List[str]] = None,
         sticker_id: typing.Optional[int] = None,
         guid: typing.Optional[str] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, WallCreateCommentResponse]:
         """
         :param owner_id: - User ID or community ID. Use a negative value to designate a community ID.
@@ -60,9 +59,9 @@ class Wall(Category):
 
     async def delete(
         self,
+        return_raw_response: bool = False,
         owner_id: typing.Optional[int] = None,
         post_id: typing.Optional[int] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - User ID or community ID. Use a negative value to designate a community ID.
@@ -82,9 +81,9 @@ class Wall(Category):
 
     async def delete_comment(
         self,
-        owner_id: typing.Optional[int] = None,
-        comment_id: int = None,
+        comment_id: int,
         return_raw_response: bool = False,
+        owner_id: typing.Optional[int] = None,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - User ID or community ID. Use a negative value to designate a community ID.
@@ -104,8 +103,9 @@ class Wall(Category):
 
     async def edit(
         self,
+        post_id: int,
+        return_raw_response: bool = False,
         owner_id: typing.Optional[int] = None,
-        post_id: int = None,
         friends_only: typing.Optional[bool] = None,
         message: typing.Optional[str] = None,
         attachments: typing.Optional[typing.List[str]] = None,
@@ -120,7 +120,6 @@ class Wall(Category):
         poster_bkg_id: typing.Optional[int] = None,
         poster_bkg_owner_id: typing.Optional[int] = None,
         poster_bkg_access_hash: typing.Optional[str] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, WallEditResponse]:
         """
         :param owner_id: - User ID or community ID. Use a negative value to designate a community ID.
@@ -154,8 +153,9 @@ class Wall(Category):
 
     async def edit_ads_stealth(
         self,
+        post_id: int,
+        return_raw_response: bool = False,
         owner_id: typing.Optional[int] = None,
-        post_id: int = None,
         message: typing.Optional[str] = None,
         attachments: typing.Optional[typing.List[str]] = None,
         signed: typing.Optional[BaseBoolInt] = None,
@@ -166,7 +166,6 @@ class Wall(Category):
         link_title: typing.Optional[str] = None,
         link_image: typing.Optional[str] = None,
         link_video: typing.Optional[str] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - User ID or community ID. Use a negative value to designate a community ID.
@@ -196,11 +195,11 @@ class Wall(Category):
 
     async def edit_comment(
         self,
+        comment_id: int,
+        return_raw_response: bool = False,
         owner_id: typing.Optional[int] = None,
-        comment_id: int = None,
         message: typing.Optional[str] = None,
         attachments: typing.Optional[typing.List[str]] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - User ID or community ID. Use a negative value to designate a community ID.
@@ -222,6 +221,7 @@ class Wall(Category):
 
     async def get(
         self,
+        return_raw_response: bool = False,
         owner_id: typing.Optional[int] = None,
         domain: typing.Optional[str] = None,
         offset: typing.Optional[int] = None,
@@ -229,7 +229,6 @@ class Wall(Category):
         filter: typing.Optional[str] = None,
         extended: typing.Optional[BaseBoolInt] = None,
         fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, WallGetResponse, WallGetExtendedResponse]:
         """
         :param owner_id: - ID of the user or community that owns the wall. By default, current user ID. Use a negative value to designate a community ID.
@@ -258,11 +257,11 @@ class Wall(Category):
 
     async def get_by_id(
         self,
-        posts: typing.List[str] = None,
+        posts: typing.List[str],
+        return_raw_response: bool = False,
         extended: typing.Optional[BaseBoolInt] = None,
         copy_history_depth: typing.Optional[int] = None,
         fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, WallGetByIdResponse, WallGetByIdExtendedResponse]:
         """
         :param posts: - User or community IDs and post IDs, separated by underscores. Use a negative value to designate a community ID. Example: "93388_21539,93388_20904,2943_4276,-1_1"
@@ -288,6 +287,7 @@ class Wall(Category):
 
     async def get_comments(
         self,
+        return_raw_response: bool = False,
         owner_id: typing.Optional[int] = None,
         post_id: typing.Optional[int] = None,
         need_likes: typing.Optional[BaseBoolInt] = None,
@@ -300,7 +300,6 @@ class Wall(Category):
         fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
         comment_id: typing.Optional[int] = None,
         thread_items_count: typing.Optional[int] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, WallGetCommentsResponse, WallGetCommentsExtendedResponse]:
         """
         :param owner_id: - User ID or community ID. Use a negative value to designate a community ID.
@@ -334,11 +333,11 @@ class Wall(Category):
 
     async def get_reposts(
         self,
+        return_raw_response: bool = False,
         owner_id: typing.Optional[int] = None,
         post_id: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, WallGetRepostsResponse]:
         """
         :param owner_id: - User ID or community ID. By default, current user ID. Use a negative value to designate a community ID.
@@ -359,7 +358,7 @@ class Wall(Category):
         return result
 
     async def open_comments(
-        self, owner_id: int = None, post_id: int = None, return_raw_response: bool = False,
+        self, owner_id: int, post_id: int, return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseBoolResponse]:
         """
         :param owner_id:
@@ -379,9 +378,9 @@ class Wall(Category):
 
     async def pin(
         self,
-        owner_id: typing.Optional[int] = None,
-        post_id: int = None,
+        post_id: int,
         return_raw_response: bool = False,
+        owner_id: typing.Optional[int] = None,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - ID of the user or community that owns the wall. By default, current user ID. Use a negative value to designate a community ID.
@@ -401,6 +400,7 @@ class Wall(Category):
 
     async def post(
         self,
+        return_raw_response: bool = False,
         owner_id: typing.Optional[int] = None,
         friends_only: typing.Optional[BaseBoolInt] = None,
         from_group: typing.Optional[BaseBoolInt] = None,
@@ -417,7 +417,6 @@ class Wall(Category):
         mark_as_ads: typing.Optional[bool] = None,
         close_comments: typing.Optional[bool] = None,
         mute_notifications: typing.Optional[bool] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, WallPostResponse]:
         """
         :param owner_id: - User ID or community ID. Use a negative value to designate a community ID.
@@ -451,7 +450,8 @@ class Wall(Category):
 
     async def post_ads_stealth(
         self,
-        owner_id: int = None,
+        owner_id: int,
+        return_raw_response: bool = False,
         message: typing.Optional[str] = None,
         attachments: typing.Optional[typing.List[str]] = None,
         signed: typing.Optional[BaseBoolInt] = None,
@@ -463,7 +463,6 @@ class Wall(Category):
         link_title: typing.Optional[str] = None,
         link_image: typing.Optional[str] = None,
         link_video: typing.Optional[str] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, WallPostAdsStealthResponse]:
         """
         :param owner_id: - User ID or community ID. Use a negative value to designate a community ID.
@@ -493,10 +492,10 @@ class Wall(Category):
 
     async def report_comment(
         self,
-        owner_id: int = None,
-        comment_id: int = None,
-        reason: typing.Optional[BaseBoolInt] = None,
+        owner_id: int,
+        comment_id: int,
         return_raw_response: bool = False,
+        reason: typing.Optional[BaseBoolInt] = None,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - ID of the user or community that owns the wall.
@@ -517,10 +516,10 @@ class Wall(Category):
 
     async def report_post(
         self,
-        owner_id: int = None,
-        post_id: int = None,
-        reason: typing.Optional[BaseBoolInt] = None,
+        owner_id: int,
+        post_id: int,
         return_raw_response: bool = False,
+        reason: typing.Optional[BaseBoolInt] = None,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - ID of the user or community that owns the wall.
@@ -541,12 +540,12 @@ class Wall(Category):
 
     async def repost(
         self,
-        object: str = None,
+        object: str,
+        return_raw_response: bool = False,
         message: typing.Optional[str] = None,
         group_id: typing.Optional[int] = None,
         mark_as_ads: typing.Optional[bool] = None,
         mute_notifications: typing.Optional[bool] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, WallRepostResponse]:
         """
         :param object: - ID of the object to be reposted on the wall. Example: "wall66748_3675"
@@ -569,9 +568,9 @@ class Wall(Category):
 
     async def restore(
         self,
+        return_raw_response: bool = False,
         owner_id: typing.Optional[int] = None,
         post_id: typing.Optional[int] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - User ID or community ID from whose wall the post was deleted. Use a negative value to designate a community ID.
@@ -591,9 +590,9 @@ class Wall(Category):
 
     async def restore_comment(
         self,
-        owner_id: typing.Optional[int] = None,
-        comment_id: int = None,
+        comment_id: int,
         return_raw_response: bool = False,
+        owner_id: typing.Optional[int] = None,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - User ID or community ID. Use a negative value to designate a community ID.
@@ -613,6 +612,7 @@ class Wall(Category):
 
     async def search(
         self,
+        return_raw_response: bool = False,
         owner_id: typing.Optional[int] = None,
         domain: typing.Optional[str] = None,
         query: typing.Optional[str] = None,
@@ -621,7 +621,6 @@ class Wall(Category):
         offset: typing.Optional[int] = None,
         extended: typing.Optional[BaseBoolInt] = None,
         fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
-        return_raw_response: bool = False,
     ) -> typing.Union[dict, WallSearchResponse, WallSearchExtendedResponse]:
         """
         :param owner_id: - user or community id. "Remember that for a community 'owner_id' must be negative."
@@ -651,9 +650,9 @@ class Wall(Category):
 
     async def unpin(
         self,
-        owner_id: typing.Optional[int] = None,
-        post_id: int = None,
+        post_id: int,
         return_raw_response: bool = False,
+        owner_id: typing.Optional[int] = None,
     ) -> typing.Union[dict, OkResponse]:
         """
         :param owner_id: - ID of the user or community that owns the wall. By default, current user ID. Use a negative value to designate a community ID.
