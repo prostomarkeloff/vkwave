@@ -1,15 +1,19 @@
 from abc import ABC, abstractmethod
-from vkwave.bots.core.tokens.types import GroupId
 from typing import Dict
+
+from vkwave.bots.core.tokens.types import GroupId
+
 
 class AbstractGetConfirmationStrategy(ABC):
     @abstractmethod
     async def get_confirmation(self, group_id: GroupId) -> str:
         ...
 
+
 class NotImplementedGetConfirmationStrategy(AbstractGetConfirmationStrategy):
     async def get_confirmation(self, group_id: GroupId) -> str:
         raise NotImplementedError
+
 
 class ConfirmationStorage:
     def __init__(self):

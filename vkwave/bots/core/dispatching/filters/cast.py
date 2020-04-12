@@ -19,4 +19,5 @@ class FilterCaster(DefaultCaster[BaseFilter]):
 
         return filter
 
+
 caster = FilterCaster()

@@ -1,4 +1,5 @@
 from vkwave.types.responses import *
+
 from ._category import Category
 from ._utils import get_params
 
@@ -123,10 +124,7 @@ class Pages(Category):
         return result
 
     async def parse_wiki(
-        self,
-        text: str,
-        return_raw_response: bool = False,
-        group_id: typing.Optional[int] = None,
+        self, text: str, return_raw_response: bool = False, group_id: typing.Optional[int] = None,
     ) -> typing.Union[dict, PagesParseWikiResponse]:
         """
         :param text: - Text of the wiki page.

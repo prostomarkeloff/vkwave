@@ -21,4 +21,5 @@ class CallbackCaster(DefaultCaster[BaseCallback]):
 
         return cb
 
+
 caster = CallbackCaster()

@@ -1,4 +1,5 @@
 from vkwave.types.responses import *
+
 from ._category import Category
 from ._utils import get_params
 
@@ -71,9 +72,7 @@ class Utils(Category):
         interval: typing.Optional[str] = None,
         intervals_count: typing.Optional[int] = None,
         extended: typing.Optional[BaseBoolInt] = None,
-    ) -> typing.Union[
-        dict, UtilsGetLinkStatsResponse, UtilsGetLinkStatsExtendedResponse
-    ]:
+    ) -> typing.Union[dict, UtilsGetLinkStatsResponse, UtilsGetLinkStatsExtendedResponse]:
         """
         :param key: - Link key (characters after vk.cc/).
         :param source: - Source of scope
