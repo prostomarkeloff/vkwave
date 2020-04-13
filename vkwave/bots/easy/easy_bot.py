@@ -1,5 +1,6 @@
 import asyncio
 import typing
+import inspect
 
 from vkwave.api.methods import API
 from vkwave.api.token.token import BotSyncPoolTokens, BotSyncSingleToken, Token
@@ -15,6 +16,7 @@ from vkwave.bots.core.dispatching.filters.builtin import (
     RegexFilter,
     TextFilter,
 )
+from vkwave.bots.fsm.filters import StateFilter
 from vkwave.bots.core.dispatching.handler.callback import BaseCallback
 from vkwave.bots.core.dispatching.router.router import DefaultRouter
 from vkwave.bots.core.tokens.storage import TokenStorage
@@ -109,6 +111,7 @@ class SimpleLongPollBot:
         self.chat_action_filter = ChatActionFilter
         self.command_filter = CommandsFilter
         self.regex_filter = RegexFilter
+        self.state_filter = StateFilter
 
     class SimpleBotCallback(BaseCallback):
         def __init__(self, func: typing.Callable[[BaseEvent], typing.Awaitable[typing.Any]]):
@@ -116,7 +119,9 @@ class SimpleLongPollBot:
 
         async def execute(self, event: BotEvent) -> typing.Any:
             new_event = SimpleBotEvent(event)
-            return await self.func(new_event)
+            if inspect.iscoroutinefunction(self.func):
+                return await self.func(new_event)
+            return self.func(new_event)
 
     def message_handler(self, *filters: BaseFilter):
         def decorator(func: typing.Callable[..., typing.Any]):
