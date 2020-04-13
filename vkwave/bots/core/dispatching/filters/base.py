@@ -22,7 +22,7 @@ class BaseFilter(ABC):
         return OrFilter(self, other)
 
     def __repr__(self) -> str:
-        return "%s(%r)" % (self.__class__, self.__dict__)
+        return "%s(%r)" % (self.__class__.__name__, self.__dict__)
 
 # sfilter: some filter
 
