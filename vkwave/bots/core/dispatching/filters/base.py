@@ -21,6 +21,8 @@ class BaseFilter(ABC):
     def __or__(self, other: "BaseFilter") -> "OrFilter":
         return OrFilter(self, other)
 
+    def __repr__(self) -> str:
+        return "%s(%r)" % (self.__class__, self.__dict__)
 
 # sfilter: some filter
 
