@@ -127,7 +127,7 @@ class CommandsFilter(BaseFilter):
     def __init__(
         self,
         commands: AnyText,
-        prefixes: typing.Tuple[str] = ("/", "!"),
+        prefixes: typing.Tuple[str, ...] = ("/", "!"),
         ignore_case: bool = True,
     ):
         self.commands = (commands,) if isinstance(commands, str) else commands
