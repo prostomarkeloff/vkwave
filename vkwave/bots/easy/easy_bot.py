@@ -131,6 +131,7 @@ class SimpleLongPollBot:
         return decorator
 
     async def run(self):
+        self.dispatcher.add_router(self.router)
         await self.dispatcher.cache_potential_tokens()
         await self._lp.start()
 
