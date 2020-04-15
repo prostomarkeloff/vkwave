@@ -38,7 +38,7 @@ async def captcha_handler(error: dict, api_ctx: APIOptionsRequestContext):
 # Easy way
 
 bot = SimpleLongPollBot(tokens="MyToken", group_id=123456789)
-bot.api_session.default_api_options.error_dispatcher.add_handler(14, captcha_handler)
+bot.api_session.api.default_api_options.error_dispatcher.add_handler(14, captcha_handler)
 
 
 # Not easy way

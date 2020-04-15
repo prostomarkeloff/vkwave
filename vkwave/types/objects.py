@@ -1663,6 +1663,7 @@ class MessagesMessageAttachmentType(str, Enum):
     ARTICLE = "article"
     GRAFFITI = "graffiti"
     AUDIO_MESSAGE = "audio_message"
+    STORY = "story"
 
 
 class NewsfeedNewsfeedItemType(str, Enum):
@@ -5142,6 +5143,9 @@ class MessagesMessageAttachment(pydantic.BaseModel):
         None, description="",
     )
     sticker: typing.Optional["BaseSticker"] = pydantic.Field(
+        None, description="",
+    )
+    story: typing.Optional["StoriesStory"] = pydantic.Field(
         None, description="",
     )
     type: "MessagesMessageAttachmentType" = pydantic.Field(
