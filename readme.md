@@ -2,6 +2,7 @@
 
 > It's time to carry out vk_api & vkbottle. VKWave is here.
 
+[Why VKWave?](./why_vkwave.md)
 
 ```python
 from vkwave.bots.easy.easy_bot import SimpleLongPollBot
