@@ -2,6 +2,7 @@ import json
 import re
 import typing
 from typing import Dict, Tuple, Union
+
 from typing_extensions import Literal
 
 from vkwave.bots.core.dispatching.events.base import BaseEvent
@@ -176,6 +177,7 @@ class RegexFilter(BaseFilter):
 
         return FilterResult(self.pattern.match(text) is not None)
 
+
 class MessageFromConversationTypeFilter(BaseFilter):
     """
     Filtering events by their conversation's type.
@@ -192,7 +194,11 @@ class MessageFromConversationTypeFilter(BaseFilter):
 
     def __init__(self, from_what: Literal["from_pm", "from_dm", "from_direct", "from_chat"]):
         # 0: pm; 1: chat
-        self.from_what: Literal[0, 1] = 0 if from_what in ("from_pm", "from_dm", "from_direct") else 1
+        self.from_what: Literal[0, 1] = 0 if from_what in (
+            "from_pm",
+            "from_dm",
+            "from_direct",
+        ) else 1
 
     async def check(self, event: BaseEvent) -> FilterResult:
         if event.bot_type is BotType.USER:
@@ -200,8 +206,11 @@ class MessageFromConversationTypeFilter(BaseFilter):
         else:
             peer_id: int
             from_id: int
-            peer_id, from_id = event.object.object.message.peer_id, event.object.object.message.from_id
-            
+            peer_id, from_id = (
+                event.object.object.message.peer_id,
+                event.object.object.message.from_id,
+            )
+
             status: int
 
             if peer_id == from_id:
@@ -210,5 +219,6 @@ class MessageFromConversationTypeFilter(BaseFilter):
                 status = 1
 
             return FilterResult(self.from_what == status)
+
 
 # TODO: MessageArgsFilter

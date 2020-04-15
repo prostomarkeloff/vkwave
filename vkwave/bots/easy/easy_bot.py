@@ -1,6 +1,6 @@
 import asyncio
-import typing
 import inspect
+import typing
 
 from vkwave.api.methods import API
 from vkwave.api.token.token import BotSyncPoolTokens, BotSyncSingleToken, Token
@@ -16,11 +16,11 @@ from vkwave.bots.core.dispatching.filters.builtin import (
     RegexFilter,
     TextFilter,
 )
-from vkwave.bots.fsm.filters import StateFilter
 from vkwave.bots.core.dispatching.handler.callback import BaseCallback
 from vkwave.bots.core.dispatching.router.router import DefaultRouter
 from vkwave.bots.core.tokens.storage import TokenStorage
 from vkwave.bots.core.tokens.types import GroupId
+from vkwave.bots.fsm.filters import StateFilter
 from vkwave.client.default import AIOHTTPClient
 from vkwave.longpoll.bot import BotLongpoll, BotLongpollData
 from vkwave.types.bot_events import BotEventType
