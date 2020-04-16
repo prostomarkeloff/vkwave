@@ -2,7 +2,7 @@ import asyncio
 import inspect
 import typing
 
-from vkwave.api.methods import API
+from vkwave.api.methods import API, APIOptionsRequestContext
 from vkwave.api.token.token import BotSyncPoolTokens, BotSyncSingleToken, Token
 from vkwave.bots.core import BaseFilter
 from vkwave.bots.core.dispatching.dp.dp import Dispatcher
@@ -96,7 +96,7 @@ class SimpleLongPollBot:
     ):
         self.SimpleBotEvent = SimpleBotEvent
         self.api_session = create_api_session_aiohttp(tokens)
-        self.api_context = self.api_session.api.get_context()
+        self.api_context: APIOptionsRequestContext = self.api_session.api.get_context()
         self._lp = BotLongpoll(self.api_context, BotLongpollData(group_id))
         self._token_storage = TokenStorage[GroupId]()
         self.dispatcher = Dispatcher(self.api_session.api, self._token_storage)
