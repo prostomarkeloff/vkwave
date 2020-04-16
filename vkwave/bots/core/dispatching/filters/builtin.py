@@ -1,7 +1,7 @@
 import json
 import re
 import typing
-from typing import Dict, Tuple, Union
+from typing import Dict, Tuple, Union, List
 
 from typing_extensions import Literal
 
@@ -11,7 +11,19 @@ from vkwave.bots.core.types.json_types import JSONDecoder
 from vkwave.types.objects import MessagesMessageActionStatus
 
 from .base import BaseFilter, FilterResult
+from vkwave.types.user_events import EventId
 
+MessageEventUser: List[int] = list(EventId.MESSAGE_EVENT.value)
+MessageEventBot: str = "message_new"
+InvalidEventError = ValueError("Invalid event passed. Expected message event")
+
+def is_message_event(event: BaseEvent):
+    if event.bot_type is BotType.BOT:
+        if event.object.type != MessageEventBot:
+            raise InvalidEventError
+    elif event.bot_type is BotType.USER:
+        if event.object.event_id not in MessageEventUser:
+            raise InvalidEventError
 
 class EventTypeFilter(BaseFilter):
     """
@@ -63,6 +75,7 @@ class TextFilter(BaseFilter):
         self.ic = ignore_case
 
     async def check(self, event: BaseEvent) -> FilterResult:
+        is_message_event(event)
         if event.bot_type is BotType.USER:
             text = event.object.object.text
         else:
@@ -82,6 +95,7 @@ class PayloadFilter(BaseFilter):
         self.payload = payload
 
     async def check(self, event: BaseEvent) -> FilterResult:
+        is_message_event(event)
         if event.bot_type is BotType.USER:
             current_payload = event.object.object.message_data.payload
         else:
@@ -100,6 +114,7 @@ class ChatActionFilter(BaseFilter):
         self.action = action
 
     async def check(self, event: BaseEvent) -> FilterResult:
+        is_message_event(event)
         if event.bot_type is BotType.USER:
             current_action = event.object.object.message_data.source_act
         else:
@@ -137,6 +152,7 @@ class CommandsFilter(BaseFilter):
         self.ic = ignore_case
 
     async def check(self, event: BaseEvent) -> FilterResult:
+        is_message_event(event)
         if event.bot_type is BotType.USER:
             text = event.object.object.text
         else:
@@ -170,6 +186,7 @@ class RegexFilter(BaseFilter):
         self.pattern = re.compile(regex, flags)
 
     async def check(self, event: BaseEvent) -> FilterResult:
+        is_message_event(event)
         if event.bot_type is BotType.USER:
             text = event.object.object.text
         else:
@@ -201,6 +218,7 @@ class MessageFromConversationTypeFilter(BaseFilter):
         ) else 1
 
     async def check(self, event: BaseEvent) -> FilterResult:
+        is_message_event(event)
         if event.bot_type is BotType.USER:
             raise NotImplementedError("Not implemented yet")
         else:
