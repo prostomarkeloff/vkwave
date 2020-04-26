@@ -26,6 +26,8 @@ It's built over asyncio and Python's type hints. Minimal required version is `3.
 
 Our Telegram chat - [let's chat](https://t.me/vkwave)
 
+Current maintainer of this project is [@kesha1225](https://github.com/kesha1225)
+
 ## VKWave core
 
 This repostitory contains only `core` parts of VKWave. It means that code introduced in this repository is probably `low-level` and shouldn't be used directly unless otherwise specified.
