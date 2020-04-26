@@ -32,3 +32,12 @@ class TokenStorage(Generic[T]):
         token = await self.get_token_strategy.get_token(id_to_check)
         self.tokens[id_to_check] = token
         return token
+
+
+class UserTokenStorage(Generic[T]):
+    def __init__(self, current_token: AnyABCToken):
+        super().__init__()
+        self.current_token = current_token
+
+    async def get_token(self, _):
+        return self.current_token

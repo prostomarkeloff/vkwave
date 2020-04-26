@@ -3,7 +3,7 @@ import inspect
 import types
 
 from vkwave.api.methods import APIOptionsRequestContext
-from vkwave.vkscript import Scope, VKScriptConverter
+from vkwave.vkscript.converter import Scope, VKScriptConverter
 
 
 def execute(func: types.FunctionType):

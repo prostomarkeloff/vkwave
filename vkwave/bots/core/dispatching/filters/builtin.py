@@ -5,25 +5,31 @@ from typing import Dict, Tuple, Union, List
 
 from typing_extensions import Literal
 
-from vkwave.bots.core.dispatching.events.base import BaseEvent
+from vkwave.bots.core.dispatching.events.base import BaseEvent, UserEvent
 from vkwave.bots.core.types.bot_type import BotType
 from vkwave.bots.core.types.json_types import JSONDecoder
 from vkwave.types.objects import MessagesMessageActionStatus
 
 from .base import BaseFilter, FilterResult
-from vkwave.types.user_events import EventId
+from vkwave.types.user_events import EventId, MessageFlag
 
 MessageEventUser: List[int] = list(EventId.MESSAGE_EVENT.value)
 MessageEventBot: str = "message_new"
 InvalidEventError = ValueError("Invalid event passed. Expected message event")
+
+
+def is_from_me(event: UserEvent) -> bool:
+    return bool(event.object.object.flags[-1] & MessageFlag.OUTBOX.value)
+
 
 def is_message_event(event: BaseEvent):
     if event.bot_type is BotType.BOT:
         if event.object.type != MessageEventBot:
             raise InvalidEventError
     elif event.bot_type is BotType.USER:
-        if event.object.event_id not in MessageEventUser:
+        if event.object.object.event_id not in MessageEventUser:
             raise InvalidEventError
+
 
 class EventTypeFilter(BaseFilter):
     """
@@ -47,9 +53,9 @@ class EventTypeFilter(BaseFilter):
                 return FilterResult(event.object.type == self.event_type)
         else:
             if isinstance(self.event_type, tuple):
-                return FilterResult(event.object.event_id in self.event_type)
+                return FilterResult(event.object.object.event_id in self.event_type)
             if isinstance(self.event_type, int):
-                return FilterResult(event.object.event_id == self.event_type)
+                return FilterResult(event.object.object.event_id == self.event_type)
         raise NotImplementedError("There is no implementation for this type of bot")
 
 
@@ -79,7 +85,10 @@ class TextFilter(BaseFilter):
         if event.bot_type is BotType.USER:
             text = event.object.object.text
         else:
-            if event.object.object.dict().get("message") is None:
+            if (
+                event.object.object.dict().get("message") is None
+                or event.object.object.message.get("text") is None
+            ):
                 return FilterResult(False)
             text = event.object.object.message.text
         if self.ic:
@@ -237,6 +246,18 @@ class MessageFromConversationTypeFilter(BaseFilter):
                 status = 1
 
             return FilterResult(self.from_what == status)
+
+
+class FromMeFilter(BaseFilter):
+    def __init__(self, from_me: bool):
+        self.from_me = from_me
+
+    async def check(self, event: BaseEvent) -> FilterResult:
+        is_message_event(event)
+        if event.bot_type == BotType.BOT:
+            raise RuntimeError("Сannot be used in bot")
+        event: UserEvent
+        return FilterResult(self.from_me == is_from_me(event))
 
 
 # TODO: MessageArgsFilter

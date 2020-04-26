@@ -47,7 +47,7 @@ class MessageData(pydantic.BaseModel):
     service_message: typing.Optional[ServiceMessageData]
 
 
-class MessageFlags(enum.Enum):
+class MessageFlag(enum.Enum):
     UNREAD = 1
     OUTBOX = 2
     REPLIED = 2 ** 2
@@ -65,7 +65,7 @@ class MessageFlags(enum.Enum):
 class MessageEventObject(pydantic.BaseModel):
     event_id: typing.Optional[int]
     message_id: typing.Optional[int]
-    flags: typing.Optional[int]
+    flags: typing.Optional[typing.Union[int, typing.List[MessageFlag]]]
     peer_id: typing.Optional[int]
     timestamp: typing.Optional[int]
     text: typing.Optional[str]
@@ -76,7 +76,7 @@ class MessageEventObject(pydantic.BaseModel):
     edit_time: typing.Optional[int]
 
     _normalize_flags = pydantic.validator("flags", allow_reuse=True)(
-        lambda flags: [flag for flag in MessageFlags if flags & flag.value]
+        lambda flags: [flag for flag in MessageFlag if flags & flag.value] + [flags]
     )
 
 
@@ -297,6 +297,8 @@ _friend_online = {
     2: "platform",
     3: "timestamp",
     4: "app_id",
+    5: "unexpected",
+    6: "unexpected",
 }
 
 _friend_offline = {
@@ -363,6 +365,7 @@ _events_dict = {
     EventId.DROP_MESSAGE_CACHE: _drop_message_cache,
     EventId.CHANGE_CHAT_SETTINGS: _changed_chat_settings,
     EventId.CHANGED_UNREAD_DIALOGS_COUNT: _changed_unread_dialogs_count,
+    EventId.USER_TYPING_OR_MAKING_VOICE_MESSAGE: _typing_or_voice,
 }
 
 
