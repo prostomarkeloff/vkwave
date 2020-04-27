@@ -27,6 +27,8 @@ async def from_me(event: UserEvent):
     print("from me:", event.object.object.text)
 
 
+# FromMeFilter(from_me=False) -> message from other user
+# FromMeFilter(from_me=True) -> message from me
 @router.registrar.with_decorator(
     EventTypeFilter((3, 4, 5, 18)), FromMeFilter(from_me=False), TextFilter("hello")
 )

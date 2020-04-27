@@ -21,6 +21,11 @@ class BaseHandler(ABC):
     async def process_event(self, event: BaseEvent) -> Any:
         """Return FILTERS_NOT_PASSED or handler's result"""
 
+    def __repr__(self):
+        return "%s(%r)" % (self.__class__.__name__, self.__dict__)
+
+    __str__ = __repr__
+
 
 class DefaultHandler(BaseHandler):
     def __init__(self, callback: BaseCallback, filters: Optional[List[BaseFilter]] = None):

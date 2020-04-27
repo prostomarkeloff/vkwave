@@ -1,6 +1,7 @@
 from typing import Any, Callable, List, TypeVar
 
 from vkwave.bots.core.dispatching.filters.base import AsyncFuncFilter, BaseFilter, SyncFuncFilter
+from vkwave.bots.core.dispatching.filters.builtin import EventTypeFilter
 from vkwave.bots.core.dispatching.handler.base import BaseHandler
 from vkwave.bots.core.dispatching.handler.record import HandlerRecord
 
@@ -36,6 +37,9 @@ class HandlerRegistrar:
         return record
 
     def register(self, handler: BaseHandler):
+        for filter in handler.filter_manager.filters.copy():
+            if isinstance(filter, EventTypeFilter):
+                handler.filter_manager.filters.insert(0, filter)
         for dfilter in self.default_filters:
             to_include: bool = True
             for afilter in handler.filter_manager.filters:

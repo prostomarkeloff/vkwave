@@ -13,9 +13,11 @@ from vkwave.types.objects import MessagesMessageActionStatus
 from .base import BaseFilter, FilterResult
 from vkwave.types.user_events import EventId, MessageFlag
 
-MessageEventUser: List[int] = list(EventId.MESSAGE_EVENT.value)
+MessageEventUser: Tuple[int] = EventId.MESSAGE_EVENT.value
 MessageEventBot: str = "message_new"
-InvalidEventError = ValueError("Invalid event passed. Expected message event")
+InvalidEventError = ValueError(
+    "Invalid event passed. Expected message event. You must add EventTypeFilter at first."
+)
 
 
 def is_from_me(event: UserEvent) -> bool:
@@ -163,6 +165,8 @@ class CommandsFilter(BaseFilter):
     async def check(self, event: BaseEvent) -> FilterResult:
         is_message_event(event)
         if event.bot_type is BotType.USER:
+            if event.object.object.dict().get("text") is None:
+                return FilterResult(False)
             text = event.object.object.text
         else:
             if event.object.object.dict().get("message") is None:
@@ -249,6 +253,13 @@ class MessageFromConversationTypeFilter(BaseFilter):
 
 
 class FromMeFilter(BaseFilter):
+    """
+    Checking is message from me
+
+    FromMeFilter(from_me=False) -> message from other user
+    FromMeFilter(from_me=True) -> message from me
+    """
+
     def __init__(self, from_me: bool):
         self.from_me = from_me
 
