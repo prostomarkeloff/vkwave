@@ -12,6 +12,7 @@ from vkwave.bots.core.tokens.types import UserId
 from vkwave.api.methods import API
 from vkwave.bots.core.dispatching.filters.builtin import EventTypeFilter, FromMeFilter, TextFilter
 from vkwave.longpoll.user import UserLongpollData, UserLongpoll
+from vkwave.types.user_events import EventId
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -20,7 +21,8 @@ bot_token = Token("token")
 router = DefaultRouter()
 
 
-@router.registrar.with_decorator(EventTypeFilter((3, 4, 5, 18)), FromMeFilter(from_me=True))
+# EventTypeFilter((3, 4, 5, 18)) == EventTypeFilter(EventId.MESSAGE_EVENT.value)
+@router.registrar.with_decorator(EventTypeFilter(EventId.MESSAGE_EVENT.value), FromMeFilter(from_me=True))
 async def from_me(event: UserEvent):
     print("from me:", event.object.object.text)
 

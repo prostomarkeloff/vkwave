@@ -39,5 +39,5 @@ class UserTokenStorage(Generic[T]):
         super().__init__()
         self.current_token = current_token
 
-    async def get_token(self, _):
+    async def get_token(self):
         return self.current_token

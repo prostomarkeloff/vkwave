@@ -82,13 +82,13 @@ class TextFilter(BaseFilter):
 
     async def check(self, event: BaseEvent) -> FilterResult:
         is_message_event(event)
+
         if event.bot_type is BotType.USER:
+            if event.object.object.dict().get("text") is None:
+                return FilterResult(False)
             text = event.object.object.text
         else:
-            if (
-                event.object.object.dict().get("message") is None
-                or event.object.object.message.get("text") is None
-            ):
+            if event.object.object.dict().get("message") is None:
                 return FilterResult(False)
             text = event.object.object.message.text
         if self.ic:
