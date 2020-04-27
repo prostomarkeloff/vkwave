@@ -57,7 +57,7 @@ class Author(pydantic.BaseModel):
     author_url: str
     shared_post_author_id: Optional[int]
     shared_post_author_url: Optional[str]
-    platform: PlatformEnum
+    platform: Optional[PlatformEnum]
 
 
 class Event(pydantic.BaseModel):
@@ -66,7 +66,6 @@ class Event(pydantic.BaseModel):
     event_url: str
     text: str
     action: Action
-    action_time: int
     creation_time: int
     attachments: Any
     geo: Any
@@ -79,5 +78,5 @@ class Event(pydantic.BaseModel):
 
 class StreamingMessage(pydantic.BaseModel):
     code: int
-    service_message: ServiceMessage
+    service_message: Optional[ServiceMessage]
     event: Event

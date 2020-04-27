@@ -17,7 +17,7 @@ from .core.dispatching.extensions import (
 )
 from .core.dispatching.router.router import DefaultRouter
 from .core.tokens.storage import TokenStorage, UserTokenStorage
-from .easy import SimpleLongPollUserBot, SimpleLongPollBot, ClonesBot, TaskManager
+from .easy import SimpleLongPollUserBot, SimpleLongPollBot, ClonesBot, TaskManager, create_api_session_aiohttp
 from .fsm import StateFilter, FiniteStateMachine, ForWhat
 from .storage import RedisStorage, VKStorage, Storage, TTLStorage
 from .utils import Keyboard, Template, VoiceUploader, GraffitiUploader, PhotoUploader, DocUploader

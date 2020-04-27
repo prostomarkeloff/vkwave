@@ -1,6 +1,6 @@
 import typing
 
-from vkwave.bots.easy._base_easy_bot import BaseSimpleLongPollBot
+from vkwave.bots.easy.base_easy_bot import BaseSimpleLongPollBot
 from vkwave.bots.core.types.bot_type import BotType
 
 

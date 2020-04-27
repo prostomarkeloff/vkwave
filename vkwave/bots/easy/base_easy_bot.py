@@ -64,7 +64,7 @@ class _APIContextManager:
         await self.client.close()
 
 
-def create_api_session_aiohttp(token: str, bot_type: BotType) -> _APIContextManager:
+def create_api_session_aiohttp(token: str, bot_type: BotType = BotType.BOT) -> _APIContextManager:
     return _APIContextManager(token, bot_type)
 
 

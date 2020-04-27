@@ -1,8 +1,8 @@
-from vkwave.api.token.token import Token, BotSyncSingleToken
-from vkwave.bots.utils.uploaders.photo_uploader import PhotoUploader
-from vkwave.client.default import AIOHTTPClient
-from vkwave.api.methods import API
 import asyncio
+
+from vkwave.api import Token, BotSyncSingleToken, API
+from vkwave.bots.utils import PhotoUploader
+from vkwave.client import AIOHTTPClient
 
 client = AIOHTTPClient()
 api = API(

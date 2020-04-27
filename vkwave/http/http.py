@@ -20,6 +20,10 @@ class AbstractHTTPClient(ABC):
         ...
 
     @abstractmethod
+    async def request_send_json(self, method: str, url: str, json: Optional[dict] = None):
+        ...
+
+    @abstractmethod
     async def close(self):
         ...
 
@@ -48,4 +52,9 @@ class AIOHTTPClient(AbstractHTTPClient):
         data = data or {}
 
         async with self.session.request(method, url, data=data) as resp:
+            return await resp.json()
+
+    async def request_send_json(self, method: str, url: str, json: Optional[dict] = None) -> dict:
+        json = json or {}
+        async with self.session.request(method, url, json=json) as resp:
             return await resp.json()
