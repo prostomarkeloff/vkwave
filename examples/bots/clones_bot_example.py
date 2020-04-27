@@ -2,7 +2,7 @@
 create many bots with the same functionality
 """
 
-from vkwave.bots.easy import SimpleLongPollBot, TaskManager, ClonesBot
+from vkwave.bots import SimpleLongPollBot, TaskManager, ClonesBot
 
 
 bot = SimpleLongPollBot(tokens=["Bot0TOKEN"], group_id=444, )

@@ -1,4 +1,4 @@
-from vkwave.bots.easy import SimpleLongPollBot
+from vkwave.bots import SimpleLongPollBot
 
 bot = SimpleLongPollBot(tokens="MyToken", group_id=123456789)
 

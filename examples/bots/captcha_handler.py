@@ -1,17 +1,13 @@
 # Easy bot imports
-from vkwave.bots.easy import SimpleLongPollBot
-from vkwave.api.methods import APIOptionsRequestContext
+from vkwave.bots import SimpleLongPollBot
+from vkwave.api import APIOptionsRequestContext
 
 
 # Ordinary bot imports
-from vkwave.client.default import AIOHTTPClient
-from vkwave.api.token.token import BotSyncSingleToken, Token
-from vkwave.bots.core.tokens.storage import TokenStorage
-from vkwave.bots.core.dispatching.dp.dp import Dispatcher
-from vkwave.bots.core.dispatching.extensions.longpoll_bot import BotLongpollExtension
-from vkwave.bots.core.tokens.types import GroupId
-from vkwave.api.methods import API
-from vkwave.longpoll.bot import BotLongpoll, BotLongpollData
+from vkwave.client import AIOHTTPClient
+from vkwave.bots import TokenStorage, Dispatcher, BotLongpollExtension, GroupId
+from vkwave.api import API, BotSyncSingleToken, Token
+from vkwave.longpoll import BotLongpoll, BotLongpollData
 
 
 async def solve_captcha(captcha_link: str):
@@ -50,7 +46,3 @@ dp = Dispatcher(api_session, TokenStorage[GroupId]())
 lp_extension = BotLongpollExtension(dp, BotLongpoll(api, BotLongpollData(123456789)))
 
 api_session.default_api_options.error_dispatcher.add_handler(14, captcha_handler)
-
-
-
-

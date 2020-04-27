@@ -1,5 +1,5 @@
-from vkwave.api.methods import APIOptionsRequestContext
-from vkwave.bots.easy import SimpleLongPollBot, TaskManager
+from vkwave.api import APIOptionsRequestContext
+from vkwave.bots import SimpleLongPollBot, TaskManager
 from vkwave.vkscript import execute
 from vkwave.types.responses import ExecuteResponse
 

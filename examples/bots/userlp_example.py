@@ -5,7 +5,7 @@ from vkwave.bots.core.dispatching.events.base import UserEvent
 from vkwave.client.default import AIOHTTPClient
 from vkwave.api.token.token import BotSyncSingleToken, Token
 from vkwave.bots.core.tokens.storage import UserTokenStorage
-from vkwave.bots.core.dispatching.dp.dp import Dispatcher
+from vkwave.bots import Dispatcher
 from vkwave.bots.core.dispatching.extensions.longpoll_user import UserLongpollExtension
 from vkwave.bots.core.dispatching.router.router import DefaultRouter
 from vkwave.bots.core.tokens.types import UserId
