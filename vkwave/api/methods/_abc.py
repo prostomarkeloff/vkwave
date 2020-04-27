@@ -1,12 +1,20 @@
 import copy
 import random
 from contextlib import asynccontextmanager
-from typing import AsyncGenerator, List, Optional, Tuple, Union
+from typing import AsyncGenerator, List, Optional, Tuple, Union, cast
 
-from vkwave.api.methods._error import Error, ErrorDispatcher
+from vkwave.api.methods._error import (
+    APIError,
+    Error,
+    ErrorDispatcher,
+    UnsuccessAPIRequestException,
+)
 from vkwave.api.token.strategy import ABCGetTokenStrategy, RandomGetTokenStrategy
 from vkwave.api.token.token import AnyABCToken, Token
 from vkwave.client.abstract import AbstractAPIClient
+from vkwave.client.context import ResultState
+from vkwave.client.types import MethodName
+
 from .account import Account
 from .ads import Ads
 from .app import App
@@ -15,6 +23,7 @@ from .auth import Auth
 from .board import Board
 from .database import Database
 from .docs import Docs
+from .execute import Execute
 from .fave import Fave
 from .friends import Friends
 from .gifts import Gifts
@@ -95,6 +104,7 @@ class APIOptionsRequestContext:
         self.board = Board("board", self)
         self.database = Database("database", self)
         self.docs = Docs("docs", self)
+        self.execute = Execute("execute", self)
         self.fave = Fave("fave", self)
         self.friends = Friends("friends", self)
         self.gifts = Gifts("gifts", self)
@@ -138,6 +148,39 @@ class APIOptionsRequestContext:
         yield new
         del copied
         del new
+
+    async def api_request(self, method_name: MethodName, params: dict) -> dict:
+        client, token = await self.api_options.get_client_and_token()
+
+        params = self.api_options.update_pre_request_params(params, token)
+        ctx = client.create_request(method_name, params)
+        await ctx.send_request()
+
+        state = ctx.result.state
+
+        exc_data = None
+        data = None
+
+        if state is ResultState.UNHANDLED_EXCEPTION:
+            raise UnsuccessAPIRequestException()
+        if state is ResultState.HANDLED_EXCEPTION:
+            exc_data = ctx.result.exception_data
+            exc_data = cast(dict, exc_data)
+            if not ("error" in exc_data or "response" in exc_data):
+                raise UnsuccessAPIRequestException()
+        else:
+            data = ctx.result.data
+            data = cast(dict, data)
+
+        result = data or exc_data
+        result = cast(dict, result)
+
+        if "error" in result:
+            err_handler_result = await self.handle_error(Error(result))
+            if err_handler_result:
+                result = err_handler_result
+
+        return result
 
 
 class API:

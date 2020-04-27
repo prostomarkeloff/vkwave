@@ -4,6 +4,7 @@ from vkwave.bots.core.dispatching.filters import filter_caster
 from vkwave.bots.core.dispatching.filters.base import BaseFilter
 from vkwave.bots.core.dispatching.handler import BaseHandler, DefaultHandler
 from vkwave.bots.core.dispatching.handler.callback import BaseCallback
+
 from .cast import caster as callback_caster
 
 

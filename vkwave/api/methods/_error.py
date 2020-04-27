@@ -47,9 +47,23 @@ class APIError(Exception):
         super().__init__(self.message)
 
 
+_NO_DEFAULT_HANDLER = object()
+
+
+async def _noop_default_handler(error: Error, ctx: "APIOptionsRequestContext"):
+    return _NO_DEFAULT_HANDLER
+
+
 class ErrorDispatcher:
     def __init__(self):
         self.handlers: typing.Dict[int, ErrorHandlerCallable] = {}
+        self.default_error_handler: ErrorHandlerCallable = _noop_default_handler
+
+    def add_handler(self, code: int, handler: ErrorHandlerCallable):
+        self.handlers[code] = handler
+
+    def set_default_error_handler(self, handler: ErrorHandlerCallable):
+        self.default_error_handler = handler
 
     async def _run_handler(
         self,
@@ -60,7 +74,10 @@ class ErrorDispatcher:
     ) -> typing.Union[bool, typing.Optional[dict]]:
         handler = self.handlers.get(code)
         if not handler:
-            return False
+            result = await self.default_error_handler(error, request_context)
+            if result is _NO_DEFAULT_HANDLER:
+                return False
+        handler = typing.cast(ErrorHandlerCallable, handler)
         result = await handler(error, request_context)
 
         if return_info is ReturnInfo.RETURN:

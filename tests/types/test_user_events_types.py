@@ -4,6 +4,7 @@ from vkwave.types.user_events import (
     ChangedChatSettingsType,
     TimeoutUserEnum,
     get_event_object,
+    MessageFlag,
 )
 
 
@@ -52,7 +53,7 @@ def test_message_with_keyboard():
         [
             4,
             188794,
-            1,
+            490832562,
             -191949777,
             1582730565,
             "123",
@@ -77,7 +78,15 @@ def test_message_with_keyboard():
 
     assert event.object.message_id == 188794
     assert event.object.event_id == 4
-    assert event.object.flags == 1
+    assert event.object.flags == [
+        MessageFlag.OUTBOX,
+        MessageFlag.FROM_CHAT,
+        MessageFlag.FROM_FRIEND,
+        MessageFlag.DELETED,
+        MessageFlag.ATTACHMENT,
+        MessageFlag.HIDDEN,
+    ]
+
     assert event.object.text == "123"
     assert not event.object.message_data.keyboard.one_time
     assert event.object.message_data.keyboard.buttons[0][0].action.label == "helloworld"

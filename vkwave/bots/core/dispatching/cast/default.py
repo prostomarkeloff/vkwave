@@ -1,4 +1,4 @@
-from typing import Any, Callable, TypeVar, Dict, cast
+from typing import Any, Callable, List, Optional, TypeVar, cast
 
 from .caster import AbstractCaster
 
@@ -8,17 +8,14 @@ T = TypeVar("T")
 
 class DefaultCaster(AbstractCaster[IT]):
     def __init__(self):
-        self._user_casts: Dict[T, Callable[[Any], IT]] = {}
+        self._user_casts: List[Callable[[Any], IT]] = []
 
-    def add_caster(self, typeof: T, handler: Callable[[Any], IT]):
-        self._user_casts[typeof] = handler
+    def add_caster(self, handler: Callable[[Any], IT]):
+        self._user_casts.append(handler)
 
-    def cast(self, something: Any) -> IT:  # type: ignore
-        cb: IT
-
-        typeof = type(something)
-        av_cast = self._user_casts.get(typeof)
-        if av_cast:
-            av_cast = cast(Callable[[Any], IT], av_cast)
-            cb = av_cast(something)
-            return cb
+    def from_casters(self, something: Any) -> Optional[IT]:
+        for handler in self._user_casts:
+            result = handler(something)
+            if result is not None:
+                return result
+        return None

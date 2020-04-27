@@ -111,7 +111,7 @@ class BaseBotEvent(pydantic.BaseModel):
 
 
 class ClientInfo(pydantic.BaseModel):
-    button_actions: list = pydantic.Field(None, description="")
+    button_actions: typing.List[str] = pydantic.Field(None, description="")
     keyboard: bool = pydantic.Field(None, description="")
     inline_keyboard: bool = pydantic.Field(None, description="")
     carousel: bool = pydantic.Field(None, description="")
@@ -178,7 +178,7 @@ class PhotoCommentObject(pydantic.BaseModel):
     date: int = pydantic.Field(None, description="")
     from_id: int = pydantic.Field(None, description="")
     thread: PhotoCommentThreadModel = pydantic.Field(None, description="")
-    parents_stack: list = pydantic.Field(None, description="")
+    parents_stack: typing.List[int] = pydantic.Field(None, description="")
 
 
 class PhotoCommentNew(BaseBotEvent):
@@ -242,7 +242,7 @@ class VideoCommentDelete(BaseBotEvent):
     object: VideoCommentDeleteObject = pydantic.Field(None, description="")
 
 
-class WallPostObject(WallWallpost):
+class WallPostObject(WallWallpost):  # type: ignore
     postponed_id: int = pydantic.Field(None, description="")
 
 
@@ -524,7 +524,7 @@ _event_dict = {
 
 
 def get_event_object(
-    raw_event: dict,
+    raw_event: typing.Dict[str, typing.Any],
 ) -> typing.Union[
     MessageNew,
     MessageReply,

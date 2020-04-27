@@ -1,16 +1,17 @@
 import logging
-from typing import List, NewType, Optional, cast
+from typing import List, NewType, Optional, cast, Union
 
 from vkwave.api.methods import API
 from vkwave.api.token.token import AnyABCToken
 from vkwave.bots.core.dispatching.events.base import BaseEvent, BotEvent, UserEvent
 from vkwave.bots.core.dispatching.events.raw import ExtensionEvent
 from vkwave.bots.core.dispatching.router.router import HANDLER_NOT_FOUND, BaseRouter
-from vkwave.bots.core.tokens.storage import TokenStorage
-from vkwave.bots.core.tokens.types import GroupId, UserId
+from vkwave.bots.core.tokens.storage import TokenStorage, UserTokenStorage
+from vkwave.bots.core.tokens.types import GroupId
 from vkwave.bots.core.types.bot_type import BotType
 from vkwave.types.bot_events import get_event_object
 from vkwave.types.user_events import get_event_object as user_get_event_object
+
 from .middleware.middleware import MiddlewareManager
 from .processing_options import ProcessEventOptions
 from .result_caster import ResultCaster
@@ -21,11 +22,16 @@ logger = logging.getLogger(__name__)
 
 
 class Dispatcher:
-    def __init__(self, api: API, token_storage: TokenStorage, bot_type: BotType = BotType.BOT):
+    def __init__(
+        self,
+        api: API,
+        token_storage: Union[TokenStorage, UserTokenStorage],
+        bot_type: BotType = BotType.BOT,
+    ):
         self.bot_type: BotType = bot_type
         self.api: API = api
         self.middleware_manager = MiddlewareManager()
-        self.token_storage: TokenStorage = token_storage
+        self.token_storage: Union[TokenStorage, UserTokenStorage] = token_storage
         self.routers: List[BaseRouter] = []
         self.result_caster: ResultCaster = ResultCaster()
 
@@ -53,9 +59,7 @@ class Dispatcher:
         else:
             revent.raw_event = cast(list, revent.raw_event)
             obj = user_get_event_object(revent.raw_event)
-            user_id = obj.peer_id
-            token = await self.token_storage.get_token(UserId(user_id))
-            event = UserEvent(obj, self.api.with_token(token))
+            event = UserEvent(obj, self.api.with_token(self.token_storage.current_token))
 
         logger.debug(f"New event! Formatted:\n{event}")
 

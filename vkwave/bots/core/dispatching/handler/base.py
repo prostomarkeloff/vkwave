@@ -4,6 +4,7 @@ from typing import Any, List, Optional
 from vkwave.bots.core.dispatching.events.base import BaseEvent
 from vkwave.bots.core.dispatching.filters.base import BaseFilter
 from vkwave.bots.core.dispatching.filters.manage import FilterManager
+
 from .callback import BaseCallback
 
 FILTERS_NOT_PASSED = object()
@@ -19,6 +20,9 @@ class BaseHandler(ABC):
     @abstractmethod
     async def process_event(self, event: BaseEvent) -> Any:
         """Return FILTERS_NOT_PASSED or handler's result"""
+
+    def __repr__(self):
+        return "%s(%r)" % (self.__class__.__name__, self.__dict__)
 
 
 class DefaultHandler(BaseHandler):

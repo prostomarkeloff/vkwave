@@ -1,18 +1,20 @@
 from vkwave.types.responses import *
 
 from ._category import Category
+from ._utils import get_params
 
 
 class Search(Category):
     async def get_hints(
         self,
+        return_raw_response: bool = False,
         q: typing.Optional[str] = None,
         offset: typing.Optional[int] = None,
         limit: typing.Optional[int] = None,
         filters: typing.Optional[typing.List[str]] = None,
         fields: typing.Optional[typing.List[str]] = None,
         search_global: typing.Optional[bool] = None,
-    ) -> SearchGetHintsResponse:
+    ) -> typing.Union[dict, SearchGetHintsResponse]:
         """
         :param q: - Search query string.
         :param offset: - Offset for querying specific result subset
@@ -20,16 +22,15 @@ class Search(Category):
         :param filters:
         :param fields:
         :param search_global:
+        :param return_raw_response: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        params = get_params(locals())
 
         raw_result = await self.api_request("getHints", params)
+        if return_raw_response:
+            return raw_result
+
         result = SearchGetHintsResponse(**raw_result)
         return result

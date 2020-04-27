@@ -3,7 +3,7 @@ import os
 import pytest
 from dotenv import load_dotenv
 
-from vkwave.api.methods._abc import API
+from vkwave.api.methods import API
 from vkwave.api.token.token import BotSyncSingleToken, Token
 from vkwave.client.default import AIOHTTPClient
 from vkwave.types.objects import BaseBoolInt

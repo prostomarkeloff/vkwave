@@ -29,6 +29,9 @@ classifiers = [
   "Typing :: Typed",
 ]
 
+[tool.poetry.urls]
+"Bug Tracker" = "https://github.com/fscdev/vkwave/issues"
+
 [tool.poetry.dependencies]
 python = "^3.7"
 

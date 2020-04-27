@@ -19,13 +19,30 @@ In this 'article' I'll show you how to create a `fake` client. In reality it can
 ```python
 from vkwave.client.abstract import AbstractAPIClient
 from vkwave.client.context import RequestContext
+from vkwave.client.factory import DefaultFactory, AbstractFactory
 
-async def callback(method_name, **kwargs):
+async def callback(method_name, params: dict):
     return {"response": {"text": "it's fake!"}}
 
 class FakeClient(AbstractHTTPClient):
-    async def request(self, method_name, **kwargs):
-        return RequestContext(exceptions={}, method_name=method_name, request_callback=callback, request_params=kwargs)
+    def __init__(self):
+        self._factory = DefaultFactory()
+
+    @property
+    def context_factory(self) -> AbstractFactory:
+        return self._factory
+
+    def set_context_factory(self, factory: AbstractFactory):
+        self._factory = factory
+
+    async def request(self, method_name, params: dict):
+        ctx = self.context_factory.create_context(
+            request_callback=callback,
+            method_name=method_name,
+            request_params=params,
+            exceptions={},
+        )
+        return ctx
 
     async def close(self):
         print("closing nothing...")

@@ -23,7 +23,10 @@ class RequestState(Enum):
 
 
 class ResultState(Enum):
-    """State of result. You must check this before operating with values in (data, exception_data, exception)"""
+    """
+    State of result.
+    You must check this before operating with values in (data, exception_data, exception)
+    """
 
     NOTHING = auto()
     SUCCESS = auto()
@@ -41,7 +44,10 @@ class Signal(Enum):
 
 
 class RequestContext:
-    """Context of request. It is being returned from `create_request` function. Needed to work with request specified things."""
+    """
+    Context of request. It is being returned from `create_request` function.
+    Needed to work with request specified things.
+    """
 
     def __init__(
         self,
@@ -54,7 +60,8 @@ class RequestContext:
         :param request_callback: callable thing that will be called on `ctx.send_request`.
         :param method_name: name of method
         :param request_params: request params
-        :param exceptions: possible exceptions while calling `request_callback`. There are should be only client specified exceptions.
+        :param exceptions: possible exceptions while calling `request_callback`.
+         There are should be only client specified exceptions.
 
         """
         self.state: RequestState = RequestState.NOT_SENT

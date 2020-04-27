@@ -1,13 +1,36 @@
 import json
 import re
 import typing
-from typing import Tuple, Union, Dict
+from typing import Dict, Tuple, Union, List
 
-from vkwave.bots.core.dispatching.events.base import BaseEvent
+from typing_extensions import Literal
+
+from vkwave.bots.core.dispatching.events.base import BaseEvent, UserEvent
 from vkwave.bots.core.types.bot_type import BotType
 from vkwave.bots.core.types.json_types import JSONDecoder
 from vkwave.types.objects import MessagesMessageActionStatus
+
 from .base import BaseFilter, FilterResult
+from vkwave.types.user_events import EventId, MessageFlag
+
+MessageEventUser: Tuple[int] = EventId.MESSAGE_EVENT.value
+MessageEventBot: str = "message_new"
+InvalidEventError = ValueError(
+    "Invalid event passed. Expected message event. You must add EventTypeFilter at first."
+)
+
+
+def is_from_me(event: UserEvent) -> bool:
+    return bool(event.object.object.flags[-1] & MessageFlag.OUTBOX.value)
+
+
+def is_message_event(event: BaseEvent):
+    if event.bot_type is BotType.BOT:
+        if event.object.type != MessageEventBot:
+            raise InvalidEventError
+    elif event.bot_type is BotType.USER:
+        if event.object.object.event_id not in MessageEventUser:
+            raise InvalidEventError
 
 
 class EventTypeFilter(BaseFilter):
@@ -32,9 +55,9 @@ class EventTypeFilter(BaseFilter):
                 return FilterResult(event.object.type == self.event_type)
         else:
             if isinstance(self.event_type, tuple):
-                return FilterResult(event.object.event_id in self.event_type)
+                return FilterResult(event.object.object.event_id in self.event_type)
             if isinstance(self.event_type, int):
-                return FilterResult(event.object.event_id == self.event_type)
+                return FilterResult(event.object.object.event_id == self.event_type)
         raise NotImplementedError("There is no implementation for this type of bot")
 
 
@@ -60,9 +83,15 @@ class TextFilter(BaseFilter):
         self.ic = ignore_case
 
     async def check(self, event: BaseEvent) -> FilterResult:
+        is_message_event(event)
+
         if event.bot_type is BotType.USER:
+            if event.object.object.dict().get("text") is None:
+                return FilterResult(False)
             text = event.object.object.text
         else:
+            if event.object.object.dict().get("message") is None:
+                return FilterResult(False)
             text = event.object.object.message.text
         if self.ic:
             text = text.lower()
@@ -77,6 +106,7 @@ class PayloadFilter(BaseFilter):
         self.payload = payload
 
     async def check(self, event: BaseEvent) -> FilterResult:
+        is_message_event(event)
         if event.bot_type is BotType.USER:
             current_payload = event.object.object.message_data.payload
         else:
@@ -95,6 +125,7 @@ class ChatActionFilter(BaseFilter):
         self.action = action
 
     async def check(self, event: BaseEvent) -> FilterResult:
+        is_message_event(event)
         if event.bot_type is BotType.USER:
             current_action = event.object.object.message_data.source_act
         else:
@@ -124,7 +155,7 @@ class CommandsFilter(BaseFilter):
     def __init__(
         self,
         commands: AnyText,
-        prefixes: typing.Tuple[str] = ("/", "!"),
+        prefixes: typing.Tuple[str, ...] = ("/", "!"),
         ignore_case: bool = True,
     ):
         self.commands = (commands,) if isinstance(commands, str) else commands
@@ -132,7 +163,10 @@ class CommandsFilter(BaseFilter):
         self.ic = ignore_case
 
     async def check(self, event: BaseEvent) -> FilterResult:
+        is_message_event(event)
         if event.bot_type is BotType.USER:
+            if event.object.object.dict().get("text") is None:
+                return FilterResult(False)
             text = event.object.object.text
         else:
             if event.object.object.dict().get("message") is None:
@@ -165,12 +199,76 @@ class RegexFilter(BaseFilter):
         self.pattern = re.compile(regex, flags)
 
     async def check(self, event: BaseEvent) -> FilterResult:
+        is_message_event(event)
         if event.bot_type is BotType.USER:
             text = event.object.object.text
         else:
             text = event.object.object.message.text
 
         return FilterResult(self.pattern.match(text) is not None)
+
+
+class MessageFromConversationTypeFilter(BaseFilter):
+    """
+    Filtering events by their conversation's type.
+
+    >>> conv_type = MessageFromConversationTypeFilter # alias
+    >>> _ = conv_type("from_pm")
+    >>> _ = conv_type("from_direct")
+    >>> _ = conv_type("from_dm")
+    >>> _ = conv_type("from_chat")
+    
+    >>> from_pm = conv_type("from_pm")
+    >>> @router.registrar.with_decorator(from_pm)
+    """
+
+    def __init__(self, from_what: Literal["from_pm", "from_dm", "from_direct", "from_chat"]):
+        # 0: pm; 1: chat
+        self.from_what: Literal[0, 1] = 0 if from_what in (
+            "from_pm",
+            "from_dm",
+            "from_direct",
+        ) else 1
+
+    async def check(self, event: BaseEvent) -> FilterResult:
+        is_message_event(event)
+        if event.bot_type is BotType.USER:
+            raise NotImplementedError("Not implemented yet")
+        else:
+            peer_id: int
+            from_id: int
+            peer_id, from_id = (
+                event.object.object.message.peer_id,
+                event.object.object.message.from_id,
+            )
+
+            status: int
+
+            if peer_id == from_id:
+                status = 0
+            else:
+                status = 1
+
+            return FilterResult(self.from_what == status)
+
+
+class FromMeFilter(BaseFilter):
+    """
+    Checking is message from me
+
+    FromMeFilter(from_me=False) -> message from other user
+    FromMeFilter(from_me=True) -> message from me
+    """
+
+    def __init__(self, from_me: bool):
+        self.from_me = from_me
+
+    async def check(self, event: BaseEvent) -> FilterResult:
+        is_message_event(event)
+        if event.bot_type == BotType.BOT:
+            raise RuntimeError("Сannot be used in bot")
+        event: UserEvent
+        return FilterResult(self.from_me == is_from_me(event))
 
 
 # TODO: MessageArgsFilter

@@ -2,6 +2,21 @@
 
 > It's time to carry out vk_api & vkbottle. VKWave is here.
 
+[Why VKWave?](./why_vkwave.md)
+
+```python
+from vkwave.bots.easy import SimpleLongPollBot
+
+bot = SimpleLongPollBot(tokens="MyToken", group_id=123456789)
+
+@bot.message_handler()
+def handle(_) -> str:
+    return "Hello world!"
+
+bot.run_forever()
+
+```
+
 [Русская версия](https://github.com/fscdev/vkwave/blob/master/readme_ru.md)
 # What is it?
 
@@ -10,6 +25,8 @@ Framework for building high-performance & easy to scale projects interacting wit
 It's built over asyncio and Python's type hints. Minimal required version is `3.7`.
 
 Our Telegram chat - [let's chat](https://t.me/vkwave)
+
+Current maintainer of this project is [@kesha1225](https://github.com/kesha1225)
 
 ## VKWave core
 

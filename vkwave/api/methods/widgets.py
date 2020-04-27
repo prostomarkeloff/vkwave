@@ -1,11 +1,13 @@
 from vkwave.types.responses import *
 
 from ._category import Category
+from ._utils import get_params
 
 
 class Widgets(Category):
     async def get_comments(
         self,
+        return_raw_response: bool = False,
         widget_api_id: typing.Optional[int] = None,
         url: typing.Optional[str] = None,
         page_id: typing.Optional[str] = None,
@@ -13,7 +15,7 @@ class Widgets(Category):
         fields: typing.Optional[typing.List[UsersFields]] = None,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
-    ) -> WidgetsGetCommentsResponse:
+    ) -> typing.Union[dict, WidgetsGetCommentsResponse]:
         """
         :param widget_api_id:
         :param url:
@@ -22,44 +24,43 @@ class Widgets(Category):
         :param fields:
         :param offset:
         :param count:
+        :param return_raw_response: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        params = get_params(locals())
 
         raw_result = await self.api_request("getComments", params)
+        if return_raw_response:
+            return raw_result
+
         result = WidgetsGetCommentsResponse(**raw_result)
         return result
 
     async def get_pages(
         self,
+        return_raw_response: bool = False,
         widget_api_id: typing.Optional[int] = None,
         order: typing.Optional[str] = None,
         period: typing.Optional[str] = None,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
-    ) -> WidgetsGetPagesResponse:
+    ) -> typing.Union[dict, WidgetsGetPagesResponse]:
         """
         :param widget_api_id:
         :param order:
         :param period:
         :param offset:
         :param count:
+        :param return_raw_response: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        params = get_params(locals())
 
         raw_result = await self.api_request("getPages", params)
+        if return_raw_response:
+            return raw_result
+
         result = WidgetsGetPagesResponse(**raw_result)
         return result

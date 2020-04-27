@@ -95,3 +95,9 @@ async def test_signals(client):
     assert ctx.result.exception is not None
     assert ctx.result.exception_data["captured"] == "by signal"
     assert ctx.result.data is None
+
+
+@pytest.mark.asyncio
+async def test_no_http_client(client):
+    with pytest.raises(NotImplementedError):
+        client.http_client

@@ -9,7 +9,7 @@ from vkwave.api.token.token import (
     GetTokenType,
     Token,
     TokenType,
-)
+    BotSyncSingleToken)
 
 
 class ABCGetTokenStrategy(ABC):
@@ -27,6 +27,9 @@ class RandomGetTokenStrategy(ABCGetTokenStrategy):
 
     async def get_token(self, tokens: List[AnyABCToken]) -> Token:
         token = choice(tokens)
+        if isinstance(token, str):
+            return cast(Token, token)
+
         if token.get_token_type is GetTokenType.ASYNC:
             token = cast(ABCAsyncToken, token)
             return await token.get_token()

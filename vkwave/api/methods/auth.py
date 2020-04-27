@@ -1,49 +1,51 @@
 from vkwave.types.responses import *
 
 from ._category import Category
+from ._utils import get_params
 
 
 class Auth(Category):
     async def check_phone(
         self,
-        phone: str = None,
+        phone: str,
+        return_raw_response: bool = False,
         client_id: typing.Optional[int] = None,
         client_secret: typing.Optional[str] = None,
         auth_by_phone: typing.Optional[bool] = None,
-    ) -> OkResponse:
+    ) -> typing.Union[dict, OkResponse]:
         """
         :param phone: - Phone number.
         :param client_id: - User ID.
         :param client_secret:
         :param auth_by_phone:
+        :param return_raw_response: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        params = get_params(locals())
 
         raw_result = await self.api_request("checkPhone", params)
+        if return_raw_response:
+            return raw_result
+
         result = OkResponse(**raw_result)
         return result
 
-    async def restore(self, phone: str = None, last_name: str = None,) -> AuthRestoreResponse:
+    async def restore(
+        self, phone: str, last_name: str, return_raw_response: bool = False,
+    ) -> typing.Union[dict, AuthRestoreResponse]:
         """
         :param phone: - User phone number.
         :param last_name: - User last name.
+        :param return_raw_response: - return result at dict
         :return:
         """
 
-        params = {}
-        for key, value in locals().items():
-            if key not in ["self", "params"] and value is not None:
-                if isinstance(value, list):
-                    value = ",".join(str(item) for item in value)
-                params[key] = value
+        params = get_params(locals())
 
         raw_result = await self.api_request("restore", params)
+        if return_raw_response:
+            return raw_result
+
         result = AuthRestoreResponse(**raw_result)
         return result

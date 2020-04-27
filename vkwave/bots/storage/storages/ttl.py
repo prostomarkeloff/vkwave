@@ -1,7 +1,7 @@
 import time
 import typing
 
-from vkwave.bots.storage.base import AbstractExpiredStorage, NO_KEY, NoKeyOrValue
+from vkwave.bots.storage.base import NO_KEY, AbstractExpiredStorage, NoKeyOrValue
 from vkwave.bots.storage.types import TTL, Key, Value
 
 INF = float("inf")

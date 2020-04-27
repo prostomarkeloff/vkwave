@@ -1,6 +1,6 @@
 import typing
 
-from vkwave.bots.storage.base import AbstractStorage, NO_KEY, NoKeyOrValue
+from vkwave.bots.storage.base import NO_KEY, AbstractStorage, NoKeyOrValue
 from vkwave.bots.storage.types import Key, Value
 
 
