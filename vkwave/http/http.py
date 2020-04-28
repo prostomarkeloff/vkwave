@@ -24,6 +24,10 @@ class AbstractHTTPClient(ABC):
         ...
 
     @abstractmethod
+    async def raw_request(self, *args, **kwargs):
+        ...
+
+    @abstractmethod
     async def close(self):
         ...
 
@@ -58,3 +62,6 @@ class AIOHTTPClient(AbstractHTTPClient):
         json = json or {}
         async with self.session.request(method, url, json=json) as resp:
             return await resp.json()
+
+    async def raw_request(self, *args, **kwargs):
+        return await self.session.request(*args, **kwargs)
