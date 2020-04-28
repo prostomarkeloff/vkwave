@@ -1,7 +1,6 @@
 import ast
 
 from ..converter import VKScriptConverter
-from .expressions import OPS
 
 
 @VKScriptConverter.register(ast.Assign)
@@ -18,7 +17,9 @@ def assign_handler(node: ast.Assign):
         elif target.__class__ == ast.Tuple:
             raise NotImplementedError("Tuple assignments are not allowed")
         else:
-            raise NotImplementedError(f"Assignments of {target.__class__} are not implemented")
+            raise NotImplementedError(
+                f"Assignments of {target.__class__} are not implemented"
+            )
 
     right = converter.convert_node(node.value)
     return "var " + ",".join(f"{target}={right}" for target in left_) + ";"
@@ -27,14 +28,29 @@ def assign_handler(node: ast.Assign):
 @VKScriptConverter.register(ast.AugAssign)
 def aug_assign_handler(node: ast.AugAssign):
     converter = VKScriptConverter.get_current()
+    ops = {
+        ast.Add: "+",
+        ast.Sub: "-",
+        ast.Mult: "*",
+        ast.Div: "/",
+        ast.Pow: "**",
+        ast.RShift: ">>",
+        ast.LShift: "<<",
+        ast.BitOr: "|",
+        ast.BitAnd: "&",
+        ast.Mod: "%",
+    }
 
-    if node.op.__class__ not in OPS:
+    if node.op.__class__ not in ops:
         raise NotImplementedError(f"Operation {node.op} is not implemented.")
 
-    if node.target.__class__ == ast.Name and node.target.id not in converter.scope.locals:
+    if (
+        node.target.__class__ == ast.Name
+        and node.target.id not in converter.scope.locals
+    ):
         raise NameError(f"name '{node.target.id}' is not defined")
     target = converter.convert_node(node.target)
-    return f"{target}={target}{OPS[node.op.__class__]}({converter.convert_node(node.value)});"
+    return f"{target}={target}{ops[node.op.__class__]}({converter.convert_node(node.value)});"
 
 
 @VKScriptConverter.register(ast.Name)
@@ -45,7 +61,8 @@ def name_handler(node: ast.Name):
     if node.id not in converter.scope.globals:
         raise NameError(f"name '{node.id}' is not defined")
     if (
-        type(converter.scope.globals[node.id]) not in (str, int, tuple, dict, list)
+        type(converter.scope.globals[node.id])
+        not in (str, int, tuple, dict, list)
         and converter.scope.globals[node.id] is not None
     ):
         raise NotImplementedError(

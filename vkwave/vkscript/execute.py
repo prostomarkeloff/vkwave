@@ -2,7 +2,7 @@ import ast
 import inspect
 import types
 
-from vkwave.api.methods import APIOptionsRequestContext
+from vkwave.api import APIOptionsRequestContext
 from vkwave.vkscript.converter import Scope, VKScriptConverter
 
 
@@ -36,7 +36,9 @@ class Execute:
                 elif argument.arg.upper() == "API":
                     continue
                 else:
-                    raise TypeError(f"missing required argument {argument.arg}")
+                    raise TypeError(
+                        f"missing required argument {argument.arg}"
+                    )
             converter = VKScriptConverter(Scope(globals=globals_))
             return converter.convert_block(self._code.body)
         raise NotImplementedError()

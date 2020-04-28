@@ -1,15 +1,18 @@
-import contextvars
 import typing
+import contextvars
 from typing import Type, TypeVar
 
 import pydantic
+
 
 T = TypeVar("T")
 
 
 class ContextInstanceMixin:
     def __init_subclass__(cls, **kwargs):
-        cls.__context_instance = contextvars.ContextVar("instance_" + cls.__name__)
+        cls.__context_instance = contextvars.ContextVar(
+            "instance_" + cls.__name__
+        )
         return cls
 
     @classmethod
@@ -49,7 +52,9 @@ class VKScriptConverter(ContextInstanceMixin):
     def convert_node(self, node):
         if node.__class__ in self.handlers:
             return self.handlers[node.__class__](node)
-        raise NotImplementedError(f"Conversion for type {node.__class__} not implemented.")
+        raise NotImplementedError(
+            f"Conversion for type {node.__class__} not implemented."
+        )
 
     def convert_block(self, nodes: list):
         return "".join(self.convert_node(child) for child in nodes)

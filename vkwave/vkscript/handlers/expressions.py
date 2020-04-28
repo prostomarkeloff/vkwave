@@ -3,19 +3,6 @@ import string
 
 from ..converter import VKScriptConverter
 
-OPS = {
-    ast.Add: "+",
-    ast.Sub: "-",
-    ast.Mult: "*",
-    ast.Div: "/",
-    ast.Pow: "**",
-    ast.RShift: ">>",
-    ast.LShift: "<<",
-    ast.BitOr: "|",
-    ast.BitAnd: "&",
-    ast.Mod: "%",
-}
-
 
 @VKScriptConverter.register(ast.Expr)
 def expr_handler(node: ast.Expr):
@@ -31,10 +18,23 @@ def module_handler(node: ast.Module):
 
 @VKScriptConverter.register(ast.BinOp)
 def bin_op_handler(node: ast.BinOp):
-    if node.op.__class__ not in OPS:
+    ops = {
+        ast.Add: "+",
+        ast.Sub: "-",
+        ast.Mult: "*",
+        ast.Div: "/",
+        ast.Pow: "**",
+        ast.RShift: ">>",
+        ast.LShift: "<<",
+        ast.BitOr: "|",
+        ast.BitAnd: "&",
+        ast.Mod: "%",
+    }
+
+    if node.op.__class__ not in ops:
         raise NotImplementedError(f"Operation {node.op} is not implemented.")
     converter = VKScriptConverter.get_current()
-    return f"{converter.convert_node(node.left)}{OPS[node.op.__class__]}{converter.convert_node(node.right)}"
+    return f"{converter.convert_node(node.left)}{ops[node.op.__class__]}{converter.convert_node(node.right)}"
 
 
 @VKScriptConverter.register(ast.Compare)
@@ -53,8 +53,12 @@ def compare_handler(node: ast.Compare):
     left = converter.convert_node(node.left)
     for op, comparator in zip(node.ops, node.comparators):
         if op.__class__ not in ops:
-            raise NotImplementedError(f"comparison operator {op} not supported")
-        operations.append(f"{left}{ops[op.__class__]}{converter.convert_node(comparator)}")
+            raise NotImplementedError(
+                f"comparison operator {op} not supported"
+            )
+        operations.append(
+            f"{left}{ops[op.__class__]}{converter.convert_node(comparator)}"
+        )
     return "&&".join(operations)
 
 
@@ -64,7 +68,9 @@ def bool_op_handler(node: ast.BoolOp):
     if node.op.__class__ not in ops:
         raise NotImplementedError(f"operation '{node.op}' not supported")
     converter = VKScriptConverter.get_current()
-    return ops[node.op.__class__].join(converter.convert_node(value) for value in node.values)
+    return ops[node.op.__class__].join(
+        converter.convert_node(value) for value in node.values
+    )
 
 
 @VKScriptConverter.register(ast.UnaryOp)
@@ -82,14 +88,20 @@ def subscript_handler(node: ast.Subscript):
     value = converter.convert_node(node.value)
     if node.slice.__class__ == ast.Index:
         safe = frozenset(string.ascii_letters + string.digits + "_")
-        if node.slice.value.__class__ == ast.Str and set(node.slice.value.s) <= safe:
+        if (
+            node.slice.value.__class__ == ast.Str
+            and set(node.slice.value.s) <= safe
+        ):
             # TODO: Improve safety check, first symbol may be digit
             return f"{value}.{node.slice.value.s}"
         return f"{value}[{converter.convert_node(node.slice.value)}]"
     elif node.slice.__class__ == ast.Slice:
         if node.slice.step:
             raise NotImplementedError("steps in slice not supported")
-        if node.slice.lower.__class__ != ast.Num and node.slice.upper.__class__ != ast.Num:
+        if (
+            node.slice.lower.__class__ != ast.Num
+            and node.slice.upper.__class__ != ast.Num
+        ):
             raise TypeError("slices must be integers")
         lower = node.slice.lower.n or 0
         if node.slice.upper:

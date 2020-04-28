@@ -4,11 +4,7 @@ from ..converter import VKScriptConverter
 
 WHILE_TEMPLATE = "while(%(test)s){%(body)s};"
 IF_TEMPLATE = "if(%(test)s){%(content)s}%(other)s;"
-FOR_TEMPLATE = ("__vkwave_iter_list__ = %(iter)s;"
-                "while(%(iter)s.length > 0){"
-                "   var %(target)s=__vkwave_iter_list__.pop();"
-                "   %(body)s"
-                "};")
+FOR_TEMPLATE = "var __vkwave_iter_list__ = %(iter)s;while(__vkwave_iter_list__.length > 0){var %(target)s=__vkwave_iter_list__.pop();%(body)s};"
 
 
 @VKScriptConverter.register(ast.While)
