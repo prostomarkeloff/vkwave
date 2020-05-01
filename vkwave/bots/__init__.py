@@ -21,3 +21,4 @@ from .easy import SimpleLongPollUserBot, SimpleLongPollBot, ClonesBot, TaskManag
 from .fsm import StateFilter, FiniteStateMachine, ForWhat
 from .storage import RedisStorage, VKStorage, Storage, TTLStorage
 from .utils import Keyboard, Template, VoiceUploader, GraffitiUploader, PhotoUploader, DocUploader
+from .core.dispatching.filters.extension_filters import VBMLFilter

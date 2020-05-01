@@ -39,13 +39,21 @@ class BaseEvent(ABC, Generic[T]):
 
 class Event(BaseEvent[T]):
     def __init__(self):
-        self.__user_data: Dict[Any, Any] = {}
+        self._user_data: Dict[Any, Any] = {}
+
+    @property
+    def user_data(self):
+        return self._user_data
+
+    @user_data.setter
+    def user_data(self, value: Dict[Any, Any]):
+        self._user_data = value
 
     def __setitem__(self, key: Any, item: Any) -> None:
-        self.__user_data[key] = item
+        self._user_data[key] = item
 
     def __getitem__(self, key: Any) -> Any:
-        return self.__user_data[key]
+        return self._user_data[key]
 
 
 class UserEvent(Event[BaseUserEvent]):

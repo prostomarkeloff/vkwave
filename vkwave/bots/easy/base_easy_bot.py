@@ -2,7 +2,7 @@ import asyncio
 import inspect
 import typing
 
-from vkwave.api.methods import API, APIOptionsRequestContext
+from vkwave.api import API, APIOptionsRequestContext
 from vkwave.api.token.token import (
     BotSyncPoolTokens,
     UserSyncSingleToken,
@@ -10,11 +10,13 @@ from vkwave.api.token.token import (
     BotSyncSingleToken,
 )
 from vkwave.bots.core import BaseFilter
-from vkwave.bots.core.dispatching.dp.dp import Dispatcher
-from vkwave.bots.core.dispatching.events.base import BaseEvent, UserEvent, BotEvent
-from vkwave.bots.core.dispatching.extensions.longpoll_bot import BotLongpollExtension
-from vkwave.bots.core.dispatching.extensions.longpoll_user import UserLongpollExtension
-from vkwave.bots.core.dispatching.filters.builtin import (
+from vkwave.bots import (
+    Dispatcher,
+    BaseEvent,
+    UserEvent,
+    BotEvent,
+    BotLongpollExtension,
+    UserLongpollExtension,
     ChatActionFilter,
     CommandsFilter,
     EventTypeFilter,
@@ -22,16 +24,19 @@ from vkwave.bots.core.dispatching.filters.builtin import (
     RegexFilter,
     TextFilter,
     FromMeFilter,
+    DefaultRouter,
+    TokenStorage,
+    UserTokenStorage,
+    UserId,
+    GroupId,
+    BotType,
 )
-from vkwave.bots.core.dispatching.handler.callback import BaseCallback
-from vkwave.bots.core.dispatching.router.router import DefaultRouter, BaseRouter
-from vkwave.bots.core.tokens.storage import TokenStorage, UserTokenStorage
-from vkwave.bots.core.tokens.types import UserId, GroupId
-from vkwave.bots.core.types.bot_type import BotType
+from vkwave.bots.core.dispatching.filters.extension_filters import VBMLFilter
 from vkwave.bots.fsm.filters import StateFilter
-from vkwave.client.default import AIOHTTPClient
-from vkwave.longpoll.bot import BotLongpoll, BotLongpollData
-from vkwave.longpoll.user import UserLongpoll, UserLongpollData
+from vkwave.bots.core.dispatching.handler.callback import BaseCallback
+from vkwave.bots.core.dispatching.router.router import BaseRouter
+from vkwave.client import AIOHTTPClient
+from vkwave.longpoll import BotLongpoll, BotLongpollData, UserLongpoll, UserLongpollData
 from vkwave.types.bot_events import BotEventType
 from vkwave.types.objects import BaseBoolInt
 from vkwave.types.user_events import EventId
@@ -71,6 +76,13 @@ def create_api_session_aiohttp(token: str, bot_type: BotType = BotType.BOT) -> _
 class SimpleUserEvent(UserEvent):
     def __init__(self, event: UserEvent):
         super().__init__(event.object, event.api_ctx)
+        self.user_data = event.user_data
+
+    def __setitem__(self, key: typing.Any, item: typing.Any) -> None:
+        self.user_data[key] = item
+
+    def __getitem__(self, key: typing.Any) -> typing.Any:
+        return self.user_data[key]
 
     async def answer(
         self,
@@ -110,6 +122,13 @@ class SimpleUserEvent(UserEvent):
 class SimpleBotEvent(BotEvent):
     def __init__(self, event: BotEvent):
         super().__init__(event.object, event.api_ctx)
+        self.user_data = event.user_data
+
+    def __setitem__(self, key: typing.Any, item: typing.Any) -> None:
+        self.user_data[key] = item
+
+    def __getitem__(self, key: typing.Any) -> typing.Any:
+        return self.user_data[key]
 
     async def answer(
         self,
@@ -184,6 +203,7 @@ class BaseSimpleLongPollBot:
         self.command_filter = CommandsFilter
         self.regex_filter = RegexFilter
         self.state_filter = StateFilter
+        self.vbml_filter = VBMLFilter
         if self.bot_type is BotType.USER:
             self.from_me_filter = FromMeFilter
 
@@ -216,6 +236,7 @@ class BaseSimpleLongPollBot:
             record.handle(self.SimpleBotCallback(func, self.bot_type))
             self.router.registrar.register(record.ready())
             return func
+
         return decorator
 
     def message_handler(self, *filters: BaseFilter):

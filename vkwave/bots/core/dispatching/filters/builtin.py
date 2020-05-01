@@ -33,6 +33,19 @@ def is_message_event(event: BaseEvent):
             raise InvalidEventError
 
 
+def get_text(event: BaseEvent) -> typing.Optional[str]:
+    is_message_event(event)
+    if event.bot_type is BotType.USER:
+        if event.object.object.dict().get("text") is None:
+            return None
+        text = event.object.object.text
+    else:
+        if event.object.object.dict().get("message") is None:
+            return None
+        text = event.object.object.message.text
+    return text
+
+
 class EventTypeFilter(BaseFilter):
     """
     Event type filter. It supports both user and bot events.
@@ -83,16 +96,10 @@ class TextFilter(BaseFilter):
         self.ic = ignore_case
 
     async def check(self, event: BaseEvent) -> FilterResult:
-        is_message_event(event)
+        text = get_text(event)
+        if text is None:
+            return FilterResult(False)
 
-        if event.bot_type is BotType.USER:
-            if event.object.object.dict().get("text") is None:
-                return FilterResult(False)
-            text = event.object.object.text
-        else:
-            if event.object.object.dict().get("message") is None:
-                return FilterResult(False)
-            text = event.object.object.message.text
         if self.ic:
             text = text.lower()
         return FilterResult(text in self.text)
@@ -163,17 +170,13 @@ class CommandsFilter(BaseFilter):
         self.ic = ignore_case
 
     async def check(self, event: BaseEvent) -> FilterResult:
-        is_message_event(event)
-        if event.bot_type is BotType.USER:
-            if event.object.object.dict().get("text") is None:
-                return FilterResult(False)
-            text = event.object.object.text
-        else:
-            if event.object.object.dict().get("message") is None:
-                return FilterResult(False)
-            text = event.object.object.message.text
-            if self.ic:
-                text = text.lower()
+        text = get_text(event)
+
+        if text is None:
+            return FilterResult(False)
+
+        if self.ic:
+            text = text.lower()
         for command in self.commands:
             for prefix in self.prefixes:
                 if text.startswith(f"{prefix}{command}"):
@@ -199,12 +202,9 @@ class RegexFilter(BaseFilter):
         self.pattern = re.compile(regex, flags)
 
     async def check(self, event: BaseEvent) -> FilterResult:
-        is_message_event(event)
-        if event.bot_type is BotType.USER:
-            text = event.object.object.text
-        else:
-            text = event.object.object.message.text
-
+        text = get_text(event)
+        if text is None:
+            return FilterResult(False)
         return FilterResult(self.pattern.match(text) is not None)
 
 
