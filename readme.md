@@ -2,6 +2,8 @@
 
 > It's time to carry out vk_api & vkbottle. VKWave is here.
 
+[Русская версия](https://github.com/fscdev/vkwave/blob/master/readme_ru.md)
+
 [Why VKWave?](./why_vkwave.md)
 
 ```python
@@ -17,7 +19,6 @@ bot.run_forever()
 
 ```
 
-[Русская версия](https://github.com/fscdev/vkwave/blob/master/readme_ru.md)
 # What is it?
 
 Framework for building high-performance & easy to scale projects interacting with VK's API.
@@ -27,6 +28,17 @@ It's built over asyncio and Python's type hints. Minimal required version is `3.
 Our Telegram chat - [let's chat](https://t.me/vkwave)
 
 Current maintainer of this project is [@kesha1225](https://github.com/kesha1225)
+
+## Installation
+
+```
+pip install vkwave
+```
+
+or with the latest updates
+```
+pip install https://github.com/fscdev/vkwave/archive/master.zip
+```
 
 ## VKWave core
 

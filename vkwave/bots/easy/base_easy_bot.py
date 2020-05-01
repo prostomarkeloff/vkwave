@@ -204,7 +204,24 @@ class BaseSimpleLongPollBot:
                 return await self.func(new_event)
             return self.func(new_event)
 
+    def handler(self, *filters: BaseFilter):
+        """
+        Handler for all events
+        """
+
+        def decorator(func: typing.Callable[..., typing.Any]):
+            record = self.router.registrar.new()
+            record.with_filters(*filters)
+            record.handle(self.SimpleBotCallback(func, self.bot_type))
+            self.router.registrar.register(record.ready())
+            return func
+        return decorator
+
     def message_handler(self, *filters: BaseFilter):
+        """
+        Handler only for message events
+        """
+
         def decorator(func: typing.Callable[..., typing.Any]):
             record = self.router.registrar.new()
             record.with_filters(*filters)
