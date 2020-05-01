@@ -24,7 +24,7 @@ from vkwave.bots.core.dispatching.filters.builtin import (
     FromMeFilter,
 )
 from vkwave.bots.core.dispatching.handler.callback import BaseCallback
-from vkwave.bots.core.dispatching.router.router import DefaultRouter
+from vkwave.bots.core.dispatching.router.router import DefaultRouter, BaseRouter
 from vkwave.bots.core.tokens.storage import TokenStorage, UserTokenStorage
 from vkwave.bots.core.tokens.types import UserId, GroupId
 from vkwave.bots.core.types.bot_type import BotType
@@ -151,6 +151,7 @@ class BaseSimpleLongPollBot:
         self,
         tokens: typing.Union[str, typing.List[str]],
         bot_type: BotType,
+        router: typing.Optional[BaseRouter] = None,
         group_id: typing.Optional[int] = None,
     ):
 
@@ -172,7 +173,7 @@ class BaseSimpleLongPollBot:
             self._token_storage = TokenStorage[GroupId]()
             self.dispatcher = Dispatcher(self.api_session.api, self._token_storage)
             self._lp = BotLongpollExtension(self.dispatcher, self._lp)
-        self.router = DefaultRouter()
+        self.router = router or DefaultRouter()
         self.handler = self.router.registrar.with_decorator
         self.dispatcher.add_router(self.router)
 
