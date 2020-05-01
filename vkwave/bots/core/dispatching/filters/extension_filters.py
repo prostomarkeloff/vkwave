@@ -36,8 +36,5 @@ class VBMLFilter(BaseFilter):
         if result is None:
             return FilterResult(False)
 
-        event["vmbl_data"] = {}
-
-        for k, v in result.items():
-            event["vmbl_data"][k] = v
+        event["vmbl_data"] = self.pattern.dict()
         return FilterResult(True)
