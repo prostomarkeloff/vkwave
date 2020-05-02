@@ -10,7 +10,9 @@ In other words, your bot in VKWave is just a set of routers that handle events. 
 
 Initiating:
 ```python
-router = Router()  # also you can pass here filters
+from vkwave.bots import DefaultRouter
+
+router = DefaultRouter()  # also you can pass here filters
 # it can be like: router = Router(SomeFilter(...))
 ```
 

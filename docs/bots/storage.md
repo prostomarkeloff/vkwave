@@ -7,7 +7,7 @@ You have choice of two default storage:
  - redis storage
  
 
-```python3
+```python
 import asyncio
 
 from vkwave.bots.storage.storages import Storage
@@ -35,8 +35,9 @@ if __name__ == '__main__':
 
 If you require in time-to-life keys:
 
-```python3
+```python
 from vkwave.bots.storage.storages import TTLStorage
+from vkwave.bots.storage.types import Key
 
 storage = TTLStorage(default_ttl=10)
 
@@ -53,7 +54,7 @@ async def main():
 
 If you use Redis:
 
-```python3
+```python
 from vkwave.bots.storage.storages import RedisStorage
 
 storage = RedisStorage(default_ttl=10)  # you can also specify the host, port, db and password

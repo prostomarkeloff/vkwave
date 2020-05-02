@@ -20,6 +20,9 @@ router.registrar.add_default_filter(StateFilter(fsm, ..., ..., always_false=True
 Example of simple interview with asking name and age of user.
 
 ```python
+from vkwave.bots import EventTypeFilter, BotEventType
+from vkwave.bots.fsm import FiniteStateMachine, StateFilter, ForWhat, State, ANY_STATE
+
 fsm = FiniteStateMachine()
 router.registrar.add_default_filter(StateFilter(fsm, ..., ..., always_false=True))
 router.registrar.add_default_filter(EventTypeFilter(BotEventType.MESSAGE_NEW.value))  # we don't want to write it in all handlers.

@@ -3,7 +3,7 @@
 Wrapper over vkwave.bots for faster bot creating.
 
 ```python
-from vkwave.bots.easy.easy_bot import SimpleLongPollBot
+from vkwave.bots import SimpleLongPollBot
 
 bot = SimpleLongPollBot(tokens="MyToken", group_id=123456789)
 
@@ -20,7 +20,7 @@ bot.run_forever()
 
 
 ```python
-from vkwave.bots.easy.easy_bot import create_api_session_aiohttp
+from vkwave.bots.easy import create_api_session_aiohttp
 
 api_session = create_api_session_aiohttp("TOKEN")
 
@@ -31,7 +31,7 @@ api_session = create_api_session_aiohttp("TOKEN")
  - Tokens pool
 
 ```python
-from vkwave.bots.easy.easy_bot import SimpleLongPollBot
+from vkwave.bots import SimpleLongPollBot
 
 bot = SimpleLongPollBot(tokens=["MyToken1","MyToken2","MyToken3"], group_id=123456789)
 
@@ -49,7 +49,7 @@ bot.run_forever()
 - ClonesBot (a lot of bots with same router)
 
 ```python
-from vkwave.bots.easy import SimpleLongPollBot, ClonesBot
+from vkwave.bots import SimpleLongPollBot, ClonesBot
 
 
 bot = SimpleLongPollBot(tokens=["MyToken1","MyToken2","MyToken3"], group_id=123456789)

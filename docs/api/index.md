@@ -85,7 +85,8 @@ I'll describe to you each of them.
 API is core. It contains all tokens and clients. 
 
 ```python
-from vkwave.api.methods import API
+from vkwave.api import API
+from vkwave.client import AIOHTTPClient
 
 api = API(tokens=my_token, cliens=AIOHTTPClient())
 ```
