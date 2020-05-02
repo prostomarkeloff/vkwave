@@ -16,9 +16,9 @@ class NotImplementedGetConfirmationStrategy(AbstractGetConfirmationStrategy):
 
 
 class ConfirmationStorage:
-    def __init__(self):
+    def __init__(self, strategy: AbstractGetConfirmationStrategy = None):
         self.confirmations: Dict[GroupId, str] = {}
-        self.strategy: AbstractGetConfirmationStrategy = NotImplementedGetConfirmationStrategy()
+        self.strategy: AbstractGetConfirmationStrategy = strategy or NotImplementedGetConfirmationStrategy()
 
     def add_confirmation(self, group_id: GroupId, confirmation: str):
         self.confirmations[group_id] = confirmation
