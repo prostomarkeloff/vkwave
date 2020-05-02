@@ -1,7 +1,7 @@
 import json
 import re
 import typing
-from typing import Dict, Tuple, Union, List
+from typing import Dict, Tuple, Union
 
 from typing_extensions import Literal
 
@@ -9,9 +9,10 @@ from vkwave.bots.core.dispatching.events.base import BaseEvent, UserEvent
 from vkwave.bots.core.types.bot_type import BotType
 from vkwave.bots.core.types.json_types import JSONDecoder
 from vkwave.types.objects import MessagesMessageActionStatus
+from vkwave.types.user_events import EventId, MessageFlag
 
 from .base import BaseFilter, FilterResult
-from vkwave.types.user_events import EventId, MessageFlag
+
 
 MessageEventUser: Tuple[int] = EventId.MESSAGE_EVENT.value
 MessageEventBot: str = "message_new"

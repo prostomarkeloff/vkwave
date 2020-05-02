@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import Dict
+from typing import Dict, Optional
 
 from vkwave.bots.core.tokens.types import GroupId
 
@@ -16,7 +16,7 @@ class NotImplementedGetConfirmationStrategy(AbstractGetConfirmationStrategy):
 
 
 class ConfirmationStorage:
-    def __init__(self, strategy: AbstractGetConfirmationStrategy = None):
+    def __init__(self, strategy: Optional[AbstractGetConfirmationStrategy] = None):
         self.confirmations: Dict[GroupId, str] = {}
         self.strategy: AbstractGetConfirmationStrategy = strategy or NotImplementedGetConfirmationStrategy()
 

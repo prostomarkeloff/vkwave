@@ -1,6 +1,8 @@
 from vkwave.api import API
 from vkwave.client import AIOHTTPClient
-from vkwave.api.methods import RETURN_RESULT_ERRORS  # errors when you can return result from handler
+from vkwave.api.methods import (
+    RETURN_RESULT_ERRORS,
+)  # errors when you can return result from handler
 import asyncio
 
 
@@ -31,12 +33,14 @@ async def main():
 
     api = API(tokens="...", clients=AIOHTTPClient())
     api.default_api_options.error_dispatcher.add_handler(3, error_handler)  # unknown method passed
-    api.default_api_options.error_dispatcher.add_handler(6, error_handler_another)  # too many requests
+    api.default_api_options.error_dispatcher.add_handler(
+        6, error_handler_another
+    )  # too many requests
     api.default_api_options.error_dispatcher.set_default_error_handler(default)  # default handler
 
     ctx = api.get_context()
 
     await ctx.status.get()
 
-asyncio.run(main())
 
+asyncio.run(main())

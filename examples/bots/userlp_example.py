@@ -22,7 +22,9 @@ router = DefaultRouter()
 
 
 # EventTypeFilter((3, 4, 5, 18)) == EventTypeFilter(EventId.MESSAGE_EVENT.value)
-@router.registrar.with_decorator(EventTypeFilter(EventId.MESSAGE_EVENT.value), FromMeFilter(from_me=True))
+@router.registrar.with_decorator(
+    EventTypeFilter(EventId.MESSAGE_EVENT.value), FromMeFilter(from_me=True)
+)
 async def from_me(event: UserEvent):
     print("from me:", event.object.object.text)
 

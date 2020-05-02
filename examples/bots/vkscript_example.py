@@ -3,10 +3,7 @@ from vkwave.bots import SimpleLongPollBot, TaskManager
 from vkwave.vkscript import execute
 from vkwave.types.responses import ExecuteResponse
 
-bot = SimpleLongPollBot(
-    tokens=["123"],
-    group_id=456,
-)
+bot = SimpleLongPollBot(tokens=["123"], group_id=456,)
 
 
 @execute

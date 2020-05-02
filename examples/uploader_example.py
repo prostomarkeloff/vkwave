@@ -5,16 +5,10 @@ from vkwave.bots.utils import PhotoUploader
 from vkwave.client import AIOHTTPClient
 
 client = AIOHTTPClient()
-api = API(
-    clients=client,
-    tokens=BotSyncSingleToken(
-        Token(
-            "token"
-        )
-    ),
-)
+api = API(clients=client, tokens=BotSyncSingleToken(Token("token")),)
 
 uploader = PhotoUploader(api.get_context())
+# same with VoiceUploader etc.
 
 
 async def main():
@@ -26,10 +20,7 @@ async def main():
             "https://user-images.githubusercontent.com/28061158/74590410-239e3300-501f-11ea-9774-27ee507a1e1e.jpg",
         ],
     )
-    await api.get_context().messages.send(
-        user_id=1234, attachment=big_attachment, random_id=0
-    )
-    # TODO: voice
+    await api.get_context().messages.send(user_id=1234, attachment=big_attachment, random_id=0)
 
 
 asyncio.get_event_loop().run_until_complete(main())

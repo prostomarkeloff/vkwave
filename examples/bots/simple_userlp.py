@@ -12,9 +12,7 @@ async def simple(event: bot.SimpleBotEvent):
 
 @bot.message_handler(bot.command_filter(commands=["start"]), bot.from_me_filter(False))
 async def start(event: bot.SimpleBotEvent):
-    user_data = (
-        await bot.api_context.users.get(user_ids=event.object.object.peer_id)
-    ).response[0]
+    user_data = (await bot.api_context.users.get(user_ids=event.object.object.peer_id)).response[0]
     user_name = user_data.first_name
     await event.answer(f"You just started, {user_name}")
 
