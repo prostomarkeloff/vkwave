@@ -39,10 +39,6 @@ class DefaultRouter(BaseRouter):
     def registrar(self) -> HandlerRegistrar:
         return self._registrar
 
-    def combine_routers(self, routers: List[BaseRouter]) -> None:
-        for router in routers:
-            self.registrar.handlers.extend(router.registrar.handlers)
-
     async def process_event(self, event: BaseEvent) -> Any:
         for handler in self._registrar.handlers:
             h_res = await handler.process_event(event)
