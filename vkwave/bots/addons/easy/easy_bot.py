@@ -4,7 +4,7 @@ from vkwave.bots import GroupId
 from vkwave.bots.core.dispatching.extensions.callback import AIOHTTPCallbackExtension
 from vkwave.bots.core.dispatching.extensions.callback.conf import ConfirmationStorage
 from vkwave.bots.core.dispatching.router.router import BaseRouter
-from vkwave.bots.addons.easy import BaseSimpleLongPollBot
+from vkwave.bots.addons.easy.base_easy_bot import BaseSimpleLongPollBot
 from vkwave.bots.core.types.bot_type import BotType
 
 

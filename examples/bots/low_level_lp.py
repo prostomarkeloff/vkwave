@@ -6,7 +6,8 @@ bot = LowLevelBot("Token", 12345)  # Bot
 
 
 async def not_fast_mode():
-    async for event in bot.listen():
+    # You can ignore all lp errors
+    async for event in bot.listen(ignore_errors=True):
         if event.object.message.text == "/start":
             bot.react(
                 bot.api_context.messages.send(
