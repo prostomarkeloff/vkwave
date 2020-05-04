@@ -3,7 +3,10 @@ import json
 import ssl
 import typing
 
-import aioredis
+try:
+    import aioredis
+except ImportError:
+    aioredis = None
 
 from vkwave.bots.storage.base import NO_KEY, AbstractExpiredStorage, NoKeyOrValue
 from vkwave.bots.storage.types import TTL, Dumper, Key, Loader, Value
@@ -26,6 +29,9 @@ class RedisStorage(AbstractExpiredStorage):
         default_ttl: TTL = TTL(10),
         **kwargs,
     ):
+        if aioredis is None:
+            raise RuntimeError("You have to install aioredis - pip install aioredis")
+
         self._kwargs = kwargs
 
         self._host = host

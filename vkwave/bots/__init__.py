@@ -22,3 +22,4 @@ from .fsm import StateFilter, FiniteStateMachine, ForWhat
 from .storage import RedisStorage, VKStorage, Storage, TTLStorage
 from .utils import Keyboard, Template, VoiceUploader, GraffitiUploader, PhotoUploader, DocUploader
 from .core.dispatching.filters.extension_filters import VBMLFilter
+from .extension.low_level_dispatching import LowLevelBot
