@@ -22,11 +22,15 @@ class LowLevelBot:
         token: str,
         group_id: typing.Optional[int] = None,
         loop: typing.Optional[asyncio.AbstractEventLoop] = None,
+        uvloop: bool = False
     ):
         """
         exist group_id - bot_type == BOT
         group_id is none - bot_type == USER
         """
+        if uvloop:
+            import uvloop
+            asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
         self.token = token
         self.group_id = group_id
         self._api_session = create_api_session_aiohttp(token)

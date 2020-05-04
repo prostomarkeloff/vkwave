@@ -172,8 +172,11 @@ class BaseSimpleLongPollBot:
         bot_type: BotType,
         router: typing.Optional[BaseRouter] = None,
         group_id: typing.Optional[int] = None,
+        uvloop: bool = False
     ):
-
+        if uvloop:
+            import uvloop
+            asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
         self.bot_type = bot_type
         self.api_session = create_api_session_aiohttp(tokens, bot_type)
         self.api_context: APIOptionsRequestContext = self.api_session.api.get_context()

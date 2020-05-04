@@ -9,9 +9,14 @@ from vkwave.bots.core.types.bot_type import BotType
 
 
 class SimpleLongPollBot(BaseSimpleLongPollBot):
-    def __init__(self, tokens: typing.Union[str, typing.List[str]], group_id: int,
-                 router: typing.Optional[BaseRouter] = None,):
-        super().__init__(tokens, group_id=group_id, bot_type=BotType.BOT, router=router)
+    def __init__(
+            self,
+            tokens: typing.Union[str, typing.List[str]],
+            group_id: int,
+            router: typing.Optional[BaseRouter] = None,
+            uvloop: bool = False
+    ):
+        super().__init__(tokens, group_id=group_id, bot_type=BotType.BOT, router=router, uvloop=uvloop)
 
 
 class SimpleCallbackBot(BaseSimpleLongPollBot):
@@ -25,8 +30,9 @@ class SimpleCallbackBot(BaseSimpleLongPollBot):
             confirmation_key: typing.Optional[str] = None,
             secret: typing.Optional[str] = None,
             router: typing.Optional[BaseRouter] = None,
+            uvloop: bool = False
     ):
-        super().__init__(tokens, bot_type=BotType.BOT, group_id=group_id, router=router)
+        super().__init__(tokens, bot_type=BotType.BOT, group_id=group_id, router=router, uvloop=uvloop)
         storage = ConfirmationStorage()
         storage.add_confirmation(GroupId(group_id), confirmation_key)
 
