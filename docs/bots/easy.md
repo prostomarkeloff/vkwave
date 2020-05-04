@@ -20,7 +20,7 @@ bot.run_forever()
 
 
 ```python
-from vkwave.bots.easy import create_api_session_aiohttp
+from vkwave.bots import create_api_session_aiohttp
 
 api_session = create_api_session_aiohttp("TOKEN")
 

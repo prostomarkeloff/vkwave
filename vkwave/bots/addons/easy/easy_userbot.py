@@ -1,7 +1,7 @@
 import typing
 
 from vkwave.bots.core.dispatching.router.router import BaseRouter
-from vkwave.bots.easy.base_easy_bot import BaseSimpleLongPollBot
+from vkwave.bots.addons.easy import BaseSimpleLongPollBot
 from vkwave.bots.core.types.bot_type import BotType
 
 

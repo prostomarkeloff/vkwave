@@ -17,9 +17,9 @@ from .core.dispatching.extensions import (
 )
 from .core.dispatching.router.router import DefaultRouter
 from .core.tokens.storage import TokenStorage, UserTokenStorage
-from .easy import SimpleLongPollUserBot, SimpleLongPollBot, ClonesBot, TaskManager, create_api_session_aiohttp, SimpleCallbackBot
+from vkwave.bots.addons.easy import SimpleLongPollUserBot, SimpleLongPollBot, ClonesBot, TaskManager, create_api_session_aiohttp, SimpleCallbackBot
 from .fsm import StateFilter, FiniteStateMachine, ForWhat
 from .storage import RedisStorage, VKStorage, Storage, TTLStorage
 from .utils import Keyboard, Template, VoiceUploader, GraffitiUploader, PhotoUploader, DocUploader
 from .core.dispatching.filters.extension_filters import VBMLFilter
-from .extension.low_level_dispatching import LowLevelBot
+from .addons.low_level_dispatching import LowLevelBot
