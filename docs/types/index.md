@@ -7,7 +7,7 @@ This part of VKWave contains pydantic types, based on official vk-schema.
 You can use this VKWave module for standardization your vk data. For
 example, you make request to vk api and want to get statically-typed object. Watch and learn!
 
-```python3
+```python
 import requests
 from vkwave.types.responses import StatusGetResponse
 
