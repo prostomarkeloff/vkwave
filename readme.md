@@ -21,9 +21,9 @@ bot.run_forever()
 
 # What is it?
 
-Framework for building high-performance & easy to scale projects interacting with VK's API.
+Framework for building high-performance & easy-to-scale projects to interact with VK's API.
 
-It's built over asyncio and Python's type hints. Minimal required version is `3.7`.
+It's built over asyncio and Python's type hints. Minimal version required is `3.7`.
 
 Our Telegram chat - [let's chat](https://t.me/vkwave)
 
@@ -35,7 +35,7 @@ Current maintainer of this project is [@kesha1225](https://github.com/kesha1225)
 pip install vkwave
 ```
 
-or with the latest updates
+or with latest updates
 ```
 pip install https://github.com/fscdev/vkwave/archive/master.zip
 ```
@@ -46,7 +46,7 @@ This repostitory contains only `core` parts of VKWave. It means that code introd
 
 ## Performance
 
-VKWave is a most fast library for Python for working with VK's API.
+VKWave is the fastest library for Python for working with VK's API.
 
 ## Parts
 
@@ -60,6 +60,6 @@ VKWave is a most fast library for Python for working with VK's API.
 
 ## Community
 
-VKWave is a young project.
+VKWave is young project.
 
-If you want to create addon for VKWave (like `fsm` for bots or something like that) you should name your project like that: `vkwave-bots-fsm`.
+If you want to create an addon for VKWave (like `fsm` for bots) you should name your project like that: `vkwave-bots-fsm`.
