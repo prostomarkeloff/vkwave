@@ -1,7 +1,5 @@
 import typing
 
-from vbml import Patcher
-
 from vkwave.bots.core.dispatching.events.base import BaseEvent
 from .base import BaseFilter, FilterResult
 from .builtin import get_text
@@ -13,7 +11,7 @@ except ImportError:
 
 
 class VBMLFilter(BaseFilter):
-    def __init__(self, pattern: typing.Union["vbml.Pattern", str], patcher: typing.Optional[Patcher] = None):
+    def __init__(self, pattern: typing.Union["vbml.Pattern", str], patcher: typing.Optional["vbml.Patcher"] = None):
         if vbml is None:
             raise RuntimeError("you have to install vbml - pip install vbml")
 
