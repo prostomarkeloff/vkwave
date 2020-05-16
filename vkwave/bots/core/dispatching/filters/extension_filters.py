@@ -11,7 +11,7 @@ except ImportError:
 
 
 class VBMLFilter(BaseFilter):
-    def __init__(self, pattern: typing.Union["vbml.Pattern", str], patcher: typing.Optional[vbml.Patcher] = None):
+    def __init__(self, pattern: typing.Union["vbml.Pattern", str], patcher: typing.Optional["vbml.Patcher"] = None):
         if vbml is None:
             raise RuntimeError("you have to install vbml - pip install vbml")
 
