@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "vkwave"
-version = "0.2.0"
+version = "0.2.1"
 description = "Framework for building high-performance & easy to scale projects interacting with VK's API."
 authors = ["prostomarkeloff", "kesha1225"]
 license = "MIT"
@@ -38,7 +38,7 @@ python = "^3.7"
 pydantic = "^1.4"
 typing_extensions = "^3.7.4"
 
-aiohttp = { version="^3.6", optional = true }
+aiohttp = { version="^3.6"}
 aioredis = { version="^1.3", optional = true }
 
 [tool.poetry.dev-dependencies]
@@ -68,9 +68,8 @@ aioredis = "^1.3"
 python-dotenv = "^0.12.0"
 
 [tool.poetry.extras]
-client-default = ["aiohttp"]
 storage-redis = ["aioredis"]
-all = ["aiohttp"]
+all = ["aioredis"]
 
 [tool.black]
 line-length = 99

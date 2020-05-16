@@ -26,6 +26,7 @@ r.new().with_filters(filter_caster.cast(lambda event: 1).handle(...).ready()
 But knowing that it exists sometimes may help you. By default, you have only 3 casts to filters: lambdas, regular function & async functions. You can extend it.
 
 ```python
+from typing import Optional
 from vkwave.bots.core.dispatching.filters.base import BaseFilter, FilterResult
 
 # simple filter for messages's text
@@ -36,15 +37,18 @@ class TextFilter(BaseFilter):
     async def check(self, event: BaseEvent) -> FilterResult:
         return FilterResult(event.object.object.message.text.lower() == self.text)
 
-# you can user it so:
+# you can use it so:
 r.new().with_filters(TextFilter("some pretty text"))
 
 # or via creating caster for that
 
-def str_caster(text: str) -> BaseFilter:
-    return TextFilter(text)
+def str_caster(text: str) -> Optional[BaseFilter]:
+    if isinstance(text, str):
+        return TextFilter(text)
+    return None
 
-filter_caster.add_caster(str, str_caster)
+filter_caster.add_caster(str_caster)
+
 
 # and... we can use it very easy!
 r.new().with_filters("some pretty text")
