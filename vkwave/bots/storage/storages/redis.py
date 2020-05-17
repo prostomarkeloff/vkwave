@@ -46,7 +46,7 @@ class RedisStorage(AbstractExpiredStorage):
         self._loader = loader
         self._default_ttl = default_ttl
 
-        self._redis: typing.Optional[aioredis.Redis] = None
+        self._redis: typing.Optional["aioredis.Redis"] = None
         self._connection_lock = asyncio.Lock(loop=self._loop)
 
     async def get(
@@ -89,7 +89,7 @@ class RedisStorage(AbstractExpiredStorage):
 
         return await redis.exists(key)
 
-    async def redis(self) -> aioredis.Redis:
+    async def redis(self) -> "aioredis.Redis":
         async with self._connection_lock:
             if self._redis is None or self._redis.closed:
                 self._redis = await aioredis.create_redis_pool(
