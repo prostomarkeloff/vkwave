@@ -162,7 +162,8 @@ class APIOptionsRequestContext:
         data = None
 
         if state is ResultState.UNHANDLED_EXCEPTION:
-            raise state.exception
+            exc = cast(Exception, ctx.result.exception)
+            raise exc
         if state is ResultState.HANDLED_EXCEPTION:
             exc_data = ctx.result.exception_data
             exc_data = cast(dict, exc_data)
