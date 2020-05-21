@@ -162,7 +162,7 @@ class APIOptionsRequestContext:
         data = None
 
         if state is ResultState.UNHANDLED_EXCEPTION:
-            raise UnsuccessAPIRequestException()
+            raise state.exception
         if state is ResultState.HANDLED_EXCEPTION:
             exc_data = ctx.result.exception_data
             exc_data = cast(dict, exc_data)
