@@ -88,7 +88,7 @@ API is core. It contains all tokens and clients.
 from vkwave.api import API
 from vkwave.client import AIOHTTPClient
 
-api = API(tokens=my_token, cliens=AIOHTTPClient())
+api = API(tokens=my_token, clients=AIOHTTPClient())
 ```
 Also I want to tell you that `tokens`, `clients`, `strategy` and other things are stored at `APIOptions` class. You can access them via `api.default_api_options`. For example you can add token or client, or update strategy, etc..
 
