@@ -143,7 +143,7 @@ class APIOptionsRequestContext:
     async def sync_token(self) -> AsyncGenerator["APIOptionsRequestContext", None]:
         """Grab random token and work only with it"""
         copied = copy.copy(self.api_options)
-        copied.tokens = [random.choice(copied.tokens)]
+        copied.tokens = [random.choice(await copied.get_token())]
         new = APIOptionsRequestContext(copied)
         yield new
         del copied
