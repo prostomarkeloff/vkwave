@@ -143,7 +143,7 @@ class APIOptionsRequestContext:
     async def sync_token(self) -> AsyncGenerator["APIOptionsRequestContext", None]:
         """Grab random token and work only with it"""
         copied = copy.copy(self.api_options)
-        copied.tokens = [random.choice(copied.tokens)]
+        copied.tokens = [random.choice(await copied.get_token())]
         new = APIOptionsRequestContext(copied)
         yield new
         del copied
@@ -162,7 +162,8 @@ class APIOptionsRequestContext:
         data = None
 
         if state is ResultState.UNHANDLED_EXCEPTION:
-            raise UnsuccessAPIRequestException()
+            exc = cast(Exception, ctx.result.exception)
+            raise exc
         if state is ResultState.HANDLED_EXCEPTION:
             exc_data = ctx.result.exception_data
             exc_data = cast(dict, exc_data)
