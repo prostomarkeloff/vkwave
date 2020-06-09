@@ -854,6 +854,7 @@ class Messages(Category):
         payload: typing.Optional[str] = None,
         dont_parse_links: typing.Optional[bool] = None,
         disable_mentions: typing.Optional[bool] = None,
+        template: typing.Optional[str] = None,
     ) -> typing.Union[dict, MessagesSendResponse]:
         """
         :param user_id: - User ID (by default — current user).
@@ -875,6 +876,7 @@ class Messages(Category):
         :param payload:
         :param dont_parse_links:
         :param disable_mentions:
+        :param template:
         :param return_raw_response: - return result at dict
         :return:
         """

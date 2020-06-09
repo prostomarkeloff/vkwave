@@ -145,6 +145,7 @@ class SimpleBotEvent(BotEvent):
         long: typing.Optional[BaseBoolInt] = None,
         reply_to: typing.Optional[int] = None,
         group_id: typing.Optional[int] = None,
+        template: typing.Optional[str] = None,
     ):
         await self.api_ctx.messages.send(
             domain=domain,
@@ -162,6 +163,7 @@ class SimpleBotEvent(BotEvent):
             peer_id=self.object.object.message.peer_id,
             message=message,
             random_id=0,
+            template=template
         )
 
 
