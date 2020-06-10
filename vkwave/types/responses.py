@@ -4037,3 +4037,12 @@ class StoriesSearchResponseModel(pydantic.BaseModel):
 
 class ExecuteResponse(pydantic.BaseModel):
     response: typing.Any = pydantic.Field(..., description="")
+
+
+class AudioGetResponseModel(pydantic.BaseModel):
+    count: int = pydantic.Field(..., description="")
+    items: typing.List[AudioAudio] = pydantic.Field(..., description="")
+
+
+class AudioGetResponse(pydantic.BaseModel):
+    response: AudioGetResponseModel = pydantic.Field(..., description="")

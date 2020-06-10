@@ -19,6 +19,7 @@ from .account import Account
 from .ads import Ads
 from .app import App
 from .apps import Apps
+from .audio import Audio
 from .auth import Auth
 from .board import Board
 from .database import Database
@@ -100,6 +101,7 @@ class APIOptionsRequestContext:
         self.ads = Ads("ads", self)
         self.app = App("app", self)
         self.apps = Apps("apps", self)
+        self.audio = Audio("audio", self)
         self.auth = Auth("auth", self)
         self.board = Board("board", self)
         self.database = Database("database", self)
