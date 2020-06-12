@@ -1330,6 +1330,30 @@ class MessagesChatPushSettings(pydantic.BaseModel):
     )
 
 
+class ChatSettings(pydantic.BaseModel):
+    owner_id: int = pydantic.Field(
+        ..., description=None,
+    )
+    title: str = pydantic.Field(
+        ..., description=None,
+    )
+    state: str = pydantic.Field(
+        ..., description=None,
+    )
+    acl: typing.Dict[str, bool] = pydantic.Field(
+        ..., description=None,
+    )
+    members_count: int = pydantic.Field(
+        ..., description=None,
+    )
+    admin_ids: typing.List[int] = pydantic.Field(
+        ..., description=None,
+    )
+    active_ids: typing.List[int] = pydantic.Field(
+        ..., description=None,
+    )
+
+
 class MessagesConversation(pydantic.BaseModel):
     peer: "MessagesConversationPeer" = pydantic.Field(
         ..., description="",
@@ -1342,6 +1366,9 @@ class MessagesConversation(pydantic.BaseModel):
     )
     out_read: int = pydantic.Field(
         ..., description="Last outcoming message have been read by the opponent",
+    )
+    chat_settings: typing.Optional[ChatSettings] = pydantic.Field(
+        None, description="",
     )
     unread_count: typing.Optional[int] = pydantic.Field(
         None, description="Unread messages number",
