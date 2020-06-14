@@ -30,6 +30,9 @@ from vkwave.bots import (
     UserId,
     GroupId,
     BotType,
+    FwdMessagesFilter,
+    MessageArgsFilter,
+    MessageFromConversationTypeFilter
 )
 from vkwave.bots.core.dispatching.filters.extension_filters import VBMLFilter
 from vkwave.bots.fsm.filters import StateFilter
@@ -209,6 +212,9 @@ class BaseSimpleLongPollBot:
         self.regex_filter = RegexFilter
         self.state_filter = StateFilter
         self.vbml_filter = VBMLFilter
+        self.args_filter = MessageArgsFilter
+        self.fwd_filter = FwdMessagesFilter
+        self.conversation_type_filter = MessageFromConversationTypeFilter
         if self.bot_type is BotType.USER:
             self.from_me_filter = FromMeFilter
 

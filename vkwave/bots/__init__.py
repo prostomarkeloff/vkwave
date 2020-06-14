@@ -8,6 +8,8 @@ from .core.dispatching.filters import (
     ChatActionFilter,
     CommandsFilter,
     MessageFromConversationTypeFilter,
+    MessageArgsFilter,
+    FwdMessagesFilter
 )
 from .core.dispatching.events.base import BotEvent, UserEvent, BotType, BaseEvent
 from .core.tokens.types import GroupId, UserId

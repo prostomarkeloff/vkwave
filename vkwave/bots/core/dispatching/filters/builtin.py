@@ -5,7 +5,7 @@ from typing import Dict, Tuple, Union
 
 from typing_extensions import Literal
 
-from vkwave.bots.core.dispatching.events.base import BaseEvent, UserEvent
+from vkwave.bots.core.dispatching.events.base import BaseEvent, UserEvent, BotEvent
 from vkwave.bots.core.types.bot_type import BotType
 from vkwave.bots.core.types.json_types import JSONDecoder
 from vkwave.types.objects import MessagesMessageActionStatus
@@ -84,8 +84,8 @@ class TextFilter(BaseFilter):
 
     >>> text = TextFilter # alias
     >>> _ = text("hi")
-    >>> _ = text(("hi",))
-    >>> _ = text(["hi"])
+    >>> _ = text(("hi", "hello"))
+    >>> _ = text(["hi", "hello"])
     >>> _ = text("hI", ignore_case=False)
 
     >>> text_filter = text("hi")
@@ -272,4 +272,44 @@ class FromMeFilter(BaseFilter):
         return FilterResult(self.from_me == is_from_me(event))
 
 
-# TODO: MessageArgsFilter
+class MessageArgsFilter(BaseFilter):
+    """
+    Checking is message has args
+
+    MessageArgsFilter(args_count=2, command_length=1) -> "/start arg1 arg2"
+    MessageArgsFilter(args_count=1, command_length=2) -> "/long command arg1"
+    """
+    def __init__(self, args_count: int = 1, command_length: int = 1):
+        self.args_count = args_count
+        self.command_length = command_length
+
+    async def check(self, event: BaseEvent) -> FilterResult:
+        args = get_text(event).split()[self.command_length:]
+        event["args"] = args
+        return FilterResult(len(args) == self.args_count)
+
+
+class FwdMessagesFilter(BaseFilter):
+    """
+    Checking is message has forward messages
+
+    FwdMessagesFilter() -> any count of fwd
+    FwdMessagesFilter(fwd_count=2) -> 2 fwd messages
+    """
+    def __init__(self, fwd_count: int = -1):
+        self.fwd_count = fwd_count
+
+    async def check(self, event: BaseEvent) -> FilterResult:
+        is_message_event(event)
+        if event.bot_type == BotType.BOT:
+            event: BotEvent
+            fwd_count = len(event.object.object.message.fwd_messages or [])
+            if self.fwd_count == -1 and fwd_count:
+                return FilterResult(True)
+            return FilterResult(fwd_count == self.fwd_count)
+        else:
+            event: UserEvent
+            fwd_count = len(event.object.object.message_data.fwd_count or [])
+            if self.fwd_count == -1 and fwd_count:
+                return FilterResult(True)
+            return FilterResult(fwd_count == self.fwd_count)
