@@ -1,13 +1,16 @@
-from vkwave.bots import EventTypeFilter, BotEvent, DefaultRouter
+from vkwave.bots import EventTypeFilter, BotEvent, SimpleLongPollBot
 from vkwave.bots.fsm import FiniteStateMachine, StateFilter, ForWhat, State, ANY_STATE
 from vkwave.types.bot_events import BotEventType
 
-router = DefaultRouter()
+
+bot = SimpleLongPollBot("123", group_id=123)
+
 
 fsm = FiniteStateMachine()
-router.registrar.add_default_filter(StateFilter(fsm, ..., ..., always_false=True))
-router.registrar.add_default_filter(
-    EventTypeFilter(BotEventType.MESSAGE_NEW.value))  # we don't want to write it in all handlers.
+bot.router.registrar.add_default_filter(StateFilter(fsm, ..., ..., always_false=True))
+bot.router.registrar.add_default_filter(
+    EventTypeFilter(BotEventType.MESSAGE_NEW.value)
+)  # we don't want to write it in all handlers.
 
 
 class MyState:
@@ -16,27 +19,22 @@ class MyState:
 
 
 # starting interview (has default filter that will reject messages if state exists)
-@router.registrar.with_decorator(
-    lambda event: event.object.object.message.text == "start",
-)
+@bot.message_handler(bot.text_filter("start"))
 async def simple_handler(event: BotEvent):
     await fsm.set_state(event=event, state=MyState.name, for_what=ForWhat.FOR_USER)
     return "Input your name"
 
 
 #  exiting interview (work with any state because of `state=ANY_STATE`)
-@router.registrar.with_decorator(
-    lambda event: event.object.object.message.text == "exit",  # similar with TextFilter
-    StateFilter(fsm=fsm, state=ANY_STATE, for_what=ForWhat.FOR_USER)
+@bot.message_handler(
+    bot.text_filter("exit"), StateFilter(fsm=fsm, state=ANY_STATE, for_what=ForWhat.FOR_USER)
 )
-async def simple_handler(event: BotEvent):
+async def simple_handler2(event: BotEvent):
     await fsm.finish(event=event, for_what=ForWhat.FOR_USER)
     return "You are quited!"
 
 
-@router.registrar.with_decorator(
-    StateFilter(fsm=fsm, state=MyState.name, for_what=ForWhat.FOR_USER),
-)
+@bot.message_handler(StateFilter(fsm=fsm, state=MyState.name, for_what=ForWhat.FOR_USER),)
 async def simple_handler(event: BotEvent):
     await fsm.set_state(
         event=event,
@@ -49,9 +47,7 @@ async def simple_handler(event: BotEvent):
     return "Input your age"
 
 
-@router.registrar.with_decorator(
-    StateFilter(fsm=fsm, state=MyState.age, for_what=ForWhat.FOR_USER),
-)
+@bot.message_handler(StateFilter(fsm=fsm, state=MyState.age, for_what=ForWhat.FOR_USER),)
 async def simple_handler(event: BotEvent):
     if not event.object.object.message.text.isdigit():
         return f"Please, send only positive numbers!"
@@ -66,3 +62,6 @@ async def simple_handler(event: BotEvent):
     # `fsm.finish` will do it by itself.
     await fsm.finish(event=event, for_what=ForWhat.FOR_USER)
     return f"Your data - {user_data}"
+
+
+bot.run_forever()
