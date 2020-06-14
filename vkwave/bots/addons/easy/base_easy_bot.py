@@ -34,6 +34,7 @@ from vkwave.bots import (
     MessageArgsFilter,
     MessageFromConversationTypeFilter
 )
+from vkwave.bots.core.dispatching.dp.middleware.middleware import BaseMiddleware, MiddlewareResult
 from vkwave.bots.core.dispatching.filters.extension_filters import VBMLFilter
 from vkwave.bots.fsm.filters import StateFilter
 from vkwave.bots.core.dispatching.handler.callback import BaseCallback
@@ -200,6 +201,9 @@ class BaseSimpleLongPollBot:
             self._token_storage = TokenStorage[GroupId]()
             self.dispatcher = Dispatcher(self.api_session.api, self._token_storage)
             self._lp = BotLongpollExtension(self.dispatcher, self._lp)
+
+        self.middleware_manager = self.dispatcher.middleware_manager  # auf
+
         self.router = router or DefaultRouter()
         self.handler = self.router.registrar.with_decorator
         self.dispatcher.add_router(self.router)
@@ -236,6 +240,10 @@ class BaseSimpleLongPollBot:
                 return await self.func(new_event)
             return self.func(new_event)
 
+    class SimpleBotMiddleware(BaseMiddleware):
+        async def pre_process_event(self, event: BaseEvent) -> MiddlewareResult:
+            pass
+
     def handler(self, *filters: BaseFilter):
         """
         Handler for all events
@@ -264,6 +272,16 @@ class BaseSimpleLongPollBot:
                 record.filters.append(EventTypeFilter(EventId.MESSAGE_EVENT.value))
             record.handle(self.SimpleBotCallback(func, self.bot_type))
             self.router.registrar.register(record.ready())
+            return func
+
+        return decorator
+
+    def middleware(self):
+        def decorator(func: typing.Callable[[typing.Union[UserEvent, BotEvent]], MiddlewareResult]):
+            middleware = self.SimpleBotMiddleware()
+            middleware.pre_process_event = func
+            self.middleware_manager.add_middleware(middleware)
+
             return func
 
         return decorator

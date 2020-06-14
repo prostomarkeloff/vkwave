@@ -11,6 +11,7 @@ from .core.dispatching.filters import (
     MessageArgsFilter,
     FwdMessagesFilter
 )
+from .core.dispatching.dp.middleware.middleware import MiddlewareResult, BaseMiddleware
 from .core.dispatching.events.base import BotEvent, UserEvent, BotType, BaseEvent
 from .core.tokens.types import GroupId, UserId
 from .core.dispatching.extensions import (
