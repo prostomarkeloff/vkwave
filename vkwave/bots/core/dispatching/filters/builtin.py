@@ -279,7 +279,7 @@ class MessageArgsFilter(BaseFilter):
     MessageArgsFilter(args_count=2, command_length=1) -> "/start arg1 arg2"
     MessageArgsFilter(args_count=1, command_length=2) -> "/long command arg1"
     """
-    def __init__(self, args_count: int = 1, command_length: int = 1):
+    def __init__(self, args_count: int, command_length: int = 1):
         self.args_count = args_count
         self.command_length = command_length
 
