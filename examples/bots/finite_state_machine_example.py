@@ -1,32 +1,13 @@
-# FSM
-
-This module is implementation of [Finite-state machine](https://en.wikipedia.org/wiki/Finite-state_machine)
-for bots.
-
-FSM divides user states, chat states and user in chat states,
-for selecting one of these options you can choose `for_what` argument in fsm methods.
-
-One user in personal message - `ForWhat.FOR_USER`
-
-State for all chat - `ForWhat.FOR_CHAT`
-
-For one user in chat - `ForWhat.FOR_USER_IN_CHAT`
-
-Event state's set already, handlers without `StateFilter` may be chosen. We will fix it via default filter that returns `False` if any state exists.
-```python
-router.registrar.add_default_filter(StateFilter(fsm, ..., ..., always_false=True))
-```
-
-Example of simple interview with asking name and age of user.
-
-```python
-from vkwave.bots import EventTypeFilter, BotEvent
-from vkwave.types.bot_events import BotEventType
+from vkwave.bots import EventTypeFilter, BotEvent, DefaultRouter
 from vkwave.bots.fsm import FiniteStateMachine, StateFilter, ForWhat, State, ANY_STATE
+from vkwave.types.bot_events import BotEventType
+
+router = DefaultRouter()
 
 fsm = FiniteStateMachine()
 router.registrar.add_default_filter(StateFilter(fsm, ..., ..., always_false=True))
-router.registrar.add_default_filter(EventTypeFilter(BotEventType.MESSAGE_NEW.value))  # we don't want to write it in all handlers.
+router.registrar.add_default_filter(
+    EventTypeFilter(BotEventType.MESSAGE_NEW.value))  # we don't want to write it in all handlers.
 
 
 class MyState:
@@ -45,7 +26,7 @@ async def simple_handler(event: BotEvent):
 
 #  exiting interview (work with any state because of `state=ANY_STATE`)
 @router.registrar.with_decorator(
-    lambda event: event.object.object.message.text == "exit",
+    lambda event: event.object.object.message.text == "exit",  # similar with TextFilter
     StateFilter(fsm=fsm, state=ANY_STATE, for_what=ForWhat.FOR_USER)
 )
 async def simple_handler(event: BotEvent):
@@ -80,14 +61,8 @@ async def simple_handler(event: BotEvent):
         state_data={"age": event.object.object.message.text},
     )
     user_data = await fsm.get_data(event=event, for_what=ForWhat.FOR_USER)
- 
+
     # we finish interview and... we should delete user's state from storage.
     # `fsm.finish` will do it by itself.
     await fsm.finish(event=event, for_what=ForWhat.FOR_USER)
     return f"Your data - {user_data}"
-```
-
-In the end of interview it will write down to you something like that:
-```
-Your data - {'__vkwave_fsm_state__': '<vkwave.bots_fsm.fsm.State object at 0x0000021C19D61A90>', 'name': 'Nick', 'age': '46'}
-```
