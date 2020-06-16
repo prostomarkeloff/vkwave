@@ -279,12 +279,13 @@ class MessageArgsFilter(BaseFilter):
     MessageArgsFilter(args_count=2, command_length=1) -> "/start arg1 arg2"
     MessageArgsFilter(args_count=1, command_length=2) -> "/long command arg1"
     """
+
     def __init__(self, args_count: int, command_length: int = 1):
         self.args_count = args_count
         self.command_length = command_length
 
     async def check(self, event: BaseEvent) -> FilterResult:
-        args = get_text(event).split()[self.command_length:]
+        args = get_text(event).split()[self.command_length :]
         event["args"] = args
         return FilterResult(len(args) == self.args_count)
 
@@ -296,20 +297,36 @@ class FwdMessagesFilter(BaseFilter):
     FwdMessagesFilter() -> any count of fwd
     FwdMessagesFilter(fwd_count=2) -> 2 fwd messages
     """
+
     def __init__(self, fwd_count: int = -1):
         self.fwd_count = fwd_count
 
     async def check(self, event: BaseEvent) -> FilterResult:
         is_message_event(event)
         if event.bot_type == BotType.BOT:
-            event: BotEvent
             fwd_count = len(event.object.object.message.fwd_messages or [])
-            if self.fwd_count == -1 and fwd_count:
-                return FilterResult(True)
-            return FilterResult(fwd_count == self.fwd_count)
         else:
-            event: UserEvent
             fwd_count = len(event.object.object.message_data.fwd_count or [])
-            if self.fwd_count == -1 and fwd_count:
-                return FilterResult(True)
-            return FilterResult(fwd_count == self.fwd_count)
+
+        if self.fwd_count == -1 and fwd_count:
+            return FilterResult(True)
+        return FilterResult(fwd_count == self.fwd_count)
+
+
+class TextContainsFilter(BaseFilter):
+    """
+    Checking text contains
+    """
+
+    def __init__(self, text: str, ignore_case: bool = True):
+        self.text = text
+        self.ignore_case = ignore_case
+
+    async def check(self, event: BaseEvent) -> FilterResult:
+        message_text = get_text(event)
+
+        return FilterResult(
+            self.text in message_text
+            if not self.ignore_case
+            else self.text.lower() in message_text.lower()
+        )

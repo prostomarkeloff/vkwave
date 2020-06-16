@@ -9,7 +9,8 @@ from .core.dispatching.filters import (
     CommandsFilter,
     MessageFromConversationTypeFilter,
     MessageArgsFilter,
-    FwdMessagesFilter
+    FwdMessagesFilter,
+    TextContainsFilter
 )
 from .core.dispatching.dp.middleware.middleware import MiddlewareResult, BaseMiddleware
 from .core.dispatching.events.base import BotEvent, UserEvent, BotType, BaseEvent

@@ -19,4 +19,9 @@ async def handle(event: bot.SimpleBotEvent):
     args = event["args"]
     await event.answer(f"Your args - {args}")
 
+
+@bot.message_handler(bot.text_contains_filter("wow"))
+async def handle(event: bot.SimpleBotEvent):
+    await event.answer(f"Your text contains 'wow', wow!")
+
 bot.run_forever()

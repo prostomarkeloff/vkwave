@@ -9,6 +9,7 @@ from .builtin import (
     CommandsFilter,
     MessageFromConversationTypeFilter,
     FwdMessagesFilter,
-    MessageArgsFilter
+    MessageArgsFilter,
+    TextContainsFilter
 )  # noqa: F401
 from .cast import caster as filter_caster  # noqa: F401
