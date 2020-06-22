@@ -40,7 +40,7 @@ def handle(_) -> str:
     return "bye world"
 
 @bot.message_handler(bot.text_filter("hello"))
-def handle(event: bot.SimpleBotEvent):
+async def handle(event: bot.SimpleBotEvent):
     await event.answer("hello world!")
 
 bot.run_forever()
