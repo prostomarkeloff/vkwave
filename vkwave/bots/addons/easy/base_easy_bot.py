@@ -288,12 +288,12 @@ class BaseSimpleLongPollBot:
 
         return decorator
 
-    async def run(self):
+    async def run(self, ignore_errors: bool):
         if self.bot_type is BotType.BOT:
             await self.dispatcher.cache_potential_tokens()
-        await self._lp.start()
+        await self._lp.start(ignore_errors)
 
-    def run_forever(self, loop: typing.Optional[asyncio.AbstractEventLoop] = None):
+    def run_forever(self, ignore_errors: bool = False, loop: typing.Optional[asyncio.AbstractEventLoop] = None):
         loop = loop or asyncio.get_event_loop()
-        loop.create_task(self.run())
+        loop.create_task(self.run(ignore_errors))
         loop.run_forever()

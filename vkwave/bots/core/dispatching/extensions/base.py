@@ -9,5 +9,5 @@ class BaseExtension(ABC):
     dp: "Dispatcher"
 
     @abstractmethod
-    async def start(self):
+    async def start(self, *args, **kwargs):
         ...
