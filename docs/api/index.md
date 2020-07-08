@@ -49,7 +49,7 @@ class BotSyncRandomToken(ABCBotSyncToken):
         return random.choice(self.tokens)
 
 ```
-It's very easy to understand and very clear.
+It's very easy to understand and crystal clear.
 
 
 ### GetTokenStrategy
@@ -125,7 +125,7 @@ Because you get friends of the one token, but send messages to these friends wit
 
 ```python
 async with api.sync_token() as sapi:
-    friends = await api.friends.get()
+    friends = await sapi.friends.get()
     ...
 ```
 Here token is synced and used always.
