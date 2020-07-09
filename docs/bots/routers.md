@@ -22,7 +22,7 @@ If you wanna know more about handlers read `handlers.md`.
 
 ```python
 r = router.registrar  # just a shortcut
-handler = r.new().with_filters(lambda event: event.object.object.message.text.lower() == "Hi there").handle("hey!")  # here we are creating the handler that answers 'hey' to messages with content 'hi there'
+handler = r.new().with_filters(lambda event: event.object.object.message.text.lower() == "hi there").handle("hey!")  # here we are creating the handler that answers 'hey' to messages with content 'hi there'
 r.register(handler)  # and.. we register it.
 ```
 
