@@ -6,9 +6,9 @@ for bots.
 FSM divides user states, chat states and user in chat states,
 for selecting one of these options you can choose `for_what` argument in fsm methods.
 
-One user in personal message - `ForWhat.FOR_USER`
+For one user in personal message - `ForWhat.FOR_USER`
 
-State for all chat - `ForWhat.FOR_CHAT`
+For all users in chat - `ForWhat.FOR_CHAT`
 
 For one user in chat - `ForWhat.FOR_USER_IN_CHAT`
 
