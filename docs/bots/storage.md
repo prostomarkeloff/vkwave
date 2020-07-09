@@ -1,7 +1,7 @@
 # Storage
 
 This module will help you with storing your bot data.
-You have choice of two default storage:
+You have choice of three default storage:
  - simple dict-like storage
  - ttl storage
  - redis storage
