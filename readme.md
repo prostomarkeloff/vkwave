@@ -31,35 +31,37 @@ Current maintainer of this project is [@kesha1225](https://github.com/kesha1225)
 
 ## Installation
 
+Install tested and stable version from PyPi:
+
 ```
 pip install vkwave
 ```
 
-or with the latest updates
+Or from GitHub but with the latest updates.
 ```
 pip install https://github.com/fscdev/vkwave/archive/master.zip
 ```
 
-## VKWave core
-
-This repostitory contains only `core` parts of VKWave. It means that code introduced in this repository is probably `low-level` and shouldn't be used directly unless otherwise specified.
 
 ## Performance
 
-VKWave is a most fast library for Python for working with VK's API.
+VKWave is not **the fastest**. It is because of our wish to make customizable and suitable for all kind of tasks library.
 
-## Parts
-
-- Client - [core part](./vkwave/client)
-- API - [use VK's API in the most fancy way](./vkwave/api)
-- Bots - [create awesome bots with ease](./vkwave/bots)
-- FSM - [FSM implementation for VKWave](./vkwave/bots/fsm)
-- Storage - [FSM Storage](./vkwave/bots/storage)
-- Bots utils - [keyboards, carousels, ...](./vkwave/bots/utils)
-- LongPoll - [acessing VK's longpoll (user/bot)](./vkwave/longpoll)
+But we are always interested in improving performance, so feel free to make PRs and discuss performance problems.
 
 ## Community
 
 VKWave is a young project.
 
-If you want to create addon for VKWave (like `fsm` for bots or something like that) you should name your project like that: `vkwave-bots-fsm`.
+### Chat
+
+How been mentioned earlier we have [the chat in Telegram](https://t.me/vkwave).
+
+There is no chat in VK but you always is able to create your own and ever get a mention here.
+
+### Addons
+
+If you want to create addon for VKWave (for example much easier way to write bots, like `vkwave.bots.addons.easy`) you should name your project like that: `vkwave-bots-really-easy`.
+
+The general pattern for these things is `vkwave-<part-of-vkwave>-<name>`.
+
