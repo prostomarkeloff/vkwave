@@ -30,4 +30,4 @@ class MiddlewareManager:
 
     async def execute_post_process_event(self, event: BaseEvent):
         for middleware in self.middlewares:
-            middleware.post_process_event(event)
+            await middleware.post_process_event(event)
