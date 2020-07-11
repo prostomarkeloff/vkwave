@@ -326,9 +326,7 @@ class TextContainsFilter(BaseFilter):
         message_text = get_text(event)
         
         for text in self.text:
-        	r = text in message_text
-            if not self.ignore_case
-            else text.lower() in message_text.lower()
+            r = text in message_text if not self.ignore_case else text.lower() in message_text.lower()
             
             if r:
             	return FilterResult(True)
