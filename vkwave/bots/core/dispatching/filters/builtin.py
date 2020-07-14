@@ -318,15 +318,18 @@ class TextContainsFilter(BaseFilter):
     Checking text contains
     """
 
-    def __init__(self, text: str, ignore_case: bool = True):
-        self.text = text
+    def __init__(self, text: AnyText, ignore_case: bool = True):
+        self.text = (text,) if isinstance(text, str) else text
         self.ignore_case = ignore_case
 
     async def check(self, event: BaseEvent) -> FilterResult:
         message_text = get_text(event)
+        
+        for text in self.text:
+            r = text in message_text if not self.ignore_case else text.lower() in message_text.lower()
+            
+            if r:
+            	return FilterResult(True)
+            
 
-        return FilterResult(
-            self.text in message_text
-            if not self.ignore_case
-            else self.text.lower() in message_text.lower()
-        )
+        return FilterResult(False)

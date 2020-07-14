@@ -72,8 +72,11 @@ class Dispatcher:
                     continue
                 await self.result_caster.cast(result, event)
                 logger.debug("Event was succesfully handled")
+
+                await self.middleware_manager.execute_post_process_event(event)
                 return ProcessingResult(True)
         logger.debug("Event wasn't handled")
+        await self.middleware_manager.execute_post_process_event(event)
         return ProcessingResult(False)
 
     async def cache_potential_tokens(self, tokens: Optional[List[AnyABCToken]] = None):
