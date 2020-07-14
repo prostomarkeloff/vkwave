@@ -33,7 +33,7 @@ from vkwave.bots import (
     FwdMessagesFilter,
     MessageArgsFilter,
     MessageFromConversationTypeFilter,
-    TextContainsFilter
+    TextContainsFilter,
 )
 from vkwave.bots.core.dispatching.dp.middleware.middleware import BaseMiddleware, MiddlewareResult
 from vkwave.bots.core.dispatching.filters.extension_filters import VBMLFilter
@@ -139,15 +139,15 @@ class SimpleBotEvent(BotEvent):
         self,
         message: typing.Optional[str] = None,
         keyboard: typing.Optional[str] = None,
-        attachment: typing.Optional[BaseBoolInt] = None,
+        attachment: typing.Optional[typing.Union[typing.List[str], str]] = None,
         payload: typing.Optional[str] = None,
         forward_messages: typing.Optional[typing.List[int]] = None,
         dont_parse_links: typing.Optional[bool] = None,
         disable_mentions: typing.Optional[bool] = None,
         sticker_id: typing.Optional[int] = None,
         domain: typing.Optional[str] = None,
-        lat: typing.Optional[BaseBoolInt] = None,
-        long: typing.Optional[BaseBoolInt] = None,
+        lat: typing.Optional[int] = None,
+        long: typing.Optional[int] = None,
         reply_to: typing.Optional[int] = None,
         group_id: typing.Optional[int] = None,
         template: typing.Optional[str] = None,
@@ -168,7 +168,15 @@ class SimpleBotEvent(BotEvent):
             peer_id=self.object.object.message.peer_id,
             message=message,
             random_id=0,
-            template=template
+            template=template,
+        )
+
+    async def callback_answer(self, event_data: typing.Dict[str, str]):
+        await self.api_ctx.messages.send_message_event_answer(
+            user_id=self.object.object.user_id,
+            peer_id=self.object.object.peer_id,
+            event_id=self.object.object.event_id,
+            event_data=event_data,
         )
 
 
@@ -179,10 +187,11 @@ class BaseSimpleLongPollBot:
         bot_type: BotType,
         router: typing.Optional[BaseRouter] = None,
         group_id: typing.Optional[int] = None,
-        uvloop: bool = False
+        uvloop: bool = False,
     ):
         if uvloop:
             import uvloop
+
             asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
         self.bot_type = bot_type
         self.api_session = create_api_session_aiohttp(tokens, bot_type)
@@ -206,7 +215,6 @@ class BaseSimpleLongPollBot:
         self.middleware_manager = self.dispatcher.middleware_manager  # auf
 
         self.router = router or DefaultRouter()
-        self.handler = self.router.registrar.with_decorator
         self.dispatcher.add_router(self.router)
 
         self.text_filter = TextFilter
@@ -264,7 +272,6 @@ class BaseSimpleLongPollBot:
         """
         Handler only for message events
         """
-
         def decorator(func: typing.Callable[..., typing.Any]):
             record = self.router.registrar.new()
             record.with_filters(*filters)
@@ -279,7 +286,9 @@ class BaseSimpleLongPollBot:
         return decorator
 
     def middleware(self):
-        def decorator(func: typing.Callable[[typing.Union[UserEvent, BotEvent]], MiddlewareResult]):
+        def decorator(
+            func: typing.Callable[[typing.Union[UserEvent, BotEvent]], MiddlewareResult]
+        ):
             middleware = self.SimpleBotMiddleware()
             middleware.pre_process_event = func
             self.middleware_manager.add_middleware(middleware)
@@ -288,12 +297,14 @@ class BaseSimpleLongPollBot:
 
         return decorator
 
-    async def run(self, ignore_errors: bool):
+    async def run(self, ignore_errors: bool = True):
         if self.bot_type is BotType.BOT:
             await self.dispatcher.cache_potential_tokens()
         await self._lp.start(ignore_errors)
 
-    def run_forever(self, ignore_errors: bool = False, loop: typing.Optional[asyncio.AbstractEventLoop] = None):
+    def run_forever(
+        self, ignore_errors: bool = True, loop: typing.Optional[asyncio.AbstractEventLoop] = None
+    ):
         loop = loop or asyncio.get_event_loop()
         loop.create_task(self.run(ignore_errors))
         loop.run_forever()

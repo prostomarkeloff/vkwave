@@ -58,6 +58,7 @@ class BotEventType(str, Enum):
     VKPAY_TRANSACTION = "vkpay_transaction"
     APP_PAYLOAD = "app_payload"
     CALLBACK_CONFIRMATION = "confirmation"
+    MESSAGE_EVENT = "message_event"
 
 
 class BaseBotEvent(pydantic.BaseModel):
@@ -106,6 +107,7 @@ class BaseBotEvent(pydantic.BaseModel):
         "AppPayloadObject",
         "MessageTypingStateObject",
         "BaseBotEvent",
+        "CallbackButtonEventObject"
     ]
     event_id: typing.Optional[str]
 
@@ -477,6 +479,18 @@ class CallBackConfirmation(BaseBotEvent):
     pass
 
 
+class CallbackButtonEventObject(pydantic.BaseModel):
+    conversation_message_id: int = pydantic.Field(None, description="")
+    user_id: int = pydantic.Field(None, description="")
+    peer_id: int = pydantic.Field(None, description="")
+    payload: typing.Dict[str, str] = pydantic.Field(None, description="")
+    event_id: str = pydantic.Field(None, description="")
+
+
+class CallbackButtonEvent(BaseBotEvent):
+    object: CallbackButtonEventObject = pydantic.Field(None, description="")
+
+
 _event_dict = {
     "message_new": MessageNew,
     "message_reply": MessageReply,
@@ -520,6 +534,7 @@ _event_dict = {
     "app_payload": AppPayload,
     "confirmation": CallBackConfirmation,
     "message_typing_state": MessageTypingState,
+    "message_event": CallbackButtonEvent,
 }
 
 
@@ -569,6 +584,7 @@ def get_event_object(
     CallBackConfirmation,
     MessageTypingState,
     BaseBotEvent,
+    CallbackButtonEvent
 ]:
     event_type: str = raw_event["type"]
     event_model: typing.Type[BaseBotEvent] = _event_dict[event_type]

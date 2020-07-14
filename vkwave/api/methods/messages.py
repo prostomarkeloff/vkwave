@@ -120,7 +120,7 @@ class Messages(Category):
         self,
         return_raw_response: bool = False,
         user_id: typing.Optional[int] = None,
-        peer_id: typing.Optional[BaseBoolInt] = None,
+        peer_id: typing.Optional[int] = None,
         group_id: typing.Optional[int] = None,
     ) -> typing.Union[dict, MessagesDeleteConversationResponse]:
         """
@@ -160,13 +160,13 @@ class Messages(Category):
 
     async def edit(
         self,
-        peer_id: BaseBoolInt,
+        peer_id: int,
         message_id: int,
         return_raw_response: bool = False,
         message: typing.Optional[str] = None,
-        lat: typing.Optional[BaseBoolInt] = None,
-        long: typing.Optional[BaseBoolInt] = None,
-        attachment: typing.Optional[BaseBoolInt] = None,
+        lat: typing.Optional[int] = None,
+        long: typing.Optional[int] = None,
+        attachment: typing.Optional[typing.List[str]] = None,
         keep_forward_messages: typing.Optional[BaseBoolInt] = None,
         keep_snippets: typing.Optional[BaseBoolInt] = None,
         group_id: typing.Optional[int] = None,
@@ -837,14 +837,14 @@ class Messages(Category):
         return_raw_response: bool = False,
         user_id: typing.Optional[int] = None,
         random_id: typing.Optional[int] = None,
-        peer_id: typing.Optional[BaseBoolInt] = None,
+        peer_id: typing.Optional[int] = None,
         domain: typing.Optional[str] = None,
         chat_id: typing.Optional[int] = None,
         user_ids: typing.Optional[typing.List[int]] = None,
         message: typing.Optional[str] = None,
-        lat: typing.Optional[BaseBoolInt] = None,
-        long: typing.Optional[BaseBoolInt] = None,
-        attachment: typing.Optional[BaseBoolInt] = None,
+        lat: typing.Optional[int] = None,
+        long: typing.Optional[int] = None,
+        attachment: typing.Optional[typing.Union[typing.List[str], str]] = None,
         reply_to: typing.Optional[int] = None,
         forward_messages: typing.Optional[typing.List[int]] = None,
         forward: typing.Optional[str] = None,
@@ -895,7 +895,7 @@ class Messages(Category):
         return_raw_response: bool = False,
         user_id: typing.Optional[int] = None,
         type: typing.Optional[str] = None,
-        peer_id: typing.Optional[BaseBoolInt] = None,
+        peer_id: typing.Optional[int] = None,
         group_id: typing.Optional[int] = None,
     ) -> typing.Union[dict, OkResponse]:
         """
@@ -950,6 +950,23 @@ class Messages(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("unpin", params)
+        if return_raw_response:
+            return raw_result
+
+        result = OkResponse(**raw_result)
+        return result
+
+    async def send_message_event_answer(
+        self,
+        event_id: str,
+        user_id: int,
+        peer_id: int,
+        event_data: typing.Dict[str, str],
+        return_raw_response: bool = False,
+    ):
+        params = get_params(locals())
+
+        raw_result = await self.api_request("sendMessageEventAnswer", params)
         if return_raw_response:
             return raw_result
 

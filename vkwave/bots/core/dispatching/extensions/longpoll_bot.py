@@ -21,7 +21,7 @@ class BotLongpollExtension(BaseExtension):
         self.dp = dp
         self.lp = lp
 
-    async def _start(self, ignore_errors: bool):
+    async def _start(self, ignore_errors: bool = True):
         options = ProcessEventOptions(do_not_handle=False)
         if not ignore_errors:
             while True:
@@ -42,6 +42,6 @@ class BotLongpollExtension(BaseExtension):
                     logger.error(f"Error in Longpoll ({e}): {traceback.format_exc()}")
                     continue
 
-    async def start(self, ignore_errors: bool = False):
+    async def start(self, ignore_errors: bool = True):
         logger.info("Starting bot...")
         get_running_loop().create_task(self._start(ignore_errors))

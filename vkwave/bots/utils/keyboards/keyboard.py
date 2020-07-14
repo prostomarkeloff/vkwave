@@ -16,13 +16,14 @@ class ButtonColor(Enum):
 class ButtonType(Enum):
     TEXT = "text"
     LINK = "open_link"
+    CALLBACK = "callback"
     LOCATION = "location"
     VKPAY = "vkpay"
     VKAPPS = "open_app"
 
 
 class Keyboard:
-    def __init__(self, one_time: bool, inline: bool = False):
+    def __init__(self, one_time: bool = False, inline: bool = False):
         """
         Create a keyboard object
         :param one_time:
@@ -30,10 +31,11 @@ class Keyboard:
         self.one_time = one_time
         self.buttons: typing.List[typing.List[Button]] = [[]]
         self.keyboard = {
-            "one_time": one_time,
             "buttons": self.buttons,
             "inline": inline,
         }
+        if not inline:
+            self.keyboard["one_time"] = one_time
 
     @staticmethod
     def _generate_payload(
@@ -58,7 +60,7 @@ class Keyboard:
     def add_text_button(
         self,
         text: str,
-        color: ButtonColor = ButtonColor.PRIMARY,
+        color: typing.Union[str, ButtonColor] = ButtonColor.PRIMARY,
         payload: typing.Optional[typing.Dict[str, str]] = None,
     ) -> None:
         """
@@ -73,9 +75,19 @@ class Keyboard:
                 "payload": self._generate_payload(payload),
                 "label": text,
             },
-            "color": color.value,
+            "color": color.value if isinstance(color, ButtonColor) else color,
         }
 
+        self._add_button(action)
+
+    def add_callback_button(self, text: str, payload: dict = None):
+        action = {
+            "action": {
+                "type": "callback",
+                "payload": self._generate_payload(payload),
+                "label": text,
+            }
+        }
         self._add_button(action)
 
     def add_location_button(self, payload: dict = None) -> None:
@@ -161,3 +173,30 @@ class Keyboard:
         keyboard = Keyboard(one_time=True)
         keyboard.keyboard["buttons"] = []
         return keyboard.get_keyboard()
+
+
+class CallbackEventDataType(Enum):
+    TEXT = "text"
+    LINK = "open_link"
+    VKAPPS = "open_app"
+
+
+class CallbackAnswer:
+    # custom dumper?
+
+    @classmethod
+    def show_snackbar(cls, text: str):
+        return json.dumps({"type": "show_snackbar", "text": text})
+
+    @classmethod
+    def open_link(cls, link: str):
+        return json.dumps({"type": "open_link", "link": link})
+
+    @classmethod
+    def open_app(cls, app_id: int, hash: str, owner_id: typing.Optional[int] = None):
+        return json.dumps({
+            "type": "open_app",
+            "app_id": app_id,
+            "owner_id": owner_id,
+            "hash": hash
+        })
