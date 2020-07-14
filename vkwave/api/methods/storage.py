@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 from ._utils import get_params
 
@@ -11,13 +10,11 @@ class Storage(Category):
         key: typing.Optional[str] = None,
         keys: typing.Optional[typing.List[str]] = None,
         user_id: typing.Optional[int] = None,
-        global_: typing.Optional[bool] = None,
-    ) -> typing.Union[dict, OkResponse]:
+    ) -> typing.Union[dict, StorageGetV5110Response]:
         """
         :param key:
         :param keys:
         :param user_id:
-        :param global_:
         :param return_raw_response: - return result at dict
         :return:
         """
@@ -28,20 +25,18 @@ class Storage(Category):
         if return_raw_response:
             return raw_result
 
-        result = dict(**raw_result)
+        result = StorageGetV5110Response(**raw_result)
         return result
 
     async def get_keys(
         self,
         return_raw_response: bool = False,
         user_id: typing.Optional[int] = None,
-        global_: typing.Optional[bool] = None,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
     ) -> typing.Union[dict, StorageGetKeysResponse]:
         """
         :param user_id: - user id, whose variables names are returned if they were requested with a server method.
-        :param global_:
         :param offset:
         :param count: - amount of variable names the info needs to be collected from.
         :param return_raw_response: - return result at dict
@@ -63,13 +58,11 @@ class Storage(Category):
         return_raw_response: bool = False,
         value: typing.Optional[str] = None,
         user_id: typing.Optional[int] = None,
-        global_: typing.Optional[bool] = None,
-    ) -> typing.Union[dict, OkResponse]:
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param key:
         :param value:
         :param user_id:
-        :param global_:
         :param return_raw_response: - return result at dict
         :return:
         """
@@ -80,5 +73,5 @@ class Storage(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result

@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 from ._utils import get_params
 
@@ -39,9 +38,10 @@ class Polls(Category):
         is_multiple: typing.Optional[bool] = None,
         end_date: typing.Optional[int] = None,
         owner_id: typing.Optional[int] = None,
-        add_answers: typing.Optional[BaseBoolInt] = None,
+        add_answers: typing.Optional[str] = None,
         photo_id: typing.Optional[int] = None,
         background_id: typing.Optional[str] = None,
+        disable_unvote: typing.Optional[bool] = None,
     ) -> typing.Union[dict, PollsCreateResponse]:
         """
         :param question: - question text
@@ -52,6 +52,7 @@ class Polls(Category):
         :param add_answers: - available answers list, for example: " ["yes","no","maybe"]", There can be from 1 to 10 answers.
         :param photo_id:
         :param background_id:
+        :param disable_unvote:
         :param return_raw_response: - return result at dict
         :return:
         """
@@ -98,12 +99,12 @@ class Polls(Category):
         owner_id: typing.Optional[int] = None,
         question: typing.Optional[str] = None,
         add_answers: typing.Optional[str] = None,
-        edit_answers: typing.Optional[BaseBoolInt] = None,
-        delete_answers: typing.Optional[BaseBoolInt] = None,
+        edit_answers: typing.Optional[str] = None,
+        delete_answers: typing.Optional[str] = None,
         end_date: typing.Optional[int] = None,
         photo_id: typing.Optional[int] = None,
         background_id: typing.Optional[str] = None,
-    ) -> typing.Union[dict, OkResponse]:
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param owner_id: - poll owner id
         :param poll_id: - edited poll's id
@@ -124,7 +125,7 @@ class Polls(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def get_by_id(
@@ -167,8 +168,8 @@ class Polls(Category):
         owner_id: typing.Optional[int] = None,
         is_board: typing.Optional[bool] = None,
         friends_only: typing.Optional[BaseBoolInt] = None,
-        offset: typing.Optional[BaseBoolInt] = None,
-        count: typing.Optional[BaseBoolInt] = None,
+        offset: typing.Optional[int] = None,
+        count: typing.Optional[int] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
         name_case: typing.Optional[str] = None,
     ) -> typing.Union[dict, PollsGetVotersResponse]:

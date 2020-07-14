@@ -4,7 +4,6 @@ from contextlib import asynccontextmanager
 from typing import AsyncGenerator, List, Optional, Tuple, Union, cast
 
 from vkwave.api.methods._error import (
-    APIError,
     Error,
     ErrorDispatcher,
     UnsuccessAPIRequestException,
@@ -15,11 +14,11 @@ from vkwave.client.abstract import AbstractAPIClient
 from vkwave.client.context import ResultState
 from vkwave.client.types import MethodName
 
+
 from .account import Account
+from .app_widgets import AppWidgets
 from .ads import Ads
-from .app import App
 from .apps import Apps
-from .audio import Audio
 from .auth import Auth
 from .board import Board
 from .database import Database
@@ -40,7 +39,6 @@ from .orders import Orders
 from .pages import Pages
 from .photos import Photos
 from .polls import Polls
-from .pretty import Pretty
 from .search import Search
 from .secure import Secure
 from .stats import Stats
@@ -53,6 +51,9 @@ from .utils import Utils
 from .video import Video
 from .wall import Wall
 from .widgets import Widgets
+from .audio import Audio
+from .pretty_cards import PrettyCards
+
 
 TokensInput = Union[List[AnyABCToken], AnyABCToken]
 ClientsInput = Union[List[AbstractAPIClient], AbstractAPIClient]
@@ -99,7 +100,7 @@ class APIOptionsRequestContext:
 
         self.account = Account("account", self)
         self.ads = Ads("ads", self)
-        self.app = App("app", self)
+        self.app_widgets = AppWidgets("appWidgets", self)
         self.apps = Apps("apps", self)
         self.audio = Audio("audio", self)
         self.auth = Auth("auth", self)
@@ -122,7 +123,7 @@ class APIOptionsRequestContext:
         self.pages = Pages("pages", self)
         self.photos = Photos("photos", self)
         self.polls = Polls("polls", self)
-        self.pretty = Pretty("pretty", self)
+        self.pretty_cards = PrettyCards("prettyCards", self)
         self.search = Search("search", self)
         self.secure = Secure("secure", self)
         self.stats = Stats("stats", self)

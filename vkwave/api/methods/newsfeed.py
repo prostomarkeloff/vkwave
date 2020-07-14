@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 from ._utils import get_params
 
@@ -10,7 +9,7 @@ class Newsfeed(Category):
         return_raw_response: bool = False,
         user_ids: typing.Optional[typing.List[int]] = None,
         group_ids: typing.Optional[typing.List[int]] = None,
-    ) -> typing.Union[dict, OkResponse]:
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param user_ids:
         :param group_ids:
@@ -24,7 +23,7 @@ class Newsfeed(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def delete_ban(
@@ -32,7 +31,7 @@ class Newsfeed(Category):
         return_raw_response: bool = False,
         user_ids: typing.Optional[typing.List[int]] = None,
         group_ids: typing.Optional[typing.List[int]] = None,
-    ) -> typing.Union[dict, OkResponse]:
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param user_ids:
         :param group_ids:
@@ -46,12 +45,12 @@ class Newsfeed(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def delete_list(
         self, list_id: int, return_raw_response: bool = False,
-    ) -> typing.Union[dict, OkResponse]:
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param list_id:
         :param return_raw_response: - return result at dict
@@ -64,7 +63,7 @@ class Newsfeed(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def get(
@@ -77,7 +76,7 @@ class Newsfeed(Category):
         max_photos: typing.Optional[int] = None,
         source_ids: typing.Optional[str] = None,
         start_from: typing.Optional[str] = None,
-        count: typing.Optional[BaseBoolInt] = None,
+        count: typing.Optional[int] = None,
         fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
         section: typing.Optional[str] = None,
     ) -> typing.Union[dict, NewsfeedGetResponse]:
@@ -111,7 +110,9 @@ class Newsfeed(Category):
         extended: typing.Optional[BaseBoolInt] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
         name_case: typing.Optional[str] = None,
-    ) -> typing.Union[dict, NewsfeedGetBannedResponse, NewsfeedGetBannedExtendedResponse]:
+    ) -> typing.Union[
+        dict, NewsfeedGetBannedResponse, NewsfeedGetBannedExtendedResponse
+    ]:
         """
         :param extended: - '1' — return extra information about users and communities
         :param fields: - Profile fields to return.
@@ -279,7 +280,7 @@ class Newsfeed(Category):
 
     async def ignore_item(
         self, type: str, owner_id: int, item_id: int, return_raw_response: bool = False,
-    ) -> typing.Union[dict, OkResponse]:
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param type: - Item type. Possible values: *'wall' – post on the wall,, *'tag' – tag on a photo,, *'profilephoto' – profile photo,, *'video' – video,, *'audio' – audio.
         :param owner_id: - Item owner's identifier (user or community), "Note that community id must be negative. 'owner_id=1' – user , 'owner_id=-1' – community "
@@ -294,7 +295,7 @@ class Newsfeed(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def save_list(
@@ -329,8 +330,8 @@ class Newsfeed(Category):
         q: typing.Optional[str] = None,
         extended: typing.Optional[BaseBoolInt] = None,
         count: typing.Optional[int] = None,
-        latitude: typing.Optional[BaseBoolInt] = None,
-        longitude: typing.Optional[BaseBoolInt] = None,
+        latitude: typing.Optional[int] = None,
+        longitude: typing.Optional[int] = None,
         start_time: typing.Optional[int] = None,
         end_time: typing.Optional[int] = None,
         start_from: typing.Optional[str] = None,
@@ -364,12 +365,18 @@ class Newsfeed(Category):
         return result
 
     async def unignore_item(
-        self, type: str, owner_id: int, item_id: int, return_raw_response: bool = False,
-    ) -> typing.Union[dict, OkResponse]:
+        self,
+        type: str,
+        owner_id: int,
+        item_id: int,
+        return_raw_response: bool = False,
+        track_code: typing.Optional[str] = None,
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param type: - Item type. Possible values: *'wall' – post on the wall,, *'tag' – tag on a photo,, *'profilephoto' – profile photo,, *'video' – video,, *'audio' – audio.
         :param owner_id: - Item owner's identifier (user or community), "Note that community id must be negative. 'owner_id=1' – user , 'owner_id=-1' – community "
         :param item_id: - Item identifier
+        :param track_code: - Track code of unignored item
         :param return_raw_response: - return result at dict
         :return:
         """
@@ -380,7 +387,7 @@ class Newsfeed(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def unsubscribe(
@@ -389,7 +396,7 @@ class Newsfeed(Category):
         item_id: int,
         return_raw_response: bool = False,
         owner_id: typing.Optional[int] = None,
-    ) -> typing.Union[dict, OkResponse]:
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param type: - Type of object from which to unsubscribe: 'note' — note, 'photo' — photo, 'post' — post on user wall or community wall, 'topic' — topic, 'video' — video
         :param owner_id: - Object owner ID.
@@ -404,5 +411,5 @@ class Newsfeed(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result

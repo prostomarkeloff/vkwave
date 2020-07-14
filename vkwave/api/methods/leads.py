@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 from ._utils import get_params
 
@@ -64,8 +63,8 @@ class Leads(Category):
         lead_id: int,
         return_raw_response: bool = False,
         secret: typing.Optional[str] = None,
-        date_start: typing.Optional[BaseBoolInt] = None,
-        date_end: typing.Optional[BaseBoolInt] = None,
+        date_start: typing.Optional[str] = None,
+        date_end: typing.Optional[str] = None,
     ) -> typing.Union[dict, LeadsGetStatsResponse]:
         """
         :param lead_id: - Lead ID.
@@ -92,7 +91,7 @@ class Leads(Category):
         return_raw_response: bool = False,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
-        status: typing.Optional[BaseBoolInt] = None,
+        status: typing.Optional[int] = None,
         reverse: typing.Optional[BaseBoolInt] = None,
     ) -> typing.Union[dict, LeadsGetUsersResponse]:
         """

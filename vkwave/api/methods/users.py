@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 from ._utils import get_params
 
@@ -14,7 +13,7 @@ class Users(Category):
     ) -> typing.Union[dict, UsersGetResponse]:
         """
         :param user_ids: - User IDs or screen names ('screen_name'). By default, current user ID.
-        :param fields: - Profile fields to return. Sample values: 'nickname', 'screen_name', 'sex', 'bdate' (birthdate), 'city', 'country', 'timezone', 'photo', 'photo_medium', 'photo_big', 'has_mobile', 'contacts', 'education', 'online', 'counters', 'relation', 'last_seen', 'activity', 'can_write_private_message', 'can_see_all_posts', 'can_post', 'universities',
+        :param fields: - Profile fields to return. Sample values: 'nickname', 'screen_name', 'sex', 'bdate' (birthdate), 'city', 'country', 'timezone', 'photo', 'photo_medium', 'photo_big', 'has_mobile', 'contacts', 'education', 'online', 'counters', 'relation', 'last_seen', 'activity', 'can_write_private_message', 'can_see_all_posts', 'can_post', 'universities', 'can_invite_to_chats'
         :param name_case: - Case for declension of user name and surname: 'nom' — nominative (default), 'gen' — genitive , 'dat' — dative, 'acc' — accusative , 'ins' — instrumental , 'abl' — prepositional
         :param return_raw_response: - return result at dict
         :return:
@@ -65,7 +64,9 @@ class Users(Category):
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
-    ) -> typing.Union[dict, UsersGetSubscriptionsResponse, UsersGetSubscriptionsExtendedResponse]:
+    ) -> typing.Union[
+        dict, UsersGetSubscriptionsResponse, UsersGetSubscriptionsExtendedResponse
+    ]:
         """
         :param user_id: - User ID.
         :param extended: - '1' — to return a combined list of users and communities, '0' — to return separate lists of users and communities (default)
@@ -89,31 +90,13 @@ class Users(Category):
         )
         return result
 
-    async def is_app_user(
-        self, return_raw_response: bool = False, user_id: typing.Optional[int] = None,
-    ) -> typing.Union[dict, UsersIsAppUserResponse]:
-        """
-        :param user_id:
-        :param return_raw_response: - return result at dict
-        :return:
-        """
-
-        params = get_params(locals())
-
-        raw_result = await self.api_request("isAppUser", params)
-        if return_raw_response:
-            return raw_result
-
-        result = UsersIsAppUserResponse(**raw_result)
-        return result
-
     async def report(
         self,
         user_id: int,
         type: str,
         return_raw_response: bool = False,
         comment: typing.Optional[str] = None,
-    ) -> typing.Union[dict, OkResponse]:
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param user_id: - ID of the user about whom a complaint is being made.
         :param type: - Type of complaint: 'porn' – pornography, 'spam' – spamming, 'insult' – abusive behavior, 'advertisement' – disruptive advertisements
@@ -128,14 +111,14 @@ class Users(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def search(
         self,
         return_raw_response: bool = False,
         q: typing.Optional[str] = None,
-        sort: typing.Optional[BaseBoolInt] = None,
+        sort: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
@@ -147,7 +130,7 @@ class Users(Category):
         university_year: typing.Optional[int] = None,
         university_faculty: typing.Optional[int] = None,
         university_chair: typing.Optional[int] = None,
-        sex: typing.Optional[BaseBoolInt] = None,
+        sex: typing.Optional[int] = None,
         status: typing.Optional[int] = None,
         age_from: typing.Optional[int] = None,
         age_to: typing.Optional[int] = None,
@@ -162,7 +145,6 @@ class Users(Category):
         school: typing.Optional[int] = None,
         school_year: typing.Optional[int] = None,
         religion: typing.Optional[str] = None,
-        interests: typing.Optional[str] = None,
         company: typing.Optional[str] = None,
         position: typing.Optional[str] = None,
         group_id: typing.Optional[int] = None,
@@ -197,7 +179,6 @@ class Users(Category):
         :param school: - ID of the school.
         :param school_year: - School graduation year.
         :param religion: - Users' religious affiliation.
-        :param interests: - Users' interests.
         :param company: - Name of the company where users work.
         :param position: - Job position.
         :param group_id: - ID of a community to search in communities.

@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 from ._utils import get_params
 
@@ -7,7 +6,7 @@ from ._utils import get_params
 class Apps(Category):
     async def delete_app_requests(
         self, return_raw_response: bool = False,
-    ) -> typing.Union[dict, OkResponse]:
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param return_raw_response: - return result at dict
         :return:
@@ -19,7 +18,7 @@ class Apps(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def get(
@@ -128,7 +127,9 @@ class Apps(Category):
         return_raw_response: bool = False,
         global_: typing.Optional[BaseBoolInt] = None,
         extended: typing.Optional[BaseBoolInt] = None,
-    ) -> typing.Union[dict, AppsGetLeaderboardResponse, AppsGetLeaderboardExtendedResponse]:
+    ) -> typing.Union[
+        dict, AppsGetLeaderboardResponse, AppsGetLeaderboardExtendedResponse
+    ]:
         """
         :param type: - Leaderboard type. Possible values: *'level' — by level,, *'points' — by mission points,, *'score' — by score ().
         :param global_: - Rating type. Possible values: *'1' — global rating among all players,, *'0' — rating among user friends.
@@ -184,6 +185,50 @@ class Apps(Category):
             return raw_result
 
         result = AppsGetScoreResponse(**raw_result)
+        return result
+
+    async def promo_has_active_gift(
+        self,
+        promo_id: int,
+        return_raw_response: bool = False,
+        user_id: typing.Optional[int] = None,
+    ) -> typing.Union[dict, BaseBoolResponse]:
+        """
+        :param promo_id: - Id of game promo action
+        :param user_id:
+        :param return_raw_response: - return result at dict
+        :return:
+        """
+
+        params = get_params(locals())
+
+        raw_result = await self.api_request("promoHasActiveGift", params)
+        if return_raw_response:
+            return raw_result
+
+        result = BaseBoolResponse(**raw_result)
+        return result
+
+    async def promo_use_gift(
+        self,
+        promo_id: int,
+        return_raw_response: bool = False,
+        user_id: typing.Optional[int] = None,
+    ) -> typing.Union[dict, BaseBoolResponse]:
+        """
+        :param promo_id: - Id of game promo action
+        :param user_id:
+        :param return_raw_response: - return result at dict
+        :return:
+        """
+
+        params = get_params(locals())
+
+        raw_result = await self.api_request("promoUseGift", params)
+        if return_raw_response:
+            return raw_result
+
+        result = BaseBoolResponse(**raw_result)
         return result
 
     async def send_request(

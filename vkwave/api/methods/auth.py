@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 from ._utils import get_params
 
@@ -12,7 +11,7 @@ class Auth(Category):
         client_id: typing.Optional[int] = None,
         client_secret: typing.Optional[str] = None,
         auth_by_phone: typing.Optional[bool] = None,
-    ) -> typing.Union[dict, OkResponse]:
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param phone: - Phone number.
         :param client_id: - User ID.
@@ -28,7 +27,7 @@ class Auth(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def restore(

@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 from ._utils import get_params
 
@@ -10,10 +9,12 @@ class Messages(Category):
         chat_id: int,
         return_raw_response: bool = False,
         user_id: typing.Optional[int] = None,
-    ) -> typing.Union[dict, OkResponse]:
+        visible_messages_count: typing.Optional[int] = None,
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param chat_id: - Chat ID.
         :param user_id: - ID of the user to be added to the chat.
+        :param visible_messages_count:
         :param return_raw_response: - return result at dict
         :return:
         """
@@ -24,12 +25,15 @@ class Messages(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def allow_messages_from_group(
-        self, group_id: int, return_raw_response: bool = False, key: typing.Optional[str] = None,
-    ) -> typing.Union[dict, OkResponse]:
+        self,
+        group_id: int,
+        return_raw_response: bool = False,
+        key: typing.Optional[str] = None,
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param group_id: - Group ID.
         :param key:
@@ -43,7 +47,7 @@ class Messages(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def create_chat(
@@ -51,10 +55,12 @@ class Messages(Category):
         return_raw_response: bool = False,
         user_ids: typing.Optional[typing.List[int]] = None,
         title: typing.Optional[str] = None,
+        group_id: typing.Optional[int] = None,
     ) -> typing.Union[dict, MessagesCreateChatResponse]:
         """
         :param user_ids: - IDs of the users to be added to the chat.
         :param title: - Chat title.
+        :param group_id:
         :param return_raw_response: - return result at dict
         :return:
         """
@@ -142,7 +148,7 @@ class Messages(Category):
 
     async def deny_messages_from_group(
         self, group_id: int, return_raw_response: bool = False,
-    ) -> typing.Union[dict, OkResponse]:
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param group_id: - Group ID.
         :param return_raw_response: - return result at dict
@@ -155,27 +161,29 @@ class Messages(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def edit(
         self,
         peer_id: int,
-        message_id: int,
         return_raw_response: bool = False,
         message: typing.Optional[str] = None,
         lat: typing.Optional[int] = None,
         long: typing.Optional[int] = None,
-        attachment: typing.Optional[typing.List[str]] = None,
+        attachment: typing.Optional[str] = None,
         keep_forward_messages: typing.Optional[BaseBoolInt] = None,
         keep_snippets: typing.Optional[BaseBoolInt] = None,
         group_id: typing.Optional[int] = None,
         dont_parse_links: typing.Optional[bool] = None,
+        message_id: typing.Optional[int] = None,
+        conversation_message_id: typing.Optional[int] = None,
+        template: typing.Optional[str] = None,
+        keyboard: typing.Optional[str] = None,
     ) -> typing.Union[dict, MessagesEditResponse]:
         """
         :param peer_id: - Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "
         :param message: - (Required if 'attachments' is not set.) Text of the message.
-        :param message_id:
         :param lat: - Geographical latitude of a check-in, in degrees (from -90 to 90).
         :param long: - Geographical longitude of a check-in, in degrees (from -180 to 180).
         :param attachment: - (Required if 'message' is not set.) List of objects attached to the message, separated by commas, in the following format: "<owner_id>_<media_id>", '' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, 'wall' — wall post, '<owner_id>' — ID of the media attachment owner. '<media_id>' — media attachment ID. Example: "photo100172_166443618"
@@ -183,6 +191,10 @@ class Messages(Category):
         :param keep_snippets: - '1' — to keep attached snippets.
         :param group_id: - Group ID (for group messages with user access token)
         :param dont_parse_links:
+        :param message_id:
+        :param conversation_message_id:
+        :param template:
+        :param keyboard:
         :param return_raw_response: - return result at dict
         :return:
         """
@@ -197,8 +209,11 @@ class Messages(Category):
         return result
 
     async def edit_chat(
-        self, chat_id: int, title: str, return_raw_response: bool = False,
-    ) -> typing.Union[dict, OkResponse]:
+        self,
+        chat_id: int,
+        return_raw_response: bool = False,
+        title: typing.Optional[str] = None,
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param chat_id: - Chat ID.
         :param title: - New title of the chat.
@@ -212,12 +227,12 @@ class Messages(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def get_by_conversation_message_id(
         self,
-        peer_id: BaseBoolInt,
+        peer_id: int,
         conversation_message_ids: typing.List[int],
         return_raw_response: bool = False,
         extended: typing.Optional[BaseBoolInt] = None,
@@ -247,7 +262,7 @@ class Messages(Category):
         self,
         message_ids: typing.List[int],
         return_raw_response: bool = False,
-        preview_length: typing.Optional[BaseBoolInt] = None,
+        preview_length: typing.Optional[int] = None,
         extended: typing.Optional[BaseBoolInt] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
         group_id: typing.Optional[int] = None,
@@ -363,7 +378,9 @@ class Messages(Category):
         fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
         group_id: typing.Optional[int] = None,
     ) -> typing.Union[
-        dict, MessagesGetConversationsByIdResponse, MessagesGetConversationsByIdExtendedResponse,
+        dict,
+        MessagesGetConversationsByIdResponse,
+        MessagesGetConversationsByIdExtendedResponse,
     ]:
         """
         :param peer_ids: - Destination IDs. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "
@@ -395,7 +412,7 @@ class Messages(Category):
         user_id: typing.Optional[int] = None,
         peer_id: typing.Optional[int] = None,
         start_message_id: typing.Optional[int] = None,
-        rev: typing.Optional[BaseBoolInt] = None,
+        rev: typing.Optional[int] = None,
         extended: typing.Optional[BaseBoolInt] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
         group_id: typing.Optional[int] = None,
@@ -425,7 +442,7 @@ class Messages(Category):
 
     async def get_history_attachments(
         self,
-        peer_id: BaseBoolInt,
+        peer_id: int,
         return_raw_response: bool = False,
         media_type: typing.Optional[str] = None,
         start_from: typing.Optional[str] = None,
@@ -506,7 +523,7 @@ class Messages(Category):
         return_raw_response: bool = False,
         ts: typing.Optional[int] = None,
         pts: typing.Optional[int] = None,
-        preview_length: typing.Optional[BaseBoolInt] = None,
+        preview_length: typing.Optional[int] = None,
         onlines: typing.Optional[BaseBoolInt] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
         events_limit: typing.Optional[int] = None,
@@ -610,7 +627,7 @@ class Messages(Category):
         return_raw_response: bool = False,
         answered: typing.Optional[BaseBoolInt] = None,
         group_id: typing.Optional[int] = None,
-    ) -> typing.Union[dict, OkResponse]:
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param peer_id: - ID of conversation to mark as important.
         :param answered: - '1' — to mark as answered, '0' — to remove the mark
@@ -625,14 +642,14 @@ class Messages(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def mark_as_important(
         self,
         return_raw_response: bool = False,
         message_ids: typing.Optional[typing.List[int]] = None,
-        important: typing.Optional[BaseBoolInt] = None,
+        important: typing.Optional[int] = None,
     ) -> typing.Union[dict, MessagesMarkAsImportantResponse]:
         """
         :param message_ids: - IDs of messages to mark as important.
@@ -656,7 +673,7 @@ class Messages(Category):
         return_raw_response: bool = False,
         important: typing.Optional[BaseBoolInt] = None,
         group_id: typing.Optional[int] = None,
-    ) -> typing.Union[dict, OkResponse]:
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param peer_id: - ID of conversation to mark as important.
         :param important: - '1' — to add a star (mark as important), '0' — to remove the star
@@ -671,22 +688,24 @@ class Messages(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def mark_as_read(
         self,
         return_raw_response: bool = False,
         message_ids: typing.Optional[typing.List[int]] = None,
-        peer_id: typing.Optional[BaseBoolInt] = None,
+        peer_id: typing.Optional[int] = None,
         start_message_id: typing.Optional[int] = None,
         group_id: typing.Optional[int] = None,
-    ) -> typing.Union[dict, OkResponse]:
+        mark_conversation_as_read: typing.Optional[bool] = None,
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param message_ids: - IDs of messages to mark as read.
         :param peer_id: - Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "
         :param start_message_id: - Message ID to start from.
         :param group_id: - Group ID (for group messages with user access token)
+        :param mark_conversation_as_read:
         :param return_raw_response: - return result at dict
         :return:
         """
@@ -697,12 +716,12 @@ class Messages(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def pin(
         self,
-        peer_id: BaseBoolInt,
+        peer_id: int,
         return_raw_response: bool = False,
         message_id: typing.Optional[int] = None,
     ) -> typing.Union[dict, MessagesPinResponse]:
@@ -728,7 +747,7 @@ class Messages(Category):
         return_raw_response: bool = False,
         user_id: typing.Optional[int] = None,
         member_id: typing.Optional[int] = None,
-    ) -> typing.Union[dict, OkResponse]:
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param chat_id: - Chat ID.
         :param user_id: - ID of the user to be removed from the chat.
@@ -743,7 +762,7 @@ class Messages(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def restore(
@@ -751,7 +770,7 @@ class Messages(Category):
         message_id: int,
         return_raw_response: bool = False,
         group_id: typing.Optional[int] = None,
-    ) -> typing.Union[dict, OkResponse]:
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param message_id: - ID of a previously-deleted message to restore.
         :param group_id: - Group ID (for group messages with user access token)
@@ -765,16 +784,16 @@ class Messages(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def search(
         self,
         return_raw_response: bool = False,
         q: typing.Optional[str] = None,
-        peer_id: typing.Optional[BaseBoolInt] = None,
+        peer_id: typing.Optional[int] = None,
         date: typing.Optional[int] = None,
-        preview_length: typing.Optional[BaseBoolInt] = None,
+        preview_length: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
         extended: typing.Optional[BaseBoolInt] = None,
@@ -844,16 +863,17 @@ class Messages(Category):
         message: typing.Optional[str] = None,
         lat: typing.Optional[int] = None,
         long: typing.Optional[int] = None,
-        attachment: typing.Optional[typing.Union[typing.List[str], str]] = None,
+        attachment: typing.Optional[str] = None,
         reply_to: typing.Optional[int] = None,
         forward_messages: typing.Optional[typing.List[int]] = None,
-        forward: typing.Optional[str] = None,
         sticker_id: typing.Optional[int] = None,
         group_id: typing.Optional[int] = None,
         keyboard: typing.Optional[str] = None,
         payload: typing.Optional[str] = None,
         dont_parse_links: typing.Optional[bool] = None,
         disable_mentions: typing.Optional[bool] = None,
+        intent: typing.Optional[str] = None,
+        subscribe_id: typing.Optional[int] = None,
         template: typing.Optional[str] = None,
     ) -> typing.Union[dict, MessagesSendResponse]:
         """
@@ -869,14 +889,15 @@ class Messages(Category):
         :param attachment: - (Required if 'message' is not set.) List of objects attached to the message, separated by commas, in the following format: "<owner_id>_<media_id>", '' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, 'wall' — wall post, '<owner_id>' — ID of the media attachment owner. '<media_id>' — media attachment ID. Example: "photo100172_166443618"
         :param reply_to:
         :param forward_messages: - ID of forwarded messages, separated with a comma. Listed messages of the sender will be shown in the message body at the recipient's. Example: "123,431,544"
-        :param forward:
         :param sticker_id: - Sticker id.
         :param group_id: - Group ID (for group messages with group access token)
         :param keyboard:
         :param payload:
+        :param template:
         :param dont_parse_links:
         :param disable_mentions:
-        :param template:
+        :param intent:
+        :param subscribe_id:
         :param return_raw_response: - return result at dict
         :return:
         """
@@ -890,6 +911,32 @@ class Messages(Category):
         result = MessagesSendResponse(**raw_result)
         return result
 
+    async def send_message_event_answer(
+        self,
+        event_id: str,
+        user_id: int,
+        peer_id: int,
+        return_raw_response: bool = False,
+        event_data: typing.Optional[str] = None,
+    ) -> typing.Union[dict, BaseOkResponse]:
+        """
+        :param event_id:
+        :param user_id:
+        :param peer_id:
+        :param event_data:
+        :param return_raw_response: - return result at dict
+        :return:
+        """
+
+        params = get_params(locals())
+
+        raw_result = await self.api_request("sendMessageEventAnswer", params)
+        if return_raw_response:
+            return raw_result
+
+        result = BaseOkResponse(**raw_result)
+        return result
+
     async def set_activity(
         self,
         return_raw_response: bool = False,
@@ -897,7 +944,7 @@ class Messages(Category):
         type: typing.Optional[str] = None,
         peer_id: typing.Optional[int] = None,
         group_id: typing.Optional[int] = None,
-    ) -> typing.Union[dict, OkResponse]:
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param user_id: - User ID.
         :param type: - 'typing' — user has started to type.
@@ -913,7 +960,7 @@ class Messages(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def set_chat_photo(
@@ -939,7 +986,7 @@ class Messages(Category):
         peer_id: int,
         return_raw_response: bool = False,
         group_id: typing.Optional[int] = None,
-    ) -> typing.Union[dict, OkResponse]:
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param peer_id:
         :param group_id:
@@ -953,22 +1000,5 @@ class Messages(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
-        return result
-
-    async def send_message_event_answer(
-        self,
-        event_id: str,
-        user_id: int,
-        peer_id: int,
-        event_data: typing.Dict[str, str],
-        return_raw_response: bool = False,
-    ):
-        params = get_params(locals())
-
-        raw_result = await self.api_request("sendMessageEventAnswer", params)
-        if return_raw_response:
-            return raw_result
-
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result

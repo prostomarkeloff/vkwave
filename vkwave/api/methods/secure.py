@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 from ._utils import get_params
 
@@ -11,7 +10,7 @@ class Secure(Category):
         activity_id: int,
         return_raw_response: bool = False,
         value: typing.Optional[int] = None,
-    ) -> typing.Union[dict, OkResponse]:
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param user_id: - ID of a user to save the data
         :param activity_id: - there are 2 default activities: , * 1 – level. Works similar to ,, * 2 – points, saves points amount, Any other value is for saving completed missions
@@ -26,7 +25,7 @@ class Secure(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def check_token(
@@ -74,7 +73,7 @@ class Secure(Category):
         user_id: typing.Optional[int] = None,
         date_from: typing.Optional[int] = None,
         date_to: typing.Optional[int] = None,
-        limit: typing.Optional[BaseBoolInt] = None,
+        limit: typing.Optional[int] = None,
     ) -> typing.Union[dict, SecureGetSMSHistoryResponse]:
         """
         :param user_id:
@@ -143,7 +142,10 @@ class Secure(Category):
         return result
 
     async def give_event_sticker(
-        self, user_ids: typing.List[int], achievement_id: int, return_raw_response: bool = False,
+        self,
+        user_ids: typing.List[int],
+        achievement_id: int,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, SecureGiveEventStickerResponse]:
         """
         :param user_ids:
@@ -186,8 +188,8 @@ class Secure(Category):
         return result
 
     async def send_s_m_s_notification(
-        self, user_id: int, message: BaseBoolInt, return_raw_response: bool = False,
-    ) -> typing.Union[dict, OkResponse]:
+        self, user_id: int, message: str, return_raw_response: bool = False,
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param user_id: - ID of the user to whom SMS notification is sent. The user shall allow the application to send him/her notifications (, +1).
         :param message: - 'SMS' text to be sent in 'UTF-8' encoding. Only Latin letters and numbers are allowed. Maximum size is '160' characters.
@@ -201,7 +203,7 @@ class Secure(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def set_counter(
@@ -211,7 +213,7 @@ class Secure(Category):
         user_id: typing.Optional[int] = None,
         counter: typing.Optional[int] = None,
         increment: typing.Optional[bool] = None,
-    ) -> typing.Union[dict, OkResponse]:
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param counters:
         :param user_id:
@@ -227,5 +229,5 @@ class Secure(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result

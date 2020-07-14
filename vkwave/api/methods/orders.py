@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 from ._utils import get_params
 
@@ -160,7 +159,11 @@ class Orders(Category):
         return result
 
     async def update_subscription(
-        self, user_id: int, subscription_id: int, price: int, return_raw_response: bool = False,
+        self,
+        user_id: int,
+        subscription_id: int,
+        price: int,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, OrdersUpdateSubscriptionResponse]:
         """
         :param user_id:

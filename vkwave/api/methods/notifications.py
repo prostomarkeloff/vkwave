@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 from ._utils import get_params
 
@@ -57,12 +56,14 @@ class Notifications(Category):
         return_raw_response: bool = False,
         fragment: typing.Optional[str] = None,
         group_id: typing.Optional[int] = None,
+        random_id: typing.Optional[int] = None,
     ) -> typing.Union[dict, NotificationsSendMessageResponse]:
         """
         :param user_ids:
         :param message:
         :param fragment:
         :param group_id:
+        :param random_id:
         :param return_raw_response: - return result at dict
         :return:
         """

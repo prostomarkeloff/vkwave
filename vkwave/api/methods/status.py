@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 from ._utils import get_params
 
@@ -32,7 +31,7 @@ class Status(Category):
         return_raw_response: bool = False,
         text: typing.Optional[str] = None,
         group_id: typing.Optional[int] = None,
-    ) -> typing.Union[dict, OkResponse]:
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param text: - Text of the new status.
         :param group_id: - Identifier of a community to set a status in. If left blank the status is set to current user.
@@ -46,5 +45,5 @@ class Status(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result

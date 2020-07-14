@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 from ._utils import get_params
 
@@ -101,7 +100,7 @@ class Groups(Category):
 
     async def approve_request(
         self, group_id: int, user_id: int, return_raw_response: bool = False,
-    ) -> typing.Union[dict, OkResponse]:
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param group_id: - Community ID.
         :param user_id: - User ID.
@@ -115,7 +114,7 @@ class Groups(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def ban(
@@ -127,7 +126,7 @@ class Groups(Category):
         reason: typing.Optional[int] = None,
         comment: typing.Optional[str] = None,
         comment_visible: typing.Optional[bool] = None,
-    ) -> typing.Union[dict, OkResponse]:
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param group_id:
         :param owner_id:
@@ -145,7 +144,7 @@ class Groups(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def create(
@@ -178,7 +177,7 @@ class Groups(Category):
 
     async def delete_callback_server(
         self, group_id: int, server_id: int, return_raw_response: bool = False,
-    ) -> typing.Union[dict, OkResponse]:
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param group_id:
         :param server_id:
@@ -192,12 +191,12 @@ class Groups(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def delete_link(
         self, group_id: int, link_id: int, return_raw_response: bool = False,
-    ) -> typing.Union[dict, OkResponse]:
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param group_id: - Community ID.
         :param link_id: - Link ID.
@@ -211,12 +210,12 @@ class Groups(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def disable_online(
         self, group_id: int, return_raw_response: bool = False,
-    ) -> typing.Union[dict, OkResponse]:
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param group_id:
         :param return_raw_response: - return result at dict
@@ -229,7 +228,7 @@ class Groups(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def edit(
@@ -239,9 +238,9 @@ class Groups(Category):
         title: typing.Optional[str] = None,
         description: typing.Optional[str] = None,
         screen_name: typing.Optional[str] = None,
-        access: typing.Optional[BaseBoolInt] = None,
+        access: typing.Optional[int] = None,
         website: typing.Optional[str] = None,
-        subject: typing.Optional[BaseBoolInt] = None,
+        subject: typing.Optional[str] = None,
         email: typing.Optional[str] = None,
         phone: typing.Optional[str] = None,
         rss: typing.Optional[str] = None,
@@ -251,17 +250,17 @@ class Groups(Category):
         public_category: typing.Optional[int] = None,
         public_subcategory: typing.Optional[int] = None,
         public_date: typing.Optional[str] = None,
-        wall: typing.Optional[BaseBoolInt] = None,
-        topics: typing.Optional[BaseBoolInt] = None,
-        photos: typing.Optional[BaseBoolInt] = None,
-        video: typing.Optional[BaseBoolInt] = None,
-        audio: typing.Optional[BaseBoolInt] = None,
+        wall: typing.Optional[int] = None,
+        topics: typing.Optional[int] = None,
+        photos: typing.Optional[int] = None,
+        video: typing.Optional[int] = None,
+        audio: typing.Optional[int] = None,
         links: typing.Optional[BaseBoolInt] = None,
         events: typing.Optional[BaseBoolInt] = None,
         places: typing.Optional[BaseBoolInt] = None,
         contacts: typing.Optional[BaseBoolInt] = None,
-        docs: typing.Optional[BaseBoolInt] = None,
-        wiki: typing.Optional[BaseBoolInt] = None,
+        docs: typing.Optional[int] = None,
+        wiki: typing.Optional[int] = None,
         messages: typing.Optional[BaseBoolInt] = None,
         articles: typing.Optional[bool] = None,
         addresses: typing.Optional[bool] = None,
@@ -270,8 +269,8 @@ class Groups(Category):
         market_comments: typing.Optional[BaseBoolInt] = None,
         market_country: typing.Optional[typing.List[int]] = None,
         market_city: typing.Optional[typing.List[int]] = None,
-        market_currency: typing.Optional[BaseBoolInt] = None,
-        market_contact: typing.Optional[BaseBoolInt] = None,
+        market_currency: typing.Optional[int] = None,
+        market_contact: typing.Optional[int] = None,
         market_wiki: typing.Optional[int] = None,
         obscene_filter: typing.Optional[BaseBoolInt] = None,
         obscene_stopwords: typing.Optional[BaseBoolInt] = None,
@@ -280,7 +279,7 @@ class Groups(Category):
         secondary_section: typing.Optional[int] = None,
         country: typing.Optional[int] = None,
         city: typing.Optional[int] = None,
-    ) -> typing.Union[dict, OkResponse]:
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param group_id: - Community ID.
         :param title: - Community title.
@@ -337,7 +336,7 @@ class Groups(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def edit_address(
@@ -394,7 +393,7 @@ class Groups(Category):
         title: str,
         return_raw_response: bool = False,
         secret_key: typing.Optional[str] = None,
-    ) -> typing.Union[dict, OkResponse]:
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param group_id:
         :param server_id:
@@ -411,7 +410,7 @@ class Groups(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def edit_link(
@@ -420,7 +419,7 @@ class Groups(Category):
         link_id: int,
         return_raw_response: bool = False,
         text: typing.Optional[str] = None,
-    ) -> typing.Union[dict, OkResponse]:
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param group_id: - Community ID.
         :param link_id: - Link ID.
@@ -435,7 +434,7 @@ class Groups(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def edit_manager(
@@ -448,7 +447,7 @@ class Groups(Category):
         contact_position: typing.Optional[str] = None,
         contact_phone: typing.Optional[str] = None,
         contact_email: typing.Optional[str] = None,
-    ) -> typing.Union[dict, OkResponse]:
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param group_id: - Community ID.
         :param user_id: - User ID.
@@ -467,12 +466,12 @@ class Groups(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def enable_online(
         self, group_id: int, return_raw_response: bool = False,
-    ) -> typing.Union[dict, OkResponse]:
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param group_id:
         :param return_raw_response: - return result at dict
@@ -485,7 +484,7 @@ class Groups(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def get(
@@ -695,7 +694,9 @@ class Groups(Category):
         return_raw_response: bool = False,
         extended: typing.Optional[BaseBoolInt] = None,
         subcategories: typing.Optional[BaseBoolInt] = None,
-    ) -> typing.Union[dict, GroupsGetCatalogInfoResponse, GroupsGetCatalogInfoExtendedResponse]:
+    ) -> typing.Union[
+        dict, GroupsGetCatalogInfoResponse, GroupsGetCatalogInfoExtendedResponse
+    ]:
         """
         :param extended: - 1 – to return communities count and three communities for preview. By default: 0.
         :param subcategories: - 1 – to return subcategories info. By default: 0.
@@ -901,7 +902,7 @@ class Groups(Category):
 
     async def invite(
         self, group_id: int, user_id: int, return_raw_response: bool = False,
-    ) -> typing.Union[dict, OkResponse]:
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param group_id: - Community ID.
         :param user_id: - User ID.
@@ -915,7 +916,7 @@ class Groups(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def is_member(
@@ -952,8 +953,8 @@ class Groups(Category):
         self,
         return_raw_response: bool = False,
         group_id: typing.Optional[int] = None,
-        not_sure: typing.Optional[BaseBoolInt] = None,
-    ) -> typing.Union[dict, OkResponse]:
+        not_sure: typing.Optional[str] = None,
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param group_id: - ID or screen name of the community.
         :param not_sure: - Optional parameter which is taken into account when 'gid' belongs to the event: '1' — Perhaps I will attend, '0' — I will be there for sure (default), ,
@@ -967,12 +968,12 @@ class Groups(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def leave(
         self, group_id: int, return_raw_response: bool = False,
-    ) -> typing.Union[dict, OkResponse]:
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param group_id: - ID or screen name of the community.
         :param return_raw_response: - return result at dict
@@ -985,12 +986,12 @@ class Groups(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def remove_user(
         self, group_id: int, user_id: int, return_raw_response: bool = False,
-    ) -> typing.Union[dict, OkResponse]:
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param group_id: - Community ID.
         :param user_id: - User ID.
@@ -1004,7 +1005,7 @@ class Groups(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def reorder_link(
@@ -1013,7 +1014,7 @@ class Groups(Category):
         link_id: int,
         return_raw_response: bool = False,
         after: typing.Optional[int] = None,
-    ) -> typing.Union[dict, OkResponse]:
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param group_id: - Community ID.
         :param link_id: - Link ID.
@@ -1028,7 +1029,7 @@ class Groups(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def search(
@@ -1040,7 +1041,7 @@ class Groups(Category):
         city_id: typing.Optional[int] = None,
         future: typing.Optional[BaseBoolInt] = None,
         market: typing.Optional[BaseBoolInt] = None,
-        sort: typing.Optional[BaseBoolInt] = None,
+        sort: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
     ) -> typing.Union[dict, GroupsSearchResponse]:
@@ -1113,7 +1114,10 @@ class Groups(Category):
         user_block: typing.Optional[bool] = None,
         user_unblock: typing.Optional[bool] = None,
         lead_forms_new: typing.Optional[bool] = None,
-    ) -> typing.Union[dict, OkResponse]:
+        like_add: typing.Optional[bool] = None,
+        like_remove: typing.Optional[bool] = None,
+        message_event: typing.Optional[bool] = None,
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param group_id: - Community ID.
         :param server_id: - Server ID.
@@ -1158,6 +1162,9 @@ class Groups(Category):
         :param user_block: - User added to community blacklist
         :param user_unblock: - User removed from community blacklist
         :param lead_forms_new: - New form in lead forms
+        :param like_add:
+        :param like_remove:
+        :param message_event:
         :param return_raw_response: - return result at dict
         :return:
         """
@@ -1168,7 +1175,7 @@ class Groups(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def set_long_poll_settings(
@@ -1216,7 +1223,10 @@ class Groups(Category):
         group_officers_edit: typing.Optional[bool] = None,
         user_block: typing.Optional[bool] = None,
         user_unblock: typing.Optional[bool] = None,
-    ) -> typing.Union[dict, OkResponse]:
+        like_add: typing.Optional[bool] = None,
+        like_remove: typing.Optional[bool] = None,
+        message_event: typing.Optional[bool] = None,
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param group_id: - Community ID.
         :param enabled: - Sets whether Long Poll is enabled ('0' — disabled, '1' — enabled).
@@ -1260,6 +1270,9 @@ class Groups(Category):
         :param group_officers_edit:
         :param user_block: - User added to community blacklist
         :param user_unblock: - User removed from community blacklist
+        :param like_add:
+        :param like_remove:
+        :param message_event:
         :param return_raw_response: - return result at dict
         :return:
         """
@@ -1270,7 +1283,7 @@ class Groups(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def unban(
@@ -1278,7 +1291,7 @@ class Groups(Category):
         group_id: int,
         return_raw_response: bool = False,
         owner_id: typing.Optional[int] = None,
-    ) -> typing.Union[dict, OkResponse]:
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param group_id:
         :param owner_id:
@@ -1292,5 +1305,5 @@ class Groups(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result

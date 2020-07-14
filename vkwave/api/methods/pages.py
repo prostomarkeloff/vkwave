@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 from ._utils import get_params
 
@@ -7,7 +6,7 @@ from ._utils import get_params
 class Pages(Category):
     async def clear_cache(
         self, url: str, return_raw_response: bool = False,
-    ) -> typing.Union[dict, OkResponse]:
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param url: - Address of the page where you need to refesh the cached version
         :param return_raw_response: - return result at dict
@@ -20,7 +19,7 @@ class Pages(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def get(
@@ -124,7 +123,10 @@ class Pages(Category):
         return result
 
     async def parse_wiki(
-        self, text: str, return_raw_response: bool = False, group_id: typing.Optional[int] = None,
+        self,
+        text: str,
+        return_raw_response: bool = False,
+        group_id: typing.Optional[int] = None,
     ) -> typing.Union[dict, PagesParseWikiResponse]:
         """
         :param text: - Text of the wiki page.
@@ -176,8 +178,8 @@ class Pages(Category):
         return_raw_response: bool = False,
         group_id: typing.Optional[int] = None,
         user_id: typing.Optional[int] = None,
-        view: typing.Optional[BaseBoolInt] = None,
-        edit: typing.Optional[BaseBoolInt] = None,
+        view: typing.Optional[int] = None,
+        edit: typing.Optional[int] = None,
     ) -> typing.Union[dict, PagesSaveAccessResponse]:
         """
         :param page_id: - Wiki page ID.

@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 from ._utils import get_params
 
@@ -9,7 +8,7 @@ class Friends(Category):
         self,
         return_raw_response: bool = False,
         user_id: typing.Optional[int] = None,
-        text: typing.Optional[BaseBoolInt] = None,
+        text: typing.Optional[str] = None,
         follow: typing.Optional[BaseBoolInt] = None,
     ) -> typing.Union[dict, FriendsAddResponse]:
         """
@@ -56,10 +55,14 @@ class Friends(Category):
         user_ids: typing.List[int],
         return_raw_response: bool = False,
         need_sign: typing.Optional[BaseBoolInt] = None,
-    ) -> typing.Union[dict, FriendsAreFriendsResponse]:
+        extended: typing.Optional[BaseBoolInt] = None,
+    ) -> typing.Union[
+        dict, FriendsAreFriendsResponse, FriendsAreFriendsExtendedResponse
+    ]:
         """
         :param user_ids: - IDs of the users whose friendship status to check.
         :param need_sign: - '1' — to return 'sign' field. 'sign' is md5("{id}_{user_id}_{friends_status}_{application_secret}"), where id is current user ID. This field allows to check that data has not been modified by the client. By default: '0'.
+        :param extended: - Return friend request read_state field
         :param return_raw_response: - return result at dict
         :return:
         """
@@ -70,7 +73,11 @@ class Friends(Category):
         if return_raw_response:
             return raw_result
 
-        result = FriendsAreFriendsResponse(**raw_result)
+        result = (
+            FriendsAreFriendsResponse(**raw_result)
+            if not extended
+            else FriendsAreFriendsExtendedResponse(**raw_result)
+        )
         return result
 
     async def delete(
@@ -93,7 +100,7 @@ class Friends(Category):
 
     async def delete_all_requests(
         self, return_raw_response: bool = False,
-    ) -> typing.Union[dict, OkResponse]:
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param return_raw_response: - return result at dict
         :return:
@@ -105,12 +112,12 @@ class Friends(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def delete_list(
         self, list_id: int, return_raw_response: bool = False,
-    ) -> typing.Union[dict, OkResponse]:
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param list_id: - ID of the friend list to delete.
         :param return_raw_response: - return result at dict
@@ -123,7 +130,7 @@ class Friends(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def edit(
@@ -131,7 +138,7 @@ class Friends(Category):
         user_id: int,
         return_raw_response: bool = False,
         list_ids: typing.Optional[typing.List[int]] = None,
-    ) -> typing.Union[dict, OkResponse]:
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param user_id: - ID of the user whose friend list is to be edited.
         :param list_ids: - IDs of the friend lists to which to add the user.
@@ -145,7 +152,7 @@ class Friends(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def edit_list(
@@ -156,7 +163,7 @@ class Friends(Category):
         user_ids: typing.Optional[typing.List[int]] = None,
         add_user_ids: typing.Optional[typing.List[int]] = None,
         delete_user_ids: typing.Optional[typing.List[int]] = None,
-    ) -> typing.Union[dict, OkResponse]:
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param name: - Name of the friend list.
         :param list_id: - Friend list ID.
@@ -173,7 +180,7 @@ class Friends(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def get(
@@ -353,16 +360,18 @@ class Friends(Category):
         self,
         return_raw_response: bool = False,
         offset: typing.Optional[int] = None,
-        count: typing.Optional[BaseBoolInt] = None,
+        count: typing.Optional[int] = None,
         extended: typing.Optional[BaseBoolInt] = None,
         need_mutual: typing.Optional[BaseBoolInt] = None,
         out: typing.Optional[BaseBoolInt] = None,
-        sort: typing.Optional[BaseBoolInt] = None,
+        sort: typing.Optional[int] = None,
         need_viewed: typing.Optional[bool] = None,
         suggested: typing.Optional[BaseBoolInt] = None,
         ref: typing.Optional[str] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
-    ) -> typing.Union[dict, FriendsGetRequestsResponse, FriendsGetRequestsExtendedResponse]:
+    ) -> typing.Union[
+        dict, FriendsGetRequestsResponse, FriendsGetRequestsExtendedResponse
+    ]:
         """
         :param offset: - Offset needed to return a specific subset of friend requests.
         :param count: - Number of friend requests to return (default 100, maximum 1000).

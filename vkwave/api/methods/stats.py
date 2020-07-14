@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 from ._utils import get_params
 
@@ -42,11 +41,14 @@ class Stats(Category):
         return result
 
     async def get_post_reach(
-        self, owner_id: str, post_id: BaseBoolInt, return_raw_response: bool = False,
+        self,
+        owner_id: str,
+        post_ids: typing.List[int],
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, StatsGetPostReachResponse]:
         """
         :param owner_id: - post owner community id. Specify with "-" sign.
-        :param post_id: - wall post id. Note that stats are available only for '300' last (newest) posts on a community wall.
+        :param post_ids: - wall posts id
         :param return_raw_response: - return result at dict
         :return:
         """
@@ -62,7 +64,7 @@ class Stats(Category):
 
     async def track_visitor(
         self, id: str, return_raw_response: bool = False,
-    ) -> typing.Union[dict, OkResponse]:
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param id:
         :param return_raw_response: - return result at dict
@@ -75,5 +77,5 @@ class Stats(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result

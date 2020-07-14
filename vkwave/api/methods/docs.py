@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 from ._utils import get_params
 
@@ -31,7 +30,7 @@ class Docs(Category):
 
     async def delete(
         self, owner_id: int, doc_id: int, return_raw_response: bool = False,
-    ) -> typing.Union[dict, OkResponse]:
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param owner_id: - ID of the user or community that owns the document. Use a negative value to designate a community ID.
         :param doc_id: - Document ID.
@@ -45,7 +44,7 @@ class Docs(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def edit(
@@ -55,7 +54,7 @@ class Docs(Category):
         return_raw_response: bool = False,
         title: typing.Optional[str] = None,
         tags: typing.Optional[typing.List[str]] = None,
-    ) -> typing.Union[dict, OkResponse]:
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param owner_id: - User ID or community ID. Use a negative value to designate a community ID.
         :param doc_id: - Document ID.
@@ -71,7 +70,7 @@ class Docs(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def get(
@@ -81,12 +80,14 @@ class Docs(Category):
         offset: typing.Optional[int] = None,
         type: typing.Optional[int] = None,
         owner_id: typing.Optional[int] = None,
+        return_tags: typing.Optional[bool] = None,
     ) -> typing.Union[dict, DocsGetResponse]:
         """
         :param count: - Number of documents to return. By default, all documents.
         :param offset: - Offset needed to return a specific subset of documents.
         :param type:
         :param owner_id: - ID of the user or community that owns the documents. Use a negative value to designate a community ID.
+        :param return_tags:
         :param return_raw_response: - return result at dict
         :return:
         """
@@ -101,10 +102,14 @@ class Docs(Category):
         return result
 
     async def get_by_id(
-        self, docs: typing.List[str], return_raw_response: bool = False,
+        self,
+        docs: typing.List[str],
+        return_raw_response: bool = False,
+        return_tags: typing.Optional[bool] = None,
     ) -> typing.Union[dict, DocsGetByIdResponse]:
         """
         :param docs: - Document IDs. Example: , "66748_91488,66748_91455",
+        :param return_tags:
         :param return_raw_response: - return result at dict
         :return:
         """
@@ -122,7 +127,7 @@ class Docs(Category):
         self,
         return_raw_response: bool = False,
         type: typing.Optional[str] = None,
-        peer_id: typing.Optional[BaseBoolInt] = None,
+        peer_id: typing.Optional[int] = None,
     ) -> typing.Union[dict, BaseGetUploadServerResponse]:
         """
         :param type: - Document type.
@@ -200,11 +205,13 @@ class Docs(Category):
         return_raw_response: bool = False,
         title: typing.Optional[str] = None,
         tags: typing.Optional[str] = None,
+        return_tags: typing.Optional[bool] = None,
     ) -> typing.Union[dict, DocsSaveResponse]:
         """
         :param file: - This parameter is returned when the file is [vk.com/dev/upload_files_2|uploaded to the server].
         :param title: - Document title.
         :param tags: - Document tags.
+        :param return_tags:
         :param return_raw_response: - return result at dict
         :return:
         """
@@ -225,12 +232,14 @@ class Docs(Category):
         search_own: typing.Optional[bool] = None,
         count: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
+        return_tags: typing.Optional[bool] = None,
     ) -> typing.Union[dict, DocsSearchResponse]:
         """
         :param q: - Search query string.
         :param search_own:
         :param count: - Number of results to return.
         :param offset: - Offset needed to return a specific subset of results.
+        :param return_tags:
         :param return_raw_response: - return result at dict
         :return:
         """

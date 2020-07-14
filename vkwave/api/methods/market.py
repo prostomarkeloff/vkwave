@@ -1,5 +1,4 @@
 from vkwave.types.responses import *
-
 from ._category import Category
 from ._utils import get_params
 
@@ -18,6 +17,10 @@ class Market(Category):
         deleted: typing.Optional[BaseBoolInt] = None,
         photo_ids: typing.Optional[typing.List[int]] = None,
         url: typing.Optional[str] = None,
+        dimension_width: typing.Optional[int] = None,
+        dimension_height: typing.Optional[int] = None,
+        dimension_length: typing.Optional[int] = None,
+        weight: typing.Optional[int] = None,
     ) -> typing.Union[dict, MarketAddResponse]:
         """
         :param owner_id: - ID of an item owner community.
@@ -30,6 +33,10 @@ class Market(Category):
         :param main_photo_id: - Cover photo ID.
         :param photo_ids: - IDs of additional photos.
         :param url: - Url for button in market item.
+        :param dimension_width:
+        :param dimension_height:
+        :param dimension_length:
+        :param weight:
         :param return_raw_response: - return result at dict
         :return:
         """
@@ -75,7 +82,7 @@ class Market(Category):
         item_id: int,
         album_ids: typing.List[int],
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, OkResponse]:
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param owner_id: - ID of an item owner community.
         :param item_id: - Item ID.
@@ -90,7 +97,7 @@ class Market(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def create_comment(
@@ -129,7 +136,7 @@ class Market(Category):
 
     async def delete(
         self, owner_id: int, item_id: int, return_raw_response: bool = False,
-    ) -> typing.Union[dict, OkResponse]:
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param owner_id: - ID of an item owner community.
         :param item_id: - Item ID.
@@ -143,12 +150,12 @@ class Market(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def delete_album(
         self, owner_id: int, album_id: int, return_raw_response: bool = False,
-    ) -> typing.Union[dict, OkResponse]:
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param owner_id: - ID of an collection owner community.
         :param album_id: - Collection ID.
@@ -162,7 +169,7 @@ class Market(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def delete_comment(
@@ -197,7 +204,7 @@ class Market(Category):
         deleted: typing.Optional[BaseBoolInt] = None,
         photo_ids: typing.Optional[typing.List[int]] = None,
         url: typing.Optional[str] = None,
-    ) -> typing.Union[dict, OkResponse]:
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param owner_id: - ID of an item owner community.
         :param item_id: - Item ID.
@@ -219,7 +226,7 @@ class Market(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def edit_album(
@@ -230,7 +237,7 @@ class Market(Category):
         return_raw_response: bool = False,
         photo_id: typing.Optional[int] = None,
         main_album: typing.Optional[BaseBoolInt] = None,
-    ) -> typing.Union[dict, OkResponse]:
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param owner_id: - ID of an collection owner community.
         :param album_id: - Collection ID.
@@ -247,7 +254,7 @@ class Market(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def edit_comment(
@@ -255,9 +262,9 @@ class Market(Category):
         owner_id: int,
         comment_id: int,
         return_raw_response: bool = False,
-        message: typing.Optional[BaseBoolInt] = None,
+        message: typing.Optional[str] = None,
         attachments: typing.Optional[typing.List[str]] = None,
-    ) -> typing.Union[dict, OkResponse]:
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param owner_id: - ID of an item owner community.
         :param comment_id: - Comment ID.
@@ -273,7 +280,7 @@ class Market(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def get(
@@ -309,7 +316,10 @@ class Market(Category):
         return result
 
     async def get_album_by_id(
-        self, owner_id: int, album_ids: typing.List[int], return_raw_response: bool = False,
+        self,
+        owner_id: int,
+        album_ids: typing.List[int],
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, MarketGetAlbumByIdResponse]:
         """
         :param owner_id: - identifier of an album owner community, "Note that community id in the 'owner_id' parameter should be negative number. For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community "
@@ -441,7 +451,7 @@ class Market(Category):
         item_id: int,
         album_ids: typing.List[int],
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, OkResponse]:
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param owner_id: - ID of an item owner community.
         :param item_id: - Item ID.
@@ -456,7 +466,7 @@ class Market(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def reorder_albums(
@@ -466,7 +476,7 @@ class Market(Category):
         return_raw_response: bool = False,
         before: typing.Optional[int] = None,
         after: typing.Optional[int] = None,
-    ) -> typing.Union[dict, OkResponse]:
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param owner_id: - ID of an item owner community.
         :param album_id: - Collection ID.
@@ -482,7 +492,7 @@ class Market(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def reorder_items(
@@ -490,10 +500,10 @@ class Market(Category):
         owner_id: int,
         item_id: int,
         return_raw_response: bool = False,
-        album_id: typing.Optional[BaseBoolInt] = None,
+        album_id: typing.Optional[int] = None,
         before: typing.Optional[int] = None,
         after: typing.Optional[int] = None,
-    ) -> typing.Union[dict, OkResponse]:
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param owner_id: - ID of an item owner community.
         :param album_id: - ID of a collection to reorder items in. Set 0 to reorder full items list.
@@ -510,7 +520,7 @@ class Market(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def report(
@@ -518,8 +528,8 @@ class Market(Category):
         owner_id: int,
         item_id: int,
         return_raw_response: bool = False,
-        reason: typing.Optional[BaseBoolInt] = None,
-    ) -> typing.Union[dict, OkResponse]:
+        reason: typing.Optional[int] = None,
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param owner_id: - ID of an item owner community.
         :param item_id: - Item ID.
@@ -534,16 +544,16 @@ class Market(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def report_comment(
         self,
         owner_id: int,
         comment_id: int,
-        reason: BaseBoolInt,
+        reason: int,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, OkResponse]:
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param owner_id: - ID of an item owner community.
         :param comment_id: - Comment ID.
@@ -558,12 +568,12 @@ class Market(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def restore(
         self, owner_id: int, item_id: int, return_raw_response: bool = False,
-    ) -> typing.Union[dict, OkResponse]:
+    ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param owner_id: - ID of an item owner community.
         :param item_id: - Deleted item ID.
@@ -577,7 +587,7 @@ class Market(Category):
         if return_raw_response:
             return raw_result
 
-        result = OkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def restore_comment(
@@ -607,9 +617,8 @@ class Market(Category):
         q: typing.Optional[str] = None,
         price_from: typing.Optional[int] = None,
         price_to: typing.Optional[int] = None,
-        tags: typing.Optional[typing.List[int]] = None,
         sort: typing.Optional[int] = None,
-        rev: typing.Optional[BaseBoolInt] = None,
+        rev: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
         extended: typing.Optional[BaseBoolInt] = None,
@@ -621,7 +630,6 @@ class Market(Category):
         :param q: - Search query, for example "pink slippers".
         :param price_from: - Minimum item price value.
         :param price_to: - Maximum item price value.
-        :param tags: - Comma-separated tag IDs list.
         :param sort:
         :param rev: - '0' — do not use reverse order, '1' — use reverse order
         :param offset: - Offset needed to return a specific subset of results.
