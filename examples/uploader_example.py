@@ -1,7 +1,7 @@
 import asyncio
 
 from vkwave.api import Token, BotSyncSingleToken, API
-from vkwave.bots.utils import PhotoUploader
+from vkwave.bots import PhotoUploader, WallPhotoUploader
 from vkwave.client import AIOHTTPClient
 
 client = AIOHTTPClient()
@@ -21,6 +21,15 @@ async def main():
         ],
     )
     await api.get_context().messages.send(user_id=1234, attachment=big_attachment, random_id=0)
+
+
+async def wall_upload():
+    # works only with user token
+    photo = await WallPhotoUploader(api.get_context()).get_attachment_from_link(
+        group_id=-191949777,
+        link="https://user-images.githubusercontent.com/28061158/74590410-239e3300-501f-11ea-9774-27ee507a1e1e.jpg",
+    )
+    await api.get_context().wall.post(owner_id=-191949777, message="432", attachments=photo)
 
 
 asyncio.get_event_loop().run_until_complete(main())

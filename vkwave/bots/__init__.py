@@ -41,7 +41,8 @@ from .utils import (
     ButtonColor,
     ButtonType,
     CallbackAnswer,
-    CallbackEventDataType
+    CallbackEventDataType,
+    WallPhotoUploader
 )
 from .core.dispatching.filters.extension_filters import VBMLFilter
 from .addons.low_level_dispatching import LowLevelBot
