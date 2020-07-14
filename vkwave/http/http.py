@@ -3,6 +3,7 @@ from asyncio import AbstractEventLoop as AEL
 from asyncio import get_event_loop
 from typing import Optional
 
+import aiohttp
 from aiohttp import ClientSession
 
 
@@ -35,7 +36,7 @@ class AbstractHTTPClient(ABC):
 class AIOHTTPClient(AbstractHTTPClient):
     def __init__(self, session: Optional[ClientSession] = None, loop: Optional[AEL] = None):
         self.loop = loop or get_event_loop()
-        self.session = session or ClientSession(loop=self.loop)
+        self.session = session or ClientSession(loop=self.loop, connector=aiohttp.TCPConnector(verify_ssl=False))
 
     async def close(self):
         await self.session.close()
