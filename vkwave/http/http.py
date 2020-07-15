@@ -34,9 +34,9 @@ class AbstractHTTPClient(ABC):
 
 
 class AIOHTTPClient(AbstractHTTPClient):
-    def __init__(self, session: Optional[ClientSession] = None, loop: Optional[AEL] = None):
+    def __init__(self, session: Optional[ClientSession] = None, loop: Optional[AEL] = None, verify_ssl: bool = False):
         self.loop = loop or get_event_loop()
-        self.session = session or ClientSession(loop=self.loop, connector=aiohttp.TCPConnector(verify_ssl=False))
+        self.session = session or ClientSession(loop=self.loop, connector=aiohttp.TCPConnector(verify_ssl=verify_ssl))
 
     async def close(self):
         await self.session.close()
