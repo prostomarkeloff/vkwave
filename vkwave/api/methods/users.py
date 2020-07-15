@@ -36,7 +36,7 @@ class Users(Category):
         count: typing.Optional[int] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
         name_case: typing.Optional[str] = None,
-    ) -> typing.Union[dict, UsersGetFollowersResponse]:
+    ) -> typing.Union[dict, UsersGetFollowersResponse, UsersGetFollowersFieldsResponse]:
         """
         :param user_id: - User ID.
         :param offset: - Offset needed to return a specific subset of followers.
@@ -53,7 +53,11 @@ class Users(Category):
         if return_raw_response:
             return raw_result
 
-        result = UsersGetFollowersResponse(**raw_result)
+        result = (
+            UsersGetFollowersResponse(**raw_result)
+            if not fields
+            else UsersGetFollowersFieldsResponse(**raw_result)
+        )
         return result
 
     async def get_subscriptions(

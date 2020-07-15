@@ -194,7 +194,7 @@ class Friends(Category):
         fields: typing.Optional[typing.List[UsersFields]] = None,
         name_case: typing.Optional[str] = None,
         ref: typing.Optional[str] = None,
-    ) -> typing.Union[dict, FriendsGetResponse]:
+    ) -> typing.Union[dict, FriendsGetResponse, FriendsGetFieldsResponse]:
         """
         :param user_id: - User ID. By default, the current user ID.
         :param order: - Sort order: , 'name' — by name (enabled only if the 'fields' parameter is used), 'hints' — by rating, similar to how friends are sorted in My friends section, , This parameter is available only for [vk.com/dev/standalone|desktop applications].
@@ -214,7 +214,11 @@ class Friends(Category):
         if return_raw_response:
             return raw_result
 
-        result = FriendsGetResponse(**raw_result)
+        result = (
+            FriendsGetResponse(**raw_result)
+            if not fields
+            else FriendsGetFieldsResponse(**raw_result)
+        )
         return result
 
     async def get_app_users(

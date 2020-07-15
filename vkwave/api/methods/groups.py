@@ -818,7 +818,7 @@ class Groups(Category):
         count: typing.Optional[int] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
         filter: typing.Optional[str] = None,
-    ) -> typing.Union[dict, GroupsGetMembersResponse]:
+    ) -> typing.Union[dict, GroupsGetMembersResponse, GroupsGetMembersFieldsResponse]:
         """
         :param group_id: - ID or screen name of the community.
         :param sort: - Sort order. Available values: 'id_asc', 'id_desc', 'time_asc', 'time_desc'. 'time_asc' and 'time_desc' are availavle only if the method is called by the group's 'moderator'.
@@ -836,7 +836,11 @@ class Groups(Category):
         if return_raw_response:
             return raw_result
 
-        result = GroupsGetMembersResponse(**raw_result)
+        result = (
+            GroupsGetMembersResponse(**raw_result)
+            if not fields
+            else GroupsGetMembersFieldsResponse(**raw_result)
+        )
         return result
 
     async def get_requests(
@@ -846,7 +850,7 @@ class Groups(Category):
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
-    ) -> typing.Union[dict, GroupsGetRequestsResponse]:
+    ) -> typing.Union[dict, GroupsGetRequestsResponse, GroupsGetRequestsFieldsResponse]:
         """
         :param group_id: - Community ID.
         :param offset: - Offset needed to return a specific subset of results.
@@ -862,7 +866,11 @@ class Groups(Category):
         if return_raw_response:
             return raw_result
 
-        result = GroupsGetRequestsResponse(**raw_result)
+        result = (
+            GroupsGetRequestsResponse(**raw_result)
+            if not fields
+            else GroupsGetRequestsFieldsResponse(**raw_result)
+        )
         return result
 
     async def get_settings(
