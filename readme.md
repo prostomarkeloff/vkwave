@@ -2,7 +2,7 @@
 
 > Пришло время избавиться от vk_api и vkbottle. VKWave здесь.
 
-[Почему VKWave? (English)](./why_vkwave.md)
+[Почему VKWave?](./why_vkwave.md)
 
 ```python
 from vkwave.bots import SimpleLongPollBot

@@ -1,11 +1,11 @@
-VKWave is a high-performance, easy to scale Python library for creating applications that interact with VK's API.
+VKWave - это фреймворк для создания производительных и лёгких в расширении проектов, взаимодействующих с API ВКонтакте.
 
-VKWave is inspired by many libraries such as: [aiogram](https://github.com/aiogram/aiogram), vk.py and a lot of other.
+VKWave вдохновлен многими библиотеками, в частности: [aiogram](https://github.com/aiogram/aiogram), vk.py и многими другими.
 
-The main reason of using VKWave is that you can configure anything. Really. You want to send message to Telegram when new is coming? It's easy, just use middleware. Or something harder. What's about converting own classes to handlers, filters, anything? VKWave allows you it.
+Главная причина, почему вам нужен VKWave - это возможность контролировать и конфигурировать все (не без возможности отдать конфигурацию под ответственность самой библиотеки, занимаясь лишь самым высокоуровневым кодом).
+Действительно, хотите отправлять сообщение в телеграм когда оно пришло в вк? Просто используйте middleware. Что насчёт конвертирования классов в хендлеры, фильтры, что-то еще? VKWave позволяет вам все это.
 
-For example, I want to cast strings to `TextFilter`
-
+Для примера, я конвертирую строки в  `TextFilter`
 ```python
 from vkwave.bots.core.dispatching.filters import filter_caster
 from vkwave.bots.core.dispatching.filters.base import BaseFilter
@@ -20,5 +20,10 @@ def cast_str_to_filter(something) -> Optional[BaseFilter]:
 
 filter_caster.add_caster(cast_str_to_filter)
 ```
+Если вы спросите, доступен ли он только в высокоуровневом коде (например в vkwave.bots), я отвечу нет.
+ Например, вы можете создать собственный `Token` над абстракциями. Это позволяет вам настроить VKWave
+  под ваши собственные задачи. Если перейти к более низкоуровневым вещам, таким как взаимодействие с VK, вы можете создать собственный HTTP-клиент.
+   Клиенту API это нужно, конечно, если вы делаете в нем HTTP-запросы. Ваш API-клиент может даже не отправлять HTTP-запросы.
+    Может быть, вы сумасшедший (как я) и хотите поместить свои запросы в очередь RabbitMQ и получать откуда то еще?
+     VKWave позволяет вам это сделать. И окончательный код все еще будет `high-level`.
 
-If you ask that it's available only in high-level code (like bots framework) than I'll answer you no. For example, you can create own `Token` over abstractions. It is allowing you to configure VKWave to your own tasks. If go to more low-level things, like interacting with VK, you can create own HTTP client. API client needs it, of course if you do HTTP requests in it. Your API client can even do not sent HTTP requests. Maybe you are crazy (like me) and want to put your requests into RabbitMQ queue and get from other? VKWave allows you to do it. And final code still is high-level.
