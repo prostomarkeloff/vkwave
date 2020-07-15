@@ -1,3 +1,3 @@
 # Overview
 
-This part of VKWave contains everything for bots.
+Эта часть VKWave содержит всю информацию о ботах

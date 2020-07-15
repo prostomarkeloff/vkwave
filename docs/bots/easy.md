@@ -1,6 +1,6 @@
 # Easy bots
 
-Wrapper over vkwave.bots for faster bot creating.
+Обёртка над vkwave.bots для быстрого создания ботов.
 
 ```python
 from vkwave.bots import SimpleLongPollBot
@@ -14,9 +14,9 @@ def handle(_) -> str:
 bot.run_forever()
 ```
 
-**vkwave.bots.easy** supports:
+**vkwave.bots.easy** поддерживает:
 
-- Simple session
+- Простое создание сессий
 
 
 ```python
@@ -28,7 +28,7 @@ api_session = create_api_session_aiohttp("TOKEN")
 ```
 
 
- - Tokens pool
+ - Пул токенов
 
 ```python
 from vkwave.bots import SimpleLongPollBot
@@ -46,7 +46,7 @@ async def handle(event: bot.SimpleBotEvent):
 bot.run_forever()
 ```
 
-- ClonesBot (a lot of bots with same router)
+- ClonesBot (много ботов с одним роутером и одинаковыми хендлерами, боты-клоны)
 
 ```python
 from vkwave.bots import SimpleLongPollBot, ClonesBot
@@ -69,4 +69,4 @@ clones.run_all_bots()
 
 ```
 
-All clones will answer "Hello world!" on "hello".
+Все клоны ответят "Hello world!" на "hello".

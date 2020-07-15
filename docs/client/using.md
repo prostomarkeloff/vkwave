@@ -1,12 +1,12 @@
 # Using
 
-This library shouldn't be used directly. 
+Эта часть библиотеки не должна быть использована напрямую.
 
-But reading it may be useful for you if you want to create addons for VKWave.
+Но чтение этого будет полезным если вы хотите создавать дополнения для VKWave.
 
 ## How to
 
-It's easy.
+Это просто.
 
 ```python
 from vkwave.client.default import AIOHTTPClient

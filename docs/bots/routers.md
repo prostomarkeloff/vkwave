@@ -1,14 +1,12 @@
-# Routers
+# Роутеры
 
-Today I wanna tell you about routers and how to use them.
+Без роутеров существование ботов в VKWave невозможно. Это одна из важнейших сущностей в вашем боте.
 
-First of all, you should know that you can't handle any kind of events without it (router, of course). It is the main entity of your bot in vkwave. It's pretty simple, yet has own useful features, like filters.
+Другими словами, ваш бот это просто набор роутеров с фильтрами.
 
-In other words, your bot in VKWave is just a set of routers that handle events. And they can filter events.
+# Пособие по роутерам
 
-# Short guide: how to routers
-
-Initiating:
+Создание:
 ```python
 from vkwave.bots import DefaultRouter
 
@@ -16,9 +14,9 @@ router = DefaultRouter()  # also you can pass here filters
 # it can be like: router = Router(SomeFilter(...))
 ```
 
-The main question of this piece of docs: how to register handlers.
+Как регистрировать хендлеры?
 
-If you wanna know more about handlers read `handlers.md`.
+Больше о хендлерах вы можете узнать в `handlers.md`.
 
 ```python
 r = router.registrar  # just a shortcut
@@ -26,7 +24,7 @@ handler = r.new().with_filters(lambda event: event.object.object.message.text.lo
 r.register(handler)  # and.. we register it.
 ```
 
-Also, you can do it in flask-like notation: via decorators.
+Также можно использовать декораторы.
 
 ```python
 @r.with_decorator(lambda event: event.object.object.message.text.lower() == "hi there")
@@ -34,17 +32,18 @@ def handler(event: BaseEvent) -> str:
     return "Hey!"
 ```
 
-There is one more way how to do that, but it's not needed for everyday usage and I won't show you it
+Есть еще один способ делать это, но он не нужен для повсеместного использования.
 
-Router's registrar has option for default filters. It will add them to handler's filters when creates.
+registrar роутера имеет опцию для установки стандартных фильтров. Она добавляет фильтр ко всем хендлерам в роутере.
 
 ```python
 router.registrar.add_default_filter(SomeFilter(...))
 ```
 
-
-And finally: how to add router to dispatcher (`dispatcher.md`, please).
+И наконец, как добавить роутер в диспатчер (`dispatcher.md`, please).
 
 ```python
 dp.add_router(router)
 ```
+
+Для разбивки бота по файлам вам нужно создать в каждом файле по роутеру и добавить туда хендлеры, далее просто объединить все в главном файле путем добавления всех роутеров в диспатчер.

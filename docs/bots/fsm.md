@@ -1,23 +1,25 @@
 # FSM
 
-This module is implementation of [Finite-state machine](https://en.wikipedia.org/wiki/Finite-state_machine)
-for bots.
+Этот модуль имплементирует [Finite-state machine](https://en.wikipedia.org/wiki/Finite-state_machine) для ботов.
 
-FSM divides user states, chat states and user in chat states,
-for selecting one of these options you can choose `for_what` argument in fsm methods.
 
-For one user in personal message - `ForWhat.FOR_USER`
+FSM разделяет пользовательские состояния, состояния в чатах и состояния пользователя в чате, для выбора
+одного из них вы должны указать `for_what` аргумент в методах fsm.
 
-For all users in chat - `ForWhat.FOR_CHAT`
 
-For one user in chat - `ForWhat.FOR_USER_IN_CHAT`
+Состояние для одного пользователя в личных сообщениях - `ForWhat.FOR_USER`
 
-Event state's set already, handlers without `StateFilter` may be chosen. We will fix it via default filter that returns `False` if any state exists.
+Для всех пользователей в чате - `ForWhat.FOR_CHAT`
+
+Для одного пользователя в чате - `ForWhat.FOR_USER_IN_CHAT`
+
+
+Чтобы хендлеры без `StateFilter` могли быть выбраны корректно, нужно установить следующий стандартный фильтр.
 ```python
 router.registrar.add_default_filter(StateFilter(fsm, ..., ..., always_false=True))
 ```
 
-Example of simple interview with asking name and age of user.
+Пример опроса с именем и возрастом.
 
 ```python
 from vkwave.bots import EventTypeFilter, BotEvent
@@ -87,7 +89,7 @@ async def simple_handler(event: BotEvent):
     return f"Your data - {user_data}"
 ```
 
-In the end of interview it will write down to you something like that:
+В конце опроса вы получите нечто похожее:
 ```
 Your data - {'__vkwave_fsm_state__': '<vkwave.bots_fsm.fsm.State object at 0x0000021C19D61A90>', 'name': 'Nick', 'age': '46'}
 ```

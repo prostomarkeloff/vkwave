@@ -1,6 +1,6 @@
-# Keyboard
+# Клавиатуры
 
-It will help you with creating keyboards for group bots.
+Поможет вам в создании клавиатур для ботов.
 
 ```python
 from vkwave.bots.utils.keyboards import Keyboard
@@ -13,7 +13,7 @@ kb.add_row()
 kb.add_text_button("red hello", color=ButtonColor.NEGATIVE)
 ```
 
-After this actions you can send this keyboard to users:
+После этих действий вы можете отправлять клавиатуру пользователям:
 
 ```python
 api.messages.send(user_id=1, random_id=0, keyboard=kb.get_keyboard())

@@ -1,10 +1,10 @@
-# Uploaders
+# Загрузчики
 
-It will help you with send attachments in messages.
+Поможет вам загружать фотографии/аудио/документы в сообщения или на стену.
 
-Upload photo from file
+Загрузка из файла
 ```python
-from vkwave.bots.utils.uploaders import PhotoUploader
+from vkwave.bots import PhotoUploader
 
 api = API(clients=client, tokens=token)
 uploader = PhotoUploader(api.get_context())
@@ -21,7 +21,7 @@ async def main():
 ```
 
 
-Upload photo by link
+Загрузка по ссылке
 ```python
 big_attachment = await uploader.get_attachments_from_links(
     peer_id=578716413,
@@ -34,7 +34,7 @@ big_attachment = await uploader.get_attachments_from_links(
 ```
 
 
-Upload audio message
+Загрузка аудио
 
 ```python
 from vkwave.bots.utils.uploaders import VoiceUploader
@@ -49,3 +49,5 @@ await api.get_context().messages.send(
     user_id=578716413, attachment=audio_message, random_id=0
 )
 ```
+
+Загрузку на стену можно посмотреть в `/examples`

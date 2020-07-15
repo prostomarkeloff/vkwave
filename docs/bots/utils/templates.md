@@ -1,6 +1,6 @@
 # Templates
 
-Carousels for VK.
+Карусель для вконтакте.
 
 
 ```python
@@ -26,7 +26,7 @@ template_2.add_text_button("Wow, another button")
 carousel = Template.generate_carousel(template_1, template_2)
 ```
 
-After this you can send this carousel to user as template:
+После этого можно отправить карусель как `template`:
 
 
 ```python

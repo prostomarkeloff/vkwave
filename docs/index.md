@@ -1,24 +1,23 @@
 # Overview
 
-Documentation for VKWave [WIP] [^1]
+Документация для VKWave [WIP] [^1]
 
-# What is it?
+# Что это?
 
-Framework for building high-performance & easy to scale projects interacting with VK's API.
+Фреймворк для создания высокопроизводительных и легких для расширения проектов, взаимодействующих с VK API.
 
-It's built over asyncio and Python's type hints. Minimal required version is `3.7`.
+Он построен на asyncio и тайп хинтах. Минимальная поддерживаемая версия python - `3.7`.
 
-Our Telegram chat - [let's chat](https://t.me/vkwave)
 
-## VKWave core
+Наш телеграм чат - [let's chat](https://t.me/vkwave)
 
-This repostitory contains only `core` parts of VKWave. It means that code introduced in this repository is probably `low-level` and shouldn't be used directly unless otherwise specified.
+## Производительность
 
-## Performance
+VKWave - это не самая быстрая библиотека, из-за нашей уверенности в том, что лёгкая настройка под себя, а также удобность при использовании во всех задач явлюятся более важными характеристиками библиотеки, чем скорость.
 
-VKWave is a most fast library for Python for working with VK's API.
+Но мы всегда заинтересованы в улучшении производительности, поэтому не стесняйтесь делать Pull Request-ы и обсуждать проблемы производительности.
 
-## Parts
+## Части
 
 - Client - [core part](./client)
 - API - [use VK's API in the most fancy way](./api)
@@ -28,10 +27,9 @@ VKWave is a most fast library for Python for working with VK's API.
 - Bots utils - [keyboards, carousels, ...](./bots/utils)
 - LongPoll - [acessing VK's longpoll (user/bot)](./longpoll)
 
-## Community
 
-VKWave is a young project.
+## Дополнения
 
-If you want to create addon for VKWave (like `fsm` for bots or something like that) you should name your project like that: `vkwave-bots-fsm`.
+Если вы хотите создать дополнение для VKWave (например, более простой способ написания ботов, даже проще `vkwave.bots.addons.easy`), то вам следует назвать свой проект так: `vkwave-bots-really-easy`.
 
-[^1]: work in progress
+Общий паттерн для дополнений: `vkwave-<часть-vkwave>-<название-проекта>`.

@@ -1,11 +1,10 @@
 # Usage
 
-With this module you can create group/user bots easily. For 
-setting up a simple handler you'll need  less than six lines od code
+С этим модулем вы можете создавать юзерботов или простых ботов с легкостью. Для создания простого хендлера
+вам нужно меньше 6 строк кода.
 
-In this example you can see a group bot with filter on ```message_new```
-event, on text ```hello``` and with handler, which cast your string for 
-answer to user to normal response.
+В этом примере вы можете видеть бота-группу с фильтром для события ```message_new``` с текстом ```hello```
+и хендлером, который переделывает возвращаемую строку в ответ для API.
 ```python
 import logging
 import asyncio
@@ -67,7 +66,7 @@ if __name__ == "__main__":
 
 ```
 
-Also if you want to create it with another way.
+Другой путь создания хендлера.
 
 ```python
 ...
@@ -115,8 +114,7 @@ async def main():
 
 ```
 
-And another one:
-
+И еще один.
 
 ```python
 router = DefaultRouter()

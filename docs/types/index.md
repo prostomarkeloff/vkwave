@@ -1,11 +1,11 @@
-# Oveview
+# Обзор
 
-This part of VKWave contains pydantic types, based on official vk-schema.
+Эта часть содержит pydantic типы, основанные на официальной vk-schema.
 
 ## Usage
 
-You can use this VKWave module for standardization your vk data. For
-example, you make request to vk api and want to get statically-typed object. Watch and learn!
+Вы можете использовать этот модуль для стандартизации ваших данных, полученных от Вконтакте. Для примера 
+вы можете сделать запрос к vk api и получить статически типизированный объект.
 
 ```python
 import requests
@@ -25,5 +25,4 @@ print(status.response.text)
 
 ```
 
-Beautiful, isn't it? And more importantly, vkwave.types includes ALL of vk schema parts:
-objects/responses/longpoll events.
+Что важнее, `vkwave.types` содержит ВСЕ части vk-schema и постоянно обновляется.

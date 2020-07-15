@@ -1,24 +1,22 @@
-# Custom clients
+# Кастомные клиенты
 
-Using VKWave you get good chance to customize your workflow. 
+Использование VKWave дает хорошие возможности для кастомизации. 
 
-However, other libraries for VK-API support this feature, but VKWave allows you more.
+Конечно и другие библиотеки имеют похожие фишки, но VKWave дает больший простор для действий.
 
-## For what?
+## Для чего?
 
-While creating applications we get __the__ problems. It can be - limits of APIs, wishes of customers, so on.
+Пока мы создаем приложение у нас возникают проблемы. Лимиты в API, пожелания заказчиков и подобные.
 
-Some of those you might solve by changing your `high-level` code. VKWave introduces another way - you should control `low-level` part of code. And yes, VKWave lets you to do it by the easiest way, your code is still staying `high-level`.
+Некоторые из них вы можете решить, путем изменения `высокоуровневого` кода. VKWave представляет другой подход - вы можете контролировать `low-level` вашего приложения. И да, VKWave дает делать это простейшим путем, ваш код останется `high-level`.
 
-## Example
+## Пример
 
-In this 'article' I'll show you how to create a `fake` client. In reality it can be anything, you could send requests to another server, for example.
+В этом примере я покажу вам как создать `поддельный` клиент. В реальность он может быть чем угодно, например, вы можете слать запросы в другой сервер.
 
-**Note**: I omitted type hints in this example.
+**Note**: Тайп хинты будут опущены в данном примере.
 
 ```python
-from vkwave.client.abstract import AbstractAPIClient
-from vkwave.client.context import RequestContext
 from vkwave.client.factory import DefaultFactory, AbstractFactory
 
 async def callback(method_name, params: dict):
@@ -49,4 +47,4 @@ class FakeClient(AbstractHTTPClient):
 
 ```
 
-Other parts of `vkwave core` will accept http client as argument.
+Другие части `vkwave core` будут принимать http клиент как аргумент.

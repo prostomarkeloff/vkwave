@@ -1,3 +1,3 @@
 # Overview
 
-This module contains utils for bots, such as keyboards, data uploaders etc.
+Этот модуль содержит вспомогательные вещи для ботов, такие как клавиатуры, загрузчики и т.д.

@@ -1,18 +1,17 @@
-# Overview
+# Обзор
 
-VKWave API is pretty easy to use library. You perhaps will use it always when touching VKWave.
+VKWave API довольно удобная часть библиотеки. Скорее всего с процессе использования VKWave вы обязательно с ней столкнётесь
 
-It contains from 3 parts:
+Она состоит из трёх частей:
 
-* Working with tokens (dynamically tokens getting, multitoken, etc.)
-* Definitons of all VK's API methods.
-* Wrapper around tokens and methods.
+* Работа с токенами (динамическое получение токенов, мультитокены, итд.)
+* Определение всех VK's API методов.
+* Обёртка над токенами и методами.
 
-Will start from tokens.
 
-## Working with tokens
+## Работа с токенами
 
-Tokens are represented in VKWave as regular Python classes that just have method `get_token`. It can be synchronous and asynchronous. 
+Токены в VKWave представлены обычными Python классами с методом `get_token`. Он может бысть синхронным или асиннхронным
 
 ```python
 from vkwave.api.token.token import UserSyncSingleToken, BotSyncSingleToken, Token
@@ -33,7 +32,7 @@ user_token.get_token()
 
 ```
 
-Also you can create own tokens with needed logic. We will create bot's synchronous token.
+Вы можете создать свой собственный класс токена с нужной логикой. Создадим синхронный токен для бота.
 
 ```python
 import random
@@ -49,14 +48,13 @@ class BotSyncRandomToken(ABCBotSyncToken):
         return random.choice(self.tokens)
 
 ```
-It's very easy to understand and crystal clear.
 
 
 ### GetTokenStrategy
 
-It's very interesting issue! Realize that you have a list of `UserSyncSingleToken` and you need to pick up something to make API request. Choose some of them it's pretty hard task.
+Реализуйте это, если вам нужен список `UserSyncSingleToken` и вам нужно доставать токен, чтобы сделать запрос в API. 
 
-By default VKWave uses `RandomGetTokenStrategy`, it just does `random.choice(tokens)`. We will implement own for showing that you even can get tokens from the net!
+По умолчанию VKWave использует `RandomGetTokenStrategy`, она просто делает `random.choice(tokens)`. В примере ниже мы реализуем свою стратегию, чтобы показать, что токены можно получать и по сети.
 
 ```python
 from vkwave.api.token.strategy import ABCGetTokenStrategy
@@ -74,15 +72,14 @@ class ServerGetTokenStrategy(ABCGetTokenStrategy):
         return token
 ```
 
-This example doesn't use tokens that we will pass to API wrapper. It gets random and returns it.
+В этом примере не создаются токены, которые мы передаём в API обёртку. Он достаёт случайный и возвращает его.
 
 ## API
 
-We have 3 classes for working with API: `API`, `APIOptions`, `APIOptionsRequestContext`.
+У нас есть 3 класса для работы с API: `API`, `APIOptions`, `APIOptionsRequestContext`.
 
-I'll describe to you each of them.
 
-API is core. It contains all tokens and clients. 
+API это ядро. Оно содержит все токены и клиенты.
 
 ```python
 from vkwave.api import API
@@ -90,17 +87,18 @@ from vkwave.client import AIOHTTPClient
 
 api = API(tokens=my_token, clients=AIOHTTPClient())
 ```
-Also I want to tell you that `tokens`, `clients`, `strategy` and other things are stored at `APIOptions` class. You can access them via `api.default_api_options`. For example you can add token or client, or update strategy, etc..
+
+В `APIOptions` содержатся `tokens`, `clients`, `strategy` и другие вещи, вы можете получить к ним доступ через `api.default_api_options`. Например вы можете добавить клиент, токен или обновить стратегию
 
 ```python
 api = API(...)
 
-api.default_api_options.add_token(tokens=[...]) # or you can pass one token
+api.default_api_options.add_token(tokens=[...]) # или добавить только один токен
 ```
 
-But only with it you can't do API requests.
+Но только с этим вы не можете сделать запрос в API.
 
-You should get context!
+Вам нужно получить контекст!
 
 ```python
 api_session = API(...)
@@ -108,29 +106,30 @@ api_session = API(...)
 api = api_session.get_context()
 ```
 
-When you write it you will get `APIOptionsRequestContext`. It contains all methods and own `APIOptions`.
+Когда вы пишете это - вы получаете `APIOptionsRequestContext`. Он содержит все методы и собственный `APIOptions`.
+
 
 ```python
 result = await api.status.get()
 print(result.response.text)
 ```
 
-On every API call context will pick token for it, via strategy. It can be problem if you write code such as:
+На каждый вызов API контекст получает токен, следуя стратегии. Это может быть проблемой с таким примером:
 ```python
 friends = await api.friends.get()
 result = await api.messages.send(...)
 ```
 
-Because you get friends of the one token, but send messages to these friends with the another token. We should sync token to avoid that.
+Потому что друзья получатся на один токен, а сообщения будут отправляться другим. Чтобы избежать этого нужно синхронизировать токены.
 
 ```python
 async with api.sync_token() as sapi:
     friends = await sapi.friends.get()
     ...
 ```
-Here token is synced and used always.
+Тут в пределах контекстного менеджера будет использоваться только один токен.
 
-Writing `api_session.get_context()` is not the one way to get context. You also can use either `api_session.with_token` or `api_session.with_options`
+Написать `api_session.get_context()` не единственный способ получить контекст. Вы также можете использовать `api_session.with_token` или `api_session.with_options`
 
 ```python
 api = api_session.with_token(SomeToken(...))
