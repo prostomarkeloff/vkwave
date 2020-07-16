@@ -85,6 +85,7 @@ def test_message_with_keyboard():
         MessageFlag.DELETED,
         MessageFlag.ATTACHMENT,
         MessageFlag.HIDDEN,
+        490832562  # sum
     ]
 
     assert event.object.text == "123"

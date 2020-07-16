@@ -40,6 +40,7 @@ def test_message_new_event():
                                         "id": 457239498,
                                         "album_id": -15,
                                         "owner_id": 578716413,
+                                        "has_tags": False,
                                         "sizes": [
                                             {
                                                 "type": "m",
@@ -110,6 +111,7 @@ def test_message_new_event():
                                 "id": 457239018,
                                 "album_id": -6,
                                 "owner_id": 578716413,
+                                "has_tags": False,
                                 "sizes": [
                                     {
                                         "type": "m",
@@ -257,6 +259,7 @@ def test_photo_new():
                 "album_id": 269275165,
                 "owner_id": -191949777,
                 "user_id": 100,
+                "has_tags": True,
                 "sizes": [
                     {
                         "type": "s",
@@ -402,6 +405,7 @@ def test_wall_post_new():
                             "end_date": 0,
                             "closed": False,
                             "is_board": False,
+                            "disable_unvote": False,
                             "can_edit": True,
                             "can_vote": True,
                             "can_report": False,

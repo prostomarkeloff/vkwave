@@ -2,13 +2,12 @@ import os
 
 import pytest
 
+from dotenv import load_dotenv
 from vkwave.bots.utils.uploaders import DocUploader, PhotoUploader
-from vkwave.easy import create_bot_aiohttp
+from vkwave.bots import create_api_session_aiohttp
 
-
-@pytest.fixture()
-def token():
-    return os.environ.get("TOKEN")
+load_dotenv()
+TOKEN = os.getenv("TOKEN")
 
 
 @pytest.fixture()
@@ -17,13 +16,10 @@ def user_id():
 
 
 @pytest.mark.asyncio
-async def test_doc_uploader(token, user_id):
-    if not token:
-        pytest.skip("no token")
-    async with create_bot_aiohttp(token) as api:
+async def test_doc_uploader(user_id):
+    async with create_api_session_aiohttp(TOKEN) as api:
         uploader = DocUploader(api)
 
-        # сексульно дышим кеше в лс
         audio_message = await uploader.get_attachment_from_link(
             peer_id=user_id,
             link="https://preview.redd.it/k126wnojy9801.gif?format=png8&s=2cfc209601febb09fc4f31fc30d61408c9372269",
@@ -32,13 +28,10 @@ async def test_doc_uploader(token, user_id):
 
 
 @pytest.mark.asyncio
-async def test_photo_uploader(token, user_id):
-    if not token:
-        pytest.skip("no token")
-    async with create_bot_aiohttp(token) as api:
+async def test_photo_uploader(user_id):
+    async with create_api_session_aiohttp(TOKEN) as api:
         uploader = PhotoUploader(api)
 
-        # сексульно кидаем вквейв кеше в лс
         big_attachment = await uploader.get_attachments_from_links(
             peer_id=user_id,
             links=[

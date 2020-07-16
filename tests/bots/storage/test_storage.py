@@ -70,6 +70,8 @@ async def ttl_test(storage: AbstractExpiredStorage):
 
 @pytest.mark.asyncio
 async def test_redis_storage():
+    pytest.skip("not ready")
+
     storage = RedisStorage()
     await storage_interact_test(storage)
     await ttl_test(storage)
