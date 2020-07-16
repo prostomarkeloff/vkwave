@@ -316,8 +316,8 @@ class ReplyMessageFilter(BaseFilter):
     Checking is message has reply messages
     """
 
-    def __init__(self):
-        pass
+    def __init__(self, with_reply: bool = True):
+        self.with_reply = with_reply
 
     async def check(self, event: BaseEvent) -> FilterResult:
         is_message_event(event)
@@ -328,7 +328,7 @@ class ReplyMessageFilter(BaseFilter):
             extra_message_data = event.object.object.extra_message_data
             has_reply = extra_message_data is not None and "reply" in extra_message_data
 
-        return FilterResult(has_reply)
+        return FilterResult(has_reply == self.with_reply)
 
 
 class TextContainsFilter(BaseFilter):
