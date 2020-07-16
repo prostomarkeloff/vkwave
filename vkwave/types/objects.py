@@ -1200,6 +1200,8 @@ class PhotosPhotoSizesType(str, Enum):
     Z = 'z'
     C = 'c'
     W = 'w'
+    I = 'i'
+    D = 'd'
 
 
 class PollsBackground(pydantic.BaseModel):
@@ -1215,7 +1217,7 @@ class PollsBackground(pydantic.BaseModel):
 
 
 class PollsPoll(pydantic.BaseModel):
-    anonymous: "PollsPollAnonymous" = pydantic.Field(..., description="", )
+    anonymous: bool = pydantic.Field(..., description="", )
     friends: typing.Optional[typing.List["PollsFriend"]] = pydantic.Field(None, description="", )
     multiple: bool = pydantic.Field(..., description="Information whether the poll with multiple choices", )
     answer_id: typing.Optional[int] = pydantic.Field(None, description="Current user's answer ID", )
@@ -1237,10 +1239,6 @@ class PollsPoll(pydantic.BaseModel):
     background: typing.Optional["PollsBackground"] = pydantic.Field(None, description="", )
     votes: int = pydantic.Field(..., description="Votes number", )
     disable_unvote: bool = pydantic.Field(..., description="", )
-
-
-class PollsPollAnonymous(pydantic.BaseModel):
-    pass
 
 
 class PollsVotersUsers(pydantic.BaseModel):
@@ -4747,7 +4745,6 @@ PhotosPhoto.update_forward_refs()
 PhotosPhotoAlbum.update_forward_refs()
 PollsBackground.update_forward_refs()
 PollsPoll.update_forward_refs()
-PollsPollAnonymous.update_forward_refs()
 PollsVotersUsers.update_forward_refs()
 StatsActivity.update_forward_refs()
 StatsReach.update_forward_refs()
@@ -5043,7 +5040,6 @@ NewsfeedListFull.update_forward_refs()
 NewsfeedNewsfeedItem.update_forward_refs()
 NewsfeedNewsfeedPhoto.update_forward_refs()
 NotificationsNotificationParent.update_forward_refs()
-PollsPollAnonymous.update_forward_refs()
 UsersSubscriptionsItem.update_forward_refs()
 UsersUserXtrCounters.update_forward_refs()
 VideoVideo.update_forward_refs()
