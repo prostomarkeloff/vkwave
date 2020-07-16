@@ -10,7 +10,8 @@ from .core.dispatching.filters import (
     MessageFromConversationTypeFilter,
     MessageArgsFilter,
     FwdMessagesFilter,
-    TextContainsFilter
+    TextContainsFilter,
+    ReplyMessageFilter
 )
 from .core.dispatching.dp.middleware.middleware import MiddlewareResult, BaseMiddleware
 from .core.dispatching.events.base import BotEvent, UserEvent, BotType, BaseEvent
@@ -42,7 +43,7 @@ from .utils import (
     ButtonType,
     CallbackAnswer,
     CallbackEventDataType,
-    WallPhotoUploader
+    WallPhotoUploader,
 )
 from .core.dispatching.filters.extension_filters import VBMLFilter
 from .addons.low_level_dispatching import LowLevelBot

@@ -5,14 +5,12 @@ from typing import Dict, Tuple, Union
 
 from typing_extensions import Literal
 
-from vkwave.bots.core.dispatching.events.base import BaseEvent, UserEvent, BotEvent
+from vkwave.bots.core.dispatching.events.base import BaseEvent, UserEvent
 from vkwave.bots.core.types.bot_type import BotType
 from vkwave.bots.core.types.json_types import JSONDecoder
 from vkwave.types.objects import MessagesMessageActionStatus
 from vkwave.types.user_events import EventId, MessageFlag
-
 from .base import BaseFilter, FilterResult
-
 
 MessageEventUser: Tuple[int] = EventId.MESSAGE_EVENT.value
 MessageEventBot: str = "message_new"
@@ -313,6 +311,26 @@ class FwdMessagesFilter(BaseFilter):
         return FilterResult(fwd_count == self.fwd_count)
 
 
+class ReplyMessageFilter(BaseFilter):
+    """
+    Checking is message has reply messages
+    """
+
+    def __init__(self):
+        pass
+
+    async def check(self, event: BaseEvent) -> FilterResult:
+        is_message_event(event)
+        if event.bot_type == BotType.BOT:
+            has_reply = event.object.object.message.reply_message is not None
+        else:
+            event: UserEvent
+            extra_message_data = event.object.object.extra_message_data
+            has_reply = extra_message_data is not None and "reply" in extra_message_data
+
+        return FilterResult(has_reply)
+
+
 class TextContainsFilter(BaseFilter):
     """
     Checking text contains
@@ -324,12 +342,13 @@ class TextContainsFilter(BaseFilter):
 
     async def check(self, event: BaseEvent) -> FilterResult:
         message_text = get_text(event)
-        
-        for text in self.text:
-            r = text in message_text if not self.ignore_case else text.lower() in message_text.lower()
-            
-            if r:
-            	return FilterResult(True)
-            
 
+        for text in self.text:
+            r = (
+                text in message_text
+                if not self.ignore_case
+                else text.lower() in message_text.lower()
+            )
+            if r:
+                return FilterResult(True)
         return FilterResult(False)

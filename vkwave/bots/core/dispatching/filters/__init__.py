@@ -10,6 +10,7 @@ from .builtin import (
     MessageFromConversationTypeFilter,
     FwdMessagesFilter,
     MessageArgsFilter,
-    TextContainsFilter
+    TextContainsFilter,
+    ReplyMessageFilter
 )  # noqa: F401
 from .cast import caster as filter_caster  # noqa: F401

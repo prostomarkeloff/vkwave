@@ -34,6 +34,7 @@ from vkwave.bots import (
     MessageArgsFilter,
     MessageFromConversationTypeFilter,
     TextContainsFilter,
+    ReplyMessageFilter
 )
 from vkwave.bots.core.dispatching.dp.middleware.middleware import BaseMiddleware, MiddlewareResult
 from vkwave.bots.core.dispatching.filters.extension_filters import VBMLFilter
@@ -225,6 +226,7 @@ class BaseSimpleLongPollBot:
         self.regex_filter = RegexFilter
         self.state_filter = StateFilter
         self.vbml_filter = VBMLFilter
+        self.reply_filter = ReplyMessageFilter
         self.args_filter = MessageArgsFilter
         self.fwd_filter = FwdMessagesFilter
         self.conversation_type_filter = MessageFromConversationTypeFilter
