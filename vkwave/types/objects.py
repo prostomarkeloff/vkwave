@@ -1202,6 +1202,10 @@ class PhotosPhotoSizesType(str, Enum):
     W = 'w'
     I = 'i'
     D = 'd'
+    A = 'a'
+    B = 'b'
+    D = 'd'
+    E = 'e'
 
 
 class PollsBackground(pydantic.BaseModel):
@@ -1533,6 +1537,8 @@ class WallPostType(str, Enum):
     REPLY = 'reply'
     POSTPONE = 'postpone'
     SUGGEST = 'suggest'
+    VIDEO = 'video'
+    PHOTO = 'photo'
 
 
 class WallPostedPhoto(pydantic.BaseModel):
@@ -1605,6 +1611,7 @@ class WallWallpostAttachmentType(str, Enum):
     MARKET_MARKET_ALBUM = 'market_market_album'
     MARKET = 'market'
     EVENT = 'event'
+    PODCAST = 'podcast'
 
 
 class WidgetsCommentMedia(pydantic.BaseModel):
