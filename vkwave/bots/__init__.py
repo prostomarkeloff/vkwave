@@ -29,6 +29,12 @@ from vkwave.bots.addons.easy import (
     TaskManager,
     create_api_session_aiohttp,
     SimpleCallbackBot,
+    SimpleBotEvent,
+    SimpleUserEvent,
+    simple_bot_message_handler,
+    simple_user_handler,
+    simple_user_message_handler,
+    simple_bot_handler
 )
 from .fsm import StateFilter, FiniteStateMachine, ForWhat
 from .storage import RedisStorage, VKStorage, Storage, TTLStorage

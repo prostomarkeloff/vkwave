@@ -70,3 +70,21 @@ clones.run_all_bots()
 ```
 
 Все клоны ответят "Hello world!" на "hello".
+
+Если вы не хотите использовать `SimpleLongPollBot`, но создание хендлеров хочется упростить - воспользуйтесь `easy_handlers`
+
+```python3
+from vkwave.bots import simple_bot_message_handler, SimpleBotEvent, DefaultRouter, TextFilter
+
+router = DefaultRouter()
+
+
+@simple_bot_message_handler(router, TextFilter("hello"))
+async def easy(event: SimpleBotEvent):
+    await event.answer("got hello")
+
+```
+
+`simple_bot_message_handler` нужен только для событий связанных с сообщениями, помимо него еще есть:
+ simple_bot_handler (для всех событий), simple_user_handler (аналогично для юзерботов), simple_user_message_handler.
+    
