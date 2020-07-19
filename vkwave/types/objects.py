@@ -1204,7 +1204,6 @@ class PhotosPhotoSizesType(str, Enum):
     D = 'd'
     A = 'a'
     B = 'b'
-    D = 'd'
     E = 'e'
 
 
