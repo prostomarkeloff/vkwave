@@ -30,7 +30,8 @@ async def simple_handler(event: BotEvent):
     bot.text_filter("exit"), StateFilter(fsm=fsm, state=ANY_STATE, for_what=ForWhat.FOR_USER)
 )
 async def simple_handler2(event: BotEvent):
-    await fsm.finish(event=event, for_what=ForWhat.FOR_USER)
+    if await fsm.get_data(event, for_what=ForWhat.FOR_USER) is not None:
+        await fsm.finish(event=event, for_what=ForWhat.FOR_USER)
     return "You are quited!"
 
 

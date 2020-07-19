@@ -36,7 +36,7 @@ class MyState:
     age = State("age")
 
 
-# starting interview (has default filter that will reject messages if state exists)
+# начинаем интервью
 @router.registrar.with_decorator(
     lambda event: event.object.object.message.text == "start",
 )
@@ -45,13 +45,15 @@ async def simple_handler(event: BotEvent):
     return "Input your name"
 
 
-#  exiting interview (work with any state because of `state=ANY_STATE`)
+#  выход из опроса (срабатывает на любой стейт `state=ANY_STATE`)
 @router.registrar.with_decorator(
     lambda event: event.object.object.message.text == "exit",
     StateFilter(fsm=fsm, state=ANY_STATE, for_what=ForWhat.FOR_USER)
 )
 async def simple_handler(event: BotEvent):
-    await fsm.finish(event=event, for_what=ForWhat.FOR_USER)
+    # Проверяем есть ли юзер в базе
+    if await fsm.get_data(event, for_what=ForWhat.FOR_USER) is not None:
+        await fsm.finish(event=event, for_what=ForWhat.FOR_USER)
     return "You are quited!"
 
 
@@ -65,7 +67,7 @@ async def simple_handler(event: BotEvent):
         for_what=ForWhat.FOR_USER,
         extra_state_data={"name": event.object.object.message.text},
     )
-    # extra_state_data is totally equal to fsm.add_data(..., state_data={"name": event.object.object.message.text})
+    # extra_state_data работает так же как fsm.add_data(..., state_data={"name": event.object.object.message.text})
 
     return "Input your age"
 
@@ -83,8 +85,8 @@ async def simple_handler(event: BotEvent):
     )
     user_data = await fsm.get_data(event=event, for_what=ForWhat.FOR_USER)
  
-    # we finish interview and... we should delete user's state from storage.
-    # `fsm.finish` will do it by itself.
+    # завершаем опрос и удаляем юзера
+    # `fsm.finish` делает это
     await fsm.finish(event=event, for_what=ForWhat.FOR_USER)
     return f"Your data - {user_data}"
 ```

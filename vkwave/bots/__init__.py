@@ -36,7 +36,7 @@ from vkwave.bots.addons.easy import (
     simple_user_message_handler,
     simple_bot_handler
 )
-from .fsm import StateFilter, FiniteStateMachine, ForWhat
+from .fsm import StateFilter, FiniteStateMachine, ForWhat, State
 from .storage import RedisStorage, VKStorage, Storage, TTLStorage
 from .utils import (
     Keyboard,
