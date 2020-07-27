@@ -5,7 +5,7 @@ from vkwave.bots.core.dispatching.events.base import BaseEvent
 from vkwave.bots.fsm.types import StateId
 from vkwave.bots.storage.base import AbstractStorage
 from vkwave.bots.storage.storages import Storage
-from vkwave.bots.storage.types import Key
+from vkwave.bots.storage.types import Key, Value
 
 
 class ForWhat(Enum):
@@ -78,7 +78,7 @@ class FiniteStateMachine:
         data.update(state_data)
         return await self.storage.put(sid, data)
 
-    async def get_data(self, event: BaseEvent, for_what: ForWhat) -> None:
+    async def get_data(self, event: BaseEvent, for_what: ForWhat) -> typing.Optional[Value]:
         sid = Key(create_state_id(event, for_what))
         return await self.storage.get(sid, default=None)
 
