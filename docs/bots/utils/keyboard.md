@@ -13,6 +13,14 @@ kb.add_row()
 kb.add_text_button("red hello", color=ButtonColor.NEGATIVE)
 ```
 
+`Keyboard` предоставляет методы для создания любого типа кнопок:
+
+- `add_text_button` - кнопка с текстом
+- `add_callback_button`- кнопка действия
+- `add_location_button` - кнопка, отправляющая местоположение
+- `add_link_button` - кнопка с ссылкой
+- `add_vkpay_button`- кнопка оплаты через VKPay
+
 После этих действий вы можете отправлять клавиатуру пользователям:
 
 ```python

@@ -85,10 +85,11 @@ API это ядро. Оно содержит все токены и клиент
 from vkwave.api import API
 from vkwave.client import AIOHTTPClient
 
-api = API(tokens=my_token, clients=AIOHTTPClient())
+api = API(tokens="my_token", clients=AIOHTTPClient())
 ```
 
-В `APIOptions` содержатся `tokens`, `clients`, `strategy` и другие вещи, вы можете получить к ним доступ через `api.default_api_options`. Например вы можете добавить клиент, токен или обновить стратегию
+В `APIOptions` содержатся `tokens`, `clients`, `strategy` и другие вещи, вы можете получить к ним доступ через `api.default_api_options`.
+Например вы можете добавить клиент, токен или обновить стратегию `# TODO: Что это значит, примеры!`
 
 ```python
 api = API(...)

@@ -7,6 +7,7 @@
  - ttl хранилище
  - redis хранилище
  
+# Dict-like
 
 ```python
 import asyncio
@@ -34,7 +35,7 @@ if __name__ == '__main__':
 
 ```
 
-Если вам нужны time-to-life ключи:
+## Time-to-life:
 
 ```python
 from vkwave.bots.storage.storages import TTLStorage
@@ -53,7 +54,7 @@ async def main():
     print(await storage.contains(my_key))  # False
 ```
 
-Если вы используете Redis:
+## Redis:
 
 ```python
 from vkwave.bots.storage.storages import RedisStorage

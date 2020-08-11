@@ -66,10 +66,10 @@ text = lambda text: filter_caster.cast(lambda event: event.object.object.message
 # Работает как простое отрицание, там где обычный фильтр вернет True, фильтр с ~ вернет False
 r.new().with_filters(~text("hi"))
 
-# filter & filter возвращает False если хотя бы один фильтр вернет False
+# filter & filter возвращает False, если хотя бы один фильтр вернет False
 r.new().with_filters(text("hi") & lambda event: ...)
 
-# filter | filter работает как питоновское `or`
+# filter | filter возвращает True, если хотя бы один фильтр вернет True
 r.new().with_filters(text("hi") | text("hello"))
 
 # вы можете совмещать их

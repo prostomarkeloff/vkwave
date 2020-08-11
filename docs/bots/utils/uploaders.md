@@ -2,7 +2,7 @@
 
 Поможет вам загружать фотографии/аудио/документы в сообщения или на стену.
 
-Загрузка из файла
+## Загрузка из файла
 ```python
 from vkwave.bots import PhotoUploader
 
@@ -21,7 +21,7 @@ async def main():
 ```
 
 
-Загрузка по ссылке
+## Загрузка по ссылке
 ```python
 big_attachment = await uploader.get_attachments_from_links(
     peer_id=578716413,
@@ -34,7 +34,7 @@ big_attachment = await uploader.get_attachments_from_links(
 ```
 
 
-Загрузка аудио
+## Загрузка аудио
 
 ```python
 from vkwave.bots.utils.uploaders import VoiceUploader
@@ -50,4 +50,4 @@ await api.get_context().messages.send(
 )
 ```
 
-Загрузку на стену можно посмотреть в `/examples`
+Загрузку на стену можно посмотреть в [/examples/uploader_example.py](/examples/uploader_example.py)

@@ -22,11 +22,12 @@ router.registrar.add_default_filter(StateFilter(fsm, ..., ..., always_false=True
 Пример опроса с именем и возрастом.
 
 ```python
-from vkwave.bots import EventTypeFilter, BotEvent
+from vkwave.bots import EventTypeFilter, BotEvent, DefaultRouter
 from vkwave.types.bot_events import BotEventType
 from vkwave.bots.fsm import FiniteStateMachine, StateFilter, ForWhat, State, ANY_STATE
 
 fsm = FiniteStateMachine()
+router = DefaultRouter()
 router.registrar.add_default_filter(StateFilter(fsm, ..., ..., always_false=True))
 router.registrar.add_default_filter(EventTypeFilter(BotEventType.MESSAGE_NEW.value))  # we don't want to write it in all handlers.
 

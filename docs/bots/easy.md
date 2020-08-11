@@ -14,7 +14,7 @@ def handle(_) -> str:
 bot.run_forever()
 ```
 
-**vkwave.bots.easy** поддерживает:
+`vkwave.bots.easy` поддерживает:
 
 - Простое создание сессий
 
@@ -73,7 +73,7 @@ clones.run_all_bots()
 
 Если вы не хотите использовать `SimpleLongPollBot`, но создание хендлеров хочется упростить - воспользуйтесь `easy_handlers`
 
-```python3
+```python
 from vkwave.bots import simple_bot_message_handler, SimpleBotEvent, DefaultRouter, TextFilter
 
 router = DefaultRouter()
@@ -86,5 +86,5 @@ async def easy(event: SimpleBotEvent):
 ```
 
 `simple_bot_message_handler` нужен только для событий связанных с сообщениями, помимо него еще есть:
- simple_bot_handler (для всех событий), simple_user_handler (аналогично для юзерботов), simple_user_message_handler.
+ `simple_bot_handler` (для всех событий), `simple_user_handler` (аналогично для юзерботов), `simple_user_message_handler`.
     
