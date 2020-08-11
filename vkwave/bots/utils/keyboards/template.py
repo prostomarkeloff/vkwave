@@ -6,17 +6,40 @@ from vkwave.bots.utils.keyboards.keyboard import ButtonColor, Keyboard
 
 
 class Template:
-    def __init__(self, title: typing.Optional[str], description: typing.Optional[str], photo_id: typing.Optional[str]):
+    def __init__(self, title: typing.Optional[str], description: typing.Optional[str], action: typing.Optional[str], link: typing.Optional[str], photo_id: typing.Optional[str]):
         """
         create template object
         :param title:
         :param description:
+        :param action: open_link or open_photo when clicking the template
         :param photo_id: have to have ratio 13/8 and png format
+        :param link:
         """
         if not title and not photo_id:
             raise RuntimeError("You have to specify title or photo_id, got None")
+        if title and not description:
+            raise RuntimeError("You have to specify description, got None")
+            
+        if action == "open_link":
+            if not link:
+                raise RuntimeError("You have to specify link, got None")
+            else:
+                self.action = {
+                    'type': "open_link",
+                    'link': link,
+                }
+        else:
+            self.action = {
+                'type': "open_photo",
+            }
+            
         self.title = title
         self.description = description
+
+        
+
+        
+            
         self.photo_id = photo_id
         self._local_keyboard = Keyboard(one_time=True)
 
@@ -55,6 +78,7 @@ class Template:
                     "title": template.title,
                     "description": template.description,
                     "photo_id": template.photo_id,
+                    "action": template.action,
                     "buttons": template._local_keyboard.buttons[0],
                 }
             )
