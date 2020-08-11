@@ -35,11 +35,6 @@ class Template:
             
         self.title = title
         self.description = description
-
-        
-
-        
-            
         self.photo_id = photo_id
         self._local_keyboard = Keyboard(one_time=True)
 
