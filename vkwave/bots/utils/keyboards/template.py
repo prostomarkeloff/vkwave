@@ -1,17 +1,20 @@
 import json
+import typing
 
 from vkwave.bots.core.types.json_types import JSONEncoder
 from vkwave.bots.utils.keyboards.keyboard import ButtonColor, Keyboard
 
 
 class Template:
-    def __init__(self, title: str, description: str, photo_id: str):
+    def __init__(self, title: typing.Optional[str], description: typing.Optional[str], photo_id: typing.Optional[str]):
         """
         create template object
         :param title:
         :param description:
         :param photo_id: have to have ratio 13/8 and png format
         """
+        if not title and not photo_id:
+            raise RuntimeError("You have to specify title or photo_id, got None")
         self.title = title
         self.description = description
         self.photo_id = photo_id
