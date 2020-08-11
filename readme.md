@@ -16,6 +16,7 @@ def handle(_) -> str:
 bot.run_forever()
 
 ```
+[Простая библиотека для быстрого доступа к API](https://github.com/prostomarkeloff/vkwave-api)
 
 # Что это?
 
