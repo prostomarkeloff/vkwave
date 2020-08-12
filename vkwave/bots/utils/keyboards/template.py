@@ -6,7 +6,7 @@ from vkwave.bots.utils.keyboards.keyboard import ButtonColor, Keyboard
 
 
 class Template:
-    def __init__(self, title: typing.Optional[str], description: typing.Optional[str], photo_id: typing.Optional[str], action: None, link: None):
+    def __init__(self, title: typing.Optional[str], description: typing.Optional[str], photo_id: typing.Optional[str], action=None, link=None):
         """
         create template object
         :param title:
