@@ -55,6 +55,21 @@ class VoiceUploader(DocUploaderMixin):
     async def get_server(self, peer_id: int) -> str:
         return await self._get_server(peer_id, DocsDocAttachmentType.AUDIO_MESSAGE)
 
+    async def upload(self, upload_url: str, file_data: BinaryIO) -> DocsSaveResponseModel:
+        # TODO: пофиксить копипасту
+        if not hasattr(file_data, "name"):
+            setattr(file_data, "name", "Document.ogg")
+
+        upload_data = self.json_deserialize(
+            await self.client.request_text(
+                method="POST", url=upload_url, data={"file": file_data}
+            ),
+        )
+
+        self.handle_error(upload_data)
+        doc_save = (await self.api_context.docs.save(file=upload_data["file"])).response
+        return doc_save
+
 
 class GraffitiUploader(DocUploaderMixin):
     async def get_server(self, peer_id: int) -> str:
