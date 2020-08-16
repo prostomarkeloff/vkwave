@@ -868,6 +868,33 @@ class MessagesChatPushSettings(pydantic.BaseModel):
     sound: typing.Optional["BaseBoolInt"] = pydantic.Field(None, description="Information whether the sound is on", )
 
 
+class ACL(pydantic.BaseModel):
+    # нет блин https://open.spotify.com/artist/2n6CVwo43YvjiTgcPxYWrf
+    can_change_info: typing.Optional[bool] = pydantic.Field(None, description="", )
+    can_change_invite_link: typing.Optional[bool] = pydantic.Field(None, description="", )
+    can_change_pin: typing.Optional[bool] = pydantic.Field(None, description="", )
+    can_invite: typing.Optional[bool] = pydantic.Field(None, description="", )
+    can_promote_users: typing.Optional[bool] = pydantic.Field(None, description="", )
+    can_see_invite_link: typing.Optional[bool] = pydantic.Field(None, description="", )
+    can_moderate: typing.Optional[bool] = pydantic.Field(None, description="", )
+    can_copy_chat: typing.Optional[bool] = pydantic.Field(None, description="", )
+    can_call: typing.Optional[bool] = pydantic.Field(None, description="", )
+    can_use_mass_mentions: typing.Optional[bool] = pydantic.Field(None, description="", )
+    can_change_service_type: typing.Optional[bool] = pydantic.Field(None, description="", )
+
+
+class ChatSettings(pydantic.BaseModel):
+    owner_id: typing.Optional[int] = pydantic.Field(None, description="", )
+    title: typing.Optional[str] = pydantic.Field(None, description="", )
+    state: typing.Optional[str] = pydantic.Field(None, description="", )
+    acl: typing.Optional[ACL] = pydantic.Field(None, description="", )
+    members_count: typing.Optional[int] = pydantic.Field(None, description="", )
+    admin_ids: typing.Optional[typing.List[int]] = pydantic.Field(None, description="", )
+    active_ids: typing.Optional[typing.List[int]] = pydantic.Field(None, description="", )
+    is_group_channel: typing.Optional[bool] = pydantic.Field(None, description="", )
+    is_service: typing.Optional[bool] = pydantic.Field(None, description="", )
+
+
 class MessagesConversation(pydantic.BaseModel):
     peer: "MessagesConversationPeer" = pydantic.Field(..., description="", )
     last_message_id: int = pydantic.Field(..., description="ID of the last message in conversation", )
@@ -881,6 +908,8 @@ class MessagesConversation(pydantic.BaseModel):
     message_request_data: typing.Optional["MessagesMessageRequestData"] = pydantic.Field(None, description="", )
     mentions: typing.Optional[typing.List[int]] = pydantic.Field(None, description="Ids of messages with mentions", )
     current_keyboard: typing.Optional["MessagesKeyboard"] = pydantic.Field(None, description="", )
+    can_write: typing.Optional[dict] = pydantic.Field(None, description="", )
+    chat_settings: typing.Optional[ChatSettings] = pydantic.Field(None, description="", )
 
 
 class MessagesConversationPeer(pydantic.BaseModel):
