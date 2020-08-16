@@ -8,7 +8,7 @@ from typing_extensions import Literal
 from vkwave.bots.core.dispatching.events.base import BaseEvent, UserEvent
 from vkwave.bots.core.types.bot_type import BotType
 from vkwave.bots.core.types.json_types import JSONDecoder
-from vkwave.types.bot_events import CallbackButtonEventObject, BotEventType
+from vkwave.types.bot_events import BotEventType
 from vkwave.types.objects import MessagesMessageActionStatus
 from vkwave.types.user_events import EventId, MessageFlag
 from .base import BaseFilter, FilterResult
@@ -36,7 +36,10 @@ def is_message_event(event: BaseEvent):
 def has_payload(event: BaseEvent):
     if event.object.object.dict().get("payload") is not None:
         return True
-    if event.object.object.dict().get("message") is not None and event.object.object.dict()["message"].get("payload") is not None:
+    if (
+        event.object.object.dict().get("message") is not None
+        and event.object.object.dict()["message"].get("payload") is not None
+    ):
         return True
     return False
 
