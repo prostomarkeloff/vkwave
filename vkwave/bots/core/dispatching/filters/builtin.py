@@ -8,6 +8,7 @@ from typing_extensions import Literal
 from vkwave.bots.core.dispatching.events.base import BaseEvent, UserEvent
 from vkwave.bots.core.types.bot_type import BotType
 from vkwave.bots.core.types.json_types import JSONDecoder
+from vkwave.types.bot_events import CallbackButtonEventObject, BotEventType
 from vkwave.types.objects import MessagesMessageActionStatus
 from vkwave.types.user_events import EventId, MessageFlag
 from .base import BaseFilter, FilterResult
@@ -30,6 +31,14 @@ def is_message_event(event: BaseEvent):
     elif event.bot_type is BotType.USER:
         if event.object.object.event_id not in MessageEventUser:
             raise InvalidEventError
+
+
+def has_payload(event: BaseEvent):
+    if event.object.object.dict().get("payload") is not None:
+        return True
+    if event.object.object.dict().get("message") is not None and event.object.object.dict()["message"].get("payload") is not None:
+        return True
+    return False
 
 
 def get_text(event: BaseEvent) -> typing.Optional[str]:
@@ -112,16 +121,18 @@ class PayloadFilter(BaseFilter):
         self.payload = payload
 
     async def check(self, event: BaseEvent) -> FilterResult:
-        is_message_event(event)
+        if not has_payload(event):
+            return FilterResult(False)
         if event.bot_type is BotType.USER:
-            current_payload = event.object.object.message_data.payload
+            current_payload = self.json_loader(event.object.object.message_data.payload)
         else:
-            if event.object.object.dict().get("message") is None:
-                return FilterResult(False)
-            current_payload = event.object.object.message.payload
+            if event.object.type == BotEventType.MESSAGE_EVENT.value:
+                current_payload = event.object.object.payload
+            else:
+                current_payload = self.json_loader(event.object.object.message.payload)
         if current_payload is None:
             return FilterResult(False)
-        return FilterResult(self.json_loader(current_payload) == self.payload)
+        return FilterResult(current_payload == self.payload)
 
 
 class ChatActionFilter(BaseFilter):
