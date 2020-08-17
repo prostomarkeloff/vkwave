@@ -1,0 +1,993 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Documentations of VKWave framework">
+      
+      
+      
+        <meta name="author" content="kesha1225">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../assets/images/logo.png">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-4.6.3">
+    
+    
+      
+        <title>Обзор - VKWave</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.adb8469c.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#2196f3">
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.86422ebf.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#_1" tabindex="0" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href=".." title="VKWave" aria-label="VKWave" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              VKWave
+            </span>
+            <span class="md-header-nav__topic">
+              
+                Обзор
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/fscdev/vkwave/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    fscdev/vkwave
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href=".." title="VKWave" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    VKWave
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/fscdev/vkwave/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    fscdev/vkwave
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Client
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Client
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../client/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../client/context/" title="Контекст" class="md-nav__link">
+      Контекст
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../client/using/" title="Using" class="md-nav__link">
+      Using
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../client/custom/" title="Кастомные клиенты" class="md-nav__link">
+      Кастомные клиенты
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      API
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Обзор
+      </label>
+    
+    <a href="./" title="Обзор" class="md-nav__link md-nav__link--active">
+      Обзор
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    Работа с токенами
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gettokenstrategy" class="md-nav__link">
+    GetTokenStrategy
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    API
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Bots
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Bots
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../bots/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../bots/easy/" title="Easy bots" class="md-nav__link">
+      Easy bots
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../bots/usage/" title="Usage" class="md-nav__link">
+      Usage
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../bots/filters/" title="Filters" class="md-nav__link">
+      Filters
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../bots/routers/" title="Роутеры" class="md-nav__link">
+      Роутеры
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../bots/fsm/" title="FSM" class="md-nav__link">
+      FSM
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../bots/storage/" title="Storage" class="md-nav__link">
+      Storage
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-8" type="checkbox" id="nav-4-8">
+    
+    <label class="md-nav__link" for="nav-4-8">
+      Utils
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-8">
+        Utils
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../bots/utils/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../bots/utils/keyboard/" title="Клавиатуры" class="md-nav__link">
+      Клавиатуры
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../bots/utils/templates/" title="Templates" class="md-nav__link">
+      Templates
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../bots/utils/uploaders/" title="Загрузчики" class="md-nav__link">
+      Загрузчики
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      LongPoll
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        LongPoll
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../longpoll/" title="TODO" class="md-nav__link">
+      TODO
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Types
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Types
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../types/" title="Обзор" class="md-nav__link">
+      Обзор
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      HTTP
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        HTTP
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../http/" title="TODO" class="md-nav__link">
+      TODO
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      Build reports
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        Build reports
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="/reports/tests" title="Tests result" class="md-nav__link">
+      Tests result
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="/reports/typechecking" title="mypy results" class="md-nav__link">
+      mypy results
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    Работа с токенами
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gettokenstrategy" class="md-nav__link">
+    GetTokenStrategy
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    API
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/fscdev/vkwave/edit/master/docs/api/index.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="_1">Обзор<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>VKWave API довольно удобная часть библиотеки. Скорее всего с процессе использования VKWave вы обязательно с ней столкнётесь</p>
+<p>Она состоит из трёх частей:</p>
+<ul>
+<li>Работа с токенами (динамическое получение токенов, мультитокены, итд.)</li>
+<li>Определение всех VK's API методов.</li>
+<li>Обёртка над токенами и методами.</li>
+</ul>
+<h2 id="_2">Работа с токенами<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>Токены в VKWave представлены обычными Python классами с методом <code class="codehilite"><span class="err">get_token</span></code>. Он может бысть синхронным или асиннхронным</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">vkwave.api.token.token</span> <span class="kn">import</span> <span class="n">UserSyncSingleToken</span><span class="p">,</span> <span class="n">BotSyncSingleToken</span><span class="p">,</span> <span class="n">Token</span>
+
+<span class="c1"># our tokens. we got them from VK</span>
+<span class="n">bot_plain_token</span> <span class="o">=</span> <span class="n">Token</span><span class="p">(</span><span class="s2">&quot;...&quot;</span><span class="p">)</span>
+<span class="n">user_plain_token</span> <span class="o">=</span> <span class="n">Token</span><span class="p">(</span><span class="s2">&quot;...&quot;</span><span class="p">)</span>
+
+<span class="c1"># tokens that are ready for using.</span>
+<span class="n">bot_token</span> <span class="o">=</span> <span class="n">BotSyncSingleToken</span><span class="p">(</span><span class="n">bot_plain_token</span><span class="p">)</span>
+<span class="n">user_token</span> <span class="o">=</span> <span class="n">UserSyncSingleToken</span><span class="p">(</span><span class="n">user_plain_token</span><span class="p">)</span>
+
+<span class="n">bot_token</span><span class="o">.</span><span class="n">get_token</span><span class="p">()</span>
+<span class="c1"># ...</span>
+
+<span class="n">user_token</span><span class="o">.</span><span class="n">get_token</span><span class="p">()</span>
+<span class="c1"># ...</span>
+</code></pre></div>
+
+
+<p>Вы можете создать свой собственный класс токена с нужной логикой. Создадим синхронный токен для бота.</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+<span class="kn">from</span> <span class="nn">vkwave.api.token.token</span> <span class="kn">import</span> <span class="n">ABCBotSyncToken</span><span class="p">,</span> <span class="n">Token</span>
+
+<span class="k">class</span> <span class="nc">BotSyncRandomToken</span><span class="p">(</span><span class="n">ABCBotSyncToken</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tokens</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Token</span><span class="p">]):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tokens</span> <span class="o">=</span> <span class="n">tokens</span>
+
+    <span class="k">def</span> <span class="nf">get_token</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Token</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tokens</span><span class="p">)</span>
+</code></pre></div>
+
+
+<h3 id="gettokenstrategy">GetTokenStrategy<a class="headerlink" href="#gettokenstrategy" title="Permanent link">&para;</a></h3>
+<p>Реализуйте это, если вам нужен список <code class="codehilite"><span class="err">UserSyncSingleToken</span></code> и вам нужно доставать токен, чтобы сделать запрос в API. </p>
+<p>По умолчанию VKWave использует <code class="codehilite"><span class="err">RandomGetTokenStrategy</span></code>, она просто делает <code class="codehilite"><span class="err">random.choice(tokens)</span></code>. В примере ниже мы реализуем свою стратегию, чтобы показать, что токены можно получать и по сети.</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">vkwave.api.token.strategy</span> <span class="kn">import</span> <span class="n">ABCGetTokenStrategy</span>
+<span class="kn">from</span> <span class="nn">vkwave.api.token.token</span> <span class="kn">import</span> <span class="n">Token</span><span class="p">,</span> <span class="n">AnyABCToken</span><span class="p">,</span> <span class="n">TokenType</span><span class="p">,</span> <span class="n">GetTokenType</span>
+
+<span class="c1"># AnyABCToken means really any token.</span>
+
+<span class="k">class</span> <span class="nc">ServerGetTokenStrategy</span><span class="p">(</span><span class="n">ABCGetTokenStrategy</span><span class="p">):</span>
+    <span class="n">token_type</span> <span class="o">=</span> <span class="p">(</span><span class="n">TokenType</span><span class="o">.</span><span class="n">BOT</span><span class="p">,</span> <span class="n">TokenType</span><span class="o">.</span><span class="n">USER</span><span class="p">)</span>
+    <span class="n">get_token_type</span> <span class="o">=</span> <span class="p">(</span><span class="n">GetTokenType</span><span class="o">.</span><span class="n">SYNC</span><span class="p">,</span> <span class="n">GetTokenType</span><span class="o">.</span><span class="n">ASYNC</span><span class="p">)</span>
+
+    <span class="c1"># we will ignore tokens that VKWave gives us.</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">get_token</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Token</span><span class="p">:</span>
+        <span class="n">token</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">some_fancy_api</span><span class="o">.</span><span class="n">get_random_token</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">token</span>
+</code></pre></div>
+
+
+<p>В этом примере не создаются токены, которые мы передаём в API обёртку. Он достаёт случайный и возвращает его.</p>
+<h2 id="api">API<a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
+<p>У нас есть 3 класса для работы с API: <code class="codehilite"><span class="err">API</span></code>, <code class="codehilite"><span class="err">APIOptions</span></code>, <code class="codehilite"><span class="err">APIOptionsRequestContext</span></code>.</p>
+<p>API это ядро. Оно содержит все токены и клиенты.</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">vkwave.api</span> <span class="kn">import</span> <span class="n">API</span>
+<span class="kn">from</span> <span class="nn">vkwave.client</span> <span class="kn">import</span> <span class="n">AIOHTTPClient</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="n">API</span><span class="p">(</span><span class="n">tokens</span><span class="o">=</span><span class="n">my_token</span><span class="p">,</span> <span class="n">clients</span><span class="o">=</span><span class="n">AIOHTTPClient</span><span class="p">())</span>
+</code></pre></div>
+
+
+<p>В <code class="codehilite"><span class="err">APIOptions</span></code> содержатся <code class="codehilite"><span class="err">tokens</span></code>, <code class="codehilite"><span class="err">clients</span></code>, <code class="codehilite"><span class="err">strategy</span></code> и другие вещи, вы можете получить к ним доступ через <code class="codehilite"><span class="err">api.default_api_options</span></code>. Например вы можете добавить клиент, токен или обновить стратегию</p>
+<div class="codehilite"><pre><span></span><code><span class="n">api</span> <span class="o">=</span> <span class="n">API</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+
+<span class="n">api</span><span class="o">.</span><span class="n">default_api_options</span><span class="o">.</span><span class="n">add_token</span><span class="p">(</span><span class="n">tokens</span><span class="o">=</span><span class="p">[</span><span class="o">...</span><span class="p">])</span> <span class="c1"># или добавить только один токен</span>
+</code></pre></div>
+
+
+<p>Но только с этим вы не можете сделать запрос в API.</p>
+<p>Вам нужно получить контекст!</p>
+<div class="codehilite"><pre><span></span><code><span class="n">api_session</span> <span class="o">=</span> <span class="n">API</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="n">api_session</span><span class="o">.</span><span class="n">get_context</span><span class="p">()</span>
+</code></pre></div>
+
+
+<p>Когда вы пишете это - вы получаете <code class="codehilite"><span class="err">APIOptionsRequestContext</span></code>. Он содержит все методы и собственный <code class="codehilite"><span class="err">APIOptions</span></code>.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">api</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>На каждый вызов API контекст получает токен, следуя стратегии. Это может быть проблемой с таким примером:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">friends</span> <span class="o">=</span> <span class="k">await</span> <span class="n">api</span><span class="o">.</span><span class="n">friends</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">api</span><span class="o">.</span><span class="n">messages</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>Потому что друзья получатся на один токен, а сообщения будут отправляться другим. Чтобы избежать этого нужно синхронизировать токены.</p>
+<div class="codehilite"><pre><span></span><code><span class="k">async</span> <span class="k">with</span> <span class="n">api</span><span class="o">.</span><span class="n">sync_token</span><span class="p">()</span> <span class="k">as</span> <span class="n">sapi</span><span class="p">:</span>
+    <span class="n">friends</span> <span class="o">=</span> <span class="k">await</span> <span class="n">sapi</span><span class="o">.</span><span class="n">friends</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+    <span class="o">...</span>
+</code></pre></div>
+
+
+<p>Тут в пределах контекстного менеджера будет использоваться только один токен.</p>
+<p>Написать <code class="codehilite"><span class="err">api_session.get_context()</span></code> не единственный способ получить контекст. Вы также можете использовать <code class="codehilite"><span class="err">api_session.with_token</span></code> или <code class="codehilite"><span class="err">api_session.with_options</span></code></p>
+<div class="codehilite"><pre><span></span><code><span class="n">api</span> <span class="o">=</span> <span class="n">api_session</span><span class="o">.</span><span class="n">with_token</span><span class="p">(</span><span class="n">SomeToken</span><span class="p">(</span><span class="o">...</span><span class="p">))</span>
+<span class="n">api</span> <span class="o">=</span> <span class="n">api_session</span><span class="o">.</span><span class="n">with_options</span><span class="p">(</span><span class="n">APIOptions</span><span class="p">(</span><span class="o">...</span><span class="p">))</span>
+</code></pre></div>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../client/custom/" title="Кастомные клиенты" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Кастомные клиенты
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../bots/" title="Overview" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Overview
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.c33a9706.js"></script>
+      
+      <script>app.initialize({version:"1.1",url:{base:".."}})</script>
+      
+    
+  </body>
+</html>
