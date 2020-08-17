@@ -908,7 +908,10 @@ class Messages(Category):
         if return_raw_response:
             return raw_result
 
-        result = MessagesSendResponse(**raw_result)
+        if user_ids:
+            result = MessagesSendUserIdsResponse(**raw_result)
+        else:
+            result = MessagesSendResponse(**raw_result)
         return result
 
     async def send_message_event_answer(
