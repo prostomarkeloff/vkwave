@@ -1,6 +1,6 @@
 site_name: VKWave
 site_description: 'Documentations of VKWave framework'
-site_author: 'prostomarkeloff'
+site_author: 'kesha1225'
 repo_name: 'fscdev/vkwave'
 repo_url: 'https://github.com/fscdev/vkwave'
 
@@ -13,7 +13,7 @@ theme:
   favicon: 'assets/images/logo.png'
 
 extra:
-  version: 0.1.0
+  version: 0.2.8
 
 plugins:
   - search
@@ -43,6 +43,7 @@ nav:
       - api/index.md
   - Bots:
       - bots/index.md
+      - bots/easy.md
       - bots/usage.md
       - bots/filters.md
       - bots/routers.md
