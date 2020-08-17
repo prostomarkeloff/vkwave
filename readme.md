@@ -41,6 +41,10 @@ pip install vkwave
 pip install https://github.com/fscdev/vkwave/archive/master.zip
 ```
 
+[Документация](https://fscdev.github.io/vkwave/)
+
+[Примеры использования](https://github.com/fscdev/vkwave/tree/master/examples)
+
 
 ## Производительность
 
