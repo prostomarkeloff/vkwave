@@ -119,7 +119,7 @@ class TextFilter(BaseFilter):
 class PayloadFilter(BaseFilter):
     """Filter for message payload"""
 
-    def __init__(self, payload: Dict[str, str], json_loader: JSONDecoder = json.loads):
+    def __init__(self, payload: typing.Optional[Dict[str, str]], json_loader: JSONDecoder = json.loads):
         self.json_loader = json_loader
         self.payload = payload
 
@@ -135,6 +135,8 @@ class PayloadFilter(BaseFilter):
                 current_payload = self.json_loader(event.object.object.message.payload)
         if current_payload is None:
             return FilterResult(False)
+        if self.payload is None:
+            return FilterResult(True)
         return FilterResult(current_payload == self.payload)
 
 
