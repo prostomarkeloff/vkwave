@@ -60,6 +60,8 @@ class BotEventType(str, Enum):
     APP_PAYLOAD = "app_payload"
     CALLBACK_CONFIRMATION = "confirmation"
     MESSAGE_EVENT = "message_event"
+    LIKE_ADD = "like_add"
+    LIKE_REMOVE = "like_remove"
 
 
 class BaseBotEvent(pydantic.BaseModel):
@@ -109,6 +111,8 @@ class BaseBotEvent(pydantic.BaseModel):
         "MessageTypingStateObject",
         "BaseBotEvent",
         "CallbackButtonEventObject",
+        "LikeAdd",
+        "LikeRemove",
     ]
     event_id: typing.Optional[str]
 
@@ -614,6 +618,8 @@ def get_event_object(
     MessageTypingState,
     BaseBotEvent,
     CallbackButtonEvent,
+    LikeRemove,
+    LikeAdd,
 ]:
     event_type: str = raw_event["type"]
     event_model: typing.Type[BaseBotEvent] = _event_dict[event_type]
