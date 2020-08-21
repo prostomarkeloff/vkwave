@@ -12,6 +12,7 @@ from .objects import (
     VideoVideo,
     WallWallComment,
     WallWallpost,
+    LikesType,
 )
 
 
@@ -107,7 +108,7 @@ class BaseBotEvent(pydantic.BaseModel):
         "AppPayloadObject",
         "MessageTypingStateObject",
         "BaseBotEvent",
-        "CallbackButtonEventObject"
+        "CallbackButtonEventObject",
     ]
     event_id: typing.Optional[str]
 
@@ -491,6 +492,32 @@ class CallbackButtonEvent(BaseBotEvent):
     object: CallbackButtonEventObject = pydantic.Field(None, description="")
 
 
+class LikeAddEventObject(pydantic.BaseModel):
+    liker_id: int = pydantic.Field(None, description="")
+    object_type: LikesType = pydantic.Field(None, description="")
+    object_owner_id: int = pydantic.Field(None, description="")
+    object_id: int = pydantic.Field(None, description="")
+    thread_reply_id: int = pydantic.Field(None, description="")
+    post_id: int = pydantic.Field(None, description="")
+
+
+class LikeAdd(BaseBotEvent):
+    object: LikeAddEventObject = pydantic.Field(None, description="")
+
+
+class LikeRemoveEventObject(pydantic.BaseModel):
+    liker_id: int = pydantic.Field(None, description="")
+    object_type: LikesType = pydantic.Field(None, description="")
+    object_owner_id: int = pydantic.Field(None, description="")
+    object_id: int = pydantic.Field(None, description="")
+    thread_reply_id: int = pydantic.Field(None, description="")
+    post_id: int = pydantic.Field(None, description="")
+
+
+class LikeRemove(BaseBotEvent):
+    object: LikeRemoveEventObject = pydantic.Field(None, description="")
+
+
 _event_dict = {
     "message_new": MessageNew,
     "message_reply": MessageReply,
@@ -535,6 +562,8 @@ _event_dict = {
     "confirmation": CallBackConfirmation,
     "message_typing_state": MessageTypingState,
     "message_event": CallbackButtonEvent,
+    "like_add": LikeAdd,
+    "like_remove": LikeRemove,
 }
 
 
@@ -584,7 +613,7 @@ def get_event_object(
     CallBackConfirmation,
     MessageTypingState,
     BaseBotEvent,
-    CallbackButtonEvent
+    CallbackButtonEvent,
 ]:
     event_type: str = raw_event["type"]
     event_model: typing.Type[BaseBotEvent] = _event_dict[event_type]
