@@ -66,6 +66,9 @@ class SimpleBotEvent(BotEvent):
     def __getitem__(self, key: typing.Any) -> typing.Any:
         return self.user_data[key]
 
+    async def __call__(self, **kwargs):
+        self.answer(**kwargs)
+
     async def answer(
         self,
         message: typing.Optional[str] = None,
