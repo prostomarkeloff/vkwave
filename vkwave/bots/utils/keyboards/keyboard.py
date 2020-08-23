@@ -80,13 +80,19 @@ class Keyboard:
 
         self._add_button(action)
 
-    def add_callback_button(self, text: str, payload: dict = None):
+    def add_callback_button(
+        self, 
+        text: str, 
+        color: typing.Union[str, ButtonColor] = ButtonColor.PRIMARY,
+        payload: dict = None,
+    ):
         action = {
             "action": {
                 "type": "callback",
                 "payload": self._generate_payload(payload),
                 "label": text,
-            }
+            },
+            "color": color.value if isinstance(color, ButtonColor) else color,
         }
         self._add_button(action)
 
