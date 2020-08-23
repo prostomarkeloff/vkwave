@@ -84,7 +84,7 @@ class Keyboard:
         self, 
         text: str, 
         color: typing.Union[str, ButtonColor] = ButtonColor.PRIMARY,
-        payload: dict = None,
+        payload: typing.Optional[typing.Dict[str, str]] = None,
     ):
         action = {
             "action": {
