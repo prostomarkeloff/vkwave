@@ -81,8 +81,8 @@ class Keyboard:
         self._add_button(action)
 
     def add_callback_button(
-        self, 
-        text: str, 
+        self,
+        text: str,
         color: typing.Union[str, ButtonColor] = ButtonColor.PRIMARY,
         payload: typing.Optional[typing.Dict[str, str]] = None,
     ):
@@ -96,7 +96,7 @@ class Keyboard:
         }
         self._add_button(action)
 
-    def add_location_button(self, payload: dict = None) -> None:
+    def add_location_button(self, payload: typing.Optional[typing.Dict[str, str]] = None) -> None:
         """
         :param payload:
         :return:
@@ -111,7 +111,9 @@ class Keyboard:
 
         self._add_button(action)
 
-    def add_link_button(self, text: str, link: str, payload: dict = None) -> None:
+    def add_link_button(
+        self, text: str, link: str, payload: typing.Optional[typing.Dict[str, str]] = None
+    ) -> None:
         action = {
             "action": {
                 "type": ButtonType.LINK.value,
@@ -123,7 +125,9 @@ class Keyboard:
 
         self._add_button(action)
 
-    def add_vkpay_button(self, hash: str, payload: dict = None) -> None:
+    def add_vkpay_button(
+        self, hash: str, payload: typing.Optional[typing.Dict[str, str]] = None
+    ) -> None:
         """
         :param hash:
         :param payload:
@@ -141,7 +145,11 @@ class Keyboard:
         self._add_button(action)
 
     def add_vkapps_button(
-        self, app_id: int, owner_id: int, label: str, payload: dict = None
+        self,
+        app_id: int,
+        owner_id: int,
+        label: str,
+        payload: typing.Optional[typing.Dict[str, str]] = None,
     ) -> None:
         """
         :param app_id:
@@ -200,9 +208,6 @@ class CallbackAnswer:
 
     @classmethod
     def open_app(cls, app_id: int, hash: str, owner_id: typing.Optional[int] = None):
-        return json.dumps({
-            "type": "open_app",
-            "app_id": app_id,
-            "owner_id": owner_id,
-            "hash": hash
-        })
+        return json.dumps(
+            {"type": "open_app", "app_id": app_id, "owner_id": owner_id, "hash": hash}
+        )
