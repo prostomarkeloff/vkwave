@@ -257,11 +257,11 @@ class BaseLikes(pydantic.BaseModel):
 
 
 class BaseLikesInfo(pydantic.BaseModel):
-    can_like: "BaseBoolInt" = pydantic.Field(..., description="Information whether current user can like the post", )
+    can_like: typing.Optional["BaseBoolInt"] = pydantic.Field(..., description="Information whether current user can like the post", )
     can_publish: typing.Optional["BaseBoolInt"] = pydantic.Field(None,
                                                                  description="Information whether current user can repost", )
     count: int = pydantic.Field(..., description="Likes number", )
-    user_likes: int = pydantic.Field(..., description="Information whether current uer has liked the post", )
+    user_likes: typing.Optional[int] = pydantic.Field(..., description="Information whether current uer has liked the post", )
 
 
 class BaseLink(pydantic.BaseModel):
