@@ -11,7 +11,7 @@ async def simple(event: bot.SimpleBotEvent):
     await event.answer("HELLO", keyboard=kb.get_keyboard())
 
 
-@bot.handler(bot.event_type_filter(BotEventType.MESSAGE_EVENT, PayloadFilter({"21321": "123"})))
+@bot.handler(bot.event_type_filter(BotEventType.MESSAGE_EVENT), PayloadFilter({"21321": "123"}))
 async def all(event: bot.SimpleBotEvent):
     await event.callback_answer(event_data=CallbackAnswer.open_link(link="https://google.com"))
 
