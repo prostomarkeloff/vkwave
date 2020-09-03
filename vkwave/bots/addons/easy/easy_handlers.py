@@ -6,6 +6,7 @@ from vkwave.bots.core import BaseFilter
 from vkwave.bots.core.dispatching.handler.callback import BaseCallback
 from vkwave.types.bot_events import BotEventType
 from vkwave.types.objects import BaseBoolInt
+from vkwave.types.responses import BaseOkResponse, MessagesSendResponse
 from vkwave.types.user_events import EventId
 
 
@@ -35,8 +36,8 @@ class SimpleUserEvent(UserEvent):
         long: typing.Optional[BaseBoolInt] = None,
         reply_to: typing.Optional[int] = None,
         group_id: typing.Optional[int] = None,
-    ):
-        await self.api_ctx.messages.send(
+    ) -> MessagesSendResponse:
+        return await self.api_ctx.messages.send(
             domain=domain,
             lat=lat,
             long=long,
@@ -82,8 +83,16 @@ class SimpleBotEvent(BotEvent):
         reply_to: typing.Optional[int] = None,
         group_id: typing.Optional[int] = None,
         template: typing.Optional[str] = None,
-    ):
-        await self.api_ctx.messages.send(
+    ) -> MessagesSendResponse:
+        if self.object.type not in (
+            BotEventType.MESSAGE_NEW,
+            BotEventType.MESSAGE_EDIT,
+            BotEventType.MESSAGE_REPLY,
+            BotEventType.MESSAGE_TYPING_STATE,
+            BotEventType.MESSAGE_ALLOW,
+        ):
+            raise RuntimeError("You cant use event.answer() with this event")
+        return await self.api_ctx.messages.send(
             domain=domain,
             lat=lat,
             long=long,
@@ -102,8 +111,10 @@ class SimpleBotEvent(BotEvent):
             template=template,
         )
 
-    async def callback_answer(self, event_data: typing.Dict[str, str]):
-        await self.api_ctx.messages.send_message_event_answer(
+    async def callback_answer(self, event_data: typing.Dict[str, str]) -> BaseOkResponse:
+        if self.object.type != BotEventType.MESSAGE_EVENT:
+            raise RuntimeError("You cant use event.callback_answer() with this event")
+        return await self.api_ctx.messages.send_message_event_answer(
             user_id=self.object.object.user_id,
             peer_id=self.object.object.peer_id,
             event_id=self.object.object.event_id,
