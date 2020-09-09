@@ -42,7 +42,7 @@ class BaseSimpleLongPollBot:
 
 """
 
-@bot.message_handler(bot.conversation_type_filter(from_what="from_chat"))
+@bot.message_handler(bot.conversation_type_filter(from_what="from_chat")) # В хэндлер, к слову, вы можете запихать сколько душе угодно фильтров(там *args стоит). 
 async def handle(event: bot.SimpleBotEvent):
     await event.answer("hello to chat!")
 
