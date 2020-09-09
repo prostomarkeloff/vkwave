@@ -3,10 +3,48 @@ from vkwave.bots import SimpleLongPollBot
 
 bot = SimpleLongPollBot(tokens="1234", group_id=456)
 
+"""
+from vkwave.bots.core.dispatching.filters.base import BaseEvent, BaseFilter, FilterResult
+
+
+class BotFilter(BaseFilter):
+    async def check(self, event: BaseEvent) -> FilterResult:
+
+        text: str = event.object.object.message.text
+
+        if "я бот" in text:
+            return FilterResult(True)
+        return FilterResult(False)
+
+@bot.message_handler(BotFilter())
+async def handle(event: bot.SimpleBotEvent):
+    await event.answer("Бот Детектед")
+    
+Мы переопределили метод check в классе-фильтре. Он у фильтра главный.
+    
+"""
+
+"""
+На самом деле bot.command_filter, bot.args_filter и тд. - ссылки на классы-фильтры(наследуемые от BaseFilter).
+
+из исходников :
+
+class CommandsFilter(BaseFilter):
+    ...
+
+class BaseSimpleLongPollBot:
+    def __init__(self, ...):
+    ...
+    self.command_filter = CommandsFilter
+    ...
+    
+Я, конечно же, сократил код, но суть вы поняли.
+
+"""
 
 @bot.message_handler(bot.conversation_type_filter(from_what="from_chat"))
 async def handle(event: bot.SimpleBotEvent):
-    await event.answer(f"hello to chat!")
+    await event.answer("hello to chat!")
 
 
 @bot.message_handler(bot.fwd_filter(fwd_count=3))  # bot.fwd_filter() for any count
