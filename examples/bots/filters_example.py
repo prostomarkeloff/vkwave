@@ -63,3 +63,18 @@ async def handle(event: bot.SimpleBotEvent):
     await event.answer(f"Your text contains 'wow', wow!")
 
 bot.run_forever()
+"""
+P.S.
+
+@bot.message_handler()
+async def handle(event: BotEvent):
+    await event.answer("Hello World!")
+    
+и 
+
+@bot.message_handler()
+async def handle(event: BotEvent):
+    return "Hello World!"
+одно и тоже(есть свои нюансы, но вцелом это так)
+
+"""
