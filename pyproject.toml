@@ -49,6 +49,7 @@ isort = "^4.3"
 flake8 = "^3.7.9"
 mypy_extensions = "^0.4.3"
 black = {version = "^19.0", allow-prereleases = true}
+pydocstyle = "^5.1.1 "
 
 # Docs
 mkdocs = "^1.1"
@@ -85,6 +86,9 @@ exclude = '''
   | docs
 )
 '''
+
+[tool.pydocstyle]
+ignore = "D100"
 
 [tool.isort]
 multi_line_output = 3
