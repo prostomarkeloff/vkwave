@@ -93,6 +93,12 @@ force_grid_wrap = 0
 use_parentheses = true
 line_length = 99
 
+[tool.mypy]
+python_version = 3.7
+warn_return_any = False
+warn_unused_configs = True
+ignore_missing_imports = True
+
 [build-system]
 requires = ["poetry>=0.12"]
 build-backend = "poetry.masonry.api"
