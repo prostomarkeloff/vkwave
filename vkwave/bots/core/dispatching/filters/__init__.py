@@ -11,6 +11,7 @@ from .builtin import (
     FwdMessagesFilter,
     MessageArgsFilter,
     TextContainsFilter,
-    ReplyMessageFilter
+    ReplyMessageFilter,
+    get_text
 )  # noqa: F401
 from .cast import caster as filter_caster  # noqa: F401
