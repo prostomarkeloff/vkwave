@@ -25,18 +25,32 @@ jobs:
       - uses: actions/checkout@master
 
       - name: Set up Python ${{ matrix.python-version }} on ${{ matrix.os }}
-        uses: actions/setup-python@v1
+        uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
 
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip poetry==1.0
+          python -m pip install --upgrade pip
+          python -m pip install poetry
           poetry install
-      - name: Lint code
+          
+      - name: Run flake8
         run: |
           poetry run flake8 vkwave test
+          
+      - name: Run Mypy
+        run: |
           poetry run mypy vkwave
+      
+      - name: Run flake8
+        run: |
+          poetry run pydocstyle vkwave
+        
+      - name: Run pydocstyle
+        run: |
+          poetry run pydocstyle
+          
       - name: Run tests
         run: |
           poetry run pytest
