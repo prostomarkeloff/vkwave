@@ -1,7 +1,7 @@
 import json
 import re
 import typing
-from typing import Dict, Tuple, Union
+from typing import Dict, List, Tuple, Union
 
 from typing_extensions import Literal
 
@@ -11,6 +11,7 @@ from vkwave.bots.core.types.json_types import JSONDecoder
 from vkwave.types.bot_events import BotEventType
 from vkwave.types.objects import MessagesMessageActionStatus
 from vkwave.types.user_events import EventId, MessageFlag
+
 from .base import BaseFilter, FilterResult
 
 MessageEventUser: Tuple[int] = EventId.MESSAGE_EVENT.value
@@ -119,7 +120,9 @@ class TextFilter(BaseFilter):
 class PayloadFilter(BaseFilter):
     """Filter for message payload"""
 
-    def __init__(self, payload: typing.Optional[Dict[str, str]], json_loader: JSONDecoder = json.loads):
+    def __init__(
+        self, payload: typing.Optional[Dict[str, str]], json_loader: JSONDecoder = json.loads
+    ):
         self.json_loader = json_loader
         self.payload = payload
 
@@ -199,15 +202,71 @@ class CommandsFilter(BaseFilter):
         return FilterResult(False)
 
 
+class CommandLineFilter(BaseFilter):
+    """Filters like argparse.
+    
+    >>> "!command -arg=1234 --option /echo -arg234=bulocka -argument 2134fwwf"
+    """
+
+    def __init__(
+        self, ignore_case: bool = True,
+    ):
+        self.ic = ignore_case
+
+    async def check(self, event: BaseEvent) -> FilterResult:
+        """Checks
+
+        Args:
+            event (BaseEvent): Event
+
+        Raises:
+            ValueError: If parse arguments failed
+
+        Returns:
+            FilterResult: result
+        """
+        text = get_text(event)
+
+        if text is None:
+            return FilterResult(False)
+
+        opt = "--"
+        com = ("!", "/")
+        arg = "-"
+
+        if self.ic:
+            text = text.lower()
+
+        event["args"] = args = text.split()
+        for el in args:
+            if el.startswith(opt):
+                event["options"].append(el)
+
+            elif el.startswith(arg):
+                if "=" in el:  # TODO: если попадется -arg="ghjhgtrf" нам писец
+                    event["arguments"].update({el[: el.index("=")]: el[el.index("=") + 1 :]})
+                else:
+                    try:
+                        event["arguments"].update({el: args[args.index(el) + 1]})
+                    except IndexError:
+                        raise ValueError("Missing argument value")
+
+            elif el.startswith(com):
+                event["command"] = el
+
+        return FilterResult(True)
+
+
 class RegexFilter(BaseFilter):
     """
     Message text regex filter
 
     >>> regex = RegexFilter # alias
     >>> _ = regex(r".+")  # any string  (example match: "hello world!!!")
-    >>> _ = regex(r"\d+")  # any integer number (example match: "254")  # noqa: W605
-    >>> _ = regex(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)")  # any email (example match: "email@example.com")  # noqa: W605
-    >>> _ = regex(r"abc-\d\d", flags=re.IGNORECASE)  # example match: "Abc-54"  # noqa: W605
+    >>> _ = regex(r"\d+")  # any integer number (example match: "254") # noqa: W605
+    >>> _ = regex(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)")
+    # any email (example match: "email@example.com")  # noqa: W605
+    >>> _ = regex(r"abc-\d\d", flags=re.IGNORECASE)  # example match: "Abc-54" # noqa: W605
 
     >>> regex_filter = regex(r"user#\d{1,4}")  # example match: "user#723"  # noqa: W605
     >>> @router.registrar.with_decorator(regex_filter)
@@ -282,7 +341,6 @@ class FromMeFilter(BaseFilter):
         is_message_event(event)
         if event.bot_type == BotType.BOT:
             raise RuntimeError("Сannot be used in bot")
-        event: UserEvent
         return FilterResult(self.from_me == is_from_me(event))
 
 
