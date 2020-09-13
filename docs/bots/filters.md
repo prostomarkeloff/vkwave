@@ -12,7 +12,7 @@ from vkwave.bots import SimpleLongPollBot
 bot = SimpleLongPollBot(tokens="MyToken", group_id=123456789)
 
 @bot.message_handler()
-def handle(event) -> str:
+def handle(event: bot.SimpleBotEvent) -> str:
     return "Hello world!"
 
 bot.run_forever()
