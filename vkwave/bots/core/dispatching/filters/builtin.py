@@ -119,7 +119,9 @@ class TextFilter(BaseFilter):
 class PayloadFilter(BaseFilter):
     """Filter for message payload"""
 
-    def __init__(self, payload: typing.Optional[Dict[str, str]], json_loader: JSONDecoder = json.loads):
+    def __init__(
+        self, payload: typing.Optional[Dict[str, str]], json_loader: JSONDecoder = json.loads
+    ):
         self.json_loader = json_loader
         self.payload = payload
 
@@ -232,39 +234,34 @@ class MessageFromConversationTypeFilter(BaseFilter):
     >>> _ = conv_type("from_direct")
     >>> _ = conv_type("from_dm")
     >>> _ = conv_type("from_chat")
+    >>> _ = conv_type("chat")
     
     >>> from_pm = conv_type("from_pm")
     >>> @router.registrar.with_decorator(from_pm)
     """
 
-    def __init__(self, from_what: Literal["from_pm", "from_dm", "from_direct", "from_chat"]):
-        # 0: pm; 1: chat
-        self.from_what: Literal[0, 1] = 0 if from_what in (
-            "from_pm",
-            "from_dm",
-            "from_direct",
-        ) else 1
+    PERSONAL_MESSAGE_TYPES = ("from_pm", "from_dm", "from_direct")
+    CHAT_MESSAGE_TYPES = ("from_chat", "chat")
+
+    def __init__(self, from_what: Literal["from_pm", "from_dm", "from_direct", "from_chat", "chat"]):
+        # 0: personal message; 1: chat message
+        self.from_what: Literal[0, 1]
+        if from_what in self.PERSONAL_MESSAGE_TYPES:
+            self.from_what = 0
+        elif from_what in self.CHAT_MESSAGE_TYPES:
+            self.from_what = 1
+        else:
+            raise ValueError(f"Unknown message type, got {from_what}")
 
     async def check(self, event: BaseEvent) -> FilterResult:
         is_message_event(event)
         if event.bot_type is BotType.USER:
-            raise NotImplementedError("Not implemented yet")
+            peer_id = event.object.object.peer_id
         else:
-            peer_id: int
-            from_id: int
-            peer_id, from_id = (
-                event.object.object.message.peer_id,
-                event.object.object.message.from_id,
-            )
+            peer_id = event.object.object.message.peer_id
+        status = (peer_id >= 2e9).real
 
-            status: int
-
-            if peer_id == from_id:
-                status = 0
-            else:
-                status = 1
-
-            return FilterResult(self.from_what == status)
+        return FilterResult(self.from_what == status)
 
 
 class FromMeFilter(BaseFilter):
