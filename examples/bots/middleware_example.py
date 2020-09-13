@@ -3,7 +3,7 @@ Answer on all messages besides "dog"
 """
 
 
-from vkwave.bots import SimpleLongPollBot, BotEvent, BaseMiddleware, MiddlewareResult
+from vkwave.bots import BaseMiddleware, BotEvent, MiddlewareResult, SimpleLongPollBot
 
 bot = SimpleLongPollBot(tokens="123", group_id=456,)
 
@@ -26,7 +26,19 @@ async def check(event: BotEvent) -> MiddlewareResult:
 
 @bot.message_handler()
 async def handle(event: bot.SimpleBotEvent):
-    await event.answer(f"i love cats")
+    await event.answer("i love cats")
 
 
 bot.run_forever()
+
+"""
+Как подключить мидлварь из встроенных:
+
+from vkwave.bots.core.dispatching.dp.middleware.extension_middlewares import CommandLineMiddleware
+
+bot.add_middleware(CommandLineMiddleware())
+
+такой подход позволил создавать меньше всего кода, как вам, так и мне =)
+При этом мы получаем обычный мидлварь, умеющий в пред/пост роутинг.
+
+"""

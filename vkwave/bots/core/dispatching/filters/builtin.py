@@ -1,7 +1,6 @@
 import json
 import re
-import typing
-from typing import Dict, List, Tuple, Union
+from typing import Dict, List, Optional, Tuple, Union
 
 from typing_extensions import Literal
 
@@ -45,7 +44,7 @@ def has_payload(event: BaseEvent):
     return False
 
 
-def get_text(event: BaseEvent) -> typing.Optional[str]:
+def get_text(event: BaseEvent) -> Optional[str]:
     is_message_event(event)
     if event.bot_type is BotType.USER:
         if event.object.object.dict().get("text") is None:
@@ -86,7 +85,7 @@ class EventTypeFilter(BaseFilter):
         raise NotImplementedError("There is no implementation for this type of bot")
 
 
-AnyText = typing.Union[typing.Tuple[str, ...], typing.List[str], str]
+AnyText = Union[Tuple[str, ...], List[str], str]
 
 
 class TextFilter(BaseFilter):
@@ -120,9 +119,7 @@ class TextFilter(BaseFilter):
 class PayloadFilter(BaseFilter):
     """Filter for message payload"""
 
-    def __init__(
-        self, payload: typing.Optional[Dict[str, str]], json_loader: JSONDecoder = json.loads
-    ):
+    def __init__(self, payload: Optional[Dict[str, str]], json_loader: JSONDecoder = json.loads):
         self.json_loader = json_loader
         self.payload = payload
 
@@ -178,10 +175,7 @@ class CommandsFilter(BaseFilter):
     """
 
     def __init__(
-        self,
-        commands: AnyText,
-        prefixes: typing.Tuple[str, ...] = ("/", "!"),
-        ignore_case: bool = True,
+        self, commands: AnyText, prefixes: Tuple[str, ...] = ("/", "!"), ignore_case: bool = True,
     ):
         self.commands = (commands,) if isinstance(commands, str) else commands
         self.prefixes = prefixes
@@ -200,61 +194,6 @@ class CommandsFilter(BaseFilter):
                 if text.startswith(f"{prefix}{command}"):
                     return FilterResult(True)
         return FilterResult(False)
-
-
-class CommandLineFilter(BaseFilter):
-    """Filters like argparse.
-    
-    >>> "!command -arg=1234 --option /echo -arg234=bulocka -argument 2134fwwf"
-    """
-
-    def __init__(
-        self, ignore_case: bool = True,
-    ):
-        self.ic = ignore_case
-
-    async def check(self, event: BaseEvent) -> FilterResult:
-        """Checks
-
-        Args:
-            event (BaseEvent): Event
-
-        Raises:
-            ValueError: If parse arguments failed
-
-        Returns:
-            FilterResult: result
-        """
-        text = get_text(event)
-
-        if text is None:
-            return FilterResult(False)
-
-        opt = "--"
-        com = ("!", "/")
-        arg = "-"
-
-        if self.ic:
-            text = text.lower()
-
-        event["args"] = args = text.split()
-        for el in args:
-            if el.startswith(opt):
-                event["options"].append(el)
-
-            elif el.startswith(arg):
-                if "=" in el:  # TODO: если попадется -arg="ghjhgtrf" нам писец
-                    event["arguments"].update({el[: el.index("=")]: el[el.index("=") + 1 :]})
-                else:
-                    try:
-                        event["arguments"].update({el: args[args.index(el) + 1]})
-                    except IndexError:
-                        raise ValueError("Missing argument value")
-
-            elif el.startswith(com):
-                event["command"] = el
-
-        return FilterResult(True)
 
 
 class RegexFilter(BaseFilter):

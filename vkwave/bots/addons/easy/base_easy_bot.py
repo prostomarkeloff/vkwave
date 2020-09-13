@@ -4,42 +4,46 @@ import typing
 from vkwave.api import API, APIOptionsRequestContext
 from vkwave.api.token.token import (
     BotSyncPoolTokens,
-    UserSyncSingleToken,
-    Token,
     BotSyncSingleToken,
+    Token,
+    UserSyncSingleToken,
 )
-from vkwave.bots.addons.easy.easy_handlers import SimpleUserEvent, SimpleBotEvent, SimpleBotCallback
-from vkwave.bots.core import BaseFilter
 from vkwave.bots import (
-    Dispatcher,
     BaseEvent,
-    UserEvent,
     BotEvent,
     BotLongpollExtension,
-    UserLongpollExtension,
+    BotType,
     ChatActionFilter,
     CommandsFilter,
-    EventTypeFilter,
-    PayloadFilter,
-    RegexFilter,
-    TextFilter,
-    FromMeFilter,
     DefaultRouter,
-    TokenStorage,
-    UserTokenStorage,
-    UserId,
-    GroupId,
-    BotType,
+    Dispatcher,
+    EventTypeFilter,
+    FromMeFilter,
     FwdMessagesFilter,
+    GroupId,
     MessageArgsFilter,
     MessageFromConversationTypeFilter,
+    PayloadFilter,
+    RegexFilter,
+    ReplyMessageFilter,
     TextContainsFilter,
-    ReplyMessageFilter
+    TextFilter,
+    TokenStorage,
+    UserEvent,
+    UserId,
+    UserLongpollExtension,
+    UserTokenStorage,
 )
+from vkwave.bots.addons.easy.easy_handlers import (
+    SimpleBotCallback,
+    SimpleBotEvent,
+    SimpleUserEvent,
+)
+from vkwave.bots.core import BaseFilter
 from vkwave.bots.core.dispatching.dp.middleware.middleware import BaseMiddleware, MiddlewareResult
 from vkwave.bots.core.dispatching.filters.extension_filters import VBMLFilter
-from vkwave.bots.fsm.filters import StateFilter
 from vkwave.bots.core.dispatching.router.router import BaseRouter
+from vkwave.bots.fsm.filters import StateFilter
 from vkwave.client import AIOHTTPClient
 from vkwave.longpoll import BotLongpoll, BotLongpollData, UserLongpoll, UserLongpollData
 from vkwave.types.bot_events import BotEventType
@@ -110,6 +114,7 @@ class BaseSimpleLongPollBot:
             self._lp = BotLongpollExtension(self.dispatcher, self._lp)
 
         self.middleware_manager = self.dispatcher.middleware_manager  # auf
+        self.add_middleware = self.middleware_manager.add_middleware
 
         self.router = router or DefaultRouter()
         self.dispatcher.add_router(self.router)
@@ -152,6 +157,7 @@ class BaseSimpleLongPollBot:
         """
         Handler only for message events
         """
+
         def decorator(func: typing.Callable[..., typing.Any]):
             record = self.router.registrar.new()
             record.with_filters(*filters)
