@@ -70,11 +70,10 @@ class LowLevelBot:
         :param fast_mode: - return raw events
         :param ignore_errors: - ignore all lp errors, (internet connection or vk internal server errors)
         """
-
-        def return_event(_event):
-            if fast_mode:
-                return _event
-            return self.get_event_object(_event)
+        if fast_mode:
+            return_event = lambda _event: _event
+        else:
+            return_event = lambda _event: self.get_event_object(_event)
 
         async for event in self._listen(ignore_errors=ignore_errors):
             yield return_event(event)
