@@ -7,19 +7,17 @@ from vkwave.bots import BaseMiddleware, BotEvent, MiddlewareResult, SimpleLongPo
 
 bot = SimpleLongPollBot(tokens="123", group_id=456,)
 
-"""
-raw middleware:
+# raw middleware:
+# class Middleware(BaseMiddleware):
+#     async def pre_process_event(self, event: BotEvent) -> MiddlewareResult:
+#         if event.object.object.message.text == "dog":
+#             return MiddlewareResult(False)
+#         return MiddlewareResult(True)
 
-class Middleware(BaseMiddleware):
-    async def pre_process_event(self, event: BotEvent) -> MiddlewareResult:
-        if event.object.object.message.text == "dog":
-            return MiddlewareResult(False)
-        return MiddlewareResult(True)
+# bot.middleware_manager.add_middleware(Middleware())
+# или
+# bot.add_middleware(Middleware())
 
-bot.middleware_manager.add_middleware(Middleware())
-или
-bot.add_middleware(Middleware())
-"""
 
 """
 Мидлварь имеет два основных асинхронных(!) метода:
