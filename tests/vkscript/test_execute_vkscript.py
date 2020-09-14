@@ -49,7 +49,7 @@ def demo_assignments():
 @execute
 def demo_functions():
     test = [0, 1, 3, 4]
-    tmp = test[0:2]
+    tmp = test[0:2]  # noqa
     end = test.pop()
     begin = test.shift()
     test.unshift(begin)

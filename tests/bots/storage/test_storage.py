@@ -10,7 +10,6 @@ from vkwave.bots.storage.base import AbstractExpiredStorage, AbstractStorage
 from vkwave.bots.storage.storages import RedisStorage, Storage, TTLStorage, VKStorage
 from vkwave.bots.storage.types import TTL, Key
 from vkwave.client.default import AIOHTTPClient
-from vkwave.http import AIOHTTPClient
 
 
 async def storage_interact_test(
