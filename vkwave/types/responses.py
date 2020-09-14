@@ -3358,7 +3358,8 @@ class StorageGetResponse(pydantic.BaseModel):
 
 
 class StorageGetV5110Response(pydantic.BaseModel):
-    response: typing.List["StorageValue"] = pydantic.Field(
+    # {'response': ''} ??
+    response: typing.Union[typing.List["StorageValue"], str] = pydantic.Field(
         ..., description="",
     )
 
