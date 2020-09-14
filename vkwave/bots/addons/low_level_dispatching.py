@@ -1,13 +1,14 @@
 import asyncio
-import typing
 import logging
+import typing
 
 from vkwave.bots.addons.easy import create_api_session_aiohttp
-from vkwave.longpoll import BotLongpoll, BotLongpollData, UserLongpollData, UserLongpoll
+from vkwave.longpoll import BotLongpoll, BotLongpollData, UserLongpoll, UserLongpollData
 from vkwave.longpoll.bot import Update
-from vkwave.types.user_events import get_event_object as user_get_event_object, BaseUserEvent
-from vkwave.types.bot_events import get_event_object as bot_get_event_object, BaseBotEvent
-
+from vkwave.types.bot_events import BaseBotEvent
+from vkwave.types.bot_events import get_event_object as bot_get_event_object
+from vkwave.types.user_events import BaseUserEvent
+from vkwave.types.user_events import get_event_object as user_get_event_object
 
 logger = logging.getLogger(__name__)
 
@@ -22,7 +23,7 @@ class LowLevelBot:
         token: str,
         group_id: typing.Optional[int] = None,
         loop: typing.Optional[asyncio.AbstractEventLoop] = None,
-        uvloop: bool = False
+        uvloop: bool = False,
     ):
         """
         exist group_id - bot_type == BOT
@@ -30,6 +31,7 @@ class LowLevelBot:
         """
         if uvloop:
             import uvloop
+
             asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
         self.token = token
         self.group_id = group_id
@@ -68,10 +70,11 @@ class LowLevelBot:
         :param fast_mode: - return raw events
         :param ignore_errors: - ignore all lp errors, (internet connection or vk internal server errors)
         """
-        if fast_mode:
-            return_event = lambda _event: _event
-        else:
-            return_event = lambda _event: self.get_event_object(_event)
+
+        def return_event(_event):
+            if fast_mode:
+                return _event
+            return self.get_event_object(_event)
 
         async for event in self._listen(ignore_errors=ignore_errors):
             yield return_event(event)
