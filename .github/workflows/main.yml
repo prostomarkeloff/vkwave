@@ -33,6 +33,9 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install poetry
           poetry install
+      
+      - name: Setup flake8 annotations
+        uses: rbialon/flake8-annotations@v1
 
       - name: Run flake8
         run: |
@@ -41,14 +44,14 @@ jobs:
       - name: Run Mypy
         run: |
           poetry run mypy vkwave
-
-      - name: Run flake8
+          
+      - name: Run black
         run: |
-          poetry run pydocstyle vkwave
-
-      - name: Run pydocstyle
+          poetry run black vkwave tests
+          
+      - name: Run Isort
         run: |
-          poetry run pydocstyle
+          poetry run isort vkwave tests
 
       - name: Run tests
         run: |
