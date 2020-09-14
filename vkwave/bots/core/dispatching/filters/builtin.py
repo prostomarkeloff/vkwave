@@ -239,7 +239,9 @@ class MessageFromConversationTypeFilter(BaseFilter):
     PERSONAL_MESSAGE_TYPES = ("from_pm", "from_dm", "from_direct")
     CHAT_MESSAGE_TYPES = ("from_chat", "chat")
 
-    def __init__(self, from_what: Literal["from_pm", "from_dm", "from_direct", "from_chat", "chat"]):
+    def __init__(
+        self, from_what: Literal["from_pm", "from_dm", "from_direct", "from_chat", "chat"]
+    ):
         # 0: personal message; 1: chat message
         self.from_what: Literal[0, 1]
         if from_what in self.PERSONAL_MESSAGE_TYPES:

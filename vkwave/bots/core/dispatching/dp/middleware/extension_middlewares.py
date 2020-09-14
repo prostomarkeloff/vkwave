@@ -13,15 +13,20 @@ class CommandLineMiddleware(BaseMiddleware):
     """Для парсинга сообщения like argparse.
     
     >>> clm = CommandLineMiddleware # alias
-    >>> bot.add_middleware(clm)
+    >>> bot.add_middleware(clm())
     """
+
+    def __init__(self, ignore_case: bool = False):
+        self.ic = ignore_case
 
     async def pre_process_event(self, event: BotEvent) -> MiddlewareResult:
         text: Optional[str] = get_text(event)
 
         if text is None:
             return MiddlewareResult(False)
-        # TODO: Добавить ignore case, я хз как это сделать
+
+        if self.ic:
+            text = text.lower()
 
         event["args"] = args = text.split()
         event["arguments"] = {}
@@ -44,7 +49,7 @@ class CommandLineMiddleware(BaseMiddleware):
             if el.startswith("-"):
                 if "=" in el:  # TODO: если попадется -arg="ghjhgtrf" нам писец
                     event["arguments"].update({el[: el.index("=")]: el[el.index("=") + 1 :]})
-                else:  # Я уже забыл как наяваял эту херню
+                else:
                     try:
                         event["arguments"].update({el: args[args.index(el) + 1]})
                     except IndexError:
