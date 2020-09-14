@@ -318,6 +318,7 @@ class BaseLinkButtonActionType(str, Enum):
 class BaseLinkButtonStyle(str, Enum):
     pass
 
+
 class BaseLinkProduct(pydantic.BaseModel):
     price: "MarketPrice" = pydantic.Field(..., description="", )
     merchant: typing.Optional[str] = pydantic.Field(None, description="", )
