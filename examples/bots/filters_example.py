@@ -1,48 +1,44 @@
 from vkwave.bots import SimpleLongPollBot
 
-
 bot = SimpleLongPollBot(tokens="1234", group_id=456)
 
-"""
-from vkwave.bots.core.dispatching.filters.base import BaseEvent, BaseFilter, FilterResult
+# from vkwave.bots.core.dispatching.filters.base import BaseEvent, BaseFilter, FilterResult
+
+# class BotFilter(BaseFilter):
+#     async def check(self, event: BaseEvent) -> FilterResult:
+
+#         text: str = event.object.object.message.text
+
+#         if "я бот" in text:
+#             return FilterResult(True)
+#         return FilterResult(False)
+
+# @bot.message_handler(BotFilter())
+# async def handle(event: bot.SimpleBotEvent):
+#     await event.answer("Бот Детектед")
+
+# Мы переопределили метод check в классе-фильтре. Он у фильтра главный.
 
 
-class BotFilter(BaseFilter):
-    async def check(self, event: BaseEvent) -> FilterResult:
+# На самом деле bot.command_filter, bot.args_filter и тд. - ссылки на классы-фильтры(наследуемые от BaseFilter).
 
-        text: str = event.object.object.message.text
+# из исходников :
 
-        if "я бот" in text:
-            return FilterResult(True)
-        return FilterResult(False)
+# class CommandsFilter(BaseFilter):
+#     ...
 
-@bot.message_handler(BotFilter())
-async def handle(event: bot.SimpleBotEvent):
-    await event.answer("Бот Детектед")
-    
-Мы переопределили метод check в классе-фильтре. Он у фильтра главный.
-    
-"""
+# class BaseSimpleLongPollBot:
+#     def __init__(self, ...):
+#     ...
+#     self.command_filter = CommandsFilter
+#     ...
 
-"""
-На самом деле bot.command_filter, bot.args_filter и тд. - ссылки на классы-фильтры(наследуемые от BaseFilter).
+# Я, конечно же, сократил код, но суть вы поняли.
 
-из исходников :
 
-class CommandsFilter(BaseFilter):
-    ...
-
-class BaseSimpleLongPollBot:
-    def __init__(self, ...):
-    ...
-    self.command_filter = CommandsFilter
-    ...
-    
-Я, конечно же, сократил код, но суть вы поняли.
-
-"""
-
-@bot.message_handler(bot.conversation_type_filter(from_what="from_chat")) # В хэндлер, к слову, вы можете запихать сколько душе угодно фильтров(там *args стоит). 
+@bot.message_handler(
+    bot.conversation_type_filter(from_what="from_chat")
+)  # В хэндлер, к слову, вы можете запихать сколько душе угодно фильтров(там *args стоит).
 async def handle(event: bot.SimpleBotEvent):
     await event.answer("hello to chat!")
 
@@ -62,19 +58,18 @@ async def handle(event: bot.SimpleBotEvent):
 async def handle(event: bot.SimpleBotEvent):
     await event.answer(f"Your text contains 'wow', wow!")
 
+
 bot.run_forever()
-"""
-P.S.
 
-@bot.message_handler()
-async def handle(event: BotEvent):
-    await event.answer("Hello World!")
-    
-и 
+# P.S.
 
-@bot.message_handler()
-async def handle(event: BotEvent):
-    return "Hello World!"
-одно и тоже(есть свои нюансы, но вцелом это так)
+# @bot.message_handler()
+# async def handle(event: BotEvent):
+#     await event.answer("Hello World!")
+# и
 
-"""
+# @bot.message_handler()
+# async def handle(event: BotEvent):
+#     return "Hello World!"
+
+# одно и тоже(есть свои нюансы, но вцелом это так)
