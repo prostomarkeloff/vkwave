@@ -318,6 +318,7 @@ class BaseLinkButtonActionType(str, Enum):
 class BaseLinkButtonStyle(str, Enum):
     pass
 
+
 class BaseLinkProduct(pydantic.BaseModel):
     price: "MarketPrice" = pydantic.Field(..., description="", )
     merchant: typing.Optional[str] = pydantic.Field(None, description="", )
@@ -4704,380 +4705,384 @@ class WallWallpostFull(WallWallpost):
                                                                    description="Information whether the post is marked as ads", )
     short_text_rate: typing.Optional[int] = pydantic.Field(None, description="Preview length control parameter", )
 
+objects = (
+    AccountNameRequest,
+    AccountPushConversations,
+    AccountPushParams,
+    AccountUserSettingsInterest,
+    AccountUserSettingsInterests,
+    AdsDemostatsFormat,
+    AdsStatsFormat,
+    AdsStatsViewsTimes,
+    AppsAppMin,
+    AudioAudio,
+    BaseCity,
+    BaseCommentsInfo,
+    BaseCountry,
+    BaseGeo,
+    BaseGeoCoordinates,
+    BaseLikes,
+    BaseLikesInfo,
+    BaseLink,
+    BaseLinkApplication,
+    BaseLinkApplicationStore,
+    BaseLinkButton,
+    BaseLinkButtonAction,
+    BaseLinkProduct,
+    BaseLinkRating,
+    BaseObjectCount,
+    BasePlace,
+    BaseRepostsInfo,
+    BaseSticker,
+    BoardTopic,
+    CommentThread,
+    DocsDoc,
+    DocsDocPreview,
+    DocsDocPreviewAudioMsg,
+    DocsDocPreviewGraffiti,
+    DocsDocPreviewPhoto,
+    DocsDocPreviewVideo,
+    EventsEventAttach,
+    FriendsRequestsMutual,
+    GiftsLayout,
+    GroupsAddressTimetable,
+    GroupsAddressTimetableDay,
+    GroupsBanInfo,
+    GroupsGroup,
+    GroupsGroupAttach,
+    GroupsLongPollEvents,
+    LeadsLeadDays,
+    LinkTargetObject,
+    MarketCurrency,
+    MarketMarketAlbum,
+    MarketMarketCategory,
+    MarketMarketItem,
+    MarketPrice,
+    MarketSection,
+    MediaRestriction,
+    MessagesAudioMessage,
+    MessagesChatPushSettings,
+    MessagesConversation,
+    MessagesConversationPeer,
+    MessagesForeignMessage,
+    MessagesGraffiti,
+    MessagesHistoryMessageAttachment,
+    MessagesKeyboard,
+    MessagesKeyboardButtonAction,
+    MessagesMessage,
+    MessagesMessageAction,
+    MessagesMessageActionPhoto,
+    MessagesMessageRequestData,
+    NotificationsFeedback,
+    NotificationsReply,
+    NotificationsSendMessageError,
+    PagesWikipageFull,
+    PhotosPhoto,
+    PhotosPhotoAlbum,
+    PollsBackground,
+    PollsPoll,
+    PollsVotersUsers,
+    StatsActivity,
+    StatsReach,
+    StatsViews,
+    StoriesClickableStickers,
+    StoriesPromoBlock,
+    StoriesReplies,
+    StoriesStory,
+    StoriesStoryLink,
+    StoriesStoryStatsStat,
+    UsersCropPhotoCrop,
+    UsersCropPhotoRect,
+    UsersPersonal,
+    UsersUserConnections,
+    UsersUserMin,
+    VideoRestrictionButton,
+    WallAppPost,
+    WallAttachedNote,
+    WallGeo,
+    WallGraffiti,
+    WallPostCopyright,
+    WallPostSource,
+    WallPostedPhoto,
+    WallViews,
+    WallWallComment,
+    WallWallpost,
+    WidgetsCommentMedia,
+    WidgetsCommentReplies,
+    WidgetsWidgetLikes,
+    AccountAccountCounters,
+    AccountInfo,
+    AccountOffer,
+    AccountPushConversationsItem,
+    AccountPushSettings,
+    AdsAccesses,
+    AdsAccount,
+    AdsAd,
+    AdsAdLayout,
+    AdsCampaign,
+    AdsCategory,
+    AdsClient,
+    AdsCriteria,
+    AdsDemoStats,
+    AdsFloodStats,
+    AdsLinkStatus,
+    AdsLookalikeRequest,
+    AdsLookalikeRequestSaveAudienceLevel,
+    AdsMusician,
+    AdsParagraphs,
+    AdsPromotedPostReach,
+    AdsRejectReason,
+    AdsRules,
+    AdsStats,
+    AdsStatsAge,
+    AdsStatsCities,
+    AdsStatsSex,
+    AdsStatsSexAge,
+    AdsTargStats,
+    AdsTargSuggestions,
+    AdsTargSuggestionsCities,
+    AdsTargSuggestionsRegions,
+    AdsTargSuggestionsSchools,
+    AdsTargetGroup,
+    AdsUsers,
+    AppsLeaderboard,
+    AppsScope,
+    BaseError,
+    BaseGradientPoint,
+    BaseImage,
+    BaseMessageError,
+    BaseObject,
+    BaseObjectWithName,
+    BaseRequestParam,
+    BaseStickerAnimation,
+    BaseUploadServer,
+    BaseUserId,
+    BoardTopicComment,
+    BoardTopicPoll,
+    CallbackBoardPostDelete,
+    CallbackConfirmationMessage,
+    CallbackGroupChangePhoto,
+    CallbackGroupChangeSettings,
+    CallbackGroupJoin,
+    CallbackGroupLeave,
+    CallbackGroupOfficersEdit,
+    CallbackGroupSettingsChanges,
+    CallbackLikeAddRemove,
+    CallbackMarketComment,
+    CallbackMarketCommentDelete,
+    CallbackMessageAllow,
+    CallbackMessageBase,
+    CallbackMessageDeny,
+    CallbackPhotoComment,
+    CallbackPhotoCommentDelete,
+    CallbackPollVoteNew,
+    CallbackQrScan,
+    CallbackUserBlock,
+    CallbackUserUnblock,
+    CallbackVideoComment,
+    CallbackVideoCommentDelete,
+    CallbackWallCommentDelete,
+    DatabaseFaculty,
+    DatabaseRegion,
+    DatabaseSchool,
+    DatabaseStation,
+    DatabaseUniversity,
+    DocsDocPreviewPhotoSizes,
+    DocsDocTypes,
+    DocsDocUploadResponse,
+    FaveBookmark,
+    FavePage,
+    FaveTag,
+    FriendsFriendStatus,
+    FriendsFriendsList,
+    FriendsMutualFriend,
+    FriendsRequests,
+    FriendsRequestsXtrMessage,
+    GiftsGift,
+    GroupsAddress,
+    GroupsAddressesInfo,
+    GroupsBannedItem,
+    GroupsCallbackServer,
+    GroupsCallbackSettings,
+    GroupsContactsItem,
+    GroupsCountersGroup,
+    GroupsCover,
+    GroupsGroupBanInfo,
+    GroupsGroupCategory,
+    GroupsGroupCategoryFull,
+    GroupsGroupCategoryType,
+    GroupsGroupLink,
+    GroupsGroupPublicCategoryList,
+    GroupsGroupXtrInvitedBy,
+    GroupsGroupsArray,
+    GroupsLinksItem,
+    GroupsLongPollServer,
+    GroupsLongPollSettings,
+    GroupsMarketInfo,
+    GroupsMemberRole,
+    GroupsMemberStatus,
+    GroupsMemberStatusFull,
+    GroupsOnlineStatus,
+    GroupsOwnerXtrBanInfo,
+    GroupsSettingsTwitter,
+    GroupsSubjectItem,
+    GroupsTokenPermissionSetting,
+    LeadsChecked,
+    LeadsComplete,
+    LeadsEntry,
+    LeadsLead,
+    LeadsStart,
+    MessageChatPreview,
+    MessagesChat,
+    MessagesChatFull,
+    MessagesChatRestrictions,
+    MessagesConversationMember,
+    MessagesConversationWithMessage,
+    MessagesHistoryAttachment,
+    MessagesKeyboardButton,
+    MessagesLastActivity,
+    MessagesLongpollMessages,
+    MessagesLongpollParams,
+    MessagesMessageAttachment,
+    MessagesPinnedMessage,
+    NewsfeedEventActivity,
+    NewsfeedItemAudioAudio,
+    NewsfeedItemBase,
+    NewsfeedItemFriendFriends,
+    NewsfeedItemHolidayRecommendationsBlockHeader,
+    NewsfeedItemNoteNotes,
+    NewsfeedItemPhotoPhotos,
+    NewsfeedItemPhotoTagPhotoTags,
+    NewsfeedItemPromoButtonAction,
+    NewsfeedItemPromoButtonImage,
+    NewsfeedItemVideoVideo,
+    NewsfeedItemWallpostFeedback,
+    NewsfeedItemWallpostFeedbackAnswer,
+    NewsfeedList,
+    NewsfeedNewsfeedNote,
+    NotesNote,
+    NotesNoteComment,
+    NotificationsNotification,
+    NotificationsNotificationsComment,
+    NotificationsSendMessageItem,
+    OauthError,
+    OrdersAmount,
+    OrdersAmountItem,
+    OrdersOrder,
+    OrdersSubscription,
+    OwnerState,
+    PagesWikipage,
+    PagesWikipageHistory,
+    PhotosCommentXtrPid,
+    PhotosImage,
+    PhotosMarketAlbumUploadResponse,
+    PhotosMarketUploadResponse,
+    PhotosMessageUploadResponse,
+    PhotosOwnerUploadResponse,
+    PhotosPhotoAlbumFull,
+    PhotosPhotoFull,
+    PhotosPhotoFullXtrRealOffset,
+    PhotosPhotoSizes,
+    PhotosPhotoTag,
+    PhotosPhotoUpload,
+    PhotosPhotoUploadResponse,
+    PhotosPhotoXtrRealOffset,
+    PhotosPhotoXtrTagInfo,
+    PhotosTagsSuggestionItem,
+    PhotosTagsSuggestionItemButton,
+    PhotosWallUploadResponse,
+    PollsAnswer,
+    PollsFriend,
+    PollsVoters,
+    PrettyCardsPrettyCard,
+    SearchHint,
+    SecureLevel,
+    SecureSmsNotification,
+    SecureTokenChecked,
+    SecureTransaction,
+    StatsCity,
+    StatsCountry,
+    StatsPeriod,
+    StatsSexAge,
+    StatsWallpostStat,
+    StatusStatus,
+    StorageValue,
+    StoriesClickableArea,
+    StoriesClickableSticker,
+    StoriesFeedItem,
+    StoriesStatLine,
+    StoriesStoryStats,
+    StoriesViewersItem,
+    UsersCareer,
+    UsersCropPhoto,
+    UsersExports,
+    UsersLastSeen,
+    UsersMilitary,
+    UsersOccupation,
+    UsersRelative,
+    UsersSchool,
+    UsersUniversity,
+    UsersUserCounters,
+    UsersUserSettingsXtr,
+    UsersUsersArray,
+    UtilsDomainResolved,
+    UtilsLastShortenedLink,
+    UtilsLinkChecked,
+    UtilsLinkStats,
+    UtilsLinkStatsExtended,
+    UtilsShortLink,
+    UtilsStats,
+    UtilsStatsCity,
+    UtilsStatsCountry,
+    UtilsStatsExtended,
+    UtilsStatsSexAge,
+    VideoLiveSettings,
+    VideoSaveResult,
+    VideoVideoAlbumFull,
+    VideoVideoFiles,
+    WallCarouselBase,
+    WallCommentAttachment,
+    WallWallpostAttachment,
+    WallWallpostToId,
+    WidgetsCommentRepliesItem,
+    WidgetsWidgetComment,
+    WidgetsWidgetPage,
+    UsersUser,
+    UsersUserFull,
+    UsersUserXtrType,
+    AccountUserSettings,
+    AdsTargSettings,
+    AppsApp,
+    DatabaseCity,
+    FriendsFriendExtendedStatus,
+    FriendsUserXtrLists,
+    FriendsUserXtrPhone,
+    GroupsBannedItem,
+    GroupsGroupFull,
+    GroupsUserXtrRole,
+    MarketMarketItemFull,
+    MessagesUserXtrInvitedBy,
+    NewsfeedItemAudio,
+    NewsfeedItemDigest,
+    NewsfeedItemFriend,
+    NewsfeedItemNote,
+    NewsfeedItemPhoto,
+    NewsfeedItemPhotoTag,
+    NewsfeedItemPromoButton,
+    NewsfeedItemTopic,
+    NewsfeedItemVideo,
+    NewsfeedItemWallpost,
+    NewsfeedListFull,
+    NewsfeedNewsfeedItem,
+    NewsfeedNewsfeedPhoto,
+    NotificationsNotificationParent,
+    UsersSubscriptionsItem,
+    UsersUserXtrCounters,
+    VideoVideo,
+    VideoVideoFull,
+    VideoVideoImage,
+    WallWallpostFull,
+)
 
-AccountNameRequest.update_forward_refs()
-AccountPushConversations.update_forward_refs()
-AccountPushParams.update_forward_refs()
-AccountUserSettingsInterest.update_forward_refs()
-AccountUserSettingsInterests.update_forward_refs()
-AdsDemostatsFormat.update_forward_refs()
-AdsStatsFormat.update_forward_refs()
-AdsStatsViewsTimes.update_forward_refs()
-AppsAppMin.update_forward_refs()
-AudioAudio.update_forward_refs()
-BaseCity.update_forward_refs()
-BaseCommentsInfo.update_forward_refs()
-BaseCountry.update_forward_refs()
-BaseGeo.update_forward_refs()
-BaseGeoCoordinates.update_forward_refs()
-BaseLikes.update_forward_refs()
-BaseLikesInfo.update_forward_refs()
-BaseLink.update_forward_refs()
-BaseLinkApplication.update_forward_refs()
-BaseLinkApplicationStore.update_forward_refs()
-BaseLinkButton.update_forward_refs()
-BaseLinkButtonAction.update_forward_refs()
-BaseLinkProduct.update_forward_refs()
-BaseLinkRating.update_forward_refs()
-BaseObjectCount.update_forward_refs()
-BasePlace.update_forward_refs()
-BaseRepostsInfo.update_forward_refs()
-BaseSticker.update_forward_refs()
-BoardTopic.update_forward_refs()
-CommentThread.update_forward_refs()
-DocsDoc.update_forward_refs()
-DocsDocPreview.update_forward_refs()
-DocsDocPreviewAudioMsg.update_forward_refs()
-DocsDocPreviewGraffiti.update_forward_refs()
-DocsDocPreviewPhoto.update_forward_refs()
-DocsDocPreviewVideo.update_forward_refs()
-EventsEventAttach.update_forward_refs()
-FriendsRequestsMutual.update_forward_refs()
-GiftsLayout.update_forward_refs()
-GroupsAddressTimetable.update_forward_refs()
-GroupsAddressTimetableDay.update_forward_refs()
-GroupsBanInfo.update_forward_refs()
-GroupsGroup.update_forward_refs()
-GroupsGroupAttach.update_forward_refs()
-GroupsLongPollEvents.update_forward_refs()
-LeadsLeadDays.update_forward_refs()
-LinkTargetObject.update_forward_refs()
-MarketCurrency.update_forward_refs()
-MarketMarketAlbum.update_forward_refs()
-MarketMarketCategory.update_forward_refs()
-MarketMarketItem.update_forward_refs()
-MarketPrice.update_forward_refs()
-MarketSection.update_forward_refs()
-MediaRestriction.update_forward_refs()
-MessagesAudioMessage.update_forward_refs()
-MessagesChatPushSettings.update_forward_refs()
-MessagesConversation.update_forward_refs()
-MessagesConversationPeer.update_forward_refs()
-MessagesForeignMessage.update_forward_refs()
-MessagesGraffiti.update_forward_refs()
-MessagesHistoryMessageAttachment.update_forward_refs()
-MessagesKeyboard.update_forward_refs()
-MessagesKeyboardButtonAction.update_forward_refs()
-MessagesMessage.update_forward_refs()
-MessagesMessageAction.update_forward_refs()
-MessagesMessageActionPhoto.update_forward_refs()
-MessagesMessageRequestData.update_forward_refs()
-NotificationsFeedback.update_forward_refs()
-NotificationsReply.update_forward_refs()
-NotificationsSendMessageError.update_forward_refs()
-PagesWikipageFull.update_forward_refs()
-PhotosPhoto.update_forward_refs()
-PhotosPhotoAlbum.update_forward_refs()
-PollsBackground.update_forward_refs()
-PollsPoll.update_forward_refs()
-PollsVotersUsers.update_forward_refs()
-StatsActivity.update_forward_refs()
-StatsReach.update_forward_refs()
-StatsViews.update_forward_refs()
-StoriesClickableStickers.update_forward_refs()
-StoriesPromoBlock.update_forward_refs()
-StoriesReplies.update_forward_refs()
-StoriesStory.update_forward_refs()
-StoriesStoryLink.update_forward_refs()
-StoriesStoryStatsStat.update_forward_refs()
-UsersCropPhotoCrop.update_forward_refs()
-UsersCropPhotoRect.update_forward_refs()
-UsersPersonal.update_forward_refs()
-UsersUserConnections.update_forward_refs()
-UsersUserMin.update_forward_refs()
-VideoRestrictionButton.update_forward_refs()
-WallAppPost.update_forward_refs()
-WallAttachedNote.update_forward_refs()
-WallGeo.update_forward_refs()
-WallGraffiti.update_forward_refs()
-WallPostCopyright.update_forward_refs()
-WallPostSource.update_forward_refs()
-WallPostedPhoto.update_forward_refs()
-WallViews.update_forward_refs()
-WallWallComment.update_forward_refs()
-WallWallpost.update_forward_refs()
-WidgetsCommentMedia.update_forward_refs()
-WidgetsCommentReplies.update_forward_refs()
-WidgetsWidgetLikes.update_forward_refs()
-AccountAccountCounters.update_forward_refs()
-AccountInfo.update_forward_refs()
-AccountOffer.update_forward_refs()
-AccountPushConversationsItem.update_forward_refs()
-AccountPushSettings.update_forward_refs()
-AdsAccesses.update_forward_refs()
-AdsAccount.update_forward_refs()
-AdsAd.update_forward_refs()
-AdsAdLayout.update_forward_refs()
-AdsCampaign.update_forward_refs()
-AdsCategory.update_forward_refs()
-AdsClient.update_forward_refs()
-AdsCriteria.update_forward_refs()
-AdsDemoStats.update_forward_refs()
-AdsFloodStats.update_forward_refs()
-AdsLinkStatus.update_forward_refs()
-AdsLookalikeRequest.update_forward_refs()
-AdsLookalikeRequestSaveAudienceLevel.update_forward_refs()
-AdsMusician.update_forward_refs()
-AdsParagraphs.update_forward_refs()
-AdsPromotedPostReach.update_forward_refs()
-AdsRejectReason.update_forward_refs()
-AdsRules.update_forward_refs()
-AdsStats.update_forward_refs()
-AdsStatsAge.update_forward_refs()
-AdsStatsCities.update_forward_refs()
-AdsStatsSex.update_forward_refs()
-AdsStatsSexAge.update_forward_refs()
-AdsTargStats.update_forward_refs()
-AdsTargSuggestions.update_forward_refs()
-AdsTargSuggestionsCities.update_forward_refs()
-AdsTargSuggestionsRegions.update_forward_refs()
-AdsTargSuggestionsSchools.update_forward_refs()
-AdsTargetGroup.update_forward_refs()
-AdsUsers.update_forward_refs()
-AppsLeaderboard.update_forward_refs()
-AppsScope.update_forward_refs()
-BaseError.update_forward_refs()
-BaseGradientPoint.update_forward_refs()
-BaseImage.update_forward_refs()
-BaseMessageError.update_forward_refs()
-BaseObject.update_forward_refs()
-BaseObjectWithName.update_forward_refs()
-BaseRequestParam.update_forward_refs()
-BaseStickerAnimation.update_forward_refs()
-BaseUploadServer.update_forward_refs()
-BaseUserId.update_forward_refs()
-BoardTopicComment.update_forward_refs()
-BoardTopicPoll.update_forward_refs()
-CallbackBoardPostDelete.update_forward_refs()
-CallbackConfirmationMessage.update_forward_refs()
-CallbackGroupChangePhoto.update_forward_refs()
-CallbackGroupChangeSettings.update_forward_refs()
-CallbackGroupJoin.update_forward_refs()
-CallbackGroupLeave.update_forward_refs()
-CallbackGroupOfficersEdit.update_forward_refs()
-CallbackGroupSettingsChanges.update_forward_refs()
-CallbackLikeAddRemove.update_forward_refs()
-CallbackMarketComment.update_forward_refs()
-CallbackMarketCommentDelete.update_forward_refs()
-CallbackMessageAllow.update_forward_refs()
-CallbackMessageBase.update_forward_refs()
-CallbackMessageDeny.update_forward_refs()
-CallbackPhotoComment.update_forward_refs()
-CallbackPhotoCommentDelete.update_forward_refs()
-CallbackPollVoteNew.update_forward_refs()
-CallbackQrScan.update_forward_refs()
-CallbackUserBlock.update_forward_refs()
-CallbackUserUnblock.update_forward_refs()
-CallbackVideoComment.update_forward_refs()
-CallbackVideoCommentDelete.update_forward_refs()
-CallbackWallCommentDelete.update_forward_refs()
-DatabaseFaculty.update_forward_refs()
-DatabaseRegion.update_forward_refs()
-DatabaseSchool.update_forward_refs()
-DatabaseStation.update_forward_refs()
-DatabaseUniversity.update_forward_refs()
-DocsDocPreviewPhotoSizes.update_forward_refs()
-DocsDocTypes.update_forward_refs()
-DocsDocUploadResponse.update_forward_refs()
-FaveBookmark.update_forward_refs()
-FavePage.update_forward_refs()
-FaveTag.update_forward_refs()
-FriendsFriendStatus.update_forward_refs()
-FriendsFriendsList.update_forward_refs()
-FriendsMutualFriend.update_forward_refs()
-FriendsRequests.update_forward_refs()
-FriendsRequestsXtrMessage.update_forward_refs()
-GiftsGift.update_forward_refs()
-GroupsAddress.update_forward_refs()
-GroupsAddressesInfo.update_forward_refs()
-GroupsBannedItem.update_forward_refs()
-GroupsCallbackServer.update_forward_refs()
-GroupsCallbackSettings.update_forward_refs()
-GroupsContactsItem.update_forward_refs()
-GroupsCountersGroup.update_forward_refs()
-GroupsCover.update_forward_refs()
-GroupsGroupBanInfo.update_forward_refs()
-GroupsGroupCategory.update_forward_refs()
-GroupsGroupCategoryFull.update_forward_refs()
-GroupsGroupCategoryType.update_forward_refs()
-GroupsGroupLink.update_forward_refs()
-GroupsGroupPublicCategoryList.update_forward_refs()
-GroupsGroupXtrInvitedBy.update_forward_refs()
-GroupsGroupsArray.update_forward_refs()
-GroupsLinksItem.update_forward_refs()
-GroupsLongPollServer.update_forward_refs()
-GroupsLongPollSettings.update_forward_refs()
-GroupsMarketInfo.update_forward_refs()
-GroupsMemberRole.update_forward_refs()
-GroupsMemberStatus.update_forward_refs()
-GroupsMemberStatusFull.update_forward_refs()
-GroupsOnlineStatus.update_forward_refs()
-GroupsOwnerXtrBanInfo.update_forward_refs()
-GroupsSettingsTwitter.update_forward_refs()
-GroupsSubjectItem.update_forward_refs()
-GroupsTokenPermissionSetting.update_forward_refs()
-LeadsChecked.update_forward_refs()
-LeadsComplete.update_forward_refs()
-LeadsEntry.update_forward_refs()
-LeadsLead.update_forward_refs()
-LeadsStart.update_forward_refs()
-MessageChatPreview.update_forward_refs()
-MessagesChat.update_forward_refs()
-MessagesChatFull.update_forward_refs()
-MessagesChatRestrictions.update_forward_refs()
-MessagesConversationMember.update_forward_refs()
-MessagesConversationWithMessage.update_forward_refs()
-MessagesHistoryAttachment.update_forward_refs()
-MessagesKeyboardButton.update_forward_refs()
-MessagesLastActivity.update_forward_refs()
-MessagesLongpollMessages.update_forward_refs()
-MessagesLongpollParams.update_forward_refs()
-MessagesMessageAttachment.update_forward_refs()
-MessagesPinnedMessage.update_forward_refs()
-NewsfeedEventActivity.update_forward_refs()
-NewsfeedItemAudioAudio.update_forward_refs()
-NewsfeedItemBase.update_forward_refs()
-NewsfeedItemFriendFriends.update_forward_refs()
-NewsfeedItemHolidayRecommendationsBlockHeader.update_forward_refs()
-NewsfeedItemNoteNotes.update_forward_refs()
-NewsfeedItemPhotoPhotos.update_forward_refs()
-NewsfeedItemPhotoTagPhotoTags.update_forward_refs()
-NewsfeedItemPromoButtonAction.update_forward_refs()
-NewsfeedItemPromoButtonImage.update_forward_refs()
-NewsfeedItemVideoVideo.update_forward_refs()
-NewsfeedItemWallpostFeedback.update_forward_refs()
-NewsfeedItemWallpostFeedbackAnswer.update_forward_refs()
-NewsfeedList.update_forward_refs()
-NewsfeedNewsfeedNote.update_forward_refs()
-NotesNote.update_forward_refs()
-NotesNoteComment.update_forward_refs()
-NotificationsNotification.update_forward_refs()
-NotificationsNotificationsComment.update_forward_refs()
-NotificationsSendMessageItem.update_forward_refs()
-OauthError.update_forward_refs()
-OrdersAmount.update_forward_refs()
-OrdersAmountItem.update_forward_refs()
-OrdersOrder.update_forward_refs()
-OrdersSubscription.update_forward_refs()
-OwnerState.update_forward_refs()
-PagesWikipage.update_forward_refs()
-PagesWikipageHistory.update_forward_refs()
-PhotosCommentXtrPid.update_forward_refs()
-PhotosImage.update_forward_refs()
-PhotosMarketAlbumUploadResponse.update_forward_refs()
-PhotosMarketUploadResponse.update_forward_refs()
-PhotosMessageUploadResponse.update_forward_refs()
-PhotosOwnerUploadResponse.update_forward_refs()
-PhotosPhotoAlbumFull.update_forward_refs()
-PhotosPhotoFull.update_forward_refs()
-PhotosPhotoFullXtrRealOffset.update_forward_refs()
-PhotosPhotoSizes.update_forward_refs()
-PhotosPhotoTag.update_forward_refs()
-PhotosPhotoUpload.update_forward_refs()
-PhotosPhotoUploadResponse.update_forward_refs()
-PhotosPhotoXtrRealOffset.update_forward_refs()
-PhotosPhotoXtrTagInfo.update_forward_refs()
-PhotosTagsSuggestionItem.update_forward_refs()
-PhotosTagsSuggestionItemButton.update_forward_refs()
-PhotosWallUploadResponse.update_forward_refs()
-PollsAnswer.update_forward_refs()
-PollsFriend.update_forward_refs()
-PollsVoters.update_forward_refs()
-PrettyCardsPrettyCard.update_forward_refs()
-SearchHint.update_forward_refs()
-SecureLevel.update_forward_refs()
-SecureSmsNotification.update_forward_refs()
-SecureTokenChecked.update_forward_refs()
-SecureTransaction.update_forward_refs()
-StatsCity.update_forward_refs()
-StatsCountry.update_forward_refs()
-StatsPeriod.update_forward_refs()
-StatsSexAge.update_forward_refs()
-StatsWallpostStat.update_forward_refs()
-StatusStatus.update_forward_refs()
-StorageValue.update_forward_refs()
-StoriesClickableArea.update_forward_refs()
-StoriesClickableSticker.update_forward_refs()
-StoriesFeedItem.update_forward_refs()
-StoriesStatLine.update_forward_refs()
-StoriesStoryStats.update_forward_refs()
-StoriesViewersItem.update_forward_refs()
-UsersCareer.update_forward_refs()
-UsersCropPhoto.update_forward_refs()
-UsersExports.update_forward_refs()
-UsersLastSeen.update_forward_refs()
-UsersMilitary.update_forward_refs()
-UsersOccupation.update_forward_refs()
-UsersRelative.update_forward_refs()
-UsersSchool.update_forward_refs()
-UsersUniversity.update_forward_refs()
-UsersUserCounters.update_forward_refs()
-UsersUserSettingsXtr.update_forward_refs()
-UsersUsersArray.update_forward_refs()
-UtilsDomainResolved.update_forward_refs()
-UtilsLastShortenedLink.update_forward_refs()
-UtilsLinkChecked.update_forward_refs()
-UtilsLinkStats.update_forward_refs()
-UtilsLinkStatsExtended.update_forward_refs()
-UtilsShortLink.update_forward_refs()
-UtilsStats.update_forward_refs()
-UtilsStatsCity.update_forward_refs()
-UtilsStatsCountry.update_forward_refs()
-UtilsStatsExtended.update_forward_refs()
-UtilsStatsSexAge.update_forward_refs()
-VideoLiveSettings.update_forward_refs()
-VideoSaveResult.update_forward_refs()
-VideoVideoAlbumFull.update_forward_refs()
-VideoVideoFiles.update_forward_refs()
-WallCarouselBase.update_forward_refs()
-WallCommentAttachment.update_forward_refs()
-WallWallpostAttachment.update_forward_refs()
-WallWallpostToId.update_forward_refs()
-WidgetsCommentRepliesItem.update_forward_refs()
-WidgetsWidgetComment.update_forward_refs()
-WidgetsWidgetPage.update_forward_refs()
-UsersUser.update_forward_refs()
-UsersUserFull.update_forward_refs()
-UsersUserXtrType.update_forward_refs()
-AccountUserSettings.update_forward_refs()
-AdsTargSettings.update_forward_refs()
-AppsApp.update_forward_refs()
-DatabaseCity.update_forward_refs()
-FriendsFriendExtendedStatus.update_forward_refs()
-FriendsUserXtrLists.update_forward_refs()
-FriendsUserXtrPhone.update_forward_refs()
-GroupsBannedItem.update_forward_refs()
-GroupsGroupFull.update_forward_refs()
-GroupsUserXtrRole.update_forward_refs()
-MarketMarketItemFull.update_forward_refs()
-MessagesUserXtrInvitedBy.update_forward_refs()
-NewsfeedItemAudio.update_forward_refs()
-NewsfeedItemDigest.update_forward_refs()
-NewsfeedItemFriend.update_forward_refs()
-NewsfeedItemNote.update_forward_refs()
-NewsfeedItemPhoto.update_forward_refs()
-NewsfeedItemPhotoTag.update_forward_refs()
-NewsfeedItemPromoButton.update_forward_refs()
-NewsfeedItemTopic.update_forward_refs()
-NewsfeedItemVideo.update_forward_refs()
-NewsfeedItemWallpost.update_forward_refs()
-NewsfeedListFull.update_forward_refs()
-NewsfeedNewsfeedItem.update_forward_refs()
-NewsfeedNewsfeedPhoto.update_forward_refs()
-NotificationsNotificationParent.update_forward_refs()
-UsersSubscriptionsItem.update_forward_refs()
-UsersUserXtrCounters.update_forward_refs()
-VideoVideo.update_forward_refs()
-VideoVideoFull.update_forward_refs()
-VideoVideoImage.update_forward_refs()
-WallWallpostFull.update_forward_refs()
+for obj in objects:
+    obj.update_forward_refs()
