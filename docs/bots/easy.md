@@ -35,13 +35,7 @@ from vkwave.bots import SimpleLongPollBot
 
 bot = SimpleLongPollBot(tokens=["MyToken1","MyToken2","MyToken3"], group_id=123456789)
 
-@bot.message_handler(bot.text_filter("bye"))
-def handle(_) -> str:
-    return "bye world"
-
-@bot.message_handler(bot.text_filter("hello"))
-async def handle(event: bot.SimpleBotEvent):
-    await event.answer("hello world!")
+# ...
 
 bot.run_forever()
 ```
