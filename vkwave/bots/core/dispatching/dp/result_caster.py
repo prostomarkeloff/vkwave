@@ -27,6 +27,8 @@ async def _default_none_handler(some, event: BaseEvent):
 
 
 async def _default_str_handler(some: str, event: BaseEvent):
+    if event.object.type != "message_new":
+        raise NotImplementedError("'str' handler is implemented only for 'message_new' events, now")
     if event.bot_type is BotType.USER:
         raise NotImplementedError("Default 'str' handler is not implemented yet")
 
