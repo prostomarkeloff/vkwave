@@ -1,7 +1,6 @@
 from .base import BaseFilter  # noqa: F401
 from .builtin import (  # noqa: F401
     ChatActionFilter,
-    CommandLineFilter,
     CommandsFilter,
     EventTypeFilter,
     FromMeFilter,
