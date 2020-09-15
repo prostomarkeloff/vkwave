@@ -47,9 +47,9 @@ lxml = "^4.5.0"
 mypy = "^0.770"
 isort = "^4.3"
 flake8 = "^3.7.9"
+flake8-docstrings = "^1.5.0"
 mypy_extensions = "^0.4.3"
 black = {version = "^19.0", allow-prereleases = true}
-pydocstyle = "^5.1.1 "
 
 # Docs
 mkdocs = "^1.1"
