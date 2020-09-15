@@ -1,5 +1,6 @@
 from asyncio import get_running_loop
 from typing import TYPE_CHECKING
+import warnings
 import logging
 import traceback
 
@@ -23,6 +24,16 @@ class BotLongpollExtension(BaseExtension):
 
     async def _start(self, ignore_errors: bool = True):
         options = ProcessEventOptions(do_not_handle=False)
+        api_version = (
+            await self.dp.api.get_context().groups.get_long_poll_settings(self.lp.data.group_id)
+        ).response.api_version
+
+        api_version_for_check = int(api_version.split(".")[-1])
+        if api_version_for_check < 103:
+            warnings.warn(
+                f"version less than 5.103 is not recommended for use, you have {api_version}."
+                f" Change it in group settings."
+            )
         if not ignore_errors:
             while True:
                 events = await self.lp.get_updates()

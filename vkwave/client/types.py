@@ -1,7 +1,7 @@
 import typing
 
 if typing.TYPE_CHECKING:
-    pass
+    from .context import RequestContext
 
 ErrorHandlerCallable = typing.Callable[["RequestContext"], typing.Awaitable[None]]
 

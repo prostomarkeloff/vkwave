@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import Any, List, Optional
+from typing import Any, List, Optional, Union
 
 from vkwave.bots.core.dispatching.events.base import BaseEvent
 from vkwave.bots.core.dispatching.filters import BaseFilter
@@ -7,6 +7,7 @@ from vkwave.bots.core.dispatching.filters.manage import FilterManager
 from vkwave.bots.core.dispatching.handler.base import FILTERS_NOT_PASSED
 
 from .registrar import HandlerRegistrar
+from ..handler.callback import BaseCallback
 
 HANDLER_NOT_FOUND = object()
 
@@ -49,3 +50,11 @@ class DefaultRouter(BaseRouter):
 
     async def is_suitable(self, event: BaseEvent) -> bool:
         return await self.filter_manager.execute_filters(event)
+
+    def register_handler(self, *filters: Union[BaseFilter, Any], callback: Union[BaseCallback, Any]):
+        """
+        Register handler with one method
+
+        >>> router.register_handler(EventTypeFilter("message_new"), TextFilter("123"), callback=callback)
+        """
+        self._registrar.register(self._registrar.new().with_filters(*filters).handle(callback).ready())

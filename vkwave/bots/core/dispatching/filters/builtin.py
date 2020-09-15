@@ -1,7 +1,6 @@
 import json
 import re
-import typing
-from typing import Dict, Tuple, Union
+from typing import Dict, List, Optional, Tuple, Union
 
 from typing_extensions import Literal
 
@@ -11,6 +10,7 @@ from vkwave.bots.core.types.json_types import JSONDecoder
 from vkwave.types.bot_events import BotEventType
 from vkwave.types.objects import MessagesMessageActionStatus
 from vkwave.types.user_events import EventId, MessageFlag
+
 from .base import BaseFilter, FilterResult
 
 MessageEventUser: Tuple[int] = EventId.MESSAGE_EVENT.value
@@ -44,7 +44,7 @@ def has_payload(event: BaseEvent):
     return False
 
 
-def get_text(event: BaseEvent) -> typing.Optional[str]:
+def get_text(event: BaseEvent) -> Optional[str]:
     is_message_event(event)
     if event.bot_type is BotType.USER:
         if event.object.object.dict().get("text") is None:
@@ -85,7 +85,7 @@ class EventTypeFilter(BaseFilter):
         raise NotImplementedError("There is no implementation for this type of bot")
 
 
-AnyText = typing.Union[typing.Tuple[str, ...], typing.List[str], str]
+AnyText = Union[Tuple[str, ...], List[str], str]
 
 
 class TextFilter(BaseFilter):
@@ -119,7 +119,7 @@ class TextFilter(BaseFilter):
 class PayloadFilter(BaseFilter):
     """Filter for message payload"""
 
-    def __init__(self, payload: typing.Optional[Dict[str, str]], json_loader: JSONDecoder = json.loads):
+    def __init__(self, payload: Optional[Dict[str, str]], json_loader: JSONDecoder = json.loads):
         self.json_loader = json_loader
         self.payload = payload
 
@@ -175,10 +175,7 @@ class CommandsFilter(BaseFilter):
     """
 
     def __init__(
-        self,
-        commands: AnyText,
-        prefixes: typing.Tuple[str, ...] = ("/", "!"),
-        ignore_case: bool = True,
+        self, commands: AnyText, prefixes: Tuple[str, ...] = ("/", "!"), ignore_case: bool = True,
     ):
         self.commands = (commands,) if isinstance(commands, str) else commands
         self.prefixes = prefixes
@@ -205,9 +202,10 @@ class RegexFilter(BaseFilter):
 
     >>> regex = RegexFilter # alias
     >>> _ = regex(r".+")  # any string  (example match: "hello world!!!")
-    >>> _ = regex(r"\d+")  # any integer number (example match: "254")  # noqa: W605
-    >>> _ = regex(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)")  # any email (example match: "email@example.com")  # noqa: W605
-    >>> _ = regex(r"abc-\d\d", flags=re.IGNORECASE)  # example match: "Abc-54"  # noqa: W605
+    >>> _ = regex(r"\d+")  # any integer number (example match: "254") # noqa: W605
+    >>> _ = regex(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)")
+    # any email (example match: "email@example.com")  # noqa: W605
+    >>> _ = regex(r"abc-\d\d", flags=re.IGNORECASE)  # example match: "Abc-54" # noqa: W605
 
     >>> regex_filter = regex(r"user#\d{1,4}")  # example match: "user#723"  # noqa: W605
     >>> @router.registrar.with_decorator(regex_filter)
@@ -232,39 +230,36 @@ class MessageFromConversationTypeFilter(BaseFilter):
     >>> _ = conv_type("from_direct")
     >>> _ = conv_type("from_dm")
     >>> _ = conv_type("from_chat")
+    >>> _ = conv_type("chat")
     
     >>> from_pm = conv_type("from_pm")
     >>> @router.registrar.with_decorator(from_pm)
     """
 
-    def __init__(self, from_what: Literal["from_pm", "from_dm", "from_direct", "from_chat"]):
-        # 0: pm; 1: chat
-        self.from_what: Literal[0, 1] = 0 if from_what in (
-            "from_pm",
-            "from_dm",
-            "from_direct",
-        ) else 1
+    PERSONAL_MESSAGE_TYPES = ("from_pm", "from_dm", "from_direct")
+    CHAT_MESSAGE_TYPES = ("from_chat", "chat")
+
+    def __init__(
+        self, from_what: Literal["from_pm", "from_dm", "from_direct", "from_chat", "chat"]
+    ):
+        # 0: personal message; 1: chat message
+        self.from_what: Literal[0, 1]
+        if from_what in self.PERSONAL_MESSAGE_TYPES:
+            self.from_what = 0
+        elif from_what in self.CHAT_MESSAGE_TYPES:
+            self.from_what = 1
+        else:
+            raise ValueError(f"Unknown message type, got {from_what}")
 
     async def check(self, event: BaseEvent) -> FilterResult:
         is_message_event(event)
         if event.bot_type is BotType.USER:
-            raise NotImplementedError("Not implemented yet")
+            peer_id = event.object.object.peer_id
         else:
-            peer_id: int
-            from_id: int
-            peer_id, from_id = (
-                event.object.object.message.peer_id,
-                event.object.object.message.from_id,
-            )
+            peer_id = event.object.object.message.peer_id
+        status = (peer_id >= 2e9).real
 
-            status: int
-
-            if peer_id == from_id:
-                status = 0
-            else:
-                status = 1
-
-            return FilterResult(self.from_what == status)
+        return FilterResult(self.from_what == status)
 
 
 class FromMeFilter(BaseFilter):
@@ -282,7 +277,6 @@ class FromMeFilter(BaseFilter):
         is_message_event(event)
         if event.bot_type == BotType.BOT:
             raise RuntimeError("Сannot be used in bot")
-        event: UserEvent
         return FilterResult(self.from_me == is_from_me(event))
 
 

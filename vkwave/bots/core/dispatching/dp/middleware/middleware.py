@@ -1,10 +1,10 @@
 from abc import ABC, abstractmethod
 from typing import List, NewType
-import logging
 
 from vkwave.bots.core.dispatching.events.base import BaseEvent
 
 MiddlewareResult = NewType("MiddlewareResult", bool)
+
 
 class BaseMiddleware(ABC):
     @abstractmethod
@@ -13,6 +13,7 @@ class BaseMiddleware(ABC):
 
     async def post_process_event(self, event: BaseEvent):
         pass
+
 
 class MiddlewareManager:
     def __init__(self):
