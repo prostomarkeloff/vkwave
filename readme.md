@@ -99,6 +99,7 @@ pip install vkwave
 ```
 pip install https://github.com/fscdev/vkwave/archive/master.zip
 ```
+[Учебники для лёгкого старта](https://github.com/VodoGamer/vkwave-textbooks/tree/master/textbooks)
 
 [Документация](https://fscdev.github.io/vkwave/)
 
