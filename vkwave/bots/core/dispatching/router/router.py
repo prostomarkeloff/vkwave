@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 from typing import Any, List, Optional, Union
+import logging
 
 from vkwave.bots.core.dispatching.events.base import BaseEvent
 from vkwave.bots.core.dispatching.filters import BaseFilter
@@ -9,7 +10,9 @@ from vkwave.bots.core.dispatching.handler.base import FILTERS_NOT_PASSED
 from .registrar import HandlerRegistrar
 from ..handler.callback import BaseCallback
 
+
 HANDLER_NOT_FOUND = object()
+logger = logging.getLogger(__name__)
 
 
 class BaseRouter(ABC):
@@ -45,6 +48,8 @@ class DefaultRouter(BaseRouter):
             h_res = await handler.process_event(event)
             if h_res is FILTERS_NOT_PASSED:
                 continue
+            handler_name = handler.callback.func.__name__
+            logger.debug(f"Event was handled by {handler_name}")
             return h_res
         return HANDLER_NOT_FOUND
 
