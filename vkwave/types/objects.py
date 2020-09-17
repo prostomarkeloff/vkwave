@@ -1568,6 +1568,7 @@ class WallPostType(str, Enum):
     SUGGEST = 'suggest'
     VIDEO = 'video'
     PHOTO = 'photo'
+    POST_ADS = 'post_ads'
 
 
 class WallPostedPhoto(pydantic.BaseModel):
@@ -1641,6 +1642,7 @@ class WallWallpostAttachmentType(str, Enum):
     MARKET = 'market'
     EVENT = 'event'
     PODCAST = 'podcast'
+    PRETTY_CARDS = 'pretty_cards'
 
 
 class WidgetsCommentMedia(pydantic.BaseModel):
