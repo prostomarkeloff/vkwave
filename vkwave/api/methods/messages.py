@@ -724,6 +724,7 @@ class Messages(Category):
         peer_id: int,
         return_raw_response: bool = False,
         message_id: typing.Optional[int] = None,
+        conversation_message_id: typing.Optional[int] = None,
     ) -> typing.Union[dict, MessagesPinResponse]:
         """
         :param peer_id: - Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'Chat ID', e.g. '2000000001'. For community: '- Community ID', e.g. '-12345'. "
