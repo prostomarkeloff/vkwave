@@ -1,6 +1,7 @@
 """
 Working with API tokens.
 """
+import os
 import random
 from enum import Enum, auto
 from typing import ClassVar, List, NewType, Union
@@ -56,16 +57,28 @@ class ABCBotAsyncToken(ABCAsyncToken):
 
 
 class UserSyncSingleToken(ABCUserSyncToken):
-    def __init__(self, token: Token):
-        self._token: Token = token
+    def __init__(self, from_env: bool = False, var_name: str = "token", token: Token):
+        if from_env:
+            token_value = os.environ.get(var_name)
+            if not token_value:
+                raise NameError(f"Variable named {var_name} is not set in current enviroment")
+            self._token: Token = Token(token_value)
+        else:
+            self._token: Token = token
 
     def get_token(self, *args, **kwargs) -> Token:
         return self._token
 
 
 class BotSyncSingleToken(ABCBotSyncToken):
-    def __init__(self, token: Token):
-        self._token: Token = token
+    def __init__(self, from_env: bool = False, var_name: str = "token", token: Token):
+        if from_env:
+            token_value = os.environ.get(var_name)
+            if not token_value:
+                raise NameError(f"Variable named {var_name} is not set in current enviroment")
+            self._token: Token = Token(token_value)
+        else:
+            self._token: Token = token
 
     def get_token(self, *args, **kwargs) -> Token:
         return self._token
