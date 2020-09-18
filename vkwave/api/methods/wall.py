@@ -4,6 +4,24 @@ from ._utils import get_params
 
 
 class Wall(Category):
+    async def check_copyright_link(
+        self, link: str, return_raw_response: bool = False,
+    ) -> typing.Union[dict, BaseBoolResponse]:
+        """
+        :param link:
+        :param return_raw_response: - return result at dict
+        :return:
+        """
+
+        params = get_params(locals())
+
+        raw_result = await self.api_request("checkCopyrightLink", params)
+        if return_raw_response:
+            return raw_result
+
+        result = BaseBoolResponse(**raw_result)
+        return result
+
     async def close_comments(
         self, owner_id: int, post_id: int, return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseBoolResponse]:
@@ -264,7 +282,7 @@ class Wall(Category):
         extended: typing.Optional[BaseBoolInt] = None,
         copy_history_depth: typing.Optional[int] = None,
         fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
-    ) -> typing.Union[dict, WallGetByIdResponse, WallGetByIdExtendedResponse]:
+    ) -> typing.Union[dict, WallGetByIdLegacyResponse, WallGetByIdExtendedResponse]:
         """
         :param posts: - User or community IDs and post IDs, separated by underscores. Use a negative value to designate a community ID. Example: "93388_21539,93388_20904,2943_4276,-1_1"
         :param extended: - '1' — to return user and community objects needed to display posts, '0' — no additional fields are returned (default)
@@ -281,7 +299,7 @@ class Wall(Category):
             return raw_result
 
         result = (
-            WallGetByIdResponse(**raw_result)
+            WallGetByIdLegacyResponse(**raw_result)
             if not extended
             else WallGetByIdExtendedResponse(**raw_result)
         )

@@ -10,11 +10,11 @@ class Market(Category):
         name: str,
         description: str,
         category_id: int,
-        main_photo_id: int,
         return_raw_response: bool = False,
         price: typing.Optional[int] = None,
         old_price: typing.Optional[int] = None,
         deleted: typing.Optional[BaseBoolInt] = None,
+        main_photo_id: typing.Optional[int] = None,
         photo_ids: typing.Optional[typing.List[int]] = None,
         url: typing.Optional[str] = None,
         dimension_width: typing.Optional[int] = None,
@@ -283,6 +283,32 @@ class Market(Category):
         result = BaseOkResponse(**raw_result)
         return result
 
+    async def edit_order(
+        self,
+        user_id: int,
+        order_id: int,
+        return_raw_response: bool = False,
+        merchant_comment: typing.Optional[str] = None,
+        status: typing.Optional[int] = None,
+    ) -> typing.Union[dict, BaseOkResponse]:
+        """
+        :param user_id:
+        :param order_id:
+        :param merchant_comment:
+        :param status:
+        :param return_raw_response: - return result at dict
+        :return:
+        """
+
+        params = get_params(locals())
+
+        raw_result = await self.api_request("editOrder", params)
+        if return_raw_response:
+            return raw_result
+
+        result = BaseOkResponse(**raw_result)
+        return result
+
     async def get(
         self,
         owner_id: int,
@@ -316,10 +342,7 @@ class Market(Category):
         return result
 
     async def get_album_by_id(
-        self,
-        owner_id: int,
-        album_ids: typing.List[int],
-        return_raw_response: bool = False,
+        self, owner_id: int, album_ids: typing.List[int], return_raw_response: bool = False,
     ) -> typing.Union[dict, MarketGetAlbumByIdResponse]:
         """
         :param owner_id: - identifier of an album owner community, "Note that community id in the 'owner_id' parameter should be negative number. For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community "
@@ -445,6 +468,106 @@ class Market(Category):
         result = MarketGetCommentsResponse(**raw_result)
         return result
 
+    async def get_group_orders(
+        self,
+        group_id: int,
+        return_raw_response: bool = False,
+        offset: typing.Optional[int] = None,
+        count: typing.Optional[int] = None,
+    ) -> typing.Union[dict, MarketGetGroupOrdersResponse]:
+        """
+        :param group_id:
+        :param offset:
+        :param count:
+        :param return_raw_response: - return result at dict
+        :return:
+        """
+
+        params = get_params(locals())
+
+        raw_result = await self.api_request("getGroupOrders", params)
+        if return_raw_response:
+            return raw_result
+
+        result = MarketGetGroupOrdersResponse(**raw_result)
+        return result
+
+    async def get_order_by_id(
+        self,
+        order_id: int,
+        return_raw_response: bool = False,
+        user_id: typing.Optional[int] = None,
+        extended: typing.Optional[BaseBoolInt] = None,
+    ) -> typing.Union[dict, MarketGetOrderByIdResponse]:
+        """
+        :param user_id:
+        :param order_id:
+        :param extended:
+        :param return_raw_response: - return result at dict
+        :return:
+        """
+
+        params = get_params(locals())
+
+        raw_result = await self.api_request("getOrderById", params)
+        if return_raw_response:
+            return raw_result
+
+        result = MarketGetOrderByIdResponse(**raw_result)
+        return result
+
+    async def get_order_items(
+        self,
+        order_id: int,
+        return_raw_response: bool = False,
+        offset: typing.Optional[int] = None,
+        count: typing.Optional[int] = None,
+    ) -> typing.Union[dict, MarketGetOrderItemsResponse]:
+        """
+        :param order_id:
+        :param offset:
+        :param count:
+        :param return_raw_response: - return result at dict
+        :return:
+        """
+
+        params = get_params(locals())
+
+        raw_result = await self.api_request("getOrderItems", params)
+        if return_raw_response:
+            return raw_result
+
+        result = MarketGetOrderItemsResponse(**raw_result)
+        return result
+
+    async def get_orders(
+        self,
+        return_raw_response: bool = False,
+        offset: typing.Optional[int] = None,
+        count: typing.Optional[int] = None,
+        extended: typing.Optional[BaseBoolInt] = None,
+    ) -> typing.Union[dict, MarketGetOrdersResponse, MarketGetOrdersExtendedResponse]:
+        """
+        :param offset:
+        :param count:
+        :param extended:
+        :param return_raw_response: - return result at dict
+        :return:
+        """
+
+        params = get_params(locals())
+
+        raw_result = await self.api_request("getOrders", params)
+        if return_raw_response:
+            return raw_result
+
+        result = (
+            MarketGetOrdersResponse(**raw_result)
+            if not extended
+            else MarketGetOrdersExtendedResponse(**raw_result)
+        )
+        return result
+
     async def remove_from_album(
         self,
         owner_id: int,
@@ -548,11 +671,7 @@ class Market(Category):
         return result
 
     async def report_comment(
-        self,
-        owner_id: int,
-        comment_id: int,
-        reason: int,
-        return_raw_response: bool = False,
+        self, owner_id: int, comment_id: int, reason: int, return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param owner_id: - ID of an item owner community.

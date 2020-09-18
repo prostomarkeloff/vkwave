@@ -5,7 +5,10 @@ from ._utils import get_params
 
 class Ads(Category):
     async def add_office_users(
-        self, account_id: int, data: str, return_raw_response: bool = False,
+        self,
+        account_id: int,
+        data: typing.List[AdsUserSpecificationCutted],
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, AdsAddOfficeUsersResponse]:
         """
         :param account_id: - Advertising account ID.
@@ -529,11 +532,7 @@ class Ads(Category):
         return result
 
     async def get_posts_reach(
-        self,
-        account_id: int,
-        ids_type: str,
-        ids: str,
-        return_raw_response: bool = False,
+        self, account_id: int, ids_type: str, ids: str, return_raw_response: bool = False,
     ) -> typing.Union[dict, AdsGetPostsReachResponse]:
         """
         :param account_id: - Advertising account ID.
@@ -698,10 +697,7 @@ class Ads(Category):
         return result
 
     async def get_upload_u_r_l(
-        self,
-        ad_format: int,
-        return_raw_response: bool = False,
-        icon: typing.Optional[int] = None,
+        self, ad_format: int, return_raw_response: bool = False, icon: typing.Optional[int] = None,
     ) -> typing.Union[dict, AdsGetUploadURLResponse]:
         """
         :param ad_format: - Ad format: *1 — image and text,, *2 — big image,, *3 — exclusive format,, *4 — community, square image,, *7 — special app format.
@@ -836,6 +832,28 @@ class Ads(Category):
             return raw_result
 
         result = AdsUpdateClientsResponse(**raw_result)
+        return result
+
+    async def update_office_users(
+        self,
+        account_id: int,
+        data: typing.List[AdsUserSpecification],
+        return_raw_response: bool = False,
+    ) -> typing.Union[dict, AdsUpdateOfficeUsersResponse]:
+        """
+        :param account_id: - Advertising account ID.
+        :param data: - Serialized JSON array of objects that describe added managers. Description of 'user_specification' objects see below.
+        :param return_raw_response: - return result at dict
+        :return:
+        """
+
+        params = get_params(locals())
+
+        raw_result = await self.api_request("updateOfficeUsers", params)
+        if return_raw_response:
+            return raw_result
+
+        result = AdsUpdateOfficeUsersResponse(**raw_result)
         return result
 
     async def update_target_group(

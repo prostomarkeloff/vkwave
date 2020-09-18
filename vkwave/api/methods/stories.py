@@ -23,11 +23,16 @@ class Stories(Category):
         return result
 
     async def delete(
-        self, owner_id: int, story_id: int, return_raw_response: bool = False,
+        self,
+        return_raw_response: bool = False,
+        owner_id: typing.Optional[int] = None,
+        story_id: typing.Optional[int] = None,
+        stories: typing.Optional[typing.List[str]] = None,
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param owner_id: - Story owner's ID. Current user id is used by default.
         :param story_id: - Story ID.
+        :param stories:
         :param return_raw_response: - return result at dict
         :return:
         """
@@ -239,9 +244,7 @@ class Stories(Category):
         offset: typing.Optional[int] = None,
         extended: typing.Optional[BaseBoolInt] = None,
     ) -> typing.Union[
-        dict,
-        StoriesGetViewersExtendedV5115Response,
-        StoriesGetViewersExtendedV5115Response,
+        dict, StoriesGetViewersExtendedV5115Response, StoriesGetViewersExtendedV5115Response
     ]:
         """
         :param owner_id: - Story owner ID.
@@ -307,6 +310,24 @@ class Stories(Category):
         result = BaseOkResponse(**raw_result)
         return result
 
+    async def save(
+        self, upload_results: typing.List[str], return_raw_response: bool = False,
+    ) -> typing.Union[dict, StoriesSaveResponse]:
+        """
+        :param upload_results:
+        :param return_raw_response: - return result at dict
+        :return:
+        """
+
+        params = get_params(locals())
+
+        raw_result = await self.api_request("save", params)
+        if return_raw_response:
+            return raw_result
+
+        result = StoriesSaveResponse(**raw_result)
+        return result
+
     async def search(
         self,
         return_raw_response: bool = False,
@@ -341,6 +362,34 @@ class Stories(Category):
             return raw_result
 
         result = StoriesGetV5113Response(**raw_result)
+        return result
+
+    async def send_interaction(
+        self,
+        access_key: str,
+        return_raw_response: bool = False,
+        message: typing.Optional[str] = None,
+        is_broadcast: typing.Optional[bool] = None,
+        is_anonymous: typing.Optional[bool] = None,
+        unseen_marker: typing.Optional[bool] = None,
+    ) -> typing.Union[dict, BaseOkResponse]:
+        """
+        :param access_key:
+        :param message:
+        :param is_broadcast:
+        :param is_anonymous:
+        :param unseen_marker:
+        :param return_raw_response: - return result at dict
+        :return:
+        """
+
+        params = get_params(locals())
+
+        raw_result = await self.api_request("sendInteraction", params)
+        if return_raw_response:
+            return raw_result
+
+        result = BaseOkResponse(**raw_result)
         return result
 
     async def unban_owner(
