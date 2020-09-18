@@ -1,6 +1,6 @@
 import asyncio
 import logging
-from typing import Callable, Optional, List, Union, Coroutine
+from typing import Callable, Coroutine, List, Optional, Union
 
 logger = logging.getLogger(__name__)
 
@@ -27,7 +27,8 @@ class TaskManager:
             raise RuntimeError("task manager got 0 tasks")
 
         logger.debug("Start creating tasks....")
-        [self.loop.create_task(task) for task in self.tasks]
+        for task in self.tasks:
+            self.loop.create_task(task)
         logger.debug("Tasks succesfully are created!")
 
     def run(

@@ -1,4 +1,5 @@
 import json
+import logging
 import re
 from typing import Dict, List, Optional, Tuple, Union
 
@@ -19,6 +20,8 @@ InvalidEventError = ValueError(
     "Invalid event passed. Expected message event. You must add EventTypeFilter at first."
 )
 
+logger = logging.getLogger(__name__)
+
 
 def is_from_me(event: UserEvent) -> bool:
     return bool(event.object.object.flags[-1] & MessageFlag.OUTBOX.value)
@@ -34,26 +37,35 @@ def is_message_event(event: BaseEvent):
 
 
 def has_payload(event: BaseEvent):
-    if event.object.object.dict().get("payload") is not None:
+    event_dict = event.object.object.dict()
+
+    if event_dict.get("payload") is not None:
+        logger.debug("has_payload is True")
         return True
-    if (
-        event.object.object.dict().get("message") is not None
-        and event.object.object.dict()["message"].get("payload") is not None
-    ):
+    try:
+        event_dict["message"]["payload"]
+        logger.debug("has_payload is True")
         return True
-    return False
+    except (TypeError, KeyError):
+        logger.debug("has_payload is False")
+        return False
 
 
 def get_text(event: BaseEvent) -> Optional[str]:
     is_message_event(event)
+    event_obj = event.object.object
     if event.bot_type is BotType.USER:
-        if event.object.object.dict().get("text") is None:
+        logger.debug("Bot type is User")
+        if event_obj.dict().get("text") is None:
+            logger.debug("Text is None")
             return None
-        text = event.object.object.text
+        text = event_obj.text
     else:
-        if event.object.object.dict().get("message") is None:
+        logger.debug("Bot type is Bot")
+        if event_obj.dict().get("message") is None:
+            logger.debug("Text is None")
             return None
-        text = event.object.object.message.text
+        text = event_obj.message.text
     return text
 
 
@@ -72,16 +84,26 @@ class EventTypeFilter(BaseFilter):
         self.event_type = event_type
 
     async def check(self, event: BaseEvent) -> FilterResult:
+        log_message = "event_type is {}"
+        tup_message = log_message.format("tuple")
+
         if event.bot_type is BotType.BOT:
+            logger.debug("Bot type is Bot")
             if isinstance(self.event_type, tuple):
+                logger.debug(tup_message)
                 return FilterResult(event.object.type in self.event_type)
             if isinstance(self.event_type, str):
+                logger.debug(log_message.format("str"))
                 return FilterResult(event.object.type == self.event_type)
         else:
+            logger.debug("Bot type is User")
             if isinstance(self.event_type, tuple):
+                logger.debug(tup_message)
                 return FilterResult(event.object.object.event_id in self.event_type)
             if isinstance(self.event_type, int):
+                logger.debug(log_message.format("int"))
                 return FilterResult(event.object.object.event_id == self.event_type)
+        logger.debug("raise NotImplementedError")
         raise NotImplementedError("There is no implementation for this type of bot")
 
 
@@ -109,10 +131,14 @@ class TextFilter(BaseFilter):
     async def check(self, event: BaseEvent) -> FilterResult:
         text = get_text(event)
         if text is None:
+            logger.debug("text is None")
             return FilterResult(False)
 
         if self.ic:
             text = text.lower()
+            self.text = self.text.lower()
+            logger.debug("text ignore case added")
+
         return FilterResult(text in self.text)
 
 
@@ -185,14 +211,19 @@ class CommandsFilter(BaseFilter):
         text = get_text(event)
 
         if text is None:
+            logger.debug("text is None: return False")
             return FilterResult(False)
 
         if self.ic:
             text = text.lower()
+            logger.debug("text -> text.lower()")
+
         for command in self.commands:
             for prefix in self.prefixes:
                 if text.startswith(f"{prefix}{command}"):
+                    logger.debug("return True")
                     return FilterResult(True)
+        logger.debug("return False")
         return FilterResult(False)
 
 
@@ -217,7 +248,9 @@ class RegexFilter(BaseFilter):
     async def check(self, event: BaseEvent) -> FilterResult:
         text = get_text(event)
         if text is None:
+            logger.debug("text is None: return False")
             return FilterResult(False)
+
         return FilterResult(self.pattern.match(text) is not None)
 
 
@@ -249,17 +282,24 @@ class MessageFromConversationTypeFilter(BaseFilter):
         elif from_what in self.CHAT_MESSAGE_TYPES:
             self.from_what = 1
         else:
+            logger.debug("raise ValueError: Unknown message type")
             raise ValueError(f"Unknown message type, got {from_what}")
+        logger.debug(f"{self.from_what=}")
 
     async def check(self, event: BaseEvent) -> FilterResult:
         is_message_event(event)
+        event_obj = event.object.object
         if event.bot_type is BotType.USER:
-            peer_id = event.object.object.peer_id
+            peer_id = event_obj.peer_id
         else:
-            peer_id = event.object.object.message.peer_id
-        status = (peer_id >= 2e9).real
+            peer_id = event_obj.message.peer_id
+        logger.debug(f"{peer_id=}")
 
-        return FilterResult(self.from_what == status)
+        status = (peer_id >= 2e9).real
+        result = self.from_what == status
+
+        logger.debug(f"return {result}")
+        return FilterResult(result)
 
 
 class FromMeFilter(BaseFilter):
@@ -276,6 +316,7 @@ class FromMeFilter(BaseFilter):
     async def check(self, event: BaseEvent) -> FilterResult:
         is_message_event(event)
         if event.bot_type == BotType.BOT:
+            logger.debug("raise RuntimeError: BotType is Bot")
             raise RuntimeError("Сannot be used in bot")
         return FilterResult(self.from_me == is_from_me(event))
 
@@ -311,10 +352,11 @@ class FwdMessagesFilter(BaseFilter):
 
     async def check(self, event: BaseEvent) -> FilterResult:
         is_message_event(event)
+        event_obj = event.object.object
         if event.bot_type == BotType.BOT:
-            fwd_count = len(event.object.object.message.fwd_messages or [])
+            fwd_count = len(event_obj.message.fwd_messages or [])
         else:
-            fwd_count = len(event.object.object.message_data.fwd_count or [])
+            fwd_count = len(event_obj.message_data.fwd_count or [])
 
         if self.fwd_count == -1 and fwd_count:
             return FilterResult(True)
@@ -352,13 +394,15 @@ class TextContainsFilter(BaseFilter):
 
     async def check(self, event: BaseEvent) -> FilterResult:
         message_text = get_text(event)
+        if message_text is None:
+            return FilterResult(False)
+
+        if self.ignore_case:
+            message_text = message_text.lower()
 
         for text in self.text:
-            r = (
-                text in message_text
-                if not self.ignore_case
-                else text.lower() in message_text.lower()
-            )
-            if r:
+            if self.ignore_case:
+                text = text.lower()
+            if text in message_text:
                 return FilterResult(True)
         return FilterResult(False)

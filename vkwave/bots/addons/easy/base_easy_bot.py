@@ -114,7 +114,7 @@ class BaseSimpleLongPollBot:
             self._lp = BotLongpollExtension(self.dispatcher, self._lp)
 
         self.middleware_manager = self.dispatcher.middleware_manager  # auf
-        self.add_middleware = self.middleware_manager.add_middleware
+        self.add_middleware = self.middleware_manager.add_middleware  # auf
 
         self.router = router or DefaultRouter()
         self.dispatcher.add_router(self.router)
@@ -171,13 +171,13 @@ class BaseSimpleLongPollBot:
 
         return decorator
 
-    def middleware(self):
+    def middleware(self):  # TODO: Добавить поодержку __init__
         def decorator(
             func: typing.Callable[[typing.Union[UserEvent, BotEvent]], MiddlewareResult]
         ):
             middleware = self.SimpleBotMiddleware()
             middleware.pre_process_event = func
-            self.middleware_manager.add_middleware(middleware)
+            self.add_middleware(middleware)
 
             return func
 
