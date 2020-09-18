@@ -1114,6 +1114,7 @@ class MessagesMessageAttachmentType(str, Enum):
     GRAFFITI = 'graffiti'
     AUDIO_MESSAGE = 'audio_message'
     POLL = "poll"
+    STORY = "story"
 
 
 class MessagesMessageRequestData(pydantic.BaseModel):
