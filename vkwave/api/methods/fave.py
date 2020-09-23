@@ -392,6 +392,25 @@ class Fave(Category):
         result = BaseOkResponse(**raw_result)
         return result
 
+    async def remove_video(
+        self, owner_id: int, id: int, return_raw_response: bool = False,
+    ) -> typing.Union[dict, BaseOkResponse]:
+        """
+        :param owner_id:
+        :param id:
+        :param return_raw_response: - return result at dict
+        :return:
+        """
+
+        params = get_params(locals())
+
+        raw_result = await self.api_request("removeVideo", params)
+        if return_raw_response:
+            return raw_result
+
+        result = BaseOkResponse(**raw_result)
+        return result
+
     async def reorder_tags(
         self, ids: typing.List[int], return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseOkResponse]:

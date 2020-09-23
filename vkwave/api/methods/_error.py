@@ -94,6 +94,8 @@ class ErrorDispatcher:
 
         result = await self._run_handler(code, error, return_info, request_context)
         if return_info is ReturnInfo.RETURN:
+            if result is None or result is False:
+                raise APIError(code, err["error_msg"], err["request_params"])
             result = typing.cast(dict, result)
             return result
 

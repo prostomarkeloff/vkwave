@@ -81,7 +81,7 @@ class Newsfeed(Category):
         section: typing.Optional[str] = None,
     ) -> typing.Union[dict, NewsfeedGetResponse]:
         """
-        :param filters: - Filters to apply: 'post' — new wall posts, 'photo' — new photos, 'photo_tag' — new photo tags, 'wall_photo' — new wall photos, 'friend' — new friends, 'note' — new notes
+        :param filters: - Filters to apply: 'post' — new wall posts, 'photo' — new photos, 'photo_tag' — new photo tags, 'wall_photo' — new wall photos, 'friend' — new friends
         :param return_banned: - '1' — to return news items from banned sources
         :param start_time: - Earliest timestamp (in Unix time) of a news item to return. By default, 24 hours ago.
         :param end_time: - Latest timestamp (in Unix time) of a news item to return. By default, the current time.
@@ -110,9 +110,7 @@ class Newsfeed(Category):
         extended: typing.Optional[BaseBoolInt] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
         name_case: typing.Optional[str] = None,
-    ) -> typing.Union[
-        dict, NewsfeedGetBannedResponse, NewsfeedGetBannedExtendedResponse
-    ]:
+    ) -> typing.Union[dict, NewsfeedGetBannedResponse, NewsfeedGetBannedExtendedResponse]:
         """
         :param extended: - '1' — return extra information about users and communities
         :param fields: - Profile fields to return.

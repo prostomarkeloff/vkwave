@@ -28,7 +28,7 @@ async def captcha_handler(error: dict, api_ctx: APIOptionsRequestContext):
     key = await solve_captcha(error["error"]["captcha_img"])
 
     request_params.update({"captcha_sid": error["error"]["captcha_sid"], "captcha_key": key})
-    await api_ctx.api_request(method, params=request_params)
+    return await api_ctx.api_request(method, params=request_params)
 
 
 # Easy way

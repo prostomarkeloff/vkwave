@@ -29,10 +29,7 @@ class Messages(Category):
         return result
 
     async def allow_messages_from_group(
-        self,
-        group_id: int,
-        return_raw_response: bool = False,
-        key: typing.Optional[str] = None,
+        self, group_id: int, return_raw_response: bool = False, key: typing.Optional[str] = None,
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param group_id: - Group ID.
@@ -209,10 +206,7 @@ class Messages(Category):
         return result
 
     async def edit_chat(
-        self,
-        chat_id: int,
-        return_raw_response: bool = False,
-        title: typing.Optional[str] = None,
+        self, chat_id: int, return_raw_response: bool = False, title: typing.Optional[str] = None,
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param chat_id: - Chat ID.
@@ -378,9 +372,7 @@ class Messages(Category):
         fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
         group_id: typing.Optional[int] = None,
     ) -> typing.Union[
-        dict,
-        MessagesGetConversationsByIdResponse,
-        MessagesGetConversationsByIdExtendedResponse,
+        dict, MessagesGetConversationsByIdResponse, MessagesGetConversationsByIdExtendedResponse
     ]:
         """
         :param peer_ids: - Destination IDs. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "
@@ -474,6 +466,44 @@ class Messages(Category):
             return raw_result
 
         result = MessagesGetHistoryAttachmentsResponse(**raw_result)
+        return result
+
+    async def get_important_messages(
+        self,
+        return_raw_response: bool = False,
+        count: typing.Optional[int] = None,
+        offset: typing.Optional[int] = None,
+        start_message_id: typing.Optional[int] = None,
+        preview_length: typing.Optional[int] = None,
+        fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
+        extended: typing.Optional[BaseBoolInt] = None,
+        group_id: typing.Optional[int] = None,
+    ) -> typing.Union[
+        dict, MessagesGetImportantMessagesResponse, MessagesGetImportantMessagesExtendedResponse
+    ]:
+        """
+        :param count: - Amount of needed important messages.
+        :param offset:
+        :param start_message_id:
+        :param preview_length: - Maximum length of messages body.
+        :param fields: - Actors fields to return.
+        :param extended: - Return extended properties
+        :param group_id: - Group ID (for group messages with group access token)
+        :param return_raw_response: - return result at dict
+        :return:
+        """
+
+        params = get_params(locals())
+
+        raw_result = await self.api_request("getImportantMessages", params)
+        if return_raw_response:
+            return raw_result
+
+        result = (
+            MessagesGetImportantMessagesResponse(**raw_result)
+            if not extended
+            else MessagesGetImportantMessagesExtendedResponse(**raw_result)
+        )
         return result
 
     async def get_invite_link(
@@ -870,12 +900,12 @@ class Messages(Category):
         sticker_id: typing.Optional[int] = None,
         group_id: typing.Optional[int] = None,
         keyboard: typing.Optional[str] = None,
+        template: typing.Optional[str] = None,
         payload: typing.Optional[str] = None,
         dont_parse_links: typing.Optional[bool] = None,
         disable_mentions: typing.Optional[bool] = None,
         intent: typing.Optional[str] = None,
         subscribe_id: typing.Optional[int] = None,
-        template: typing.Optional[str] = None,
     ) -> typing.Union[dict, MessagesSendResponse]:
         """
         :param user_id: - User ID (by default — current user).
@@ -893,8 +923,8 @@ class Messages(Category):
         :param sticker_id: - Sticker id.
         :param group_id: - Group ID (for group messages with group access token)
         :param keyboard:
-        :param payload:
         :param template:
+        :param payload:
         :param dont_parse_links:
         :param disable_mentions:
         :param intent:

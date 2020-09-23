@@ -175,6 +175,25 @@ class Groups(Category):
         result = GroupsCreateResponse(**raw_result)
         return result
 
+    async def delete_address(
+        self, group_id: int, address_id: int, return_raw_response: bool = False,
+    ) -> typing.Union[dict, BaseOkResponse]:
+        """
+        :param group_id:
+        :param address_id:
+        :param return_raw_response: - return result at dict
+        :return:
+        """
+
+        params = get_params(locals())
+
+        raw_result = await self.api_request("deleteAddress", params)
+        if return_raw_response:
+            return raw_result
+
+        result = BaseOkResponse(**raw_result)
+        return result
+
     async def delete_callback_server(
         self, group_id: int, server_id: int, return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseOkResponse]:
@@ -451,7 +470,7 @@ class Groups(Category):
         """
         :param group_id: - Community ID.
         :param user_id: - User ID.
-        :param role: - Manager role. Possible values: *'moderator',, *'editor',, *'administrator'.
+        :param role: - Manager role. Possible values: *'moderator',, *'editor',, *'administrator',, *'advertiser'.
         :param is_contact: - '1' — to show the manager in Contacts block of the community.
         :param contact_position: - Position to show in Contacts block.
         :param contact_phone: - Contact phone.
@@ -694,9 +713,7 @@ class Groups(Category):
         return_raw_response: bool = False,
         extended: typing.Optional[BaseBoolInt] = None,
         subcategories: typing.Optional[BaseBoolInt] = None,
-    ) -> typing.Union[
-        dict, GroupsGetCatalogInfoResponse, GroupsGetCatalogInfoExtendedResponse
-    ]:
+    ) -> typing.Union[dict, GroupsGetCatalogInfoResponse, GroupsGetCatalogInfoExtendedResponse]:
         """
         :param extended: - 1 – to return communities count and three communities for preview. By default: 0.
         :param subcategories: - 1 – to return subcategories info. By default: 0.
@@ -889,6 +906,24 @@ class Groups(Category):
             return raw_result
 
         result = GroupsGetSettingsResponse(**raw_result)
+        return result
+
+    async def get_tag_list(
+        self, group_id: int, return_raw_response: bool = False,
+    ) -> typing.Union[dict, GroupsGetTagListResponse]:
+        """
+        :param group_id:
+        :param return_raw_response: - return result at dict
+        :return:
+        """
+
+        params = get_params(locals())
+
+        raw_result = await self.api_request("getTagList", params)
+        if return_raw_response:
+            return raw_result
+
+        result = GroupsGetTagListResponse(**raw_result)
         return result
 
     async def get_token_permissions(
@@ -1288,6 +1323,166 @@ class Groups(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("setLongPollSettings", params)
+        if return_raw_response:
+            return raw_result
+
+        result = BaseOkResponse(**raw_result)
+        return result
+
+    async def set_settings(
+        self,
+        group_id: int,
+        return_raw_response: bool = False,
+        messages: typing.Optional[bool] = None,
+        bots_capabilities: typing.Optional[bool] = None,
+        bots_start_button: typing.Optional[bool] = None,
+        bots_add_to_chat: typing.Optional[bool] = None,
+    ) -> typing.Union[dict, BaseOkResponse]:
+        """
+        :param group_id:
+        :param messages:
+        :param bots_capabilities:
+        :param bots_start_button:
+        :param bots_add_to_chat:
+        :param return_raw_response: - return result at dict
+        :return:
+        """
+
+        params = get_params(locals())
+
+        raw_result = await self.api_request("setSettings", params)
+        if return_raw_response:
+            return raw_result
+
+        result = BaseOkResponse(**raw_result)
+        return result
+
+    async def set_user_note(
+        self,
+        group_id: int,
+        user_id: int,
+        return_raw_response: bool = False,
+        note: typing.Optional[str] = None,
+    ) -> typing.Union[dict, BaseBoolResponse]:
+        """
+        :param group_id:
+        :param user_id:
+        :param note: - Note body
+        :param return_raw_response: - return result at dict
+        :return:
+        """
+
+        params = get_params(locals())
+
+        raw_result = await self.api_request("setUserNote", params)
+        if return_raw_response:
+            return raw_result
+
+        result = BaseBoolResponse(**raw_result)
+        return result
+
+    async def tag_add(
+        self,
+        group_id: int,
+        tag_name: str,
+        return_raw_response: bool = False,
+        tag_color: typing.Optional[str] = None,
+    ) -> typing.Union[dict, BaseBoolResponse]:
+        """
+        :param group_id:
+        :param tag_name:
+        :param tag_color:
+        :param return_raw_response: - return result at dict
+        :return:
+        """
+
+        params = get_params(locals())
+
+        raw_result = await self.api_request("tagAdd", params)
+        if return_raw_response:
+            return raw_result
+
+        result = BaseBoolResponse(**raw_result)
+        return result
+
+    async def tag_bind(
+        self,
+        group_id: int,
+        tag_id: int,
+        user_id: int,
+        act: str,
+        return_raw_response: bool = False,
+    ) -> typing.Union[dict, BaseBoolResponse]:
+        """
+        :param group_id:
+        :param tag_id:
+        :param user_id:
+        :param act: - Describe the action
+        :param return_raw_response: - return result at dict
+        :return:
+        """
+
+        params = get_params(locals())
+
+        raw_result = await self.api_request("tagBind", params)
+        if return_raw_response:
+            return raw_result
+
+        result = BaseBoolResponse(**raw_result)
+        return result
+
+    async def tag_delete(
+        self, group_id: int, tag_id: int, return_raw_response: bool = False,
+    ) -> typing.Union[dict, BaseBoolResponse]:
+        """
+        :param group_id:
+        :param tag_id:
+        :param return_raw_response: - return result at dict
+        :return:
+        """
+
+        params = get_params(locals())
+
+        raw_result = await self.api_request("tagDelete", params)
+        if return_raw_response:
+            return raw_result
+
+        result = BaseBoolResponse(**raw_result)
+        return result
+
+    async def tag_update(
+        self, group_id: int, tag_id: int, tag_name: str, return_raw_response: bool = False,
+    ) -> typing.Union[dict, BaseBoolResponse]:
+        """
+        :param group_id:
+        :param tag_id:
+        :param tag_name:
+        :param return_raw_response: - return result at dict
+        :return:
+        """
+
+        params = get_params(locals())
+
+        raw_result = await self.api_request("tagUpdate", params)
+        if return_raw_response:
+            return raw_result
+
+        result = BaseBoolResponse(**raw_result)
+        return result
+
+    async def toggle_market(
+        self, group_id: int, state: str, return_raw_response: bool = False,
+    ) -> typing.Union[dict, BaseOkResponse]:
+        """
+        :param group_id:
+        :param state:
+        :param return_raw_response: - return result at dict
+        :return:
+        """
+
+        params = get_params(locals())
+
+        raw_result = await self.api_request("toggleMarket", params)
         if return_raw_response:
             return raw_result
 
