@@ -53,12 +53,8 @@ def compare_handler(node: ast.Compare):
     left = converter.convert_node(node.left)
     for op, comparator in zip(node.ops, node.comparators):
         if op.__class__ not in ops:
-            raise NotImplementedError(
-                f"comparison operator {op} not supported"
-            )
-        operations.append(
-            f"{left}{ops[op.__class__]}{converter.convert_node(comparator)}"
-        )
+            raise NotImplementedError(f"comparison operator {op} not supported")
+        operations.append(f"{left}{ops[op.__class__]}{converter.convert_node(comparator)}")
     return "&&".join(operations)
 
 
@@ -68,9 +64,7 @@ def bool_op_handler(node: ast.BoolOp):
     if node.op.__class__ not in ops:
         raise NotImplementedError(f"operation '{node.op}' not supported")
     converter = VKScriptConverter.get_current()
-    return ops[node.op.__class__].join(
-        converter.convert_node(value) for value in node.values
-    )
+    return ops[node.op.__class__].join(converter.convert_node(value) for value in node.values)
 
 
 @VKScriptConverter.register(ast.UnaryOp)
@@ -88,20 +82,14 @@ def subscript_handler(node: ast.Subscript):
     value = converter.convert_node(node.value)
     if node.slice.__class__ == ast.Index:
         safe = frozenset(string.ascii_letters + string.digits + "_")
-        if (
-            node.slice.value.__class__ == ast.Str
-            and set(node.slice.value.s) <= safe
-        ):
+        if node.slice.value.__class__ == ast.Str and set(node.slice.value.s) <= safe:
             # TODO: Improve safety check, first symbol may be digit
             return f"{value}.{node.slice.value.s}"
         return f"{value}[{converter.convert_node(node.slice.value)}]"
     elif node.slice.__class__ == ast.Slice:
         if node.slice.step:
             raise NotImplementedError("steps in slice not supported")
-        if (
-            node.slice.lower.__class__ != ast.Num
-            and node.slice.upper.__class__ != ast.Num
-        ):
+        if node.slice.lower.__class__ != ast.Num and node.slice.upper.__class__ != ast.Num:
             raise TypeError("slices must be integers")
         lower = node.slice.lower.n or 0
         if node.slice.upper:

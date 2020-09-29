@@ -9,7 +9,8 @@ from vkwave.api.token.token import (
     GetTokenType,
     Token,
     TokenType,
-    BotSyncSingleToken)
+    BotSyncSingleToken,
+)
 
 
 class ABCGetTokenStrategy(ABC):

@@ -14,9 +14,7 @@ def return_handler(node: ast.Return):
 @VKScriptConverter.register(ast.Delete)
 def delete_handler(node: ast.Attribute):
     converter = VKScriptConverter.get_current()
-    return "".join(
-        f"delete {converter.convert_node(target)};" for target in node.targets
-    )
+    return "".join(f"delete {converter.convert_node(target)};" for target in node.targets)
 
 
 @VKScriptConverter.register(ast.Pass)

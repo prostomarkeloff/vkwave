@@ -11,7 +11,7 @@ from .core.dispatching.filters import (
     MessageArgsFilter,
     FwdMessagesFilter,
     TextContainsFilter,
-    ReplyMessageFilter
+    ReplyMessageFilter,
 )
 from .core.dispatching.dp.middleware.middleware import MiddlewareResult, BaseMiddleware
 from .core.dispatching.events.base import BotEvent, UserEvent, BotType, BaseEvent
@@ -34,7 +34,7 @@ from vkwave.bots.addons.easy import (
     simple_bot_message_handler,
     simple_user_handler,
     simple_user_message_handler,
-    simple_bot_handler
+    simple_bot_handler,
 )
 from .fsm import StateFilter, FiniteStateMachine, ForWhat, State
 from .storage import RedisStorage, VKStorage, Storage, TTLStorage

@@ -29,17 +29,12 @@ def call_handler(node: ast.Call):
             raise TypeError("api calls does not accept positional arguments")
 
         inner = ",".join(
-            f"{keyword.arg}:{converter.convert_node(keyword.value)}"
-            for keyword in node.keywords
+            f"{keyword.arg}:{converter.convert_node(keyword.value)}" for keyword in node.keywords
         )
 
         return "API." + ".".join(attrs[::-1]) + f"({{{inner}}})"
 
-    elif (
-        not attrs
-        and node_.id == "len"
-        and "len" not in converter.scope.globals
-    ):
+    elif not attrs and node_.id == "len" and "len" not in converter.scope.globals:
         return f"{converter.convert_node(node.args[0])}.length"
 
     # TODO: rewrite?

@@ -10,6 +10,8 @@ class SimpleLongPollUserBot(BaseSimpleLongPollBot):
         self,
         tokens: typing.Union[str, typing.List[str]],
         router: typing.Optional[BaseRouter] = None,
-        uvloop: bool = False
+        uvloop: bool = False,
     ):
-        super().__init__(tokens, group_id=None, bot_type=BotType.USER, router=router, uvloop=uvloop)
+        super().__init__(
+            tokens, group_id=None, bot_type=BotType.USER, router=router, uvloop=uvloop
+        )

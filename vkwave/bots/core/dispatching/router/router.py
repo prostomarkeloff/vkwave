@@ -56,10 +56,14 @@ class DefaultRouter(BaseRouter):
     async def is_suitable(self, event: BaseEvent) -> bool:
         return await self.filter_manager.execute_filters(event)
 
-    def register_handler(self, *filters: Union[BaseFilter, Any], callback: Union[BaseCallback, Any]):
+    def register_handler(
+        self, *filters: Union[BaseFilter, Any], callback: Union[BaseCallback, Any]
+    ):
         """
         Register handler with one method
 
         >>> router.register_handler(EventTypeFilter("message_new"), TextFilter("123"), callback=callback)
         """
-        self._registrar.register(self._registrar.new().with_filters(*filters).handle(callback).ready())
+        self._registrar.register(
+            self._registrar.new().with_filters(*filters).handle(callback).ready()
+        )

@@ -36,9 +36,7 @@ class Execute:
                 elif argument.arg.upper() == "API":
                     continue
                 else:
-                    raise TypeError(
-                        f"missing required argument {argument.arg}"
-                    )
+                    raise TypeError(f"missing required argument {argument.arg}")
             converter = VKScriptConverter(Scope(globals=globals_))
             return converter.convert_block(self._code.body)
         raise NotImplementedError()

@@ -31,8 +31,7 @@ class BotLongpollExtension(BaseExtension):
         api_version_for_check = int(api_version.split(".")[-1])
         if api_version_for_check < 103:
             warnings.warn(
-                f"version less than 5.103 is not recommended for use, you have {api_version}."
-                f" Change it in group settings."
+                f"LongPoll API versions less than 5.103 shall not work. \nYou are using {api_version}"
             )
         if not ignore_errors:
             while True:
