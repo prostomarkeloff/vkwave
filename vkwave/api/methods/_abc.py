@@ -13,6 +13,7 @@ from vkwave.api.token.token import AnyABCToken, Token
 from vkwave.client.abstract import AbstractAPIClient
 from vkwave.client.context import ResultState
 from vkwave.client.types import MethodName
+from vkwave import __api_version__
 
 
 from .account import Account
@@ -200,7 +201,7 @@ class API:
             tokens,
             clients,
             get_token_strategy or RandomGetTokenStrategy(),
-            api_version or "5.103",
+            api_version or __api_version__,
             error_dispatcher or ErrorDispatcher(),
         )
 
