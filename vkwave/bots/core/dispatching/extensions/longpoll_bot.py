@@ -1,4 +1,4 @@
-from asyncio import get_running_loop
+from asyncio import get_running_loop, sleep
 from typing import TYPE_CHECKING
 import warnings
 import logging
@@ -50,6 +50,7 @@ class BotLongpollExtension(BaseExtension):
                         )
                 except Exception as e:
                     logger.error(f"Error in Longpoll ({e}): {traceback.format_exc()}")
+                    await sleep(0.33)
                     continue
 
     async def start(self, ignore_errors: bool = True):
