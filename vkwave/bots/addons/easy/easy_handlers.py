@@ -83,6 +83,7 @@ class SimpleBotEvent(BotEvent):
         reply_to: typing.Optional[int] = None,
         group_id: typing.Optional[int] = None,
         template: typing.Optional[str] = None,
+        content_source: typing.Optional[str] = None,
     ) -> MessagesSendResponse:
         if self.object.type not in (
             BotEventType.MESSAGE_NEW,
@@ -109,6 +110,7 @@ class SimpleBotEvent(BotEvent):
             message=message,
             random_id=0,
             template=template,
+            content_source=content_source,
         )
 
     async def callback_answer(self, event_data: typing.Dict[str, str]) -> BaseOkResponse:
