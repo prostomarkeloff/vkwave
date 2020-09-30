@@ -906,6 +906,7 @@ class Messages(Category):
         disable_mentions: typing.Optional[bool] = None,
         intent: typing.Optional[str] = None,
         subscribe_id: typing.Optional[int] = None,
+        content_source: typing.Optional[str] = None,
     ) -> typing.Union[dict, MessagesSendResponse]:
         """
         :param user_id: - User ID (by default — current user).
@@ -929,6 +930,7 @@ class Messages(Category):
         :param disable_mentions:
         :param intent:
         :param subscribe_id:
+        :param content_source: 
         :param return_raw_response: - return result at dict
         :return:
         """
