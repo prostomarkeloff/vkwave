@@ -138,3 +138,19 @@ poetry.lock
 /reports
 /dist
 .vscode/settings.json
+
+# ignore cython generated
+*.c
+
+
+# Added by cargo
+
+/target
+
+
+# Added by cargo
+#
+# already existing elements were commented out
+
+#/target
+Cargo.lock

@@ -1,5 +1,6 @@
 import json
 import re
+import logging
 from typing import Dict, List, Optional, Tuple, Union
 
 from typing_extensions import Literal
@@ -12,6 +13,13 @@ from vkwave.types.objects import MessagesMessageActionStatus
 from vkwave.types.user_events import EventId, MessageFlag
 
 from .base import BaseFilter, FilterResult
+
+logger = logging.getLogger(__name__)
+
+try:
+    from .builtin_cyth import text_filter_cyth
+except ImportError:
+    text_filter_cyth = None
 
 MessageEventUser: Tuple[int] = EventId.MESSAGE_EVENT.value
 MessageEventBot: str = "message_new"
@@ -111,8 +119,12 @@ class TextFilter(BaseFilter):
         if text is None:
             return FilterResult(False)
 
+
         if self.ic:
             text = text.lower()
+        if text_filter_cyth:
+            logger.debug("using Cythonized text filter")
+            return FilterResult(text_filter_cyth(self.text, text))
         return FilterResult(text in self.text)
 
 
@@ -231,7 +243,7 @@ class MessageFromConversationTypeFilter(BaseFilter):
     >>> _ = conv_type("from_dm")
     >>> _ = conv_type("from_chat")
     >>> _ = conv_type("chat")
-    
+
     >>> from_pm = conv_type("from_pm")
     >>> @router.registrar.with_decorator(from_pm)
     """
