@@ -2299,8 +2299,10 @@ class PhotosPhotoAlbum(pydantic.BaseModel):
 
 
 class PhotosPhotoSizesType(str, Enum):
+    TEMP = "temp"
     S = "s"
     M = "m"
+    J = "j"
     X = "x"
     O = "o"
     P = "p"
