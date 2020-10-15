@@ -22,8 +22,7 @@ VKWave - это не самая быстрая библиотека, из-за �
 - Client - [core part](./client)
 - API - [use VK's API in the most fancy way](./api)
 - Bots - [create awesome bots with ease](./bots)
-- FSM - [FSM implementation for VKWave](./bots/fsm)
-- Storage - [FSM Storage](./bots/storage)
+- Storage - [FSM Storage](./bots/storage.md)
 - Bots utils - [keyboards, carousels, ...](./bots/utils)
 - LongPoll - [acessing VK's longpoll (user/bot)](./longpoll)
 
