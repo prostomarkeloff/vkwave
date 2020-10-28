@@ -64,6 +64,18 @@ class Template:
             app_id=app_id, owner_id=owner_id, label=label, payload=payload
         )
 
+    def add_callback_button(
+        self,
+        text: str,
+        color: typing.Union[str, ButtonColor] = ButtonColor.PRIMARY,
+        payload: typing.Optional[typing.Dict[str, str]] = None,
+    ):
+        self._local_keyboard.add_callback_button(
+            text=text,
+            color=color,
+            payload=payload,
+        )
+
     @classmethod
     def generate_carousel(cls, *templates: "Template", json_serialize: JSONEncoder = json.dumps):
         """

@@ -94,6 +94,8 @@ class BaseSimpleLongPollBot:
             import uvloop
 
             asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
+
+        self.group_id = group_id
         self.bot_type = bot_type
         self.api_session = create_api_session_aiohttp(tokens, bot_type)
         self.api_context: APIOptionsRequestContext = self.api_session.api.get_context()
