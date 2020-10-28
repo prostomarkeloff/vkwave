@@ -140,6 +140,9 @@ class SimpleBotCallback(BaseCallback):
             return await self.func(new_event)
         return self.func(new_event)
 
+    def __repr__(self):
+        return f"<SimpleBotCallback {self.func.__name__} bot_type={self.bot_type}>"
+
 
 def simple_bot_handler(router, *filters: BaseFilter):
     """

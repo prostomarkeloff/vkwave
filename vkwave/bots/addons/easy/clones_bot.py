@@ -19,11 +19,14 @@ class ClonesBot:
         self.router = self.base_bot.router
         self.clones: typing.Tuple[typing.Union[SimpleLongPollUserBot, SimpleLongPollBot]] = clones
 
+    def register_clones(self):
+        for clone in self.clones:
+            clone.router.registrar.handlers = self.router.registrar.handlers
+
     def run_all_bots(self, loop: typing.Optional[asyncio.AbstractEventLoop] = None):
+        self.register_clones()
         loop = loop or asyncio.get_event_loop()
         loop.create_task(self.base_bot.run())
         for clone in self.clones:
-            clone.router.registrar.handlers.extend(self.router.registrar.handlers)
-            clone.router.registrar.handlers = list(set(clone.router.registrar.handlers))
             loop.create_task(clone.run())
         loop.run_forever()
