@@ -14,12 +14,22 @@ class ForWhat(Enum):
     FOR_USER_IN_CHAT = auto()  # default
 
 
+def get_peer_from_ids(event: BaseEvent) -> typing.Tuple[int, int]:
+    if event.object.object.dict().get("message") is not None:
+        from_id = event.object.object.message.from_id
+        peer_id = event.object.object.message.peer_id
+    else:
+        # CallbackButtonEventObject
+        from_id = event.object.object.user_id
+        peer_id = event.object.object.peer_id
+    return from_id, peer_id
+
+
 def create_state_id(event: BaseEvent, for_what: ForWhat = ForWhat.FOR_USER_IN_CHAT) -> StateId:
     res: str
 
     template = "__vkwave_{for_what}_{peer_id}_{from_id}__"
-    from_id = event.object.object.message.from_id
-    peer_id = event.object.object.message.peer_id
+    from_id, peer_id = get_peer_from_ids(event)
 
     is_pm = from_id == peer_id
     is_chat = not is_pm
