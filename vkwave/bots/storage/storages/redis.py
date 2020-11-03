@@ -26,7 +26,7 @@ class RedisStorage(AbstractExpiredStorage):
         dumper: Dumper = json.dumps,
         # loads object from str
         loader: Loader = json.loads,
-        default_ttl: TTL = TTL(10),
+        default_ttl: TTL = TTL(0),
         **kwargs,
     ):
         if aioredis is None:
