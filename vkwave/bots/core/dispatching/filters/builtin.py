@@ -119,7 +119,6 @@ class TextFilter(BaseFilter):
         if text is None:
             return FilterResult(False)
 
-
         if self.ic:
             text = text.lower()
         if text_filter_cyth:

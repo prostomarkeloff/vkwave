@@ -1,3 +1,5 @@
+import warnings
+
 from typing import Any, Awaitable, Callable, Dict, Optional, Type
 
 from vkwave.bots.core.dispatching.events.base import BaseEvent
@@ -18,7 +20,8 @@ class ResultCaster:
         typeof = type(result)
         handler: Optional[Callable[[Any, BaseEvent], Awaitable[None]]] = self.available.get(typeof)
         if not handler:
-            raise NotImplementedError("implementation for this type doesn't exist")
+            warnings.warn("implementation for this type doesn't exist")
+            return
         await handler(result, event)
 
 
@@ -32,8 +35,10 @@ async def _default_str_handler(some: str, event: BaseEvent):
             "'str' handler is implemented only for 'message_new' events, now"
         )
     if event.bot_type is BotType.USER:
-        raise NotImplementedError("Default 'str' handler is not implemented yet")
+        peer_id = event.object.object.peer_id
+    else:
+        peer_id = event.object.object.message.peer_id
 
     await event.api_ctx.messages.send(
-        random_id=0, peer_id=event.object.object.message.peer_id, message=some
+        random_id=0, peer_id=peer_id, message=some
     )
