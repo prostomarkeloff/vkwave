@@ -1,7 +1,4 @@
-from typing import (
-    Optional,
-    Dict
-)
+from typing import Optional, Dict
 from abc import ABC, abstractmethod
 
 
@@ -14,7 +11,7 @@ class VKPayAction(ABC):
 
 class VKPayActionPayToGroup(VKPayAction):
     """
-    Платёж в пользу сообщества с заданной суммой
+    Payment to the group with the specified amount
     """
 
     def __init__(
@@ -25,9 +22,10 @@ class VKPayActionPayToGroup(VKPayAction):
         data: Optional[Dict[str, str]] = None
     ):
         """
-        :param amount: сумма платежа в рублях. Минимальное значение — 1;
-        :param group_id: идентификатор сообщества
-        :param description: описание платежа
+        :param amount: the amount of payment in rubles. The minimum value is 1;
+        :param group_id:
+        :param description: payment description
+        :param data: dictionary with custom parameters (from vk api docs)
         """
         self._action: str = 'pay-to-group'
         self._amount: int = amount
@@ -47,7 +45,7 @@ class VKPayActionPayToGroup(VKPayAction):
 
 class VKPayActionPayToUser(VKPayAction):
     """
-    Платёж с заданной суммой пользователю
+    Payment with the specified amount to the user
     """
 
     def __init__(
@@ -57,9 +55,9 @@ class VKPayActionPayToUser(VKPayAction):
         description: Optional[str] = None
     ):
         """
-        :param amount: сумма платежа в рублях. Минимальное значение — 1;
-        :param user_id: идентификатор пользователя
-        :param description: описание платежа
+        :param amount: the amount of payment in rubles. The minimum value is 1;
+        :param user_id:
+        :param description: payment description
         """
         self._action: str = 'pay-to-user'
         self._amount: int = amount
@@ -76,7 +74,7 @@ class VKPayActionPayToUser(VKPayAction):
 
 class VKPayActionTransferToGroup(VKPayAction):
     """
-    Перевод сообществу произвольной суммы
+    Transfer of any amount to the group
     """
 
     def __init__(
@@ -85,8 +83,8 @@ class VKPayActionTransferToGroup(VKPayAction):
         description: Optional[str] = None
     ):
         """
-        :param group_id: идентификатор сообщества
-        :param description: описание платежа
+        :param group_id:
+        :param description: payment description
         """
         self._action: str = 'transfer-to-group'
         self._group_id: int = group_id
@@ -98,9 +96,10 @@ class VKPayActionTransferToGroup(VKPayAction):
             _hash += f'&description={self._description}'
         return _hash
 
+
 class VKPayActionTransferToUser(VKPayAction):
     """
-    Перевод пользователю произвольной суммы
+    Transfer of any amount to the user
     """
 
     def __init__(
@@ -109,8 +108,8 @@ class VKPayActionTransferToUser(VKPayAction):
         description: Optional[str] = ''
     ):
         """
-        :param user_id: идентификатор пользователя
-        :param description: описание платежа
+        :param user_id:
+        :param description: payment description
         """
         self._action: str = 'transfer-to-group'
         self._user_id: int = user_id
