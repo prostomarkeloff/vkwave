@@ -140,10 +140,11 @@ class Keyboard:
         :return:
         """
 
+        _hash: str
         if isinstance(hash_action, VKPayAction):
             _hash = hash_action.generate_hash()
         else:
-            _hash = f'action={hash_action}'
+            _hash = hash_action
         _hash += f'&aid={aid}'
 
         action = {
