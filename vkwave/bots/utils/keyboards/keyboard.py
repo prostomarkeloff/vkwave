@@ -129,22 +129,22 @@ class Keyboard:
 
     def add_vkpay_button(
         self,
-        hash_action: typing.Union[VKPayAction, str],
+        hash: typing.Union[VKPayAction, str],
         aid: int = 10,
         payload: typing.Optional[typing.Dict[str, str]] = None
     ) -> None:
         """
-        :param hash_action: subclass of VKPayAction or action string like "transfer-to-group&group_id=123"
+        :param hash: subclass of VKPayAction or action string like "transfer-to-group&group_id=123"
         :param aid: application id (currently not supported)
         :param payload:
         :return:
         """
 
         _hash: str
-        if isinstance(hash_action, VKPayAction):
-            _hash = hash_action.generate_hash()
+        if isinstance(hash, VKPayAction):
+            _hash = hash.generate_hash()
         else:
-            _hash = hash_action
+            _hash = hash
         _hash += f'&aid={aid}'
 
         action = {
