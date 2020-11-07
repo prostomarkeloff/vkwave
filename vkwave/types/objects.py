@@ -2920,6 +2920,7 @@ class WallPostSourceType(str, Enum):
     API = "api"
     RSS = "rss"
     SMS = "sms"
+    MVK = "mvk"
 
 
 class WallPostType(str, Enum):
