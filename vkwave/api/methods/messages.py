@@ -891,6 +891,7 @@ class Messages(Category):
         domain: typing.Optional[str] = None,
         chat_id: typing.Optional[int] = None,
         user_ids: typing.Optional[typing.List[int]] = None,
+        peer_ids: typing.Optional[typing.List[int]] = None,
         message: typing.Optional[str] = None,
         lat: typing.Optional[int] = None,
         long: typing.Optional[int] = None,
@@ -915,6 +916,7 @@ class Messages(Category):
         :param domain: - User's short address (for example, 'illarionov').
         :param chat_id: - ID of conversation the message will relate to.
         :param user_ids: - IDs of message recipients (if new conversation shall be started).
+        :param peer_ids: - IDs of peers.
         :param message: - (Required if 'attachments' is not set.) Text of the message.
         :param lat: - Geographical latitude of a check-in, in degrees (from -90 to 90).
         :param long: - Geographical longitude of a check-in, in degrees (from -180 to 180).
@@ -943,6 +945,8 @@ class Messages(Category):
 
         if user_ids:
             result = MessagesSendUserIdsResponse(**raw_result)
+        elif peer_ids:
+            result = MessagesSendPeerIdsResponse(**raw_result)
         else:
             result = MessagesSendResponse(**raw_result)
         return result
