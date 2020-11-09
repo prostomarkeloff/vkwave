@@ -5,6 +5,8 @@ from enum import Enum
 from vkwave.bots.core.types.json_types import JSONEncoder
 from vkwave.bots.utils.keyboards._types import Button
 
+from vkwave.bots.utils.keyboards._vkpayaction import VKPayAction
+
 
 class ButtonColor(Enum):
     PRIMARY = "primary"  # blue
@@ -126,19 +128,30 @@ class Keyboard:
         self._add_button(action)
 
     def add_vkpay_button(
-        self, hash: str, payload: typing.Optional[typing.Dict[str, str]] = None
+        self,
+        hash_action: typing.Union[VKPayAction, str],
+        aid: int = 10,
+        payload: typing.Optional[typing.Dict[str, str]] = None
     ) -> None:
         """
-        :param hash:
+        :param hash_action: subclass of VKPayAction or action string like "transfer-to-group&group_id=123"
+        :param aid: application id (currently not supported)
         :param payload:
         :return:
         """
+
+        _hash: str
+        if isinstance(hash_action, VKPayAction):
+            _hash = hash_action.generate_hash()
+        else:
+            _hash = hash_action
+        _hash += f'&aid={aid}'
 
         action = {
             "action": {
                 "type": ButtonType.VKPAY.value,
                 "payload": self._generate_payload(payload),
-                "hash": hash,
+                "hash": _hash,
             }
         }
 
