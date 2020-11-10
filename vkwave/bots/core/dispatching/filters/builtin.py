@@ -284,7 +284,7 @@ class FromMeFilter(BaseFilter):
     def __init__(self, from_me: bool):
         self.from_me = from_me
 
-    async def check(self, event: BaseEvent) -> FilterResult:
+    async def check(self, event: UserEvent) -> FilterResult:
         is_message_event(event)
         if event.bot_type == BotType.BOT:
             raise RuntimeError("Сannot be used in bot")
