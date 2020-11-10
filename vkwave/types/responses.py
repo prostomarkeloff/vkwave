@@ -2639,7 +2639,7 @@ class MessagesSendResponse(pydantic.BaseModel):
     )
 
 
-class MessagesSendUserIdsData(pydantic.BaseModel):
+class MessagesSendPeerIdsData(pydantic.BaseModel):
     peer_id: int = pydantic.Field(
         ..., description="",
     )
@@ -2648,8 +2648,8 @@ class MessagesSendUserIdsData(pydantic.BaseModel):
     )
 
 
-class MessagesSendUserIdsResponse(pydantic.BaseModel):
-    response: typing.List[MessagesSendUserIdsData] = pydantic.Field(
+class MessagesSendPeerIdsResponse(pydantic.BaseModel):
+    response: typing.List[MessagesSendPeerIdsData] = pydantic.Field(
         ..., description="",
     )
 

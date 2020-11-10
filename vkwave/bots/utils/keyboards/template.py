@@ -3,7 +3,7 @@ import typing
 
 from vkwave.bots.core.types.json_types import JSONEncoder
 from vkwave.bots.utils.keyboards.keyboard import ButtonColor, Keyboard
-
+from vkwave.bots.utils.keyboards._vkpayaction import VKPayAction
 
 class Template:
     def __init__(
@@ -56,8 +56,8 @@ class Template:
     def add_link_button(self, text: str, link: str, payload: dict = None):
         self._local_keyboard.add_link_button(text=text, link=link, payload=payload)
 
-    def add_vkpay_button(self, hash: str, payload: dict = None):
-        self._local_keyboard.add_vkpay_button(hash=hash, payload=payload)
+    def add_vkpay_button(self, hash_action: typing.Union[VKPayAction, str], payload: dict = None):
+        self._local_keyboard.add_vkpay_button(hash_action=hash_action, payload=payload)
 
     def add_vkapps_button(self, app_id: int, owner_id: int, label: str, payload: dict = None):
         self._local_keyboard.add_vkapps_button(
