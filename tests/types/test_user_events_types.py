@@ -91,7 +91,7 @@ def test_message_with_keyboard():
     assert event.object.text == "123"
     assert not event.object.message_data.keyboard.one_time
     assert event.object.message_data.keyboard.buttons[0][0].action.label == "helloworld"
-    assert event.object.message_data.keyboard.buttons[0][0].action.type == "text"
+    assert event.object.message_data.keyboard.buttons[0][0].action.type.value == "text"
 
 
 def test_changed_unread_count():

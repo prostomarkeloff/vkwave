@@ -10,7 +10,7 @@ def test_group_join_event():
             "event_id": "2a01ffba5838ff2016ae555327fd77c8633bbef6",
         }
     )
-    assert event.object.join_type == "approved"
+    assert event.object.join_type.value == "approved"
     assert event.object.user_id == 1
     assert event.group_id == 123
 
@@ -180,13 +180,13 @@ def test_message_new_event():
     assert event.object.message.peer_id == event.object.message.from_id
     assert event.object.message.random_id == 0
     assert event.object.client_info.button_actions[0] == "text"
-    assert event.object.message.attachments[0].type == "photo"
+    assert event.object.message.attachments[0].type.value == "photo"
     assert event.object.message.attachments[0].photo.album_id == -6
-    assert event.object.message.attachments[0].photo.sizes[0].type == "m"
+    assert event.object.message.attachments[0].photo.sizes[0].type.value == "m"
     assert event.object.message.attachments[0].photo.sizes[0].width == 130
     assert event.object.message.fwd_messages[0].text == "meh"
     assert event.object.message.fwd_messages[0].date == 1582576949
-    assert event.object.message.fwd_messages[0].attachments[0].type == "photo"
+    assert event.object.message.fwd_messages[0].attachments[0].type.value == "photo"
     assert event.object.message.fwd_messages[0].attachments[0].photo.sizes[0].height == 130
 
 
@@ -324,7 +324,7 @@ def test_photo_new():
         }
     )
     assert event.object.album_id == 269275165
-    assert event.object.sizes[-1].type == "r"
+    assert event.object.sizes[-1].type.value == "r"
 
 
 def test_photo_comment_new():
@@ -434,7 +434,7 @@ def test_wall_post_new():
     )
 
     assert event.object.from_id == -191949777
-    assert event.object.attachments[0].type == "poll"
+    assert event.object.attachments[0].type.value == "poll"
     assert not event.object.attachments[0].poll.anonymous
     assert event.object.attachments[0].poll.answers[0].id == 1220489985
     assert event.object.attachments[0].poll.answers[0].text == "first"
