@@ -22,7 +22,9 @@ class Streaming(Category):
         return result
 
     async def set_settings(
-        self, return_raw_response: bool = False, monthly_tier: typing.Optional[str] = None,
+        self,
+        return_raw_response: bool = False,
+        monthly_tier: typing.Optional[str] = None,
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param monthly_tier:

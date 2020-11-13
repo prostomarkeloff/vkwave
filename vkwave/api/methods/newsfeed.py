@@ -110,7 +110,9 @@ class Newsfeed(Category):
         extended: typing.Optional[BaseBoolInt] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
         name_case: typing.Optional[str] = None,
-    ) -> typing.Union[dict, NewsfeedGetBannedResponse, NewsfeedGetBannedExtendedResponse]:
+    ) -> typing.Union[
+        dict, NewsfeedGetBannedResponse, NewsfeedGetBannedExtendedResponse
+    ]:
         """
         :param extended: - '1' — return extra information about users and communities
         :param fields: - Profile fields to return.
@@ -277,7 +279,11 @@ class Newsfeed(Category):
         return result
 
     async def ignore_item(
-        self, type: str, owner_id: int, item_id: int, return_raw_response: bool = False,
+        self,
+        type: str,
+        return_raw_response: bool = False,
+        owner_id: typing.Optional[int] = None,
+        item_id: typing.Optional[int] = None,
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param type: - Item type. Possible values: *'wall' – post on the wall,, *'tag' – tag on a photo,, *'profilephoto' – profile photo,, *'video' – video,, *'audio' – audio.

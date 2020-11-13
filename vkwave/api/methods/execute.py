@@ -1,4 +1,4 @@
-from vkwave.types.responses import ExecuteResponse
+from vkwave.types.extension_responses import ExecuteResponse
 
 from ._category import Category
 

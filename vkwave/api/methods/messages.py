@@ -29,7 +29,10 @@ class Messages(Category):
         return result
 
     async def allow_messages_from_group(
-        self, group_id: int, return_raw_response: bool = False, key: typing.Optional[str] = None,
+        self,
+        group_id: int,
+        return_raw_response: bool = False,
+        key: typing.Optional[str] = None,
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param group_id: - Group ID.
@@ -206,7 +209,10 @@ class Messages(Category):
         return result
 
     async def edit_chat(
-        self, chat_id: int, return_raw_response: bool = False, title: typing.Optional[str] = None,
+        self,
+        chat_id: int,
+        return_raw_response: bool = False,
+        title: typing.Optional[str] = None,
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param chat_id: - Chat ID.
@@ -372,7 +378,9 @@ class Messages(Category):
         fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
         group_id: typing.Optional[int] = None,
     ) -> typing.Union[
-        dict, MessagesGetConversationsByIdResponse, MessagesGetConversationsByIdExtendedResponse
+        dict,
+        MessagesGetConversationsByIdResponse,
+        MessagesGetConversationsByIdExtendedResponse,
     ]:
         """
         :param peer_ids: - Destination IDs. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "
@@ -451,7 +459,7 @@ class Messages(Category):
         :param start_from: - Message ID to start return results from.
         :param count: - Number of objects to return.
         :param photo_sizes: - '1' — to return photo sizes in a
-        :param fields: - Additional profile [vk.com/dev/fields|fields] to return. 
+        :param fields: - Additional profile [vk.com/dev/fields|fields] to return.
         :param group_id: - Group ID (for group messages with group access token)
         :param preserve_order:
         :param max_forwards_level:
@@ -479,7 +487,9 @@ class Messages(Category):
         extended: typing.Optional[BaseBoolInt] = None,
         group_id: typing.Optional[int] = None,
     ) -> typing.Union[
-        dict, MessagesGetImportantMessagesResponse, MessagesGetImportantMessagesExtendedResponse
+        dict,
+        MessagesGetImportantMessagesResponse,
+        MessagesGetImportantMessagesExtendedResponse,
     ]:
         """
         :param count: - Amount of needed important messages.
@@ -758,7 +768,8 @@ class Messages(Category):
     ) -> typing.Union[dict, MessagesPinResponse]:
         """
         :param peer_id: - Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'Chat ID', e.g. '2000000001'. For community: '- Community ID', e.g. '-12345'. "
-        :param message_id:
+        :param message_id: - Message ID
+        :param conversation_message_id: - Conversation message ID
         :param return_raw_response: - return result at dict
         :return:
         """
@@ -888,51 +899,53 @@ class Messages(Category):
         user_id: typing.Optional[int] = None,
         random_id: typing.Optional[int] = None,
         peer_id: typing.Optional[int] = None,
+        peer_ids: typing.Optional[typing.List[int]] = None,
         domain: typing.Optional[str] = None,
         chat_id: typing.Optional[int] = None,
         user_ids: typing.Optional[typing.List[int]] = None,
-        peer_ids: typing.Optional[typing.List[int]] = None,
         message: typing.Optional[str] = None,
         lat: typing.Optional[int] = None,
         long: typing.Optional[int] = None,
         attachment: typing.Optional[str] = None,
         reply_to: typing.Optional[int] = None,
         forward_messages: typing.Optional[typing.List[int]] = None,
+        forward: typing.Optional[str] = None,
         sticker_id: typing.Optional[int] = None,
         group_id: typing.Optional[int] = None,
         keyboard: typing.Optional[str] = None,
         template: typing.Optional[str] = None,
         payload: typing.Optional[str] = None,
+        content_source: typing.Optional[str] = None,
         dont_parse_links: typing.Optional[bool] = None,
         disable_mentions: typing.Optional[bool] = None,
         intent: typing.Optional[str] = None,
         subscribe_id: typing.Optional[int] = None,
-        content_source: typing.Optional[str] = None,
     ) -> typing.Union[dict, MessagesSendResponse]:
         """
         :param user_id: - User ID (by default — current user).
         :param random_id: - Unique identifier to avoid resending the message.
         :param peer_id: - Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "
+        :param peer_ids: - IDs of message recipients. (See peer_id)
         :param domain: - User's short address (for example, 'illarionov').
         :param chat_id: - ID of conversation the message will relate to.
         :param user_ids: - IDs of message recipients (if new conversation shall be started).
-        :param peer_ids: - IDs of peers.
         :param message: - (Required if 'attachments' is not set.) Text of the message.
         :param lat: - Geographical latitude of a check-in, in degrees (from -90 to 90).
         :param long: - Geographical longitude of a check-in, in degrees (from -180 to 180).
         :param attachment: - (Required if 'message' is not set.) List of objects attached to the message, separated by commas, in the following format: "<owner_id>_<media_id>", '' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, 'wall' — wall post, '<owner_id>' — ID of the media attachment owner. '<media_id>' — media attachment ID. Example: "photo100172_166443618"
         :param reply_to:
         :param forward_messages: - ID of forwarded messages, separated with a comma. Listed messages of the sender will be shown in the message body at the recipient's. Example: "123,431,544"
+        :param forward: - JSON describing the forwarded message or reply
         :param sticker_id: - Sticker id.
         :param group_id: - Group ID (for group messages with group access token)
         :param keyboard:
         :param template:
         :param payload:
+        :param content_source: - JSON describing the content source in the message
         :param dont_parse_links:
         :param disable_mentions:
         :param intent:
         :param subscribe_id:
-        :param content_source: 
         :param return_raw_response: - return result at dict
         :return:
         """

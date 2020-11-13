@@ -55,6 +55,32 @@ class SimpleUserEvent(UserEvent):
             random_id=0,
         )
 
+    async def set_activity(
+        self,
+        type: typing.Optional[str] = None,
+        user_id: typing.Optional[int] = None,
+        group_id: typing.Optional[int] = None,
+    ) -> MessagesSendResponse:
+        """
+        type:
+            typing — пользователь начал набирать текст,
+            audiomessage — пользователь записывает голосовое сообщение
+        """
+        return await self.api_ctx.messages.set_activity(
+            user_id=user_id, type=type, peer_id=self.object.object.peer_id, group_id=group_id,
+        )
+
+
+def _check_event_type(event_type: str):
+    if event_type not in (
+        BotEventType.MESSAGE_NEW,
+        BotEventType.MESSAGE_EDIT,
+        BotEventType.MESSAGE_REPLY,
+        BotEventType.MESSAGE_TYPING_STATE,
+        BotEventType.MESSAGE_ALLOW,
+    ):
+        raise RuntimeError("You cant use event.answer() with this event")
+
 
 class SimpleBotEvent(BotEvent):
     def __init__(self, event: BotEvent):
@@ -85,14 +111,7 @@ class SimpleBotEvent(BotEvent):
         template: typing.Optional[str] = None,
         content_source: typing.Optional[str] = None,
     ) -> MessagesSendResponse:
-        if self.object.type not in (
-            BotEventType.MESSAGE_NEW,
-            BotEventType.MESSAGE_EDIT,
-            BotEventType.MESSAGE_REPLY,
-            BotEventType.MESSAGE_TYPING_STATE,
-            BotEventType.MESSAGE_ALLOW,
-        ):
-            raise RuntimeError("You cant use event.answer() with this event")
+        _check_event_type(self.object.type)
         return await self.api_ctx.messages.send(
             domain=domain,
             lat=lat,
@@ -111,6 +130,25 @@ class SimpleBotEvent(BotEvent):
             random_id=0,
             template=template,
             content_source=content_source,
+        )
+
+    async def set_activity(
+        self,
+        type: typing.Optional[str] = None,
+        user_id: typing.Optional[int] = None,
+        group_id: typing.Optional[int] = None,
+    ) -> MessagesSendResponse:
+        """
+        type:
+            typing — пользователь начал набирать текст,
+            audiomessage — пользователь записывает голосовое сообщение
+        """
+        _check_event_type(self.object.type)
+        return await self.api_ctx.messages.set_activity(
+            user_id=user_id,
+            type=type,
+            peer_id=self.object.object.message.peer_id,
+            group_id=group_id,
         )
 
     async def callback_answer(self, event_data: typing.Dict[str, str]) -> BaseOkResponse:

@@ -342,7 +342,10 @@ class Market(Category):
         return result
 
     async def get_album_by_id(
-        self, owner_id: int, album_ids: typing.List[int], return_raw_response: bool = False,
+        self,
+        owner_id: int,
+        album_ids: typing.List[int],
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, MarketGetAlbumByIdResponse]:
         """
         :param owner_id: - identifier of an album owner community, "Note that community id in the 'owner_id' parameter should be negative number. For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community "
@@ -415,7 +418,7 @@ class Market(Category):
         return_raw_response: bool = False,
         count: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
-    ) -> typing.Union[dict, MarketGetCategoriesResponse]:
+    ) -> typing.Union[dict, MarketGetCategoriesNewResponse]:
         """
         :param count: - Number of results to return.
         :param offset: - Offset needed to return a specific subset of results.
@@ -429,7 +432,7 @@ class Market(Category):
         if return_raw_response:
             return raw_result
 
-        result = MarketGetCategoriesResponse(**raw_result)
+        result = MarketGetCategoriesNewResponse(**raw_result)
         return result
 
     async def get_comments(
@@ -671,7 +674,11 @@ class Market(Category):
         return result
 
     async def report_comment(
-        self, owner_id: int, comment_id: int, reason: int, return_raw_response: bool = False,
+        self,
+        owner_id: int,
+        comment_id: int,
+        reason: int,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param owner_id: - ID of an item owner community.

@@ -135,6 +135,7 @@ class Wall(Category):
         place_id: typing.Optional[int] = None,
         mark_as_ads: typing.Optional[bool] = None,
         close_comments: typing.Optional[bool] = None,
+        donut_paid_duration: typing.Optional[int] = None,
         poster_bkg_id: typing.Optional[int] = None,
         poster_bkg_owner_id: typing.Optional[int] = None,
         poster_bkg_access_hash: typing.Optional[str] = None,
@@ -154,6 +155,7 @@ class Wall(Category):
         :param place_id:
         :param mark_as_ads:
         :param close_comments:
+        :param donut_paid_duration:
         :param poster_bkg_id:
         :param poster_bkg_owner_id:
         :param poster_bkg_access_hash:
@@ -466,6 +468,7 @@ class Wall(Category):
         guid: typing.Optional[str] = None,
         mark_as_ads: typing.Optional[bool] = None,
         close_comments: typing.Optional[bool] = None,
+        donut_paid_duration: typing.Optional[int] = None,
         mute_notifications: typing.Optional[bool] = None,
         copyright: typing.Optional[str] = None,
     ) -> typing.Union[dict, WallPostResponse]:
@@ -485,6 +488,7 @@ class Wall(Category):
         :param guid:
         :param mark_as_ads:
         :param close_comments:
+        :param donut_paid_duration:
         :param mute_notifications:
         :param copyright:
         :param return_raw_response: - return result at dict

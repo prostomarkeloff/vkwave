@@ -56,7 +56,9 @@ class Friends(Category):
         return_raw_response: bool = False,
         need_sign: typing.Optional[BaseBoolInt] = None,
         extended: typing.Optional[BaseBoolInt] = None,
-    ) -> typing.Union[dict, FriendsAreFriendsResponse, FriendsAreFriendsExtendedResponse]:
+    ) -> typing.Union[
+        dict, FriendsAreFriendsResponse, FriendsAreFriendsExtendedResponse
+    ]:
         """
         :param user_ids: - IDs of the users whose friendship status to check.
         :param need_sign: - '1' — to return 'sign' field. 'sign' is md5("{id}_{user_id}_{friends_status}_{application_secret}"), where id is current user ID. This field allows to check that data has not been modified by the client. By default: '0'.
@@ -371,7 +373,9 @@ class Friends(Category):
         suggested: typing.Optional[BaseBoolInt] = None,
         ref: typing.Optional[str] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
-    ) -> typing.Union[dict, FriendsGetRequestsResponse, FriendsGetRequestsExtendedResponse]:
+    ) -> typing.Union[
+        dict, FriendsGetRequestsResponse, FriendsGetRequestsExtendedResponse
+    ]:
         """
         :param offset: - Offset needed to return a specific subset of friend requests.
         :param count: - Number of friend requests to return (default 100, maximum 1000).

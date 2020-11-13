@@ -68,7 +68,9 @@ class Users(Category):
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
-    ) -> typing.Union[dict, UsersGetSubscriptionsResponse, UsersGetSubscriptionsExtendedResponse]:
+    ) -> typing.Union[
+        dict, UsersGetSubscriptionsResponse, UsersGetSubscriptionsExtendedResponse
+    ]:
         """
         :param user_id: - User ID.
         :param extended: - '1' — to return a combined list of users and communities, '0' — to return separate lists of users and communities (default)

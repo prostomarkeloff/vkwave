@@ -142,7 +142,10 @@ class Secure(Category):
         return result
 
     async def give_event_sticker(
-        self, user_ids: typing.List[int], achievement_id: int, return_raw_response: bool = False,
+        self,
+        user_ids: typing.List[int],
+        achievement_id: int,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, SecureGiveEventStickerResponse]:
         """
         :param user_ids:

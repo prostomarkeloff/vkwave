@@ -606,7 +606,7 @@ class Groups(Category):
         group_ids: typing.Optional[typing.List[str]] = None,
         group_id: typing.Optional[str] = None,
         fields: typing.Optional[typing.List[GroupsFields]] = None,
-    ) -> typing.Union[dict, GroupsGetByIdResponse]:
+    ) -> typing.Union[dict, GroupsGetByIdLegacyResponse]:
         """
         :param group_ids: - IDs or screen names of communities.
         :param group_id: - ID or screen name of the community.
@@ -620,8 +620,9 @@ class Groups(Category):
         raw_result = await self.api_request("getById", params)
         if return_raw_response:
             return raw_result
+        print(raw_result)
 
-        result = GroupsGetByIdResponse(**raw_result)
+        result = GroupsGetByIdLegacyResponse(**raw_result)
         return result
 
     async def get_callback_confirmation_code(
@@ -713,7 +714,9 @@ class Groups(Category):
         return_raw_response: bool = False,
         extended: typing.Optional[BaseBoolInt] = None,
         subcategories: typing.Optional[BaseBoolInt] = None,
-    ) -> typing.Union[dict, GroupsGetCatalogInfoResponse, GroupsGetCatalogInfoExtendedResponse]:
+    ) -> typing.Union[
+        dict, GroupsGetCatalogInfoResponse, GroupsGetCatalogInfoExtendedResponse
+    ]:
         """
         :param extended: - 1 – to return communities count and three communities for preview. By default: 0.
         :param subcategories: - 1 – to return subcategories info. By default: 0.
@@ -1148,6 +1151,8 @@ class Groups(Category):
         market_comment_edit: typing.Optional[BaseBoolInt] = None,
         market_comment_delete: typing.Optional[BaseBoolInt] = None,
         market_comment_restore: typing.Optional[BaseBoolInt] = None,
+        market_order_new: typing.Optional[bool] = None,
+        market_order_edit: typing.Optional[bool] = None,
         poll_vote_new: typing.Optional[BaseBoolInt] = None,
         group_join: typing.Optional[BaseBoolInt] = None,
         group_leave: typing.Optional[BaseBoolInt] = None,
@@ -1160,6 +1165,13 @@ class Groups(Category):
         like_add: typing.Optional[bool] = None,
         like_remove: typing.Optional[bool] = None,
         message_event: typing.Optional[bool] = None,
+        donut_subscription_create: typing.Optional[bool] = None,
+        donut_subscription_prolonged: typing.Optional[bool] = None,
+        donut_subscription_cancelled: typing.Optional[bool] = None,
+        donut_subscription_price_changed: typing.Optional[bool] = None,
+        donut_subscription_expired: typing.Optional[bool] = None,
+        donut_money_withdraw: typing.Optional[bool] = None,
+        donut_money_withdraw_error: typing.Optional[bool] = None,
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param group_id: - Community ID.
@@ -1196,6 +1208,8 @@ class Groups(Category):
         :param market_comment_edit: - A market comment has been edited ('0' — disabled, '1' — enabled).
         :param market_comment_delete: - A market comment has been deleted ('0' — disabled, '1' — enabled).
         :param market_comment_restore: - A market comment has been restored ('0' — disabled, '1' — enabled).
+        :param market_order_new:
+        :param market_order_edit:
         :param poll_vote_new: - A vote in a public poll has been added ('0' — disabled, '1' — enabled).
         :param group_join: - Joined community notifications ('0' — disabled, '1' — enabled).
         :param group_leave: - Left community notifications ('0' — disabled, '1' — enabled).
@@ -1208,6 +1222,13 @@ class Groups(Category):
         :param like_add:
         :param like_remove:
         :param message_event:
+        :param donut_subscription_create:
+        :param donut_subscription_prolonged:
+        :param donut_subscription_cancelled:
+        :param donut_subscription_price_changed:
+        :param donut_subscription_expired:
+        :param donut_money_withdraw:
+        :param donut_money_withdraw_error:
         :param return_raw_response: - return result at dict
         :return:
         """
@@ -1269,6 +1290,13 @@ class Groups(Category):
         like_add: typing.Optional[bool] = None,
         like_remove: typing.Optional[bool] = None,
         message_event: typing.Optional[bool] = None,
+        donut_subscription_create: typing.Optional[bool] = None,
+        donut_subscription_prolonged: typing.Optional[bool] = None,
+        donut_subscription_cancelled: typing.Optional[bool] = None,
+        donut_subscription_price_changed: typing.Optional[bool] = None,
+        donut_subscription_expired: typing.Optional[bool] = None,
+        donut_money_withdraw: typing.Optional[bool] = None,
+        donut_money_withdraw_error: typing.Optional[bool] = None,
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param group_id: - Community ID.
@@ -1316,6 +1344,13 @@ class Groups(Category):
         :param like_add:
         :param like_remove:
         :param message_event:
+        :param donut_subscription_create:
+        :param donut_subscription_prolonged:
+        :param donut_subscription_cancelled:
+        :param donut_subscription_price_changed:
+        :param donut_subscription_expired:
+        :param donut_money_withdraw:
+        :param donut_money_withdraw_error:
         :param return_raw_response: - return result at dict
         :return:
         """
@@ -1451,7 +1486,11 @@ class Groups(Category):
         return result
 
     async def tag_update(
-        self, group_id: int, tag_id: int, tag_name: str, return_raw_response: bool = False,
+        self,
+        group_id: int,
+        tag_id: int,
+        tag_name: str,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseBoolResponse]:
         """
         :param group_id:

@@ -3,6 +3,1548 @@ import pydantic
 from enum import Enum
 
 
+class AccountNameRequestStatus(Enum):
+    SUCCESS = "success"
+    PROCESSING = "processing"
+    DECLINED = "declined"
+    WAS_ACCEPTED = "was_accepted"
+    WAS_DECLINED = "was_declined"
+    DECLINED_WITH_LINK = "declined_with_link"
+    RESPONSE = "response"
+    RESPONSE_WITH_LINK = "response_with_link"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return AccountNameRequestStatus.CANNOT_BE_REPRESENTED
+
+
+class AccountPushParamsMode(Enum):
+    ON = "on"
+    OFF = "off"
+    NO_SOUND = "no_sound"
+    NO_TEXT = "no_text"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return AccountPushParamsMode.CANNOT_BE_REPRESENTED
+
+
+class AccountPushParamsOnoff(Enum):
+    ON = "on"
+    OFF = "off"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return AccountPushParamsOnoff.CANNOT_BE_REPRESENTED
+
+
+class AccountPushParamsSettings(Enum):
+    ON = "on"
+    OFF = "off"
+    FR_OF_FR = "fr_of_fr"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return AccountPushParamsSettings.CANNOT_BE_REPRESENTED
+
+
+class AddressesFields(Enum):
+    ID = "id"
+    TITLE = "title"
+    ADDRESS = "address"
+    ADDITIONAL_ADDRESS = "additional_address"
+    COUNTRY_ID = "country_id"
+    CITY_ID = "city_id"
+    METRO_STATION_ID = "metro_station_id"
+    LATITUDE = "latitude"
+    LONGITUDE = "longitude"
+    DISTANCE = "distance"
+    WORK_INFO_STATUS = "work_info_status"
+    TIMETABLE = "timetable"
+    PHONE = "phone"
+    TIME_OFFSET = "time_offset"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return AddressesFields.CANNOT_BE_REPRESENTED
+
+
+class AdsAccessRole(Enum):
+    ADMIN = "admin"
+    MANAGER = "manager"
+    REPORTS = "reports"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return AdsAccessRole.CANNOT_BE_REPRESENTED
+
+
+class AdsAccessRolePublic(Enum):
+    MANAGER = "manager"
+    REPORTS = "reports"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return AdsAccessRolePublic.CANNOT_BE_REPRESENTED
+
+
+class AdsAccountType(Enum):
+    GENERAL = "general"
+    AGENCY = "agency"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return AdsAccountType.CANNOT_BE_REPRESENTED
+
+
+class AdsAdApproved(Enum):
+    NOT_MODERATED = 0
+    PENDING_MODERATION = 1
+    APPROVED = 2
+    REJECTED = 3
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return AdsAdApproved.CANNOT_BE_REPRESENTED
+
+
+class AdsAdCostType(Enum):
+    PER_CLICKS = 0
+    PER_IMPRESSIONS = 1
+    PER_ACTIONS = 2
+    PER_IMPRESSIONS_OPTIMIZED = 3
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return AdsAdCostType.CANNOT_BE_REPRESENTED
+
+
+class AdsAdStatus(Enum):
+    STOPPED = 0
+    STARTED = 1
+    DELETED = 2
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return AdsAdStatus.CANNOT_BE_REPRESENTED
+
+
+class AdsCampaignStatus(Enum):
+    STOPPED = 0
+    STARTED = 1
+    DELETED = 2
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return AdsCampaignStatus.CANNOT_BE_REPRESENTED
+
+
+class AdsCampaignType(Enum):
+    NORMAL = "normal"
+    VK_APPS_MANAGED = "vk_apps_managed"
+    MOBILE_APPS = "mobile_apps"
+    PROMOTED_POSTS = "promoted_posts"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return AdsCampaignType.CANNOT_BE_REPRESENTED
+
+
+class AdsCriteriaSex(Enum):
+    ANY = 0
+    MALE = 1
+    FEMALE = 2
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return AdsCriteriaSex.CANNOT_BE_REPRESENTED
+
+
+class AdsObjectType(Enum):
+    AD = "ad"
+    CAMPAIGN = "campaign"
+    CLIENT = "client"
+    OFFICE = "office"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return AdsObjectType.CANNOT_BE_REPRESENTED
+
+
+class AdsStatsSexValue(Enum):
+    F = "f"
+    M = "m"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return AdsStatsSexValue.CANNOT_BE_REPRESENTED
+
+
+class AdsTargSuggestionsSchoolsType(Enum):
+    SCHOOL = "school"
+    UNIVERSITY = "university"
+    FACULTY = "faculty"
+    CHAIR = "chair"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return AdsTargSuggestionsSchoolsType.CANNOT_BE_REPRESENTED
+
+
+class AppsAppLeaderboardType(Enum):
+    NOT_SUPPORTED = 0
+    LEVELS = 1
+    POINTS = 2
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return AppsAppLeaderboardType.CANNOT_BE_REPRESENTED
+
+
+class AppsAppType(Enum):
+    APP = "app"
+    GAME = "game"
+    SITE = "site"
+    STANDALONE = "standalone"
+    VK_APP = "vk_app"
+    COMMUNITY_APP = "community_app"
+    HTML5_GAME = "html5_game"
+    MINI_APP = "mini_app"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return AppsAppType.CANNOT_BE_REPRESENTED
+
+
+class BaseBoolInt(Enum):
+    NO = 0
+    YES = 1
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return BaseBoolInt.CANNOT_BE_REPRESENTED
+
+
+class BaseLinkButtonActionType(Enum):
+    OPEN_URL = "open_url"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return BaseLinkButtonActionType.CANNOT_BE_REPRESENTED
+
+
+class BaseLinkButtonStyle(Enum):
+    PRIMARY = "primary"
+    SECONDARY = "secondary"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return BaseLinkButtonStyle.CANNOT_BE_REPRESENTED
+
+
+class BaseLinkProductStatus(Enum):
+    ACTIVE = "active"
+    BLOCKED = "blocked"
+    SOLD = "sold"
+    DELETED = "deleted"
+    ARCHIVED = "archived"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return BaseLinkProductStatus.CANNOT_BE_REPRESENTED
+
+
+class BasePropertyExists(Enum):
+    PROPERTY_EXISTS = 1
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return BasePropertyExists.CANNOT_BE_REPRESENTED
+
+
+class BaseSex(Enum):
+    UNKNOWN = 0
+    FEMALE = 1
+    MALE = 2
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return BaseSex.CANNOT_BE_REPRESENTED
+
+
+class BaseUserGroupFields(Enum):
+    ABOUT = "about"
+    ACTION_BUTTON = "action_button"
+    ACTIVITIES = "activities"
+    ACTIVITY = "activity"
+    ADDRESSES = "addresses"
+    ADMIN_LEVEL = "admin_level"
+    AGE_LIMITS = "age_limits"
+    AUTHOR_ID = "author_id"
+    BAN_INFO = "ban_info"
+    BDATE = "bdate"
+    BLACKLISTED = "blacklisted"
+    BLACKLISTED_BY_ME = "blacklisted_by_me"
+    BOOKS = "books"
+    CAN_CREATE_TOPIC = "can_create_topic"
+    CAN_MESSAGE = "can_message"
+    CAN_POST = "can_post"
+    CAN_SEE_ALL_POSTS = "can_see_all_posts"
+    CAN_SEE_AUDIO = "can_see_audio"
+    CAN_SEND_FRIEND_REQUEST = "can_send_friend_request"
+    CAN_UPLOAD_VIDEO = "can_upload_video"
+    CAN_WRITE_PRIVATE_MESSAGE = "can_write_private_message"
+    CAREER = "career"
+    CITY = "city"
+    COMMON_COUNT = "common_count"
+    CONNECTIONS = "connections"
+    CONTACTS = "contacts"
+    COUNTERS = "counters"
+    COUNTRY = "country"
+    COVER = "cover"
+    CROP_PHOTO = "crop_photo"
+    DEACTIVATED = "deactivated"
+    DESCRIPTION = "description"
+    DOMAIN = "domain"
+    EDUCATION = "education"
+    EXPORTS = "exports"
+    FINISH_DATE = "finish_date"
+    FIXED_POST = "fixed_post"
+    FOLLOWERS_COUNT = "followers_count"
+    FRIEND_STATUS = "friend_status"
+    GAMES = "games"
+    HAS_MARKET_APP = "has_market_app"
+    HAS_MOBILE = "has_mobile"
+    HAS_PHOTO = "has_photo"
+    HOME_TOWN = "home_town"
+    ID = "id"
+    INTERESTS = "interests"
+    IS_ADMIN = "is_admin"
+    IS_CLOSED = "is_closed"
+    IS_FAVORITE = "is_favorite"
+    IS_FRIEND = "is_friend"
+    IS_HIDDEN_FROM_FEED = "is_hidden_from_feed"
+    IS_MEMBER = "is_member"
+    IS_MESSAGES_BLOCKED = "is_messages_blocked"
+    CAN_SEND_NOTIFY = "can_send_notify"
+    IS_SUBSCRIBED = "is_subscribed"
+    LAST_SEEN = "last_seen"
+    LINKS = "links"
+    LISTS = "lists"
+    MAIDEN_NAME = "maiden_name"
+    MAIN_ALBUM_ID = "main_album_id"
+    MAIN_SECTION = "main_section"
+    MARKET = "market"
+    MEMBER_STATUS = "member_status"
+    MEMBERS_COUNT = "members_count"
+    MILITARY = "military"
+    MOVIES = "movies"
+    MUSIC = "music"
+    NAME = "name"
+    NICKNAME = "nickname"
+    OCCUPATION = "occupation"
+    ONLINE = "online"
+    ONLINE_STATUS = "online_status"
+    PERSONAL = "personal"
+    PHONE = "phone"
+    PHOTO_100 = "photo_100"
+    PHOTO_200 = "photo_200"
+    PHOTO_200_ORIG = "photo_200_orig"
+    PHOTO_400_ORIG = "photo_400_orig"
+    PHOTO_50 = "photo_50"
+    PHOTO_ID = "photo_id"
+    PHOTO_MAX = "photo_max"
+    PHOTO_MAX_ORIG = "photo_max_orig"
+    QUOTES = "quotes"
+    RELATION = "relation"
+    RELATIVES = "relatives"
+    SCHOOLS = "schools"
+    SCREEN_NAME = "screen_name"
+    SEX = "sex"
+    SITE = "site"
+    START_DATE = "start_date"
+    STATUS = "status"
+    TIMEZONE = "timezone"
+    TRENDING = "trending"
+    TV = "tv"
+    TYPE = "type"
+    UNIVERSITIES = "universities"
+    VERIFIED = "verified"
+    WALL_COMMENTS = "wall_comments"
+    WIKI_PAGE = "wiki_page"
+    VK_ADMIN_STATUS = "vk_admin_status"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return BaseUserGroupFields.CANNOT_BE_REPRESENTED
+
+
+class BoardDefaultOrder(Enum):
+    DESC_UPDATED = 1
+    DESC_CREATED = 2
+    ASC_UPDATED = -1
+    ASC_CREATED = -2
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return BoardDefaultOrder.CANNOT_BE_REPRESENTED
+
+
+class CallbackGroupJoinType(Enum):
+    JOIN = "join"
+    UNSURE = "unsure"
+    ACCEPTED = "accepted"
+    APPROVED = "approved"
+    REQUEST = "request"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return CallbackGroupJoinType.CANNOT_BE_REPRESENTED
+
+
+class CallbackGroupMarket(Enum):
+    DISABLED = 0
+    OPEN = 1
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return CallbackGroupMarket.CANNOT_BE_REPRESENTED
+
+
+class CallbackGroupOfficerRole(Enum):
+    NONE = 0
+    MODERATOR = 1
+    EDITOR = 2
+    ADMINISTRATOR = 3
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return CallbackGroupOfficerRole.CANNOT_BE_REPRESENTED
+
+
+class CallbackMessageType(Enum):
+    CONFIRMATION = "confirmation"
+    GROUP_CHANGE_PHOTO = "group_change_photo"
+    GROUP_CHANGE_SETTINGS = "group_change_settings"
+    GROUP_OFFICERS_EDIT = "group_officers_edit"
+    LEAD_FORMS_NEW = "lead_forms_new"
+    MARKET_COMMENT_DELETE = "market_comment_delete"
+    MARKET_COMMENT_EDIT = "market_comment_edit"
+    MARKET_COMMENT_RESTORE = "market_comment_restore"
+    MESSAGE_ALLOW = "message_allow"
+    MESSAGE_DENY = "message_deny"
+    MESSAGE_READ = "message_read"
+    MESSAGE_REPLY = "message_reply"
+    MESSAGE_TYPING_STATE = "message_typing_state"
+    MESSAGES_EDIT = "messages_edit"
+    PHOTO_COMMENT_DELETE = "photo_comment_delete"
+    PHOTO_COMMENT_EDIT = "photo_comment_edit"
+    PHOTO_COMMENT_RESTORE = "photo_comment_restore"
+    POLL_VOTE_NEW = "poll_vote_new"
+    USER_BLOCK = "user_block"
+    USER_UNBLOCK = "user_unblock"
+    VIDEO_COMMENT_DELETE = "video_comment_delete"
+    VIDEO_COMMENT_EDIT = "video_comment_edit"
+    VIDEO_COMMENT_RESTORE = "video_comment_restore"
+    WALL_REPLY_DELETE = "wall_reply_delete"
+    WALL_REPLY_RESTORE = "wall_reply_restore"
+    WALL_REPOST = "wall_repost"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return CallbackMessageType.CANNOT_BE_REPRESENTED
+
+
+class DocsDocAttachmentType(Enum):
+    DOC = "doc"
+    GRAFFITI = "graffiti"
+    AUDIO_MESSAGE = "audio_message"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return DocsDocAttachmentType.CANNOT_BE_REPRESENTED
+
+
+class FaveBookmarkType(Enum):
+    POST = "post"
+    VIDEO = "video"
+    PRODUCT = "product"
+    ARTICLE = "article"
+    LINK = "link"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return FaveBookmarkType.CANNOT_BE_REPRESENTED
+
+
+class FavePageType(Enum):
+    USER = "user"
+    GROUP = "group"
+    HINTS = "hints"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return FavePageType.CANNOT_BE_REPRESENTED
+
+
+class FriendsFriendStatusStatus(Enum):
+    NOT_A_FRIEND = 0
+    OUTCOMING_REQUEST = 1
+    INCOMING_REQUEST = 2
+    IS_FRIEND = 3
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return FriendsFriendStatusStatus.CANNOT_BE_REPRESENTED
+
+
+class GiftsGiftPrivacy(Enum):
+    NAME_AND_MESSAGE_FOR_ALL = 0
+    NAME_FOR_ALL = 1
+    NAME_AND_MESSAGE_FOR_RECIPIENT_ONLY = 2
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return GiftsGiftPrivacy.CANNOT_BE_REPRESENTED
+
+
+class GroupsAddressWorkInfoStatus(Enum):
+    NO_INFORMATION = "no_information"
+    TEMPORARILY_CLOSED = "temporarily_closed"
+    ALWAYS_OPENED = "always_opened"
+    TIMETABLE = "timetable"
+    FOREVER_CLOSED = "forever_closed"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return GroupsAddressWorkInfoStatus.CANNOT_BE_REPRESENTED
+
+
+class GroupsBanInfoReason(Enum):
+    OTHER = 0
+    SPAM = 1
+    VERBAL_ABUSE = 2
+    STRONG_LANGUAGE = 3
+    FLOOD = 4
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return GroupsBanInfoReason.CANNOT_BE_REPRESENTED
+
+
+class GroupsFields(Enum):
+    MARKET = "market"
+    MEMBER_STATUS = "member_status"
+    IS_FAVORITE = "is_favorite"
+    IS_SUBSCRIBED = "is_subscribed"
+    CITY = "city"
+    COUNTRY = "country"
+    VERIFIED = "verified"
+    DESCRIPTION = "description"
+    WIKI_PAGE = "wiki_page"
+    MEMBERS_COUNT = "members_count"
+    COUNTERS = "counters"
+    COVER = "cover"
+    CAN_POST = "can_post"
+    CAN_SEE_ALL_POSTS = "can_see_all_posts"
+    ACTIVITY = "activity"
+    FIXED_POST = "fixed_post"
+    CAN_CREATE_TOPIC = "can_create_topic"
+    CAN_UPLOAD_VIDEO = "can_upload_video"
+    HAS_PHOTO = "has_photo"
+    STATUS = "status"
+    MAIN_ALBUM_ID = "main_album_id"
+    LINKS = "links"
+    CONTACTS = "contacts"
+    SITE = "site"
+    MAIN_SECTION = "main_section"
+    TRENDING = "trending"
+    CAN_MESSAGE = "can_message"
+    IS_MARKET_CART_ENABLED = "is_market_cart_enabled"
+    IS_MESSAGES_BLOCKED = "is_messages_blocked"
+    CAN_SEND_NOTIFY = "can_send_notify"
+    ONLINE_STATUS = "online_status"
+    START_DATE = "start_date"
+    FINISH_DATE = "finish_date"
+    AGE_LIMITS = "age_limits"
+    BAN_INFO = "ban_info"
+    ACTION_BUTTON = "action_button"
+    AUTHOR_ID = "author_id"
+    PHONE = "phone"
+    HAS_MARKET_APP = "has_market_app"
+    ADDRESSES = "addresses"
+    LIVE_COVERS = "live_covers"
+    IS_ADULT = "is_adult"
+    CAN_SUBSCRIBE_POSTS = "can_subscribe_posts"
+    WARNING_NOTIFICATION = "warning_notification"
+    MSG_PUSH_ALLOWED = "msg_push_allowed"
+    STORIES_ARCHIVE_COUNT = "stories_archive_count"
+    VIDEO_LIVE_LEVEL = "video_live_level"
+    VIDEO_LIVE_COUNT = "video_live_count"
+    CLIPS_COUNT = "clips_count"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return GroupsFields.CANNOT_BE_REPRESENTED
+
+
+class GroupsFilter(Enum):
+    ADMIN = "admin"
+    EDITOR = "editor"
+    MODER = "moder"
+    ADVERTISER = "advertiser"
+    GROUPS = "groups"
+    PUBLICS = "publics"
+    EVENTS = "events"
+    HAS_ADDRESSES = "has_addresses"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return GroupsFilter.CANNOT_BE_REPRESENTED
+
+
+class GroupsGroupAccess(Enum):
+    OPEN = 0
+    CLOSED = 1
+    PRIVATE = 2
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return GroupsGroupAccess.CANNOT_BE_REPRESENTED
+
+
+class GroupsGroupAdminLevel(Enum):
+    MODERATOR = 1
+    EDITOR = 2
+    ADMINISTRATOR = 3
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return GroupsGroupAdminLevel.CANNOT_BE_REPRESENTED
+
+
+class GroupsGroupAgeLimits(Enum):
+    UNLIMITED = 1
+    SIXTEEN_PLUS = 2
+    EIGHTEEN_PLUS = 3
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return GroupsGroupAgeLimits.CANNOT_BE_REPRESENTED
+
+
+class GroupsGroupAudio(Enum):
+    DISABLED = 0
+    OPEN = 1
+    LIMITED = 2
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return GroupsGroupAudio.CANNOT_BE_REPRESENTED
+
+
+class GroupsGroupDocs(Enum):
+    DISABLED = 0
+    OPEN = 1
+    LIMITED = 2
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return GroupsGroupDocs.CANNOT_BE_REPRESENTED
+
+
+class GroupsGroupFullAgeLimits(Enum):
+    NO = 1
+    OVER_SIXTEEN = 2
+    OVER_EIGHTEEN = 3
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return GroupsGroupFullAgeLimits.CANNOT_BE_REPRESENTED
+
+
+class GroupsGroupFullMainSection(Enum):
+    ABSENT = 0
+    PHOTOS = 1
+    TOPICS = 2
+    AUDIO = 3
+    VIDEO = 4
+    MARKET = 5
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return GroupsGroupFullMainSection.CANNOT_BE_REPRESENTED
+
+
+class GroupsGroupFullMemberStatus(Enum):
+    NOT_A_MEMBER = 0
+    MEMBER = 1
+    NOT_SURE = 2
+    DECLINED = 3
+    HAS_SENT_A_REQUEST = 4
+    INVITED = 5
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return GroupsGroupFullMemberStatus.CANNOT_BE_REPRESENTED
+
+
+class GroupsGroupIsClosed(Enum):
+    OPEN = 0
+    CLOSED = 1
+    PRIVATE = 2
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return GroupsGroupIsClosed.CANNOT_BE_REPRESENTED
+
+
+class GroupsGroupMarketCurrency(Enum):
+    RUSSIAN_RUBLES = 643
+    UKRAINIAN_HRYVNIA = 980
+    KAZAKH_TENGE = 398
+    EURO = 978
+    US_DOLLARS = 840
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return GroupsGroupMarketCurrency.CANNOT_BE_REPRESENTED
+
+
+class GroupsGroupPhotos(Enum):
+    DISABLED = 0
+    OPEN = 1
+    LIMITED = 2
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return GroupsGroupPhotos.CANNOT_BE_REPRESENTED
+
+
+class GroupsGroupRole(Enum):
+    MODERATOR = "moderator"
+    EDITOR = "editor"
+    ADMINISTRATOR = "administrator"
+    ADVERTISER = "advertiser"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return GroupsGroupRole.CANNOT_BE_REPRESENTED
+
+
+class GroupsGroupSubject(Enum):
+    AUTO = 1
+    ACTIVITY_HOLIDAYS = 2
+    BUSINESS = 3
+    PETS = 4
+    HEALTH = 5
+    DATING_AND_COMMUNICATION = 6
+    GAMES = 7
+    IT = 8
+    CINEMA = 9
+    BEAUTY_AND_FASHION = 10
+    COOKING = 11
+    ART_AND_CULTURE = 12
+    LITERATURE = 13
+    MOBILE_SERVICES_AND_INTERNET = 14
+    MUSIC = 15
+    SCIENCE_AND_TECHNOLOGY = 16
+    REAL_ESTATE = 17
+    NEWS_AND_MEDIA = 18
+    SECURITY = 19
+    EDUCATION = 20
+    HOME_AND_RENOVATIONS = 21
+    POLITICS = 22
+    FOOD = 23
+    INDUSTRY = 24
+    TRAVEL = 25
+    WORK = 26
+    ENTERTAINMENT = 27
+    RELIGION = 28
+    FAMILY = 29
+    SPORTS = 30
+    INSURANCE = 31
+    TELEVISION = 32
+    GOODS_AND_SERVICES = 33
+    HOBBIES = 34
+    FINANCE = 35
+    PHOTO = 36
+    ESOTERICS = 37
+    ELECTRONICS_AND_APPLIANCES = 38
+    EROTIC = 39
+    HUMOR = 40
+    SOCIETY_HUMANITIES = 41
+    DESIGN_AND_GRAPHICS = 42
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return GroupsGroupSubject.CANNOT_BE_REPRESENTED
+
+
+class GroupsGroupTopics(Enum):
+    DISABLED = 0
+    OPEN = 1
+    LIMITED = 2
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return GroupsGroupTopics.CANNOT_BE_REPRESENTED
+
+
+class GroupsGroupType(Enum):
+    GROUP = "group"
+    PAGE = "page"
+    EVENT = "event"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return GroupsGroupType.CANNOT_BE_REPRESENTED
+
+
+class GroupsGroupVideo(Enum):
+    DISABLED = 0
+    OPEN = 1
+    LIMITED = 2
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return GroupsGroupVideo.CANNOT_BE_REPRESENTED
+
+
+class GroupsGroupWall(Enum):
+    DISABLED = 0
+    OPEN = 1
+    LIMITED = 2
+    CLOSED = 3
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return GroupsGroupWall.CANNOT_BE_REPRESENTED
+
+
+class GroupsGroupWiki(Enum):
+    DISABLED = 0
+    OPEN = 1
+    LIMITED = 2
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return GroupsGroupWiki.CANNOT_BE_REPRESENTED
+
+
+class GroupsGroupXtrInvitedByAdminLevel(Enum):
+    MODERATOR = 1
+    EDITOR = 2
+    ADMINISTRATOR = 3
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return GroupsGroupXtrInvitedByAdminLevel.CANNOT_BE_REPRESENTED
+
+
+class GroupsGroupXtrInvitedByType(Enum):
+    GROUP = "group"
+    PAGE = "page"
+    EVENT = "event"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return GroupsGroupXtrInvitedByType.CANNOT_BE_REPRESENTED
+
+
+class GroupsMarketState(Enum):
+    NONE = "none"
+    BASIC = "basic"
+    ADVANCED = "advanced"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return GroupsMarketState.CANNOT_BE_REPRESENTED
+
+
+class GroupsMemberRolePermission(Enum):
+    ADS = "ads"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return GroupsMemberRolePermission.CANNOT_BE_REPRESENTED
+
+
+class GroupsMemberRoleStatus(Enum):
+    MODERATOR = "moderator"
+    EDITOR = "editor"
+    ADMINISTRATOR = "administrator"
+    CREATOR = "creator"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return GroupsMemberRoleStatus.CANNOT_BE_REPRESENTED
+
+
+class GroupsOnlineStatusType(Enum):
+    NONE = "none"
+    ONLINE = "online"
+    ANSWER_MARK = "answer_mark"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return GroupsOnlineStatusType.CANNOT_BE_REPRESENTED
+
+
+class GroupsOwnerXtrBanInfoType(Enum):
+    GROUP = "group"
+    PROFILE = "profile"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return GroupsOwnerXtrBanInfoType.CANNOT_BE_REPRESENTED
+
+
+class GroupsRoleOptions(Enum):
+    MODERATOR = "moderator"
+    EDITOR = "editor"
+    ADMINISTRATOR = "administrator"
+    CREATOR = "creator"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return GroupsRoleOptions.CANNOT_BE_REPRESENTED
+
+
+class LikesType(Enum):
+    POST = "post"
+    COMMENT = "comment"
+    PHOTO = "photo"
+    AUDIO = "audio"
+    VIDEO = "video"
+    NOTE = "note"
+    MARKET = "market"
+    PHOTO_COMMENT = "photo_comment"
+    VIDEO_COMMENT = "video_comment"
+    TOPIC_COMMENT = "topic_comment"
+    MARKET_COMMENT = "market_comment"
+    SITEPAGE = "sitepage"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return LikesType.CANNOT_BE_REPRESENTED
+
+
+class MarketMarketItemAvailability(Enum):
+    AVAILABLE = 0
+    REMOVED = 1
+    UNAVAILABLE = 2
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return MarketMarketItemAvailability.CANNOT_BE_REPRESENTED
+
+
+class MessagesConversationPeerType(Enum):
+    CHAT = "chat"
+    EMAIL = "email"
+    USER = "user"
+    GROUP = "group"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return MessagesConversationPeerType.CANNOT_BE_REPRESENTED
+
+
+class MessagesHistoryMessageAttachmentType(Enum):
+    PHOTO = "photo"
+    VIDEO = "video"
+    AUDIO = "audio"
+    DOC = "doc"
+    LINK = "link"
+    MARKET = "market"
+    WALL = "wall"
+    SHARE = "share"
+    GRAFFITI = "graffiti"
+    AUDIO_MESSAGE = "audio_message"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return MessagesHistoryMessageAttachmentType.CANNOT_BE_REPRESENTED
+
+
+class MessagesMessageActionStatus(Enum):
+    CHAT_PHOTO_UPDATE = "chat_photo_update"
+    CHAT_PHOTO_REMOVE = "chat_photo_remove"
+    CHAT_CREATE = "chat_create"
+    CHAT_TITLE_UPDATE = "chat_title_update"
+    CHAT_INVITE_USER = "chat_invite_user"
+    CHAT_KICK_USER = "chat_kick_user"
+    CHAT_PIN_MESSAGE = "chat_pin_message"
+    CHAT_UNPIN_MESSAGE = "chat_unpin_message"
+    CHAT_INVITE_USER_BY_LINK = "chat_invite_user_by_link"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return MessagesMessageActionStatus.CANNOT_BE_REPRESENTED
+
+
+class MessagesMessageAttachmentType(Enum):
+    PHOTO = "photo"
+    AUDIO = "audio"
+    VIDEO = "video"
+    DOC = "doc"
+    LINK = "link"
+    MARKET = "market"
+    MARKET_ALBUM = "market_album"
+    GIFT = "gift"
+    STICKER = "sticker"
+    WALL = "wall"
+    WALL_REPLY = "wall_reply"
+    ARTICLE = "article"
+    GRAFFITI = "graffiti"
+    AUDIO_MESSAGE = "audio_message"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return MessagesMessageAttachmentType.CANNOT_BE_REPRESENTED
+
+
+class MessagesTemplateActionTypeNames(Enum):
+    TEXT = "text"
+    START = "start"
+    LOCATION = "location"
+    VKPAY = "vkpay"
+    OPEN_APP = "open_app"
+    OPEN_PHOTO = "open_photo"
+    OPEN_LINK = "open_link"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return MessagesTemplateActionTypeNames.CANNOT_BE_REPRESENTED
+
+
+class NewsfeedCommentsFilters(Enum):
+    POST = "post"
+    PHOTO = "photo"
+    VIDEO = "video"
+    TOPIC = "topic"
+    NOTE = "note"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return NewsfeedCommentsFilters.CANNOT_BE_REPRESENTED
+
+
+class NewsfeedFilters(Enum):
+    POST = "post"
+    PHOTO = "photo"
+    PHOTO_TAG = "photo_tag"
+    WALL_PHOTO = "wall_photo"
+    FRIEND = "friend"
+    RECOMMENDED_GROUPS = "recommended_groups"
+    NOTE = "note"
+    AUDIO = "audio"
+    VIDEO = "video"
+    AUDIO_PLAYLIST = "audio_playlist"
+    GAMES_CAROUSEL = "games_carousel"
+    CLIP = "clip"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return NewsfeedFilters.CANNOT_BE_REPRESENTED
+
+
+class NewsfeedIgnoreItemType(Enum):
+    WALL = "wall"
+    TAG = "tag"
+    PROFILEPHOTO = "profilephoto"
+    VIDEO = "video"
+    PHOTO = "photo"
+    AUDIO = "audio"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return NewsfeedIgnoreItemType.CANNOT_BE_REPRESENTED
+
+
+class NewsfeedItemWallpostFeedbackType(Enum):
+    BUTTONS = "buttons"
+    STARS = "stars"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return NewsfeedItemWallpostFeedbackType.CANNOT_BE_REPRESENTED
+
+
+class NewsfeedItemWallpostType(Enum):
+    POST = "post"
+    COPY = "copy"
+    REPLY = "reply"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return NewsfeedItemWallpostType.CANNOT_BE_REPRESENTED
+
+
+class NewsfeedNewsfeedItemType(Enum):
+    POST = "post"
+    PHOTO = "photo"
+    PHOTO_TAG = "photo_tag"
+    WALL_PHOTO = "wall_photo"
+    FRIEND = "friend"
+    AUDIO = "audio"
+    VIDEO = "video"
+    TOPIC = "topic"
+    DIGEST = "digest"
+    STORIES = "stories"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return NewsfeedNewsfeedItemType.CANNOT_BE_REPRESENTED
+
+
+class NotificationsNotificationItem(Enum):
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return NotificationsNotificationItem.CANNOT_BE_REPRESENTED
+
+
+class PagesPrivacySettings(Enum):
+    COMMUNITY_MANAGERS_ONLY = 0
+    COMMUNITY_MEMBERS_ONLY = 1
+    EVERYONE = 2
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return PagesPrivacySettings.CANNOT_BE_REPRESENTED
+
+
+class PhotosImageType(Enum):
+    S = "s"
+    M = "m"
+    X = "x"
+    L = "l"
+    O = "o"
+    P = "p"
+    Q = "q"
+    R = "r"
+    Y = "y"
+    Z = "z"
+    W = "w"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return PhotosImageType.CANNOT_BE_REPRESENTED
+
+
+class PhotosPhotoSizesType(Enum):
+    S = "s"
+    M = "m"
+    X = "x"
+    O = "o"
+    P = "p"
+    Q = "q"
+    R = "r"
+    K = "k"
+    L = "l"
+    Y = "y"
+    Z = "z"
+    C = "c"
+    W = "w"
+    A = "a"
+    B = "b"
+    E = "e"
+    I = "i"
+    D = "d"
+    J = "j"
+    TEMP = "temp"
+    H = "h"
+    G = "g"
+    N = "n"
+    F = "f"
+    MAX = "max"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return PhotosPhotoSizesType.CANNOT_BE_REPRESENTED
+
+
+class SearchHintSection(Enum):
+    GROUPS = "groups"
+    EVENTS = "events"
+    PUBLICS = "publics"
+    CORRESPONDENTS = "correspondents"
+    PEOPLE = "people"
+    FRIENDS = "friends"
+    MUTUAL_FRIENDS = "mutual_friends"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return SearchHintSection.CANNOT_BE_REPRESENTED
+
+
+class SearchHintType(Enum):
+    GROUP = "group"
+    PROFILE = "profile"
+    VK_APP = "vk_app"
+    APP = "app"
+    HTML5_GAME = "html5_game"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return SearchHintType.CANNOT_BE_REPRESENTED
+
+
+class StoriesStoryStatsState(Enum):
+    ON = "on"
+    OFF = "off"
+    HIDDEN = "hidden"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return StoriesStoryStatsState.CANNOT_BE_REPRESENTED
+
+
+class StoriesStoryType(Enum):
+    PHOTO = "photo"
+    VIDEO = "video"
+    LIVE_ACTIVE = "live_active"
+    LIVE_FINISHED = "live_finished"
+    BIRTHDAY_INVITE = "birthday_invite"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return StoriesStoryType.CANNOT_BE_REPRESENTED
+
+
+class StoriesUploadLinkText(Enum):
+    TO_STORE = "to_store"
+    VOTE = "vote"
+    MORE = "more"
+    BOOK = "book"
+    ORDER = "order"
+    ENROLL = "enroll"
+    FILL = "fill"
+    SIGNUP = "signup"
+    BUY = "buy"
+    TICKET = "ticket"
+    WRITE = "write"
+    OPEN = "open"
+    LEARN_MORE = "learn_more"
+    VIEW = "view"
+    GO_TO = "go_to"
+    CONTACT = "contact"
+    WATCH = "watch"
+    PLAY = "play"
+    INSTALL = "install"
+    READ = "read"
+    CALENDAR = "calendar"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return StoriesUploadLinkText.CANNOT_BE_REPRESENTED
+
+
+class UsersFields(Enum):
+    PHOTO_ID = "photo_id"
+    VERIFIED = "verified"
+    SEX = "sex"
+    BDATE = "bdate"
+    CITY = "city"
+    COUNTRY = "country"
+    HOME_TOWN = "home_town"
+    HAS_PHOTO = "has_photo"
+    PHOTO_50 = "photo_50"
+    PHOTO_100 = "photo_100"
+    PHOTO_200_ORIG = "photo_200_orig"
+    PHOTO_200 = "photo_200"
+    PHOTO_400 = "photo_400"
+    PHOTO_400_ORIG = "photo_400_orig"
+    PHOTO_MAX = "photo_max"
+    PHOTO_MAX_ORIG = "photo_max_orig"
+    PHOTO_MAX_SIZE = "photo_max_size"
+    ONLINE = "online"
+    LISTS = "lists"
+    DOMAIN = "domain"
+    HAS_MOBILE = "has_mobile"
+    CONTACTS = "contacts"
+    SITE = "site"
+    EDUCATION = "education"
+    UNIVERSITIES = "universities"
+    SCHOOLS = "schools"
+    STATUS = "status"
+    LAST_SEEN = "last_seen"
+    FOLLOWERS_COUNT = "followers_count"
+    COUNTERS = "counters"
+    COMMON_COUNT = "common_count"
+    OCCUPATION = "occupation"
+    NICKNAME = "nickname"
+    RELATIVES = "relatives"
+    RELATION = "relation"
+    PERSONAL = "personal"
+    CONNECTIONS = "connections"
+    EXPORTS = "exports"
+    WALL_COMMENTS = "wall_comments"
+    ACTIVITIES = "activities"
+    INTERESTS = "interests"
+    MUSIC = "music"
+    MOVIES = "movies"
+    TV = "tv"
+    BOOKS = "books"
+    GAMES = "games"
+    ABOUT = "about"
+    QUOTES = "quotes"
+    CAN_POST = "can_post"
+    CAN_SEE_ALL_POSTS = "can_see_all_posts"
+    CAN_SEE_AUDIO = "can_see_audio"
+    CAN_WRITE_PRIVATE_MESSAGE = "can_write_private_message"
+    CAN_SEND_FRIEND_REQUEST = "can_send_friend_request"
+    IS_FAVORITE = "is_favorite"
+    IS_HIDDEN_FROM_FEED = "is_hidden_from_feed"
+    TIMEZONE = "timezone"
+    SCREEN_NAME = "screen_name"
+    MAIDEN_NAME = "maiden_name"
+    CROP_PHOTO = "crop_photo"
+    IS_FRIEND = "is_friend"
+    FRIEND_STATUS = "friend_status"
+    CAREER = "career"
+    MILITARY = "military"
+    BLACKLISTED = "blacklisted"
+    BLACKLISTED_BY_ME = "blacklisted_by_me"
+    CAN_SUBSCRIBE_POSTS = "can_subscribe_posts"
+    DESCRIPTIONS = "descriptions"
+    TRENDING = "trending"
+    MUTUAL = "mutual"
+    FRIENDSHIP_WEEKS = "friendship_weeks"
+    CAN_INVITE_TO_CHATS = "can_invite_to_chats"
+    STORIES_ARCHIVE_COUNT = "stories_archive_count"
+    VIDEO_LIVE_LEVEL = "video_live_level"
+    VIDEO_LIVE_COUNT = "video_live_count"
+    CLIPS_COUNT = "clips_count"
+    SERVICE_DESCRIPTION = "service_description"
+    IS_DEAD = "is_dead"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return UsersFields.CANNOT_BE_REPRESENTED
+
+
+class UsersUserRelation(Enum):
+    NOT_SPECIFIED = 0
+    SINGLE = 1
+    IN_A_RELATIONSHIP = 2
+    ENGAGED = 3
+    MARRIED = 4
+    COMPLICATED = 5
+    ACTIVELY_SEARCHING = 6
+    IN_LOVE = 7
+    IN_A_CIVIL_UNION = 8
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return UsersUserRelation.CANNOT_BE_REPRESENTED
+
+
+class UsersUserType(Enum):
+    PROFILE = "profile"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return UsersUserType.CANNOT_BE_REPRESENTED
+
+
+class UtilsDomainResolvedType(Enum):
+    USER = "user"
+    GROUP = "group"
+    APPLICATION = "application"
+    PAGE = "page"
+    VK_APP = "vk_app"
+    COMMUNITY_APPLICATION = "community_application"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return UtilsDomainResolvedType.CANNOT_BE_REPRESENTED
+
+
+class UtilsLinkCheckedStatus(Enum):
+    NOT_BANNED = "not_banned"
+    BANNED = "banned"
+    PROCESSING = "processing"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return UtilsLinkCheckedStatus.CANNOT_BE_REPRESENTED
+
+
+class WallCommentAttachmentType(Enum):
+    PHOTO = "photo"
+    AUDIO = "audio"
+    VIDEO = "video"
+    DOC = "doc"
+    LINK = "link"
+    NOTE = "note"
+    PAGE = "page"
+    MARKET_MARKET_ALBUM = "market_market_album"
+    MARKET = "market"
+    STICKER = "sticker"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return WallCommentAttachmentType.CANNOT_BE_REPRESENTED
+
+
+class WallPostSourceType(Enum):
+    VK = "vk"
+    WIDGET = "widget"
+    API = "api"
+    RSS = "rss"
+    SMS = "sms"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return WallPostSourceType.CANNOT_BE_REPRESENTED
+
+
+class WallPostType(Enum):
+    POST = "post"
+    COPY = "copy"
+    REPLY = "reply"
+    POSTPONE = "postpone"
+    SUGGEST = "suggest"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return WallPostType.CANNOT_BE_REPRESENTED
+
+
+class WallWallpostAttachmentType(Enum):
+    PHOTO = "photo"
+    POSTED_PHOTO = "posted_photo"
+    AUDIO = "audio"
+    VIDEO = "video"
+    DOC = "doc"
+    LINK = "link"
+    GRAFFITI = "graffiti"
+    NOTE = "note"
+    APP = "app"
+    POLL = "poll"
+    PAGE = "page"
+    ALBUM = "album"
+    PHOTOS_LIST = "photos_list"
+    MARKET_MARKET_ALBUM = "market_market_album"
+    MARKET = "market"
+    EVENT = "event"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return WallWallpostAttachmentType.CANNOT_BE_REPRESENTED
+
+
+class WidgetsCommentMediaType(Enum):
+    AUDIO = "audio"
+    PHOTO = "photo"
+    VIDEO = "video"
+    CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
+
+    @classmethod
+    def _missing_(cls, value):
+        return WidgetsCommentMediaType.CANNOT_BE_REPRESENTED
+
+
 class AccountNameRequest(pydantic.BaseModel):
     first_name: typing.Optional[str] = pydantic.Field(
         None, description="First name in request",
@@ -27,22 +1569,13 @@ class AccountNameRequest(pydantic.BaseModel):
     )
 
 
-class AccountNameRequestStatus(str, Enum):
-    SUCCESS = "success"
-    PROCESSING = "processing"
-    DECLINED = "declined"
-    WAS_ACCEPTED = "was_accepted"
-    WAS_DECLINED = "was_declined"
-    DECLINED_WITH_LINK = "declined_with_link"
-    RESPONSE = "response"
-    RESPONSE_WITH_LINK = "response_with_link"
-
-
 class AccountPushConversations(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Items count",
     )
-    items: typing.Optional[typing.List["AccountPushConversationsItem"]] = pydantic.Field(
+    items: typing.Optional[
+        typing.List["AccountPushConversationsItem"]
+    ] = pydantic.Field(
         None, description="",
     )
 
@@ -75,22 +1608,32 @@ class AccountPushParams(pydantic.BaseModel):
     wall_post: typing.Optional[typing.List["AccountPushParamsOnoff"]] = pydantic.Field(
         None, description="",
     )
-    wall_publish: typing.Optional[typing.List["AccountPushParamsOnoff"]] = pydantic.Field(
+    wall_publish: typing.Optional[
+        typing.List["AccountPushParamsOnoff"]
+    ] = pydantic.Field(
         None, description="",
     )
     friend: typing.Optional[typing.List["AccountPushParamsOnoff"]] = pydantic.Field(
         None, description="",
     )
-    friend_found: typing.Optional[typing.List["AccountPushParamsOnoff"]] = pydantic.Field(
+    friend_found: typing.Optional[
+        typing.List["AccountPushParamsOnoff"]
+    ] = pydantic.Field(
         None, description="",
     )
-    friend_accepted: typing.Optional[typing.List["AccountPushParamsOnoff"]] = pydantic.Field(
+    friend_accepted: typing.Optional[
+        typing.List["AccountPushParamsOnoff"]
+    ] = pydantic.Field(
         None, description="",
     )
-    group_invite: typing.Optional[typing.List["AccountPushParamsOnoff"]] = pydantic.Field(
+    group_invite: typing.Optional[
+        typing.List["AccountPushParamsOnoff"]
+    ] = pydantic.Field(
         None, description="",
     )
-    group_accepted: typing.Optional[typing.List["AccountPushParamsOnoff"]] = pydantic.Field(
+    group_accepted: typing.Optional[
+        typing.List["AccountPushParamsOnoff"]
+    ] = pydantic.Field(
         None, description="",
     )
     birthday: typing.Optional[typing.List["AccountPushParamsOnoff"]] = pydantic.Field(
@@ -99,7 +1642,9 @@ class AccountPushParams(pydantic.BaseModel):
     event_soon: typing.Optional[typing.List["AccountPushParamsOnoff"]] = pydantic.Field(
         None, description="",
     )
-    app_request: typing.Optional[typing.List["AccountPushParamsOnoff"]] = pydantic.Field(
+    app_request: typing.Optional[
+        typing.List["AccountPushParamsOnoff"]
+    ] = pydantic.Field(
         None, description="",
     )
     sdk_open: typing.Optional[typing.List["AccountPushParamsOnoff"]] = pydantic.Field(
@@ -146,61 +1691,6 @@ class AccountUserSettingsInterests(pydantic.BaseModel):
     )
 
 
-class AdsAccessRole(str, Enum):
-    ADMIN = "admin"
-    MANAGER = "manager"
-    REPORTS = "reports"
-
-
-class AdsAccessRolePublic(str, Enum):
-    MANAGER = "manager"
-    REPORTS = "reports"
-
-
-class AdsAccountType(str, Enum):
-    GENERAL = "general"
-    AGENCY = "agency"
-
-
-class AdsAdApproved(int, Enum):
-    NOT_MODERATED = 0
-    PENDING_MODERATION = 1
-    APPROVED = 2
-    REJECTED = 3
-
-
-class AdsAdCostType(int, Enum):
-    PER_CLICKS = 0
-    PER_IMPRESSIONS = 1
-    PER_ACTIONS = 2
-    PER_IMPRESSIONS_OPTIMIZED = 3
-
-
-class AdsAdStatus(int, Enum):
-    STOPPED = 0
-    STARTED = 1
-    DELETED = 2
-
-
-class AdsCampaignStatus(int, Enum):
-    STOPPED = 0
-    STARTED = 1
-    DELETED = 2
-
-
-class AdsCampaignType(str, Enum):
-    NORMAL = "normal"
-    VK_APPS_MANAGED = "vk_apps_managed"
-    MOBILE_APPS = "mobile_apps"
-    PROMOTED_POSTS = "promoted_posts"
-
-
-class AdsCriteriaSex(int, Enum):
-    ANY = 0
-    MALE = 1
-    FEMALE = 2
-
-
 class AdsDemostatsFormat(pydantic.BaseModel):
     age: typing.Optional[typing.List["AdsStatsAge"]] = pydantic.Field(
         None, description="",
@@ -223,13 +1713,6 @@ class AdsDemostatsFormat(pydantic.BaseModel):
     sex_age: typing.Optional[typing.List["AdsStatsSexAge"]] = pydantic.Field(
         None, description="",
     )
-
-
-class AdsObjectType(str, Enum):
-    AD = "ad"
-    CAMPAIGN = "campaign"
-    CLIENT = "client"
-    OFFICE = "office"
 
 
 class AdsStatsFormat(pydantic.BaseModel):
@@ -271,11 +1754,6 @@ class AdsStatsFormat(pydantic.BaseModel):
     )
 
 
-class AdsStatsSexValue(str, Enum):
-    F = "f"
-    M = "m"
-
-
 class AdsStatsViewsTimes(pydantic.BaseModel):
     views_ads_times_1: typing.Optional[int] = pydantic.Field(
         None, description="",
@@ -310,13 +1788,6 @@ class AdsStatsViewsTimes(pydantic.BaseModel):
     views_ads_times_11_plus: typing.Optional[int] = pydantic.Field(
         None, description="",
     )
-
-
-class AdsTargSuggestionsSchoolsType(str, Enum):
-    SCHOOL = "school"
-    UNIVERSITY = "university"
-    FACULTY = "faculty"
-    CHAIR = "chair"
 
 
 class AppsAppMin(pydantic.BaseModel):
@@ -358,17 +1829,6 @@ class AppsAppMin(pydantic.BaseModel):
     )
 
 
-class AppsAppType(str, Enum):
-    APP = "app"
-    GAME = "game"
-    SITE = "site"
-    STANDALONE = "standalone"
-    VK_APP = "vk_app"
-    COMMUNITY_APP = "community_app"
-    HTML5_GAME = "html5_game"
-    MINI_APP = "mini_app"
-
-
 class AudioAudio(pydantic.BaseModel):
     artist: str = pydantic.Field(
         ..., description="Artist name",
@@ -399,11 +1859,6 @@ class AudioAudio(pydantic.BaseModel):
     )
 
 
-class BaseBoolInt(int, Enum):
-    NO = 0
-    YES = 1
-
-
 class BaseCity(pydantic.BaseModel):
     id: int = pydantic.Field(
         ..., description="City ID",
@@ -422,6 +1877,9 @@ class BaseCommentsInfo(pydantic.BaseModel):
     )
     groups_can_post: typing.Optional[bool] = pydantic.Field(
         None, description="Information whether groups can comment the post",
+    )
+    donut: typing.Optional["WallWallpostCommentsDonut"] = pydantic.Field(
+        None, description="",
     )
 
 
@@ -516,8 +1974,8 @@ class BaseLikes(pydantic.BaseModel):
 
 
 class BaseLikesInfo(pydantic.BaseModel):
-    can_like: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user can like the post",
+    can_like: "BaseBoolInt" = pydantic.Field(
+        ..., description="Information whether current user can like the post",
     )
     can_publish: typing.Optional["BaseBoolInt"] = pydantic.Field(
         None, description="Information whether current user can repost",
@@ -525,8 +1983,8 @@ class BaseLikesInfo(pydantic.BaseModel):
     count: int = pydantic.Field(
         ..., description="Likes number",
     )
-    user_likes: typing.Optional[int] = pydantic.Field(
-        None, description="Information whether current uer has liked the post",
+    user_likes: int = pydantic.Field(
+        ..., description="Information whether current uer has liked the post",
     )
 
 
@@ -612,6 +2070,9 @@ class BaseLinkButton(pydantic.BaseModel):
     section_id: typing.Optional[str] = pydantic.Field(
         None, description="Target section id",
     )
+    curator_id: typing.Optional[int] = pydantic.Field(
+        None, description="curator id",
+    )
     owner_id: typing.Optional[int] = pydantic.Field(
         None, description="Owner id",
     )
@@ -633,14 +2094,6 @@ class BaseLinkButtonAction(pydantic.BaseModel):
     consume_reason: typing.Optional[str] = pydantic.Field(
         None, description="",
     )
-
-
-class BaseLinkButtonActionType(str, Enum):
-    OPEN_URL = "open_url"
-
-
-class BaseLinkButtonStyle(str, Enum):
-    pass
 
 
 class BaseLinkProduct(pydantic.BaseModel):
@@ -706,13 +2159,10 @@ class BasePlace(pydantic.BaseModel):
     )
 
 
-class BasePropertyExists(int, Enum):
-    PROPERTY_EXISTS = 1
-
-
 class BaseRepostsInfo(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
-        None, description="Total reposts counter. Sum of wall and mail reposts counters",
+        None,
+        description="Total reposts counter. Sum of wall and mail reposts counters",
     )
     wall_count: typing.Optional[int] = pydantic.Field(
         None, description="Wall reposts counter",
@@ -723,12 +2173,6 @@ class BaseRepostsInfo(pydantic.BaseModel):
     user_reposted: typing.Optional[int] = pydantic.Field(
         None, description="Information whether current user has reposted the post",
     )
-
-
-class BaseSex(int, Enum):
-    UNKNOWN = 0
-    FEMALE = 1
-    MALE = 2
 
 
 class BaseSticker(pydantic.BaseModel):
@@ -783,55 +2227,6 @@ class BoardTopic(pydantic.BaseModel):
     updated_by: typing.Optional[int] = pydantic.Field(
         None, description="ID of user who updated the topic",
     )
-
-
-class CallbackGroupJoinType(str, Enum):
-    JOIN = "join"
-    UNSURE = "unsure"
-    ACCEPTED = "accepted"
-    APPROVED = "approved"
-    REQUEST = "request"
-
-
-class CallbackGroupMarket(int, Enum):
-    DISABLED = 0
-    OPEN = 1
-
-
-class CallbackGroupOfficerRole(int, Enum):
-    NONE = 0
-    MODERATOR = 1
-    EDITOR = 2
-    ADMINISTRATOR = 3
-
-
-class CallbackMessageType(str, Enum):
-    CONFIRMATION = "confirmation"
-    GROUP_CHANGE_PHOTO = "group_change_photo"
-    GROUP_CHANGE_SETTINGS = "group_change_settings"
-    GROUP_OFFICERS_EDIT = "group_officers_edit"
-    LEAD_FORMS_NEW = "lead_forms_new"
-    MARKET_COMMENT_DELETE = "market_comment_delete"
-    MARKET_COMMENT_EDIT = "market_comment_edit"
-    MARKET_COMMENT_RESTORE = "market_comment_restore"
-    MESSAGE_ALLOW = "message_allow"
-    MESSAGE_DENY = "message_deny"
-    MESSAGE_READ = "message_read"
-    MESSAGE_REPLY = "message_reply"
-    MESSAGE_TYPING_STATE = "message_typing_state"
-    MESSAGES_EDIT = "messages_edit"
-    PHOTO_COMMENT_DELETE = "photo_comment_delete"
-    PHOTO_COMMENT_EDIT = "photo_comment_edit"
-    PHOTO_COMMENT_RESTORE = "photo_comment_restore"
-    POLL_VOTE_NEW = "poll_vote_new"
-    USER_BLOCK = "user_block"
-    USER_UNBLOCK = "user_unblock"
-    VIDEO_COMMENT_DELETE = "video_comment_delete"
-    VIDEO_COMMENT_EDIT = "video_comment_edit"
-    VIDEO_COMMENT_RESTORE = "video_comment_restore"
-    WALL_REPLY_DELETE = "wall_reply_delete"
-    WALL_REPLY_RESTORE = "wall_reply_restore"
-    WALL_REPOST = "wall_repost"
 
 
 class CommentThread(pydantic.BaseModel):
@@ -981,27 +2376,6 @@ class EventsEventAttach(pydantic.BaseModel):
     )
 
 
-class FaveBookmarkType(str, Enum):
-    POST = "post"
-    VIDEO = "video"
-    PRODUCT = "product"
-    ARTICLE = "article"
-    LINK = "link"
-
-
-class FavePageType(str, Enum):
-    USER = "user"
-    GROUP = "group"
-    HINTS = "hints"
-
-
-class FriendsFriendStatusStatus(int, Enum):
-    NOT_A_FRIEND = 0
-    OUTCOMING_REQUEST = 1
-    INCOMING_REQUEST = 2
-    IS_FRIEND = 3
-
-
 class FriendsRequestsMutual(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Total mutual friends number",
@@ -1009,12 +2383,6 @@ class FriendsRequestsMutual(pydantic.BaseModel):
     users: typing.Optional[typing.List[int]] = pydantic.Field(
         None, description="",
     )
-
-
-class GiftsGiftPrivacy(int, Enum):
-    NAME_AND_MESSAGE_FOR_ALL = 0
-    NAME_FOR_ALL = 1
-    NAME_AND_MESSAGE_FOR_RECIPIENT_ONLY = 2
 
 
 class GiftsLayout(pydantic.BaseModel):
@@ -1035,6 +2403,9 @@ class GiftsLayout(pydantic.BaseModel):
     )
     stickers_product_id: typing.Optional[int] = pydantic.Field(
         None, description="ID of the sticker pack, if the gift is representing one",
+    )
+    is_stickers_style: typing.Optional[bool] = pydantic.Field(
+        None, description="Information whether gift represents a stickers style",
     )
     build_id: typing.Optional[str] = pydantic.Field(
         None, description="ID of the build of constructor gift",
@@ -1083,14 +2454,6 @@ class GroupsAddressTimetableDay(pydantic.BaseModel):
     )
 
 
-class GroupsAddressWorkInfoStatus(str, Enum):
-    NO_INFORMATION = "no_information"
-    TEMPORARILY_CLOSED = "temporarily_closed"
-    ALWAYS_OPENED = "always_opened"
-    TIMETABLE = "timetable"
-    FOREVER_CLOSED = "forever_closed"
-
-
 class GroupsBanInfo(pydantic.BaseModel):
     admin_id: typing.Optional[int] = pydantic.Field(
         None, description="Administrator ID",
@@ -1113,14 +2476,6 @@ class GroupsBanInfo(pydantic.BaseModel):
     reason: typing.Optional["GroupsBanInfoReason"] = pydantic.Field(
         None, description="",
     )
-
-
-class GroupsBanInfoReason(int, Enum):
-    OTHER = 0
-    SPAM = 1
-    VERBAL_ABUSE = 2
-    STRONG_LANGUAGE = 3
-    FLOOD = 4
 
 
 class GroupsGroup(pydantic.BaseModel):
@@ -1152,13 +2507,16 @@ class GroupsGroup(pydantic.BaseModel):
         None, description="Community name",
     )
     photo_100: typing.Optional[str] = pydantic.Field(
-        None, description="URL of square photo of the community with 100 pixels in width",
+        None,
+        description="URL of square photo of the community with 100 pixels in width",
     )
     photo_200: typing.Optional[str] = pydantic.Field(
-        None, description="URL of square photo of the community with 200 pixels in width",
+        None,
+        description="URL of square photo of the community with 200 pixels in width",
     )
     photo_50: typing.Optional[str] = pydantic.Field(
-        None, description="URL of square photo of the community with 50 pixels in width",
+        None,
+        description="URL of square photo of the community with 50 pixels in width",
     )
     screen_name: typing.Optional[str] = pydantic.Field(
         None, description="Domain of the community page",
@@ -1169,12 +2527,6 @@ class GroupsGroup(pydantic.BaseModel):
     type: typing.Optional["GroupsGroupType"] = pydantic.Field(
         None, description="",
     )
-
-
-class GroupsGroupAdminLevel(int, Enum):
-    MODERATOR = 1
-    EDITOR = 2
-    ADMINISTRATOR = 3
 
 
 class GroupsGroupAttach(pydantic.BaseModel):
@@ -1193,70 +2545,6 @@ class GroupsGroupAttach(pydantic.BaseModel):
     is_favorite: bool = pydantic.Field(
         ..., description="is favorite",
     )
-
-
-class GroupsGroupAudio(int, Enum):
-    DISABLED = 0
-    OPEN = 1
-    LIMITED = 2
-
-
-class GroupsGroupFullAgeLimits(int, Enum):
-    NO = 1
-    OVER_SIXTEEN = 2
-    OVER_EIGHTEEN = 3
-
-
-class GroupsGroupFullMemberStatus(int, Enum):
-    NOT_A_MEMBER = 0
-    MEMBER = 1
-    NOT_SURE = 2
-    DECLINED = 3
-    HAS_SENT_A_REQUEST = 4
-    INVITED = 5
-
-
-class GroupsGroupIsClosed(int, Enum):
-    OPEN = 0
-    CLOSED = 1
-    PRIVATE = 2
-
-
-class GroupsGroupPhotos(int, Enum):
-    DISABLED = 0
-    OPEN = 1
-    LIMITED = 2
-
-
-class GroupsGroupType(str, Enum):
-    GROUP = "group"
-    PAGE = "page"
-    EVENT = "event"
-
-
-class GroupsGroupVideo(int, Enum):
-    DISABLED = 0
-    OPEN = 1
-    LIMITED = 2
-
-
-class GroupsGroupWall(int, Enum):
-    DISABLED = 0
-    OPEN = 1
-    LIMITED = 2
-    CLOSED = 3
-
-
-class GroupsGroupXtrInvitedByAdminLevel(int, Enum):
-    MODERATOR = 1
-    EDITOR = 2
-    ADMINISTRATOR = 3
-
-
-class GroupsGroupXtrInvitedByType(str, Enum):
-    GROUP = "group"
-    PAGE = "page"
-    EVENT = "event"
 
 
 class GroupsLongPollEvents(pydantic.BaseModel):
@@ -1304,6 +2592,12 @@ class GroupsLongPollEvents(pydantic.BaseModel):
     )
     market_comment_restore: "BaseBoolInt" = pydantic.Field(
         ..., description="",
+    )
+    market_order_new: typing.Optional["BaseBoolInt"] = pydantic.Field(
+        None, description="",
+    )
+    market_order_edit: typing.Optional["BaseBoolInt"] = pydantic.Field(
+        None, description="",
     )
     message_allow: "BaseBoolInt" = pydantic.Field(
         ..., description="",
@@ -1385,44 +2679,6 @@ class GroupsLongPollEvents(pydantic.BaseModel):
     )
 
 
-class GroupsMemberRoleStatus(str, Enum):
-    MODERATOR = "moderator"
-    EDITOR = "editor"
-    ADMINISTRATOR = "administrator"
-    CREATOR = "creator"
-
-
-class GroupsOnlineStatusType(str, Enum):
-    NONE = "none"
-    ONLINE = "online"
-    ANSWER_MARK = "answer_mark"
-
-
-class GroupsOwnerXtrBanInfoType(str, Enum):
-    GROUP = "group"
-    PROFILE = "profile"
-
-
-class LeadsCheckedResult(str, Enum):
-    TRUE = "true"
-    FALSE = "false"
-
-
-class LeadsLeadDays(pydantic.BaseModel):
-    completed: typing.Optional[int] = pydantic.Field(
-        None, description="Completed offers number",
-    )
-    impressions: typing.Optional[int] = pydantic.Field(
-        None, description="Impressions number",
-    )
-    spent: typing.Optional[int] = pydantic.Field(
-        None, description="Amount of spent votes",
-    )
-    started: typing.Optional[int] = pydantic.Field(
-        None, description="Started offers number",
-    )
-
-
 class LinkTargetObject(pydantic.BaseModel):
     type: typing.Optional[str] = pydantic.Field(
         None, description="Object type",
@@ -1466,14 +2722,18 @@ class MarketMarketAlbum(pydantic.BaseModel):
 
 
 class MarketMarketCategory(pydantic.BaseModel):
+    pass
+
+
+class MarketMarketCategoryNested(pydantic.BaseModel):
     id: int = pydantic.Field(
         ..., description="Category ID",
     )
     name: str = pydantic.Field(
         ..., description="Category name",
     )
-    section: "MarketSection" = pydantic.Field(
-        ..., description="",
+    parent: typing.Optional["MarketMarketCategoryNested"] = pydantic.Field(
+        None, description="",
     )
 
 
@@ -1528,12 +2788,6 @@ class MarketMarketItem(pydantic.BaseModel):
     )
 
 
-class MarketMarketItemAvailability(int, Enum):
-    AVAILABLE = 0
-    REMOVED = 1
-    UNAVAILABLE = 2
-
-
 class MarketPrice(pydantic.BaseModel):
     amount: typing.Optional[str] = pydantic.Field(
         None, description="Amount",
@@ -1549,6 +2803,9 @@ class MarketPrice(pydantic.BaseModel):
     )
     text: typing.Optional[str] = pydantic.Field(
         None, description="Text",
+    )
+    old_amount_text: typing.Optional[str] = pydantic.Field(
+        None, description="Textual representation of old price",
     )
 
 
@@ -1595,6 +2852,9 @@ class MessagesAudioMessage(pydantic.BaseModel):
     access_key: typing.Optional[str] = pydantic.Field(
         None, description="Access key for audio message",
     )
+    transcript_error: typing.Optional[int] = pydantic.Field(
+        None, description="",
+    )
     duration: int = pydantic.Field(
         ..., description="Audio message duration in seconds",
     )
@@ -1624,73 +2884,6 @@ class MessagesChatPushSettings(pydantic.BaseModel):
     )
 
 
-class ACL(pydantic.BaseModel):
-    # нет блин https://open.spotify.com/artist/2n6CVwo43YvjiTgcPxYWrf
-    can_change_info: typing.Optional[bool] = pydantic.Field(
-        None, description="",
-    )
-    can_change_invite_link: typing.Optional[bool] = pydantic.Field(
-        None, description="",
-    )
-    can_change_pin: typing.Optional[bool] = pydantic.Field(
-        None, description="",
-    )
-    can_invite: typing.Optional[bool] = pydantic.Field(
-        None, description="",
-    )
-    can_promote_users: typing.Optional[bool] = pydantic.Field(
-        None, description="",
-    )
-    can_see_invite_link: typing.Optional[bool] = pydantic.Field(
-        None, description="",
-    )
-    can_moderate: typing.Optional[bool] = pydantic.Field(
-        None, description="",
-    )
-    can_copy_chat: typing.Optional[bool] = pydantic.Field(
-        None, description="",
-    )
-    can_call: typing.Optional[bool] = pydantic.Field(
-        None, description="",
-    )
-    can_use_mass_mentions: typing.Optional[bool] = pydantic.Field(
-        None, description="",
-    )
-    can_change_service_type: typing.Optional[bool] = pydantic.Field(
-        None, description="",
-    )
-
-
-class ChatSettings(pydantic.BaseModel):
-    owner_id: typing.Optional[int] = pydantic.Field(
-        None, description="",
-    )
-    title: typing.Optional[str] = pydantic.Field(
-        None, description="",
-    )
-    state: typing.Optional[str] = pydantic.Field(
-        None, description="",
-    )
-    acl: typing.Optional[ACL] = pydantic.Field(
-        None, description="",
-    )
-    members_count: typing.Optional[int] = pydantic.Field(
-        None, description="",
-    )
-    admin_ids: typing.Optional[typing.List[int]] = pydantic.Field(
-        None, description="",
-    )
-    active_ids: typing.Optional[typing.List[int]] = pydantic.Field(
-        None, description="",
-    )
-    is_group_channel: typing.Optional[bool] = pydantic.Field(
-        None, description="",
-    )
-    is_service: typing.Optional[bool] = pydantic.Field(
-        None, description="",
-    )
-
-
 class MessagesConversation(pydantic.BaseModel):
     peer: "MessagesConversationPeer" = pydantic.Field(
         ..., description="",
@@ -1710,6 +2903,9 @@ class MessagesConversation(pydantic.BaseModel):
     is_marked_unread: typing.Optional[bool] = pydantic.Field(
         None, description="Is this conversation uread",
     )
+    out_read_by: typing.Optional["MessagesOutReadBy"] = pydantic.Field(
+        None, description="",
+    )
     important: typing.Optional[bool] = pydantic.Field(
         None, description="",
     )
@@ -1719,19 +2915,15 @@ class MessagesConversation(pydantic.BaseModel):
     special_service_type: typing.Optional[str] = pydantic.Field(
         None, description="",
     )
-    message_request_data: typing.Optional["MessagesMessageRequestData"] = pydantic.Field(
+    message_request_data: typing.Optional[
+        "MessagesMessageRequestData"
+    ] = pydantic.Field(
         None, description="",
     )
     mentions: typing.Optional[typing.List[int]] = pydantic.Field(
         None, description="Ids of messages with mentions",
     )
     current_keyboard: typing.Optional["MessagesKeyboard"] = pydantic.Field(
-        None, description="",
-    )
-    can_write: typing.Optional[dict] = pydantic.Field(
-        None, description="",
-    )
-    chat_settings: typing.Optional[ChatSettings] = pydantic.Field(
         None, description="",
     )
 
@@ -1748,15 +2940,10 @@ class MessagesConversationPeer(pydantic.BaseModel):
     )
 
 
-class MessagesConversationPeerType(str, Enum):
-    CHAT = "chat"
-    EMAIL = "email"
-    USER = "user"
-    GROUP = "group"
-
-
 class MessagesForeignMessage(pydantic.BaseModel):
-    attachments: typing.Optional[typing.List["MessagesMessageAttachment"]] = pydantic.Field(
+    attachments: typing.Optional[
+        typing.List["MessagesMessageAttachment"]
+    ] = pydantic.Field(
         None, description="",
     )
     conversation_message_id: typing.Optional[int] = pydantic.Field(
@@ -1768,7 +2955,9 @@ class MessagesForeignMessage(pydantic.BaseModel):
     from_id: int = pydantic.Field(
         ..., description="Message author's ID",
     )
-    fwd_messages: typing.Optional[typing.List["MessagesForeignMessage"]] = pydantic.Field(
+    fwd_messages: typing.Optional[
+        typing.List["MessagesForeignMessage"]
+    ] = pydantic.Field(
         None, description="",
     )
     geo: typing.Optional["BaseGeo"] = pydantic.Field(
@@ -1793,7 +2982,8 @@ class MessagesForeignMessage(pydantic.BaseModel):
         None, description="Was the audio message inside already listened by you",
     )
     payload: typing.Optional[str] = pydantic.Field(
-        None, description="Additional data sent along with message for developer convenience",
+        None,
+        description="Additional data sent along with message for developer convenience",
     )
 
 
@@ -1854,19 +3044,6 @@ class MessagesHistoryMessageAttachment(pydantic.BaseModel):
     )
 
 
-class MessagesHistoryMessageAttachmentType(str, Enum):
-    PHOTO = "photo"
-    VIDEO = "video"
-    AUDIO = "audio"
-    DOC = "doc"
-    LINK = "link"
-    MARKET = "market"
-    WALL = "wall"
-    SHARE = "share"
-    GRAFFITI = "graffiti"
-    AUDIO_MESSAGE = "audio_message"
-
-
 class MessagesKeyboard(pydantic.BaseModel):
     author_id: typing.Optional[int] = pydantic.Field(
         None, description="Community or bot, which set this keyboard",
@@ -1884,10 +3061,12 @@ class MessagesKeyboard(pydantic.BaseModel):
 
 class MessagesKeyboardButtonAction(pydantic.BaseModel):
     app_id: typing.Optional[int] = pydantic.Field(
-        None, description="Fragment value in app link like vk.com/app{app_id}_-654321#hash",
+        None,
+        description="Fragment value in app link like vk.com/app{app_id}_-654321#hash",
     )
     hash: typing.Optional[str] = pydantic.Field(
-        None, description="Fragment value in app link like vk.com/app123456_-654321#{hash}",
+        None,
+        description="Fragment value in app link like vk.com/app123456_-654321#{hash}",
     )
     label: typing.Optional[str] = pydantic.Field(
         None, description="Label for button",
@@ -1896,10 +3075,12 @@ class MessagesKeyboardButtonAction(pydantic.BaseModel):
         None, description="link for button",
     )
     owner_id: typing.Optional[int] = pydantic.Field(
-        None, description="Fragment value in app link like vk.com/app123456_{owner_id}#hash",
+        None,
+        description="Fragment value in app link like vk.com/app123456_{owner_id}#hash",
     )
     payload: typing.Optional[str] = pydantic.Field(
-        None, description="Additional data sent along with message for developer convenience",
+        None,
+        description="Additional data sent along with message for developer convenience",
     )
     type: "MessagesTemplateActionTypeNames" = pydantic.Field(
         ..., description="Button type",
@@ -1914,11 +3095,14 @@ class MessagesMessage(pydantic.BaseModel):
         None,
         description="Only for messages from community. Contains user ID of community admin, who sent this message.",
     )
-    attachments: typing.Optional[typing.List["MessagesMessageAttachment"]] = pydantic.Field(
+    attachments: typing.Optional[
+        typing.List["MessagesMessageAttachment"]
+    ] = pydantic.Field(
         None, description="",
     )
     conversation_message_id: typing.Optional[int] = pydantic.Field(
-        None, description="Unique auto-incremented number for all messages with this peer",
+        None,
+        description="Unique auto-incremented number for all messages with this peer",
     )
     date: int = pydantic.Field(
         ..., description="Date when the message has been sent in Unixtime",
@@ -1929,7 +3113,9 @@ class MessagesMessage(pydantic.BaseModel):
     from_id: int = pydantic.Field(
         ..., description="Message author's ID",
     )
-    fwd_messages: typing.Optional[typing.List["MessagesForeignMessage"]] = pydantic.Field(
+    fwd_messages: typing.Optional[
+        typing.List["MessagesForeignMessage"]
+    ] = pydantic.Field(
         None, description="Forwarded messages",
     )
     geo: typing.Optional["BaseGeo"] = pydantic.Field(
@@ -1963,7 +3149,8 @@ class MessagesMessage(pydantic.BaseModel):
         ..., description="Peer ID",
     )
     random_id: typing.Optional[int] = pydantic.Field(
-        None, description="ID used for sending messages. It returned only for outgoing messages",
+        None,
+        description="ID used for sending messages. It returned only for outgoing messages",
     )
     ref: typing.Optional[str] = pydantic.Field(
         None, description="",
@@ -1993,7 +3180,8 @@ class MessagesMessageAction(pydantic.BaseModel):
         None, description="Message ID",
     )
     email: typing.Optional[str] = pydantic.Field(
-        None, description="Email address for chat_invite_user or chat_kick_user actions",
+        None,
+        description="Email address for chat_invite_user or chat_kick_user actions",
     )
     member_id: typing.Optional[int] = pydantic.Field(
         None, description="User or email peer ID",
@@ -2005,7 +3193,8 @@ class MessagesMessageAction(pydantic.BaseModel):
         None, description="",
     )
     text: typing.Optional[str] = pydantic.Field(
-        None, description="New chat title for chat_create and chat_title_update actions",
+        None,
+        description="New chat title for chat_create and chat_title_update actions",
     )
     type: "MessagesMessageActionStatus" = pydantic.Field(
         ..., description="",
@@ -2024,38 +3213,6 @@ class MessagesMessageActionPhoto(pydantic.BaseModel):
     )
 
 
-class MessagesMessageActionStatus(str, Enum):
-    CHAT_PHOTO_UPDATE = "chat_photo_update"
-    CHAT_PHOTO_REMOVE = "chat_photo_remove"
-    CHAT_CREATE = "chat_create"
-    CHAT_TITLE_UPDATE = "chat_title_update"
-    CHAT_INVITE_USER = "chat_invite_user"
-    CHAT_KICK_USER = "chat_kick_user"
-    CHAT_PIN_MESSAGE = "chat_pin_message"
-    CHAT_UNPIN_MESSAGE = "chat_unpin_message"
-    CHAT_INVITE_USER_BY_LINK = "chat_invite_user_by_link"
-    CHAT_INVITE_USER_BY_MESSAGE_REQUEST = "chat_invite_user_by_message_request"
-
-
-class MessagesMessageAttachmentType(str, Enum):
-    PHOTO = "photo"
-    AUDIO = "audio"
-    VIDEO = "video"
-    DOC = "doc"
-    LINK = "link"
-    MARKET = "market"
-    MARKET_ALBUM = "market_album"
-    GIFT = "gift"
-    STICKER = "sticker"
-    WALL = "wall"
-    WALL_REPLY = "wall_reply"
-    ARTICLE = "article"
-    GRAFFITI = "graffiti"
-    AUDIO_MESSAGE = "audio_message"
-    POLL = "poll"
-    STORY = "story"
-
-
 class MessagesMessageRequestData(pydantic.BaseModel):
     status: typing.Optional[str] = pydantic.Field(
         None, description="Status of message request",
@@ -2068,38 +3225,28 @@ class MessagesMessageRequestData(pydantic.BaseModel):
     )
 
 
-class MessagesTemplateActionTypeNames(str, Enum):
-    TEXT = "text"
-    START = "start"
-    LOCATION = "location"
-    VKPAY = "vkpay"
-    OPEN_APP = "open_app"
-    OPEN_PHOTO = "open_photo"
-    OPEN_LINK = "open_link"
+class MessagesOutReadBy(pydantic.BaseModel):
+    count: typing.Optional[int] = pydantic.Field(
+        None, description="",
+    )
+    member_ids: typing.Optional[typing.List[int]] = pydantic.Field(
+        None, description="",
+    )
 
 
-class NewsfeedItemWallpostFeedbackType(str, Enum):
-    BUTTONS = "buttons"
-    STARS = "stars"
-
-
-class NewsfeedNewsfeedItemType(str, Enum):
-    POST = "post"
-    PHOTO = "photo"
-    PHOTO_TAG = "photo_tag"
-    WALL_PHOTO = "wall_photo"
-    FRIEND = "friend"
-    NOTE = "note"
-    AUDIO = "audio"
-    VIDEO = "video"
-    TOPIC = "topic"
-    DIGEST = "digest"
-    STORIES = "stories"
-    TAGS_SUGGESTIONS = "tags_suggestions"
+class NewsfeedItemDigestFooterButton(pydantic.BaseModel):
+    title: str = pydantic.Field(
+        ..., description="",
+    )
+    style: str = pydantic.Field(
+        ..., description="",
+    )
 
 
 class NotificationsFeedback(pydantic.BaseModel):
-    attachments: typing.Optional[typing.List["WallWallpostAttachment"]] = pydantic.Field(
+    attachments: typing.Optional[
+        typing.List["WallWallpostAttachment"]
+    ] = pydantic.Field(
         None, description="",
     )
     from_id: typing.Optional[int] = pydantic.Field(
@@ -2143,12 +3290,6 @@ class NotificationsSendMessageError(pydantic.BaseModel):
     )
 
 
-class PagesPrivacySettings(int, Enum):
-    COMMUNITY_MANAGERS_ONLY = 0
-    COMMUNITY_MEMBERS_ONLY = 1
-    EVERYONE = 2
-
-
 class PagesWikipageFull(pydantic.BaseModel):
     created: int = pydantic.Field(
         ..., description="Date when the page has been created in Unixtime",
@@ -2160,7 +3301,8 @@ class PagesWikipageFull(pydantic.BaseModel):
         None, description="Information whether current user can edit the page",
     )
     current_user_can_edit_access: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user can edit the page access settings",
+        None,
+        description="Information whether current user can edit the page access settings",
     )
     edited: int = pydantic.Field(
         ..., description="Date when the page has been edited in Unixtime",
@@ -2195,20 +3337,6 @@ class PagesWikipageFull(pydantic.BaseModel):
     who_can_view: "PagesPrivacySettings" = pydantic.Field(
         ..., description="View settings of the page",
     )
-
-
-class PhotosImageType(str, Enum):
-    S = "s"
-    M = "m"
-    X = "x"
-    L = "l"
-    O = "o"
-    P = "p"
-    Q = "q"
-    R = "r"
-    Y = "y"
-    Z = "z"
-    W = "w"
 
 
 class PhotosPhoto(pydantic.BaseModel):
@@ -2296,29 +3424,6 @@ class PhotosPhotoAlbum(pydantic.BaseModel):
     updated: int = pydantic.Field(
         ..., description="Date when the album has been updated last time in Unixtime",
     )
-
-
-class PhotosPhotoSizesType(str, Enum):
-    TEMP = "temp"
-    S = "s"
-    M = "m"
-    J = "j"
-    X = "x"
-    O = "o"
-    P = "p"
-    Q = "q"
-    R = "r"
-    K = "k"
-    L = "l"
-    Y = "y"
-    Z = "z"
-    C = "c"
-    W = "w"
-    I = "i"
-    D = "d"
-    A = "a"
-    B = "b"
-    E = "e"
 
 
 class PollsBackground(pydantic.BaseModel):
@@ -2427,24 +3532,6 @@ class PollsVotersUsers(pydantic.BaseModel):
     items: typing.Optional[typing.List[int]] = pydantic.Field(
         None, description="",
     )
-
-
-class SearchHintSection(str, Enum):
-    GROUPS = "groups"
-    EVENTS = "events"
-    PUBLICS = "publics"
-    CORRESPONDENTS = "correspondents"
-    PEOPLE = "people"
-    FRIENDS = "friends"
-    MUTUAL_FRIENDS = "mutual_friends"
-
-
-class SearchHintType(str, Enum):
-    GROUP = "group"
-    PROFILE = "profile"
-    VK_APP = "vk_app"
-    APP = "app"
-    HTML5_GAME = "html5_game"
 
 
 class StatsActivity(pydantic.BaseModel):
@@ -2571,7 +3658,8 @@ class StoriesStory(pydantic.BaseModel):
         description="Information whether current user can reply to the story (0 - no, 1 - yes).",
     )
     can_see: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user can see the story (0 - no, 1 - yes).",
+        None,
+        description="Information whether current user can see the story (0 - no, 1 - yes).",
     )
     can_like: typing.Optional[bool] = pydantic.Field(
         None, description="Information whether current user can like the story.",
@@ -2581,7 +3669,8 @@ class StoriesStory(pydantic.BaseModel):
         description="Information whether current user can share the story (0 - no, 1 - yes).",
     )
     can_hide: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user can hide the story (0 - no, 1 - yes).",
+        None,
+        description="Information whether current user can hide the story (0 - no, 1 - yes).",
     )
     date: typing.Optional[int] = pydantic.Field(
         None, description="Date when story has been added in Unixtime.",
@@ -2593,10 +3682,12 @@ class StoriesStory(pydantic.BaseModel):
         ..., description="Story ID.",
     )
     is_deleted: typing.Optional[bool] = pydantic.Field(
-        None, description="Information whether the story is deleted (false - no, true - yes).",
+        None,
+        description="Information whether the story is deleted (false - no, true - yes).",
     )
     is_expired: typing.Optional[bool] = pydantic.Field(
-        None, description="Information whether the story is expired (false - no, true - yes).",
+        None,
+        description="Information whether the story is expired (false - no, true - yes).",
     )
     link: typing.Optional["StoriesStoryLink"] = pydantic.Field(
         None, description="",
@@ -2678,20 +3769,6 @@ class StoriesStoryStatsStat(pydantic.BaseModel):
     )
 
 
-class StoriesStoryStatsState(str, Enum):
-    ON = "on"
-    OFF = "off"
-    HIDDEN = "hidden"
-
-
-class StoriesStoryType(str, Enum):
-    PHOTO = "photo"
-    VIDEO = "video"
-    LIVE_ACTIVE = "live_active"
-    LIVE_FINISHED = "live_finished"
-    BIRTHDAY_INVITE = "birthday_invite"
-
-
 class UsersPersonal(pydantic.BaseModel):
     alcohol: typing.Optional[int] = pydantic.Field(
         None, description="User's views on alcohol",
@@ -2767,32 +3844,6 @@ class UsersUserMin(pydantic.BaseModel):
     )
 
 
-class UsersUserRelation(int, Enum):
-    NOT_SPECIFIED = 0
-    SINGLE = 1
-    IN_A_RELATIONSHIP = 2
-    ENGAGED = 3
-    MARRIED = 4
-    COMPLICATED = 5
-    ACTIVELY_SEARCHING = 6
-    IN_LOVE = 7
-    IN_A_CIVIL_UNION = 8
-
-
-class UtilsDomainResolvedType(str, Enum):
-    USER = "user"
-    GROUP = "group"
-    APPLICATION = "application"
-    PAGE = "page"
-    VK_APP = "vk_app"
-
-
-class UtilsLinkCheckedStatus(str, Enum):
-    NOT_BANNED = "not_banned"
-    BANNED = "banned"
-    PROCESSING = "processing"
-
-
 class VideoRestrictionButton(pydantic.BaseModel):
     action: typing.Optional[str] = pydantic.Field(
         None, description="",
@@ -2839,19 +3890,6 @@ class WallAttachedNote(pydantic.BaseModel):
     view_url: str = pydantic.Field(
         ..., description="URL of the page with note preview",
     )
-
-
-class WallCommentAttachmentType(str, Enum):
-    PHOTO = "photo"
-    AUDIO = "audio"
-    VIDEO = "video"
-    DOC = "doc"
-    LINK = "link"
-    NOTE = "note"
-    PAGE = "page"
-    MARKET_MARKET_ALBUM = "market_market_album"
-    MARKET = "market"
-    STICKER = "sticker"
 
 
 class WallGeo(pydantic.BaseModel):
@@ -2914,26 +3952,6 @@ class WallPostSource(pydantic.BaseModel):
     )
 
 
-class WallPostSourceType(str, Enum):
-    VK = "vk"
-    WIDGET = "widget"
-    API = "api"
-    RSS = "rss"
-    SMS = "sms"
-    MVK = "mvk"
-
-
-class WallPostType(str, Enum):
-    POST = "post"
-    COPY = "copy"
-    REPLY = "reply"
-    POSTPONE = "postpone"
-    SUGGEST = "suggest"
-    VIDEO = "video"
-    PHOTO = "photo"
-    POST_ADS = "post_ads"
-
-
 class WallPostedPhoto(pydantic.BaseModel):
     id: typing.Optional[int] = pydantic.Field(
         None, description="Photo ID",
@@ -2961,6 +3979,9 @@ class WallWallComment(pydantic.BaseModel):
     )
     date: int = pydantic.Field(
         ..., description="Date when the comment has been added in Unixtime",
+    )
+    donut: typing.Optional["WallWallCommentDonut"] = pydantic.Field(
+        None, description="",
     )
     from_id: int = pydantic.Field(
         ..., description="Author ID",
@@ -3000,11 +4021,28 @@ class WallWallComment(pydantic.BaseModel):
     )
 
 
+class WallWallCommentDonut(pydantic.BaseModel):
+    is_don: typing.Optional[bool] = pydantic.Field(
+        None, description="Means commentator is donator",
+    )
+    placeholder: typing.Optional["WallWallCommentDonutPlaceholder"] = pydantic.Field(
+        None, description="",
+    )
+
+
+class WallWallCommentDonutPlaceholder(pydantic.BaseModel):
+    text: str = pydantic.Field(
+        ..., description="",
+    )
+
+
 class WallWallpost(pydantic.BaseModel):
     access_key: typing.Optional[str] = pydantic.Field(
         None, description="Access key to private object",
     )
-    attachments: typing.Optional[typing.List["WallWallpostAttachment"]] = pydantic.Field(
+    attachments: typing.Optional[
+        typing.List["WallWallpostAttachment"]
+    ] = pydantic.Field(
         None, description="",
     )
     copyright: typing.Optional["WallPostCopyright"] = pydantic.Field(
@@ -3057,25 +4095,24 @@ class WallWallpost(pydantic.BaseModel):
     )
 
 
-class WallWallpostAttachmentType(str, Enum):
-    PHOTO = "photo"
-    POSTED_PHOTO = "posted_photo"
-    AUDIO = "audio"
-    VIDEO = "video"
-    DOC = "doc"
-    LINK = "link"
-    GRAFFITI = "graffiti"
-    NOTE = "note"
-    APP = "app"
-    POLL = "poll"
-    PAGE = "page"
-    ALBUM = "album"
-    PHOTOS_LIST = "photos_list"
-    MARKET_MARKET_ALBUM = "market_market_album"
-    MARKET = "market"
-    EVENT = "event"
-    PODCAST = "podcast"
-    PRETTY_CARDS = "pretty_cards"
+class WallWallpostCommentsDonut(pydantic.BaseModel):
+    placeholder: typing.Optional[
+        "WallWallpostCommentsDonutPlaceholder"
+    ] = pydantic.Field(
+        None, description="",
+    )
+
+
+class WallWallpostCommentsDonutPlaceholder(pydantic.BaseModel):
+    text: str = pydantic.Field(
+        ..., description="",
+    )
+
+
+class WallWallpostDonutPlaceholder(pydantic.BaseModel):
+    text: str = pydantic.Field(
+        ..., description="",
+    )
 
 
 class WidgetsCommentMedia(pydantic.BaseModel):
@@ -3091,12 +4128,6 @@ class WidgetsCommentMedia(pydantic.BaseModel):
     type: typing.Optional["WidgetsCommentMediaType"] = pydantic.Field(
         None, description="",
     )
-
-
-class WidgetsCommentMediaType(str, Enum):
-    AUDIO = "audio"
-    PHOTO = "photo"
-    VIDEO = "video"
 
 
 class WidgetsCommentReplies(pydantic.BaseModel):
@@ -3261,24 +4292,6 @@ class AccountPushConversationsItem(pydantic.BaseModel):
     )
 
 
-class AccountPushParamsMode(str, Enum):
-    ON = "on"
-    OFF = "off"
-    NO_SOUND = "no_sound"
-    NO_TEXT = "no_text"
-
-
-class AccountPushParamsOnoff(str, Enum):
-    ON = "on"
-    OFF = "off"
-
-
-class AccountPushParamsSettings(str, Enum):
-    ON = "on"
-    OFF = "off"
-    FR_OF_FR = "fr_of_fr"
-
-
 class AccountPushSettings(pydantic.BaseModel):
     disabled: typing.Optional["BaseBoolInt"] = pydantic.Field(
         None, description="Information whether notifications are disabled",
@@ -3292,23 +4305,6 @@ class AccountPushSettings(pydantic.BaseModel):
     conversations: typing.Optional["AccountPushConversations"] = pydantic.Field(
         None, description="",
     )
-
-
-class AddressesFields(str, Enum):
-    ID = "id"
-    TITLE = "title"
-    ADDRESS = "address"
-    ADDITIONAL_ADDRESS = "additional_address"
-    COUNTRY_ID = "country_id"
-    CITY_ID = "city_id"
-    METRO_STATION_ID = "metro_station_id"
-    LATITUDE = "latitude"
-    LONGITUDE = "longitude"
-    DISTANCE = "distance"
-    WORK_INFO_STATUS = "work_info_status"
-    TIMETABLE = "timetable"
-    PHONE = "phone"
-    TIME_OFFSET = "time_offset"
 
 
 class AdsAccesses(pydantic.BaseModel):
@@ -3335,6 +4331,9 @@ class AdsAccount(pydantic.BaseModel):
     )
     account_name: str = pydantic.Field(
         ..., description="Account name",
+    )
+    can_view_budget: bool = pydantic.Field(
+        ..., description="Can user view account budget",
     )
 
 
@@ -3538,7 +4537,8 @@ class AdsCriteria(pydantic.BaseModel):
         None, description="Interests",
     )
     paying: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether the user has proceeded VK payments before",
+        None,
+        description="Information whether the user has proceeded VK payments before",
     )
     positions: typing.Optional[str] = pydantic.Field(
         None, description="Positions IDs",
@@ -3637,7 +4637,8 @@ class AdsLookalikeRequest(pydantic.BaseModel):
         ..., description="Lookalike request update time, as Unixtime",
     )
     scheduled_delete_time: typing.Optional[int] = pydantic.Field(
-        None, description="Time by which lookalike request would be deleted, as Unixtime",
+        None,
+        description="Time by which lookalike request would be deleted, as Unixtime",
     )
     status: str = pydantic.Field(
         ..., description="Lookalike request status",
@@ -3663,7 +4664,8 @@ class AdsLookalikeRequest(pydantic.BaseModel):
 
 class AdsLookalikeRequestSaveAudienceLevel(pydantic.BaseModel):
     level: typing.Optional[int] = pydantic.Field(
-        None, description="Save audience level id, which is used in save audience queries",
+        None,
+        description="Save audience level id, which is used in save audience queries",
     )
     audience_count: typing.Optional[int] = pydantic.Field(
         None, description="Saved audience audience size for according level",
@@ -3992,9 +4994,6 @@ class AdswebGetAdUnitsResponseAdUnitsAdUnit(pydantic.BaseModel):
     name: typing.Optional[str] = pydantic.Field(
         None, description="",
     )
-    params: typing.Optional[typing.Any] = pydantic.Field(
-        None, description="",
-    )
 
 
 class AdswebGetFraudHistoryResponseEntriesEntry(pydantic.BaseModel):
@@ -4058,9 +5057,6 @@ class AdswebGetStatisticsResponseItemsItem(pydantic.BaseModel):
     hour_max: typing.Optional[str] = pydantic.Field(
         None, description="",
     )
-    stats: typing.Optional[typing.List[typing.Any]] = pydantic.Field(
-        None, description="",
-    )
 
 
 class AppWidgetsPhoto(pydantic.BaseModel):
@@ -4068,9 +5064,6 @@ class AppWidgetsPhoto(pydantic.BaseModel):
         ..., description="Image ID",
     )
     images: typing.List["BaseImage"] = pydantic.Field(
-        ..., description="",
-    )
-    type: typing.Any = pydantic.Field(
         ..., description="",
     )
 
@@ -4082,12 +5075,6 @@ class AppWidgetsPhotos(pydantic.BaseModel):
     items: typing.Optional[typing.List["AppWidgetsPhoto"]] = pydantic.Field(
         None, description="",
     )
-
-
-class AppsAppLeaderboardType(int, Enum):
-    NOT_SUPPORTED = 0
-    LEVELS = 1
-    POINTS = 2
 
 
 class AppsLeaderboard(pydantic.BaseModel):
@@ -4150,14 +5137,6 @@ class BaseImage(pydantic.BaseModel):
     )
 
 
-class BaseLinkProductStatus(str, Enum):
-    ACTIVE = "active"
-    BLOCKED = "blocked"
-    SOLD = "sold"
-    DELETED = "deleted"
-    ARCHIVED = "archived"
-
-
 class BaseMessageError(pydantic.BaseModel):
     code: typing.Optional[int] = pydantic.Field(
         None, description="Error code",
@@ -4209,120 +5188,10 @@ class BaseUploadServer(pydantic.BaseModel):
     )
 
 
-class BaseUserGroupFields(str, Enum):
-    ABOUT = "about"
-    ACTION_BUTTON = "action_button"
-    ACTIVITIES = "activities"
-    ACTIVITY = "activity"
-    ADDRESSES = "addresses"
-    ADMIN_LEVEL = "admin_level"
-    AGE_LIMITS = "age_limits"
-    AUTHOR_ID = "author_id"
-    BAN_INFO = "ban_info"
-    BDATE = "bdate"
-    BLACKLISTED = "blacklisted"
-    BLACKLISTED_BY_ME = "blacklisted_by_me"
-    BOOKS = "books"
-    CAN_CREATE_TOPIC = "can_create_topic"
-    CAN_MESSAGE = "can_message"
-    CAN_POST = "can_post"
-    CAN_SEE_ALL_POSTS = "can_see_all_posts"
-    CAN_SEE_AUDIO = "can_see_audio"
-    CAN_SEND_FRIEND_REQUEST = "can_send_friend_request"
-    CAN_UPLOAD_VIDEO = "can_upload_video"
-    CAN_WRITE_PRIVATE_MESSAGE = "can_write_private_message"
-    CAREER = "career"
-    CITY = "city"
-    COMMON_COUNT = "common_count"
-    CONNECTIONS = "connections"
-    CONTACTS = "contacts"
-    COUNTERS = "counters"
-    COUNTRY = "country"
-    COVER = "cover"
-    CROP_PHOTO = "crop_photo"
-    DEACTIVATED = "deactivated"
-    DESCRIPTION = "description"
-    DOMAIN = "domain"
-    EDUCATION = "education"
-    EXPORTS = "exports"
-    FINISH_DATE = "finish_date"
-    FIXED_POST = "fixed_post"
-    FOLLOWERS_COUNT = "followers_count"
-    FRIEND_STATUS = "friend_status"
-    GAMES = "games"
-    HAS_MARKET_APP = "has_market_app"
-    HAS_MOBILE = "has_mobile"
-    HAS_PHOTO = "has_photo"
-    HOME_TOWN = "home_town"
-    ID = "id"
-    INTERESTS = "interests"
-    IS_ADMIN = "is_admin"
-    IS_CLOSED = "is_closed"
-    IS_FAVORITE = "is_favorite"
-    IS_FRIEND = "is_friend"
-    IS_HIDDEN_FROM_FEED = "is_hidden_from_feed"
-    IS_MEMBER = "is_member"
-    IS_MESSAGES_BLOCKED = "is_messages_blocked"
-    CAN_SEND_NOTIFY = "can_send_notify"
-    IS_SUBSCRIBED = "is_subscribed"
-    LAST_SEEN = "last_seen"
-    LINKS = "links"
-    LISTS = "lists"
-    MAIDEN_NAME = "maiden_name"
-    MAIN_ALBUM_ID = "main_album_id"
-    MAIN_SECTION = "main_section"
-    MARKET = "market"
-    MEMBER_STATUS = "member_status"
-    MEMBERS_COUNT = "members_count"
-    MILITARY = "military"
-    MOVIES = "movies"
-    MUSIC = "music"
-    NAME = "name"
-    NICKNAME = "nickname"
-    OCCUPATION = "occupation"
-    ONLINE = "online"
-    ONLINE_STATUS = "online_status"
-    PERSONAL = "personal"
-    PHONE = "phone"
-    PHOTO_100 = "photo_100"
-    PHOTO_200 = "photo_200"
-    PHOTO_200_ORIG = "photo_200_orig"
-    PHOTO_400_ORIG = "photo_400_orig"
-    PHOTO_50 = "photo_50"
-    PHOTO_ID = "photo_id"
-    PHOTO_MAX = "photo_max"
-    PHOTO_MAX_ORIG = "photo_max_orig"
-    QUOTES = "quotes"
-    RELATION = "relation"
-    RELATIVES = "relatives"
-    SCHOOLS = "schools"
-    SCREEN_NAME = "screen_name"
-    SEX = "sex"
-    SITE = "site"
-    START_DATE = "start_date"
-    STATUS = "status"
-    TIMEZONE = "timezone"
-    TRENDING = "trending"
-    TV = "tv"
-    TYPE = "type"
-    UNIVERSITIES = "universities"
-    VERIFIED = "verified"
-    WALL_COMMENTS = "wall_comments"
-    WIKI_PAGE = "wiki_page"
-    VK_ADMIN_STATUS = "vk_admin_status"
-
-
 class BaseUserId(pydantic.BaseModel):
     user_id: typing.Optional[int] = pydantic.Field(
         None, description="User ID",
     )
-
-
-class BoardDefaultOrder(int, Enum):
-    DESC_UPDATED = 1
-    DESC_CREATED = 2
-    ASC_UPDATED = -1
-    ASC_CREATED = -2
 
 
 class BoardTopicComment(pydantic.BaseModel):
@@ -4398,7 +5267,76 @@ class CallbackConfirmationMessage(pydantic.BaseModel):
     group_id: int = pydantic.Field(
         ..., description="",
     )
-    secret: str = pydantic.Field(
+    secret: typing.Optional[str] = pydantic.Field(
+        None, description="",
+    )
+
+
+class CallbackDonutMoneyWithdraw(pydantic.BaseModel):
+    amount: int = pydantic.Field(
+        ..., description="",
+    )
+    amount_without_fee: int = pydantic.Field(
+        ..., description="",
+    )
+
+
+class CallbackDonutMoneyWithdrawError(pydantic.BaseModel):
+    reason: str = pydantic.Field(
+        ..., description="",
+    )
+
+
+class CallbackDonutSubscriptionCancelled(pydantic.BaseModel):
+    user_id: typing.Optional[int] = pydantic.Field(
+        None, description="",
+    )
+
+
+class CallbackDonutSubscriptionCreate(pydantic.BaseModel):
+    user_id: typing.Optional[int] = pydantic.Field(
+        None, description="",
+    )
+    amount: int = pydantic.Field(
+        ..., description="",
+    )
+    amount_without_fee: int = pydantic.Field(
+        ..., description="",
+    )
+
+
+class CallbackDonutSubscriptionExpired(pydantic.BaseModel):
+    user_id: typing.Optional[int] = pydantic.Field(
+        None, description="",
+    )
+
+
+class CallbackDonutSubscriptionPriceChanged(pydantic.BaseModel):
+    user_id: typing.Optional[int] = pydantic.Field(
+        None, description="",
+    )
+    amount_old: int = pydantic.Field(
+        ..., description="",
+    )
+    amount_new: int = pydantic.Field(
+        ..., description="",
+    )
+    amount_diff: typing.Optional[int] = pydantic.Field(
+        None, description="",
+    )
+    amount_diff_without_fee: typing.Optional[int] = pydantic.Field(
+        None, description="",
+    )
+
+
+class CallbackDonutSubscriptionProlonged(pydantic.BaseModel):
+    user_id: typing.Optional[int] = pydantic.Field(
+        None, description="",
+    )
+    amount: int = pydantic.Field(
+        ..., description="",
+    )
+    amount_without_fee: int = pydantic.Field(
         ..., description="",
     )
 
@@ -4775,12 +5713,6 @@ class DatabaseUniversity(pydantic.BaseModel):
     )
 
 
-class DocsDocAttachmentType(str, Enum):
-    DOC = "doc"
-    GRAFFITI = "graffiti"
-    AUDIO_MESSAGE = "audio_message"
-
-
 class DocsDocPreviewPhotoSizes(pydantic.BaseModel):
     src: str = pydantic.Field(
         ..., description="URL of the image",
@@ -4811,6 +5743,21 @@ class DocsDocTypes(pydantic.BaseModel):
 class DocsDocUploadResponse(pydantic.BaseModel):
     file: typing.Optional[str] = pydantic.Field(
         None, description="Uploaded file data",
+    )
+
+
+class DonutDonatorSubscriptionInfo(pydantic.BaseModel):
+    owner_id: int = pydantic.Field(
+        ..., description="",
+    )
+    next_payment_date: int = pydantic.Field(
+        ..., description="",
+    )
+    amount: int = pydantic.Field(
+        ..., description="",
+    )
+    status: str = pydantic.Field(
+        ..., description="",
     )
 
 
@@ -4906,7 +5853,9 @@ class FriendsMutualFriend(pydantic.BaseModel):
 
 class FriendsRequests(pydantic.BaseModel):
     from_: typing.Optional[str] = pydantic.Field(
-        None, description="ID of the user by whom friend has been suggested", alias="from"
+        None,
+        description="ID of the user by whom friend has been suggested",
+        alias="from",
     )
     mutual: typing.Optional["FriendsRequestsMutual"] = pydantic.Field(
         None, description="",
@@ -4918,7 +5867,9 @@ class FriendsRequests(pydantic.BaseModel):
 
 class FriendsRequestsXtrMessage(pydantic.BaseModel):
     from_: typing.Optional[str] = pydantic.Field(
-        None, description="ID of the user by whom friend has been suggested", alias="from"
+        None,
+        description="ID of the user by whom friend has been suggested",
+        alias="from",
     )
     message: typing.Optional[str] = pydantic.Field(
         None, description="Message sent with a request",
@@ -5097,81 +6048,6 @@ class GroupsCover(pydantic.BaseModel):
     )
 
 
-class GroupsFields(str, Enum):
-    MARKET = "market"
-    MEMBER_STATUS = "member_status"
-    IS_FAVORITE = "is_favorite"
-    IS_SUBSCRIBED = "is_subscribed"
-    CITY = "city"
-    COUNTRY = "country"
-    VERIFIED = "verified"
-    DESCRIPTION = "description"
-    WIKI_PAGE = "wiki_page"
-    MEMBERS_COUNT = "members_count"
-    COUNTERS = "counters"
-    COVER = "cover"
-    CAN_POST = "can_post"
-    CAN_SEE_ALL_POSTS = "can_see_all_posts"
-    ACTIVITY = "activity"
-    FIXED_POST = "fixed_post"
-    CAN_CREATE_TOPIC = "can_create_topic"
-    CAN_UPLOAD_VIDEO = "can_upload_video"
-    HAS_PHOTO = "has_photo"
-    STATUS = "status"
-    MAIN_ALBUM_ID = "main_album_id"
-    LINKS = "links"
-    CONTACTS = "contacts"
-    SITE = "site"
-    MAIN_SECTION = "main_section"
-    TRENDING = "trending"
-    CAN_MESSAGE = "can_message"
-    IS_MARKET_CART_ENABLED = "is_market_cart_enabled"
-    IS_MESSAGES_BLOCKED = "is_messages_blocked"
-    CAN_SEND_NOTIFY = "can_send_notify"
-    ONLINE_STATUS = "online_status"
-    START_DATE = "start_date"
-    FINISH_DATE = "finish_date"
-    AGE_LIMITS = "age_limits"
-    BAN_INFO = "ban_info"
-    ACTION_BUTTON = "action_button"
-    AUTHOR_ID = "author_id"
-    PHONE = "phone"
-    HAS_MARKET_APP = "has_market_app"
-    ADDRESSES = "addresses"
-    LIVE_COVERS = "live_covers"
-    IS_ADULT = "is_adult"
-    CAN_SUBSCRIBE_POSTS = "can_subscribe_posts"
-    WARNING_NOTIFICATION = "warning_notification"
-    MSG_PUSH_ALLOWED = "msg_push_allowed"
-    STORIES_ARCHIVE_COUNT = "stories_archive_count"
-    VIDEO_LIVE_LEVEL = "video_live_level"
-    VIDEO_LIVE_COUNT = "video_live_count"
-    CLIPS_COUNT = "clips_count"
-
-
-class GroupsFilter(str, Enum):
-    ADMIN = "admin"
-    EDITOR = "editor"
-    MODER = "moder"
-    ADVERTISER = "advertiser"
-    GROUPS = "groups"
-    PUBLICS = "publics"
-    EVENTS = "events"
-    HAS_ADDRESSES = "has_addresses"
-
-
-class GroupsGroupAccess(int, Enum):
-    OPEN = 0
-    CLOSED = 1
-    PRIVATE = 2
-
-
-class GroupsGroupAgeLimits(int, Enum):
-    UNLIMITED = 1
-    SIXTEEN_PLUS = 2
-    EIGHTEEN_PLUS = 3
-
-
 class GroupsGroupBanInfo(pydantic.BaseModel):
     comment: typing.Optional[str] = pydantic.Field(
         None, description="Ban comment",
@@ -5223,21 +6099,6 @@ class GroupsGroupCategoryType(pydantic.BaseModel):
     )
 
 
-class GroupsGroupDocs(int, Enum):
-    DISABLED = 0
-    OPEN = 1
-    LIMITED = 2
-
-
-class GroupsGroupFullMainSection(int, Enum):
-    ABSENT = 0
-    PHOTOS = 1
-    TOPICS = 2
-    AUDIO = 3
-    VIDEO = 4
-    MARKET = 5
-
-
 class GroupsGroupLink(pydantic.BaseModel):
     name: typing.Optional[str] = pydantic.Field(
         None, description="Link label",
@@ -5259,14 +6120,6 @@ class GroupsGroupLink(pydantic.BaseModel):
     )
 
 
-class GroupsGroupMarketCurrency(int, Enum):
-    RUSSIAN_RUBLES = 643
-    UKRAINIAN_HRYVNIA = 980
-    KAZAKH_TENGE = 398
-    EURO = 978
-    US_DOLLARS = 840
-
-
 class GroupsGroupPublicCategoryList(pydantic.BaseModel):
     id: typing.Optional[int] = pydantic.Field(
         None, description="",
@@ -5274,61 +6127,11 @@ class GroupsGroupPublicCategoryList(pydantic.BaseModel):
     name: typing.Optional[str] = pydantic.Field(
         None, description="",
     )
-    subcategories: typing.Optional[typing.List["GroupsGroupCategoryType"]] = pydantic.Field(
+    subcategories: typing.Optional[
+        typing.List["GroupsGroupCategoryType"]
+    ] = pydantic.Field(
         None, description="",
     )
-
-
-class GroupsGroupRole(str, Enum):
-    MODERATOR = "moderator"
-    EDITOR = "editor"
-    ADMINISTRATOR = "administrator"
-    ADVERTISER = "advertiser"
-
-
-class GroupsGroupSubject(str, Enum):
-    AUTO = 1
-    ACTIVITY_HOLIDAYS = 2
-    BUSINESS = 3
-    PETS = 4
-    HEALTH = 5
-    DATING_AND_COMMUNICATION = 6
-    GAMES = 7
-    IT = 8
-    CINEMA = 9
-    BEAUTY_AND_FASHION = 10
-    COOKING = 11
-    ART_AND_CULTURE = 12
-    LITERATURE = 13
-    MOBILE_SERVICES_AND_INTERNET = 14
-    MUSIC = 15
-    SCIENCE_AND_TECHNOLOGY = 16
-    REAL_ESTATE = 17
-    NEWS_AND_MEDIA = 18
-    SECURITY = 19
-    EDUCATION = 20
-    HOME_AND_RENOVATIONS = 21
-    POLITICS = 22
-    FOOD = 23
-    INDUSTRY = 24
-    TRAVEL = 25
-    WORK = 26
-    ENTERTAINMENT = 27
-    RELIGION = 28
-    FAMILY = 29
-    SPORTS = 30
-    INSURANCE = 31
-    TELEVISION = 32
-    GOODS_AND_SERVICES = 33
-    HOBBIES = 34
-    FINANCE = 35
-    PHOTO = 36
-    ESOTERICS = 37
-    ELECTRONICS_AND_APPLIANCES = 38
-    EROTIC = 39
-    HUMOR = 40
-    SOCIETY_HUMANITIES = 41
-    DESIGN_AND_GRAPHICS = 42
 
 
 class GroupsGroupTag(pydantic.BaseModel):
@@ -5344,18 +6147,6 @@ class GroupsGroupTag(pydantic.BaseModel):
     uses: typing.Optional[int] = pydantic.Field(
         None, description="",
     )
-
-
-class GroupsGroupTopics(int, Enum):
-    DISABLED = 0
-    OPEN = 1
-    LIMITED = 2
-
-
-class GroupsGroupWiki(int, Enum):
-    DISABLED = 0
-    OPEN = 1
-    LIMITED = 2
 
 
 class GroupsGroupXtrInvitedBy(pydantic.BaseModel):
@@ -5384,13 +6175,16 @@ class GroupsGroupXtrInvitedBy(pydantic.BaseModel):
         None, description="Community name",
     )
     photo_100: typing.Optional[str] = pydantic.Field(
-        None, description="URL of square photo of the community with 100 pixels in width",
+        None,
+        description="URL of square photo of the community with 100 pixels in width",
     )
     photo_200: typing.Optional[str] = pydantic.Field(
-        None, description="URL of square photo of the community with 200 pixels in width",
+        None,
+        description="URL of square photo of the community with 200 pixels in width",
     )
     photo_50: typing.Optional[str] = pydantic.Field(
-        None, description="URL of square photo of the community with 50 pixels in width",
+        None,
+        description="URL of square photo of the community with 50 pixels in width",
     )
     screen_name: typing.Optional[str] = pydantic.Field(
         None, description="Domain of the community page",
@@ -5493,26 +6287,18 @@ class GroupsMarketInfo(pydantic.BaseModel):
     )
 
 
-class GroupsMarketState(str, Enum):
-    NONE = "none"
-    BASIC = "basic"
-    ADVANCED = "advanced"
-
-
 class GroupsMemberRole(pydantic.BaseModel):
     id: typing.Optional[int] = pydantic.Field(
         None, description="User ID",
     )
-    permissions: typing.Optional[typing.List["GroupsMemberRolePermission"]] = pydantic.Field(
+    permissions: typing.Optional[
+        typing.List["GroupsMemberRolePermission"]
+    ] = pydantic.Field(
         None, description="",
     )
     role: typing.Optional["GroupsMemberRoleStatus"] = pydantic.Field(
         None, description="",
     )
-
-
-class GroupsMemberRolePermission(str, Enum):
-    ADS = "ads"
 
 
 class GroupsMemberStatus(pydantic.BaseModel):
@@ -5529,7 +6315,8 @@ class GroupsMemberStatusFull(pydantic.BaseModel):
         None, description="Information whether user can be invited",
     )
     can_recall: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether user's invite to the group can be recalled",
+        None,
+        description="Information whether user's invite to the group can be recalled",
     )
     invitation: typing.Optional["BaseBoolInt"] = pydantic.Field(
         None, description="Information whether user has been invited to the group",
@@ -5569,11 +6356,16 @@ class GroupsOwnerXtrBanInfo(pydantic.BaseModel):
     )
 
 
-class GroupsRoleOptions(str, Enum):
-    MODERATOR = "moderator"
-    EDITOR = "editor"
-    ADMINISTRATOR = "administrator"
-    CREATOR = "creator"
+class GroupsProfileItem(pydantic.BaseModel):
+    id: int = pydantic.Field(
+        ..., description="User id",
+    )
+    photo_50: str = pydantic.Field(
+        ..., description="Url for user photo",
+    )
+    photo_100: str = pydantic.Field(
+        ..., description="Url for user photo",
+    )
 
 
 class GroupsSettingsTwitter(pydantic.BaseModel):
@@ -5603,112 +6395,28 @@ class GroupsTokenPermissionSetting(pydantic.BaseModel):
     )
 
 
-class LeadsChecked(pydantic.BaseModel):
-    reason: typing.Optional[str] = pydantic.Field(
-        None, description="Reason why user can't start the lead",
+class MarketMarketCategoryOld(pydantic.BaseModel):
+    id: int = pydantic.Field(
+        ..., description="Category ID",
     )
-    result: typing.Optional["LeadsCheckedResult"] = pydantic.Field(
+    name: str = pydantic.Field(
+        ..., description="Category name",
+    )
+    section: "MarketSection" = pydantic.Field(
+        ..., description="",
+    )
+
+
+class MarketMarketCategoryTree(pydantic.BaseModel):
+    id: int = pydantic.Field(
+        ..., description="Category ID",
+    )
+    name: str = pydantic.Field(
+        ..., description="Category name",
+    )
+    children: typing.Optional[typing.List["MarketMarketCategoryTree"]] = pydantic.Field(
         None, description="",
     )
-    sid: typing.Optional[str] = pydantic.Field(
-        None, description="Session ID",
-    )
-    start_link: typing.Optional[str] = pydantic.Field(
-        None, description="URL user should open to start the lead",
-    )
-
-
-class LeadsComplete(pydantic.BaseModel):
-    cost: typing.Optional[int] = pydantic.Field(
-        None, description="Offer cost",
-    )
-    limit: typing.Optional[int] = pydantic.Field(
-        None, description="Offer limit",
-    )
-    spent: typing.Optional[int] = pydantic.Field(
-        None, description="Amount of spent votes",
-    )
-    success: typing.Optional[int] = pydantic.Field(
-        None, description="",
-    )
-    test_mode: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether test mode is enabled",
-    )
-
-
-class LeadsEntry(pydantic.BaseModel):
-    aid: typing.Optional[int] = pydantic.Field(
-        None, description="Application ID",
-    )
-    comment: typing.Optional[str] = pydantic.Field(
-        None, description="Comment text",
-    )
-    date: typing.Optional[int] = pydantic.Field(
-        None, description="Date when the action has been started in Unixtime",
-    )
-    sid: typing.Optional[str] = pydantic.Field(
-        None, description="Session string ID",
-    )
-    start_date: typing.Optional[int] = pydantic.Field(
-        None, description="Start date in Unixtime (for status=2)",
-    )
-    status: typing.Optional[int] = pydantic.Field(
-        None, description="Action type",
-    )
-    test_mode: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether test mode is enabled",
-    )
-    uid: typing.Optional[int] = pydantic.Field(
-        None, description="User ID",
-    )
-
-
-class LeadsLead(pydantic.BaseModel):
-    completed: typing.Optional[int] = pydantic.Field(
-        None, description="Completed offers number",
-    )
-    cost: typing.Optional[int] = pydantic.Field(
-        None, description="Offer cost",
-    )
-    days: typing.Optional["LeadsLeadDays"] = pydantic.Field(
-        None, description="",
-    )
-    impressions: typing.Optional[int] = pydantic.Field(
-        None, description="Impressions number",
-    )
-    limit: typing.Optional[int] = pydantic.Field(
-        None, description="Lead limit",
-    )
-    spent: typing.Optional[int] = pydantic.Field(
-        None, description="Amount of spent votes",
-    )
-    started: typing.Optional[int] = pydantic.Field(
-        None, description="Started offers number",
-    )
-
-
-class LeadsStart(pydantic.BaseModel):
-    test_mode: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether test mode is enabled",
-    )
-    vk_sid: typing.Optional[str] = pydantic.Field(
-        None, description="Session data",
-    )
-
-
-class LikesType(str, Enum):
-    POST = "post"
-    COMMENT = "comment"
-    PHOTO = "photo"
-    AUDIO = "audio"
-    VIDEO = "video"
-    NOTE = "note"
-    MARKET = "market"
-    PHOTO_COMMENT = "photo_comment"
-    VIDEO_COMMENT = "video_comment"
-    TOPIC_COMMENT = "topic_comment"
-    MARKET_COMMENT = "market_comment"
-    SITEPAGE = "sitepage"
 
 
 class MarketOrder(pydantic.BaseModel):
@@ -5751,26 +6459,16 @@ class MarketOrder(pydantic.BaseModel):
     weight: typing.Optional[int] = pydantic.Field(
         None, description="",
     )
-    tags: typing.Optional[typing.List[typing.Any]] = pydantic.Field(
-        None, description="",
-    )
-    dimensions: typing.Optional[typing.Any] = pydantic.Field(
-        None, description="",
-    )
     total_price: "MarketPrice" = pydantic.Field(
         ..., description="",
     )
-    preview_order_items: typing.Optional[typing.List["MarketOrderItem"]] = pydantic.Field(
+    preview_order_items: typing.Optional[
+        typing.List["MarketOrderItem"]
+    ] = pydantic.Field(
         None, description="Several order items for preview",
     )
-    delivery: typing.Optional[typing.Any] = pydantic.Field(
-        None, description="",
-    )
-    recipient: typing.Optional[typing.Any] = pydantic.Field(
-        None, description="",
-    )
-    price_details: typing.Optional[typing.List[typing.Any]] = pydantic.Field(
-        None, description="",
+    cancel_info: typing.Optional["BaseLink"] = pydantic.Field(
+        None, description="Information for cancel and revert order",
     )
 
 
@@ -5951,6 +6649,24 @@ class MessagesConversationWithMessage(pydantic.BaseModel):
     )
 
 
+class MessagesForward(pydantic.BaseModel):
+    owner_id: typing.Optional[int] = pydantic.Field(
+        None, description="Messages owner_id",
+    )
+    peer_id: typing.Optional[int] = pydantic.Field(
+        None, description="Messages peer_id",
+    )
+    conversation_message_ids: typing.Optional[typing.List[int]] = pydantic.Field(
+        None, description="",
+    )
+    message_ids: typing.Optional[typing.List[int]] = pydantic.Field(
+        None, description="",
+    )
+    is_reply: typing.Optional[bool] = pydantic.Field(
+        None, description="If you need to reply to a message",
+    )
+
+
 class MessagesHistoryAttachment(pydantic.BaseModel):
     attachment: "MessagesHistoryMessageAttachment" = pydantic.Field(
         ..., description="",
@@ -6033,9 +6749,6 @@ class MessagesMessageAttachment(pydantic.BaseModel):
     photo: typing.Optional["PhotosPhoto"] = pydantic.Field(
         None, description="",
     )
-    poll: typing.Optional["PollsPoll"] = pydantic.Field(
-        None, description="",
-    )
     sticker: typing.Optional["BaseSticker"] = pydantic.Field(
         None, description="",
     )
@@ -6066,11 +6779,14 @@ class MessagesMessagesArray(pydantic.BaseModel):
 
 
 class MessagesPinnedMessage(pydantic.BaseModel):
-    attachments: typing.Optional[typing.List["MessagesMessageAttachment"]] = pydantic.Field(
+    attachments: typing.Optional[
+        typing.List["MessagesMessageAttachment"]
+    ] = pydantic.Field(
         None, description="",
     )
     conversation_message_id: typing.Optional[int] = pydantic.Field(
-        None, description="Unique auto-incremented number for all messages with this peer",
+        None,
+        description="Unique auto-incremented number for all messages with this peer",
     )
     date: int = pydantic.Field(
         ..., description="Date when the message has been sent in Unixtime",
@@ -6078,7 +6794,9 @@ class MessagesPinnedMessage(pydantic.BaseModel):
     from_id: int = pydantic.Field(
         ..., description="Message author's ID",
     )
-    fwd_messages: typing.Optional[typing.List["MessagesForeignMessage"]] = pydantic.Field(
+    fwd_messages: typing.Optional[
+        typing.List["MessagesForeignMessage"]
+    ] = pydantic.Field(
         None, description="Forwarded messages",
     )
     geo: typing.Optional["BaseGeo"] = pydantic.Field(
@@ -6099,14 +6817,6 @@ class MessagesPinnedMessage(pydantic.BaseModel):
     keyboard: typing.Optional["MessagesKeyboard"] = pydantic.Field(
         None, description="",
     )
-
-
-class NewsfeedCommentsFilters(str, Enum):
-    POST = "post"
-    PHOTO = "photo"
-    VIDEO = "video"
-    TOPIC = "topic"
-    NOTE = "note"
 
 
 class NewsfeedEventActivity(pydantic.BaseModel):
@@ -6130,30 +6840,6 @@ class NewsfeedEventActivity(pydantic.BaseModel):
     )
 
 
-class NewsfeedFilters(str, Enum):
-    POST = "post"
-    PHOTO = "photo"
-    PHOTO_TAG = "photo_tag"
-    WALL_PHOTO = "wall_photo"
-    FRIEND = "friend"
-    RECOMMENDED_GROUPS = "recommended_groups"
-    NOTE = "note"
-    AUDIO = "audio"
-    VIDEO = "video"
-    AUDIO_PLAYLIST = "audio_playlist"
-    GAMES_CAROUSEL = "games_carousel"
-    CLIP = "clip"
-
-
-class NewsfeedIgnoreItemType(str, Enum):
-    WALL = "wall"
-    TAG = "tag"
-    PROFILEPHOTO = "profilephoto"
-    VIDEO = "video"
-    PHOTO = "photo"
-    AUDIO = "audio"
-
-
 class NewsfeedItemAudioAudio(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
         None, description="Audios number",
@@ -6172,6 +6858,30 @@ class NewsfeedItemBase(pydantic.BaseModel):
     )
     date: int = pydantic.Field(
         ..., description="Date when item has been added in Unixtime",
+    )
+
+
+class NewsfeedItemDigestFooter(pydantic.BaseModel):
+    style: str = pydantic.Field(
+        ..., description="",
+    )
+    text: str = pydantic.Field(
+        ..., description="text for invite to enable smart feed",
+    )
+    button: typing.Optional["NewsfeedItemDigestFooterButton"] = pydantic.Field(
+        None, description="",
+    )
+
+
+class NewsfeedItemDigestHeader(pydantic.BaseModel):
+    title: str = pydantic.Field(
+        ..., description="Title of the header",
+    )
+    subtitle: typing.Optional[str] = pydantic.Field(
+        None, description="Subtitle of the header, when title have two strings",
+    )
+    style: str = pydantic.Field(
+        ..., description="",
     )
 
 
@@ -6257,7 +6967,9 @@ class NewsfeedItemWallpostFeedback(pydantic.BaseModel):
     question: str = pydantic.Field(
         ..., description="",
     )
-    answers: typing.Optional[typing.List["NewsfeedItemWallpostFeedbackAnswer"]] = pydantic.Field(
+    answers: typing.Optional[
+        typing.List["NewsfeedItemWallpostFeedbackAnswer"]
+    ] = pydantic.Field(
         None, description="",
     )
     stars_count: typing.Optional[int] = pydantic.Field(
@@ -6275,12 +6987,6 @@ class NewsfeedItemWallpostFeedbackAnswer(pydantic.BaseModel):
     id: str = pydantic.Field(
         ..., description="",
     )
-
-
-class NewsfeedItemWallpostType(str, Enum):
-    POST = "post"
-    COPY = "copy"
-    REPLY = "reply"
 
 
 class NewsfeedList(pydantic.BaseModel):
@@ -6365,10 +7071,6 @@ class NotificationsNotification(pydantic.BaseModel):
     type: typing.Optional[str] = pydantic.Field(
         None, description="Notification type",
     )
-
-
-class NotificationsNotificationItem(dict, Enum):
-    pass
 
 
 class NotificationsNotificationsComment(pydantic.BaseModel):
@@ -6691,7 +7393,8 @@ class PhotosOwnerUploadResponse(pydantic.BaseModel):
 
 class PhotosPhotoAlbumFull(pydantic.BaseModel):
     can_upload: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user can upload photo to the album",
+        None,
+        description="Information whether current user can upload photo to the album",
     )
     comments_disabled: typing.Optional["BaseBoolInt"] = pydantic.Field(
         None, description="Information whether album comments are disabled",
@@ -6730,7 +7433,8 @@ class PhotosPhotoAlbumFull(pydantic.BaseModel):
         ..., description="Date when the album has been updated last time in Unixtime",
     )
     upload_by_admins_only: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether only community administrators can upload photos",
+        None,
+        description="Information whether only community administrators can upload photos",
     )
 
 
@@ -6951,6 +7655,9 @@ class PhotosPhotoUploadResponse(pydantic.BaseModel):
     hash: typing.Optional[str] = pydantic.Field(
         None, description="Uploading hash",
     )
+    photo: typing.Optional[str] = pydantic.Field(
+        None, description="Uploaded photo data",
+    )
     photos_list: typing.Optional[str] = pydantic.Field(
         None, description="Uploaded photos data",
     )
@@ -7104,7 +7811,9 @@ class PhotosTagsSuggestionItem(pydantic.BaseModel):
     type: typing.Optional[str] = pydantic.Field(
         None, description="",
     )
-    buttons: typing.Optional[typing.List["PhotosTagsSuggestionItemButton"]] = pydantic.Field(
+    buttons: typing.Optional[
+        typing.List["PhotosTagsSuggestionItemButton"]
+    ] = pydantic.Field(
         None, description="",
     )
     photo: typing.Optional["PhotosPhoto"] = pydantic.Field(
@@ -7139,27 +7848,6 @@ class PhotosWallUploadResponse(pydantic.BaseModel):
     )
     server: typing.Optional[int] = pydantic.Field(
         None, description="Upload server number",
-    )
-
-
-class PodcastPodcast(pydantic.BaseModel):
-    owner_id: int = pydantic.Field(
-        ..., description="ID of the podcast's owner",
-    )
-    podcast_title: str = pydantic.Field(
-        ..., description="Podcast title",
-    )
-
-
-class PodcastPopularPodcast(pydantic.BaseModel):
-    owner_id: typing.Optional[int] = pydantic.Field(
-        None, description="",
-    )
-    owner_title: typing.Optional[str] = pydantic.Field(
-        None, description="",
-    )
-    url: typing.Optional[str] = pydantic.Field(
-        None, description="",
     )
 
 
@@ -7231,7 +7919,9 @@ class SearchHint(pydantic.BaseModel):
         ..., description="Object description",
     )
     global_: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether the object has been found globally", alias="global"
+        None,
+        description="Information whether the object has been found globally",
+        alias="global",
     )
     group: typing.Optional["GroupsGroup"] = pydantic.Field(
         None, description="",
@@ -7530,6 +8220,9 @@ class StoriesFeedItem(pydantic.BaseModel):
     type: str = pydantic.Field(
         ..., description="Type of Feed Item",
     )
+    id: typing.Optional[str] = pydantic.Field(
+        None, description="",
+    )
     stories: typing.Optional[typing.List["StoriesStory"]] = pydantic.Field(
         None, description="Author stories",
     )
@@ -7538,10 +8231,14 @@ class StoriesFeedItem(pydantic.BaseModel):
         description="Grouped stories of various authors (for types community_grouped_stories/app_grouped_stories type)",
     )
     app: typing.Optional["AppsAppMin"] = pydantic.Field(
-        None, description="App, which stories has been grouped (for type app_grouped_stories)",
+        None,
+        description="App, which stories has been grouped (for type app_grouped_stories)",
     )
     promo_data: typing.Optional["StoriesPromoBlock"] = pydantic.Field(
         None, description="Additional data for promo stories (for type promo_stories)",
+    )
+    birthday_user_id: typing.Optional[int] = pydantic.Field(
+        None, description="",
     )
 
 
@@ -7584,30 +8281,6 @@ class StoriesStoryStats(pydantic.BaseModel):
     )
 
 
-class StoriesUploadLinkText(str, Enum):
-    TO_STORE = "to_store"
-    VOTE = "vote"
-    MORE = "more"
-    BOOK = "book"
-    ORDER = "order"
-    ENROLL = "enroll"
-    FILL = "fill"
-    SIGNUP = "signup"
-    BUY = "buy"
-    TICKET = "ticket"
-    WRITE = "write"
-    OPEN = "open"
-    LEARN_MORE = "learn_more"
-    VIEW = "view"
-    GO_TO = "go_to"
-    CONTACT = "contact"
-    WATCH = "watch"
-    PLAY = "play"
-    INSTALL = "install"
-    READ = "read"
-    CALENDAR = "calendar"
-
-
 class StoriesViewersItem(pydantic.BaseModel):
     is_liked: bool = pydantic.Field(
         ..., description="user has like for this object",
@@ -7624,13 +8297,18 @@ class UsersCareer(pydantic.BaseModel):
     city_id: typing.Optional[int] = pydantic.Field(
         None, description="City ID",
     )
+    city_name: typing.Optional[str] = pydantic.Field(
+        None, description="City name",
+    )
     company: typing.Optional[str] = pydantic.Field(
         None, description="Company name",
     )
     country_id: typing.Optional[int] = pydantic.Field(
         None, description="Country ID",
     )
-    from_: typing.Optional[int] = pydantic.Field(None, description="From year", alias="from")
+    from_: typing.Optional[int] = pydantic.Field(
+        None, description="From year", alias="from"
+    )
     group_id: typing.Optional[int] = pydantic.Field(
         None, description="Community ID",
     )
@@ -7657,82 +8335,6 @@ class UsersExports(pydantic.BaseModel):
     )
 
 
-class UsersFields(str, Enum):
-    PHOTO_ID = "photo_id"
-    VERIFIED = "verified"
-    SEX = "sex"
-    BDATE = "bdate"
-    CITY = "city"
-    COUNTRY = "country"
-    HOME_TOWN = "home_town"
-    HAS_PHOTO = "has_photo"
-    PHOTO_50 = "photo_50"
-    PHOTO_100 = "photo_100"
-    PHOTO_200_ORIG = "photo_200_orig"
-    PHOTO_200 = "photo_200"
-    PHOTO_400_ORIG = "photo_400_orig"
-    PHOTO_MAX = "photo_max"
-    PHOTO_MAX_ORIG = "photo_max_orig"
-    ONLINE = "online"
-    LISTS = "lists"
-    DOMAIN = "domain"
-    HAS_MOBILE = "has_mobile"
-    CONTACTS = "contacts"
-    SITE = "site"
-    EDUCATION = "education"
-    UNIVERSITIES = "universities"
-    SCHOOLS = "schools"
-    STATUS = "status"
-    LAST_SEEN = "last_seen"
-    FOLLOWERS_COUNT = "followers_count"
-    COUNTERS = "counters"
-    COMMON_COUNT = "common_count"
-    OCCUPATION = "occupation"
-    NICKNAME = "nickname"
-    RELATIVES = "relatives"
-    RELATION = "relation"
-    PERSONAL = "personal"
-    CONNECTIONS = "connections"
-    EXPORTS = "exports"
-    WALL_COMMENTS = "wall_comments"
-    ACTIVITIES = "activities"
-    INTERESTS = "interests"
-    MUSIC = "music"
-    MOVIES = "movies"
-    TV = "tv"
-    BOOKS = "books"
-    GAMES = "games"
-    ABOUT = "about"
-    QUOTES = "quotes"
-    CAN_POST = "can_post"
-    CAN_SEE_ALL_POSTS = "can_see_all_posts"
-    CAN_SEE_AUDIO = "can_see_audio"
-    CAN_WRITE_PRIVATE_MESSAGE = "can_write_private_message"
-    CAN_SEND_FRIEND_REQUEST = "can_send_friend_request"
-    IS_FAVORITE = "is_favorite"
-    IS_HIDDEN_FROM_FEED = "is_hidden_from_feed"
-    TIMEZONE = "timezone"
-    SCREEN_NAME = "screen_name"
-    MAIDEN_NAME = "maiden_name"
-    CROP_PHOTO = "crop_photo"
-    IS_FRIEND = "is_friend"
-    FRIEND_STATUS = "friend_status"
-    CAREER = "career"
-    MILITARY = "military"
-    BLACKLISTED = "blacklisted"
-    BLACKLISTED_BY_ME = "blacklisted_by_me"
-    CAN_SUBSCRIBE_POSTS = "can_subscribe_posts"
-    DESCRIPTIONS = "descriptions"
-    TRENDING = "trending"
-    MUTUAL = "mutual"
-    FRIENDSHIP_WEEKS = "friendship_weeks"
-    CAN_INVITE_TO_CHATS = "can_invite_to_chats"
-    STORIES_ARCHIVE_COUNT = "stories_archive_count"
-    VIDEO_LIVE_LEVEL = "video_live_level"
-    VIDEO_LIVE_COUNT = "video_live_count"
-    CLIPS_COUNT = "clips_count"
-
-
 class UsersLastSeen(pydantic.BaseModel):
     platform: typing.Optional[int] = pydantic.Field(
         None, description="Type of the platform that used for the last authorization",
@@ -7746,7 +8348,9 @@ class UsersMilitary(pydantic.BaseModel):
     country_id: int = pydantic.Field(
         ..., description="Country ID",
     )
-    from_: typing.Optional[int] = pydantic.Field(None, description="From year", alias="from")
+    from_: typing.Optional[int] = pydantic.Field(
+        None, description="From year", alias="from"
+    )
     id: typing.Optional[int] = pydantic.Field(
         None, description="Military ID",
     )
@@ -7842,6 +8446,9 @@ class UsersSchool(pydantic.BaseModel):
     year_to: typing.Optional[int] = pydantic.Field(
         None, description="Year the user finished to study",
     )
+    speciality: typing.Optional[str] = pydantic.Field(
+        None, description="",
+    )
 
 
 class UsersUniversity(pydantic.BaseModel):
@@ -7877,6 +8484,9 @@ class UsersUniversity(pydantic.BaseModel):
     )
     name: typing.Optional[str] = pydantic.Field(
         None, description="University name",
+    )
+    university_group_id: typing.Optional[int] = pydantic.Field(
+        None, description="",
     )
 
 
@@ -7922,6 +8532,33 @@ class UsersUserCounters(pydantic.BaseModel):
     )
     videos: typing.Optional[int] = pydantic.Field(
         None, description="Videos number",
+    )
+    new_photo_tags: typing.Optional[int] = pydantic.Field(
+        None, description="",
+    )
+    new_recognition_tags: typing.Optional[int] = pydantic.Field(
+        None, description="",
+    )
+    mutual_friends: typing.Optional[int] = pydantic.Field(
+        None, description="",
+    )
+    posts: typing.Optional[int] = pydantic.Field(
+        None, description="",
+    )
+    articles: typing.Optional[int] = pydantic.Field(
+        None, description="",
+    )
+    wishes: typing.Optional[int] = pydantic.Field(
+        None, description="",
+    )
+    podcasts: typing.Optional[int] = pydantic.Field(
+        None, description="",
+    )
+    clips: typing.Optional[int] = pydantic.Field(
+        None, description="",
+    )
+    clips_followers: typing.Optional[int] = pydantic.Field(
+        None, description="",
     )
 
 
@@ -7992,10 +8629,6 @@ class UsersUserSettingsXtr(pydantic.BaseModel):
     languages: typing.Optional[typing.List[str]] = pydantic.Field(
         None, description="",
     )
-
-
-class UsersUserType(str, Enum):
-    PROFILE = "profile"
 
 
 class UsersUsersArray(pydantic.BaseModel):
@@ -8136,6 +8769,15 @@ class UtilsStatsSexAge(pydantic.BaseModel):
     )
     male: typing.Optional[int] = pydantic.Field(
         None, description=" Views by male users",
+    )
+
+
+class VideoLiveInfo(pydantic.BaseModel):
+    enabled: typing.Optional["BaseBoolInt"] = pydantic.Field(
+        None, description="",
+    )
+    is_notifications_blocked: typing.Optional["BaseBoolInt"] = pydantic.Field(
+        None, description="",
     )
 
 
@@ -8325,8 +8967,31 @@ class WallWallpostAttachment(pydantic.BaseModel):
     )
 
 
+class WallWallpostDonut(pydantic.BaseModel):
+    is_donut: bool = pydantic.Field(
+        ..., description="Post only for dons",
+    )
+    paid_duration: typing.Optional[int] = pydantic.Field(
+        None,
+        description="Value of this field need to pass in wall.post/edit in donut_paid_duration",
+    )
+    placeholder: typing.Optional["WallWallpostDonutPlaceholder"] = pydantic.Field(
+        None,
+        description="If placeholder was respond, text and all attachments will be hidden",
+    )
+    can_publish_free_copy: typing.Optional[bool] = pydantic.Field(
+        None,
+        description="Says whether group admin can post free copy of this donut post",
+    )
+    edit_mode: typing.Optional[str] = pydantic.Field(
+        None, description="Says what user can edit in post about donut properties",
+    )
+
+
 class WallWallpostToId(pydantic.BaseModel):
-    attachments: typing.Optional[typing.List["WallWallpostAttachment"]] = pydantic.Field(
+    attachments: typing.Optional[
+        typing.List["WallWallpostAttachment"]
+    ] = pydantic.Field(
         None, description="",
     )
     comments: typing.Optional["BaseCommentsInfo"] = pydantic.Field(
@@ -8450,7 +9115,8 @@ class WidgetsWidgetPage(pydantic.BaseModel):
         None, description="",
     )
     date: typing.Optional[int] = pydantic.Field(
-        None, description="Date when widgets on the page has been initialized firstly in Unixtime",
+        None,
+        description="Date when widgets on the page has been initialized firstly in Unixtime",
     )
     description: typing.Optional[str] = pydantic.Field(
         None, description="Page description",
@@ -8495,7 +9161,8 @@ class UsersUser(UsersUserMin):
         None, description="Information whether the user is online",
     )
     online_mobile: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether the user is online in mobile site or application",
+        None,
+        description="Information whether the user is online in mobile site or application",
     )
     online_app: typing.Optional[int] = pydantic.Field(
         None, description="Application ID",
@@ -8606,7 +9273,8 @@ class UsersUserFull(UsersUser):
         None, description="Information whether current user can comment wall posts",
     )
     can_post: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user can post on the user's wall",
+        None,
+        description="Information whether current user can post on the user's wall",
     )
     can_see_all_posts: typing.Optional["BaseBoolInt"] = pydantic.Field(
         None,
@@ -8615,6 +9283,113 @@ class UsersUserFull(UsersUser):
     can_see_audio: typing.Optional["BaseBoolInt"] = pydantic.Field(
         None, description="Information whether current user can see the user's audio",
     )
+    type: typing.Optional["UsersUserType"] = pydantic.Field(
+        None, description="",
+    )
+    email: typing.Optional[str] = pydantic.Field(
+        None, description="",
+    )
+    skype: typing.Optional[str] = pydantic.Field(
+        None, description="",
+    )
+    facebook: typing.Optional[str] = pydantic.Field(
+        None, description="",
+    )
+    facebook_name: typing.Optional[str] = pydantic.Field(
+        None, description="",
+    )
+    twitter: typing.Optional[str] = pydantic.Field(
+        None, description="",
+    )
+    livejournal: typing.Optional[str] = pydantic.Field(
+        None, description="",
+    )
+    instagram: typing.Optional[str] = pydantic.Field(
+        None, description="",
+    )
+    test: typing.Optional["BaseBoolInt"] = pydantic.Field(
+        None, description="",
+    )
+    video_live: typing.Optional["VideoLiveInfo"] = pydantic.Field(
+        None, description="",
+    )
+    is_video_live_notifications_blocked: typing.Optional[
+        "BaseBoolInt"
+    ] = pydantic.Field(
+        None, description="",
+    )
+    is_service: typing.Optional[bool] = pydantic.Field(
+        None, description="",
+    )
+    service_description: typing.Optional[str] = pydantic.Field(
+        None, description="",
+    )
+    photo_rec: typing.Optional["PhotosPhotoFalseable"] = pydantic.Field(
+        None, description="",
+    )
+    photo_medium: typing.Optional["PhotosPhotoFalseable"] = pydantic.Field(
+        None, description="",
+    )
+    photo_medium_rec: typing.Optional["PhotosPhotoFalseable"] = pydantic.Field(
+        None, description="",
+    )
+    photo: typing.Optional[str] = pydantic.Field(
+        None, description="",
+    )
+    photo_big: typing.Optional[str] = pydantic.Field(
+        None, description="",
+    )
+    photo_400: typing.Optional[str] = pydantic.Field(
+        None, description="",
+    )
+    photo_max_size: typing.Optional["PhotosPhoto"] = pydantic.Field(
+        None, description="",
+    )
+    language: typing.Optional[str] = pydantic.Field(
+        None, description="",
+    )
+    stories_archive_count: typing.Optional[int] = pydantic.Field(
+        None, description="",
+    )
+    wall_default: typing.Optional[str] = pydantic.Field(
+        None, description="",
+    )
+    can_call: typing.Optional[bool] = pydantic.Field(
+        None, description="Information whether current user can call",
+    )
+    can_see_wishes: typing.Optional[bool] = pydantic.Field(
+        None, description="Information whether current user can see the user's wishes",
+    )
+    can_see_gifts: typing.Optional["BaseBoolInt"] = pydantic.Field(
+        None, description="Information whether current user can see the user's gifts",
+    )
+    interests: typing.Optional[str] = pydantic.Field(
+        None, description="",
+    )
+    books: typing.Optional[str] = pydantic.Field(
+        None, description="",
+    )
+    tv: typing.Optional[str] = pydantic.Field(
+        None, description="",
+    )
+    quotes: typing.Optional[str] = pydantic.Field(
+        None, description="",
+    )
+    about: typing.Optional[str] = pydantic.Field(
+        None, description="",
+    )
+    games: typing.Optional[str] = pydantic.Field(
+        None, description="",
+    )
+    movies: typing.Optional[str] = pydantic.Field(
+        None, description="",
+    )
+    activities: typing.Optional[str] = pydantic.Field(
+        None, description="",
+    )
+    music: typing.Optional[str] = pydantic.Field(
+        None, description="",
+    )
     can_write_private_message: typing.Optional["BaseBoolInt"] = pydantic.Field(
         None, description="Information whether current user can write private message",
     )
@@ -8622,7 +9397,8 @@ class UsersUserFull(UsersUser):
         None, description="Information whether current user can send a friend request",
     )
     can_be_invited_group: typing.Optional[bool] = pydantic.Field(
-        None, description="Information whether current user can be invited to the community",
+        None,
+        description="Information whether current user can be invited to the community",
     )
     mobile_phone: typing.Optional[str] = pydantic.Field(
         None, description="User's mobile phone number",
@@ -8660,14 +9436,20 @@ class UsersUserFull(UsersUser):
     video_live_count: typing.Optional[int] = pydantic.Field(
         None, description="Number of user's live streams",
     )
+    clips_count: typing.Optional[int] = pydantic.Field(
+        None, description="Number of user's clips",
+    )
     blacklisted: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user is in the requested user's blacklist.",
+        None,
+        description="Information whether current user is in the requested user's blacklist.",
     )
     blacklisted_by_me: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether the requested user is in current user's blacklist",
+        None,
+        description="Information whether the requested user is in current user's blacklist",
     )
     is_favorite: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether the requested user is in faves of current user",
+        None,
+        description="Information whether the requested user is in faves of current user",
     )
     is_hidden_from_feed: typing.Optional["BaseBoolInt"] = pydantic.Field(
         None,
@@ -8690,6 +9472,9 @@ class UsersUserFull(UsersUser):
     )
     university_name: typing.Optional[str] = pydantic.Field(
         None, description="University name",
+    )
+    university_group_id: typing.Optional[int] = pydantic.Field(
+        None, description="",
     )
     faculty: typing.Optional[int] = pydantic.Field(
         None, description="Faculty ID",
@@ -8735,6 +9520,21 @@ class UsersUserFull(UsersUser):
     )
     can_subscribe_posts: typing.Optional[bool] = pydantic.Field(
         None, description="Can subscribe to wall",
+    )
+    counters: typing.Optional["UsersUserCounters"] = pydantic.Field(
+        None, description="",
+    )
+    access_key: typing.Optional[str] = pydantic.Field(
+        None, description="",
+    )
+    can_upload_doc: typing.Optional["BaseBoolInt"] = pydantic.Field(
+        None, description="",
+    )
+    hash: typing.Optional[str] = pydantic.Field(
+        None, description="",
+    )
+    has_email: typing.Optional[bool] = pydantic.Field(
+        None, description="",
     )
 
 
@@ -8833,7 +9633,8 @@ class DatabaseCity(BaseObject):
         None, description="Region title",
     )
     important: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether the city is included in important cities list",
+        None,
+        description="Information whether the city is included in important cities list",
     )
 
 
@@ -8866,7 +9667,8 @@ class GroupsGroupFull(GroupsGroup):
         None, description="Information whether community is adult",
     )
     is_hidden_from_feed: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether community is hidden from current user's newsfeed",
+        None,
+        description="Information whether community is hidden from current user's newsfeed",
     )
     is_favorite: typing.Optional["BaseBoolInt"] = pydantic.Field(
         None, description="Information whether community is in faves",
@@ -8898,6 +9700,9 @@ class GroupsGroupFull(GroupsGroup):
     video_live_count: typing.Optional[int] = pydantic.Field(
         None, description="Number of community's live streams",
     )
+    clips_count: typing.Optional[int] = pydantic.Field(
+        None, description="Number of community's clips",
+    )
     counters: typing.Optional["GroupsCountersGroup"] = pydantic.Field(
         None, description="",
     )
@@ -8905,13 +9710,16 @@ class GroupsGroupFull(GroupsGroup):
         None, description="",
     )
     can_post: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user can post on community's wall",
+        None,
+        description="Information whether current user can post on community's wall",
     )
     can_see_all_posts: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user can see all posts on community's wall",
+        None,
+        description="Information whether current user can see all posts on community's wall",
     )
     activity: typing.Optional[str] = pydantic.Field(
-        None, description="Type of group, start date of event or category of public page",
+        None,
+        description="Type of group, start date of event or category of public page",
     )
     fixed_post: typing.Optional[int] = pydantic.Field(
         None, description="Fixed post ID",
@@ -8960,10 +9768,12 @@ class GroupsGroupFull(GroupsGroup):
         None, description="Information whether the community has a fire pictogram.",
     )
     can_message: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user can send a message to community",
+        None,
+        description="Information whether current user can send a message to community",
     )
     is_messages_blocked: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether community can send a message to current user",
+        None,
+        description="Information whether community can send a message to current user",
     )
     can_send_notify: typing.Optional["BaseBoolInt"] = pydantic.Field(
         None,
@@ -9026,6 +9836,15 @@ class MarketMarketItemFull(MarketMarketItem):
     views_count: typing.Optional[int] = pydantic.Field(
         None, description="Views number",
     )
+    wishlist_item_id: typing.Optional[int] = pydantic.Field(
+        None, description="Object identifier in wishlist of viewer",
+    )
+    cancel_info: typing.Optional["BaseLink"] = pydantic.Field(
+        None, description="Information for cancel and revert order",
+    )
+    user_agreement_info: typing.Optional[str] = pydantic.Field(
+        None, description="User agreement info",
+    )
 
 
 class MessagesUserXtrInvitedBy(UsersUserXtrType):
@@ -9044,9 +9863,6 @@ class NewsfeedItemAudio(NewsfeedItemBase):
 
 
 class NewsfeedItemDigest(NewsfeedItemBase):
-    button_text: typing.Optional[str] = pydantic.Field(
-        None, description="",
-    )
     feed_id: typing.Optional[str] = pydantic.Field(
         None, description="id of feed in digest",
     )
@@ -9059,7 +9875,10 @@ class NewsfeedItemDigest(NewsfeedItemBase):
     template: typing.Optional[str] = pydantic.Field(
         None, description="type of digest",
     )
-    title: typing.Optional[str] = pydantic.Field(
+    header: typing.Optional["NewsfeedItemDigestHeader"] = pydantic.Field(
+        None, description="",
+    )
+    footer: typing.Optional["NewsfeedItemDigestFooter"] = pydantic.Field(
         None, description="",
     )
     track_code: typing.Optional[str] = pydantic.Field(
@@ -9101,7 +9920,9 @@ class NewsfeedItemPromoButton(NewsfeedItemBase):
     action: typing.Optional["NewsfeedItemPromoButtonAction"] = pydantic.Field(
         None, description="",
     )
-    images: typing.Optional[typing.List["NewsfeedItemPromoButtonImage"]] = pydantic.Field(
+    images: typing.Optional[
+        typing.List["NewsfeedItemPromoButtonImage"]
+    ] = pydantic.Field(
         None, description="",
     )
     track_code: typing.Optional[str] = pydantic.Field(
@@ -9134,7 +9955,9 @@ class NewsfeedItemWallpost(NewsfeedItemBase):
     activity: typing.Optional["NewsfeedEventActivity"] = pydantic.Field(
         None, description="",
     )
-    attachments: typing.Optional[typing.List["WallWallpostAttachment"]] = pydantic.Field(
+    attachments: typing.Optional[
+        typing.List["WallWallpostAttachment"]
+    ] = pydantic.Field(
         None, description="",
     )
     comments: typing.Optional["BaseCommentsInfo"] = pydantic.Field(
@@ -9223,6 +10046,10 @@ class NotificationsNotificationParent(NotificationsNotificationsComment):
     pass
 
 
+class PhotosPhotoFalseable(pydantic.BaseModel):
+    pass
+
+
 class UsersSubscriptionsItem(
     UsersUserXtrType, GroupsGroupFull,
 ):
@@ -9230,9 +10057,7 @@ class UsersSubscriptionsItem(
 
 
 class UsersUserXtrCounters(UsersUserFull):
-    counters: typing.Optional["UsersUserCounters"] = pydantic.Field(
-        None, description="",
-    )
+    pass
 
 
 class VideoVideo(pydantic.BaseModel):
@@ -9255,16 +10080,19 @@ class VideoVideo(pydantic.BaseModel):
         None, description="Information whether current user can repost the video",
     )
     can_subscribe: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user can subscribe to author of the video",
+        None,
+        description="Information whether current user can subscribe to author of the video",
     )
     can_add_to_faves: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user can add the video to favourites",
+        None,
+        description="Information whether current user can add the video to favourites",
     )
     can_add: typing.Optional["BaseBoolInt"] = pydantic.Field(
         None, description="Information whether current user can add the video",
     )
     can_attach_link: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user can attach action button to the video",
+        None,
+        description="Information whether current user can attach action button to the video",
     )
     is_private: typing.Optional["BaseBoolInt"] = pydantic.Field(
         None, description="1 if video is private",
@@ -9360,6 +10188,14 @@ class VideoVideo(pydantic.BaseModel):
     upcoming: typing.Optional["BasePropertyExists"] = pydantic.Field(
         None, description="1 if the video is an upcoming stream",
     )
+    live_start_time: typing.Optional[int] = pydantic.Field(
+        None,
+        description="Date in Unixtime when the live stream is scheduled to start by the author",
+    )
+    live_notify: typing.Optional["BaseBoolInt"] = pydantic.Field(
+        None,
+        description="Whether current user is subscribed to the upcoming live stream notification (if not subscribed to the author)",
+    )
     spectators: typing.Optional[int] = pydantic.Field(
         None, description="Number of spectators of the stream",
     )
@@ -9404,6 +10240,9 @@ class WallWallpostFull(WallWallpost):
     )
     can_pin: typing.Optional["BaseBoolInt"] = pydantic.Field(
         None, description="Information whether current user can pin the post",
+    )
+    donut: typing.Optional["WallWallpostDonut"] = pydantic.Field(
+        None, description="",
     )
     is_pinned: typing.Optional[int] = pydantic.Field(
         None, description="Information whether the post is pinned",
@@ -9467,11 +10306,11 @@ GroupsBanInfo.update_forward_refs()
 GroupsGroup.update_forward_refs()
 GroupsGroupAttach.update_forward_refs()
 GroupsLongPollEvents.update_forward_refs()
-LeadsLeadDays.update_forward_refs()
 LinkTargetObject.update_forward_refs()
 MarketCurrency.update_forward_refs()
 MarketMarketAlbum.update_forward_refs()
 MarketMarketCategory.update_forward_refs()
+MarketMarketCategoryNested.update_forward_refs()
 MarketMarketItem.update_forward_refs()
 MarketPrice.update_forward_refs()
 MarketSection.update_forward_refs()
@@ -9489,6 +10328,8 @@ MessagesMessage.update_forward_refs()
 MessagesMessageAction.update_forward_refs()
 MessagesMessageActionPhoto.update_forward_refs()
 MessagesMessageRequestData.update_forward_refs()
+MessagesOutReadBy.update_forward_refs()
+NewsfeedItemDigestFooterButton.update_forward_refs()
 NotificationsFeedback.update_forward_refs()
 NotificationsReply.update_forward_refs()
 NotificationsSendMessageError.update_forward_refs()
@@ -9520,7 +10361,12 @@ WallPostSource.update_forward_refs()
 WallPostedPhoto.update_forward_refs()
 WallViews.update_forward_refs()
 WallWallComment.update_forward_refs()
+WallWallCommentDonut.update_forward_refs()
+WallWallCommentDonutPlaceholder.update_forward_refs()
 WallWallpost.update_forward_refs()
+WallWallpostCommentsDonut.update_forward_refs()
+WallWallpostCommentsDonutPlaceholder.update_forward_refs()
+WallWallpostDonutPlaceholder.update_forward_refs()
 WidgetsCommentMedia.update_forward_refs()
 WidgetsCommentReplies.update_forward_refs()
 WidgetsWidgetLikes.update_forward_refs()
@@ -9585,6 +10431,13 @@ BoardTopicComment.update_forward_refs()
 BoardTopicPoll.update_forward_refs()
 CallbackBoardPostDelete.update_forward_refs()
 CallbackConfirmationMessage.update_forward_refs()
+CallbackDonutMoneyWithdraw.update_forward_refs()
+CallbackDonutMoneyWithdrawError.update_forward_refs()
+CallbackDonutSubscriptionCancelled.update_forward_refs()
+CallbackDonutSubscriptionCreate.update_forward_refs()
+CallbackDonutSubscriptionExpired.update_forward_refs()
+CallbackDonutSubscriptionPriceChanged.update_forward_refs()
+CallbackDonutSubscriptionProlonged.update_forward_refs()
 CallbackGroupChangePhoto.update_forward_refs()
 CallbackGroupChangeSettings.update_forward_refs()
 CallbackGroupJoin.update_forward_refs()
@@ -9614,6 +10467,7 @@ DatabaseUniversity.update_forward_refs()
 DocsDocPreviewPhotoSizes.update_forward_refs()
 DocsDocTypes.update_forward_refs()
 DocsDocUploadResponse.update_forward_refs()
+DonutDonatorSubscriptionInfo.update_forward_refs()
 FaveBookmark.update_forward_refs()
 FavePage.update_forward_refs()
 FaveTag.update_forward_refs()
@@ -9650,14 +10504,12 @@ GroupsMemberStatus.update_forward_refs()
 GroupsMemberStatusFull.update_forward_refs()
 GroupsOnlineStatus.update_forward_refs()
 GroupsOwnerXtrBanInfo.update_forward_refs()
+GroupsProfileItem.update_forward_refs()
 GroupsSettingsTwitter.update_forward_refs()
 GroupsSubjectItem.update_forward_refs()
 GroupsTokenPermissionSetting.update_forward_refs()
-LeadsChecked.update_forward_refs()
-LeadsComplete.update_forward_refs()
-LeadsEntry.update_forward_refs()
-LeadsLead.update_forward_refs()
-LeadsStart.update_forward_refs()
+MarketMarketCategoryOld.update_forward_refs()
+MarketMarketCategoryTree.update_forward_refs()
 MarketOrder.update_forward_refs()
 MarketOrderItem.update_forward_refs()
 MessagesChat.update_forward_refs()
@@ -9666,6 +10518,7 @@ MessagesChatPreview.update_forward_refs()
 MessagesChatRestrictions.update_forward_refs()
 MessagesConversationMember.update_forward_refs()
 MessagesConversationWithMessage.update_forward_refs()
+MessagesForward.update_forward_refs()
 MessagesHistoryAttachment.update_forward_refs()
 MessagesKeyboardButton.update_forward_refs()
 MessagesLastActivity.update_forward_refs()
@@ -9677,6 +10530,8 @@ MessagesPinnedMessage.update_forward_refs()
 NewsfeedEventActivity.update_forward_refs()
 NewsfeedItemAudioAudio.update_forward_refs()
 NewsfeedItemBase.update_forward_refs()
+NewsfeedItemDigestFooter.update_forward_refs()
+NewsfeedItemDigestHeader.update_forward_refs()
 NewsfeedItemFriendFriends.update_forward_refs()
 NewsfeedItemHolidayRecommendationsBlockHeader.update_forward_refs()
 NewsfeedItemPhotoPhotos.update_forward_refs()
@@ -9718,8 +10573,6 @@ PhotosPhotoXtrTagInfo.update_forward_refs()
 PhotosTagsSuggestionItem.update_forward_refs()
 PhotosTagsSuggestionItemButton.update_forward_refs()
 PhotosWallUploadResponse.update_forward_refs()
-PodcastPodcast.update_forward_refs()
-PodcastPopularPodcast.update_forward_refs()
 PollsAnswer.update_forward_refs()
 PollsFriend.update_forward_refs()
 PollsVoters.update_forward_refs()
@@ -9765,6 +10618,7 @@ UtilsStatsCity.update_forward_refs()
 UtilsStatsCountry.update_forward_refs()
 UtilsStatsExtended.update_forward_refs()
 UtilsStatsSexAge.update_forward_refs()
+VideoLiveInfo.update_forward_refs()
 VideoLiveSettings.update_forward_refs()
 VideoSaveResult.update_forward_refs()
 VideoVideoAlbumFull.update_forward_refs()
@@ -9772,6 +10626,7 @@ VideoVideoFiles.update_forward_refs()
 WallCarouselBase.update_forward_refs()
 WallCommentAttachment.update_forward_refs()
 WallWallpostAttachment.update_forward_refs()
+WallWallpostDonut.update_forward_refs()
 WallWallpostToId.update_forward_refs()
 WidgetsCommentRepliesItem.update_forward_refs()
 WidgetsWidgetComment.update_forward_refs()
@@ -9789,6 +10644,7 @@ FriendsUserXtrPhone.update_forward_refs()
 GroupsBannedItem.update_forward_refs()
 GroupsGroupFull.update_forward_refs()
 GroupsUserXtrRole.update_forward_refs()
+MarketMarketCategory.update_forward_refs()
 MarketMarketItemFull.update_forward_refs()
 MessagesUserXtrInvitedBy.update_forward_refs()
 NewsfeedItemAudio.update_forward_refs()
@@ -9804,6 +10660,7 @@ NewsfeedListFull.update_forward_refs()
 NewsfeedNewsfeedItem.update_forward_refs()
 NewsfeedNewsfeedPhoto.update_forward_refs()
 NotificationsNotificationParent.update_forward_refs()
+PhotosPhotoFalseable.update_forward_refs()
 UsersSubscriptionsItem.update_forward_refs()
 UsersUserXtrCounters.update_forward_refs()
 VideoVideo.update_forward_refs()

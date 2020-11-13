@@ -532,7 +532,11 @@ class Ads(Category):
         return result
 
     async def get_posts_reach(
-        self, account_id: int, ids_type: str, ids: str, return_raw_response: bool = False,
+        self,
+        account_id: int,
+        ids_type: str,
+        ids: str,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, AdsGetPostsReachResponse]:
         """
         :param account_id: - Advertising account ID.
@@ -670,6 +674,7 @@ class Ads(Category):
         ad_platform_no_ad_network: typing.Optional[str] = None,
         link_domain: typing.Optional[str] = None,
         need_precise: typing.Optional[BaseBoolInt] = None,
+        impressions_limit_period: typing.Optional[int] = None,
     ) -> typing.Union[dict, AdsGetTargetingStatsResponse]:
         """
         :param account_id: - Advertising account ID.
@@ -683,6 +688,7 @@ class Ads(Category):
         :param link_url: - URL for the advertised object.
         :param link_domain: - Domain of the advertised object.
         :param need_precise: - Additionally return recommended cpc and cpm to reach 5,10..95 percents of audience.
+        :param impressions_limit_period: - Impressions limit period in seconds, must be a multiple of 86400(day)
         :param return_raw_response: - return result at dict
         :return:
         """
@@ -697,7 +703,10 @@ class Ads(Category):
         return result
 
     async def get_upload_u_r_l(
-        self, ad_format: int, return_raw_response: bool = False, icon: typing.Optional[int] = None,
+        self,
+        ad_format: int,
+        return_raw_response: bool = False,
+        icon: typing.Optional[int] = None,
     ) -> typing.Union[dict, AdsGetUploadURLResponse]:
         """
         :param ad_format: - Ad format: *1 — image and text,, *2 — big image,, *3 — exclusive format,, *4 — community, square image,, *7 — special app format.
