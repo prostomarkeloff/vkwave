@@ -620,7 +620,6 @@ class Groups(Category):
         raw_result = await self.api_request("getById", params)
         if return_raw_response:
             return raw_result
-        print(raw_result)
 
         result = GroupsGetByIdLegacyResponse(**raw_result)
         return result

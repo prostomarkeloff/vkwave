@@ -1,6 +1,6 @@
 import json
-import re
 import logging
+import re
 from typing import Dict, List, Optional, Tuple, Union
 
 from typing_extensions import Literal
@@ -11,7 +11,6 @@ from vkwave.bots.core.types.json_types import JSONDecoder
 from vkwave.types.bot_events import BotEventType
 from vkwave.types.objects import MessagesMessageActionStatus
 from vkwave.types.user_events import EventId, MessageFlag
-
 from .base import BaseFilter, FilterResult
 
 logger = logging.getLogger(__name__)
@@ -41,15 +40,21 @@ def is_message_event(event: BaseEvent):
             raise InvalidEventError
 
 
-def has_payload(event: BaseEvent):
-    if event.object.object.dict().get("payload") is not None:
-        return True
-    if (
-        event.object.object.dict().get("message") is not None
-        and event.object.object.dict()["message"].get("payload") is not None
-    ):
-        return True
-    return False
+def get_payload(event: BaseEvent) -> Optional[str]:
+    is_message_event(event)
+    if event.bot_type is BotType.USER:
+        if (
+            event.object.object.get("message_data") is not None
+            and event.object.object.message_data.payload is not None
+        ):
+            return event.object.object.message_data.payload
+
+    if event.object.type == BotEventType.MESSAGE_EVENT.value:
+        return event.object.object.payload
+
+    if event.object.object.dict()["message"].get("payload") is not None:
+        return event.object.object.message.payload
+    return None
 
 
 def get_text(event: BaseEvent) -> Optional[str]:
@@ -135,20 +140,12 @@ class PayloadFilter(BaseFilter):
         self.payload = payload
 
     async def check(self, event: BaseEvent) -> FilterResult:
-        if not has_payload(event):
-            return FilterResult(False)
-        if event.bot_type is BotType.USER:
-            current_payload = self.json_loader(event.object.object.message_data.payload)
-        else:
-            if event.object.type == BotEventType.MESSAGE_EVENT.value:
-                current_payload = event.object.object.payload
-            else:
-                current_payload = self.json_loader(event.object.object.message.payload)
+        current_payload = get_payload(event)
         if current_payload is None:
             return FilterResult(False)
         if self.payload is None:
             return FilterResult(True)
-        return FilterResult(current_payload == self.payload)
+        return FilterResult(self.json_loader(current_payload) == self.payload)
 
 
 class ChatActionFilter(BaseFilter):
@@ -304,7 +301,7 @@ class MessageArgsFilter(BaseFilter):
         self.command_length = command_length
 
     async def check(self, event: BaseEvent) -> FilterResult:
-        args = get_text(event).split()[self.command_length :]
+        args = get_text(event).split()[self.command_length:]
         event["args"] = args
         return FilterResult(len(args) == self.args_count)
 
@@ -373,3 +370,20 @@ class TextContainsFilter(BaseFilter):
             if r:
                 return FilterResult(True)
         return FilterResult(False)
+
+
+class PayloadContainsFilter(BaseFilter):
+    """
+    Checking payload dict contains some key
+    """
+
+    def __init__(self, key: str, json_loader: JSONDecoder = json.loads):
+        self.key = key
+        self.json_loader = json_loader
+
+    async def check(self, event: BaseEvent, ) -> FilterResult:
+        current_payload = get_payload(event)
+        if current_payload is None:
+            return FilterResult(False)
+
+        return FilterResult(self.key in self.json_loader(current_payload))
