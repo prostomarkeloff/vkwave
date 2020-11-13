@@ -957,7 +957,7 @@ class Messages(Category):
             return raw_result
 
         if user_ids or peer_ids:
-            result = MessagesSendPeerIdsResponse(**raw_result)
+            result = MessagesSendUserIdsResponse(**raw_result)
         else:
             result = MessagesSendResponse(**raw_result)
         return result
