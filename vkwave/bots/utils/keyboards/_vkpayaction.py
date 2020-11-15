@@ -105,7 +105,7 @@ class VKPayActionTransferToUser(VKPayAction):
     def __init__(
         self,
         user_id: int,
-        description: Optional[str] = ''
+        description: Optional[str] = None
     ):
         """
         :param user_id:
