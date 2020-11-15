@@ -48,6 +48,8 @@ class BotEventType(str, Enum):
     MARKET_COMMENT_EDIT = "market_comment_edit"
     MARKET_COMMENT_RESTORE = "market_comment_restore"
     MARKET_COMMENT_DELETE = "market_comment_delete"
+    MARKET_ORDER_NEW = "market_order_new"  # Needs extended market in group
+    MARKET_ORDER_EDIT = "market_order_edit"  # Needs extended market in group
     GROUP_LEAVE = "group_leave"
     GROUP_JOIN = "group_join"
     USER_BLOCK = "user_block"
