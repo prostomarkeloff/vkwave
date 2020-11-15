@@ -5,7 +5,13 @@ from enum import Enum
 from vkwave.bots.core.types.json_types import JSONEncoder
 from vkwave.bots.utils.keyboards._types import Button
 
-from vkwave.bots.utils.keyboards._vkpayaction import VKPayAction
+from vkwave.bots.utils.keyboards._vkpayaction import (
+    VKPayAction,
+    VKPayActionTransferToUser,
+    VKPayActionTransferToGroup,
+    VKPayActionPayToUser,
+    VKPayActionPayToGroup
+)
 
 
 class ButtonColor(Enum):
@@ -134,7 +140,7 @@ class Keyboard:
         payload: typing.Optional[typing.Dict[str, str]] = None
     ) -> None:
         """
-        :param hash_action: subclass of VKPayAction or action string like "transfer-to-group&group_id=123"
+        :param hash_action: subclass of VKPayAction or action string like "action=transfer-to-group&group_id=123"
         :param aid: application id (currently not supported)
         :param payload:
         :return:
@@ -145,6 +151,7 @@ class Keyboard:
             _hash = hash_action.generate_hash()
         else:
             _hash = hash_action
+
         _hash += f'&aid={aid}'
 
         action = {
@@ -191,6 +198,84 @@ class Keyboard:
         :return:
         """
         return json_serialize(self.keyboard)
+
+    # vkPay aliases
+    def add_vkpay_button_pay_to_group(
+        self,
+        amount: int,
+        group_id: int,
+        description: typing.Optional[str] = None,
+        data: typing.Optional[typing.Dict[str, str]] = None,
+        payload: typing.Optional[typing.Dict[str, str]] = None
+    ):
+        """
+        :param amount: the amount of payment in rubles. The minimum value is 1;
+        :param group_id:
+        :param description: payment description
+        :param data: dictionary with custom parameters (from vk api docs)
+        :param payload:
+        """
+        action = VKPayActionPayToGroup(
+            amount=amount,
+            group_id=group_id,
+            description=description,
+            data=data
+        )
+        return self.add_vkpay_button(hash_action=action.generate_hash(), payload=payload)
+
+    def add_vkpay_button_pay_to_user(
+        self,
+        amount: int,
+        user_id: int,
+        description: typing.Optional[str] = None,
+        payload: typing.Optional[typing.Dict[str, str]] = None
+    ):
+        """
+        :param amount: the amount of payment in rubles. The minimum value is 1;
+        :param user_id:
+        :param description: payment description
+        :param payload:
+        """
+        action = VKPayActionPayToUser(
+            amount=amount,
+            user_id=user_id,
+            description=description
+        )
+        return self.add_vkpay_button(hash_action=action.generate_hash(), payload=payload)
+
+    def add_vkpay_button_transfer_to_group(
+        self,
+        group_id: int,
+        description: typing.Optional[str] = None,
+        payload: typing.Optional[typing.Dict[str, str]] = None
+    ):
+        """
+        :param group_id:
+        :param description: payment description
+        :param payload:
+        """
+        action = VKPayActionTransferToGroup(
+            group_id=group_id,
+            description=description
+        )
+        return self.add_vkpay_button(hash_action=action.generate_hash(), payload=payload)
+
+    def add_vkpay_button_transfer_to_user(
+        self,
+        user_id: int,
+        description: typing.Optional[str] = None,
+        payload: typing.Optional[typing.Dict[str, str]] = None
+    ):
+        """
+        :param user_id:
+        :param description: payment description
+        :param payload:
+        """
+        action = VKPayActionTransferToUser(
+            user_id=user_id,
+            description=description
+        )
+        return self.add_vkpay_button(hash_action=action.generate_hash(), payload=payload)
 
     @classmethod
     def get_empty_keyboard(cls) -> str:
