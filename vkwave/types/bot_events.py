@@ -12,7 +12,7 @@ from .objects import (
     VideoVideo,
     WallWallComment,
     WallWallpost,
-    LikesType,
+    LikesType, MarketOrder,
 )
 
 
