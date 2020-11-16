@@ -4,9 +4,11 @@ from ._category import Category
 
 
 class Execute(Category):
-    async def __call__(self, code: str, return_raw_response: bool = False):
+    async def __call__(self, code: str, return_raw_response: bool = False, **kwargs):
+        params = {"code": code}
+        params.update(**kwargs)
 
-        raw_result = await self.api_request("", {"code": code})
+        raw_result = await self.api_request("", params=params)
         if return_raw_response:
             return raw_result
 
