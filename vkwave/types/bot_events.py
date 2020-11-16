@@ -48,6 +48,8 @@ class BotEventType(str, Enum):
     MARKET_COMMENT_EDIT = "market_comment_edit"
     MARKET_COMMENT_RESTORE = "market_comment_restore"
     MARKET_COMMENT_DELETE = "market_comment_delete"
+    MARKET_ORDER_NEW = "market_order_new"  # Needs extended market in group
+    MARKET_ORDER_EDIT = "market_order_edit"  # Needs extended market in group
     GROUP_LEAVE = "group_leave"
     GROUP_JOIN = "group_join"
     USER_BLOCK = "user_block"
@@ -98,6 +100,8 @@ class BaseBotEvent(pydantic.BaseModel):
         "MarketCommentObject",
         "MarketCommentObject",
         "MarketCommentDeleteObject",
+        "MarketOrderNew",
+        "MarketOrderEdit",
         "GroupLeaveObject",
         "GroupJoinObject",
         "UserBlockObject",
@@ -348,6 +352,14 @@ class MarketCommentDelete(BaseBotEvent):
     object: MarketCommentDeleteObject = pydantic.Field(None, description="")
 
 
+class MarketOrderNew(BaseBotEvent):
+    object: MarketOrder = pydantic.Field(None, description="")
+
+
+class MarketOrderEdit(BaseBotEvent):
+    object: MarketOrder = pydantic.Field(None, description="")
+
+
 class GroupLeaveEnum(int, Enum):
     NOT_SELF_LEAVED = 0
     SELF_LEAVED = 1
@@ -553,6 +565,8 @@ _event_dict = {
     "market_comment_edit": MarketCommentEdit,
     "market_comment_restore": MarketCommentRestore,
     "market_comment_delete": MarketCommentDelete,
+    "market_order_new": MarketOrderNew,
+    "market_order_edit": MarketOrderEdit,
     "group_leave": GroupLeave,
     "group_join": GroupJoin,
     "user_block": UserBlock,
@@ -604,6 +618,8 @@ def get_event_object(
     MarketCommentEdit,
     MarketCommentRestore,
     MarketCommentDelete,
+    MarketOrderNew,
+    MarketOrderEdit,
     GroupLeave,
     GroupJoin,
     UserBlock,
