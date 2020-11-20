@@ -5,7 +5,6 @@ from vkwave.bots import BotType, BaseEvent, UserEvent, BotEvent, EventTypeFilter
 from vkwave.bots.core import BaseFilter
 from vkwave.bots.core.dispatching.handler.callback import BaseCallback
 from vkwave.types.bot_events import BotEventType
-from vkwave.types.objects import BaseBoolInt
 from vkwave.types.responses import BaseOkResponse, MessagesSendResponse
 from vkwave.types.user_events import EventId
 
@@ -23,8 +22,8 @@ class SimpleUserEvent(UserEvent):
 
     async def answer(
         self,
-        domain: typing.Optional[str] = None,
         message: typing.Optional[str] = None,
+        domain: typing.Optional[str] = None,
         lat: typing.Optional[int] = None,
         long: typing.Optional[int] = None,
         attachment: typing.Optional[str] = None,
@@ -43,6 +42,7 @@ class SimpleUserEvent(UserEvent):
         subscribe_id: typing.Optional[int] = None,
     ) -> MessagesSendResponse:
         return await self.api_ctx.messages.send(
+            message=message,
             forward=forward,
             template=template,
             content_source=content_source,
@@ -61,7 +61,6 @@ class SimpleUserEvent(UserEvent):
             dont_parse_links=dont_parse_links,
             disable_mentions=disable_mentions,
             peer_id=self.object.object.peer_id,
-            message=message,
             random_id=0,
         )
 
@@ -105,8 +104,8 @@ class SimpleBotEvent(BotEvent):
 
     async def answer(
         self,
-        domain: typing.Optional[str] = None,
         message: typing.Optional[str] = None,
+        domain: typing.Optional[str] = None,
         lat: typing.Optional[int] = None,
         long: typing.Optional[int] = None,
         attachment: typing.Optional[str] = None,
