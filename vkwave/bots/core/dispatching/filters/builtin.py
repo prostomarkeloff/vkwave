@@ -27,6 +27,10 @@ InvalidEventError = ValueError(
 )
 
 
+def any_text_to_list_or_tuple(t: "AnyText") -> Union[Tuple[str, ...], List[str]]:
+    return (t,) if isinstance(t, str) else t
+
+
 def is_from_me(event: UserEvent) -> bool:
     return bool(event.object.object.flags[-1] & MessageFlag.OUTBOX.value)
 
@@ -116,7 +120,7 @@ class TextFilter(BaseFilter):
     """
 
     def __init__(self, text: AnyText, ignore_case: bool = True):
-        self.text = (text,) if isinstance(text, str) else text
+        self.text = any_text_to_list_or_tuple(text)
         self.ic = ignore_case
 
     async def check(self, event: BaseEvent) -> FilterResult:
@@ -185,7 +189,7 @@ class CommandsFilter(BaseFilter):
     def __init__(
         self, commands: AnyText, prefixes: Tuple[str, ...] = ("/", "!"), ignore_case: bool = True,
     ):
-        self.commands = (commands,) if isinstance(commands, str) else commands
+        self.commands = any_text_to_list_or_tuple(commands)
         self.prefixes = prefixes
         self.ic = ignore_case
 
@@ -355,7 +359,7 @@ class TextContainsFilter(BaseFilter):
     """
 
     def __init__(self, text: AnyText, ignore_case: bool = True):
-        self.text = (text,) if isinstance(text, str) else text
+        self.text = any_text_to_list_or_tuple(text)
         self.ignore_case = ignore_case
 
     async def check(self, event: BaseEvent) -> FilterResult:
@@ -368,6 +372,22 @@ class TextContainsFilter(BaseFilter):
                 else text.lower() in message_text.lower()
             )
             if r:
+                return FilterResult(True)
+        return FilterResult(False)
+
+
+class TextStartswithFilter(BaseFilter):
+    def __init__(self, text: AnyText, ignore_case: bool = True):
+        self.text = any_text_to_list_or_tuple(text)
+        self.ignore_case = ignore_case
+
+    async def check(self, event: BaseEvent) -> FilterResult:
+        is_message_event(event)
+        text = get_text(event)
+        if self.ignore_case:
+            text = text.lower()
+        for t in self.text:
+            if text.startswith(t):
                 return FilterResult(True)
         return FilterResult(False)
 
