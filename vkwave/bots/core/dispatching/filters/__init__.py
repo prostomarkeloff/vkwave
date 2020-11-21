@@ -13,5 +13,6 @@ from .builtin import (  # noqa: F401
     TextContainsFilter,
     TextFilter,
     get_text,
+    TextStartswithFilter
 )
 from .cast import caster as filter_caster  # noqa: F401
