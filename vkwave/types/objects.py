@@ -2855,6 +2855,9 @@ class MessagesAudioMessage(pydantic.BaseModel):
     transcript_error: typing.Optional[int] = pydantic.Field(
         None, description="",
     )
+    transcript: typing.Optional[str] = pydantic.Field(
+        None, description="",
+    )
     duration: int = pydantic.Field(
         ..., description="Audio message duration in seconds",
     )
