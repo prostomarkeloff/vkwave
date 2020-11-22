@@ -28,6 +28,7 @@ from vkwave.bots import (
     ReplyMessageFilter,
     TextContainsFilter,
     TextFilter,
+    TextStartswithFilter,
     TokenStorage,
     UserEvent,
     UserId,
@@ -136,6 +137,7 @@ class BaseSimpleLongPollBot:
         self.conversation_type_filter = MessageFromConversationTypeFilter
         self.text_contains_filter = TextContainsFilter
         self.payload_contains_filter = PayloadContainsFilter
+        self.text_startswith_filter = TextStartswithFilter
         if self.bot_type is BotType.USER:
             self.from_me_filter = FromMeFilter
 
