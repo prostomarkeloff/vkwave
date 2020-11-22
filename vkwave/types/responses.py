@@ -3916,7 +3916,7 @@ class UsersGetSubscriptionsResponseModel(pydantic.BaseModel):
     users: UsersUsersArray = pydantic.Field(
         ..., description="",
     )
-    groups: typing.List[GroupsGroupsArray] = pydantic.Field(
+    groups: GroupsGroupsArray = pydantic.Field(
         ..., description="",
     )
 

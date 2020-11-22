@@ -3824,8 +3824,8 @@ class UsersUserMin(pydantic.BaseModel):
     deactivated: typing.Optional[str] = pydantic.Field(
         None, description="Returns if a profile is deleted or blocked",
     )
-    first_name: str = pydantic.Field(
-        ..., description="User first name",
+    first_name: typing.Optional[str] = pydantic.Field(
+        None, description="User first name",
     )
     hidden: typing.Optional[int] = pydantic.Field(
         None, description="Returns if a profile is hidden.",
@@ -3833,8 +3833,8 @@ class UsersUserMin(pydantic.BaseModel):
     id: int = pydantic.Field(
         ..., description="User ID",
     )
-    last_name: str = pydantic.Field(
-        ..., description="User last name",
+    last_name: typing.Optional[str] = pydantic.Field(
+        None, description="User last name",
     )
     can_access_closed: typing.Optional[bool] = pydantic.Field(
         None, description="",
