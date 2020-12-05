@@ -514,3 +514,97 @@ def test_user_block():
     assert event.object.unblock_date == 1583437741
     assert event.object.comment == "BAN"
     assert event.object.reason == 2
+
+
+def test_message_poll():
+    event = get_event_object(
+        {
+            "type": "message_new",
+            "group_id": 191949777,
+            "object": {
+                "message": {
+                    "action": None,
+                    "admin_author_id": None,
+                    "attachments": [
+                        {
+                            "audio": None,
+                            "audio_message": None,
+                            "doc": None,
+                            "gift": None,
+                            "graffiti": None,
+                            "link": None,
+                            "market": None,
+                            "market_market_album": None,
+                            "poll": {
+                                "anonymous": False,
+                                "friends": None,
+                                "multiple": False,
+                                "answer_id": None,
+                                "end_date": 0,
+                                "answer_ids": [],
+                                "closed": False,
+                                "is_board": False,
+                                "can_edit": False,
+                                "can_vote": False,
+                                "can_report": False,
+                                "can_share": False,
+                                "photo": None,
+                                "answers": [
+                                    {"id": 1452808427, "rate": 0, "text": "123", "votes": 0},
+                                    {"id": 1452808428, "rate": 0, "text": "456", "votes": 0},
+                                ],
+                                "created": 1607182997,
+                                "id": 463223772,
+                                "owner_id": 578716413,
+                                "author_id": 578716413,
+                                "question": "123",
+                                "background": None,
+                                "votes": 0,
+                                "disable_unvote": False,
+                            },
+                            "photo": None,
+                            "sticker": None,
+                            "story": None,
+                            "type": "poll",
+                            "video": None,
+                            "wall": None,
+                            "wall_reply": None,
+                        }
+                    ],
+                    "conversation_message_id": 469,
+                    "date": 1607182997,
+                    "deleted": None,
+                    "from_id": 578716413,
+                    "fwd_messages": [],
+                    "geo": None,
+                    "id": 0,
+                    "important": False,
+                    "is_hidden": False,
+                    "is_cropped": None,
+                    "keyboard": None,
+                    "members_count": None,
+                    "out": 0,
+                    "payload": None,
+                    "peer_id": 2000000002,
+                    "random_id": 0,
+                    "ref": None,
+                    "ref_source": None,
+                    "reply_message": None,
+                    "text": "",
+                    "update_time": None,
+                    "was_listened": None,
+                    "pinned_at": None,
+                },
+                "client_info": {
+                    "button_actions": ["text", "vkpay", "open_app", "location", "open_link"],
+                    "keyboard": True,
+                    "inline_keyboard": True,
+                    "carousel": False,
+                    "lang_id": 0,
+                },
+            },
+            "event_id": "0ef9b3813da8c09df18fc80906745f7cec867c6e",
+        }
+    )
+    assert event.object.message.attachments[0].type.value == "poll"
+    assert event.object.message.attachments[0].poll.answers[0].text == "123"

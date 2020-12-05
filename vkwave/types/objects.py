@@ -1070,6 +1070,7 @@ class MessagesMessageAttachmentType(Enum):
     ARTICLE = "article"
     GRAFFITI = "graffiti"
     AUDIO_MESSAGE = "audio_message"
+    POLL = "poll"
     CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
 
     @classmethod
@@ -1974,8 +1975,8 @@ class BaseLikes(pydantic.BaseModel):
 
 
 class BaseLikesInfo(pydantic.BaseModel):
-    can_like: "BaseBoolInt" = pydantic.Field(
-        ..., description="Information whether current user can like the post",
+    can_like: typing.Optional["BaseBoolInt"] = pydantic.Field(
+        None, description="Information whether current user can like the post",
     )
     can_publish: typing.Optional["BaseBoolInt"] = pydantic.Field(
         None, description="Information whether current user can repost",
@@ -1983,8 +1984,8 @@ class BaseLikesInfo(pydantic.BaseModel):
     count: int = pydantic.Field(
         ..., description="Likes number",
     )
-    user_likes: int = pydantic.Field(
-        ..., description="Information whether current uer has liked the post",
+    user_likes: typing.Optional[int] = pydantic.Field(
+        None, description="Information whether current uer has liked the post",
     )
 
 
@@ -6747,6 +6748,9 @@ class MessagesMessageAttachment(pydantic.BaseModel):
         None, description="",
     )
     market_market_album: typing.Optional["MarketMarketAlbum"] = pydantic.Field(
+        None, description="",
+    )
+    poll: typing.Optional["PollsPoll"] = pydantic.Field(
         None, description="",
     )
     photo: typing.Optional["PhotosPhoto"] = pydantic.Field(
