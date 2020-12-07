@@ -1,6 +1,4 @@
-import typing
 import pydantic
-from enum import Enum
 
 
 class MessagesSendPeerIdsData(pydantic.BaseModel):
