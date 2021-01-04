@@ -265,8 +265,7 @@ class WallRepost(BaseBotEvent):
     object: WallPostObject = pydantic.Field(None, description="")
 
 
-class WallReplyObject(pydantic.BaseModel):
-    comment: WallWallComment = pydantic.Field(None, description="")
+class WallReplyObject(WallWallComment):
     post_id: int = pydantic.Field(None, description="")
     post_owner_id: int = pydantic.Field(None, description="")
 
