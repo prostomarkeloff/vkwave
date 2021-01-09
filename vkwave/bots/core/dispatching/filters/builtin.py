@@ -22,6 +22,7 @@ except ImportError:
 
 MessageEventUser: Tuple[int] = EventId.MESSAGE_EVENT.value
 MessageEventBot: str = "message_new"
+CallbackMessageEventBot: str = "message_event"
 InvalidEventError = ValueError(
     "Invalid event passed. Expected message event. You must add EventTypeFilter at first."
 )
@@ -37,7 +38,7 @@ def is_from_me(event: UserEvent) -> bool:
 
 def is_message_event(event: BaseEvent):
     if event.bot_type is BotType.BOT:
-        if event.object.type != MessageEventBot:
+        if event.object.type not in [MessageEventBot, CallbackMessageEventBot]:
             raise InvalidEventError
     elif event.bot_type is BotType.USER:
         if event.object.object.event_id not in MessageEventUser:
