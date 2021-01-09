@@ -150,7 +150,10 @@ class PayloadFilter(BaseFilter):
             return FilterResult(False)
         if self.payload is None:
             return FilterResult(True)
-        return FilterResult(self.json_loader(current_payload) == self.payload)
+
+        if not isinstance(current_payload, dict):
+            current_payload = self.json_loader(current_payload)
+        return FilterResult(current_payload == self.payload)
 
 
 class ChatActionFilter(BaseFilter):
