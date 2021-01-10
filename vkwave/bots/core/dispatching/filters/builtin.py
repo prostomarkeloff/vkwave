@@ -409,5 +409,6 @@ class PayloadContainsFilter(BaseFilter):
         current_payload = get_payload(event)
         if current_payload is None:
             return FilterResult(False)
-
-        return FilterResult(self.key in self.json_loader(current_payload))
+        if not isinstance(current_payload, dict):
+            current_payload = self.json_loader(current_payload)
+        return FilterResult(self.key in current_payload)
