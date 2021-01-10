@@ -35,6 +35,11 @@ def str_handler(node: ast.Str):
     return repr(node.s)
 
 
+@VKScriptConverter.register(ast.Constant)
+def constant_handler(node:ast.Constant):
+    return repr(node.value)
+
+
 @VKScriptConverter.register(ast.NameConstant)
 def name_constant_handler(node: ast.NameConstant):
     constants = {None: "null", True: "true", False: "false"}
