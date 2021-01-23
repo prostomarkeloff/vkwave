@@ -45,7 +45,12 @@ class BotLongpollData:
             self._first_request = True
 
         data = await http_client.request_json(
-            "POST", f"{self.server}?act=a_check&key={self.key}&ts={self.ts}&wait={self.wait}",
+            "POST", self.server, data={
+                "act": "a_check",
+                "key": self.key,
+                "ts": self.ts,
+                "wait": self.wait,
+            }
         )
 
         if "failed" in data:
