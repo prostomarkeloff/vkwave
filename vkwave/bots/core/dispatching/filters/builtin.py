@@ -205,8 +205,11 @@ class CommandsFilter(BaseFilter):
 
         if self.ic:
             text = text.lower()
-        for command in self.commands:
-            for prefix in self.prefixes:
+       
+        for prefix in self.prefixes:
+            if not text.startswith(prefix):
+                continue
+            for command in self.commands:
                 if text.startswith(f"{prefix}{command}"):
                     return FilterResult(True)
         return FilterResult(False)
