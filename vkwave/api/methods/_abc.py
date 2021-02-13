@@ -140,7 +140,10 @@ class APIOptionsRequestContext:
 
     async def handle_error(self, error: Error) -> Optional[dict]:
         dispatcher = self.api_options.error_dispatcher
-        result = await dispatcher.process_error(error, self)
+        if "execute_errors" in error:
+            result = await dispatcher.process_execute_errors(error, self)
+        else:
+            result = await dispatcher.process_error(error, self)
         return result
 
     @asynccontextmanager
@@ -180,7 +183,10 @@ class APIOptionsRequestContext:
         result = data or exc_data
         result = cast(dict, result)
 
-        if "error" in result:
+        if "error" in result or "execute_errors" in result:
+            if "execute_errors" in result:
+                result["request_params"] = params
+                del result["request_params"]["access_token"]
             err_handler_result = await self.handle_error(Error(result))
             if err_handler_result:
                 result = err_handler_result

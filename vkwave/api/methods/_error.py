@@ -100,3 +100,20 @@ class ErrorDispatcher:
             return result
 
         raise APIError(code, err["error_msg"], err["request_params"])
+
+    async def process_execute_errors(
+        self, error: Error, request_context: "APIOptionsRequestContext"
+    ) -> typing.Optional[dict]:
+        all_errors = error["execute_errors"]
+        err = all_errors[-1]
+        code = err["error_code"]
+        return_info = get_return_info(code)
+
+        result = await self._run_handler(code, error, return_info, request_context)
+        if return_info is ReturnInfo.RETURN:
+            if result is None or result is False:
+                raise APIError(code, err["error_msg"], error["request_params"])
+            result = typing.cast(dict, result)
+            return result
+
+        raise APIError(code, err["error_msg"], error["request_params"])
