@@ -205,8 +205,11 @@ class CommandsFilter(BaseFilter):
 
         if self.ic:
             text = text.lower()
-        for command in self.commands:
-            for prefix in self.prefixes:
+       
+        for prefix in self.prefixes:
+            if not text.startswith(prefix):
+                continue
+            for command in self.commands:
                 if text.startswith(f"{prefix}{command}"):
                     return FilterResult(True)
         return FilterResult(False)
@@ -409,5 +412,6 @@ class PayloadContainsFilter(BaseFilter):
         current_payload = get_payload(event)
         if current_payload is None:
             return FilterResult(False)
-
-        return FilterResult(self.key in self.json_loader(current_payload))
+        if not isinstance(current_payload, dict):
+            current_payload = self.json_loader(current_payload)
+        return FilterResult(self.key in current_payload)
