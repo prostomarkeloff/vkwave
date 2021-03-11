@@ -7,5 +7,5 @@ kesha1225:
 tkgoose:
  - [newBotForUserVk](https://github.com/tkgoose/newBotForUserVk)
 
-dadyarri:
- - [Jacob](https://github.com/dadyarri/jacob)
+uni-jacob:
+ - [Jacob](https://github.com/uni-jacob/jacob)
