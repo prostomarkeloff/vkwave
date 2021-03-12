@@ -43,34 +43,38 @@ markdown_extensions:
       emoji_generator: !!python/name:pymdownx.emoji.to_svg
   - pymdownx.tasklist
   - pymdownx.inlinehilite
+  - pymdownx.snippets
   - markdown_include.include:
       base_path: docs
 
 nav:
-  - index.md
+  - Главная: index.md
+  - Начало работы:
+    - getting_started/index.md
+    - getting_started/echo.md
   - Client:
-      - client/index.md
-      - client/context.md
-      - client/using.md
-      - client/custom.md
+    - client/index.md
+    - client/context.md
+    - client/using.md
+    - client/custom.md
   - API:
-      - api/index.md
+    - api/index.md
   - Bots:
-      - bots/index.md
-      - bots/easy.md
-      - bots/usage.md
-      - bots/filters.md
-      - bots/routers.md
-      - bots/fsm.md
-      - bots/storage.md
-      - Utils:
-          - bots/utils/index.md
-          - bots/utils/keyboard.md
-          - bots/utils/templates.md
-          - bots/utils/uploaders.md
+    - bots/index.md
+    - bots/easy.md
+    - bots/usage.md
+    - bots/filters.md
+    - bots/routers.md
+    - bots/fsm.md
+    - bots/storage.md
+    - Utils:
+        - bots/utils/index.md
+        - bots/utils/keyboard.md
+        - bots/utils/templates.md
+        - bots/utils/uploaders.md
   - LongPoll:
-      - longpoll/index.md
+    - longpoll/index.md
   - Types:
-      - types/index.md
+    - types/index.md
   - HTTP:
-      - http/index.md
+    - http/index.md
