@@ -54,7 +54,7 @@ black = {version = "^19.0", allow-prereleases = true}
 
 # Docs
 mkdocs = "^1.1"
-mkdocs-material = "^4.6"
+mkdocs-material = "^7.0"
 mkautodoc = "^0.1.0"
 pymdown-extensions = "^6.1"
 markdown-include = "^0.5.1"
