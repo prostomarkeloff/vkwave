@@ -5,6 +5,7 @@ from vkwave.bots.core.types.json_types import JSONEncoder
 from vkwave.bots.utils.keyboards.keyboard import ButtonColor, Keyboard
 from vkwave.bots.utils.keyboards._vkpayaction import VKPayAction
 
+
 class Template:
     def __init__(
         self,
@@ -71,9 +72,7 @@ class Template:
         payload: typing.Optional[typing.Dict[str, str]] = None,
     ):
         self._local_keyboard.add_callback_button(
-            text=text,
-            color=color,
-            payload=payload,
+            text=text, color=color, payload=payload,
         )
 
     @classmethod

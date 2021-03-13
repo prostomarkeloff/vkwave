@@ -4,6 +4,7 @@ from typing import Any, Awaitable, Callable, Dict, Optional, Type
 
 from vkwave.bots.core.dispatching.events.base import BaseEvent
 from vkwave.bots.core.types.bot_type import BotType
+from vkwave.types.user_events import EventId
 
 
 class ResultCaster:
@@ -30,7 +31,10 @@ async def _default_none_handler(some, event: BaseEvent):
 
 
 async def _default_str_handler(some: str, event: BaseEvent):
-    if event.object.type != "message_new":
+    if (
+        event.bot_type is BotType.USER
+        and event.object.object.event_id not in EventId.MESSAGE_EVENT.value
+    ) or (event.bot_type is BotType.BOT and event.object.type != "message_new"):
         raise NotImplementedError(
             "'str' handler is implemented only for 'message_new' events, now"
         )
@@ -39,6 +43,4 @@ async def _default_str_handler(some: str, event: BaseEvent):
     else:
         peer_id = event.object.object.message.peer_id
 
-    await event.api_ctx.messages.send(
-        random_id=0, peer_id=peer_id, message=some
-    )
+    await event.api_ctx.messages.send(random_id=0, peer_id=peer_id, message=some)

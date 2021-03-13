@@ -10,7 +10,7 @@ from vkwave.bots.utils.keyboards._vkpayaction import (
     VKPayActionTransferToUser,
     VKPayActionTransferToGroup,
     VKPayActionPayToUser,
-    VKPayActionPayToGroup
+    VKPayActionPayToGroup,
 )
 
 
@@ -137,7 +137,7 @@ class Keyboard:
         self,
         hash_action: typing.Union[VKPayAction, str],
         aid: int = 10,
-        payload: typing.Optional[typing.Dict[str, str]] = None
+        payload: typing.Optional[typing.Dict[str, str]] = None,
     ) -> None:
         """
         :param hash_action: subclass of VKPayAction or action string like "action=transfer-to-group&group_id=123"
@@ -152,7 +152,7 @@ class Keyboard:
         else:
             _hash = hash_action
 
-        _hash += f'&aid={aid}'
+        _hash += f"&aid={aid}"
 
         action = {
             "action": {
@@ -206,7 +206,7 @@ class Keyboard:
         group_id: int,
         description: typing.Optional[str] = None,
         data: typing.Optional[typing.Dict[str, str]] = None,
-        payload: typing.Optional[typing.Dict[str, str]] = None
+        payload: typing.Optional[typing.Dict[str, str]] = None,
     ):
         """
         :param amount: the amount of payment in rubles. The minimum value is 1;
@@ -216,10 +216,7 @@ class Keyboard:
         :param payload:
         """
         action = VKPayActionPayToGroup(
-            amount=amount,
-            group_id=group_id,
-            description=description,
-            data=data
+            amount=amount, group_id=group_id, description=description, data=data
         )
         return self.add_vkpay_button(hash_action=action.generate_hash(), payload=payload)
 
@@ -228,7 +225,7 @@ class Keyboard:
         amount: int,
         user_id: int,
         description: typing.Optional[str] = None,
-        payload: typing.Optional[typing.Dict[str, str]] = None
+        payload: typing.Optional[typing.Dict[str, str]] = None,
     ):
         """
         :param amount: the amount of payment in rubles. The minimum value is 1;
@@ -236,45 +233,35 @@ class Keyboard:
         :param description: payment description
         :param payload:
         """
-        action = VKPayActionPayToUser(
-            amount=amount,
-            user_id=user_id,
-            description=description
-        )
+        action = VKPayActionPayToUser(amount=amount, user_id=user_id, description=description)
         return self.add_vkpay_button(hash_action=action.generate_hash(), payload=payload)
 
     def add_vkpay_button_transfer_to_group(
         self,
         group_id: int,
         description: typing.Optional[str] = None,
-        payload: typing.Optional[typing.Dict[str, str]] = None
+        payload: typing.Optional[typing.Dict[str, str]] = None,
     ):
         """
         :param group_id:
         :param description: payment description
         :param payload:
         """
-        action = VKPayActionTransferToGroup(
-            group_id=group_id,
-            description=description
-        )
+        action = VKPayActionTransferToGroup(group_id=group_id, description=description)
         return self.add_vkpay_button(hash_action=action.generate_hash(), payload=payload)
 
     def add_vkpay_button_transfer_to_user(
         self,
         user_id: int,
         description: typing.Optional[str] = None,
-        payload: typing.Optional[typing.Dict[str, str]] = None
+        payload: typing.Optional[typing.Dict[str, str]] = None,
     ):
         """
         :param user_id:
         :param description: payment description
         :param payload:
         """
-        action = VKPayActionTransferToUser(
-            user_id=user_id,
-            description=description
-        )
+        action = VKPayActionTransferToUser(user_id=user_id, description=description)
         return self.add_vkpay_button(hash_action=action.generate_hash(), payload=payload)
 
     @classmethod

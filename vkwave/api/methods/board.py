@@ -84,11 +84,7 @@ class Board(Category):
         return result
 
     async def delete_comment(
-        self,
-        group_id: int,
-        topic_id: int,
-        comment_id: int,
-        return_raw_response: bool = False,
+        self, group_id: int, topic_id: int, comment_id: int, return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param group_id: - ID of the community that owns the discussion board.
@@ -155,11 +151,7 @@ class Board(Category):
         return result
 
     async def edit_topic(
-        self,
-        group_id: int,
-        topic_id: int,
-        title: str,
-        return_raw_response: bool = False,
+        self, group_id: int, topic_id: int, title: str, return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param group_id: - ID of the community that owns the discussion board.
@@ -293,11 +285,7 @@ class Board(Category):
         return result
 
     async def restore_comment(
-        self,
-        group_id: int,
-        topic_id: int,
-        comment_id: int,
-        return_raw_response: bool = False,
+        self, group_id: int, topic_id: int, comment_id: int, return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param group_id: - ID of the community that owns the discussion board.

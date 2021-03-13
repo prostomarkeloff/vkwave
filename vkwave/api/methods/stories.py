@@ -244,9 +244,7 @@ class Stories(Category):
         offset: typing.Optional[int] = None,
         extended: typing.Optional[BaseBoolInt] = None,
     ) -> typing.Union[
-        dict,
-        StoriesGetViewersExtendedV5115Response,
-        StoriesGetViewersExtendedV5115Response,
+        dict, StoriesGetViewersExtendedV5115Response, StoriesGetViewersExtendedV5115Response,
     ]:
         """
         :param owner_id: - Story owner ID.

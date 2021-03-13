@@ -407,9 +407,7 @@ class AdswebGetFraudHistoryResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(
         ..., description="",
     )
-    entries: typing.Optional[
-        AdswebGetFraudHistoryResponseEntriesEntry
-    ] = pydantic.Field(
+    entries: typing.Optional[AdswebGetFraudHistoryResponseEntriesEntry] = pydantic.Field(
         None, description="",
     )
 
@@ -1695,9 +1693,7 @@ class GroupsGetSettingsResponseModel(pydantic.BaseModel):
     public_category: typing.Optional[int] = pydantic.Field(
         None, description="Information about the group category",
     )
-    public_category_list: typing.Optional[
-        GroupsGroupPublicCategoryList
-    ] = pydantic.Field(
+    public_category_list: typing.Optional[GroupsGroupPublicCategoryList] = pydantic.Field(
         None, description="",
     )
     public_date: typing.Optional[str] = pydantic.Field(
@@ -1824,8 +1820,7 @@ class GroupsIsMemberExtendedResponseModel(pydantic.BaseModel):
         None, description="Information whether user can be invited",
     )
     can_recall: typing.Optional[BaseBoolInt] = pydantic.Field(
-        None,
-        description="Information whether user's invite to the group can be recalled",
+        None, description="Information whether user's invite to the group can be recalled",
     )
     request: typing.Optional[BaseBoolInt] = pydantic.Field(
         None, description="Information whether user has sent request to the group",

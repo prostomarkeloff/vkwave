@@ -46,7 +46,9 @@ class Execute:
             return await self._preprocessor(*args, **kwargs)
         return await self.execute(*args, **kwargs)
 
-    async def execute(self, api: APIOptionsRequestContext, return_raw_response: bool = False, *args, **kwargs):
+    async def execute(
+        self, api: APIOptionsRequestContext, return_raw_response: bool = False, *args, **kwargs
+    ):
         code = self.build(*args, **kwargs)
         response = await api.execute(code=code, return_raw_response=return_raw_response)
         return response

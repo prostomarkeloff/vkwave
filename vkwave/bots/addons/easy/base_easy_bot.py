@@ -102,9 +102,6 @@ class BaseSimpleLongPollBot:
         self.api_session = create_api_session_aiohttp(tokens, bot_type)
         self.api_context: APIOptionsRequestContext = self.api_session.api.get_context()
         if self.bot_type is BotType.USER:
-            if not isinstance(tokens, str):
-                raise RuntimeError("Only one str token")
-
             self.SimpleBotEvent = SimpleUserEvent
             self._lp = UserLongpoll(self.api_context, UserLongpollData())
             self._token_storage = UserTokenStorage[UserId](tokens)

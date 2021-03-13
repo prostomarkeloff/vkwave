@@ -110,9 +110,7 @@ class Newsfeed(Category):
         extended: typing.Optional[BaseBoolInt] = None,
         fields: typing.Optional[typing.List[UsersFields]] = None,
         name_case: typing.Optional[str] = None,
-    ) -> typing.Union[
-        dict, NewsfeedGetBannedResponse, NewsfeedGetBannedExtendedResponse
-    ]:
+    ) -> typing.Union[dict, NewsfeedGetBannedResponse, NewsfeedGetBannedExtendedResponse]:
         """
         :param extended: - '1' — return extra information about users and communities
         :param fields: - Profile fields to return.

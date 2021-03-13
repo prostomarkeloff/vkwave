@@ -16,7 +16,9 @@ class ExecuteError(pydantic.BaseModel):
 
 class ExecuteResponse(pydantic.BaseModel):
     response: typing.Any = pydantic.Field(..., description="")
-    execute_errors: typing.Optional[typing.List[ExecuteError]] = pydantic.Field(None, description="")
+    execute_errors: typing.Optional[typing.List[ExecuteError]] = pydantic.Field(
+        None, description=""
+    )
 
 
 class AudioGetResponseModel(pydantic.BaseModel):

@@ -1,9 +1,10 @@
-from typing import Dict, Generic, Optional, TypeVar
+from typing import Dict, Generic, Optional, TypeVar, Union, List
 
 from vkwave.api.token.token import AnyABCToken
 
 from .strategy import ABCGetTokenStrategy, NotImplementedGetTokenStrategy
 from .types import GroupId, UserId
+import random
 
 T = TypeVar("T", GroupId, UserId)
 
@@ -35,9 +36,12 @@ class TokenStorage(Generic[T]):
 
 
 class UserTokenStorage(Generic[T]):
-    def __init__(self, current_token: AnyABCToken):
+    def __init__(self, current_token: Union[List[AnyABCToken], AnyABCToken]):
         super().__init__()
         self.current_token = current_token
 
     async def get_token(self):
-        return self.current_token
+        if isinstance(self.current_token, list):
+            return random.choice(self.current_token)
+        else:
+            return self.current_token

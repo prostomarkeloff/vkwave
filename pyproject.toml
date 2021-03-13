@@ -36,7 +36,7 @@ build = "build.py"
 [tool.poetry.dependencies]
 python = "^3.7"
 
-pydantic = "^1.4"
+pydantic = "^1.7"
 typing_extensions = "^3.7.4"
 
 aiohttp = { version="^3.6"}

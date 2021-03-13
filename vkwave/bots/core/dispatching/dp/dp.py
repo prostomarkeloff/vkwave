@@ -59,7 +59,7 @@ class Dispatcher:
         else:
             revent.raw_event = cast(list, revent.raw_event)
             obj = user_get_event_object(revent.raw_event)
-            event = UserEvent(obj, self.api.with_token(self.token_storage.current_token))
+            event = UserEvent(obj, self.api.with_token(await self.token_storage.get_token()))
 
         logger.debug(f"New event! Formatted:\n{event}")
 

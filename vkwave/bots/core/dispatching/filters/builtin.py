@@ -305,7 +305,7 @@ class MessageArgsFilter(BaseFilter):
         self.command_length = command_length
 
     async def check(self, event: BaseEvent) -> FilterResult:
-        args = get_text(event).split()[self.command_length:]
+        args = get_text(event).split()[self.command_length :]
         event["args"] = args
         return FilterResult(len(args) == self.args_count)
 
@@ -401,7 +401,7 @@ class PayloadContainsFilter(BaseFilter):
         self.key = key
         self.json_loader = json_loader
 
-    async def check(self, event: BaseEvent, ) -> FilterResult:
+    async def check(self, event: BaseEvent,) -> FilterResult:
         current_payload = get_payload(event)
         if current_payload is None:
             return FilterResult(False)

@@ -11,5 +11,5 @@ from vkwave.bots.utils.keyboards._vkpayaction import (
     VKPayActionPayToGroup,
     VKPayActionPayToUser,
     VKPayActionTransferToGroup,
-    VKPayActionTransferToUser
+    VKPayActionTransferToUser,
 )

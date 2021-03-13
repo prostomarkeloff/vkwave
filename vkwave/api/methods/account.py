@@ -111,9 +111,7 @@ class Account(Category):
         return result
 
     async def get_counters(
-        self,
-        return_raw_response: bool = False,
-        filter: typing.Optional[typing.List[str]] = None,
+        self, return_raw_response: bool = False, filter: typing.Optional[typing.List[str]] = None,
     ) -> typing.Union[dict, AccountGetCountersResponse]:
         """
         :param filter: - Counters to be returned.
@@ -131,9 +129,7 @@ class Account(Category):
         return result
 
     async def get_info(
-        self,
-        return_raw_response: bool = False,
-        fields: typing.Optional[typing.List[str]] = None,
+        self, return_raw_response: bool = False, fields: typing.Optional[typing.List[str]] = None,
     ) -> typing.Union[dict, AccountGetInfoResponse]:
         """
         :param fields: - Fields to return. Possible values: *'country' — user country,, *'https_required' — is "HTTPS only" option enabled,, *'own_posts_default' — is "Show my posts only" option is enabled,, *'no_wall_replies' — are wall replies disabled or not,, *'intro' — is intro passed by user or not,, *'lang' — user language. By default: all.
@@ -286,10 +282,7 @@ class Account(Category):
         return result
 
     async def set_name_in_menu(
-        self,
-        user_id: int,
-        return_raw_response: bool = False,
-        name: typing.Optional[str] = None,
+        self, user_id: int, return_raw_response: bool = False, name: typing.Optional[str] = None,
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param user_id: - User ID.
@@ -325,9 +318,7 @@ class Account(Category):
         return result
 
     async def set_online(
-        self,
-        return_raw_response: bool = False,
-        voip: typing.Optional[BaseBoolInt] = None,
+        self, return_raw_response: bool = False, voip: typing.Optional[BaseBoolInt] = None,
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param voip: - '1' if videocalls are available for current device.
