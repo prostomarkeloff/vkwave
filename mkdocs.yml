@@ -54,7 +54,10 @@ nav:
   - Начало работы:
     - getting_started/index.md
     - getting_started/echo.md
-    - getting_started/filters.md
+    - Фильтры:
+      - getting_started/filters/index.md
+      - getting_started/filters/builtin.md
+      - getting_started/filters/combining.md
   - Client:
     - client/index.md
     - client/context.md
