@@ -1,6 +1,7 @@
 from vkwave.types.responses import *
 from ._category import Category
 from ._utils import get_params
+from ...types.extension_responses import MessagesSendPeerIdsResponse
 
 
 class Messages(Category):

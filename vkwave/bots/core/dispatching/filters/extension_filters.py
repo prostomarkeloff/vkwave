@@ -15,6 +15,7 @@ class VBMLFilter(BaseFilter):
         self,
         pattern: typing.Union["vbml.Pattern", str],
         patcher: typing.Optional["vbml.Patcher"] = None,
+        ignore_case: bool = False,
     ):
         if vbml is None:
             raise RuntimeError("you have to install vbml - pip install vbml")
@@ -25,9 +26,10 @@ class VBMLFilter(BaseFilter):
             self.pattern = vbml.Pattern(pattern)
         elif isinstance(pattern, vbml.Pattern):
             self.pattern = pattern
+        self.ignore_case = ignore_case
 
     async def check(self, event: BaseEvent) -> FilterResult:
-        text = get_text(event)
+        text = get_text(event) if not self.ignore_case else get_text(event).lower()
         if text is None:
             return FilterResult(False)
 

@@ -1,6 +1,7 @@
 import typing
-import pydantic
 from enum import Enum
+
+import pydantic
 
 
 class AccountNameRequestStatus(Enum):
@@ -1048,6 +1049,7 @@ class MessagesMessageActionStatus(Enum):
     CHAT_PIN_MESSAGE = "chat_pin_message"
     CHAT_UNPIN_MESSAGE = "chat_unpin_message"
     CHAT_INVITE_USER_BY_LINK = "chat_invite_user_by_link"
+    CHAT_INVITE_USER_BY_MESSAGE_REQUEST = 'chat_invite_user_by_message_request'
     CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
 
     @classmethod
@@ -1070,6 +1072,7 @@ class MessagesMessageAttachmentType(Enum):
     ARTICLE = "article"
     GRAFFITI = "graffiti"
     AUDIO_MESSAGE = "audio_message"
+    POLL = "poll"
     CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
 
     @classmethod
@@ -1960,8 +1963,8 @@ class BaseLikes(pydantic.BaseModel):
 
 
 class BaseLikesInfo(pydantic.BaseModel):
-    can_like: "BaseBoolInt" = pydantic.Field(
-        ..., description="Information whether current user can like the post",
+    can_like: typing.Optional["BaseBoolInt"] = pydantic.Field(
+        None, description="Information whether current user can like the post",
     )
     can_publish: typing.Optional["BaseBoolInt"] = pydantic.Field(
         None, description="Information whether current user can repost",
@@ -1969,8 +1972,8 @@ class BaseLikesInfo(pydantic.BaseModel):
     count: int = pydantic.Field(
         ..., description="Likes number",
     )
-    user_likes: int = pydantic.Field(
-        ..., description="Information whether current uer has liked the post",
+    user_likes: typing.Optional[int] = pydantic.Field(
+        None, description="Information whether current uer has liked the post",
     )
 
 
@@ -2837,6 +2840,9 @@ class MessagesAudioMessage(pydantic.BaseModel):
     transcript_error: typing.Optional[int] = pydantic.Field(
         None, description="",
     )
+    transcript: typing.Optional[str] = pydantic.Field(
+        None, description="",
+    )
     duration: int = pydantic.Field(
         ..., description="Audio message duration in seconds",
     )
@@ -2905,6 +2911,46 @@ class MessagesConversation(pydantic.BaseModel):
     )
     current_keyboard: typing.Optional["MessagesKeyboard"] = pydantic.Field(
         None, description="",
+    )
+
+    can_write: typing.Optional["MessagesConversationCanWrite"] = pydantic.Field(
+        None, description="Information about whether you can write to the dialog",
+    )  # extension_field
+    chat_settings: typing.Optional["MessagesConversationChatSettings"] = pydantic.Field(
+        None, description="Chat settings",
+    )  # extension_field
+
+
+class MessagesConversationCanWrite(pydantic.BaseModel):  # extension_class
+    allowed: typing.Optional[bool] = pydantic.Field(
+        None, description="Can the user write to the dialog",
+    )
+    reason: typing.Optional[int] = pydantic.Field(
+        None, description="Reason code why the user can't write to the dialog",
+    )
+
+
+class MessagesConversationChatSettings(pydantic.BaseModel):  # extension_class
+    members_count: typing.Optional[int] = pydantic.Field(
+        None, description="Number of chat members",
+    )
+    title: typing.Optional[str] = pydantic.Field(
+        None, description="Chat title",
+    )
+    pinned_message: typing.Optional["MessagesPinnedMessage"] = pydantic.Field(
+        None, description="Pinned message object",
+    )
+    state: typing.Optional[str] = pydantic.Field(
+        None, description="Status of the current user in the chat",
+    )
+    photo: typing.Optional["MessagesMessageActionPhoto"] = pydantic.Field(
+        None, description="The cover image of the chat",
+    )
+    active_ids: typing.Optional[list] = pydantic.Field(
+        None, description="IDs of the last users who wrote to the chat",
+    )
+    is_group_channel: typing.Optional[bool] = pydantic.Field(
+        None, description="information about whether the conversation is a community channel",
     )
 
 
@@ -3780,8 +3826,8 @@ class UsersUserMin(pydantic.BaseModel):
     deactivated: typing.Optional[str] = pydantic.Field(
         None, description="Returns if a profile is deleted or blocked",
     )
-    first_name: str = pydantic.Field(
-        ..., description="User first name",
+    first_name: typing.Optional[str] = pydantic.Field(
+        None, description="User first name",
     )
     hidden: typing.Optional[int] = pydantic.Field(
         None, description="Returns if a profile is hidden.",
@@ -3789,8 +3835,8 @@ class UsersUserMin(pydantic.BaseModel):
     id: int = pydantic.Field(
         ..., description="User ID",
     )
-    last_name: str = pydantic.Field(
-        ..., description="User last name",
+    last_name: typing.Optional[str] = pydantic.Field(
+        None, description="User last name",
     )
     can_access_closed: typing.Optional[bool] = pydantic.Field(
         None, description="",
@@ -6679,6 +6725,9 @@ class MessagesMessageAttachment(pydantic.BaseModel):
         None, description="",
     )
     market_market_album: typing.Optional["MarketMarketAlbum"] = pydantic.Field(
+        None, description="",
+    )
+    poll: typing.Optional["PollsPoll"] = pydantic.Field(
         None, description="",
     )
     photo: typing.Optional["PhotosPhoto"] = pydantic.Field(
@@ -10412,6 +10461,7 @@ MessagesForward.update_forward_refs()
 MessagesHistoryAttachment.update_forward_refs()
 MessagesKeyboardButton.update_forward_refs()
 MessagesLastActivity.update_forward_refs()
+MessagesConversationChatSettings.update_forward_refs()
 MessagesLongpollMessages.update_forward_refs()
 MessagesLongpollParams.update_forward_refs()
 MessagesMessageAttachment.update_forward_refs()

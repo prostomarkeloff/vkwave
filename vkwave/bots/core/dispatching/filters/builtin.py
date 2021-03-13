@@ -22,6 +22,7 @@ except ImportError:
 
 MessageEventUser: Tuple[int] = EventId.MESSAGE_EVENT.value
 MessageEventBot: str = "message_new"
+CallbackMessageEventBot: str = "message_event"
 InvalidEventError = ValueError(
     "Invalid event passed. Expected message event. You must add EventTypeFilter at first."
 )
@@ -37,7 +38,7 @@ def is_from_me(event: UserEvent) -> bool:
 
 def is_message_event(event: BaseEvent):
     if event.bot_type is BotType.BOT:
-        if event.object.type != MessageEventBot:
+        if event.object.type not in [MessageEventBot, CallbackMessageEventBot]:
             raise InvalidEventError
     elif event.bot_type is BotType.USER:
         if event.object.object.event_id not in MessageEventUser:
@@ -149,7 +150,10 @@ class PayloadFilter(BaseFilter):
             return FilterResult(False)
         if self.payload is None:
             return FilterResult(True)
-        return FilterResult(self.json_loader(current_payload) == self.payload)
+
+        if not isinstance(current_payload, dict):
+            current_payload = self.json_loader(current_payload)
+        return FilterResult(current_payload == self.payload)
 
 
 class ChatActionFilter(BaseFilter):
@@ -201,8 +205,11 @@ class CommandsFilter(BaseFilter):
 
         if self.ic:
             text = text.lower()
-        for command in self.commands:
-            for prefix in self.prefixes:
+       
+        for prefix in self.prefixes:
+            if not text.startswith(prefix):
+                continue
+            for command in self.commands:
                 if text.startswith(f"{prefix}{command}"):
                     return FilterResult(True)
         return FilterResult(False)
@@ -405,5 +412,6 @@ class PayloadContainsFilter(BaseFilter):
         current_payload = get_payload(event)
         if current_payload is None:
             return FilterResult(False)
-
-        return FilterResult(self.key in self.json_loader(current_payload))
+        if not isinstance(current_payload, dict):
+            current_payload = self.json_loader(current_payload)
+        return FilterResult(self.key in current_payload)
