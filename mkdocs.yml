@@ -59,6 +59,7 @@ nav:
       - getting_started/filters/builtin.md
       - getting_started/filters/combining.md
       - getting_started/filters/custom.md
+    - getting_started/multitoken.md
   - Client:
     - client/index.md
     - client/context.md
