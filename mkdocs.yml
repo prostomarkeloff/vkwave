@@ -44,6 +44,8 @@ markdown_extensions:
   - pymdownx.tasklist
   - pymdownx.inlinehilite
   - pymdownx.snippets
+  - pymdownx.highlight
+  - pymdownx.superfences
   - markdown_include.include:
       base_path: docs
 
@@ -52,6 +54,7 @@ nav:
   - Начало работы:
     - getting_started/index.md
     - getting_started/echo.md
+    - getting_started/filters.md
   - Client:
     - client/index.md
     - client/context.md
