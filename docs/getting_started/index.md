@@ -4,4 +4,8 @@
 
 ## Содержание
 
-[Эхо-бот](echo.md)
+[Эхо-бот](echo.md)  
+[Фильтры](filters/index.md)  
+[Мультитокен](multitoken.md)  
+[Боты-клоны](clones.md)  
+[Клавиатуры](keyboards.md)  
