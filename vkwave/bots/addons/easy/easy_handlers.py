@@ -102,6 +102,18 @@ class SimpleBotEvent(BotEvent):
     def __getitem__(self, key: typing.Any) -> typing.Any:
         return self.user_data[key]
 
+    @property
+    def text(self) -> str:
+        return self.object.object.text
+
+    @property
+    def peer_id(self) -> int:
+        return self.object.object.peer_id
+
+    @property
+    def from_id(self) -> int:
+        return self.object.object.from_id
+
     async def answer(
         self,
         message: typing.Optional[str] = None,
