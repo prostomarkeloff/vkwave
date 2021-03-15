@@ -62,6 +62,7 @@ nav:
     - getting_started/multitoken.md
     - getting_started/clones.md
     - getting_started/keyboards.md
+    - getting_started/templates.md
   - Client:
     - client/index.md
     - client/context.md
