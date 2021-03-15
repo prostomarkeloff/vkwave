@@ -15,11 +15,10 @@ from vkwave.bots.core.dispatching.filters import base, builtin
 
 
 class AttachmentsFilter(base.BaseFilter):
-    def __init__(self):
-        """Инициализация фильтра-примера.
-        
-        Проверяет наличие вложений в сообщении.
-        """
+    """Фильтр-пример.
+    
+    Проверяет наличие вложений в сообщении.
+    """
 
     def check(event: SimpleBotEvent) -> base.FilterResult:
         """Метод, в котором определяется логика фильтрации.
