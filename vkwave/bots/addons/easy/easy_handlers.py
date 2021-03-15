@@ -1,8 +1,10 @@
 import inspect
+import json
 import typing
 
 from vkwave.bots import BotType, BaseEvent, UserEvent, BotEvent, EventTypeFilter
 from vkwave.bots.core import BaseFilter
+from vkwave.bots.core.dispatching.filters.builtin import get_payload
 from vkwave.bots.core.dispatching.handler.callback import BaseCallback
 from vkwave.types.bot_events import BotEventType
 from vkwave.types.responses import BaseOkResponse, MessagesSendResponse
@@ -113,6 +115,13 @@ class SimpleBotEvent(BotEvent):
     @property
     def from_id(self) -> int:
         return self.object.object.from_id
+
+    @property
+    def payload(self) -> typing.Optional[dict]:
+        try:
+            return json.loads(get_payload(self))
+        except TypeError:
+            return None
 
     async def answer(
         self,
