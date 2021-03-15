@@ -9,3 +9,5 @@
 [Мультитокен](multitoken.md)  
 [Боты-клоны](clones.md)  
 [Клавиатуры](keyboards.md)  
+[Шаблоны](templates.md)
+[Загрузчики вложений](uploaders.md)
