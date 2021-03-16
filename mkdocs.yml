@@ -65,6 +65,7 @@ nav:
     - getting_started/keyboards.md
     - getting_started/templates.md
     - getting_started/uploaders.md
+    - getting_started/routers.md
   - Client:
     - client/index.md
     - client/context.md
