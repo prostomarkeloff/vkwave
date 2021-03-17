@@ -13,14 +13,13 @@ def only_hi_in_text_from_pm(event: SimpleBotEvent):
 ```
 
 
-Дополнительно можно импортировать набор объединяющих классов: `#!python from vkwave.bots.core.dispatching.filters import base` и использовать отрицание, логическое "ИЛИ", логическое "И"
+Так же можно использовать символы `&`, `|` или `~` между фильтрами в хендлере для "И", "ИЛИ", "НЕ" соответственно:
 
 ``` python hl_lines="3-6"
 # Ловит все сообщения из приватных чатов или те в которых не встречается hi
 @bot.message_handler(
-    base.OrFilter(
-        base.NotFilter(filters.TextFilter("hi")),
-        filters.MessageFromConversationTypeFilter("from_pm")
+        ~filters.TextFilter("hi")
+        | filters.MessageFromConversationTypeFilter("from_pm")
     )
 )
 def not_hi_or_text_from_pm(event: SimpleBotEvent):
