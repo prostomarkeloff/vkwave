@@ -41,3 +41,11 @@ from vkwave.bots.core.dispatching.filters import filter_caster
 has_attachments = filter_caster.cast(lambda event: event.object.object.message.attachments is not None)
 
 ```
+
+Если указывать функцию/лямбду/корутину напрямую в определении хендлера, то можно не вывзывать `filter.caster`, он сработает под капотом автоматически:
+
+``` python
+@bot.message_handler(lambda event: event.object.object.message.attachments is not None)
+async def handler(event):
+    await event.answer("Найдены вложения")
+```
