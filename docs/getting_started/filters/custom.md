@@ -42,7 +42,7 @@ has_attachments = filter_caster.cast(lambda event: event.object.object.message.a
 
 ```
 
-Если указывать функцию/лямбду/корутину напрямую в определении хендлера, то можно не вывзывать `filter.caster`, он сработает под капотом автоматически:
+Если указывать функцию/лямбду/корутину напрямую в определении хендлера, то можно не вызывать `filter.caster`, он сработает под капотом автоматически:
 
 ``` python
 @bot.message_handler(lambda event: event.object.object.message.attachments is not None)
