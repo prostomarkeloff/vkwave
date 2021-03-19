@@ -106,15 +106,15 @@ class SimpleBotEvent(BotEvent):
 
     @property
     def text(self) -> str:
-        return self.object.object.text
+        return self.object.object.message.text
 
     @property
     def peer_id(self) -> int:
-        return self.object.object.peer_id
+        return self.object.object.message.peer_id
 
     @property
     def from_id(self) -> int:
-        return self.object.object.from_id
+        return self.object.object.message.from_id
 
     @property
     def payload(self) -> typing.Optional[dict]:
