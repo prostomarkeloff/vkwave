@@ -49,6 +49,6 @@ class SimpleCallbackBot(BaseSimpleLongPollBot):
             confirmation_storage=storage,
         )
 
-    async def run(self):
+    async def run(self, ignore_errors: bool = True):
         await self.dispatcher.cache_potential_tokens()
         await self.cb_extension.start()
