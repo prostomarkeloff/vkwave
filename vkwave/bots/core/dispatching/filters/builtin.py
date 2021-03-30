@@ -210,7 +210,9 @@ class CommandsFilter(BaseFilter):
             if not text.startswith(prefix):
                 continue
             for command in self.commands:
-                if text.startswith(f"{prefix}{command}"):
+                pfcmd = f"{prefix}{command}"
+                cmd = text.split(" ")[0]
+                if cmd == pfcmd:
                     return FilterResult(True)
         return FilterResult(False)
 
