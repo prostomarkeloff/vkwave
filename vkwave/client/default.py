@@ -31,7 +31,9 @@ class AIOHTTPClient(AbstractAPIClient):
     API_URL: Final = "https://api.vk.com/method/{method_name}"
 
     def __init__(
-        self, session: Optional[ClientSession] = None, loop: Optional[AbstractEventLoop] = None,
+        self,
+        session: Optional[ClientSession] = None,
+        loop: Optional[AbstractEventLoop] = None,
     ):
         self._http_client = AHC_H(session=session, loop=loop)
         self._factory: AbstractFactory = DefaultFactory()

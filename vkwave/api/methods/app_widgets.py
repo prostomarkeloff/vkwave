@@ -5,7 +5,9 @@ from ._utils import get_params
 
 class AppWidgets(Category):
     async def widgets_get_app_image_upload_server(
-        self, image_type: str, return_raw_response: bool = False,
+        self,
+        image_type: str,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, AppWidgetsGetAppImageUploadServerResponse]:
         """
         :param image_type:
@@ -47,7 +49,9 @@ class AppWidgets(Category):
         return result
 
     async def widgets_get_group_image_upload_server(
-        self, image_type: str, return_raw_response: bool = False,
+        self,
+        image_type: str,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, AppWidgetsGetGroupImageUploadServerResponse]:
         """
         :param image_type:
@@ -89,7 +93,9 @@ class AppWidgets(Category):
         return result
 
     async def widgets_get_images_by_id(
-        self, images: typing.List[str], return_raw_response: bool = False,
+        self,
+        images: typing.List[str],
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, AppWidgetsGetImagesByIdResponse]:
         """
         :param images: - List of images IDs
@@ -107,7 +113,10 @@ class AppWidgets(Category):
         return result
 
     async def widgets_save_app_image(
-        self, hash: str, image: str, return_raw_response: bool = False,
+        self,
+        hash: str,
+        image: str,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, AppWidgetsSaveAppImageResponse]:
         """
         :param hash: - Parameter returned when photo is uploaded to server
@@ -126,7 +135,10 @@ class AppWidgets(Category):
         return result
 
     async def widgets_save_group_image(
-        self, hash: str, image: str, return_raw_response: bool = False,
+        self,
+        hash: str,
+        image: str,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, AppWidgetsSaveGroupImageResponse]:
         """
         :param hash: - Parameter returned when photo is uploaded to server
@@ -145,7 +157,10 @@ class AppWidgets(Category):
         return result
 
     async def widgets_update(
-        self, code: str, type: str, return_raw_response: bool = False,
+        self,
+        code: str,
+        type: str,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param code:

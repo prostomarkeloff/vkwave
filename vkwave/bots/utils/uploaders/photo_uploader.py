@@ -29,7 +29,9 @@ class PhotoUploader(BaseUploader[typing.List[PhotosPhoto]]):
 
         photo_sizes = (
             await self.api_context.photos.save_messages_photo(
-                photo=upload_data["photo"], server=upload_data["server"], hash=upload_data["hash"],
+                photo=upload_data["photo"],
+                server=upload_data["server"],
+                hash=upload_data["hash"],
             )
         ).response
         return photo_sizes
@@ -51,16 +53,26 @@ class WallPhotoUploader(BaseUploader[typing.List[PhotosPhoto]]):
         return server_data.response.upload_url
 
     async def get_attachment_from_io(
-        self, f: BinaryIO, group_id: typing.Optional[int] = None,
+        self,
+        f: BinaryIO,
+        group_id: typing.Optional[int] = None,
     ) -> str:
         upload_url = await self.get_server(group_id)
         return self.attachment_name(await self.upload(upload_url, f, group_id=group_id))
 
-    async def get_attachment_from_path(self, file_path: str, group_id: int,) -> str:
+    async def get_attachment_from_path(
+        self,
+        file_path: str,
+        group_id: int,
+    ) -> str:
         with open(file_path, "rb") as file_data:
             return await self.get_attachment_from_io(f=file_data, group_id=group_id)
 
-    async def get_attachments_from_paths(self, file_paths: List[str], group_id: int,) -> str:
+    async def get_attachments_from_paths(
+        self,
+        file_paths: List[str],
+        group_id: int,
+    ) -> str:
         ready_attachments: List[str] = []
         for file in file_paths:
             ready_attachments.append(
@@ -68,7 +80,11 @@ class WallPhotoUploader(BaseUploader[typing.List[PhotosPhoto]]):
             )
         return ",".join(ready_attachments)
 
-    async def get_attachment_from_link(self, link: str, group_id: int,) -> str:
+    async def get_attachment_from_link(
+        self,
+        link: str,
+        group_id: int,
+    ) -> str:
         file_data = BytesIO(await self.client.request_data("GET", link))
         return await self.get_attachment_from_io(group_id=group_id, f=file_data)
 
@@ -81,7 +97,10 @@ class WallPhotoUploader(BaseUploader[typing.List[PhotosPhoto]]):
         return ",".join(ready_attachments)
 
     async def upload(
-        self, upload_url: str, file_data: typing.BinaryIO, group_id: typing.Optional[int] = None,
+        self,
+        upload_url: str,
+        file_data: typing.BinaryIO,
+        group_id: typing.Optional[int] = None,
     ) -> typing.List[PhotosPhoto]:
         if not hasattr(file_data, "name"):
             setattr(file_data, "name", "file.jpg")

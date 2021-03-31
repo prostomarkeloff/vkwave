@@ -66,7 +66,9 @@ class UserLongpoll:
 
         self.api: APIOptionsRequestContext = api
 
-        self.client: AbstractHTTPClient = http_client or self.api.api_options.get_client().http_client
+        self.client: AbstractHTTPClient = (
+            http_client or self.api.api_options.get_client().http_client
+        )
         self.data = bot_longpoll_data
 
     async def get_updates(self) -> List[Update]:

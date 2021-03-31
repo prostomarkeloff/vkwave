@@ -99,7 +99,10 @@ class Groups(Category):
         return result
 
     async def approve_request(
-        self, group_id: int, user_id: int, return_raw_response: bool = False,
+        self,
+        group_id: int,
+        user_id: int,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param group_id: - Community ID.
@@ -176,7 +179,10 @@ class Groups(Category):
         return result
 
     async def delete_address(
-        self, group_id: int, address_id: int, return_raw_response: bool = False,
+        self,
+        group_id: int,
+        address_id: int,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param group_id:
@@ -195,7 +201,10 @@ class Groups(Category):
         return result
 
     async def delete_callback_server(
-        self, group_id: int, server_id: int, return_raw_response: bool = False,
+        self,
+        group_id: int,
+        server_id: int,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param group_id:
@@ -214,7 +223,10 @@ class Groups(Category):
         return result
 
     async def delete_link(
-        self, group_id: int, link_id: int, return_raw_response: bool = False,
+        self,
+        group_id: int,
+        link_id: int,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param group_id: - Community ID.
@@ -233,7 +245,9 @@ class Groups(Category):
         return result
 
     async def disable_online(
-        self, group_id: int, return_raw_response: bool = False,
+        self,
+        group_id: int,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param group_id:
@@ -489,7 +503,9 @@ class Groups(Category):
         return result
 
     async def enable_online(
-        self, group_id: int, return_raw_response: bool = False,
+        self,
+        group_id: int,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param group_id:
@@ -625,7 +641,9 @@ class Groups(Category):
         return result
 
     async def get_callback_confirmation_code(
-        self, group_id: int, return_raw_response: bool = False,
+        self,
+        group_id: int,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, GroupsGetCallbackConfirmationCodeResponse]:
         """
         :param group_id: - Community ID.
@@ -791,7 +809,9 @@ class Groups(Category):
         return result
 
     async def get_long_poll_server(
-        self, group_id: int, return_raw_response: bool = False,
+        self,
+        group_id: int,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, GroupsGetLongPollServerResponse]:
         """
         :param group_id: - Community ID
@@ -809,7 +829,9 @@ class Groups(Category):
         return result
 
     async def get_long_poll_settings(
-        self, group_id: int, return_raw_response: bool = False,
+        self,
+        group_id: int,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, GroupsGetLongPollSettingsResponse]:
         """
         :param group_id: - Community ID.
@@ -891,7 +913,9 @@ class Groups(Category):
         return result
 
     async def get_settings(
-        self, group_id: int, return_raw_response: bool = False,
+        self,
+        group_id: int,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, GroupsGetSettingsResponse]:
         """
         :param group_id: - Community ID.
@@ -909,7 +933,9 @@ class Groups(Category):
         return result
 
     async def get_tag_list(
-        self, group_id: int, return_raw_response: bool = False,
+        self,
+        group_id: int,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, GroupsGetTagListResponse]:
         """
         :param group_id:
@@ -927,7 +953,8 @@ class Groups(Category):
         return result
 
     async def get_token_permissions(
-        self, return_raw_response: bool = False,
+        self,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, GroupsGetTokenPermissionsResponse]:
         """
         :param return_raw_response: - return result at dict
@@ -944,7 +971,10 @@ class Groups(Category):
         return result
 
     async def invite(
-        self, group_id: int, user_id: int, return_raw_response: bool = False,
+        self,
+        group_id: int,
+        user_id: int,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param group_id: - Community ID.
@@ -1015,7 +1045,9 @@ class Groups(Category):
         return result
 
     async def leave(
-        self, group_id: int, return_raw_response: bool = False,
+        self,
+        group_id: int,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param group_id: - ID or screen name of the community.
@@ -1033,7 +1065,10 @@ class Groups(Category):
         return result
 
     async def remove_user(
-        self, group_id: int, user_id: int, return_raw_response: bool = False,
+        self,
+        group_id: int,
+        user_id: int,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param group_id: - Community ID.
@@ -1464,7 +1499,10 @@ class Groups(Category):
         return result
 
     async def tag_delete(
-        self, group_id: int, tag_id: int, return_raw_response: bool = False,
+        self,
+        group_id: int,
+        tag_id: int,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseBoolResponse]:
         """
         :param group_id:
@@ -1483,7 +1521,11 @@ class Groups(Category):
         return result
 
     async def tag_update(
-        self, group_id: int, tag_id: int, tag_name: str, return_raw_response: bool = False,
+        self,
+        group_id: int,
+        tag_id: int,
+        tag_name: str,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseBoolResponse]:
         """
         :param group_id:
@@ -1503,7 +1545,10 @@ class Groups(Category):
         return result
 
     async def toggle_market(
-        self, group_id: int, state: str, return_raw_response: bool = False,
+        self,
+        group_id: int,
+        state: str,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param group_id:

@@ -5,7 +5,9 @@ from ._utils import get_params
 
 class Account(Category):
     async def ban(
-        self, return_raw_response: bool = False, owner_id: typing.Optional[int] = None,
+        self,
+        return_raw_response: bool = False,
+        owner_id: typing.Optional[int] = None,
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param owner_id:
@@ -71,7 +73,9 @@ class Account(Category):
         return result
 
     async def get_app_permissions(
-        self, user_id: int, return_raw_response: bool = False,
+        self,
+        user_id: int,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, AccountGetAppPermissionsResponse]:
         """
         :param user_id: - User ID whose settings information shall be got. By default: current user.
@@ -111,7 +115,9 @@ class Account(Category):
         return result
 
     async def get_counters(
-        self, return_raw_response: bool = False, filter: typing.Optional[typing.List[str]] = None,
+        self,
+        return_raw_response: bool = False,
+        filter: typing.Optional[typing.List[str]] = None,
     ) -> typing.Union[dict, AccountGetCountersResponse]:
         """
         :param filter: - Counters to be returned.
@@ -129,7 +135,9 @@ class Account(Category):
         return result
 
     async def get_info(
-        self, return_raw_response: bool = False, fields: typing.Optional[typing.List[str]] = None,
+        self,
+        return_raw_response: bool = False,
+        fields: typing.Optional[typing.List[str]] = None,
     ) -> typing.Union[dict, AccountGetInfoResponse]:
         """
         :param fields: - Fields to return. Possible values: *'country' — user country,, *'https_required' — is "HTTPS only" option enabled,, *'own_posts_default' — is "Show my posts only" option is enabled,, *'no_wall_replies' — are wall replies disabled or not,, *'intro' — is intro passed by user or not,, *'lang' — user language. By default: all.
@@ -147,7 +155,8 @@ class Account(Category):
         return result
 
     async def get_profile_info(
-        self, return_raw_response: bool = False,
+        self,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, AccountGetProfileInfoResponse]:
         """
         :param return_raw_response: - return result at dict
@@ -164,7 +173,9 @@ class Account(Category):
         return result
 
     async def get_push_settings(
-        self, return_raw_response: bool = False, device_id: typing.Optional[str] = None,
+        self,
+        return_raw_response: bool = False,
+        device_id: typing.Optional[str] = None,
     ) -> typing.Union[dict, AccountGetPushSettingsResponse]:
         """
         :param device_id: - Unique device ID.
@@ -282,7 +293,10 @@ class Account(Category):
         return result
 
     async def set_name_in_menu(
-        self, user_id: int, return_raw_response: bool = False, name: typing.Optional[str] = None,
+        self,
+        user_id: int,
+        return_raw_response: bool = False,
+        name: typing.Optional[str] = None,
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param user_id: - User ID.
@@ -301,7 +315,8 @@ class Account(Category):
         return result
 
     async def set_offline(
-        self, return_raw_response: bool = False,
+        self,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param return_raw_response: - return result at dict
@@ -318,7 +333,9 @@ class Account(Category):
         return result
 
     async def set_online(
-        self, return_raw_response: bool = False, voip: typing.Optional[BaseBoolInt] = None,
+        self,
+        return_raw_response: bool = False,
+        voip: typing.Optional[BaseBoolInt] = None,
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param voip: - '1' if videocalls are available for current device.
@@ -388,7 +405,9 @@ class Account(Category):
         return result
 
     async def unban(
-        self, return_raw_response: bool = False, owner_id: typing.Optional[int] = None,
+        self,
+        return_raw_response: bool = False,
+        owner_id: typing.Optional[int] = None,
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param owner_id:

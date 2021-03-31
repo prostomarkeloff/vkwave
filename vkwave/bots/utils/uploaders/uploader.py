@@ -23,7 +23,9 @@ class BaseUploader(ABC, Generic[UploadResult]):
         json_deserialize: JSONDecoder = json.loads,
     ):
         self.api_context = api_context
-        self.client: AbstractHTTPClient = client or api_context.api_options.get_client().http_client
+        self.client: AbstractHTTPClient = (
+            client or api_context.api_options.get_client().http_client
+        )
         self.json_deserialize = json_deserialize
 
     @abstractmethod

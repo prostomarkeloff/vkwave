@@ -79,7 +79,10 @@ class Orders(Category):
         return result
 
     async def get_amount(
-        self, user_id: int, votes: typing.List[str], return_raw_response: bool = False,
+        self,
+        user_id: int,
+        votes: typing.List[str],
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, OrdersGetAmountResponse]:
         """
         :param user_id:
@@ -122,7 +125,10 @@ class Orders(Category):
         return result
 
     async def get_user_subscription_by_id(
-        self, user_id: int, subscription_id: int, return_raw_response: bool = False,
+        self,
+        user_id: int,
+        subscription_id: int,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, OrdersGetUserSubscriptionByIdResponse]:
         """
         :param user_id:
@@ -141,7 +147,9 @@ class Orders(Category):
         return result
 
     async def get_user_subscriptions(
-        self, user_id: int, return_raw_response: bool = False,
+        self,
+        user_id: int,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, OrdersGetUserSubscriptionsResponse]:
         """
         :param user_id:
@@ -159,7 +167,11 @@ class Orders(Category):
         return result
 
     async def update_subscription(
-        self, user_id: int, subscription_id: int, price: int, return_raw_response: bool = False,
+        self,
+        user_id: int,
+        subscription_id: int,
+        price: int,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, OrdersUpdateSubscriptionResponse]:
         """
         :param user_id:

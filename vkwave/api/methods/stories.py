@@ -5,7 +5,9 @@ from ._utils import get_params
 
 class Stories(Category):
     async def ban_owner(
-        self, owners_ids: typing.List[int], return_raw_response: bool = False,
+        self,
+        owners_ids: typing.List[int],
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param owners_ids: - List of sources IDs
@@ -185,10 +187,13 @@ class Stories(Category):
         return result
 
     async def get_stats(
-        self, owner_id: int, story_id: int, return_raw_response: bool = False,
+        self,
+        owner_id: int,
+        story_id: int,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, StoriesGetStatsResponse]:
         """
-        :param owner_id: - Story owner ID. 
+        :param owner_id: - Story owner ID.
         :param story_id: - Story ID.
         :param return_raw_response: - return result at dict
         :return:
@@ -244,7 +249,9 @@ class Stories(Category):
         offset: typing.Optional[int] = None,
         extended: typing.Optional[BaseBoolInt] = None,
     ) -> typing.Union[
-        dict, StoriesGetViewersExtendedV5115Response, StoriesGetViewersExtendedV5115Response,
+        dict,
+        StoriesGetViewersExtendedV5115Response,
+        StoriesGetViewersExtendedV5115Response,
     ]:
         """
         :param owner_id: - Story owner ID.
@@ -292,7 +299,10 @@ class Stories(Category):
         return result
 
     async def hide_reply(
-        self, owner_id: int, story_id: int, return_raw_response: bool = False,
+        self,
+        owner_id: int,
+        story_id: int,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param owner_id: - ID of the user whose replies should be hidden.
@@ -311,7 +321,9 @@ class Stories(Category):
         return result
 
     async def save(
-        self, upload_results: typing.List[str], return_raw_response: bool = False,
+        self,
+        upload_results: typing.List[str],
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, StoriesSaveResponse]:
         """
         :param upload_results:
@@ -393,7 +405,9 @@ class Stories(Category):
         return result
 
     async def unban_owner(
-        self, owners_ids: typing.List[int], return_raw_response: bool = False,
+        self,
+        owners_ids: typing.List[int],
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param owners_ids: - List of hidden sources to show stories from.

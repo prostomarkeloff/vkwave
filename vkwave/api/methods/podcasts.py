@@ -5,7 +5,8 @@ from ._utils import get_params
 
 class Podcasts(Category):
     async def clear_recent_searches(
-        self, return_raw_response: bool = False,
+        self,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param return_raw_response: - return result at dict
@@ -22,7 +23,8 @@ class Podcasts(Category):
         return result
 
     async def get_popular(
-        self, return_raw_response: bool = False,
+        self,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, PodcastsGetPopularResponse]:
         """
         :param return_raw_response: - return result at dict
@@ -39,7 +41,8 @@ class Podcasts(Category):
         return result
 
     async def get_recent_search_requests(
-        self, return_raw_response: bool = False,
+        self,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, PodcastsGetRecentSearchRequestsResponse]:
         """
         :param return_raw_response: - return result at dict

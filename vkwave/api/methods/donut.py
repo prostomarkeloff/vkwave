@@ -31,7 +31,9 @@ class Donut(Category):
         return result
 
     async def get_subscription(
-        self, owner_id: int, return_raw_response: bool = False,
+        self,
+        owner_id: int,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, DonutGetSubscriptionResponse]:
         """
         :param owner_id:
@@ -73,7 +75,9 @@ class Donut(Category):
         return result
 
     async def is_don(
-        self, owner_id: int, return_raw_response: bool = False,
+        self,
+        owner_id: int,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseBoolResponse]:
         """
         :param owner_id:

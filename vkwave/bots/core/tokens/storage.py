@@ -16,9 +16,9 @@ class TokenStorage(Generic[T]):
         get_token_strategy: Optional[ABCGetTokenStrategy] = None,
     ):
         self.tokens: Dict[T, AnyABCToken] = available or dict()
-        self.get_token_strategy: ABCGetTokenStrategy[
-            T
-        ] = get_token_strategy or NotImplementedGetTokenStrategy[T]()
+        self.get_token_strategy: ABCGetTokenStrategy[T] = (
+            get_token_strategy or NotImplementedGetTokenStrategy[T]()
+        )
 
     def append(self, id_to_add: T, token: AnyABCToken):
         self.tokens[id_to_add] = token

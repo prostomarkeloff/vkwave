@@ -31,7 +31,10 @@ class Auth(Category):
         return result
 
     async def restore(
-        self, phone: str, last_name: str, return_raw_response: bool = False,
+        self,
+        phone: str,
+        last_name: str,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, AuthRestoreResponse]:
         """
         :param phone: - User phone number.

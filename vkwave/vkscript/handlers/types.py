@@ -36,7 +36,7 @@ def str_handler(node: ast.Str):
 
 
 @VKScriptConverter.register(ast.Constant)
-def constant_handler(node:ast.Constant):
+def constant_handler(node: ast.Constant):
     return repr(node.value)
 
 

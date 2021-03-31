@@ -5,7 +5,9 @@ from ._utils import get_params
 
 class Adsweb(Category):
     async def get_ad_categories(
-        self, office_id: int, return_raw_response: bool = False,
+        self,
+        office_id: int,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, AdswebGetAdCategoriesResponse]:
         """
         :param office_id:
@@ -23,7 +25,8 @@ class Adsweb(Category):
         return result
 
     async def get_ad_unit_code(
-        self, return_raw_response: bool = False,
+        self,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, AdswebGetAdUnitCodeResponse]:
         """
         :param return_raw_response: - return result at dict

@@ -33,7 +33,8 @@ class Notifications(Category):
         return result
 
     async def mark_as_viewed(
-        self, return_raw_response: bool = False,
+        self,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, NotificationsMarkAsViewedResponse]:
         """
         :param return_raw_response: - return result at dict

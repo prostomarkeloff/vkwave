@@ -539,7 +539,9 @@ class Photos(Category):
         return result
 
     async def get_market_album_upload_server(
-        self, group_id: int, return_raw_response: bool = False,
+        self,
+        group_id: int,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseGetUploadServerResponse]:
         """
         :param group_id: - Community ID.
@@ -585,7 +587,9 @@ class Photos(Category):
         return result
 
     async def get_messages_upload_server(
-        self, return_raw_response: bool = False, peer_id: typing.Optional[int] = None,
+        self,
+        return_raw_response: bool = False,
+        peer_id: typing.Optional[int] = None,
     ) -> typing.Union[dict, PhotosGetMessagesUploadServerResponse]:
         """
         :param peer_id: - Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'Chat ID', e.g. '2000000001'. For community: '- Community ID', e.g. '-12345'. "
@@ -653,7 +657,9 @@ class Photos(Category):
         return result
 
     async def get_owner_photo_upload_server(
-        self, return_raw_response: bool = False, owner_id: typing.Optional[int] = None,
+        self,
+        return_raw_response: bool = False,
+        owner_id: typing.Optional[int] = None,
     ) -> typing.Union[dict, BaseGetUploadServerResponse]:
         """
         :param owner_id: - identifier of a community or current user. "Note that community id must be negative. 'owner_id=1' – user, 'owner_id=-1' – community, "
@@ -749,7 +755,9 @@ class Photos(Category):
         return result
 
     async def get_wall_upload_server(
-        self, return_raw_response: bool = False, group_id: typing.Optional[int] = None,
+        self,
+        return_raw_response: bool = False,
+        group_id: typing.Optional[int] = None,
     ) -> typing.Union[dict, PhotosGetWallUploadServerResponse]:
         """
         :param group_id: - ID of community to whose wall the photo will be uploaded.
@@ -1049,7 +1057,12 @@ class Photos(Category):
         return result
 
     async def save_market_album_photo(
-        self, group_id: int, photo: str, server: int, hash: str, return_raw_response: bool = False,
+        self,
+        group_id: int,
+        photo: str,
+        server: int,
+        hash: str,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, PhotosSaveMarketAlbumPhotoResponse]:
         """
         :param group_id: - Community ID.
@@ -1124,7 +1137,10 @@ class Photos(Category):
         return result
 
     async def save_owner_cover_photo(
-        self, hash: str, photo: str, return_raw_response: bool = False,
+        self,
+        hash: str,
+        photo: str,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, PhotosSaveOwnerCoverPhotoResponse]:
         """
         :param hash: - Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].

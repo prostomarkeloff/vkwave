@@ -5,7 +5,9 @@ from ._utils import get_params
 
 class Pages(Category):
     async def clear_cache(
-        self, url: str, return_raw_response: bool = False,
+        self,
+        url: str,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param url: - Address of the page where you need to refesh the cached version
@@ -79,7 +81,9 @@ class Pages(Category):
         return result
 
     async def get_titles(
-        self, return_raw_response: bool = False, group_id: typing.Optional[int] = None,
+        self,
+        return_raw_response: bool = False,
+        group_id: typing.Optional[int] = None,
     ) -> typing.Union[dict, PagesGetTitlesResponse]:
         """
         :param group_id: - ID of the community that owns the wiki page.
@@ -123,7 +127,10 @@ class Pages(Category):
         return result
 
     async def parse_wiki(
-        self, text: str, return_raw_response: bool = False, group_id: typing.Optional[int] = None,
+        self,
+        text: str,
+        return_raw_response: bool = False,
+        group_id: typing.Optional[int] = None,
     ) -> typing.Union[dict, PagesParseWikiResponse]:
         """
         :param text: - Text of the wiki page.

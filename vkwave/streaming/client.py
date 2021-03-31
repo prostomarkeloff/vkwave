@@ -49,7 +49,8 @@ class StreamingClient:
         if code != 200:
             error = r.get("error", {})
             raise StreamingAPIError(
-                code=error.get("error_code"), message=error.get("message"),
+                code=error.get("error_code"),
+                message=error.get("message"),
             )
 
         return r
@@ -60,6 +61,7 @@ class StreamingClient:
         async for data in self._ws_client.stream_json():
             if data["code"] != 100:
                 raise StreamingAPIError(
-                    code=data["code"], message=data["service_message"],
+                    code=data["code"],
+                    message=data["service_message"],
                 )
             yield StreamingMessage(**data)

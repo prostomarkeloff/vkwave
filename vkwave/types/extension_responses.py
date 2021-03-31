@@ -4,7 +4,8 @@ from vkwave.types.extension_objects import *
 
 class MessagesSendPeerIdsResponse(pydantic.BaseModel):
     response: typing.List[MessagesSendPeerIdsData] = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 

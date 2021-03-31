@@ -78,7 +78,10 @@ class SimpleUserEvent(UserEvent):
             audiomessage — пользователь записывает голосовое сообщение
         """
         return await self.api_ctx.messages.set_activity(
-            user_id=user_id, type=type, peer_id=self.object.object.peer_id, group_id=group_id,
+            user_id=user_id,
+            type=type,
+            peer_id=self.object.object.peer_id,
+            group_id=group_id,
         )
 
 
@@ -200,7 +203,9 @@ class SimpleBotEvent(BotEvent):
 
 class SimpleBotCallback(BaseCallback):
     def __init__(
-        self, func: typing.Callable[[BaseEvent], typing.Awaitable[typing.Any]], bot_type: BotType,
+        self,
+        func: typing.Callable[[BaseEvent], typing.Awaitable[typing.Any]],
+        bot_type: BotType,
     ):
         self.bot_type = bot_type
         self.func = func

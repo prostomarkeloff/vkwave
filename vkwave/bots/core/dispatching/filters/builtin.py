@@ -191,7 +191,10 @@ class CommandsFilter(BaseFilter):
     """
 
     def __init__(
-        self, commands: AnyText, prefixes: Tuple[str, ...] = ("/", "!"), ignore_case: bool = True,
+        self,
+        commands: AnyText,
+        prefixes: Tuple[str, ...] = ("/", "!"),
+        ignore_case: bool = True,
     ):
         self.commands = any_text_to_list_or_tuple(commands)
         self.prefixes = prefixes
@@ -205,7 +208,7 @@ class CommandsFilter(BaseFilter):
 
         if self.ic:
             text = text.lower()
-       
+
         for prefix in self.prefixes:
             if not text.startswith(prefix):
                 continue
@@ -410,7 +413,10 @@ class PayloadContainsFilter(BaseFilter):
         self.key = key
         self.json_loader = json_loader
 
-    async def check(self, event: BaseEvent,) -> FilterResult:
+    async def check(
+        self,
+        event: BaseEvent,
+    ) -> FilterResult:
         current_payload = get_payload(event)
         if current_payload is None:
             return FilterResult(False)

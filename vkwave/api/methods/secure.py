@@ -51,7 +51,8 @@ class Secure(Category):
         return result
 
     async def get_app_balance(
-        self, return_raw_response: bool = False,
+        self,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, SecureGetAppBalanceResponse]:
         """
         :param return_raw_response: - return result at dict
@@ -124,7 +125,9 @@ class Secure(Category):
         return result
 
     async def get_user_level(
-        self, user_ids: typing.List[int], return_raw_response: bool = False,
+        self,
+        user_ids: typing.List[int],
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, SecureGetUserLevelResponse]:
         """
         :param user_ids:
@@ -142,7 +145,10 @@ class Secure(Category):
         return result
 
     async def give_event_sticker(
-        self, user_ids: typing.List[int], achievement_id: int, return_raw_response: bool = False,
+        self,
+        user_ids: typing.List[int],
+        achievement_id: int,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, SecureGiveEventStickerResponse]:
         """
         :param user_ids:
@@ -185,7 +191,10 @@ class Secure(Category):
         return result
 
     async def send_s_m_s_notification(
-        self, user_id: int, message: str, return_raw_response: bool = False,
+        self,
+        user_id: int,
+        message: str,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param user_id: - ID of the user to whom SMS notification is sent. The user shall allow the application to send him/her notifications (, +1).

@@ -79,7 +79,9 @@ class Friends(Category):
         return result
 
     async def delete(
-        self, return_raw_response: bool = False, user_id: typing.Optional[int] = None,
+        self,
+        return_raw_response: bool = False,
+        user_id: typing.Optional[int] = None,
     ) -> typing.Union[dict, FriendsDeleteResponse]:
         """
         :param user_id: - ID of the user whose friend request is to be declined or who is to be deleted from the current user's friend list.
@@ -97,7 +99,8 @@ class Friends(Category):
         return result
 
     async def delete_all_requests(
-        self, return_raw_response: bool = False,
+        self,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param return_raw_response: - return result at dict
@@ -114,7 +117,9 @@ class Friends(Category):
         return result
 
     async def delete_list(
-        self, list_id: int, return_raw_response: bool = False,
+        self,
+        list_id: int,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param list_id: - ID of the friend list to delete.
@@ -220,7 +225,8 @@ class Friends(Category):
         return result
 
     async def get_app_users(
-        self, return_raw_response: bool = False,
+        self,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, FriendsGetAppUsersResponse]:
         """
         :param return_raw_response: - return result at dict
@@ -341,7 +347,9 @@ class Friends(Category):
         return result
 
     async def get_recent(
-        self, return_raw_response: bool = False, count: typing.Optional[int] = None,
+        self,
+        return_raw_response: bool = False,
+        count: typing.Optional[int] = None,
     ) -> typing.Union[dict, FriendsGetRecentResponse]:
         """
         :param count: - Number of recently added friends to return.

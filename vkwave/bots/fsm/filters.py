@@ -8,7 +8,11 @@ ANY_STATE = "__any_state__"
 
 class StateFilter(BaseFilter):
     def __init__(
-        self, fsm: FiniteStateMachine, state: State, for_what: ForWhat, always_false: bool = False,
+        self,
+        fsm: FiniteStateMachine,
+        state: State,
+        for_what: ForWhat,
+        always_false: bool = False,
     ):
         self.always_false = always_false
         self.fsm = fsm

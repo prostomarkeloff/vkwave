@@ -5,7 +5,9 @@ from ._utils import get_params
 
 class Wall(Category):
     async def check_copyright_link(
-        self, link: str, return_raw_response: bool = False,
+        self,
+        link: str,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseBoolResponse]:
         """
         :param link:
@@ -23,7 +25,10 @@ class Wall(Category):
         return result
 
     async def close_comments(
-        self, owner_id: int, post_id: int, return_raw_response: bool = False,
+        self,
+        owner_id: int,
+        post_id: int,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseBoolResponse]:
         """
         :param owner_id:
@@ -410,7 +415,10 @@ class Wall(Category):
         return result
 
     async def open_comments(
-        self, owner_id: int, post_id: int, return_raw_response: bool = False,
+        self,
+        owner_id: int,
+        post_id: int,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseBoolResponse]:
         """
         :param owner_id:

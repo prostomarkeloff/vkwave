@@ -11,7 +11,7 @@ from ....dispatching.filters.builtin import get_text
 
 class CommandLineMiddleware(BaseMiddleware):
     """Для парсинга сообщения like argparse.
-    
+
     >>> clm = CommandLineMiddleware # alias
     >>> bot.add_middleware(clm())
     """

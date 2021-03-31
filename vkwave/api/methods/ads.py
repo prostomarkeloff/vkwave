@@ -53,7 +53,10 @@ class Ads(Category):
         return result
 
     async def create_ads(
-        self, account_id: int, data: str, return_raw_response: bool = False,
+        self,
+        account_id: int,
+        data: str,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, AdsCreateAdsResponse]:
         """
         :param account_id: - Advertising account ID.
@@ -72,7 +75,10 @@ class Ads(Category):
         return result
 
     async def create_campaigns(
-        self, account_id: int, data: str, return_raw_response: bool = False,
+        self,
+        account_id: int,
+        data: str,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, AdsCreateCampaignsResponse]:
         """
         :param account_id: - Advertising account ID.
@@ -91,7 +97,10 @@ class Ads(Category):
         return result
 
     async def create_clients(
-        self, account_id: int, data: str, return_raw_response: bool = False,
+        self,
+        account_id: int,
+        data: str,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, AdsCreateClientsResponse]:
         """
         :param account_id: - Advertising account ID.
@@ -140,7 +149,10 @@ class Ads(Category):
         return result
 
     async def delete_ads(
-        self, account_id: int, ids: str, return_raw_response: bool = False,
+        self,
+        account_id: int,
+        ids: str,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, AdsDeleteAdsResponse]:
         """
         :param account_id: - Advertising account ID.
@@ -159,7 +171,10 @@ class Ads(Category):
         return result
 
     async def delete_campaigns(
-        self, account_id: int, ids: str, return_raw_response: bool = False,
+        self,
+        account_id: int,
+        ids: str,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, AdsDeleteCampaignsResponse]:
         """
         :param account_id: - Advertising account ID.
@@ -178,7 +193,10 @@ class Ads(Category):
         return result
 
     async def delete_clients(
-        self, account_id: int, ids: str, return_raw_response: bool = False,
+        self,
+        account_id: int,
+        ids: str,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, AdsDeleteClientsResponse]:
         """
         :param account_id: - Advertising account ID.
@@ -221,7 +239,8 @@ class Ads(Category):
         return result
 
     async def get_accounts(
-        self, return_raw_response: bool = False,
+        self,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, AdsGetAccountsResponse]:
         """
         :param return_raw_response: - return result at dict
@@ -336,7 +355,9 @@ class Ads(Category):
         return result
 
     async def get_budget(
-        self, account_id: int, return_raw_response: bool = False,
+        self,
+        account_id: int,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, AdsGetBudgetResponse]:
         """
         :param account_id: - Advertising account ID.
@@ -382,7 +403,9 @@ class Ads(Category):
         return result
 
     async def get_categories(
-        self, return_raw_response: bool = False, lang: typing.Optional[str] = None,
+        self,
+        return_raw_response: bool = False,
+        lang: typing.Optional[str] = None,
     ) -> typing.Union[dict, AdsGetCategoriesResponse]:
         """
         :param lang: - Language. The full list of supported languages is [vk.com/dev/api_requests|here].
@@ -400,7 +423,9 @@ class Ads(Category):
         return result
 
     async def get_clients(
-        self, account_id: int, return_raw_response: bool = False,
+        self,
+        account_id: int,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, AdsGetClientsResponse]:
         """
         :param account_id: - Advertising account ID.
@@ -448,7 +473,9 @@ class Ads(Category):
         return result
 
     async def get_flood_stats(
-        self, account_id: int, return_raw_response: bool = False,
+        self,
+        account_id: int,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, AdsGetFloodStatsResponse]:
         """
         :param account_id: - Advertising account ID.
@@ -496,7 +523,9 @@ class Ads(Category):
         return result
 
     async def get_musicians(
-        self, artist_name: str, return_raw_response: bool = False,
+        self,
+        artist_name: str,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, AdsGetMusiciansResponse]:
         """
         :param artist_name:
@@ -514,7 +543,9 @@ class Ads(Category):
         return result
 
     async def get_office_users(
-        self, account_id: int, return_raw_response: bool = False,
+        self,
+        account_id: int,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, AdsGetOfficeUsersResponse]:
         """
         :param account_id: - Advertising account ID.
@@ -532,7 +563,11 @@ class Ads(Category):
         return result
 
     async def get_posts_reach(
-        self, account_id: int, ids_type: str, ids: str, return_raw_response: bool = False,
+        self,
+        account_id: int,
+        ids_type: str,
+        ids: str,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, AdsGetPostsReachResponse]:
         """
         :param account_id: - Advertising account ID.
@@ -552,7 +587,10 @@ class Ads(Category):
         return result
 
     async def get_rejection_reason(
-        self, account_id: int, ad_id: int, return_raw_response: bool = False,
+        self,
+        account_id: int,
+        ad_id: int,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, AdsGetRejectionReasonResponse]:
         """
         :param account_id: - Advertising account ID.
@@ -699,7 +737,10 @@ class Ads(Category):
         return result
 
     async def get_upload_u_r_l(
-        self, ad_format: int, return_raw_response: bool = False, icon: typing.Optional[int] = None,
+        self,
+        ad_format: int,
+        return_raw_response: bool = False,
+        icon: typing.Optional[int] = None,
     ) -> typing.Union[dict, AdsGetUploadURLResponse]:
         """
         :param ad_format: - Ad format: *1 — image and text,, *2 — big image,, *3 — exclusive format,, *4 — community, square image,, *7 — special app format.
@@ -718,7 +759,8 @@ class Ads(Category):
         return result
 
     async def get_video_upload_u_r_l(
-        self, return_raw_response: bool = False,
+        self,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, AdsGetVideoUploadURLResponse]:
         """
         :param return_raw_response: - return result at dict
@@ -761,7 +803,10 @@ class Ads(Category):
         return result
 
     async def remove_office_users(
-        self, account_id: int, ids: str, return_raw_response: bool = False,
+        self,
+        account_id: int,
+        ids: str,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, AdsRemoveOfficeUsersResponse]:
         """
         :param account_id: - Advertising account ID.
@@ -780,7 +825,10 @@ class Ads(Category):
         return result
 
     async def update_ads(
-        self, account_id: int, data: str, return_raw_response: bool = False,
+        self,
+        account_id: int,
+        data: str,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, AdsUpdateAdsResponse]:
         """
         :param account_id: - Advertising account ID.
@@ -799,7 +847,10 @@ class Ads(Category):
         return result
 
     async def update_campaigns(
-        self, account_id: int, data: str, return_raw_response: bool = False,
+        self,
+        account_id: int,
+        data: str,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, AdsUpdateCampaignsResponse]:
         """
         :param account_id: - Advertising account ID.
@@ -818,7 +869,10 @@ class Ads(Category):
         return result
 
     async def update_clients(
-        self, account_id: int, data: str, return_raw_response: bool = False,
+        self,
+        account_id: int,
+        data: str,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, AdsUpdateClientsResponse]:
         """
         :param account_id: - Advertising account ID.

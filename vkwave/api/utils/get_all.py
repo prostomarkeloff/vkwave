@@ -27,7 +27,10 @@ class Fetcher:
 
         result = (
             await _get_all_posts_execute(
-                api=api, wall_owner_id=wall_owner_id, _offset=offset, return_raw_response=True,
+                api=api,
+                wall_owner_id=wall_owner_id,
+                _offset=offset,
+                return_raw_response=True,
             )
         )["response"]
         executed, offset = result
@@ -36,7 +39,10 @@ class Fetcher:
         while executed:
             result = (
                 await _get_all_posts_execute(
-                    api=api, wall_owner_id=wall_owner_id, _offset=offset, return_raw_response=True,
+                    api=api,
+                    wall_owner_id=wall_owner_id,
+                    _offset=offset,
+                    return_raw_response=True,
                 )
             )["response"]
             executed, offset = result

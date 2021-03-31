@@ -33,6 +33,7 @@ from .leads import Leads
 from .likes import Likes
 from .market import Market
 from .messages import Messages
+from .money import Money
 from .newsfeed import Newsfeed
 from .notes import Notes
 from .notifications import Notifications
@@ -116,6 +117,7 @@ class APIOptionsRequestContext:
         self.leads = Leads("leads", self)
         self.likes = Likes("likes", self)
         self.market = Market("market", self)
+        self.money = Money("money", self)
         self.messages = Messages("messages", self)
         self.newsfeed = Newsfeed("newsfeed", self)
         self.notes = Notes("notes", self)

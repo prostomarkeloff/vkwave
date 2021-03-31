@@ -5,7 +5,9 @@ from ._utils import get_params
 
 class DownloadedGames(Category):
     async def games_get_paid_status(
-        self, return_raw_response: bool = False, user_id: typing.Optional[int] = None,
+        self,
+        return_raw_response: bool = False,
+        user_id: typing.Optional[int] = None,
     ) -> typing.Union[dict, DownloadedGamesPaidStatusResponse]:
         """
         :param user_id:

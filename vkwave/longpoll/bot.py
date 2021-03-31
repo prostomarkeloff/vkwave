@@ -45,7 +45,8 @@ class BotLongpollData:
             self._first_request = True
 
         data = await http_client.request_json(
-            "POST", f"{self.server}?act=a_check&key={self.key}&ts={self.ts}&wait={self.wait}",
+            "POST",
+            f"{self.server}?act=a_check&key={self.key}&ts={self.ts}&wait={self.wait}",
         )
 
         if "failed" in data:
@@ -66,7 +67,9 @@ class BotLongpoll:
 
         self.api: APIOptionsRequestContext = api
 
-        self.client: AbstractHTTPClient = http_client or self.api.api_options.get_client().http_client
+        self.client: AbstractHTTPClient = (
+            http_client or self.api.api_options.get_client().http_client
+        )
         self.data = bot_longpoll_data
 
     async def get_updates(self) -> List[Update]:

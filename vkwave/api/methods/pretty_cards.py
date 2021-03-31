@@ -37,7 +37,10 @@ class PrettyCards(Category):
         return result
 
     async def cards_delete(
-        self, owner_id: int, card_id: int, return_raw_response: bool = False,
+        self,
+        owner_id: int,
+        card_id: int,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, PrettyCardsDeleteResponse]:
         """
         :param owner_id:
@@ -114,7 +117,10 @@ class PrettyCards(Category):
         return result
 
     async def cards_get_by_id(
-        self, owner_id: int, card_ids: typing.List[int], return_raw_response: bool = False,
+        self,
+        owner_id: int,
+        card_ids: typing.List[int],
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, PrettyCardsGetByIdResponse]:
         """
         :param owner_id:
@@ -133,7 +139,8 @@ class PrettyCards(Category):
         return result
 
     async def cards_get_upload_u_r_l(
-        self, return_raw_response: bool = False,
+        self,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, PrettyCardsGetUploadURLResponse]:
         """
         :param return_raw_response: - return result at dict

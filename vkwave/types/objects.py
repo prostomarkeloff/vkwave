@@ -1049,7 +1049,7 @@ class MessagesMessageActionStatus(Enum):
     CHAT_PIN_MESSAGE = "chat_pin_message"
     CHAT_UNPIN_MESSAGE = "chat_unpin_message"
     CHAT_INVITE_USER_BY_LINK = "chat_invite_user_by_link"
-    CHAT_INVITE_USER_BY_MESSAGE_REQUEST = 'chat_invite_user_by_message_request'
+    CHAT_INVITE_USER_BY_MESSAGE_REQUEST = "chat_invite_user_by_message_request"
     CANNOT_BE_REPRESENTED = "CANNOT_BE_REPRESENTED"
 
     @classmethod
@@ -1550,1159 +1550,1494 @@ class WidgetsCommentMediaType(Enum):
 
 class AccountNameRequest(pydantic.BaseModel):
     first_name: typing.Optional[str] = pydantic.Field(
-        None, description="First name in request",
+        None,
+        description="First name in request",
     )
     id: typing.Optional[int] = pydantic.Field(
-        None, description="Request ID needed to cancel the request",
+        None,
+        description="Request ID needed to cancel the request",
     )
     last_name: typing.Optional[str] = pydantic.Field(
-        None, description="Last name in request",
+        None,
+        description="Last name in request",
     )
     status: typing.Optional["AccountNameRequestStatus"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     lang: typing.Optional[str] = pydantic.Field(
-        None, description="Text to display to user",
+        None,
+        description="Text to display to user",
     )
     link_href: typing.Optional[str] = pydantic.Field(
-        None, description="href for link in lang field",
+        None,
+        description="href for link in lang field",
     )
     link_label: typing.Optional[str] = pydantic.Field(
-        None, description="label to display for link in lang field",
+        None,
+        description="label to display for link in lang field",
     )
 
 
 class AccountPushConversations(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
-        None, description="Items count",
+        None,
+        description="Items count",
     )
     items: typing.Optional[typing.List["AccountPushConversationsItem"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class AccountPushParams(pydantic.BaseModel):
     msg: typing.Optional[typing.List["AccountPushParamsMode"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     chat: typing.Optional[typing.List["AccountPushParamsMode"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     like: typing.Optional[typing.List["AccountPushParamsSettings"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     repost: typing.Optional[typing.List["AccountPushParamsSettings"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     comment: typing.Optional[typing.List["AccountPushParamsSettings"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     mention: typing.Optional[typing.List["AccountPushParamsSettings"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     reply: typing.Optional[typing.List["AccountPushParamsOnoff"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     new_post: typing.Optional[typing.List["AccountPushParamsOnoff"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     wall_post: typing.Optional[typing.List["AccountPushParamsOnoff"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     wall_publish: typing.Optional[typing.List["AccountPushParamsOnoff"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     friend: typing.Optional[typing.List["AccountPushParamsOnoff"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     friend_found: typing.Optional[typing.List["AccountPushParamsOnoff"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     friend_accepted: typing.Optional[typing.List["AccountPushParamsOnoff"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     group_invite: typing.Optional[typing.List["AccountPushParamsOnoff"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     group_accepted: typing.Optional[typing.List["AccountPushParamsOnoff"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     birthday: typing.Optional[typing.List["AccountPushParamsOnoff"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     event_soon: typing.Optional[typing.List["AccountPushParamsOnoff"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     app_request: typing.Optional[typing.List["AccountPushParamsOnoff"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     sdk_open: typing.Optional[typing.List["AccountPushParamsOnoff"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class AccountUserSettingsInterest(pydantic.BaseModel):
     title: str = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     value: str = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class AccountUserSettingsInterests(pydantic.BaseModel):
     activities: typing.Optional["AccountUserSettingsInterest"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     interests: typing.Optional["AccountUserSettingsInterest"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     music: typing.Optional["AccountUserSettingsInterest"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     tv: typing.Optional["AccountUserSettingsInterest"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     movies: typing.Optional["AccountUserSettingsInterest"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     books: typing.Optional["AccountUserSettingsInterest"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     games: typing.Optional["AccountUserSettingsInterest"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     quotes: typing.Optional["AccountUserSettingsInterest"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     about: typing.Optional["AccountUserSettingsInterest"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class AdsDemostatsFormat(pydantic.BaseModel):
     age: typing.Optional[typing.List["AdsStatsAge"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     cities: typing.Optional[typing.List["AdsStatsCities"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     day: typing.Optional[str] = pydantic.Field(
-        None, description="Day as YYYY-MM-DD",
+        None,
+        description="Day as YYYY-MM-DD",
     )
     month: typing.Optional[str] = pydantic.Field(
-        None, description="Month as YYYY-MM",
+        None,
+        description="Month as YYYY-MM",
     )
     overall: typing.Optional[int] = pydantic.Field(
-        None, description="1 if period=overall",
+        None,
+        description="1 if period=overall",
     )
     sex: typing.Optional[typing.List["AdsStatsSex"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     sex_age: typing.Optional[typing.List["AdsStatsSexAge"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class AdsStatsFormat(pydantic.BaseModel):
     clicks: typing.Optional[int] = pydantic.Field(
-        None, description="Clicks number",
+        None,
+        description="Clicks number",
     )
     day: typing.Optional[str] = pydantic.Field(
-        None, description="Day as YYYY-MM-DD",
+        None,
+        description="Day as YYYY-MM-DD",
     )
     impressions: typing.Optional[int] = pydantic.Field(
-        None, description="Impressions number",
+        None,
+        description="Impressions number",
     )
     join_rate: typing.Optional[int] = pydantic.Field(
-        None, description="Events number",
+        None,
+        description="Events number",
     )
     month: typing.Optional[str] = pydantic.Field(
-        None, description="Month as YYYY-MM",
+        None,
+        description="Month as YYYY-MM",
     )
     overall: typing.Optional[int] = pydantic.Field(
-        None, description="1 if period=overall",
+        None,
+        description="1 if period=overall",
     )
     reach: typing.Optional[int] = pydantic.Field(
-        None, description="Reach ",
+        None,
+        description="Reach ",
     )
     spent: typing.Optional[int] = pydantic.Field(
-        None, description="Spent funds",
+        None,
+        description="Spent funds",
     )
     video_clicks_site: typing.Optional[int] = pydantic.Field(
-        None, description="Clickthoughs to the advertised site",
+        None,
+        description="Clickthoughs to the advertised site",
     )
     video_views: typing.Optional[int] = pydantic.Field(
-        None, description="Video views number",
+        None,
+        description="Video views number",
     )
     video_views_full: typing.Optional[int] = pydantic.Field(
-        None, description="Video views (full video)",
+        None,
+        description="Video views (full video)",
     )
     video_views_half: typing.Optional[int] = pydantic.Field(
-        None, description="Video views (half of video)",
+        None,
+        description="Video views (half of video)",
     )
 
 
 class AdsStatsViewsTimes(pydantic.BaseModel):
     views_ads_times_1: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     views_ads_times_2: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     views_ads_times_3: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     views_ads_times_4: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     views_ads_times_5: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     views_ads_times_6: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     views_ads_times_7: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     views_ads_times_8: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     views_ads_times_9: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     views_ads_times_10: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     views_ads_times_11_plus: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class AppsAppMin(pydantic.BaseModel):
     type: "AppsAppType" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     id: int = pydantic.Field(
-        ..., description="Application ID",
+        ...,
+        description="Application ID",
     )
     title: str = pydantic.Field(
-        ..., description="Application title",
+        ...,
+        description="Application title",
     )
     author_owner_id: typing.Optional[int] = pydantic.Field(
-        None, description="Application author's ID",
+        None,
+        description="Application author's ID",
     )
     is_installed: typing.Optional[bool] = pydantic.Field(
-        None, description="Is application installed",
+        None,
+        description="Is application installed",
     )
     icon_139: typing.Optional[str] = pydantic.Field(
-        None, description="URL of the app icon with 139 px in width",
+        None,
+        description="URL of the app icon with 139 px in width",
     )
     icon_150: typing.Optional[str] = pydantic.Field(
-        None, description="URL of the app icon with 150 px in width",
+        None,
+        description="URL of the app icon with 150 px in width",
     )
     icon_278: typing.Optional[str] = pydantic.Field(
-        None, description="URL of the app icon with 278 px in width",
+        None,
+        description="URL of the app icon with 278 px in width",
     )
     icon_576: typing.Optional[str] = pydantic.Field(
-        None, description="URL of the app icon with 576 px in width",
+        None,
+        description="URL of the app icon with 576 px in width",
     )
     background_loader_color: typing.Optional[str] = pydantic.Field(
-        None, description="Hex color code without hash sign",
+        None,
+        description="Hex color code without hash sign",
     )
     loader_icon: typing.Optional[str] = pydantic.Field(
-        None, description="SVG data",
+        None,
+        description="SVG data",
     )
     icon_75: typing.Optional[str] = pydantic.Field(
-        None, description="URL of the app icon with 75 px in width",
+        None,
+        description="URL of the app icon with 75 px in width",
     )
 
 
 class AudioAudio(pydantic.BaseModel):
     artist: str = pydantic.Field(
-        ..., description="Artist name",
+        ...,
+        description="Artist name",
     )
     id: int = pydantic.Field(
-        ..., description="Audio ID",
+        ...,
+        description="Audio ID",
     )
     title: str = pydantic.Field(
-        ..., description="Title",
+        ...,
+        description="Title",
     )
     url: typing.Optional[str] = pydantic.Field(
-        None, description="URL of mp3 file",
+        None,
+        description="URL of mp3 file",
     )
     duration: int = pydantic.Field(
-        ..., description="Duration in seconds",
+        ...,
+        description="Duration in seconds",
     )
     date: typing.Optional[int] = pydantic.Field(
-        None, description="Date when uploaded",
+        None,
+        description="Date when uploaded",
     )
     album_id: typing.Optional[int] = pydantic.Field(
-        None, description="Album ID",
+        None,
+        description="Album ID",
     )
     genre_id: typing.Optional[int] = pydantic.Field(
-        None, description="Genre ID",
+        None,
+        description="Genre ID",
     )
     performer: typing.Optional[str] = pydantic.Field(
-        None, description="Performer name",
+        None,
+        description="Performer name",
     )
 
 
 class BaseCity(pydantic.BaseModel):
     id: int = pydantic.Field(
-        ..., description="City ID",
+        ...,
+        description="City ID",
     )
     title: str = pydantic.Field(
-        ..., description="City title",
+        ...,
+        description="City title",
     )
 
 
 class BaseCommentsInfo(pydantic.BaseModel):
     can_post: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user can comment the post",
+        None,
+        description="Information whether current user can comment the post",
     )
     count: typing.Optional[int] = pydantic.Field(
-        None, description="Comments number",
+        None,
+        description="Comments number",
     )
     groups_can_post: typing.Optional[bool] = pydantic.Field(
-        None, description="Information whether groups can comment the post",
+        None,
+        description="Information whether groups can comment the post",
     )
     donut: typing.Optional["WallWallpostCommentsDonut"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class BaseCountry(pydantic.BaseModel):
     id: int = pydantic.Field(
-        ..., description="Country ID",
+        ...,
+        description="Country ID",
     )
     title: str = pydantic.Field(
-        ..., description="Country title",
+        ...,
+        description="Country title",
     )
 
 
 class BaseCropPhotoCrop(pydantic.BaseModel):
     x: int = pydantic.Field(
-        ..., description="Coordinate X of the left upper corner",
+        ...,
+        description="Coordinate X of the left upper corner",
     )
     y: int = pydantic.Field(
-        ..., description="Coordinate Y of the left upper corner",
+        ...,
+        description="Coordinate Y of the left upper corner",
     )
     x2: int = pydantic.Field(
-        ..., description="Coordinate X of the right lower corner",
+        ...,
+        description="Coordinate X of the right lower corner",
     )
     y2: int = pydantic.Field(
-        ..., description="Coordinate Y of the right lower corner",
+        ...,
+        description="Coordinate Y of the right lower corner",
     )
 
 
 class BaseCropPhotoRect(pydantic.BaseModel):
     x: int = pydantic.Field(
-        ..., description="Coordinate X of the left upper corner",
+        ...,
+        description="Coordinate X of the left upper corner",
     )
     y: int = pydantic.Field(
-        ..., description="Coordinate Y of the left upper corner",
+        ...,
+        description="Coordinate Y of the left upper corner",
     )
     x2: int = pydantic.Field(
-        ..., description="Coordinate X of the right lower corner",
+        ...,
+        description="Coordinate X of the right lower corner",
     )
     y2: int = pydantic.Field(
-        ..., description="Coordinate Y of the right lower corner",
+        ...,
+        description="Coordinate Y of the right lower corner",
     )
 
 
 class BaseError(pydantic.BaseModel):
     error_code: typing.Optional[int] = pydantic.Field(
-        None, description="Error code",
+        None,
+        description="Error code",
     )
     error_subcode: typing.Optional[int] = pydantic.Field(
-        None, description="Error subcode",
+        None,
+        description="Error subcode",
     )
     error_msg: typing.Optional[str] = pydantic.Field(
-        None, description="Error message",
+        None,
+        description="Error message",
     )
     error_text: typing.Optional[str] = pydantic.Field(
-        None, description="Localized error message",
+        None,
+        description="Localized error message",
     )
     request_params: typing.Optional[typing.List["BaseRequestParam"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class BaseGeo(pydantic.BaseModel):
     coordinates: typing.Optional["BaseGeoCoordinates"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     place: typing.Optional["BasePlace"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     showmap: typing.Optional[int] = pydantic.Field(
-        None, description="Information whether a map is showed",
+        None,
+        description="Information whether a map is showed",
     )
     type: typing.Optional[str] = pydantic.Field(
-        None, description="Place type",
+        None,
+        description="Place type",
     )
 
 
 class BaseGeoCoordinates(pydantic.BaseModel):
     latitude: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     longitude: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class BaseLikes(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
-        None, description="Likes number",
+        None,
+        description="Likes number",
     )
     user_likes: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user likes the photo",
+        None,
+        description="Information whether current user likes the photo",
     )
 
 
 class BaseLikesInfo(pydantic.BaseModel):
     can_like: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user can like the post",
+        None,
+        description="Information whether current user can like the post",
     )
     can_publish: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user can repost",
+        None,
+        description="Information whether current user can repost",
     )
     count: int = pydantic.Field(
-        ..., description="Likes number",
+        ...,
+        description="Likes number",
     )
     user_likes: typing.Optional[int] = pydantic.Field(
-        None, description="Information whether current uer has liked the post",
+        None,
+        description="Information whether current uer has liked the post",
     )
 
 
 class BaseLink(pydantic.BaseModel):
     application: typing.Optional["BaseLinkApplication"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     button: typing.Optional["BaseLinkButton"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     caption: typing.Optional[str] = pydantic.Field(
-        None, description="Link caption",
+        None,
+        description="Link caption",
     )
     description: typing.Optional[str] = pydantic.Field(
-        None, description="Link description",
+        None,
+        description="Link description",
     )
     id: typing.Optional[str] = pydantic.Field(
-        None, description="Link ID",
+        None,
+        description="Link ID",
     )
     is_favorite: typing.Optional[bool] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     photo: typing.Optional["PhotosPhoto"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     preview_page: typing.Optional[str] = pydantic.Field(
-        None, description="String ID of the page with article preview",
+        None,
+        description="String ID of the page with article preview",
     )
     preview_url: typing.Optional[str] = pydantic.Field(
-        None, description="URL of the page with article preview",
+        None,
+        description="URL of the page with article preview",
     )
     product: typing.Optional["BaseLinkProduct"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     rating: typing.Optional["BaseLinkRating"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     title: typing.Optional[str] = pydantic.Field(
-        None, description="Link title",
+        None,
+        description="Link title",
     )
     url: str = pydantic.Field(
-        ..., description="Link URL",
+        ...,
+        description="Link URL",
     )
     target_object: typing.Optional["LinkTargetObject"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     is_external: typing.Optional[bool] = pydantic.Field(
-        None, description="Information whether the current link is external",
+        None,
+        description="Information whether the current link is external",
     )
     video: typing.Optional["VideoVideo"] = pydantic.Field(
-        None, description="Video from link",
+        None,
+        description="Video from link",
     )
 
 
 class BaseLinkApplication(pydantic.BaseModel):
     app_id: typing.Optional[int] = pydantic.Field(
-        None, description="Application Id",
+        None,
+        description="Application Id",
     )
     store: typing.Optional["BaseLinkApplicationStore"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class BaseLinkApplicationStore(pydantic.BaseModel):
     id: typing.Optional[int] = pydantic.Field(
-        None, description="Store Id",
+        None,
+        description="Store Id",
     )
     name: typing.Optional[str] = pydantic.Field(
-        None, description="Store name",
+        None,
+        description="Store name",
     )
 
 
 class BaseLinkButton(pydantic.BaseModel):
     action: typing.Optional["BaseLinkButtonAction"] = pydantic.Field(
-        None, description="Button action",
+        None,
+        description="Button action",
     )
     title: typing.Optional[str] = pydantic.Field(
-        None, description="Button title",
+        None,
+        description="Button title",
     )
     block_id: typing.Optional[str] = pydantic.Field(
-        None, description="Target block id",
+        None,
+        description="Target block id",
     )
     section_id: typing.Optional[str] = pydantic.Field(
-        None, description="Target section id",
+        None,
+        description="Target section id",
     )
     curator_id: typing.Optional[int] = pydantic.Field(
-        None, description="curator id",
+        None,
+        description="curator id",
     )
     owner_id: typing.Optional[int] = pydantic.Field(
-        None, description="Owner id",
+        None,
+        description="Owner id",
     )
     icon: typing.Optional[str] = pydantic.Field(
-        None, description="Button icon name, e.g. 'phone' or 'gift'",
+        None,
+        description="Button icon name, e.g. 'phone' or 'gift'",
     )
     style: typing.Optional["BaseLinkButtonStyle"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class BaseLinkButtonAction(pydantic.BaseModel):
     type: typing.Optional["BaseLinkButtonActionType"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     url: typing.Optional[str] = pydantic.Field(
-        None, description="Action URL",
+        None,
+        description="Action URL",
     )
     consume_reason: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class BaseLinkProduct(pydantic.BaseModel):
     price: "MarketPrice" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     merchant: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     orders_count: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class BaseLinkRating(pydantic.BaseModel):
     reviews_count: typing.Optional[int] = pydantic.Field(
-        None, description="Count of reviews",
+        None,
+        description="Count of reviews",
     )
     stars: typing.Optional[int] = pydantic.Field(
-        None, description="Count of stars",
+        None,
+        description="Count of stars",
     )
 
 
 class BaseObjectCount(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
-        None, description="Items count",
+        None,
+        description="Items count",
     )
 
 
 class BasePlace(pydantic.BaseModel):
     address: typing.Optional[str] = pydantic.Field(
-        None, description="Place address",
+        None,
+        description="Place address",
     )
     checkins: typing.Optional[int] = pydantic.Field(
-        None, description="Checkins number",
+        None,
+        description="Checkins number",
     )
     city: typing.Optional[str] = pydantic.Field(
-        None, description="City name",
+        None,
+        description="City name",
     )
     country: typing.Optional[str] = pydantic.Field(
-        None, description="Country name",
+        None,
+        description="Country name",
     )
     created: typing.Optional[int] = pydantic.Field(
-        None, description="Date of the place creation in Unixtime",
+        None,
+        description="Date of the place creation in Unixtime",
     )
     icon: typing.Optional[str] = pydantic.Field(
-        None, description="URL of the place's icon",
+        None,
+        description="URL of the place's icon",
     )
     id: typing.Optional[int] = pydantic.Field(
-        None, description="Place ID",
+        None,
+        description="Place ID",
     )
     latitude: typing.Optional[int] = pydantic.Field(
-        None, description="Place latitude",
+        None,
+        description="Place latitude",
     )
     longitude: typing.Optional[int] = pydantic.Field(
-        None, description="Place longitude",
+        None,
+        description="Place longitude",
     )
     title: typing.Optional[str] = pydantic.Field(
-        None, description="Place title",
+        None,
+        description="Place title",
     )
     type: typing.Optional[str] = pydantic.Field(
-        None, description="Place type",
+        None,
+        description="Place type",
     )
 
 
 class BaseRepostsInfo(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
-        None, description="Total reposts counter. Sum of wall and mail reposts counters",
+        None,
+        description="Total reposts counter. Sum of wall and mail reposts counters",
     )
     wall_count: typing.Optional[int] = pydantic.Field(
-        None, description="Wall reposts counter",
+        None,
+        description="Wall reposts counter",
     )
     mail_count: typing.Optional[int] = pydantic.Field(
-        None, description="Mail reposts counter",
+        None,
+        description="Mail reposts counter",
     )
     user_reposted: typing.Optional[int] = pydantic.Field(
-        None, description="Information whether current user has reposted the post",
+        None,
+        description="Information whether current user has reposted the post",
     )
 
 
 class BaseSticker(pydantic.BaseModel):
     sticker_id: typing.Optional[int] = pydantic.Field(
-        None, description="Sticker ID",
+        None,
+        description="Sticker ID",
     )
     product_id: typing.Optional[int] = pydantic.Field(
-        None, description="Pack ID",
+        None,
+        description="Pack ID",
     )
     images: typing.Optional[typing.List["BaseImage"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     images_with_background: typing.Optional[typing.List["BaseImage"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     animation_url: typing.Optional[str] = pydantic.Field(
-        None, description="URL of sticker animation script",
+        None,
+        description="URL of sticker animation script",
     )
     animations: typing.Optional[typing.List["BaseStickerAnimation"]] = pydantic.Field(
-        None, description="Array of sticker animation script objects",
+        None,
+        description="Array of sticker animation script objects",
     )
     is_allowed: typing.Optional[bool] = pydantic.Field(
-        None, description="Information whether the sticker is allowed",
+        None,
+        description="Information whether the sticker is allowed",
     )
 
 
 class BoardTopic(pydantic.BaseModel):
     comments: typing.Optional[int] = pydantic.Field(
-        None, description="Comments number",
+        None,
+        description="Comments number",
     )
     created: typing.Optional[int] = pydantic.Field(
-        None, description="Date when the topic has been created in Unixtime",
+        None,
+        description="Date when the topic has been created in Unixtime",
     )
     created_by: typing.Optional[int] = pydantic.Field(
-        None, description="Creator ID",
+        None,
+        description="Creator ID",
     )
     id: typing.Optional[int] = pydantic.Field(
-        None, description="Topic ID",
+        None,
+        description="Topic ID",
     )
     is_closed: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether the topic is closed",
+        None,
+        description="Information whether the topic is closed",
     )
     is_fixed: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether the topic is fixed",
+        None,
+        description="Information whether the topic is fixed",
     )
     title: typing.Optional[str] = pydantic.Field(
-        None, description="Topic title",
+        None,
+        description="Topic title",
     )
     updated: typing.Optional[int] = pydantic.Field(
-        None, description="Date when the topic has been updated in Unixtime",
+        None,
+        description="Date when the topic has been updated in Unixtime",
     )
     updated_by: typing.Optional[int] = pydantic.Field(
-        None, description="ID of user who updated the topic",
+        None,
+        description="ID of user who updated the topic",
     )
 
 
 class CommentThread(pydantic.BaseModel):
     can_post: typing.Optional[bool] = pydantic.Field(
-        None, description="Information whether current user can comment the post",
+        None,
+        description="Information whether current user can comment the post",
     )
     count: int = pydantic.Field(
-        ..., description="Comments number",
+        ...,
+        description="Comments number",
     )
     groups_can_post: typing.Optional[bool] = pydantic.Field(
-        None, description="Information whether groups can comment the post",
+        None,
+        description="Information whether groups can comment the post",
     )
     items: typing.Optional[typing.List["WallWallComment"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     show_reply_button: typing.Optional[bool] = pydantic.Field(
-        None, description="Information whether recommended to display reply button",
+        None,
+        description="Information whether recommended to display reply button",
     )
 
 
 class DocsDoc(pydantic.BaseModel):
     id: int = pydantic.Field(
-        ..., description="Document ID",
+        ...,
+        description="Document ID",
     )
     owner_id: int = pydantic.Field(
-        ..., description="Document owner ID",
+        ...,
+        description="Document owner ID",
     )
     title: str = pydantic.Field(
-        ..., description="Document title",
+        ...,
+        description="Document title",
     )
     size: int = pydantic.Field(
-        ..., description="File size in bites",
+        ...,
+        description="File size in bites",
     )
     ext: str = pydantic.Field(
-        ..., description="File extension",
+        ...,
+        description="File extension",
     )
     url: typing.Optional[str] = pydantic.Field(
-        None, description="File URL",
+        None,
+        description="File URL",
     )
     date: int = pydantic.Field(
-        ..., description="Date when file has been uploaded in Unixtime",
+        ...,
+        description="Date when file has been uploaded in Unixtime",
     )
     type: int = pydantic.Field(
-        ..., description="Document type",
+        ...,
+        description="Document type",
     )
     preview: typing.Optional["DocsDocPreview"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     is_licensed: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     access_key: typing.Optional[str] = pydantic.Field(
-        None, description="Access key for the document",
+        None,
+        description="Access key for the document",
     )
     tags: typing.Optional[typing.List[str]] = pydantic.Field(
-        None, description="Document tags",
+        None,
+        description="Document tags",
     )
 
 
 class DocsDocPreview(pydantic.BaseModel):
     audio_msg: typing.Optional["DocsDocPreviewAudioMsg"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     graffiti: typing.Optional["DocsDocPreviewGraffiti"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     photo: typing.Optional["DocsDocPreviewPhoto"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     video: typing.Optional["DocsDocPreviewVideo"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class DocsDocPreviewAudioMsg(pydantic.BaseModel):
     duration: int = pydantic.Field(
-        ..., description="Audio message duration in seconds",
+        ...,
+        description="Audio message duration in seconds",
     )
     link_mp3: str = pydantic.Field(
-        ..., description="MP3 file URL",
+        ...,
+        description="MP3 file URL",
     )
     link_ogg: str = pydantic.Field(
-        ..., description="OGG file URL",
+        ...,
+        description="OGG file URL",
     )
     waveform: typing.List[int] = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class DocsDocPreviewGraffiti(pydantic.BaseModel):
     src: str = pydantic.Field(
-        ..., description="Graffiti file URL",
+        ...,
+        description="Graffiti file URL",
     )
     width: int = pydantic.Field(
-        ..., description="Graffiti width",
+        ...,
+        description="Graffiti width",
     )
     height: int = pydantic.Field(
-        ..., description="Graffiti height",
+        ...,
+        description="Graffiti height",
     )
 
 
 class DocsDocPreviewPhoto(pydantic.BaseModel):
     sizes: typing.Optional[typing.List["DocsDocPreviewPhotoSizes"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class DocsDocPreviewVideo(pydantic.BaseModel):
     src: str = pydantic.Field(
-        ..., description="Video URL",
+        ...,
+        description="Video URL",
     )
     width: int = pydantic.Field(
-        ..., description="Video's width in pixels",
+        ...,
+        description="Video's width in pixels",
     )
     height: int = pydantic.Field(
-        ..., description="Video's height in pixels",
+        ...,
+        description="Video's height in pixels",
     )
     file_size: int = pydantic.Field(
-        ..., description="Video file size in bites",
+        ...,
+        description="Video file size in bites",
     )
 
 
 class EventsEventAttach(pydantic.BaseModel):
     address: typing.Optional[str] = pydantic.Field(
-        None, description="address of event",
+        None,
+        description="address of event",
     )
     button_text: str = pydantic.Field(
-        ..., description="text of attach",
+        ...,
+        description="text of attach",
     )
     friends: typing.List[int] = pydantic.Field(
-        ..., description="array of friends ids",
+        ...,
+        description="array of friends ids",
     )
     id: int = pydantic.Field(
-        ..., description="event ID",
+        ...,
+        description="event ID",
     )
     is_favorite: bool = pydantic.Field(
-        ..., description="is favorite",
+        ...,
+        description="is favorite",
     )
     member_status: typing.Optional["GroupsGroupFullMemberStatus"] = pydantic.Field(
-        None, description="Current user's member status",
+        None,
+        description="Current user's member status",
     )
     text: str = pydantic.Field(
-        ..., description="text of attach",
+        ...,
+        description="text of attach",
     )
     time: typing.Optional[int] = pydantic.Field(
-        None, description="event start time",
+        None,
+        description="event start time",
     )
 
 
 class FriendsRequestsMutual(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
-        None, description="Total mutual friends number",
+        None,
+        description="Total mutual friends number",
     )
     users: typing.Optional[typing.List[int]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class GiftsLayout(pydantic.BaseModel):
     id: typing.Optional[int] = pydantic.Field(
-        None, description="Gift ID",
+        None,
+        description="Gift ID",
     )
     thumb_512: typing.Optional[str] = pydantic.Field(
-        None, description="URL of the preview image with 512 px in width",
+        None,
+        description="URL of the preview image with 512 px in width",
     )
     thumb_256: typing.Optional[str] = pydantic.Field(
-        None, description="URL of the preview image with 256 px in width",
+        None,
+        description="URL of the preview image with 256 px in width",
     )
     thumb_48: typing.Optional[str] = pydantic.Field(
-        None, description="URL of the preview image with 48 px in width",
+        None,
+        description="URL of the preview image with 48 px in width",
     )
     thumb_96: typing.Optional[str] = pydantic.Field(
-        None, description="URL of the preview image with 96 px in width",
+        None,
+        description="URL of the preview image with 96 px in width",
     )
     stickers_product_id: typing.Optional[int] = pydantic.Field(
-        None, description="ID of the sticker pack, if the gift is representing one",
+        None,
+        description="ID of the sticker pack, if the gift is representing one",
     )
     is_stickers_style: typing.Optional[bool] = pydantic.Field(
-        None, description="Information whether gift represents a stickers style",
+        None,
+        description="Information whether gift represents a stickers style",
     )
     build_id: typing.Optional[str] = pydantic.Field(
-        None, description="ID of the build of constructor gift",
+        None,
+        description="ID of the build of constructor gift",
     )
     keywords: typing.Optional[str] = pydantic.Field(
-        None, description="Keywords used for search",
+        None,
+        description="Keywords used for search",
     )
 
 
 class GroupsAddressTimetable(pydantic.BaseModel):
     fri: typing.Optional["GroupsAddressTimetableDay"] = pydantic.Field(
-        None, description="Timetable for friday",
+        None,
+        description="Timetable for friday",
     )
     mon: typing.Optional["GroupsAddressTimetableDay"] = pydantic.Field(
-        None, description="Timetable for monday",
+        None,
+        description="Timetable for monday",
     )
     sat: typing.Optional["GroupsAddressTimetableDay"] = pydantic.Field(
-        None, description="Timetable for saturday",
+        None,
+        description="Timetable for saturday",
     )
     sun: typing.Optional["GroupsAddressTimetableDay"] = pydantic.Field(
-        None, description="Timetable for sunday",
+        None,
+        description="Timetable for sunday",
     )
     thu: typing.Optional["GroupsAddressTimetableDay"] = pydantic.Field(
-        None, description="Timetable for thursday",
+        None,
+        description="Timetable for thursday",
     )
     tue: typing.Optional["GroupsAddressTimetableDay"] = pydantic.Field(
-        None, description="Timetable for tuesday",
+        None,
+        description="Timetable for tuesday",
     )
     wed: typing.Optional["GroupsAddressTimetableDay"] = pydantic.Field(
-        None, description="Timetable for wednesday",
+        None,
+        description="Timetable for wednesday",
     )
 
 
 class GroupsAddressTimetableDay(pydantic.BaseModel):
     break_close_time: typing.Optional[int] = pydantic.Field(
-        None, description="Close time of the break in minutes",
+        None,
+        description="Close time of the break in minutes",
     )
     break_open_time: typing.Optional[int] = pydantic.Field(
-        None, description="Start time of the break in minutes",
+        None,
+        description="Start time of the break in minutes",
     )
     close_time: int = pydantic.Field(
-        ..., description="Close time in minutes",
+        ...,
+        description="Close time in minutes",
     )
     open_time: int = pydantic.Field(
-        ..., description="Open time in minutes",
+        ...,
+        description="Open time in minutes",
     )
 
 
 class GroupsBanInfo(pydantic.BaseModel):
     admin_id: typing.Optional[int] = pydantic.Field(
-        None, description="Administrator ID",
+        None,
+        description="Administrator ID",
     )
     comment: typing.Optional[str] = pydantic.Field(
-        None, description="Comment for a ban",
+        None,
+        description="Comment for a ban",
     )
     comment_visible: typing.Optional[bool] = pydantic.Field(
-        None, description="Show comment for user",
+        None,
+        description="Show comment for user",
     )
     is_closed: typing.Optional[bool] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     date: typing.Optional[int] = pydantic.Field(
-        None, description="Date when user has been added to blacklist in Unixtime",
+        None,
+        description="Date when user has been added to blacklist in Unixtime",
     )
     end_date: typing.Optional[int] = pydantic.Field(
-        None, description="Date when user will be removed from blacklist in Unixtime",
+        None,
+        description="Date when user will be removed from blacklist in Unixtime",
     )
     reason: typing.Optional["GroupsBanInfoReason"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class GroupsGroup(pydantic.BaseModel):
     admin_level: typing.Optional["GroupsGroupAdminLevel"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     deactivated: typing.Optional[str] = pydantic.Field(
-        None, description="Information whether community is banned",
+        None,
+        description="Information whether community is banned",
     )
     finish_date: typing.Optional[int] = pydantic.Field(
-        None, description="Finish date in Unixtime format",
+        None,
+        description="Finish date in Unixtime format",
     )
     id: typing.Optional[int] = pydantic.Field(
-        None, description="Community ID",
+        None,
+        description="Community ID",
     )
     is_admin: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user is administrator",
+        None,
+        description="Information whether current user is administrator",
     )
     is_advertiser: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user is advertiser",
+        None,
+        description="Information whether current user is advertiser",
     )
     is_closed: typing.Optional["GroupsGroupIsClosed"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     is_member: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user is member",
+        None,
+        description="Information whether current user is member",
     )
     name: typing.Optional[str] = pydantic.Field(
-        None, description="Community name",
+        None,
+        description="Community name",
     )
     photo_100: typing.Optional[str] = pydantic.Field(
-        None, description="URL of square photo of the community with 100 pixels in width",
+        None,
+        description="URL of square photo of the community with 100 pixels in width",
     )
     photo_200: typing.Optional[str] = pydantic.Field(
-        None, description="URL of square photo of the community with 200 pixels in width",
+        None,
+        description="URL of square photo of the community with 200 pixels in width",
     )
     photo_50: typing.Optional[str] = pydantic.Field(
-        None, description="URL of square photo of the community with 50 pixels in width",
+        None,
+        description="URL of square photo of the community with 50 pixels in width",
     )
     screen_name: typing.Optional[str] = pydantic.Field(
-        None, description="Domain of the community page",
+        None,
+        description="Domain of the community page",
     )
     start_date: typing.Optional[int] = pydantic.Field(
-        None, description="Start date in Unixtime format",
+        None,
+        description="Start date in Unixtime format",
     )
     type: typing.Optional["GroupsGroupType"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class GroupsGroupAttach(pydantic.BaseModel):
     id: int = pydantic.Field(
-        ..., description="group ID",
+        ...,
+        description="group ID",
     )
     text: str = pydantic.Field(
-        ..., description="text of attach",
+        ...,
+        description="text of attach",
     )
     status: str = pydantic.Field(
-        ..., description="activity or category of group",
+        ...,
+        description="activity or category of group",
     )
     size: int = pydantic.Field(
-        ..., description="size of group",
+        ...,
+        description="size of group",
     )
     is_favorite: bool = pydantic.Field(
-        ..., description="is favorite",
+        ...,
+        description="is favorite",
     )
 
 
 class GroupsLongPollEvents(pydantic.BaseModel):
     audio_new: "BaseBoolInt" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     board_post_delete: "BaseBoolInt" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     board_post_edit: "BaseBoolInt" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     board_post_new: "BaseBoolInt" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     board_post_restore: "BaseBoolInt" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     group_change_photo: "BaseBoolInt" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     group_change_settings: "BaseBoolInt" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     group_join: "BaseBoolInt" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     group_leave: "BaseBoolInt" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     group_officers_edit: "BaseBoolInt" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     lead_forms_new: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     market_comment_delete: "BaseBoolInt" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     market_comment_edit: "BaseBoolInt" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     market_comment_new: "BaseBoolInt" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     market_comment_restore: "BaseBoolInt" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     market_order_new: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     market_order_edit: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     message_allow: "BaseBoolInt" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     message_deny: "BaseBoolInt" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     message_new: "BaseBoolInt" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     message_read: "BaseBoolInt" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     message_reply: "BaseBoolInt" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     message_typing_state: "BaseBoolInt" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     message_edit: "BaseBoolInt" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     photo_comment_delete: "BaseBoolInt" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     photo_comment_edit: "BaseBoolInt" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     photo_comment_new: "BaseBoolInt" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     photo_comment_restore: "BaseBoolInt" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     photo_new: "BaseBoolInt" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     poll_vote_new: "BaseBoolInt" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     user_block: "BaseBoolInt" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     user_unblock: "BaseBoolInt" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     video_comment_delete: "BaseBoolInt" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     video_comment_edit: "BaseBoolInt" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     video_comment_new: "BaseBoolInt" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     video_comment_restore: "BaseBoolInt" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     video_new: "BaseBoolInt" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     wall_post_new: "BaseBoolInt" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     wall_reply_delete: "BaseBoolInt" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     wall_reply_edit: "BaseBoolInt" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     wall_reply_new: "BaseBoolInt" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     wall_reply_restore: "BaseBoolInt" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     wall_repost: "BaseBoolInt" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class LinkTargetObject(pydantic.BaseModel):
     type: typing.Optional[str] = pydantic.Field(
-        None, description="Object type",
+        None,
+        description="Object type",
     )
     owner_id: typing.Optional[int] = pydantic.Field(
-        None, description="Owner ID",
+        None,
+        description="Owner ID",
     )
     item_id: typing.Optional[int] = pydantic.Field(
-        None, description="Item ID",
+        None,
+        description="Item ID",
     )
 
 
 class MarketCurrency(pydantic.BaseModel):
     id: int = pydantic.Field(
-        ..., description="Currency ID",
+        ...,
+        description="Currency ID",
     )
     name: str = pydantic.Field(
-        ..., description="Currency sign",
+        ...,
+        description="Currency sign",
     )
 
 
 class MarketMarketAlbum(pydantic.BaseModel):
     count: int = pydantic.Field(
-        ..., description="Items number",
+        ...,
+        description="Items number",
     )
     id: int = pydantic.Field(
-        ..., description="Market album ID",
+        ...,
+        description="Market album ID",
     )
     owner_id: int = pydantic.Field(
-        ..., description="Market album owner's ID",
+        ...,
+        description="Market album owner's ID",
     )
     photo: typing.Optional["PhotosPhoto"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     title: str = pydantic.Field(
-        ..., description="Market album title",
+        ...,
+        description="Market album title",
     )
     updated_time: int = pydantic.Field(
-        ..., description="Date when album has been updated last time in Unixtime",
+        ...,
+        description="Date when album has been updated last time in Unixtime",
     )
 
 
@@ -2712,948 +3047,1224 @@ class MarketMarketCategory(pydantic.BaseModel):
 
 class MarketMarketCategoryNested(pydantic.BaseModel):
     id: int = pydantic.Field(
-        ..., description="Category ID",
+        ...,
+        description="Category ID",
     )
     name: str = pydantic.Field(
-        ..., description="Category name",
+        ...,
+        description="Category name",
     )
     parent: typing.Optional["MarketMarketCategoryNested"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class MarketMarketItem(pydantic.BaseModel):
     access_key: typing.Optional[str] = pydantic.Field(
-        None, description="Access key for the market item",
+        None,
+        description="Access key for the market item",
     )
     availability: "MarketMarketItemAvailability" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     button_title: typing.Optional[str] = pydantic.Field(
-        None, description="Title for button for url",
+        None,
+        description="Title for button for url",
     )
     category: "MarketMarketCategory" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     date: typing.Optional[int] = pydantic.Field(
-        None, description="Date when the item has been created in Unixtime",
+        None,
+        description="Date when the item has been created in Unixtime",
     )
     description: str = pydantic.Field(
-        ..., description="Item description",
+        ...,
+        description="Item description",
     )
     external_id: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     id: int = pydantic.Field(
-        ..., description="Item ID",
+        ...,
+        description="Item ID",
     )
     is_favorite: typing.Optional[bool] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     owner_id: int = pydantic.Field(
-        ..., description="Item owner's ID",
+        ...,
+        description="Item owner's ID",
     )
     price: "MarketPrice" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     thumb_photo: str = pydantic.Field(
-        ..., description="URL of the preview image",
+        ...,
+        description="URL of the preview image",
     )
     title: str = pydantic.Field(
-        ..., description="Item title",
+        ...,
+        description="Item title",
     )
     url: typing.Optional[str] = pydantic.Field(
-        None, description="URL to item",
+        None,
+        description="URL to item",
     )
     variants_grouping_id: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     is_main_variant: typing.Optional[bool] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class MarketPrice(pydantic.BaseModel):
     amount: typing.Optional[str] = pydantic.Field(
-        None, description="Amount",
+        None,
+        description="Amount",
     )
     currency: typing.Optional["MarketCurrency"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     discount_rate: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     old_amount: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     text: typing.Optional[str] = pydantic.Field(
-        None, description="Text",
+        None,
+        description="Text",
     )
     old_amount_text: typing.Optional[str] = pydantic.Field(
-        None, description="Textual representation of old price",
+        None,
+        description="Textual representation of old price",
     )
 
 
 class MarketSection(pydantic.BaseModel):
     id: int = pydantic.Field(
-        ..., description="Section ID",
+        ...,
+        description="Section ID",
     )
     name: str = pydantic.Field(
-        ..., description="Section name",
+        ...,
+        description="Section name",
     )
 
 
 class MediaRestriction(pydantic.BaseModel):
     text: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     title: str = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     button: typing.Optional["VideoRestrictionButton"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     always_shown: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Need show restriction always or not",
+        None,
+        description="Need show restriction always or not",
     )
     blur: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Need blur current video or not",
+        None,
+        description="Need blur current video or not",
     )
     can_play: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Can play video or not",
+        None,
+        description="Can play video or not",
     )
     can_preview: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Can preview video or not",
+        None,
+        description="Can preview video or not",
     )
     card_icon: typing.Optional[typing.List["BaseImage"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     list_icon: typing.Optional[typing.List["BaseImage"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class MessagesAudioMessage(pydantic.BaseModel):
     access_key: typing.Optional[str] = pydantic.Field(
-        None, description="Access key for audio message",
+        None,
+        description="Access key for audio message",
     )
     transcript_error: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     transcript: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     duration: int = pydantic.Field(
-        ..., description="Audio message duration in seconds",
+        ...,
+        description="Audio message duration in seconds",
     )
     id: int = pydantic.Field(
-        ..., description="Audio message ID",
+        ...,
+        description="Audio message ID",
     )
     link_mp3: str = pydantic.Field(
-        ..., description="MP3 file URL",
+        ...,
+        description="MP3 file URL",
     )
     link_ogg: str = pydantic.Field(
-        ..., description="OGG file URL",
+        ...,
+        description="OGG file URL",
     )
     owner_id: int = pydantic.Field(
-        ..., description="Audio message owner ID",
+        ...,
+        description="Audio message owner ID",
     )
     waveform: typing.List[int] = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class MessagesChatPushSettings(pydantic.BaseModel):
     disabled_until: typing.Optional[int] = pydantic.Field(
-        None, description="Time until that notifications are disabled",
+        None,
+        description="Time until that notifications are disabled",
     )
     sound: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether the sound is on",
+        None,
+        description="Information whether the sound is on",
     )
 
 
 class MessagesConversation(pydantic.BaseModel):
     peer: "MessagesConversationPeer" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     last_message_id: int = pydantic.Field(
-        ..., description="ID of the last message in conversation",
+        ...,
+        description="ID of the last message in conversation",
     )
     in_read: int = pydantic.Field(
-        ..., description="Last message user have read",
+        ...,
+        description="Last message user have read",
     )
     out_read: int = pydantic.Field(
-        ..., description="Last outcoming message have been read by the opponent",
+        ...,
+        description="Last outcoming message have been read by the opponent",
     )
     unread_count: typing.Optional[int] = pydantic.Field(
-        None, description="Unread messages number",
+        None,
+        description="Unread messages number",
     )
     is_marked_unread: typing.Optional[bool] = pydantic.Field(
-        None, description="Is this conversation uread",
+        None,
+        description="Is this conversation uread",
     )
     out_read_by: typing.Optional["MessagesOutReadBy"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     important: typing.Optional[bool] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     unanswered: typing.Optional[bool] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     special_service_type: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     message_request_data: typing.Optional["MessagesMessageRequestData"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     mentions: typing.Optional[typing.List[int]] = pydantic.Field(
-        None, description="Ids of messages with mentions",
+        None,
+        description="Ids of messages with mentions",
     )
     current_keyboard: typing.Optional["MessagesKeyboard"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
     can_write: typing.Optional["MessagesConversationCanWrite"] = pydantic.Field(
-        None, description="Information about whether you can write to the dialog",
+        None,
+        description="Information about whether you can write to the dialog",
     )  # extension_field
     chat_settings: typing.Optional["MessagesConversationChatSettings"] = pydantic.Field(
-        None, description="Chat settings",
+        None,
+        description="Chat settings",
     )  # extension_field
 
 
 class MessagesConversationCanWrite(pydantic.BaseModel):  # extension_class
     allowed: typing.Optional[bool] = pydantic.Field(
-        None, description="Can the user write to the dialog",
+        None,
+        description="Can the user write to the dialog",
     )
     reason: typing.Optional[int] = pydantic.Field(
-        None, description="Reason code why the user can't write to the dialog",
+        None,
+        description="Reason code why the user can't write to the dialog",
     )
 
 
 class MessagesConversationChatSettings(pydantic.BaseModel):  # extension_class
     members_count: typing.Optional[int] = pydantic.Field(
-        None, description="Number of chat members",
+        None,
+        description="Number of chat members",
     )
     title: typing.Optional[str] = pydantic.Field(
-        None, description="Chat title",
+        None,
+        description="Chat title",
     )
     pinned_message: typing.Optional["MessagesPinnedMessage"] = pydantic.Field(
-        None, description="Pinned message object",
+        None,
+        description="Pinned message object",
     )
     state: typing.Optional[str] = pydantic.Field(
-        None, description="Status of the current user in the chat",
+        None,
+        description="Status of the current user in the chat",
     )
     photo: typing.Optional["MessagesMessageActionPhoto"] = pydantic.Field(
-        None, description="The cover image of the chat",
+        None,
+        description="The cover image of the chat",
     )
     active_ids: typing.Optional[list] = pydantic.Field(
-        None, description="IDs of the last users who wrote to the chat",
+        None,
+        description="IDs of the last users who wrote to the chat",
     )
     is_group_channel: typing.Optional[bool] = pydantic.Field(
-        None, description="information about whether the conversation is a community channel",
+        None,
+        description="information about whether the conversation is a community channel",
     )
 
 
 class MessagesConversationPeer(pydantic.BaseModel):
     id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     local_id: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     type: "MessagesConversationPeerType" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class MessagesForeignMessage(pydantic.BaseModel):
     attachments: typing.Optional[typing.List["MessagesMessageAttachment"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     conversation_message_id: typing.Optional[int] = pydantic.Field(
-        None, description="Conversation message ID",
+        None,
+        description="Conversation message ID",
     )
     date: int = pydantic.Field(
-        ..., description="Date when the message was created",
+        ...,
+        description="Date when the message was created",
     )
     from_id: int = pydantic.Field(
-        ..., description="Message author's ID",
+        ...,
+        description="Message author's ID",
     )
     fwd_messages: typing.Optional[typing.List["MessagesForeignMessage"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     geo: typing.Optional["BaseGeo"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     id: typing.Optional[int] = pydantic.Field(
-        None, description="Message ID",
+        None,
+        description="Message ID",
     )
     peer_id: typing.Optional[int] = pydantic.Field(
-        None, description="Peer ID",
+        None,
+        description="Peer ID",
     )
     reply_message: typing.Optional["MessagesForeignMessage"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     text: str = pydantic.Field(
-        ..., description="Message text",
+        ...,
+        description="Message text",
     )
     update_time: typing.Optional[int] = pydantic.Field(
-        None, description="Date when the message has been updated in Unixtime",
+        None,
+        description="Date when the message has been updated in Unixtime",
     )
     was_listened: typing.Optional[bool] = pydantic.Field(
-        None, description="Was the audio message inside already listened by you",
+        None,
+        description="Was the audio message inside already listened by you",
     )
     payload: typing.Optional[str] = pydantic.Field(
-        None, description="Additional data sent along with message for developer convenience",
+        None,
+        description="Additional data sent along with message for developer convenience",
     )
 
 
 class MessagesGraffiti(pydantic.BaseModel):
     access_key: typing.Optional[str] = pydantic.Field(
-        None, description="Access key for graffiti",
+        None,
+        description="Access key for graffiti",
     )
     height: int = pydantic.Field(
-        ..., description="Graffiti height",
+        ...,
+        description="Graffiti height",
     )
     id: int = pydantic.Field(
-        ..., description="Graffiti ID",
+        ...,
+        description="Graffiti ID",
     )
     owner_id: int = pydantic.Field(
-        ..., description="Graffiti owner ID",
+        ...,
+        description="Graffiti owner ID",
     )
     url: str = pydantic.Field(
-        ..., description="Graffiti URL",
+        ...,
+        description="Graffiti URL",
     )
     width: int = pydantic.Field(
-        ..., description="Graffiti width",
+        ...,
+        description="Graffiti width",
     )
 
 
 class MessagesHistoryMessageAttachment(pydantic.BaseModel):
     audio: typing.Optional["AudioAudio"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     audio_message: typing.Optional["MessagesAudioMessage"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     doc: typing.Optional["DocsDoc"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     graffiti: typing.Optional["MessagesGraffiti"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     link: typing.Optional["BaseLink"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     market: typing.Optional["BaseLink"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     photo: typing.Optional["PhotosPhoto"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     share: typing.Optional["BaseLink"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     type: "MessagesHistoryMessageAttachmentType" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     video: typing.Optional["VideoVideo"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     wall: typing.Optional["BaseLink"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class MessagesKeyboard(pydantic.BaseModel):
     author_id: typing.Optional[int] = pydantic.Field(
-        None, description="Community or bot, which set this keyboard",
+        None,
+        description="Community or bot, which set this keyboard",
     )
     buttons: typing.List[typing.List["MessagesKeyboardButton"]] = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     one_time: bool = pydantic.Field(
-        ..., description="Should this keyboard disappear on first use",
+        ...,
+        description="Should this keyboard disappear on first use",
     )
     inline: typing.Optional[bool] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class MessagesKeyboardButtonAction(pydantic.BaseModel):
     app_id: typing.Optional[int] = pydantic.Field(
-        None, description="Fragment value in app link like vk.com/app{app_id}_-654321#hash",
+        None,
+        description="Fragment value in app link like vk.com/app{app_id}_-654321#hash",
     )
     hash: typing.Optional[str] = pydantic.Field(
-        None, description="Fragment value in app link like vk.com/app123456_-654321#{hash}",
+        None,
+        description="Fragment value in app link like vk.com/app123456_-654321#{hash}",
     )
     label: typing.Optional[str] = pydantic.Field(
-        None, description="Label for button",
+        None,
+        description="Label for button",
     )
     link: typing.Optional[str] = pydantic.Field(
-        None, description="link for button",
+        None,
+        description="link for button",
     )
     owner_id: typing.Optional[int] = pydantic.Field(
-        None, description="Fragment value in app link like vk.com/app123456_{owner_id}#hash",
+        None,
+        description="Fragment value in app link like vk.com/app123456_{owner_id}#hash",
     )
     payload: typing.Optional[str] = pydantic.Field(
-        None, description="Additional data sent along with message for developer convenience",
+        None,
+        description="Additional data sent along with message for developer convenience",
     )
     type: "MessagesTemplateActionTypeNames" = pydantic.Field(
-        ..., description="Button type",
+        ...,
+        description="Button type",
     )
 
 
 class MessagesMessage(pydantic.BaseModel):
     action: typing.Optional["MessagesMessageAction"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     admin_author_id: typing.Optional[int] = pydantic.Field(
         None,
         description="Only for messages from community. Contains user ID of community admin, who sent this message.",
     )
     attachments: typing.Optional[typing.List["MessagesMessageAttachment"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     conversation_message_id: typing.Optional[int] = pydantic.Field(
-        None, description="Unique auto-incremented number for all messages with this peer",
+        None,
+        description="Unique auto-incremented number for all messages with this peer",
     )
     date: int = pydantic.Field(
-        ..., description="Date when the message has been sent in Unixtime",
+        ...,
+        description="Date when the message has been sent in Unixtime",
     )
     deleted: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Is it an deleted message",
+        None,
+        description="Is it an deleted message",
     )
     from_id: int = pydantic.Field(
-        ..., description="Message author's ID",
+        ...,
+        description="Message author's ID",
     )
     fwd_messages: typing.Optional[typing.List["MessagesForeignMessage"]] = pydantic.Field(
-        None, description="Forwarded messages",
+        None,
+        description="Forwarded messages",
     )
     geo: typing.Optional["BaseGeo"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     id: int = pydantic.Field(
-        ..., description="Message ID",
+        ...,
+        description="Message ID",
     )
     important: typing.Optional[bool] = pydantic.Field(
-        None, description="Is it an important message",
+        None,
+        description="Is it an important message",
     )
     is_hidden: typing.Optional[bool] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     is_cropped: typing.Optional[bool] = pydantic.Field(
-        None, description="this message is cropped for bot",
+        None,
+        description="this message is cropped for bot",
     )
     keyboard: typing.Optional["MessagesKeyboard"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     members_count: typing.Optional[int] = pydantic.Field(
-        None, description="Members number",
+        None,
+        description="Members number",
     )
     out: "BaseBoolInt" = pydantic.Field(
-        ..., description="Information whether the message is outcoming",
+        ...,
+        description="Information whether the message is outcoming",
     )
     payload: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     peer_id: int = pydantic.Field(
-        ..., description="Peer ID",
+        ...,
+        description="Peer ID",
     )
     random_id: typing.Optional[int] = pydantic.Field(
-        None, description="ID used for sending messages. It returned only for outgoing messages",
+        None,
+        description="ID used for sending messages. It returned only for outgoing messages",
     )
     ref: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     ref_source: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     reply_message: typing.Optional["MessagesForeignMessage"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     text: str = pydantic.Field(
-        ..., description="Message text",
+        ...,
+        description="Message text",
     )
     update_time: typing.Optional[int] = pydantic.Field(
-        None, description="Date when the message has been updated in Unixtime",
+        None,
+        description="Date when the message has been updated in Unixtime",
     )
     was_listened: typing.Optional[bool] = pydantic.Field(
-        None, description="Was the audio message inside already listened by you",
+        None,
+        description="Was the audio message inside already listened by you",
     )
     pinned_at: typing.Optional[int] = pydantic.Field(
-        None, description="Date when the message has been pinned in Unixtime",
+        None,
+        description="Date when the message has been pinned in Unixtime",
     )
 
 
 class MessagesMessageAction(pydantic.BaseModel):
     conversation_message_id: typing.Optional[int] = pydantic.Field(
-        None, description="Message ID",
+        None,
+        description="Message ID",
     )
     email: typing.Optional[str] = pydantic.Field(
-        None, description="Email address for chat_invite_user or chat_kick_user actions",
+        None,
+        description="Email address for chat_invite_user or chat_kick_user actions",
     )
     member_id: typing.Optional[int] = pydantic.Field(
-        None, description="User or email peer ID",
+        None,
+        description="User or email peer ID",
     )
     message: typing.Optional[str] = pydantic.Field(
-        None, description="Message body of related message",
+        None,
+        description="Message body of related message",
     )
     photo: typing.Optional["MessagesMessageActionPhoto"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     text: typing.Optional[str] = pydantic.Field(
-        None, description="New chat title for chat_create and chat_title_update actions",
+        None,
+        description="New chat title for chat_create and chat_title_update actions",
     )
     type: "MessagesMessageActionStatus" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class MessagesMessageActionPhoto(pydantic.BaseModel):
     photo_100: str = pydantic.Field(
-        ..., description="URL of the preview image with 100px in width",
+        ...,
+        description="URL of the preview image with 100px in width",
     )
     photo_200: str = pydantic.Field(
-        ..., description="URL of the preview image with 200px in width",
+        ...,
+        description="URL of the preview image with 200px in width",
     )
     photo_50: str = pydantic.Field(
-        ..., description="URL of the preview image with 50px in width",
+        ...,
+        description="URL of the preview image with 50px in width",
     )
 
 
 class MessagesMessageRequestData(pydantic.BaseModel):
     status: typing.Optional[str] = pydantic.Field(
-        None, description="Status of message request",
+        None,
+        description="Status of message request",
     )
     inviter_id: typing.Optional[int] = pydantic.Field(
-        None, description="Message request sender id",
+        None,
+        description="Message request sender id",
     )
     request_date: typing.Optional[int] = pydantic.Field(
-        None, description="Message request date",
+        None,
+        description="Message request date",
     )
 
 
 class MessagesOutReadBy(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     member_ids: typing.Optional[typing.List[int]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class NewsfeedItemDigestFooterButton(pydantic.BaseModel):
     title: str = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     style: str = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class NotificationsFeedback(pydantic.BaseModel):
     attachments: typing.Optional[typing.List["WallWallpostAttachment"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     from_id: typing.Optional[int] = pydantic.Field(
-        None, description="Reply author's ID",
+        None,
+        description="Reply author's ID",
     )
     geo: typing.Optional["BaseGeo"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     id: typing.Optional[int] = pydantic.Field(
-        None, description="Item ID",
+        None,
+        description="Item ID",
     )
     likes: typing.Optional["BaseLikesInfo"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     text: typing.Optional[str] = pydantic.Field(
-        None, description="Reply text",
+        None,
+        description="Reply text",
     )
     to_id: typing.Optional[int] = pydantic.Field(
-        None, description="Wall owner's ID",
+        None,
+        description="Wall owner's ID",
     )
 
 
 class NotificationsReply(pydantic.BaseModel):
     date: typing.Optional[int] = pydantic.Field(
-        None, description="Date when the reply has been created in Unixtime",
+        None,
+        description="Date when the reply has been created in Unixtime",
     )
     id: typing.Optional[int] = pydantic.Field(
-        None, description="Reply ID",
+        None,
+        description="Reply ID",
     )
     text: typing.Optional[int] = pydantic.Field(
-        None, description="Reply text",
+        None,
+        description="Reply text",
     )
 
 
 class NotificationsSendMessageError(pydantic.BaseModel):
     code: typing.Optional[int] = pydantic.Field(
-        None, description="Error code",
+        None,
+        description="Error code",
     )
     description: typing.Optional[str] = pydantic.Field(
-        None, description="Error description",
+        None,
+        description="Error description",
     )
 
 
 class PagesWikipageFull(pydantic.BaseModel):
     created: int = pydantic.Field(
-        ..., description="Date when the page has been created in Unixtime",
+        ...,
+        description="Date when the page has been created in Unixtime",
     )
     creator_id: typing.Optional[int] = pydantic.Field(
-        None, description="Page creator ID",
+        None,
+        description="Page creator ID",
     )
     current_user_can_edit: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user can edit the page",
+        None,
+        description="Information whether current user can edit the page",
     )
     current_user_can_edit_access: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user can edit the page access settings",
+        None,
+        description="Information whether current user can edit the page access settings",
     )
     edited: int = pydantic.Field(
-        ..., description="Date when the page has been edited in Unixtime",
+        ...,
+        description="Date when the page has been edited in Unixtime",
     )
     editor_id: typing.Optional[int] = pydantic.Field(
-        None, description="Last editor ID",
+        None,
+        description="Last editor ID",
     )
     group_id: int = pydantic.Field(
-        ..., description="Community ID",
+        ...,
+        description="Community ID",
     )
     html: typing.Optional[str] = pydantic.Field(
-        None, description="Page content, HTML",
+        None,
+        description="Page content, HTML",
     )
     id: int = pydantic.Field(
-        ..., description="Page ID",
+        ...,
+        description="Page ID",
     )
     source: typing.Optional[str] = pydantic.Field(
-        None, description="Page content, wiki",
+        None,
+        description="Page content, wiki",
     )
     title: str = pydantic.Field(
-        ..., description="Page title",
+        ...,
+        description="Page title",
     )
     view_url: str = pydantic.Field(
-        ..., description="URL of the page preview",
+        ...,
+        description="URL of the page preview",
     )
     views: int = pydantic.Field(
-        ..., description="Views number",
+        ...,
+        description="Views number",
     )
     who_can_edit: "PagesPrivacySettings" = pydantic.Field(
-        ..., description="Edit settings of the page",
+        ...,
+        description="Edit settings of the page",
     )
     who_can_view: "PagesPrivacySettings" = pydantic.Field(
-        ..., description="View settings of the page",
+        ...,
+        description="View settings of the page",
     )
 
 
 class PhotosPhoto(pydantic.BaseModel):
     access_key: typing.Optional[str] = pydantic.Field(
-        None, description="Access key for the photo",
+        None,
+        description="Access key for the photo",
     )
     album_id: int = pydantic.Field(
-        ..., description="Album ID",
+        ...,
+        description="Album ID",
     )
     date: int = pydantic.Field(
-        ..., description="Date when uploaded",
+        ...,
+        description="Date when uploaded",
     )
     height: typing.Optional[int] = pydantic.Field(
-        None, description="Original photo height",
+        None,
+        description="Original photo height",
     )
     id: int = pydantic.Field(
-        ..., description="Photo ID",
+        ...,
+        description="Photo ID",
     )
     images: typing.Optional[typing.List["PhotosImage"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     lat: typing.Optional[int] = pydantic.Field(
-        None, description="Latitude",
+        None,
+        description="Latitude",
     )
     long: typing.Optional[int] = pydantic.Field(
-        None, description="Longitude",
+        None,
+        description="Longitude",
     )
     owner_id: int = pydantic.Field(
-        ..., description="Photo owner's ID",
+        ...,
+        description="Photo owner's ID",
     )
     photo_256: typing.Optional[str] = pydantic.Field(
-        None, description="URL of image with 2560 px width",
+        None,
+        description="URL of image with 2560 px width",
     )
     can_comment: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user can comment the photo",
+        None,
+        description="Information whether current user can comment the photo",
     )
     place: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     post_id: typing.Optional[int] = pydantic.Field(
-        None, description="Post ID",
+        None,
+        description="Post ID",
     )
     sizes: typing.Optional[typing.List["PhotosPhotoSizes"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     text: typing.Optional[str] = pydantic.Field(
-        None, description="Photo caption",
+        None,
+        description="Photo caption",
     )
     user_id: typing.Optional[int] = pydantic.Field(
-        None, description="ID of the user who have uploaded the photo",
+        None,
+        description="ID of the user who have uploaded the photo",
     )
     width: typing.Optional[int] = pydantic.Field(
-        None, description="Original photo width",
+        None,
+        description="Original photo width",
     )
     has_tags: bool = pydantic.Field(
-        ..., description="Whether photo has attached tag links",
+        ...,
+        description="Whether photo has attached tag links",
     )
     restrictions: typing.Optional["MediaRestriction"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class PhotosPhotoAlbum(pydantic.BaseModel):
     created: int = pydantic.Field(
-        ..., description="Date when the album has been created in Unixtime",
+        ...,
+        description="Date when the album has been created in Unixtime",
     )
     description: typing.Optional[str] = pydantic.Field(
-        None, description="Photo album description",
+        None,
+        description="Photo album description",
     )
     id: int = pydantic.Field(
-        ..., description="Photo album ID",
+        ...,
+        description="Photo album ID",
     )
     owner_id: int = pydantic.Field(
-        ..., description="Album owner's ID",
+        ...,
+        description="Album owner's ID",
     )
     size: int = pydantic.Field(
-        ..., description="Photos number",
+        ...,
+        description="Photos number",
     )
     thumb: typing.Optional["PhotosPhoto"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     title: str = pydantic.Field(
-        ..., description="Photo album title",
+        ...,
+        description="Photo album title",
     )
     updated: int = pydantic.Field(
-        ..., description="Date when the album has been updated last time in Unixtime",
+        ...,
+        description="Date when the album has been updated last time in Unixtime",
     )
 
 
 class PollsBackground(pydantic.BaseModel):
     angle: typing.Optional[int] = pydantic.Field(
-        None, description="Gradient angle with 0 on positive X axis",
+        None,
+        description="Gradient angle with 0 on positive X axis",
     )
     color: typing.Optional[str] = pydantic.Field(
-        None, description="Hex color code without #",
+        None,
+        description="Hex color code without #",
     )
     height: typing.Optional[int] = pydantic.Field(
-        None, description="Original height of pattern tile",
+        None,
+        description="Original height of pattern tile",
     )
     id: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     name: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     images: typing.Optional[typing.List["BaseImage"]] = pydantic.Field(
-        None, description="Pattern tiles",
+        None,
+        description="Pattern tiles",
     )
     points: typing.Optional[typing.List["BaseGradientPoint"]] = pydantic.Field(
-        None, description="Gradient points",
+        None,
+        description="Gradient points",
     )
     type: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     width: typing.Optional[int] = pydantic.Field(
-        None, description="Original with of pattern tile",
+        None,
+        description="Original with of pattern tile",
     )
 
 
 class PollsPoll(pydantic.BaseModel):
     anonymous: bool = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     friends: typing.Optional[typing.List["PollsFriend"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     multiple: bool = pydantic.Field(
-        ..., description="Information whether the poll with multiple choices",
+        ...,
+        description="Information whether the poll with multiple choices",
     )
     answer_id: typing.Optional[int] = pydantic.Field(
-        None, description="Current user's answer ID",
+        None,
+        description="Current user's answer ID",
     )
     end_date: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     answer_ids: typing.Optional[typing.List[int]] = pydantic.Field(
-        None, description="Current user's answer IDs",
+        None,
+        description="Current user's answer IDs",
     )
     closed: bool = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     is_board: bool = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     can_edit: bool = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     can_vote: bool = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     can_report: bool = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     can_share: bool = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     photo: typing.Optional["PollsBackground"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     answers: typing.List["PollsAnswer"] = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     created: int = pydantic.Field(
-        ..., description="Date when poll has been created in Unixtime",
+        ...,
+        description="Date when poll has been created in Unixtime",
     )
     id: int = pydantic.Field(
-        ..., description="Poll ID",
+        ...,
+        description="Poll ID",
     )
     owner_id: int = pydantic.Field(
-        ..., description="Poll owner's ID",
+        ...,
+        description="Poll owner's ID",
     )
     author_id: typing.Optional[int] = pydantic.Field(
-        None, description="Poll author's ID",
+        None,
+        description="Poll author's ID",
     )
     question: str = pydantic.Field(
-        ..., description="Poll question",
+        ...,
+        description="Poll question",
     )
     background: typing.Optional["PollsBackground"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     votes: int = pydantic.Field(
-        ..., description="Votes number",
+        ...,
+        description="Votes number",
     )
     disable_unvote: bool = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class PollsVotersUsers(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
-        None, description="Votes number",
+        None,
+        description="Votes number",
     )
     items: typing.Optional[typing.List[int]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class StatsActivity(pydantic.BaseModel):
     comments: typing.Optional[int] = pydantic.Field(
-        None, description="Comments number",
+        None,
+        description="Comments number",
     )
     copies: typing.Optional[int] = pydantic.Field(
-        None, description="Reposts number",
+        None,
+        description="Reposts number",
     )
     hidden: typing.Optional[int] = pydantic.Field(
-        None, description="Hidden from news count",
+        None,
+        description="Hidden from news count",
     )
     likes: typing.Optional[int] = pydantic.Field(
-        None, description="Likes number",
+        None,
+        description="Likes number",
     )
     subscribed: typing.Optional[int] = pydantic.Field(
-        None, description="New subscribers count",
+        None,
+        description="New subscribers count",
     )
     unsubscribed: typing.Optional[int] = pydantic.Field(
-        None, description="Unsubscribed count",
+        None,
+        description="Unsubscribed count",
     )
 
 
 class StatsReach(pydantic.BaseModel):
     age: typing.Optional[typing.List["StatsSexAge"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     cities: typing.Optional[typing.List["StatsCity"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     countries: typing.Optional[typing.List["StatsCountry"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     mobile_reach: typing.Optional[int] = pydantic.Field(
-        None, description="Reach count from mobile devices",
+        None,
+        description="Reach count from mobile devices",
     )
     reach: typing.Optional[int] = pydantic.Field(
-        None, description="Reach count",
+        None,
+        description="Reach count",
     )
     reach_subscribers: typing.Optional[int] = pydantic.Field(
-        None, description="Subscribers reach count",
+        None,
+        description="Subscribers reach count",
     )
     sex: typing.Optional[typing.List["StatsSexAge"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     sex_age: typing.Optional[typing.List["StatsSexAge"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class StatsViews(pydantic.BaseModel):
     age: typing.Optional[typing.List["StatsSexAge"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     cities: typing.Optional[typing.List["StatsCity"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     countries: typing.Optional[typing.List["StatsCountry"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     mobile_views: typing.Optional[int] = pydantic.Field(
-        None, description="Number of views from mobile devices",
+        None,
+        description="Number of views from mobile devices",
     )
     sex: typing.Optional[typing.List["StatsSexAge"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     sex_age: typing.Optional[typing.List["StatsSexAge"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     views: typing.Optional[int] = pydantic.Field(
-        None, description="Views number",
+        None,
+        description="Views number",
     )
     visitors: typing.Optional[int] = pydantic.Field(
-        None, description="Visitors number",
+        None,
+        description="Visitors number",
     )
 
 
 class StoriesClickableStickers(pydantic.BaseModel):
     clickable_stickers: typing.List["StoriesClickableSticker"] = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     original_height: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     original_width: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class StoriesPromoBlock(pydantic.BaseModel):
     name: str = pydantic.Field(
-        ..., description="Promo story title",
+        ...,
+        description="Promo story title",
     )
     photo_50: str = pydantic.Field(
-        ..., description="RL of square photo of the story with 50 pixels in width",
+        ...,
+        description="RL of square photo of the story with 50 pixels in width",
     )
     photo_100: str = pydantic.Field(
-        ..., description="RL of square photo of the story with 100 pixels in width",
+        ...,
+        description="RL of square photo of the story with 100 pixels in width",
     )
     not_animated: bool = pydantic.Field(
-        ..., description="Hide animation for promo story",
+        ...,
+        description="Hide animation for promo story",
     )
 
 
 class StoriesReplies(pydantic.BaseModel):
     count: int = pydantic.Field(
-        ..., description="Replies number.",
+        ...,
+        description="Replies number.",
     )
     new: typing.Optional[int] = pydantic.Field(
-        None, description="New replies number.",
+        None,
+        description="New replies number.",
     )
 
 
 class StoriesStory(pydantic.BaseModel):
     access_key: typing.Optional[str] = pydantic.Field(
-        None, description="Access key for private object.",
+        None,
+        description="Access key for private object.",
     )
     can_comment: typing.Optional["BaseBoolInt"] = pydantic.Field(
         None,
@@ -3664,72 +4275,92 @@ class StoriesStory(pydantic.BaseModel):
         description="Information whether current user can reply to the story (0 - no, 1 - yes).",
     )
     can_see: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user can see the story (0 - no, 1 - yes).",
+        None,
+        description="Information whether current user can see the story (0 - no, 1 - yes).",
     )
     can_like: typing.Optional[bool] = pydantic.Field(
-        None, description="Information whether current user can like the story.",
+        None,
+        description="Information whether current user can like the story.",
     )
     can_share: typing.Optional["BaseBoolInt"] = pydantic.Field(
         None,
         description="Information whether current user can share the story (0 - no, 1 - yes).",
     )
     can_hide: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user can hide the story (0 - no, 1 - yes).",
+        None,
+        description="Information whether current user can hide the story (0 - no, 1 - yes).",
     )
     date: typing.Optional[int] = pydantic.Field(
-        None, description="Date when story has been added in Unixtime.",
+        None,
+        description="Date when story has been added in Unixtime.",
     )
     expires_at: typing.Optional[int] = pydantic.Field(
-        None, description="Story expiration time. Unixtime.",
+        None,
+        description="Story expiration time. Unixtime.",
     )
     id: int = pydantic.Field(
-        ..., description="Story ID.",
+        ...,
+        description="Story ID.",
     )
     is_deleted: typing.Optional[bool] = pydantic.Field(
-        None, description="Information whether the story is deleted (false - no, true - yes).",
+        None,
+        description="Information whether the story is deleted (false - no, true - yes).",
     )
     is_expired: typing.Optional[bool] = pydantic.Field(
-        None, description="Information whether the story is expired (false - no, true - yes).",
+        None,
+        description="Information whether the story is expired (false - no, true - yes).",
     )
     link: typing.Optional["StoriesStoryLink"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     owner_id: int = pydantic.Field(
-        ..., description="Story owner's ID.",
+        ...,
+        description="Story owner's ID.",
     )
     parent_story: typing.Optional["StoriesStory"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     parent_story_access_key: typing.Optional[str] = pydantic.Field(
-        None, description="Access key for private object.",
+        None,
+        description="Access key for private object.",
     )
     parent_story_id: typing.Optional[int] = pydantic.Field(
-        None, description="Parent story ID.",
+        None,
+        description="Parent story ID.",
     )
     parent_story_owner_id: typing.Optional[int] = pydantic.Field(
-        None, description="Parent story owner's ID.",
+        None,
+        description="Parent story owner's ID.",
     )
     photo: typing.Optional["PhotosPhoto"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     replies: typing.Optional["StoriesReplies"] = pydantic.Field(
-        None, description="Replies counters to current story.",
+        None,
+        description="Replies counters to current story.",
     )
     seen: typing.Optional["BaseBoolInt"] = pydantic.Field(
         None,
         description="Information whether current user has seen the story or not (0 - no, 1 - yes).",
     )
     type: typing.Optional["StoriesStoryType"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     clickable_stickers: typing.Optional["StoriesClickableStickers"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     video: typing.Optional["VideoVideo"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     views: typing.Optional[int] = pydantic.Field(
-        None, description="Views number.",
+        None,
+        description="Views number.",
     )
     can_ask: typing.Optional["BaseBoolInt"] = pydantic.Field(
         None,
@@ -3740,2214 +4371,2818 @@ class StoriesStory(pydantic.BaseModel):
         description="Information whether story has question sticker and current user can send anonymous question to the author",
     )
     narratives_count: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     first_narrative_title: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     birthday_wish_user_id: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     can_use_in_narrative: typing.Optional[bool] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class StoriesStoryLink(pydantic.BaseModel):
     text: str = pydantic.Field(
-        ..., description="Link text",
+        ...,
+        description="Link text",
     )
     url: str = pydantic.Field(
-        ..., description="Link URL",
+        ...,
+        description="Link URL",
     )
 
 
 class StoriesStoryStatsStat(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
-        None, description="Stat value",
+        None,
+        description="Stat value",
     )
     state: "StoriesStoryStatsState" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class UsersPersonal(pydantic.BaseModel):
     alcohol: typing.Optional[int] = pydantic.Field(
-        None, description="User's views on alcohol",
+        None,
+        description="User's views on alcohol",
     )
     inspired_by: typing.Optional[str] = pydantic.Field(
-        None, description="User's inspired by",
+        None,
+        description="User's inspired by",
     )
     langs: typing.Optional[typing.List[str]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     life_main: typing.Optional[int] = pydantic.Field(
-        None, description="User's personal priority in life",
+        None,
+        description="User's personal priority in life",
     )
     people_main: typing.Optional[int] = pydantic.Field(
-        None, description="User's personal priority in people",
+        None,
+        description="User's personal priority in people",
     )
     political: typing.Optional[int] = pydantic.Field(
-        None, description="User's political views",
+        None,
+        description="User's political views",
     )
     religion: typing.Optional[str] = pydantic.Field(
-        None, description="User's religion",
+        None,
+        description="User's religion",
     )
     religion_id: typing.Optional[int] = pydantic.Field(
-        None, description="User's religion id",
+        None,
+        description="User's religion id",
     )
     smoking: typing.Optional[int] = pydantic.Field(
-        None, description="User's views on smoking",
+        None,
+        description="User's views on smoking",
     )
 
 
 class UsersUserConnections(pydantic.BaseModel):
     skype: str = pydantic.Field(
-        ..., description="User's Skype nickname",
+        ...,
+        description="User's Skype nickname",
     )
     facebook: str = pydantic.Field(
-        ..., description="User's Facebook account",
+        ...,
+        description="User's Facebook account",
     )
     facebook_name: typing.Optional[str] = pydantic.Field(
-        None, description="User's Facebook name",
+        None,
+        description="User's Facebook name",
     )
     twitter: str = pydantic.Field(
-        ..., description="User's Twitter account",
+        ...,
+        description="User's Twitter account",
     )
     livejournal: typing.Optional[str] = pydantic.Field(
-        None, description="User's Livejournal account",
+        None,
+        description="User's Livejournal account",
     )
     instagram: str = pydantic.Field(
-        ..., description="User's Instagram account",
+        ...,
+        description="User's Instagram account",
     )
 
 
 class UsersUserMin(pydantic.BaseModel):
     deactivated: typing.Optional[str] = pydantic.Field(
-        None, description="Returns if a profile is deleted or blocked",
+        None,
+        description="Returns if a profile is deleted or blocked",
     )
     first_name: typing.Optional[str] = pydantic.Field(
-        None, description="User first name",
+        None,
+        description="User first name",
     )
     hidden: typing.Optional[int] = pydantic.Field(
-        None, description="Returns if a profile is hidden.",
+        None,
+        description="Returns if a profile is hidden.",
     )
     id: int = pydantic.Field(
-        ..., description="User ID",
+        ...,
+        description="User ID",
     )
     last_name: typing.Optional[str] = pydantic.Field(
-        None, description="User last name",
+        None,
+        description="User last name",
     )
     can_access_closed: typing.Optional[bool] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     is_closed: typing.Optional[bool] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class VideoRestrictionButton(pydantic.BaseModel):
     action: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     title: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class WallAppPost(pydantic.BaseModel):
     id: typing.Optional[int] = pydantic.Field(
-        None, description="Application ID",
+        None,
+        description="Application ID",
     )
     name: typing.Optional[str] = pydantic.Field(
-        None, description="Application name",
+        None,
+        description="Application name",
     )
     photo_130: typing.Optional[str] = pydantic.Field(
-        None, description="URL of the preview image with 130 px in width",
+        None,
+        description="URL of the preview image with 130 px in width",
     )
     photo_604: typing.Optional[str] = pydantic.Field(
-        None, description="URL of the preview image with 604 px in width",
+        None,
+        description="URL of the preview image with 604 px in width",
     )
 
 
 class WallAttachedNote(pydantic.BaseModel):
     comments: int = pydantic.Field(
-        ..., description="Comments number",
+        ...,
+        description="Comments number",
     )
     date: int = pydantic.Field(
-        ..., description="Date when the note has been created in Unixtime",
+        ...,
+        description="Date when the note has been created in Unixtime",
     )
     id: int = pydantic.Field(
-        ..., description="Note ID",
+        ...,
+        description="Note ID",
     )
     owner_id: int = pydantic.Field(
-        ..., description="Note owner's ID",
+        ...,
+        description="Note owner's ID",
     )
     read_comments: int = pydantic.Field(
-        ..., description="Read comments number",
+        ...,
+        description="Read comments number",
     )
     title: str = pydantic.Field(
-        ..., description="Note title",
+        ...,
+        description="Note title",
     )
     view_url: str = pydantic.Field(
-        ..., description="URL of the page with note preview",
+        ...,
+        description="URL of the page with note preview",
     )
 
 
 class WallGeo(pydantic.BaseModel):
     coordinates: typing.Optional[str] = pydantic.Field(
-        None, description="Coordinates as string. <latitude> <longtitude>",
+        None,
+        description="Coordinates as string. <latitude> <longtitude>",
     )
     place: typing.Optional["BasePlace"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     showmap: typing.Optional[int] = pydantic.Field(
-        None, description="Information whether a map is showed",
+        None,
+        description="Information whether a map is showed",
     )
     type: typing.Optional[str] = pydantic.Field(
-        None, description="Place type",
+        None,
+        description="Place type",
     )
 
 
 class WallGraffiti(pydantic.BaseModel):
     id: typing.Optional[int] = pydantic.Field(
-        None, description="Graffiti ID",
+        None,
+        description="Graffiti ID",
     )
     owner_id: typing.Optional[int] = pydantic.Field(
-        None, description="Graffiti owner's ID",
+        None,
+        description="Graffiti owner's ID",
     )
     photo_200: typing.Optional[str] = pydantic.Field(
-        None, description="URL of the preview image with 200 px in width",
+        None,
+        description="URL of the preview image with 200 px in width",
     )
     photo_586: typing.Optional[str] = pydantic.Field(
-        None, description="URL of the preview image with 586 px in width",
+        None,
+        description="URL of the preview image with 586 px in width",
     )
 
 
 class WallPostCopyright(pydantic.BaseModel):
     id: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     link: str = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     name: str = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     type: str = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class WallPostSource(pydantic.BaseModel):
     data: typing.Optional[str] = pydantic.Field(
-        None, description="Additional data",
+        None,
+        description="Additional data",
     )
     platform: typing.Optional[str] = pydantic.Field(
-        None, description="Platform name",
+        None,
+        description="Platform name",
     )
     type: typing.Optional["WallPostSourceType"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     url: typing.Optional[str] = pydantic.Field(
-        None, description="URL to an external site used to publish the post",
+        None,
+        description="URL to an external site used to publish the post",
     )
 
 
 class WallPostedPhoto(pydantic.BaseModel):
     id: typing.Optional[int] = pydantic.Field(
-        None, description="Photo ID",
+        None,
+        description="Photo ID",
     )
     owner_id: typing.Optional[int] = pydantic.Field(
-        None, description="Photo owner's ID",
+        None,
+        description="Photo owner's ID",
     )
     photo_130: typing.Optional[str] = pydantic.Field(
-        None, description="URL of the preview image with 130 px in width",
+        None,
+        description="URL of the preview image with 130 px in width",
     )
     photo_604: typing.Optional[str] = pydantic.Field(
-        None, description="URL of the preview image with 604 px in width",
+        None,
+        description="URL of the preview image with 604 px in width",
     )
 
 
 class WallViews(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
-        None, description="Count",
+        None,
+        description="Count",
     )
 
 
 class WallWallComment(pydantic.BaseModel):
     attachments: typing.Optional[typing.List["WallCommentAttachment"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     date: int = pydantic.Field(
-        ..., description="Date when the comment has been added in Unixtime",
+        ...,
+        description="Date when the comment has been added in Unixtime",
     )
     donut: typing.Optional["WallWallCommentDonut"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     from_id: int = pydantic.Field(
-        ..., description="Author ID",
+        ...,
+        description="Author ID",
     )
     id: int = pydantic.Field(
-        ..., description="Comment ID",
+        ...,
+        description="Comment ID",
     )
     likes: typing.Optional["BaseLikesInfo"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     real_offset: typing.Optional[int] = pydantic.Field(
-        None, description="Real position of the comment",
+        None,
+        description="Real position of the comment",
     )
     reply_to_comment: typing.Optional[int] = pydantic.Field(
-        None, description="Replied comment ID",
+        None,
+        description="Replied comment ID",
     )
     reply_to_user: typing.Optional[int] = pydantic.Field(
-        None, description="Replied user ID",
+        None,
+        description="Replied user ID",
     )
     text: str = pydantic.Field(
-        ..., description="Comment text",
+        ...,
+        description="Comment text",
     )
     thread: typing.Optional["CommentThread"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     post_id: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     owner_id: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     parents_stack: typing.Optional[typing.List[int]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     deleted: typing.Optional[bool] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class WallWallCommentDonut(pydantic.BaseModel):
     is_don: typing.Optional[bool] = pydantic.Field(
-        None, description="Means commentator is donator",
+        None,
+        description="Means commentator is donator",
     )
     placeholder: typing.Optional["WallWallCommentDonutPlaceholder"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class WallWallCommentDonutPlaceholder(pydantic.BaseModel):
     text: str = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class WallWallpost(pydantic.BaseModel):
     access_key: typing.Optional[str] = pydantic.Field(
-        None, description="Access key to private object",
+        None,
+        description="Access key to private object",
     )
     attachments: typing.Optional[typing.List["WallWallpostAttachment"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     copyright: typing.Optional["WallPostCopyright"] = pydantic.Field(
-        None, description="Information about the source of the post",
+        None,
+        description="Information about the source of the post",
     )
     date: typing.Optional[int] = pydantic.Field(
-        None, description="Date of publishing in Unixtime",
+        None,
+        description="Date of publishing in Unixtime",
     )
     edited: typing.Optional[int] = pydantic.Field(
-        None, description="Date of editing in Unixtime",
+        None,
+        description="Date of editing in Unixtime",
     )
     from_id: typing.Optional[int] = pydantic.Field(
-        None, description="Post author ID",
+        None,
+        description="Post author ID",
     )
     geo: typing.Optional["WallGeo"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     id: typing.Optional[int] = pydantic.Field(
-        None, description="Post ID",
+        None,
+        description="Post ID",
     )
     is_archived: typing.Optional[bool] = pydantic.Field(
-        None, description="Is post archived, only for post owners",
+        None,
+        description="Is post archived, only for post owners",
     )
     is_favorite: typing.Optional[bool] = pydantic.Field(
-        None, description="Information whether the post in favorites list",
+        None,
+        description="Information whether the post in favorites list",
     )
     likes: typing.Optional["BaseLikesInfo"] = pydantic.Field(
-        None, description="Count of likes",
+        None,
+        description="Count of likes",
     )
     owner_id: typing.Optional[int] = pydantic.Field(
-        None, description="Wall owner's ID",
+        None,
+        description="Wall owner's ID",
     )
     post_source: typing.Optional["WallPostSource"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     post_type: typing.Optional["WallPostType"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     reposts: typing.Optional["BaseRepostsInfo"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     signer_id: typing.Optional[int] = pydantic.Field(
-        None, description="Post signer ID",
+        None,
+        description="Post signer ID",
     )
     text: typing.Optional[str] = pydantic.Field(
-        None, description="Post text",
+        None,
+        description="Post text",
     )
     views: typing.Optional["WallViews"] = pydantic.Field(
-        None, description="Count of views",
+        None,
+        description="Count of views",
     )
 
 
 class WallWallpostCommentsDonut(pydantic.BaseModel):
     placeholder: typing.Optional["WallWallpostCommentsDonutPlaceholder"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class WallWallpostCommentsDonutPlaceholder(pydantic.BaseModel):
     text: str = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class WallWallpostDonutPlaceholder(pydantic.BaseModel):
     text: str = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class WidgetsCommentMedia(pydantic.BaseModel):
     item_id: typing.Optional[int] = pydantic.Field(
-        None, description="Media item ID",
+        None,
+        description="Media item ID",
     )
     owner_id: typing.Optional[int] = pydantic.Field(
-        None, description="Media owner's ID",
+        None,
+        description="Media owner's ID",
     )
     thumb_src: typing.Optional[str] = pydantic.Field(
-        None, description="URL of the preview image (type=photo only)",
+        None,
+        description="URL of the preview image (type=photo only)",
     )
     type: typing.Optional["WidgetsCommentMediaType"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class WidgetsCommentReplies(pydantic.BaseModel):
     can_post: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user can comment the post",
+        None,
+        description="Information whether current user can comment the post",
     )
     count: typing.Optional[int] = pydantic.Field(
-        None, description="Comments number",
+        None,
+        description="Comments number",
     )
     replies: typing.Optional[typing.List["WidgetsCommentRepliesItem"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class WidgetsWidgetLikes(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
-        None, description="Likes number",
+        None,
+        description="Likes number",
     )
 
 
 class AccountAccountCounters(pydantic.BaseModel):
     app_requests: typing.Optional[int] = pydantic.Field(
-        None, description="New app requests number",
+        None,
+        description="New app requests number",
     )
     events: typing.Optional[int] = pydantic.Field(
-        None, description="New events number",
+        None,
+        description="New events number",
     )
     faves: typing.Optional[int] = pydantic.Field(
-        None, description="New faves number",
+        None,
+        description="New faves number",
     )
     friends: typing.Optional[int] = pydantic.Field(
-        None, description="New friends requests number",
+        None,
+        description="New friends requests number",
     )
     friends_suggestions: typing.Optional[int] = pydantic.Field(
-        None, description="New friends suggestions number",
+        None,
+        description="New friends suggestions number",
     )
     friends_recommendations: typing.Optional[int] = pydantic.Field(
-        None, description="New friends recommendations number",
+        None,
+        description="New friends recommendations number",
     )
     gifts: typing.Optional[int] = pydantic.Field(
-        None, description="New gifts number",
+        None,
+        description="New gifts number",
     )
     groups: typing.Optional[int] = pydantic.Field(
-        None, description="New groups number",
+        None,
+        description="New groups number",
     )
     menu_discover_badge: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     menu_clips_badge: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     messages: typing.Optional[int] = pydantic.Field(
-        None, description="New messages number",
+        None,
+        description="New messages number",
     )
     memories: typing.Optional[int] = pydantic.Field(
-        None, description="New memories number",
+        None,
+        description="New memories number",
     )
     notes: typing.Optional[int] = pydantic.Field(
-        None, description="New notes number",
+        None,
+        description="New notes number",
     )
     notifications: typing.Optional[int] = pydantic.Field(
-        None, description="New notifications number",
+        None,
+        description="New notifications number",
     )
     photos: typing.Optional[int] = pydantic.Field(
-        None, description="New photo tags number",
+        None,
+        description="New photo tags number",
     )
     sdk: typing.Optional[int] = pydantic.Field(
-        None, description="New sdk number",
+        None,
+        description="New sdk number",
     )
 
 
 class AccountInfo(pydantic.BaseModel):
     wishlists_ae_promo_banner_show: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     twofa_required: typing.Optional["BaseBoolInt"] = pydantic.Field(
         None, description="Two factor authentication is enabled", alias="2fa_required"
     )
     country: typing.Optional[str] = pydantic.Field(
-        None, description="Country code",
+        None,
+        description="Country code",
     )
     https_required: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether HTTPS-only is enabled",
+        None,
+        description="Information whether HTTPS-only is enabled",
     )
     intro: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether user has been processed intro",
+        None,
+        description="Information whether user has been processed intro",
     )
     show_vk_apps_intro: typing.Optional[bool] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     mini_apps_ads_slot_id: typing.Optional[int] = pydantic.Field(
-        None, description="Ads slot id for MyTarget",
+        None,
+        description="Ads slot id for MyTarget",
     )
     qr_promotion: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     link_redirects: typing.Optional[dict] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     lang: typing.Optional[int] = pydantic.Field(
-        None, description="Language ID",
+        None,
+        description="Language ID",
     )
     no_wall_replies: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether wall comments should be hidden",
+        None,
+        description="Information whether wall comments should be hidden",
     )
     own_posts_default: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether only owners posts should be shown",
+        None,
+        description="Information whether only owners posts should be shown",
     )
     subscriptions: typing.Optional[typing.List[int]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class AccountOffer(pydantic.BaseModel):
     description: typing.Optional[str] = pydantic.Field(
-        None, description="Offer description",
+        None,
+        description="Offer description",
     )
     id: typing.Optional[int] = pydantic.Field(
-        None, description="Offer ID",
+        None,
+        description="Offer ID",
     )
     img: typing.Optional[str] = pydantic.Field(
-        None, description="URL of the preview image",
+        None,
+        description="URL of the preview image",
     )
     instruction: typing.Optional[str] = pydantic.Field(
-        None, description="Instruction how to process the offer",
+        None,
+        description="Instruction how to process the offer",
     )
     instruction_html: typing.Optional[str] = pydantic.Field(
-        None, description="Instruction how to process the offer (HTML format)",
+        None,
+        description="Instruction how to process the offer (HTML format)",
     )
     price: typing.Optional[int] = pydantic.Field(
-        None, description="Offer price",
+        None,
+        description="Offer price",
     )
     short_description: typing.Optional[str] = pydantic.Field(
-        None, description="Offer short description",
+        None,
+        description="Offer short description",
     )
     tag: typing.Optional[str] = pydantic.Field(
-        None, description="Offer tag",
+        None,
+        description="Offer tag",
     )
     title: typing.Optional[str] = pydantic.Field(
-        None, description="Offer title",
+        None,
+        description="Offer title",
     )
     currency_amount: typing.Optional[int] = pydantic.Field(
-        None, description="Currency amount",
+        None,
+        description="Currency amount",
     )
     link_id: typing.Optional[int] = pydantic.Field(
-        None, description="Link id",
+        None,
+        description="Link id",
     )
     link_type: typing.Optional[str] = pydantic.Field(
-        None, description="Link type",
+        None,
+        description="Link type",
     )
 
 
 class AccountPushConversationsItem(pydantic.BaseModel):
     disabled_until: int = pydantic.Field(
-        ..., description="Time until that notifications are disabled in seconds",
+        ...,
+        description="Time until that notifications are disabled in seconds",
     )
     peer_id: int = pydantic.Field(
-        ..., description="Peer ID",
+        ...,
+        description="Peer ID",
     )
     sound: "BaseBoolInt" = pydantic.Field(
-        ..., description="Information whether the sound are enabled",
+        ...,
+        description="Information whether the sound are enabled",
     )
 
 
 class AccountPushSettings(pydantic.BaseModel):
     disabled: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether notifications are disabled",
+        None,
+        description="Information whether notifications are disabled",
     )
     disabled_until: typing.Optional[int] = pydantic.Field(
-        None, description="Time until that notifications are disabled in Unixtime",
+        None,
+        description="Time until that notifications are disabled in Unixtime",
     )
     settings: typing.Optional["AccountPushParams"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     conversations: typing.Optional["AccountPushConversations"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class AdsAccesses(pydantic.BaseModel):
     client_id: typing.Optional[str] = pydantic.Field(
-        None, description="Client ID",
+        None,
+        description="Client ID",
     )
     role: typing.Optional["AdsAccessRole"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class AdsAccount(pydantic.BaseModel):
     access_role: "AdsAccessRole" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     account_id: int = pydantic.Field(
-        ..., description="Account ID",
+        ...,
+        description="Account ID",
     )
     account_status: "BaseBoolInt" = pydantic.Field(
-        ..., description="Information whether account is active",
+        ...,
+        description="Information whether account is active",
     )
     account_type: "AdsAccountType" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     account_name: str = pydantic.Field(
-        ..., description="Account name",
+        ...,
+        description="Account name",
     )
     can_view_budget: bool = pydantic.Field(
-        ..., description="Can user view account budget",
+        ...,
+        description="Can user view account budget",
     )
 
 
 class AdsAd(pydantic.BaseModel):
     ad_format: int = pydantic.Field(
-        ..., description="Ad format",
+        ...,
+        description="Ad format",
     )
     ad_platform: typing.Optional[typing.Union[int, str,]] = pydantic.Field(
-        None, description="Ad platform",
+        None,
+        description="Ad platform",
     )
     all_limit: int = pydantic.Field(
-        ..., description="Total limit",
+        ...,
+        description="Total limit",
     )
     approved: "AdsAdApproved" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     campaign_id: int = pydantic.Field(
-        ..., description="Campaign ID",
+        ...,
+        description="Campaign ID",
     )
     category1_id: typing.Optional[int] = pydantic.Field(
-        None, description="Category ID",
+        None,
+        description="Category ID",
     )
     category2_id: typing.Optional[int] = pydantic.Field(
-        None, description="Additional category ID",
+        None,
+        description="Additional category ID",
     )
     cost_type: "AdsAdCostType" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     cpc: typing.Optional[int] = pydantic.Field(
-        None, description="Cost of a click, kopecks",
+        None,
+        description="Cost of a click, kopecks",
     )
     cpm: typing.Optional[int] = pydantic.Field(
-        None, description="Cost of 1000 impressions, kopecks",
+        None,
+        description="Cost of 1000 impressions, kopecks",
     )
     cpa: typing.Optional[int] = pydantic.Field(
-        None, description="Cost of an action, kopecks",
+        None,
+        description="Cost of an action, kopecks",
     )
     ocpm: typing.Optional[int] = pydantic.Field(
-        None, description="Cost of 1000 impressions optimized, kopecks",
+        None,
+        description="Cost of 1000 impressions optimized, kopecks",
     )
     autobidding_max_cost: typing.Optional[int] = pydantic.Field(
-        None, description="Max cost of target actions for autobidding, kopecks",
+        None,
+        description="Max cost of target actions for autobidding, kopecks",
     )
     disclaimer_medical: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether disclaimer is enabled",
+        None,
+        description="Information whether disclaimer is enabled",
     )
     disclaimer_specialist: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether disclaimer is enabled",
+        None,
+        description="Information whether disclaimer is enabled",
     )
     disclaimer_supplements: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether disclaimer is enabled",
+        None,
+        description="Information whether disclaimer is enabled",
     )
     id: int = pydantic.Field(
-        ..., description="Ad ID",
+        ...,
+        description="Ad ID",
     )
     impressions_limit: typing.Optional[int] = pydantic.Field(
-        None, description="Impressions limit",
+        None,
+        description="Impressions limit",
     )
     impressions_limited: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether impressions are limited",
+        None,
+        description="Information whether impressions are limited",
     )
     name: str = pydantic.Field(
-        ..., description="Ad title",
+        ...,
+        description="Ad title",
     )
     status: "AdsAdStatus" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     video: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether the ad is a video",
+        None,
+        description="Information whether the ad is a video",
     )
 
 
 class AdsAdLayout(pydantic.BaseModel):
     ad_format: int = pydantic.Field(
-        ..., description="Ad format",
+        ...,
+        description="Ad format",
     )
     campaign_id: int = pydantic.Field(
-        ..., description="Campaign ID",
+        ...,
+        description="Campaign ID",
     )
     cost_type: "AdsAdCostType" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     description: str = pydantic.Field(
-        ..., description="Ad description",
+        ...,
+        description="Ad description",
     )
     id: int = pydantic.Field(
-        ..., description="Ad ID",
+        ...,
+        description="Ad ID",
     )
     image_src: str = pydantic.Field(
-        ..., description="Image URL",
+        ...,
+        description="Image URL",
     )
     image_src_2x: typing.Optional[str] = pydantic.Field(
-        None, description="URL of the preview image in double size",
+        None,
+        description="URL of the preview image in double size",
     )
     link_domain: typing.Optional[str] = pydantic.Field(
-        None, description="Domain of advertised object",
+        None,
+        description="Domain of advertised object",
     )
     link_url: str = pydantic.Field(
-        ..., description="URL of advertised object",
+        ...,
+        description="URL of advertised object",
     )
     preview_link: typing.Optional[typing.Union[int, str,]] = pydantic.Field(
-        None, description="link to preview an ad as it is shown on the website",
+        None,
+        description="link to preview an ad as it is shown on the website",
     )
     title: str = pydantic.Field(
-        ..., description="Ad title",
+        ...,
+        description="Ad title",
     )
     video: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether the ad is a video",
+        None,
+        description="Information whether the ad is a video",
     )
 
 
 class AdsCampaign(pydantic.BaseModel):
     all_limit: str = pydantic.Field(
-        ..., description="Campaign's total limit, rubles",
+        ...,
+        description="Campaign's total limit, rubles",
     )
     day_limit: str = pydantic.Field(
-        ..., description="Campaign's day limit, rubles",
+        ...,
+        description="Campaign's day limit, rubles",
     )
     id: int = pydantic.Field(
-        ..., description="Campaign ID",
+        ...,
+        description="Campaign ID",
     )
     name: str = pydantic.Field(
-        ..., description="Campaign title",
+        ...,
+        description="Campaign title",
     )
     start_time: int = pydantic.Field(
-        ..., description="Campaign start time, as Unixtime",
+        ...,
+        description="Campaign start time, as Unixtime",
     )
     status: "AdsCampaignStatus" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     stop_time: int = pydantic.Field(
-        ..., description="Campaign stop time, as Unixtime",
+        ...,
+        description="Campaign stop time, as Unixtime",
     )
     type: "AdsCampaignType" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class AdsCategory(pydantic.BaseModel):
     id: int = pydantic.Field(
-        ..., description="Category ID",
+        ...,
+        description="Category ID",
     )
     name: str = pydantic.Field(
-        ..., description="Category name",
+        ...,
+        description="Category name",
     )
     subcategories: typing.Optional[typing.List["BaseObjectWithName"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class AdsClient(pydantic.BaseModel):
     all_limit: str = pydantic.Field(
-        ..., description="Client's total limit, rubles",
+        ...,
+        description="Client's total limit, rubles",
     )
     day_limit: str = pydantic.Field(
-        ..., description="Client's day limit, rubles",
+        ...,
+        description="Client's day limit, rubles",
     )
     id: int = pydantic.Field(
-        ..., description="Client ID",
+        ...,
+        description="Client ID",
     )
     name: str = pydantic.Field(
-        ..., description="Client name",
+        ...,
+        description="Client name",
     )
 
 
 class AdsCriteria(pydantic.BaseModel):
     age_from: typing.Optional[int] = pydantic.Field(
-        None, description="Age from",
+        None,
+        description="Age from",
     )
     age_to: typing.Optional[int] = pydantic.Field(
-        None, description="Age to",
+        None,
+        description="Age to",
     )
     apps: typing.Optional[str] = pydantic.Field(
-        None, description="Apps IDs",
+        None,
+        description="Apps IDs",
     )
     apps_not: typing.Optional[str] = pydantic.Field(
-        None, description="Apps IDs to except",
+        None,
+        description="Apps IDs to except",
     )
     birthday: typing.Optional[int] = pydantic.Field(
-        None, description="Days to birthday",
+        None,
+        description="Days to birthday",
     )
     cities: typing.Optional[str] = pydantic.Field(
-        None, description="Cities IDs",
+        None,
+        description="Cities IDs",
     )
     cities_not: typing.Optional[str] = pydantic.Field(
-        None, description="Cities IDs to except",
+        None,
+        description="Cities IDs to except",
     )
     country: typing.Optional[int] = pydantic.Field(
-        None, description="Country ID",
+        None,
+        description="Country ID",
     )
     districts: typing.Optional[str] = pydantic.Field(
-        None, description="Districts IDs",
+        None,
+        description="Districts IDs",
     )
     groups: typing.Optional[str] = pydantic.Field(
-        None, description="Communities IDs",
+        None,
+        description="Communities IDs",
     )
     interest_categories: typing.Optional[str] = pydantic.Field(
-        None, description="Interests categories IDs",
+        None,
+        description="Interests categories IDs",
     )
     interests: typing.Optional[str] = pydantic.Field(
-        None, description="Interests",
+        None,
+        description="Interests",
     )
     paying: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether the user has proceeded VK payments before",
+        None,
+        description="Information whether the user has proceeded VK payments before",
     )
     positions: typing.Optional[str] = pydantic.Field(
-        None, description="Positions IDs",
+        None,
+        description="Positions IDs",
     )
     religions: typing.Optional[str] = pydantic.Field(
-        None, description="Religions IDs",
+        None,
+        description="Religions IDs",
     )
     retargeting_groups: typing.Optional[str] = pydantic.Field(
-        None, description="Retargeting groups IDs",
+        None,
+        description="Retargeting groups IDs",
     )
     retargeting_groups_not: typing.Optional[str] = pydantic.Field(
-        None, description="Retargeting groups IDs to except",
+        None,
+        description="Retargeting groups IDs to except",
     )
     school_from: typing.Optional[int] = pydantic.Field(
-        None, description="School graduation year from",
+        None,
+        description="School graduation year from",
     )
     school_to: typing.Optional[int] = pydantic.Field(
-        None, description="School graduation year to",
+        None,
+        description="School graduation year to",
     )
     schools: typing.Optional[str] = pydantic.Field(
-        None, description="Schools IDs",
+        None,
+        description="Schools IDs",
     )
     sex: typing.Optional["AdsCriteriaSex"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     stations: typing.Optional[str] = pydantic.Field(
-        None, description="Stations IDs",
+        None,
+        description="Stations IDs",
     )
     statuses: typing.Optional[str] = pydantic.Field(
-        None, description="Relationship statuses",
+        None,
+        description="Relationship statuses",
     )
     streets: typing.Optional[str] = pydantic.Field(
-        None, description="Streets IDs",
+        None,
+        description="Streets IDs",
     )
     travellers: typing.Optional["BasePropertyExists"] = pydantic.Field(
-        None, description="Travellers only",
+        None,
+        description="Travellers only",
     )
     uni_from: typing.Optional[int] = pydantic.Field(
-        None, description="University graduation year from",
+        None,
+        description="University graduation year from",
     )
     uni_to: typing.Optional[int] = pydantic.Field(
-        None, description="University graduation year to",
+        None,
+        description="University graduation year to",
     )
     user_browsers: typing.Optional[str] = pydantic.Field(
-        None, description="Browsers",
+        None,
+        description="Browsers",
     )
     user_devices: typing.Optional[str] = pydantic.Field(
-        None, description="Devices",
+        None,
+        description="Devices",
     )
     user_os: typing.Optional[str] = pydantic.Field(
-        None, description="Operating systems",
+        None,
+        description="Operating systems",
     )
 
 
 class AdsDemoStats(pydantic.BaseModel):
     id: typing.Optional[int] = pydantic.Field(
-        None, description="Object ID",
+        None,
+        description="Object ID",
     )
     stats: typing.Optional["AdsDemostatsFormat"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     type: typing.Optional["AdsObjectType"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class AdsFloodStats(pydantic.BaseModel):
     left: int = pydantic.Field(
-        ..., description="Requests left",
+        ...,
+        description="Requests left",
     )
     refresh: int = pydantic.Field(
-        ..., description="Time to refresh in seconds",
+        ...,
+        description="Time to refresh in seconds",
     )
 
 
 class AdsLinkStatus(pydantic.BaseModel):
     description: str = pydantic.Field(
-        ..., description="Reject reason",
+        ...,
+        description="Reject reason",
     )
     redirect_url: str = pydantic.Field(
-        ..., description="URL",
+        ...,
+        description="URL",
     )
     status: str = pydantic.Field(
-        ..., description="Link status",
+        ...,
+        description="Link status",
     )
 
 
 class AdsLookalikeRequest(pydantic.BaseModel):
     id: int = pydantic.Field(
-        ..., description="Lookalike request ID",
+        ...,
+        description="Lookalike request ID",
     )
     create_time: int = pydantic.Field(
-        ..., description="Lookalike request create time, as Unixtime",
+        ...,
+        description="Lookalike request create time, as Unixtime",
     )
     update_time: int = pydantic.Field(
-        ..., description="Lookalike request update time, as Unixtime",
+        ...,
+        description="Lookalike request update time, as Unixtime",
     )
     scheduled_delete_time: typing.Optional[int] = pydantic.Field(
-        None, description="Time by which lookalike request would be deleted, as Unixtime",
+        None,
+        description="Time by which lookalike request would be deleted, as Unixtime",
     )
     status: str = pydantic.Field(
-        ..., description="Lookalike request status",
+        ...,
+        description="Lookalike request status",
     )
     source_type: str = pydantic.Field(
-        ..., description="Lookalike request source type",
+        ...,
+        description="Lookalike request source type",
     )
     source_retargeting_group_id: typing.Optional[int] = pydantic.Field(
-        None, description="Retargeting group id, which was used as lookalike seed",
+        None,
+        description="Retargeting group id, which was used as lookalike seed",
     )
     source_name: typing.Optional[str] = pydantic.Field(
-        None, description="Lookalike request seed name (retargeting group name)",
+        None,
+        description="Lookalike request seed name (retargeting group name)",
     )
     audience_count: typing.Optional[int] = pydantic.Field(
-        None, description="Lookalike request seed audience size",
+        None,
+        description="Lookalike request seed audience size",
     )
     save_audience_levels: typing.Optional[
         typing.List["AdsLookalikeRequestSaveAudienceLevel"]
     ] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class AdsLookalikeRequestSaveAudienceLevel(pydantic.BaseModel):
     level: typing.Optional[int] = pydantic.Field(
-        None, description="Save audience level id, which is used in save audience queries",
+        None,
+        description="Save audience level id, which is used in save audience queries",
     )
     audience_count: typing.Optional[int] = pydantic.Field(
-        None, description="Saved audience audience size for according level",
+        None,
+        description="Saved audience audience size for according level",
     )
 
 
 class AdsMusician(pydantic.BaseModel):
     id: int = pydantic.Field(
-        ..., description="Targeting music artist ID",
+        ...,
+        description="Targeting music artist ID",
     )
     name: str = pydantic.Field(
-        ..., description="Music artist name",
+        ...,
+        description="Music artist name",
     )
 
 
 class AdsParagraphs(pydantic.BaseModel):
     paragraph: typing.Optional[str] = pydantic.Field(
-        None, description="Rules paragraph",
+        None,
+        description="Rules paragraph",
     )
 
 
 class AdsPromotedPostReach(pydantic.BaseModel):
     hide: int = pydantic.Field(
-        ..., description="Hides amount",
+        ...,
+        description="Hides amount",
     )
     id: int = pydantic.Field(
-        ..., description="Object ID from 'ids' parameter",
+        ...,
+        description="Object ID from 'ids' parameter",
     )
     join_group: int = pydantic.Field(
-        ..., description="Community joins",
+        ...,
+        description="Community joins",
     )
     links: int = pydantic.Field(
-        ..., description="Link clicks",
+        ...,
+        description="Link clicks",
     )
     reach_subscribers: int = pydantic.Field(
-        ..., description="Subscribers reach",
+        ...,
+        description="Subscribers reach",
     )
     reach_total: int = pydantic.Field(
-        ..., description="Total reach",
+        ...,
+        description="Total reach",
     )
     report: int = pydantic.Field(
-        ..., description="Reports amount",
+        ...,
+        description="Reports amount",
     )
     to_group: int = pydantic.Field(
-        ..., description="Community clicks",
+        ...,
+        description="Community clicks",
     )
     unsubscribe: int = pydantic.Field(
-        ..., description="'Unsubscribe' events amount",
+        ...,
+        description="'Unsubscribe' events amount",
     )
     video_views_100p: typing.Optional[int] = pydantic.Field(
-        None, description="Video views for 100 percent",
+        None,
+        description="Video views for 100 percent",
     )
     video_views_25p: typing.Optional[int] = pydantic.Field(
-        None, description="Video views for 25 percent",
+        None,
+        description="Video views for 25 percent",
     )
     video_views_3s: typing.Optional[int] = pydantic.Field(
-        None, description="Video views for 3 seconds",
+        None,
+        description="Video views for 3 seconds",
     )
     video_views_50p: typing.Optional[int] = pydantic.Field(
-        None, description="Video views for 50 percent",
+        None,
+        description="Video views for 50 percent",
     )
     video_views_75p: typing.Optional[int] = pydantic.Field(
-        None, description="Video views for 75 percent",
+        None,
+        description="Video views for 75 percent",
     )
     video_views_start: typing.Optional[int] = pydantic.Field(
-        None, description="Video starts",
+        None,
+        description="Video starts",
     )
 
 
 class AdsRejectReason(pydantic.BaseModel):
     comment: typing.Optional[str] = pydantic.Field(
-        None, description="Comment text",
+        None,
+        description="Comment text",
     )
     rules: typing.Optional[typing.List["AdsRules"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class AdsRules(pydantic.BaseModel):
     paragraphs: typing.Optional[typing.List["AdsParagraphs"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     title: typing.Optional[str] = pydantic.Field(
-        None, description="Comment",
+        None,
+        description="Comment",
     )
 
 
 class AdsStats(pydantic.BaseModel):
     id: typing.Optional[int] = pydantic.Field(
-        None, description="Object ID",
+        None,
+        description="Object ID",
     )
     stats: typing.Optional["AdsStatsFormat"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     type: typing.Optional["AdsObjectType"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     views_times: typing.Optional["AdsStatsViewsTimes"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class AdsStatsAge(pydantic.BaseModel):
     clicks_rate: typing.Optional[int] = pydantic.Field(
-        None, description="Clicks rate",
+        None,
+        description="Clicks rate",
     )
     impressions_rate: typing.Optional[int] = pydantic.Field(
-        None, description="Impressions rate",
+        None,
+        description="Impressions rate",
     )
     value: typing.Optional[str] = pydantic.Field(
-        None, description="Age interval",
+        None,
+        description="Age interval",
     )
 
 
 class AdsStatsCities(pydantic.BaseModel):
     clicks_rate: typing.Optional[int] = pydantic.Field(
-        None, description="Clicks rate",
+        None,
+        description="Clicks rate",
     )
     impressions_rate: typing.Optional[int] = pydantic.Field(
-        None, description="Impressions rate",
+        None,
+        description="Impressions rate",
     )
     name: typing.Optional[str] = pydantic.Field(
-        None, description="City name",
+        None,
+        description="City name",
     )
     value: typing.Optional[int] = pydantic.Field(
-        None, description="City ID",
+        None,
+        description="City ID",
     )
 
 
 class AdsStatsSex(pydantic.BaseModel):
     clicks_rate: typing.Optional[int] = pydantic.Field(
-        None, description="Clicks rate",
+        None,
+        description="Clicks rate",
     )
     impressions_rate: typing.Optional[int] = pydantic.Field(
-        None, description="Impressions rate",
+        None,
+        description="Impressions rate",
     )
     value: typing.Optional["AdsStatsSexValue"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class AdsStatsSexAge(pydantic.BaseModel):
     clicks_rate: typing.Optional[int] = pydantic.Field(
-        None, description="Clicks rate",
+        None,
+        description="Clicks rate",
     )
     impressions_rate: typing.Optional[int] = pydantic.Field(
-        None, description="Impressions rate",
+        None,
+        description="Impressions rate",
     )
     value: typing.Optional[str] = pydantic.Field(
-        None, description="Sex and age interval",
+        None,
+        description="Sex and age interval",
     )
 
 
 class AdsTargStats(pydantic.BaseModel):
     audience_count: int = pydantic.Field(
-        ..., description="Audience",
+        ...,
+        description="Audience",
     )
     recommended_cpc: typing.Optional[int] = pydantic.Field(
-        None, description="Recommended CPC value for 50% reach (old format)",
+        None,
+        description="Recommended CPC value for 50% reach (old format)",
     )
     recommended_cpm: typing.Optional[int] = pydantic.Field(
-        None, description="Recommended CPM value for 50% reach (old format)",
+        None,
+        description="Recommended CPM value for 50% reach (old format)",
     )
     recommended_cpc_50: typing.Optional[int] = pydantic.Field(
-        None, description="Recommended CPC value for 50% reach",
+        None,
+        description="Recommended CPC value for 50% reach",
     )
     recommended_cpm_50: typing.Optional[int] = pydantic.Field(
-        None, description="Recommended CPM value for 50% reach",
+        None,
+        description="Recommended CPM value for 50% reach",
     )
     recommended_cpc_70: typing.Optional[int] = pydantic.Field(
-        None, description="Recommended CPC value for 70% reach",
+        None,
+        description="Recommended CPC value for 70% reach",
     )
     recommended_cpm_70: typing.Optional[int] = pydantic.Field(
-        None, description="Recommended CPM value for 70% reach",
+        None,
+        description="Recommended CPM value for 70% reach",
     )
     recommended_cpc_90: typing.Optional[int] = pydantic.Field(
-        None, description="Recommended CPC value for 90% reach",
+        None,
+        description="Recommended CPC value for 90% reach",
     )
     recommended_cpm_90: typing.Optional[int] = pydantic.Field(
-        None, description="Recommended CPM value for 90% reach",
+        None,
+        description="Recommended CPM value for 90% reach",
     )
 
 
 class AdsTargSuggestions(pydantic.BaseModel):
     id: typing.Optional[int] = pydantic.Field(
-        None, description="Object ID",
+        None,
+        description="Object ID",
     )
     name: typing.Optional[str] = pydantic.Field(
-        None, description="Object name",
+        None,
+        description="Object name",
     )
 
 
 class AdsTargSuggestionsCities(pydantic.BaseModel):
     id: typing.Optional[int] = pydantic.Field(
-        None, description="Object ID",
+        None,
+        description="Object ID",
     )
     name: typing.Optional[str] = pydantic.Field(
-        None, description="Object name",
+        None,
+        description="Object name",
     )
     parent: typing.Optional[str] = pydantic.Field(
-        None, description="Parent object",
+        None,
+        description="Parent object",
     )
 
 
 class AdsTargSuggestionsRegions(pydantic.BaseModel):
     id: typing.Optional[int] = pydantic.Field(
-        None, description="Object ID",
+        None,
+        description="Object ID",
     )
     name: typing.Optional[str] = pydantic.Field(
-        None, description="Object name",
+        None,
+        description="Object name",
     )
     type: typing.Optional[str] = pydantic.Field(
-        None, description="Object type",
+        None,
+        description="Object type",
     )
 
 
 class AdsTargSuggestionsSchools(pydantic.BaseModel):
     desc: typing.Optional[str] = pydantic.Field(
-        None, description="Full school title",
+        None,
+        description="Full school title",
     )
     id: typing.Optional[int] = pydantic.Field(
-        None, description="School ID",
+        None,
+        description="School ID",
     )
     name: typing.Optional[str] = pydantic.Field(
-        None, description="School title",
+        None,
+        description="School title",
     )
     parent: typing.Optional[str] = pydantic.Field(
-        None, description="City name",
+        None,
+        description="City name",
     )
     type: typing.Optional["AdsTargSuggestionsSchoolsType"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class AdsTargetGroup(pydantic.BaseModel):
     audience_count: typing.Optional[int] = pydantic.Field(
-        None, description="Audience",
+        None,
+        description="Audience",
     )
     domain: typing.Optional[str] = pydantic.Field(
-        None, description="Site domain",
+        None,
+        description="Site domain",
     )
     id: typing.Optional[int] = pydantic.Field(
-        None, description="Group ID",
+        None,
+        description="Group ID",
     )
     lifetime: typing.Optional[int] = pydantic.Field(
-        None, description="Number of days for user to be in group",
+        None,
+        description="Number of days for user to be in group",
     )
     name: typing.Optional[str] = pydantic.Field(
-        None, description="Group name",
+        None,
+        description="Group name",
     )
     pixel: typing.Optional[str] = pydantic.Field(
-        None, description="Pixel code",
+        None,
+        description="Pixel code",
     )
 
 
 class AdsUpdateOfficeUsersResult(pydantic.BaseModel):
     user_id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     is_success: bool = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     error: typing.Optional["BaseError"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class AdsUserSpecification(pydantic.BaseModel):
     user_id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     role: "AdsAccessRolePublic" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     grant_access_to_all_clients: typing.Optional[bool] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     client_ids: typing.Optional[typing.List[int]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     view_budget: typing.Optional[bool] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class AdsUserSpecificationCutted(pydantic.BaseModel):
     user_id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     role: "AdsAccessRolePublic" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     client_id: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     view_budget: typing.Optional[bool] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class AdsUsers(pydantic.BaseModel):
     accesses: typing.List["AdsAccesses"] = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     user_id: int = pydantic.Field(
-        ..., description="User ID",
+        ...,
+        description="User ID",
     )
 
 
 class AdswebGetAdCategoriesResponseCategoriesCategory(pydantic.BaseModel):
     id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     name: str = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class AdswebGetAdUnitsResponseAdUnitsAdUnit(pydantic.BaseModel):
     id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     site_id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     name: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class AdswebGetFraudHistoryResponseEntriesEntry(pydantic.BaseModel):
     site_id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     day: str = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class AdswebGetSitesResponseSitesSite(pydantic.BaseModel):
     id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     status_user: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     status_moder: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     domains: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class AdswebGetStatisticsResponseItemsItem(pydantic.BaseModel):
     site_id: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     ad_unit_id: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     overall_count: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     months_count: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     month_min: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     month_max: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     days_count: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     day_min: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     day_max: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     hours_count: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     hour_min: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     hour_max: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class AppWidgetsPhoto(pydantic.BaseModel):
     id: str = pydantic.Field(
-        ..., description="Image ID",
+        ...,
+        description="Image ID",
     )
     images: typing.List["BaseImage"] = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class AppWidgetsPhotos(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     items: typing.Optional[typing.List["AppWidgetsPhoto"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class AppsLeaderboard(pydantic.BaseModel):
     level: typing.Optional[int] = pydantic.Field(
-        None, description="Level",
+        None,
+        description="Level",
     )
     points: typing.Optional[int] = pydantic.Field(
-        None, description="Points number",
+        None,
+        description="Points number",
     )
     score: typing.Optional[int] = pydantic.Field(
-        None, description="Score number",
+        None,
+        description="Score number",
     )
     user_id: int = pydantic.Field(
-        ..., description="User ID",
+        ...,
+        description="User ID",
     )
 
 
 class AppsScope(pydantic.BaseModel):
     name: str = pydantic.Field(
-        ..., description="Scope name",
+        ...,
+        description="Scope name",
     )
     title: typing.Optional[str] = pydantic.Field(
-        None, description="Scope title",
+        None,
+        description="Scope title",
     )
 
 
 class BaseCropPhoto(pydantic.BaseModel):
     photo: "PhotosPhoto" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     crop: "BaseCropPhotoCrop" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     rect: "BaseCropPhotoRect" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class BaseGradientPoint(pydantic.BaseModel):
     color: str = pydantic.Field(
-        ..., description="Hex color code without #",
+        ...,
+        description="Hex color code without #",
     )
     position: int = pydantic.Field(
-        ..., description="Point position",
+        ...,
+        description="Point position",
     )
 
 
 class BaseImage(pydantic.BaseModel):
     id: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     height: int = pydantic.Field(
-        ..., description="Image height",
+        ...,
+        description="Image height",
     )
     url: str = pydantic.Field(
-        ..., description="Image url",
+        ...,
+        description="Image url",
     )
     width: int = pydantic.Field(
-        ..., description="Image width",
+        ...,
+        description="Image width",
     )
 
 
 class BaseMessageError(pydantic.BaseModel):
     code: typing.Optional[int] = pydantic.Field(
-        None, description="Error code",
+        None,
+        description="Error code",
     )
     description: typing.Optional[str] = pydantic.Field(
-        None, description="Error message",
+        None,
+        description="Error message",
     )
 
 
 class BaseObject(pydantic.BaseModel):
     id: int = pydantic.Field(
-        ..., description="Object ID",
+        ...,
+        description="Object ID",
     )
     title: str = pydantic.Field(
-        ..., description="Object title",
+        ...,
+        description="Object title",
     )
 
 
 class BaseObjectWithName(pydantic.BaseModel):
     id: int = pydantic.Field(
-        ..., description="Object ID",
+        ...,
+        description="Object ID",
     )
     name: str = pydantic.Field(
-        ..., description="Object name",
+        ...,
+        description="Object name",
     )
 
 
 class BaseRequestParam(pydantic.BaseModel):
     key: typing.Optional[str] = pydantic.Field(
-        None, description="Parameter name",
+        None,
+        description="Parameter name",
     )
     value: typing.Optional[str] = pydantic.Field(
-        None, description="Parameter value",
+        None,
+        description="Parameter value",
     )
 
 
 class BaseStickerAnimation(pydantic.BaseModel):
     type: typing.Optional[str] = pydantic.Field(
-        None, description="Type of animation script",
+        None,
+        description="Type of animation script",
     )
     url: typing.Optional[str] = pydantic.Field(
-        None, description="URL of animation script",
+        None,
+        description="URL of animation script",
     )
 
 
 class BaseUploadServer(pydantic.BaseModel):
     upload_url: str = pydantic.Field(
-        ..., description="Upload URL",
+        ...,
+        description="Upload URL",
     )
 
 
 class BaseUserId(pydantic.BaseModel):
     user_id: typing.Optional[int] = pydantic.Field(
-        None, description="User ID",
+        None,
+        description="User ID",
     )
 
 
 class BoardTopicComment(pydantic.BaseModel):
     attachments: typing.Optional[typing.List["WallCommentAttachment"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     date: int = pydantic.Field(
-        ..., description="Date when the comment has been added in Unixtime",
+        ...,
+        description="Date when the comment has been added in Unixtime",
     )
     from_id: int = pydantic.Field(
-        ..., description="Author ID",
+        ...,
+        description="Author ID",
     )
     id: int = pydantic.Field(
-        ..., description="Comment ID",
+        ...,
+        description="Comment ID",
     )
     real_offset: typing.Optional[int] = pydantic.Field(
-        None, description="Real position of the comment",
+        None,
+        description="Real position of the comment",
     )
     text: str = pydantic.Field(
-        ..., description="Comment text",
+        ...,
+        description="Comment text",
     )
     can_edit: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user can edit the comment",
+        None,
+        description="Information whether current user can edit the comment",
     )
     likes: typing.Optional["BaseLikesInfo"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class BoardTopicPoll(pydantic.BaseModel):
     answer_id: int = pydantic.Field(
-        ..., description="Current user's answer ID",
+        ...,
+        description="Current user's answer ID",
     )
     answers: typing.List["PollsAnswer"] = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     created: int = pydantic.Field(
-        ..., description="Date when poll has been created in Unixtime",
+        ...,
+        description="Date when poll has been created in Unixtime",
     )
     is_closed: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether the poll is closed",
+        None,
+        description="Information whether the poll is closed",
     )
     owner_id: int = pydantic.Field(
-        ..., description="Poll owner's ID",
+        ...,
+        description="Poll owner's ID",
     )
     poll_id: int = pydantic.Field(
-        ..., description="Poll ID",
+        ...,
+        description="Poll ID",
     )
     question: str = pydantic.Field(
-        ..., description="Poll question",
+        ...,
+        description="Poll question",
     )
     votes: str = pydantic.Field(
-        ..., description="Votes number",
+        ...,
+        description="Votes number",
     )
 
 
 class CallbackBoardPostDelete(pydantic.BaseModel):
     topic_owner_id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     topic_id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class CallbackConfirmationMessage(pydantic.BaseModel):
     type: "CallbackMessageType" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     group_id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     secret: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class CallbackDonutMoneyWithdraw(pydantic.BaseModel):
     amount: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     amount_without_fee: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class CallbackDonutMoneyWithdrawError(pydantic.BaseModel):
     reason: str = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class CallbackDonutSubscriptionCancelled(pydantic.BaseModel):
     user_id: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class CallbackDonutSubscriptionCreate(pydantic.BaseModel):
     user_id: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     amount: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     amount_without_fee: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class CallbackDonutSubscriptionExpired(pydantic.BaseModel):
     user_id: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class CallbackDonutSubscriptionPriceChanged(pydantic.BaseModel):
     user_id: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     amount_old: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     amount_new: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     amount_diff: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     amount_diff_without_fee: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class CallbackDonutSubscriptionProlonged(pydantic.BaseModel):
     user_id: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     amount: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     amount_without_fee: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class CallbackGroupChangePhoto(pydantic.BaseModel):
     user_id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     photo: "PhotosPhoto" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class CallbackGroupChangeSettings(pydantic.BaseModel):
     user_id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     self: "BaseBoolInt" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class CallbackGroupJoin(pydantic.BaseModel):
     user_id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     join_type: "CallbackGroupJoinType" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class CallbackGroupLeave(pydantic.BaseModel):
     user_id: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     self: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class CallbackGroupOfficersEdit(pydantic.BaseModel):
     admin_id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     user_id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     level_old: "CallbackGroupOfficerRole" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     level_new: "CallbackGroupOfficerRole" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class CallbackGroupSettingsChanges(pydantic.BaseModel):
     title: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     description: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     access: typing.Optional["GroupsGroupIsClosed"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     screen_name: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     public_category: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     public_subcategory: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     age_limits: typing.Optional["GroupsGroupFullAgeLimits"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     website: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     enable_status_default: typing.Optional["GroupsGroupWall"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     enable_audio: typing.Optional["GroupsGroupAudio"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     enable_video: typing.Optional["GroupsGroupVideo"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     enable_photo: typing.Optional["GroupsGroupPhotos"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     enable_market: typing.Optional["CallbackGroupMarket"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class CallbackLikeAddRemove(pydantic.BaseModel):
     liker_id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     object_type: str = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     object_owner_id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     object_id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     post_id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     thread_reply_id: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class CallbackMarketComment(pydantic.BaseModel):
     id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     from_id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     date: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     text: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     market_owner_od: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     photo_id: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class CallbackMarketCommentDelete(pydantic.BaseModel):
     owner_id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     user_id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     item_id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class CallbackMessageAllow(pydantic.BaseModel):
     user_id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     key: str = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class CallbackMessageBase(pydantic.BaseModel):
     type: "CallbackMessageType" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     object: dict = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     group_id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class CallbackMessageDeny(pydantic.BaseModel):
     user_id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class CallbackPhotoComment(pydantic.BaseModel):
     id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     from_id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     date: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     text: str = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     photo_owner_od: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class CallbackPhotoCommentDelete(pydantic.BaseModel):
     id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     owner_id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     user_id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     photo_id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class CallbackPollVoteNew(pydantic.BaseModel):
     owner_id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     poll_id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     option_id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     user_id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class CallbackQrScan(pydantic.BaseModel):
     user_id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     data: str = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     type: str = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     subtype: str = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     reread: bool = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class CallbackUserBlock(pydantic.BaseModel):
     admin_id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     user_id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     unblock_date: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     reason: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     comment: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class CallbackUserUnblock(pydantic.BaseModel):
     admin_id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     user_id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     by_end_date: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class CallbackVideoComment(pydantic.BaseModel):
     id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     from_id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     date: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     text: str = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     video_owner_od: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class CallbackVideoCommentDelete(pydantic.BaseModel):
     id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     owner_id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     user_id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     video_id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class CallbackWallCommentDelete(pydantic.BaseModel):
     owner_id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     user_id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     post_id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class DatabaseFaculty(pydantic.BaseModel):
     id: typing.Optional[int] = pydantic.Field(
-        None, description="Faculty ID",
+        None,
+        description="Faculty ID",
     )
     title: typing.Optional[str] = pydantic.Field(
-        None, description="Faculty title",
+        None,
+        description="Faculty title",
     )
 
 
 class DatabaseRegion(pydantic.BaseModel):
     id: typing.Optional[int] = pydantic.Field(
-        None, description="Region ID",
+        None,
+        description="Region ID",
     )
     title: typing.Optional[str] = pydantic.Field(
-        None, description="Region title",
+        None,
+        description="Region title",
     )
 
 
 class DatabaseSchool(pydantic.BaseModel):
     id: typing.Optional[int] = pydantic.Field(
-        None, description="School ID",
+        None,
+        description="School ID",
     )
     title: typing.Optional[str] = pydantic.Field(
-        None, description="School title",
+        None,
+        description="School title",
     )
 
 
 class DatabaseStation(pydantic.BaseModel):
     city_id: typing.Optional[int] = pydantic.Field(
-        None, description="City ID",
+        None,
+        description="City ID",
     )
     color: typing.Optional[str] = pydantic.Field(
-        None, description="Hex color code without #",
+        None,
+        description="Hex color code without #",
     )
     id: int = pydantic.Field(
-        ..., description="Station ID",
+        ...,
+        description="Station ID",
     )
     name: str = pydantic.Field(
-        ..., description="Station name",
+        ...,
+        description="Station name",
     )
 
 
 class DatabaseUniversity(pydantic.BaseModel):
     id: typing.Optional[int] = pydantic.Field(
-        None, description="University ID",
+        None,
+        description="University ID",
     )
     title: typing.Optional[str] = pydantic.Field(
-        None, description="University title",
+        None,
+        description="University title",
     )
 
 
 class DocsDocPreviewPhotoSizes(pydantic.BaseModel):
     src: str = pydantic.Field(
-        ..., description="URL of the image",
+        ...,
+        description="URL of the image",
     )
     width: int = pydantic.Field(
-        ..., description="Width in px",
+        ...,
+        description="Width in px",
     )
     height: int = pydantic.Field(
-        ..., description="Height in px",
+        ...,
+        description="Height in px",
     )
     type: "PhotosPhotoSizesType" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class DocsDocTypes(pydantic.BaseModel):
     id: int = pydantic.Field(
-        ..., description="Doc type ID",
+        ...,
+        description="Doc type ID",
     )
     name: str = pydantic.Field(
-        ..., description="Doc type title",
+        ...,
+        description="Doc type title",
     )
     count: int = pydantic.Field(
-        ..., description="Number of docs",
+        ...,
+        description="Number of docs",
     )
 
 
 class DocsDocUploadResponse(pydantic.BaseModel):
     file: typing.Optional[str] = pydantic.Field(
-        None, description="Uploaded file data",
+        None,
+        description="Uploaded file data",
     )
 
 
 class DonutDonatorSubscriptionInfo(pydantic.BaseModel):
     owner_id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     next_payment_date: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     amount: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     status: str = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class FaveBookmark(pydantic.BaseModel):
     added_date: int = pydantic.Field(
-        ..., description="Timestamp, when this item was bookmarked",
+        ...,
+        description="Timestamp, when this item was bookmarked",
     )
     link: typing.Optional["BaseLink"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     post: typing.Optional["WallWallpostFull"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     product: typing.Optional["MarketMarketItem"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     seen: bool = pydantic.Field(
-        ..., description="Has user seen this item",
+        ...,
+        description="Has user seen this item",
     )
     tags: typing.List["FaveTag"] = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     type: "FaveBookmarkType" = pydantic.Field(
-        ..., description="Item type",
+        ...,
+        description="Item type",
     )
     video: typing.Optional["VideoVideo"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class FavePage(pydantic.BaseModel):
     description: str = pydantic.Field(
-        ..., description="Some info about user or group",
+        ...,
+        description="Some info about user or group",
     )
     group: typing.Optional["GroupsGroupFull"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     tags: typing.List["FaveTag"] = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     type: "FavePageType" = pydantic.Field(
-        ..., description="Item type",
+        ...,
+        description="Item type",
     )
     updated_date: typing.Optional[int] = pydantic.Field(
-        None, description="Timestamp, when this page was bookmarked",
+        None,
+        description="Timestamp, when this page was bookmarked",
     )
     user: typing.Optional["UsersUserFull"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class FaveTag(pydantic.BaseModel):
     id: typing.Optional[int] = pydantic.Field(
-        None, description="Tag id",
+        None,
+        description="Tag id",
     )
     name: typing.Optional[str] = pydantic.Field(
-        None, description="Tag name",
+        None,
+        description="Tag name",
     )
 
 
 class FriendsFriendStatus(pydantic.BaseModel):
     friend_status: "FriendsFriendStatusStatus" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     sign: typing.Optional[str] = pydantic.Field(
-        None, description="MD5 hash for the result validation",
+        None,
+        description="MD5 hash for the result validation",
     )
     user_id: int = pydantic.Field(
-        ..., description="User ID",
+        ...,
+        description="User ID",
     )
 
 
 class FriendsFriendsList(pydantic.BaseModel):
     id: int = pydantic.Field(
-        ..., description="List ID",
+        ...,
+        description="List ID",
     )
     name: str = pydantic.Field(
-        ..., description="List title",
+        ...,
+        description="List title",
     )
 
 
 class FriendsMutualFriend(pydantic.BaseModel):
     common_count: typing.Optional[int] = pydantic.Field(
-        None, description="Total mutual friends number",
+        None,
+        description="Total mutual friends number",
     )
     common_friends: typing.Optional[typing.List[int]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     id: typing.Optional[int] = pydantic.Field(
-        None, description="User ID",
+        None,
+        description="User ID",
     )
 
 
 class FriendsRequests(pydantic.BaseModel):
     from_: typing.Optional[str] = pydantic.Field(
-        None, description="ID of the user by whom friend has been suggested", alias="from",
+        None,
+        description="ID of the user by whom friend has been suggested",
+        alias="from",
     )
     mutual: typing.Optional["FriendsRequestsMutual"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     user_id: typing.Optional[int] = pydantic.Field(
-        None, description="User ID",
+        None,
+        description="User ID",
     )
 
 
 class FriendsRequestsXtrMessage(pydantic.BaseModel):
     from_: typing.Optional[str] = pydantic.Field(
-        None, description="ID of the user by whom friend has been suggested", alias="from",
+        None,
+        description="ID of the user by whom friend has been suggested",
+        alias="from",
     )
     message: typing.Optional[str] = pydantic.Field(
-        None, description="Message sent with a request",
+        None,
+        description="Message sent with a request",
     )
     mutual: typing.Optional["FriendsRequestsMutual"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     user_id: typing.Optional[int] = pydantic.Field(
-        None, description="User ID",
+        None,
+        description="User ID",
     )
 
 
 class GiftsGift(pydantic.BaseModel):
     date: typing.Optional[int] = pydantic.Field(
-        None, description="Date when gist has been sent in Unixtime",
+        None,
+        description="Date when gist has been sent in Unixtime",
     )
     from_id: typing.Optional[int] = pydantic.Field(
-        None, description="Gift sender ID",
+        None,
+        description="Gift sender ID",
     )
     gift: typing.Optional["GiftsLayout"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     gift_hash: typing.Optional[str] = pydantic.Field(
-        None, description="Hash",
+        None,
+        description="Hash",
     )
     id: typing.Optional[int] = pydantic.Field(
-        None, description="Gift ID",
+        None,
+        description="Gift ID",
     )
     message: typing.Optional[str] = pydantic.Field(
-        None, description="Comment text",
+        None,
+        description="Comment text",
     )
     privacy: typing.Optional["GiftsGiftPrivacy"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class GroupsAddress(pydantic.BaseModel):
     additional_address: typing.Optional[str] = pydantic.Field(
-        None, description="Additional address to the place (6 floor, left door)",
+        None,
+        description="Additional address to the place (6 floor, left door)",
     )
     address: typing.Optional[str] = pydantic.Field(
-        None, description="String address to the place (Nevsky, 28)",
+        None,
+        description="String address to the place (Nevsky, 28)",
     )
     city_id: typing.Optional[int] = pydantic.Field(
-        None, description="City id of address",
+        None,
+        description="City id of address",
     )
     country_id: typing.Optional[int] = pydantic.Field(
-        None, description="Country id of address",
+        None,
+        description="Country id of address",
     )
     distance: typing.Optional[int] = pydantic.Field(
-        None, description="Distance from the point",
+        None,
+        description="Distance from the point",
     )
     id: int = pydantic.Field(
-        ..., description="Address id",
+        ...,
+        description="Address id",
     )
     latitude: typing.Optional[int] = pydantic.Field(
-        None, description="Address latitude",
+        None,
+        description="Address latitude",
     )
     longitude: typing.Optional[int] = pydantic.Field(
-        None, description="Address longitude",
+        None,
+        description="Address longitude",
     )
     metro_station_id: typing.Optional[int] = pydantic.Field(
-        None, description="Metro id of address",
+        None,
+        description="Metro id of address",
     )
     phone: typing.Optional[str] = pydantic.Field(
-        None, description="Address phone",
+        None,
+        description="Address phone",
     )
     time_offset: typing.Optional[int] = pydantic.Field(
-        None, description="Time offset int minutes from utc time",
+        None,
+        description="Time offset int minutes from utc time",
     )
     timetable: typing.Optional["GroupsAddressTimetable"] = pydantic.Field(
-        None, description="Week timetable for the address",
+        None,
+        description="Week timetable for the address",
     )
     title: typing.Optional[str] = pydantic.Field(
-        None, description="Title of the place (Zinger, etc)",
+        None,
+        description="Title of the place (Zinger, etc)",
     )
     work_info_status: typing.Optional["GroupsAddressWorkInfoStatus"] = pydantic.Field(
-        None, description="Status of information about timetable",
+        None,
+        description="Status of information about timetable",
     )
 
 
 class GroupsAddressesInfo(pydantic.BaseModel):
     is_enabled: bool = pydantic.Field(
-        ..., description="Information whether addresses is enabled",
+        ...,
+        description="Information whether addresses is enabled",
     )
     main_address_id: typing.Optional[int] = pydantic.Field(
-        None, description="Main address id for group",
+        None,
+        description="Main address id for group",
     )
 
 
@@ -5957,2408 +7192,3087 @@ class GroupsBannedItem(pydantic.BaseModel):
 
 class GroupsCallbackServer(pydantic.BaseModel):
     id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     title: str = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     creator_id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     url: str = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     secret_key: str = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     status: str = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class GroupsCallbackSettings(pydantic.BaseModel):
     api_version: typing.Optional[str] = pydantic.Field(
-        None, description="API version used for the events",
+        None,
+        description="API version used for the events",
     )
     events: typing.Optional["GroupsLongPollEvents"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class GroupsContactsItem(pydantic.BaseModel):
     desc: typing.Optional[str] = pydantic.Field(
-        None, description="Contact description",
+        None,
+        description="Contact description",
     )
     email: typing.Optional[str] = pydantic.Field(
-        None, description="Contact email",
+        None,
+        description="Contact email",
     )
     phone: typing.Optional[str] = pydantic.Field(
-        None, description="Contact phone",
+        None,
+        description="Contact phone",
     )
     user_id: typing.Optional[int] = pydantic.Field(
-        None, description="User ID",
+        None,
+        description="User ID",
     )
 
 
 class GroupsCountersGroup(pydantic.BaseModel):
     addresses: typing.Optional[int] = pydantic.Field(
-        None, description="Addresses number",
+        None,
+        description="Addresses number",
     )
     albums: typing.Optional[int] = pydantic.Field(
-        None, description="Photo albums number",
+        None,
+        description="Photo albums number",
     )
     audios: typing.Optional[int] = pydantic.Field(
-        None, description="Audios number",
+        None,
+        description="Audios number",
     )
     audio_playlists: typing.Optional[int] = pydantic.Field(
-        None, description="Audio playlists number",
+        None,
+        description="Audio playlists number",
     )
     docs: typing.Optional[int] = pydantic.Field(
-        None, description="Docs number",
+        None,
+        description="Docs number",
     )
     market: typing.Optional[int] = pydantic.Field(
-        None, description="Market items number",
+        None,
+        description="Market items number",
     )
     photos: typing.Optional[int] = pydantic.Field(
-        None, description="Photos number",
+        None,
+        description="Photos number",
     )
     topics: typing.Optional[int] = pydantic.Field(
-        None, description="Topics number",
+        None,
+        description="Topics number",
     )
     videos: typing.Optional[int] = pydantic.Field(
-        None, description="Videos number",
+        None,
+        description="Videos number",
     )
 
 
 class GroupsCover(pydantic.BaseModel):
     enabled: "BaseBoolInt" = pydantic.Field(
-        ..., description="Information whether cover is enabled",
+        ...,
+        description="Information whether cover is enabled",
     )
     images: typing.Optional[typing.List["BaseImage"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class GroupsGroupBanInfo(pydantic.BaseModel):
     comment: typing.Optional[str] = pydantic.Field(
-        None, description="Ban comment",
+        None,
+        description="Ban comment",
     )
     end_date: typing.Optional[int] = pydantic.Field(
-        None, description="End date of ban in Unixtime",
+        None,
+        description="End date of ban in Unixtime",
     )
     reason: typing.Optional["GroupsBanInfoReason"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class GroupsGroupCategory(pydantic.BaseModel):
     id: int = pydantic.Field(
-        ..., description="Category ID",
+        ...,
+        description="Category ID",
     )
     name: str = pydantic.Field(
-        ..., description="Category name",
+        ...,
+        description="Category name",
     )
     subcategories: typing.Optional[typing.List["BaseObjectWithName"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class GroupsGroupCategoryFull(pydantic.BaseModel):
     id: int = pydantic.Field(
-        ..., description="Category ID",
+        ...,
+        description="Category ID",
     )
     name: str = pydantic.Field(
-        ..., description="Category name",
+        ...,
+        description="Category name",
     )
     page_count: int = pydantic.Field(
-        ..., description="Pages number",
+        ...,
+        description="Pages number",
     )
     page_previews: typing.List["GroupsGroup"] = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     subcategories: typing.Optional[typing.List["GroupsGroupCategory"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class GroupsGroupCategoryType(pydantic.BaseModel):
     id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     name: str = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class GroupsGroupLink(pydantic.BaseModel):
     name: typing.Optional[str] = pydantic.Field(
-        None, description="Link label",
+        None,
+        description="Link label",
     )
     desc: typing.Optional[str] = pydantic.Field(
-        None, description="Link description",
+        None,
+        description="Link description",
     )
     edit_title: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether the title can be edited",
+        None,
+        description="Information whether the title can be edited",
     )
     id: typing.Optional[int] = pydantic.Field(
-        None, description="Link ID",
+        None,
+        description="Link ID",
     )
     image_processing: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether the image on processing",
+        None,
+        description="Information whether the image on processing",
     )
     url: typing.Optional[str] = pydantic.Field(
-        None, description="Link URL",
+        None,
+        description="Link URL",
     )
 
 
 class GroupsGroupPublicCategoryList(pydantic.BaseModel):
     id: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     name: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     subcategories: typing.Optional[typing.List["GroupsGroupCategoryType"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class GroupsGroupTag(pydantic.BaseModel):
     id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     name: str = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     color: str = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     uses: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class GroupsGroupXtrInvitedBy(pydantic.BaseModel):
     admin_level: typing.Optional["GroupsGroupXtrInvitedByAdminLevel"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     id: typing.Optional[int] = pydantic.Field(
-        None, description="Community ID",
+        None,
+        description="Community ID",
     )
     invited_by: typing.Optional[int] = pydantic.Field(
-        None, description="Inviter ID",
+        None,
+        description="Inviter ID",
     )
     is_admin: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user is manager",
+        None,
+        description="Information whether current user is manager",
     )
     is_advertiser: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user is advertiser",
+        None,
+        description="Information whether current user is advertiser",
     )
     is_closed: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether community is closed",
+        None,
+        description="Information whether community is closed",
     )
     is_member: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user is member",
+        None,
+        description="Information whether current user is member",
     )
     name: typing.Optional[str] = pydantic.Field(
-        None, description="Community name",
+        None,
+        description="Community name",
     )
     photo_100: typing.Optional[str] = pydantic.Field(
-        None, description="URL of square photo of the community with 100 pixels in width",
+        None,
+        description="URL of square photo of the community with 100 pixels in width",
     )
     photo_200: typing.Optional[str] = pydantic.Field(
-        None, description="URL of square photo of the community with 200 pixels in width",
+        None,
+        description="URL of square photo of the community with 200 pixels in width",
     )
     photo_50: typing.Optional[str] = pydantic.Field(
-        None, description="URL of square photo of the community with 50 pixels in width",
+        None,
+        description="URL of square photo of the community with 50 pixels in width",
     )
     screen_name: typing.Optional[str] = pydantic.Field(
-        None, description="Domain of the community page",
+        None,
+        description="Domain of the community page",
     )
     type: typing.Optional["GroupsGroupXtrInvitedByType"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class GroupsGroupsArray(pydantic.BaseModel):
     count: int = pydantic.Field(
-        ..., description="Communities number",
+        ...,
+        description="Communities number",
     )
     items: typing.List[int] = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class GroupsLinksItem(pydantic.BaseModel):
     desc: typing.Optional[str] = pydantic.Field(
-        None, description="Link description",
+        None,
+        description="Link description",
     )
     edit_title: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether the link title can be edited",
+        None,
+        description="Information whether the link title can be edited",
     )
     id: typing.Optional[int] = pydantic.Field(
-        None, description="Link ID",
+        None,
+        description="Link ID",
     )
     name: typing.Optional[str] = pydantic.Field(
-        None, description="Link title",
+        None,
+        description="Link title",
     )
     photo_100: typing.Optional[str] = pydantic.Field(
-        None, description="URL of square image of the link with 100 pixels in width",
+        None,
+        description="URL of square image of the link with 100 pixels in width",
     )
     photo_50: typing.Optional[str] = pydantic.Field(
-        None, description="URL of square image of the link with 50 pixels in width",
+        None,
+        description="URL of square image of the link with 50 pixels in width",
     )
     url: typing.Optional[str] = pydantic.Field(
-        None, description="Link URL",
+        None,
+        description="Link URL",
     )
 
 
 class GroupsLiveCovers(pydantic.BaseModel):
     is_enabled: bool = pydantic.Field(
-        ..., description="Information whether live covers is enabled",
+        ...,
+        description="Information whether live covers is enabled",
     )
     is_scalable: typing.Optional[bool] = pydantic.Field(
-        None, description="Information whether live covers photo scaling is enabled",
+        None,
+        description="Information whether live covers photo scaling is enabled",
     )
     story_ids: typing.Optional[typing.List[str]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class GroupsLongPollServer(pydantic.BaseModel):
     key: str = pydantic.Field(
-        ..., description="Long Poll key",
+        ...,
+        description="Long Poll key",
     )
     server: str = pydantic.Field(
-        ..., description="Long Poll server address",
+        ...,
+        description="Long Poll server address",
     )
     ts: str = pydantic.Field(
-        ..., description="Number of the last event",
+        ...,
+        description="Number of the last event",
     )
 
 
 class GroupsLongPollSettings(pydantic.BaseModel):
     api_version: typing.Optional[str] = pydantic.Field(
-        None, description="API version used for the events",
+        None,
+        description="API version used for the events",
     )
     events: "GroupsLongPollEvents" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     is_enabled: bool = pydantic.Field(
-        ..., description="Shows whether Long Poll is enabled",
+        ...,
+        description="Shows whether Long Poll is enabled",
     )
 
 
 class GroupsMarketInfo(pydantic.BaseModel):
     contact_id: typing.Optional[int] = pydantic.Field(
-        None, description="Contact person ID",
+        None,
+        description="Contact person ID",
     )
     currency: typing.Optional["MarketCurrency"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     currency_text: typing.Optional[str] = pydantic.Field(
-        None, description="Currency name",
+        None,
+        description="Currency name",
     )
     enabled: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether the market is enabled",
+        None,
+        description="Information whether the market is enabled",
     )
     main_album_id: typing.Optional[int] = pydantic.Field(
-        None, description="Main market album ID",
+        None,
+        description="Main market album ID",
     )
     price_max: typing.Optional[str] = pydantic.Field(
-        None, description="Maximum price",
+        None,
+        description="Maximum price",
     )
     price_min: typing.Optional[str] = pydantic.Field(
-        None, description="Minimum price",
+        None,
+        description="Minimum price",
     )
 
 
 class GroupsMemberRole(pydantic.BaseModel):
     id: typing.Optional[int] = pydantic.Field(
-        None, description="User ID",
+        None,
+        description="User ID",
     )
     permissions: typing.Optional[typing.List["GroupsMemberRolePermission"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     role: typing.Optional["GroupsMemberRoleStatus"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class GroupsMemberStatus(pydantic.BaseModel):
     member: "BaseBoolInt" = pydantic.Field(
-        ..., description="Information whether user is a member of the group",
+        ...,
+        description="Information whether user is a member of the group",
     )
     user_id: int = pydantic.Field(
-        ..., description="User ID",
+        ...,
+        description="User ID",
     )
 
 
 class GroupsMemberStatusFull(pydantic.BaseModel):
     can_invite: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether user can be invited",
+        None,
+        description="Information whether user can be invited",
     )
     can_recall: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether user's invite to the group can be recalled",
+        None,
+        description="Information whether user's invite to the group can be recalled",
     )
     invitation: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether user has been invited to the group",
+        None,
+        description="Information whether user has been invited to the group",
     )
     member: "BaseBoolInt" = pydantic.Field(
-        ..., description="Information whether user is a member of the group",
+        ...,
+        description="Information whether user is a member of the group",
     )
     request: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether user has send request to the group",
+        None,
+        description="Information whether user has send request to the group",
     )
     user_id: int = pydantic.Field(
-        ..., description="User ID",
+        ...,
+        description="User ID",
     )
 
 
 class GroupsOnlineStatus(pydantic.BaseModel):
     minutes: typing.Optional[int] = pydantic.Field(
-        None, description="Estimated time of answer (for status = answer_mark)",
+        None,
+        description="Estimated time of answer (for status = answer_mark)",
     )
     status: "GroupsOnlineStatusType" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class GroupsOwnerXtrBanInfo(pydantic.BaseModel):
     ban_info: typing.Optional["GroupsBanInfo"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     group: typing.Optional["GroupsGroup"] = pydantic.Field(
-        None, description="Information about group if type = group",
+        None,
+        description="Information about group if type = group",
     )
     profile: typing.Optional["UsersUser"] = pydantic.Field(
-        None, description="Information about group if type = profile",
+        None,
+        description="Information about group if type = profile",
     )
     type: typing.Optional["GroupsOwnerXtrBanInfoType"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class GroupsProfileItem(pydantic.BaseModel):
     id: int = pydantic.Field(
-        ..., description="User id",
+        ...,
+        description="User id",
     )
     photo_50: str = pydantic.Field(
-        ..., description="Url for user photo",
+        ...,
+        description="Url for user photo",
     )
     photo_100: str = pydantic.Field(
-        ..., description="Url for user photo",
+        ...,
+        description="Url for user photo",
     )
 
 
 class GroupsSettingsTwitter(pydantic.BaseModel):
     status: str = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     name: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class GroupsSubjectItem(pydantic.BaseModel):
     id: int = pydantic.Field(
-        ..., description="Subject ID",
+        ...,
+        description="Subject ID",
     )
     name: str = pydantic.Field(
-        ..., description="Subject title",
+        ...,
+        description="Subject title",
     )
 
 
 class GroupsTokenPermissionSetting(pydantic.BaseModel):
     name: str = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     setting: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class MarketMarketCategoryOld(pydantic.BaseModel):
     id: int = pydantic.Field(
-        ..., description="Category ID",
+        ...,
+        description="Category ID",
     )
     name: str = pydantic.Field(
-        ..., description="Category name",
+        ...,
+        description="Category name",
     )
     section: "MarketSection" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class MarketMarketCategoryTree(pydantic.BaseModel):
     id: int = pydantic.Field(
-        ..., description="Category ID",
+        ...,
+        description="Category ID",
     )
     name: str = pydantic.Field(
-        ..., description="Category name",
+        ...,
+        description="Category name",
     )
     children: typing.Optional[typing.List["MarketMarketCategoryTree"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class MarketOrder(pydantic.BaseModel):
     id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     group_id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     user_id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     display_order_id: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     date: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     status: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     items_count: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     track_number: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     track_link: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     comment: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     address: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     merchant_comment: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     weight: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     total_price: "MarketPrice" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     preview_order_items: typing.Optional[typing.List["MarketOrderItem"]] = pydantic.Field(
-        None, description="Several order items for preview",
+        None,
+        description="Several order items for preview",
     )
     cancel_info: typing.Optional["BaseLink"] = pydantic.Field(
-        None, description="Information for cancel and revert order",
+        None,
+        description="Information for cancel and revert order",
     )
 
 
 class MarketOrderItem(pydantic.BaseModel):
     owner_id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     item_id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     price: "MarketPrice" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     quantity: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     item: "MarketMarketItem" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     title: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     photo: typing.Optional["PhotosPhoto"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     variants: typing.Optional[typing.List[str]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class MessagesChat(pydantic.BaseModel):
     admin_id: int = pydantic.Field(
-        ..., description="Chat creator ID",
+        ...,
+        description="Chat creator ID",
     )
     id: int = pydantic.Field(
-        ..., description="Chat ID",
+        ...,
+        description="Chat ID",
     )
     kicked: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Shows that user has been kicked from the chat",
+        None,
+        description="Shows that user has been kicked from the chat",
     )
     left: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Shows that user has been left the chat",
+        None,
+        description="Shows that user has been left the chat",
     )
     photo_100: typing.Optional[str] = pydantic.Field(
-        None, description="URL of the preview image with 100 px in width",
+        None,
+        description="URL of the preview image with 100 px in width",
     )
     photo_200: typing.Optional[str] = pydantic.Field(
-        None, description="URL of the preview image with 200 px in width",
+        None,
+        description="URL of the preview image with 200 px in width",
     )
     photo_50: typing.Optional[str] = pydantic.Field(
-        None, description="URL of the preview image with 50 px in width",
+        None,
+        description="URL of the preview image with 50 px in width",
     )
     push_settings: typing.Optional["MessagesChatPushSettings"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     title: typing.Optional[str] = pydantic.Field(
-        None, description="Chat title",
+        None,
+        description="Chat title",
     )
     type: str = pydantic.Field(
-        ..., description="Chat type",
+        ...,
+        description="Chat type",
     )
     users: typing.List[int] = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     is_default_photo: typing.Optional[bool] = pydantic.Field(
-        None, description="If provided photo is default",
+        None,
+        description="If provided photo is default",
     )
 
 
 class MessagesChatFull(pydantic.BaseModel):
     admin_id: int = pydantic.Field(
-        ..., description="Chat creator ID",
+        ...,
+        description="Chat creator ID",
     )
     id: int = pydantic.Field(
-        ..., description="Chat ID",
+        ...,
+        description="Chat ID",
     )
     kicked: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Shows that user has been kicked from the chat",
+        None,
+        description="Shows that user has been kicked from the chat",
     )
     left: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Shows that user has been left the chat",
+        None,
+        description="Shows that user has been left the chat",
     )
     photo_100: typing.Optional[str] = pydantic.Field(
-        None, description="URL of the preview image with 100 px in width",
+        None,
+        description="URL of the preview image with 100 px in width",
     )
     photo_200: typing.Optional[str] = pydantic.Field(
-        None, description="URL of the preview image with 200 px in width",
+        None,
+        description="URL of the preview image with 200 px in width",
     )
     photo_50: typing.Optional[str] = pydantic.Field(
-        None, description="URL of the preview image with 50 px in width",
+        None,
+        description="URL of the preview image with 50 px in width",
     )
     push_settings: typing.Optional["MessagesChatPushSettings"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     title: typing.Optional[str] = pydantic.Field(
-        None, description="Chat title",
+        None,
+        description="Chat title",
     )
     type: str = pydantic.Field(
-        ..., description="Chat type",
+        ...,
+        description="Chat type",
     )
     users: typing.List["MessagesUserXtrInvitedBy"] = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class MessagesChatPreview(pydantic.BaseModel):
     admin_id: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     joined: typing.Optional[bool] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     local_id: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     members: typing.Optional[typing.List[int]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     members_count: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     title: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class MessagesChatRestrictions(pydantic.BaseModel):
     admins_promote_users: typing.Optional[bool] = pydantic.Field(
-        None, description="Only admins can promote users to admins",
+        None,
+        description="Only admins can promote users to admins",
     )
     only_admins_edit_info: typing.Optional[bool] = pydantic.Field(
-        None, description="Only admins can change chat info",
+        None,
+        description="Only admins can change chat info",
     )
     only_admins_edit_pin: typing.Optional[bool] = pydantic.Field(
-        None, description="Only admins can edit pinned message",
+        None,
+        description="Only admins can edit pinned message",
     )
     only_admins_invite: typing.Optional[bool] = pydantic.Field(
-        None, description="Only admins can invite users to this chat",
+        None,
+        description="Only admins can invite users to this chat",
     )
     only_admins_kick: typing.Optional[bool] = pydantic.Field(
-        None, description="Only admins can kick users from this chat",
+        None,
+        description="Only admins can kick users from this chat",
     )
 
 
 class MessagesConversationMember(pydantic.BaseModel):
     can_kick: typing.Optional[bool] = pydantic.Field(
-        None, description="Is it possible for user to kick this member",
+        None,
+        description="Is it possible for user to kick this member",
     )
     invited_by: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     is_admin: typing.Optional[bool] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     is_owner: typing.Optional[bool] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     is_message_request: typing.Optional[bool] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     join_date: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     request_date: typing.Optional[int] = pydantic.Field(
-        None, description="Message request date",
+        None,
+        description="Message request date",
     )
     member_id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class MessagesConversationWithMessage(pydantic.BaseModel):
     conversation: typing.Optional["MessagesConversation"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     last_message: typing.Optional["MessagesMessage"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class MessagesForward(pydantic.BaseModel):
     owner_id: typing.Optional[int] = pydantic.Field(
-        None, description="Messages owner_id",
+        None,
+        description="Messages owner_id",
     )
     peer_id: typing.Optional[int] = pydantic.Field(
-        None, description="Messages peer_id",
+        None,
+        description="Messages peer_id",
     )
     conversation_message_ids: typing.Optional[typing.List[int]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     message_ids: typing.Optional[typing.List[int]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     is_reply: typing.Optional[bool] = pydantic.Field(
-        None, description="If you need to reply to a message",
+        None,
+        description="If you need to reply to a message",
     )
 
 
 class MessagesHistoryAttachment(pydantic.BaseModel):
     attachment: "MessagesHistoryMessageAttachment" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     message_id: int = pydantic.Field(
-        ..., description="Message ID",
+        ...,
+        description="Message ID",
     )
     from_id: int = pydantic.Field(
-        ..., description="Message author's ID",
+        ...,
+        description="Message author's ID",
     )
 
 
 class MessagesKeyboardButton(pydantic.BaseModel):
     action: "MessagesKeyboardButtonAction" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     color: typing.Optional[str] = pydantic.Field(
-        None, description="Button color",
+        None,
+        description="Button color",
     )
 
 
 class MessagesLastActivity(pydantic.BaseModel):
     online: "BaseBoolInt" = pydantic.Field(
-        ..., description="Information whether user is online",
+        ...,
+        description="Information whether user is online",
     )
     time: int = pydantic.Field(
-        ..., description="Time when user was online in Unixtime",
+        ...,
+        description="Time when user was online in Unixtime",
     )
 
 
 class MessagesLongpollMessages(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
-        None, description="Total number",
+        None,
+        description="Total number",
     )
     items: typing.Optional[typing.List["MessagesMessage"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class MessagesLongpollParams(pydantic.BaseModel):
     key: typing.Optional[str] = pydantic.Field(
-        None, description="Key",
+        None,
+        description="Key",
     )
     pts: typing.Optional[int] = pydantic.Field(
-        None, description="Persistent timestamp",
+        None,
+        description="Persistent timestamp",
     )
     server: typing.Optional[str] = pydantic.Field(
-        None, description="Server URL",
+        None,
+        description="Server URL",
     )
     ts: typing.Optional[str] = pydantic.Field(
-        None, description="Timestamp",
+        None,
+        description="Timestamp",
     )
 
 
 class MessagesMessageAttachment(pydantic.BaseModel):
     audio: typing.Optional["AudioAudio"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     audio_message: typing.Optional["MessagesAudioMessage"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     doc: typing.Optional["DocsDoc"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     gift: typing.Optional["GiftsLayout"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     graffiti: typing.Optional["MessagesGraffiti"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     link: typing.Optional["BaseLink"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     market: typing.Optional["MarketMarketItem"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     market_market_album: typing.Optional["MarketMarketAlbum"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     poll: typing.Optional["PollsPoll"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     photo: typing.Optional["PhotosPhoto"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     sticker: typing.Optional["BaseSticker"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     story: typing.Optional["StoriesStory"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     type: "MessagesMessageAttachmentType" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     video: typing.Optional["VideoVideo"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     wall: typing.Optional["WallWallpostFull"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     wall_reply: typing.Optional["WallWallComment"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class MessagesMessagesArray(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     items: typing.Optional[typing.List["MessagesMessage"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class MessagesPinnedMessage(pydantic.BaseModel):
     attachments: typing.Optional[typing.List["MessagesMessageAttachment"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     conversation_message_id: typing.Optional[int] = pydantic.Field(
-        None, description="Unique auto-incremented number for all messages with this peer",
+        None,
+        description="Unique auto-incremented number for all messages with this peer",
     )
     date: int = pydantic.Field(
-        ..., description="Date when the message has been sent in Unixtime",
+        ...,
+        description="Date when the message has been sent in Unixtime",
     )
     from_id: int = pydantic.Field(
-        ..., description="Message author's ID",
+        ...,
+        description="Message author's ID",
     )
     fwd_messages: typing.Optional[typing.List["MessagesForeignMessage"]] = pydantic.Field(
-        None, description="Forwarded messages",
+        None,
+        description="Forwarded messages",
     )
     geo: typing.Optional["BaseGeo"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     id: int = pydantic.Field(
-        ..., description="Message ID",
+        ...,
+        description="Message ID",
     )
     peer_id: int = pydantic.Field(
-        ..., description="Peer ID",
+        ...,
+        description="Peer ID",
     )
     reply_message: typing.Optional["MessagesForeignMessage"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     text: str = pydantic.Field(
-        ..., description="Message text",
+        ...,
+        description="Message text",
     )
     keyboard: typing.Optional["MessagesKeyboard"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class NewsfeedEventActivity(pydantic.BaseModel):
     address: typing.Optional[str] = pydantic.Field(
-        None, description="address of event",
+        None,
+        description="address of event",
     )
     button_text: str = pydantic.Field(
-        ..., description="text of attach",
+        ...,
+        description="text of attach",
     )
     friends: typing.List[int] = pydantic.Field(
-        ..., description="array of friends ids",
+        ...,
+        description="array of friends ids",
     )
     member_status: "GroupsGroupFullMemberStatus" = pydantic.Field(
-        ..., description="Current user's member status",
+        ...,
+        description="Current user's member status",
     )
     text: str = pydantic.Field(
-        ..., description="text of attach",
+        ...,
+        description="text of attach",
     )
     time: typing.Optional[int] = pydantic.Field(
-        None, description="event start time",
+        None,
+        description="event start time",
     )
 
 
 class NewsfeedItemAudioAudio(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
-        None, description="Audios number",
+        None,
+        description="Audios number",
     )
     items: typing.Optional[typing.List["AudioAudio"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class NewsfeedItemBase(pydantic.BaseModel):
     type: "NewsfeedNewsfeedItemType" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     source_id: int = pydantic.Field(
-        ..., description="Item source ID",
+        ...,
+        description="Item source ID",
     )
     date: int = pydantic.Field(
-        ..., description="Date when item has been added in Unixtime",
+        ...,
+        description="Date when item has been added in Unixtime",
     )
 
 
 class NewsfeedItemDigestFooter(pydantic.BaseModel):
     style: str = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     text: str = pydantic.Field(
-        ..., description="text for invite to enable smart feed",
+        ...,
+        description="text for invite to enable smart feed",
     )
     button: typing.Optional["NewsfeedItemDigestFooterButton"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class NewsfeedItemDigestHeader(pydantic.BaseModel):
     title: str = pydantic.Field(
-        ..., description="Title of the header",
+        ...,
+        description="Title of the header",
     )
     subtitle: typing.Optional[str] = pydantic.Field(
-        None, description="Subtitle of the header, when title have two strings",
+        None,
+        description="Subtitle of the header, when title have two strings",
     )
     style: str = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class NewsfeedItemFriendFriends(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
-        None, description="Number of friends has been added",
+        None,
+        description="Number of friends has been added",
     )
     items: typing.Optional[typing.List["BaseUserId"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class NewsfeedItemHolidayRecommendationsBlockHeader(pydantic.BaseModel):
     title: typing.Optional[str] = pydantic.Field(
-        None, description="Title of the header",
+        None,
+        description="Title of the header",
     )
     subtitle: typing.Optional[str] = pydantic.Field(
-        None, description="Subtitle of the header",
+        None,
+        description="Subtitle of the header",
     )
     image: typing.Optional[typing.List["BaseImage"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     action: typing.Optional["BaseLinkButtonAction"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class NewsfeedItemPhotoPhotos(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
-        None, description="Photos number",
+        None,
+        description="Photos number",
     )
     items: typing.Optional[typing.List["NewsfeedNewsfeedPhoto"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class NewsfeedItemPhotoTagPhotoTags(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
-        None, description="Tags number",
+        None,
+        description="Tags number",
     )
     items: typing.Optional[typing.List["NewsfeedNewsfeedPhoto"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class NewsfeedItemPromoButtonAction(pydantic.BaseModel):
     url: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     type: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     target: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class NewsfeedItemPromoButtonImage(pydantic.BaseModel):
     width: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     height: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     url: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class NewsfeedItemVideoVideo(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
-        None, description="Tags number",
+        None,
+        description="Tags number",
     )
     items: typing.Optional[typing.List["VideoVideo"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class NewsfeedItemWallpostFeedback(pydantic.BaseModel):
     type: "NewsfeedItemWallpostFeedbackType" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     question: str = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     answers: typing.Optional[typing.List["NewsfeedItemWallpostFeedbackAnswer"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     stars_count: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     gratitude: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class NewsfeedItemWallpostFeedbackAnswer(pydantic.BaseModel):
     title: str = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     id: str = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class NewsfeedList(pydantic.BaseModel):
     id: int = pydantic.Field(
-        ..., description="List ID",
+        ...,
+        description="List ID",
     )
     title: str = pydantic.Field(
-        ..., description="List title",
+        ...,
+        description="List title",
     )
 
 
 class NotesNote(pydantic.BaseModel):
     read_comments: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     can_comment: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user can comment the note",
+        None,
+        description="Information whether current user can comment the note",
     )
     comments: int = pydantic.Field(
-        ..., description="Comments number",
+        ...,
+        description="Comments number",
     )
     date: int = pydantic.Field(
-        ..., description="Date when the note has been created in Unixtime",
+        ...,
+        description="Date when the note has been created in Unixtime",
     )
     id: int = pydantic.Field(
-        ..., description="Note ID",
+        ...,
+        description="Note ID",
     )
     owner_id: int = pydantic.Field(
-        ..., description="Note owner's ID",
+        ...,
+        description="Note owner's ID",
     )
     text: typing.Optional[str] = pydantic.Field(
-        None, description="Note text",
+        None,
+        description="Note text",
     )
     text_wiki: typing.Optional[str] = pydantic.Field(
-        None, description="Note text in wiki format",
+        None,
+        description="Note text in wiki format",
     )
     title: str = pydantic.Field(
-        ..., description="Note title",
+        ...,
+        description="Note title",
     )
     view_url: str = pydantic.Field(
-        ..., description="URL of the page with note preview",
+        ...,
+        description="URL of the page with note preview",
     )
 
 
 class NotesNoteComment(pydantic.BaseModel):
     date: int = pydantic.Field(
-        ..., description="Date when the comment has beed added in Unixtime",
+        ...,
+        description="Date when the comment has beed added in Unixtime",
     )
     id: int = pydantic.Field(
-        ..., description="Comment ID",
+        ...,
+        description="Comment ID",
     )
     message: str = pydantic.Field(
-        ..., description="Comment text",
+        ...,
+        description="Comment text",
     )
     nid: int = pydantic.Field(
-        ..., description="Note ID",
+        ...,
+        description="Note ID",
     )
     oid: int = pydantic.Field(
-        ..., description="Note ID",
+        ...,
+        description="Note ID",
     )
     reply_to: typing.Optional[int] = pydantic.Field(
-        None, description="ID of replied comment ",
+        None,
+        description="ID of replied comment ",
     )
     uid: int = pydantic.Field(
-        ..., description="Comment author's ID",
+        ...,
+        description="Comment author's ID",
     )
 
 
 class NotificationsNotification(pydantic.BaseModel):
     date: typing.Optional[int] = pydantic.Field(
-        None, description="Date when the event has been occurred",
+        None,
+        description="Date when the event has been occurred",
     )
     feedback: typing.Optional["NotificationsFeedback"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     parent: typing.Optional["NotificationsNotificationParent"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     reply: typing.Optional["NotificationsReply"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     type: typing.Optional[str] = pydantic.Field(
-        None, description="Notification type",
+        None,
+        description="Notification type",
     )
 
 
 class NotificationsNotificationsComment(pydantic.BaseModel):
     date: typing.Optional[int] = pydantic.Field(
-        None, description="Date when the comment has been added in Unixtime",
+        None,
+        description="Date when the comment has been added in Unixtime",
     )
     id: typing.Optional[int] = pydantic.Field(
-        None, description="Comment ID",
+        None,
+        description="Comment ID",
     )
     owner_id: typing.Optional[int] = pydantic.Field(
-        None, description="Author ID",
+        None,
+        description="Author ID",
     )
     photo: typing.Optional["PhotosPhoto"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     post: typing.Optional["WallWallpost"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     text: typing.Optional[str] = pydantic.Field(
-        None, description="Comment text",
+        None,
+        description="Comment text",
     )
     topic: typing.Optional["BoardTopic"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     video: typing.Optional["VideoVideo"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class NotificationsSendMessageItem(pydantic.BaseModel):
     user_id: typing.Optional[int] = pydantic.Field(
-        None, description="User ID",
+        None,
+        description="User ID",
     )
     status: typing.Optional[bool] = pydantic.Field(
-        None, description="Notification status",
+        None,
+        description="Notification status",
     )
     error: typing.Optional["NotificationsSendMessageError"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class OauthError(pydantic.BaseModel):
     error: str = pydantic.Field(
-        ..., description="Error type",
+        ...,
+        description="Error type",
     )
     error_description: str = pydantic.Field(
-        ..., description="Error description",
+        ...,
+        description="Error description",
     )
     redirect_uri: typing.Optional[str] = pydantic.Field(
-        None, description="URI for validation",
+        None,
+        description="URI for validation",
     )
 
 
 class OrdersAmount(pydantic.BaseModel):
     amounts: typing.Optional[typing.List["OrdersAmountItem"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     currency: typing.Optional[str] = pydantic.Field(
-        None, description="Currency name",
+        None,
+        description="Currency name",
     )
 
 
 class OrdersAmountItem(pydantic.BaseModel):
     amount: typing.Optional[int] = pydantic.Field(
-        None, description="Votes amount in user's currency",
+        None,
+        description="Votes amount in user's currency",
     )
     description: typing.Optional[str] = pydantic.Field(
-        None, description="Amount description",
+        None,
+        description="Amount description",
     )
     votes: typing.Optional[str] = pydantic.Field(
-        None, description="Votes number",
+        None,
+        description="Votes number",
     )
 
 
 class OrdersOrder(pydantic.BaseModel):
     amount: typing.Optional[int] = pydantic.Field(
-        None, description="Amount",
+        None,
+        description="Amount",
     )
     app_order_id: typing.Optional[int] = pydantic.Field(
-        None, description="App order ID",
+        None,
+        description="App order ID",
     )
     cancel_transaction_id: typing.Optional[int] = pydantic.Field(
-        None, description="Cancel transaction ID",
+        None,
+        description="Cancel transaction ID",
     )
     date: typing.Optional[int] = pydantic.Field(
-        None, description="Date of creation in Unixtime",
+        None,
+        description="Date of creation in Unixtime",
     )
     id: typing.Optional[int] = pydantic.Field(
-        None, description="Order ID",
+        None,
+        description="Order ID",
     )
     item: typing.Optional[str] = pydantic.Field(
-        None, description="Order item",
+        None,
+        description="Order item",
     )
     receiver_id: typing.Optional[int] = pydantic.Field(
-        None, description="Receiver ID",
+        None,
+        description="Receiver ID",
     )
     status: typing.Optional[str] = pydantic.Field(
-        None, description="Order status",
+        None,
+        description="Order status",
     )
     transaction_id: typing.Optional[int] = pydantic.Field(
-        None, description="Transaction ID",
+        None,
+        description="Transaction ID",
     )
     user_id: typing.Optional[int] = pydantic.Field(
-        None, description="User ID",
+        None,
+        description="User ID",
     )
 
 
 class OrdersSubscription(pydantic.BaseModel):
     cancel_reason: typing.Optional[str] = pydantic.Field(
-        None, description="Cancel reason",
+        None,
+        description="Cancel reason",
     )
     create_time: int = pydantic.Field(
-        ..., description="Date of creation in Unixtime",
+        ...,
+        description="Date of creation in Unixtime",
     )
     id: int = pydantic.Field(
-        ..., description="Subscription ID",
+        ...,
+        description="Subscription ID",
     )
     item_id: str = pydantic.Field(
-        ..., description="Subscription order item",
+        ...,
+        description="Subscription order item",
     )
     next_bill_time: typing.Optional[int] = pydantic.Field(
-        None, description="Date of next bill in Unixtime",
+        None,
+        description="Date of next bill in Unixtime",
     )
     pending_cancel: typing.Optional[bool] = pydantic.Field(
-        None, description="Pending cancel state",
+        None,
+        description="Pending cancel state",
     )
     period: int = pydantic.Field(
-        ..., description="Subscription period",
+        ...,
+        description="Subscription period",
     )
     period_start_time: int = pydantic.Field(
-        ..., description="Date of last period start in Unixtime",
+        ...,
+        description="Date of last period start in Unixtime",
     )
     price: int = pydantic.Field(
-        ..., description="Subscription price",
+        ...,
+        description="Subscription price",
     )
     status: str = pydantic.Field(
-        ..., description="Subscription status",
+        ...,
+        description="Subscription status",
     )
     test_mode: typing.Optional[bool] = pydantic.Field(
-        None, description="Is test subscription",
+        None,
+        description="Is test subscription",
     )
     trial_expire_time: typing.Optional[int] = pydantic.Field(
-        None, description="Date of trial expire in Unixtime",
+        None,
+        description="Date of trial expire in Unixtime",
     )
     update_time: int = pydantic.Field(
-        ..., description="Date of last change in Unixtime",
+        ...,
+        description="Date of last change in Unixtime",
     )
 
 
 class OwnerState(pydantic.BaseModel):
     state: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     description: typing.Optional[str] = pydantic.Field(
-        None, description="wiki text to describe user state",
+        None,
+        description="wiki text to describe user state",
     )
 
 
 class PagesWikipage(pydantic.BaseModel):
     creator_id: typing.Optional[int] = pydantic.Field(
-        None, description="Page creator ID",
+        None,
+        description="Page creator ID",
     )
     creator_name: typing.Optional[int] = pydantic.Field(
-        None, description="Page creator name",
+        None,
+        description="Page creator name",
     )
     editor_id: typing.Optional[int] = pydantic.Field(
-        None, description="Last editor ID",
+        None,
+        description="Last editor ID",
     )
     editor_name: typing.Optional[str] = pydantic.Field(
-        None, description="Last editor name",
+        None,
+        description="Last editor name",
     )
     group_id: int = pydantic.Field(
-        ..., description="Community ID",
+        ...,
+        description="Community ID",
     )
     id: int = pydantic.Field(
-        ..., description="Page ID",
+        ...,
+        description="Page ID",
     )
     title: str = pydantic.Field(
-        ..., description="Page title",
+        ...,
+        description="Page title",
     )
     views: int = pydantic.Field(
-        ..., description="Views number",
+        ...,
+        description="Views number",
     )
     who_can_edit: "PagesPrivacySettings" = pydantic.Field(
-        ..., description="Edit settings of the page",
+        ...,
+        description="Edit settings of the page",
     )
     who_can_view: "PagesPrivacySettings" = pydantic.Field(
-        ..., description="View settings of the page",
+        ...,
+        description="View settings of the page",
     )
 
 
 class PagesWikipageHistory(pydantic.BaseModel):
     id: int = pydantic.Field(
-        ..., description="Version ID",
+        ...,
+        description="Version ID",
     )
     length: int = pydantic.Field(
-        ..., description="Page size in bytes",
+        ...,
+        description="Page size in bytes",
     )
     date: int = pydantic.Field(
-        ..., description="Date when the page has been edited in Unixtime",
+        ...,
+        description="Date when the page has been edited in Unixtime",
     )
     editor_id: int = pydantic.Field(
-        ..., description="Last editor ID",
+        ...,
+        description="Last editor ID",
     )
     editor_name: str = pydantic.Field(
-        ..., description="Last editor name",
+        ...,
+        description="Last editor name",
     )
 
 
 class PhotosCommentXtrPid(pydantic.BaseModel):
     attachments: typing.Optional[typing.List["WallCommentAttachment"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     date: int = pydantic.Field(
-        ..., description="Date when the comment has been added in Unixtime",
+        ...,
+        description="Date when the comment has been added in Unixtime",
     )
     from_id: int = pydantic.Field(
-        ..., description="Author ID",
+        ...,
+        description="Author ID",
     )
     id: int = pydantic.Field(
-        ..., description="Comment ID",
+        ...,
+        description="Comment ID",
     )
     likes: typing.Optional["BaseLikesInfo"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     pid: int = pydantic.Field(
-        ..., description="Photo ID",
+        ...,
+        description="Photo ID",
     )
     reply_to_comment: typing.Optional[int] = pydantic.Field(
-        None, description="Replied comment ID",
+        None,
+        description="Replied comment ID",
     )
     reply_to_user: typing.Optional[int] = pydantic.Field(
-        None, description="Replied user ID",
+        None,
+        description="Replied user ID",
     )
     text: str = pydantic.Field(
-        ..., description="Comment text",
+        ...,
+        description="Comment text",
     )
     parents_stack: typing.Optional[typing.List[int]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     thread: typing.Optional["CommentThread"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class PhotosImage(pydantic.BaseModel):
     height: typing.Optional[int] = pydantic.Field(
-        None, description="Height of the photo in px.",
+        None,
+        description="Height of the photo in px.",
     )
     type: typing.Optional["PhotosImageType"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     url: typing.Optional[str] = pydantic.Field(
-        None, description="Photo URL.",
+        None,
+        description="Photo URL.",
     )
     width: typing.Optional[int] = pydantic.Field(
-        None, description="Width of the photo in px.",
+        None,
+        description="Width of the photo in px.",
     )
 
 
 class PhotosMarketAlbumUploadResponse(pydantic.BaseModel):
     gid: typing.Optional[int] = pydantic.Field(
-        None, description="Community ID",
+        None,
+        description="Community ID",
     )
     hash: typing.Optional[str] = pydantic.Field(
-        None, description="Uploading hash",
+        None,
+        description="Uploading hash",
     )
     photo: typing.Optional[str] = pydantic.Field(
-        None, description="Uploaded photo data",
+        None,
+        description="Uploaded photo data",
     )
     server: typing.Optional[int] = pydantic.Field(
-        None, description="Upload server number",
+        None,
+        description="Upload server number",
     )
 
 
 class PhotosMarketUploadResponse(pydantic.BaseModel):
     crop_data: typing.Optional[str] = pydantic.Field(
-        None, description="Crop data",
+        None,
+        description="Crop data",
     )
     crop_hash: typing.Optional[str] = pydantic.Field(
-        None, description="Crop hash",
+        None,
+        description="Crop hash",
     )
     group_id: typing.Optional[int] = pydantic.Field(
-        None, description="Community ID",
+        None,
+        description="Community ID",
     )
     hash: typing.Optional[str] = pydantic.Field(
-        None, description="Uploading hash",
+        None,
+        description="Uploading hash",
     )
     photo: typing.Optional[str] = pydantic.Field(
-        None, description="Uploaded photo data",
+        None,
+        description="Uploaded photo data",
     )
     server: typing.Optional[int] = pydantic.Field(
-        None, description="Upload server number",
+        None,
+        description="Upload server number",
     )
 
 
 class PhotosMessageUploadResponse(pydantic.BaseModel):
     hash: typing.Optional[str] = pydantic.Field(
-        None, description="Uploading hash",
+        None,
+        description="Uploading hash",
     )
     photo: typing.Optional[str] = pydantic.Field(
-        None, description="Uploaded photo data",
+        None,
+        description="Uploaded photo data",
     )
     server: typing.Optional[int] = pydantic.Field(
-        None, description="Upload server number",
+        None,
+        description="Upload server number",
     )
 
 
 class PhotosOwnerUploadResponse(pydantic.BaseModel):
     hash: typing.Optional[str] = pydantic.Field(
-        None, description="Uploading hash",
+        None,
+        description="Uploading hash",
     )
     photo: typing.Optional[str] = pydantic.Field(
-        None, description="Uploaded photo data",
+        None,
+        description="Uploaded photo data",
     )
     server: typing.Optional[int] = pydantic.Field(
-        None, description="Upload server number",
+        None,
+        description="Upload server number",
     )
 
 
 class PhotosPhotoAlbumFull(pydantic.BaseModel):
     can_upload: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user can upload photo to the album",
+        None,
+        description="Information whether current user can upload photo to the album",
     )
     comments_disabled: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether album comments are disabled",
+        None,
+        description="Information whether album comments are disabled",
     )
     created: int = pydantic.Field(
-        ..., description="Date when the album has been created in Unixtime",
+        ...,
+        description="Date when the album has been created in Unixtime",
     )
     description: typing.Optional[str] = pydantic.Field(
-        None, description="Photo album description",
+        None,
+        description="Photo album description",
     )
     id: int = pydantic.Field(
-        ..., description="Photo album ID",
+        ...,
+        description="Photo album ID",
     )
     owner_id: int = pydantic.Field(
-        ..., description="Album owner's ID",
+        ...,
+        description="Album owner's ID",
     )
     size: int = pydantic.Field(
-        ..., description="Photos number",
+        ...,
+        description="Photos number",
     )
     sizes: typing.Optional[typing.List["PhotosPhotoSizes"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     thumb_id: typing.Optional[int] = pydantic.Field(
-        None, description="Thumb photo ID",
+        None,
+        description="Thumb photo ID",
     )
     thumb_is_last: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether the album thumb is last photo",
+        None,
+        description="Information whether the album thumb is last photo",
     )
     thumb_src: typing.Optional[str] = pydantic.Field(
-        None, description="URL of the thumb image",
+        None,
+        description="URL of the thumb image",
     )
     title: str = pydantic.Field(
-        ..., description="Photo album title",
+        ...,
+        description="Photo album title",
     )
     updated: int = pydantic.Field(
-        ..., description="Date when the album has been updated last time in Unixtime",
+        ...,
+        description="Date when the album has been updated last time in Unixtime",
     )
     upload_by_admins_only: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether only community administrators can upload photos",
+        None,
+        description="Information whether only community administrators can upload photos",
     )
 
 
 class PhotosPhotoFull(pydantic.BaseModel):
     access_key: typing.Optional[str] = pydantic.Field(
-        None, description="Access key for the photo",
+        None,
+        description="Access key for the photo",
     )
     album_id: int = pydantic.Field(
-        ..., description="Album ID",
+        ...,
+        description="Album ID",
     )
     can_comment: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user can comment the photo",
+        None,
+        description="Information whether current user can comment the photo",
     )
     comments: typing.Optional["BaseObjectCount"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     date: int = pydantic.Field(
-        ..., description="Date when uploaded",
+        ...,
+        description="Date when uploaded",
     )
     height: typing.Optional[int] = pydantic.Field(
-        None, description="Original photo height",
+        None,
+        description="Original photo height",
     )
     id: int = pydantic.Field(
-        ..., description="Photo ID",
+        ...,
+        description="Photo ID",
     )
     images: typing.Optional[typing.List["PhotosImage"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     lat: typing.Optional[int] = pydantic.Field(
-        None, description="Latitude",
+        None,
+        description="Latitude",
     )
     likes: typing.Optional["BaseLikes"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     long: typing.Optional[int] = pydantic.Field(
-        None, description="Longitude",
+        None,
+        description="Longitude",
     )
     owner_id: int = pydantic.Field(
-        ..., description="Photo owner's ID",
+        ...,
+        description="Photo owner's ID",
     )
     post_id: typing.Optional[int] = pydantic.Field(
-        None, description="Post ID",
+        None,
+        description="Post ID",
     )
     reposts: typing.Optional["BaseObjectCount"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     tags: typing.Optional["BaseObjectCount"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     text: typing.Optional[str] = pydantic.Field(
-        None, description="Photo caption",
+        None,
+        description="Photo caption",
     )
     user_id: typing.Optional[int] = pydantic.Field(
-        None, description="ID of the user who have uploaded the photo",
+        None,
+        description="ID of the user who have uploaded the photo",
     )
     width: typing.Optional[int] = pydantic.Field(
-        None, description="Original photo width",
+        None,
+        description="Original photo width",
     )
 
 
 class PhotosPhotoFullXtrRealOffset(pydantic.BaseModel):
     access_key: typing.Optional[str] = pydantic.Field(
-        None, description="Access key for the photo",
+        None,
+        description="Access key for the photo",
     )
     album_id: int = pydantic.Field(
-        ..., description="Album ID",
+        ...,
+        description="Album ID",
     )
     can_comment: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     comments: typing.Optional["BaseObjectCount"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     date: int = pydantic.Field(
-        ..., description="Date when uploaded",
+        ...,
+        description="Date when uploaded",
     )
     height: typing.Optional[int] = pydantic.Field(
-        None, description="Original photo height",
+        None,
+        description="Original photo height",
     )
     hidden: typing.Optional["BasePropertyExists"] = pydantic.Field(
-        None, description="Returns if the photo is hidden above the wall",
+        None,
+        description="Returns if the photo is hidden above the wall",
     )
     id: int = pydantic.Field(
-        ..., description="Photo ID",
+        ...,
+        description="Photo ID",
     )
     lat: typing.Optional[int] = pydantic.Field(
-        None, description="Latitude",
+        None,
+        description="Latitude",
     )
     likes: typing.Optional["BaseLikes"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     long: typing.Optional[int] = pydantic.Field(
-        None, description="Longitude",
+        None,
+        description="Longitude",
     )
     owner_id: int = pydantic.Field(
-        ..., description="Photo owner's ID",
+        ...,
+        description="Photo owner's ID",
     )
     photo_1280: typing.Optional[str] = pydantic.Field(
-        None, description="URL of image with 1280 px width",
+        None,
+        description="URL of image with 1280 px width",
     )
     photo_130: typing.Optional[str] = pydantic.Field(
-        None, description="URL of image with 130 px width",
+        None,
+        description="URL of image with 130 px width",
     )
     photo_2560: typing.Optional[str] = pydantic.Field(
-        None, description="URL of image with 2560 px width",
+        None,
+        description="URL of image with 2560 px width",
     )
     photo_604: typing.Optional[str] = pydantic.Field(
-        None, description="URL of image with 604 px width",
+        None,
+        description="URL of image with 604 px width",
     )
     photo_75: typing.Optional[str] = pydantic.Field(
-        None, description="URL of image with 75 px width",
+        None,
+        description="URL of image with 75 px width",
     )
     photo_807: typing.Optional[str] = pydantic.Field(
-        None, description="URL of image with 807 px width",
+        None,
+        description="URL of image with 807 px width",
     )
     post_id: typing.Optional[int] = pydantic.Field(
-        None, description="Post ID",
+        None,
+        description="Post ID",
     )
     real_offset: typing.Optional[int] = pydantic.Field(
-        None, description="Real position of the photo",
+        None,
+        description="Real position of the photo",
     )
     reposts: typing.Optional["BaseObjectCount"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     sizes: typing.Optional[typing.List["PhotosPhotoSizes"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     tags: typing.Optional["BaseObjectCount"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     text: typing.Optional[str] = pydantic.Field(
-        None, description="Photo caption",
+        None,
+        description="Photo caption",
     )
     user_id: typing.Optional[int] = pydantic.Field(
-        None, description="ID of the user who have uploaded the photo",
+        None,
+        description="ID of the user who have uploaded the photo",
     )
     width: typing.Optional[int] = pydantic.Field(
-        None, description="Original photo width",
+        None,
+        description="Original photo width",
     )
 
 
 class PhotosPhotoSizes(pydantic.BaseModel):
     height: int = pydantic.Field(
-        ..., description="Height in px",
+        ...,
+        description="Height in px",
     )
     url: str = pydantic.Field(
-        ..., description="URL of the image",
+        ...,
+        description="URL of the image",
     )
     src: typing.Optional[str] = pydantic.Field(
-        None, description="URL of the image",
+        None,
+        description="URL of the image",
     )
     type: "PhotosPhotoSizesType" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     width: int = pydantic.Field(
-        ..., description="Width in px",
+        ...,
+        description="Width in px",
     )
 
 
 class PhotosPhotoTag(pydantic.BaseModel):
     date: int = pydantic.Field(
-        ..., description="Date when tag has been added in Unixtime",
+        ...,
+        description="Date when tag has been added in Unixtime",
     )
     id: int = pydantic.Field(
-        ..., description="Tag ID",
+        ...,
+        description="Tag ID",
     )
     placer_id: int = pydantic.Field(
-        ..., description="ID of the tag creator",
+        ...,
+        description="ID of the tag creator",
     )
     tagged_name: str = pydantic.Field(
-        ..., description="Tag description",
+        ...,
+        description="Tag description",
     )
     description: typing.Optional[str] = pydantic.Field(
-        None, description="Tagged description.",
+        None,
+        description="Tagged description.",
     )
     user_id: int = pydantic.Field(
-        ..., description="Tagged user ID",
+        ...,
+        description="Tagged user ID",
     )
     viewed: "BaseBoolInt" = pydantic.Field(
-        ..., description="Information whether the tag is reviewed",
+        ...,
+        description="Information whether the tag is reviewed",
     )
     x: int = pydantic.Field(
-        ..., description="Coordinate X of the left upper corner",
+        ...,
+        description="Coordinate X of the left upper corner",
     )
     x2: int = pydantic.Field(
-        ..., description="Coordinate X of the right lower corner",
+        ...,
+        description="Coordinate X of the right lower corner",
     )
     y: int = pydantic.Field(
-        ..., description="Coordinate Y of the left upper corner",
+        ...,
+        description="Coordinate Y of the left upper corner",
     )
     y2: int = pydantic.Field(
-        ..., description="Coordinate Y of the right lower corner",
+        ...,
+        description="Coordinate Y of the right lower corner",
     )
 
 
 class PhotosPhotoUpload(pydantic.BaseModel):
     album_id: int = pydantic.Field(
-        ..., description="Album ID",
+        ...,
+        description="Album ID",
     )
     upload_url: str = pydantic.Field(
-        ..., description="URL to upload photo",
+        ...,
+        description="URL to upload photo",
     )
     fallback_upload_url: typing.Optional[str] = pydantic.Field(
-        None, description="Fallback URL if upload_url returned error",
+        None,
+        description="Fallback URL if upload_url returned error",
     )
     user_id: int = pydantic.Field(
-        ..., description="User ID",
+        ...,
+        description="User ID",
     )
     group_id: typing.Optional[int] = pydantic.Field(
-        None, description="Group ID",
+        None,
+        description="Group ID",
     )
 
 
 class PhotosPhotoUploadResponse(pydantic.BaseModel):
     aid: typing.Optional[int] = pydantic.Field(
-        None, description="Album ID",
+        None,
+        description="Album ID",
     )
     hash: typing.Optional[str] = pydantic.Field(
-        None, description="Uploading hash",
+        None,
+        description="Uploading hash",
     )
     photo: typing.Optional[str] = pydantic.Field(
-        None, description="Uploaded photo data",
+        None,
+        description="Uploaded photo data",
     )
     photos_list: typing.Optional[str] = pydantic.Field(
-        None, description="Uploaded photos data",
+        None,
+        description="Uploaded photos data",
     )
     server: typing.Optional[int] = pydantic.Field(
-        None, description="Upload server number",
+        None,
+        description="Upload server number",
     )
 
 
 class PhotosPhotoXtrRealOffset(pydantic.BaseModel):
     access_key: typing.Optional[str] = pydantic.Field(
-        None, description="Access key for the photo",
+        None,
+        description="Access key for the photo",
     )
     album_id: int = pydantic.Field(
-        ..., description="Album ID",
+        ...,
+        description="Album ID",
     )
     date: int = pydantic.Field(
-        ..., description="Date when uploaded",
+        ...,
+        description="Date when uploaded",
     )
     height: typing.Optional[int] = pydantic.Field(
-        None, description="Original photo height",
+        None,
+        description="Original photo height",
     )
     hidden: typing.Optional["BasePropertyExists"] = pydantic.Field(
-        None, description="Returns if the photo is hidden above the wall",
+        None,
+        description="Returns if the photo is hidden above the wall",
     )
     id: int = pydantic.Field(
-        ..., description="Photo ID",
+        ...,
+        description="Photo ID",
     )
     lat: typing.Optional[int] = pydantic.Field(
-        None, description="Latitude",
+        None,
+        description="Latitude",
     )
     long: typing.Optional[int] = pydantic.Field(
-        None, description="Longitude",
+        None,
+        description="Longitude",
     )
     owner_id: int = pydantic.Field(
-        ..., description="Photo owner's ID",
+        ...,
+        description="Photo owner's ID",
     )
     photo_1280: typing.Optional[str] = pydantic.Field(
-        None, description="URL of image with 1280 px width",
+        None,
+        description="URL of image with 1280 px width",
     )
     photo_130: typing.Optional[str] = pydantic.Field(
-        None, description="URL of image with 130 px width",
+        None,
+        description="URL of image with 130 px width",
     )
     photo_2560: typing.Optional[str] = pydantic.Field(
-        None, description="URL of image with 2560 px width",
+        None,
+        description="URL of image with 2560 px width",
     )
     photo_604: typing.Optional[str] = pydantic.Field(
-        None, description="URL of image with 604 px width",
+        None,
+        description="URL of image with 604 px width",
     )
     photo_75: typing.Optional[str] = pydantic.Field(
-        None, description="URL of image with 75 px width",
+        None,
+        description="URL of image with 75 px width",
     )
     photo_807: typing.Optional[str] = pydantic.Field(
-        None, description="URL of image with 807 px width",
+        None,
+        description="URL of image with 807 px width",
     )
     post_id: typing.Optional[int] = pydantic.Field(
-        None, description="Post ID",
+        None,
+        description="Post ID",
     )
     real_offset: typing.Optional[int] = pydantic.Field(
-        None, description="Real position of the photo",
+        None,
+        description="Real position of the photo",
     )
     sizes: typing.Optional[typing.List["PhotosPhotoSizes"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     text: typing.Optional[str] = pydantic.Field(
-        None, description="Photo caption",
+        None,
+        description="Photo caption",
     )
     user_id: typing.Optional[int] = pydantic.Field(
-        None, description="ID of the user who have uploaded the photo",
+        None,
+        description="ID of the user who have uploaded the photo",
     )
     width: typing.Optional[int] = pydantic.Field(
-        None, description="Original photo width",
+        None,
+        description="Original photo width",
     )
 
 
 class PhotosPhotoXtrTagInfo(pydantic.BaseModel):
     access_key: typing.Optional[str] = pydantic.Field(
-        None, description="Access key for the photo",
+        None,
+        description="Access key for the photo",
     )
     album_id: int = pydantic.Field(
-        ..., description="Album ID",
+        ...,
+        description="Album ID",
     )
     date: int = pydantic.Field(
-        ..., description="Date when uploaded",
+        ...,
+        description="Date when uploaded",
     )
     height: typing.Optional[int] = pydantic.Field(
-        None, description="Original photo height",
+        None,
+        description="Original photo height",
     )
     id: int = pydantic.Field(
-        ..., description="Photo ID",
+        ...,
+        description="Photo ID",
     )
     lat: typing.Optional[int] = pydantic.Field(
-        None, description="Latitude",
+        None,
+        description="Latitude",
     )
     long: typing.Optional[int] = pydantic.Field(
-        None, description="Longitude",
+        None,
+        description="Longitude",
     )
     owner_id: int = pydantic.Field(
-        ..., description="Photo owner's ID",
+        ...,
+        description="Photo owner's ID",
     )
     photo_1280: typing.Optional[str] = pydantic.Field(
-        None, description="URL of image with 1280 px width",
+        None,
+        description="URL of image with 1280 px width",
     )
     photo_130: typing.Optional[str] = pydantic.Field(
-        None, description="URL of image with 130 px width",
+        None,
+        description="URL of image with 130 px width",
     )
     photo_2560: typing.Optional[str] = pydantic.Field(
-        None, description="URL of image with 2560 px width",
+        None,
+        description="URL of image with 2560 px width",
     )
     photo_604: typing.Optional[str] = pydantic.Field(
-        None, description="URL of image with 604 px width",
+        None,
+        description="URL of image with 604 px width",
     )
     photo_75: typing.Optional[str] = pydantic.Field(
-        None, description="URL of image with 75 px width",
+        None,
+        description="URL of image with 75 px width",
     )
     photo_807: typing.Optional[str] = pydantic.Field(
-        None, description="URL of image with 807 px width",
+        None,
+        description="URL of image with 807 px width",
     )
     placer_id: typing.Optional[int] = pydantic.Field(
-        None, description="ID of the tag creator",
+        None,
+        description="ID of the tag creator",
     )
     post_id: typing.Optional[int] = pydantic.Field(
-        None, description="Post ID",
+        None,
+        description="Post ID",
     )
     sizes: typing.Optional[typing.List["PhotosPhotoSizes"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     tag_created: typing.Optional[int] = pydantic.Field(
-        None, description="Date when tag has been added in Unixtime",
+        None,
+        description="Date when tag has been added in Unixtime",
     )
     tag_id: typing.Optional[int] = pydantic.Field(
-        None, description="Tag ID",
+        None,
+        description="Tag ID",
     )
     text: typing.Optional[str] = pydantic.Field(
-        None, description="Photo caption",
+        None,
+        description="Photo caption",
     )
     user_id: typing.Optional[int] = pydantic.Field(
-        None, description="ID of the user who have uploaded the photo",
+        None,
+        description="ID of the user who have uploaded the photo",
     )
     width: typing.Optional[int] = pydantic.Field(
-        None, description="Original photo width",
+        None,
+        description="Original photo width",
     )
 
 
 class PhotosTagsSuggestionItem(pydantic.BaseModel):
     title: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     caption: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     type: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     buttons: typing.Optional[typing.List["PhotosTagsSuggestionItemButton"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     photo: typing.Optional["PhotosPhoto"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     tags: typing.Optional[typing.List["PhotosPhotoTag"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     track_code: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class PhotosTagsSuggestionItemButton(pydantic.BaseModel):
     title: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     action: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     style: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class PhotosWallUploadResponse(pydantic.BaseModel):
     hash: typing.Optional[str] = pydantic.Field(
-        None, description="Uploading hash",
+        None,
+        description="Uploading hash",
     )
     photo: typing.Optional[str] = pydantic.Field(
-        None, description="Uploaded photo data",
+        None,
+        description="Uploaded photo data",
     )
     server: typing.Optional[int] = pydantic.Field(
-        None, description="Upload server number",
+        None,
+        description="Upload server number",
     )
 
 
 class PollsAnswer(pydantic.BaseModel):
     id: int = pydantic.Field(
-        ..., description="Answer ID",
+        ...,
+        description="Answer ID",
     )
     rate: int = pydantic.Field(
-        ..., description="Answer rate in percents",
+        ...,
+        description="Answer rate in percents",
     )
     text: str = pydantic.Field(
-        ..., description="Answer text",
+        ...,
+        description="Answer text",
     )
     votes: int = pydantic.Field(
-        ..., description="Votes number",
+        ...,
+        description="Votes number",
     )
 
 
 class PollsFriend(pydantic.BaseModel):
     id: int = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class PollsVoters(pydantic.BaseModel):
     answer_id: typing.Optional[int] = pydantic.Field(
-        None, description="Answer ID",
+        None,
+        description="Answer ID",
     )
     users: typing.Optional["PollsVotersUsers"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class PrettyCardsPrettyCard(pydantic.BaseModel):
     button: typing.Optional[str] = pydantic.Field(
-        None, description="Button key",
+        None,
+        description="Button key",
     )
     button_text: typing.Optional[str] = pydantic.Field(
-        None, description="Button text in current language",
+        None,
+        description="Button text in current language",
     )
     card_id: str = pydantic.Field(
-        ..., description="Card ID (long int returned as string)",
+        ...,
+        description="Card ID (long int returned as string)",
     )
     images: typing.Optional[typing.List["BaseImage"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     link_url: str = pydantic.Field(
-        ..., description="Link URL",
+        ...,
+        description="Link URL",
     )
     photo: str = pydantic.Field(
-        ..., description="Photo ID (format <owner_id>_<media_id>)",
+        ...,
+        description="Photo ID (format <owner_id>_<media_id>)",
     )
     price: typing.Optional[str] = pydantic.Field(
-        None, description="Price if set (decimal number returned as string)",
+        None,
+        description="Price if set (decimal number returned as string)",
     )
     price_old: typing.Optional[str] = pydantic.Field(
-        None, description="Old price if set (decimal number returned as string)",
+        None,
+        description="Old price if set (decimal number returned as string)",
     )
     title: str = pydantic.Field(
-        ..., description="Title",
+        ...,
+        description="Title",
     )
 
 
 class SearchHint(pydantic.BaseModel):
     app: typing.Optional["AppsApp"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     description: str = pydantic.Field(
-        ..., description="Object description",
+        ...,
+        description="Object description",
     )
     global_: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether the object has been found globally", alias="global",
+        None,
+        description="Information whether the object has been found globally",
+        alias="global",
     )
     group: typing.Optional["GroupsGroup"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     profile: typing.Optional["UsersUserMin"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     section: "SearchHintSection" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     type: "SearchHintType" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class SecureLevel(pydantic.BaseModel):
     level: typing.Optional[int] = pydantic.Field(
-        None, description="Level",
+        None,
+        description="Level",
     )
     uid: typing.Optional[int] = pydantic.Field(
-        None, description="User ID",
+        None,
+        description="User ID",
     )
 
 
 class SecureSmsNotification(pydantic.BaseModel):
     app_id: typing.Optional[str] = pydantic.Field(
-        None, description="Application ID",
+        None,
+        description="Application ID",
     )
     date: typing.Optional[str] = pydantic.Field(
-        None, description="Date when message has been sent in Unixtime",
+        None,
+        description="Date when message has been sent in Unixtime",
     )
     id: typing.Optional[str] = pydantic.Field(
-        None, description="Notification ID",
+        None,
+        description="Notification ID",
     )
     message: typing.Optional[str] = pydantic.Field(
-        None, description="Messsage text",
+        None,
+        description="Messsage text",
     )
     user_id: typing.Optional[str] = pydantic.Field(
-        None, description="User ID",
+        None,
+        description="User ID",
     )
 
 
 class SecureTokenChecked(pydantic.BaseModel):
     date: typing.Optional[int] = pydantic.Field(
-        None, description="Date when access_token has been generated in Unixtime",
+        None,
+        description="Date when access_token has been generated in Unixtime",
     )
     expire: typing.Optional[int] = pydantic.Field(
-        None, description="Date when access_token will expire in Unixtime",
+        None,
+        description="Date when access_token will expire in Unixtime",
     )
     success: typing.Optional[int] = pydantic.Field(
-        None, description="Returns if successfully processed",
+        None,
+        description="Returns if successfully processed",
     )
     user_id: typing.Optional[int] = pydantic.Field(
-        None, description="User ID",
+        None,
+        description="User ID",
     )
 
 
 class SecureTransaction(pydantic.BaseModel):
     date: typing.Optional[int] = pydantic.Field(
-        None, description="Transaction date in Unixtime",
+        None,
+        description="Transaction date in Unixtime",
     )
     id: typing.Optional[int] = pydantic.Field(
-        None, description="Transaction ID",
+        None,
+        description="Transaction ID",
     )
     uid_from: typing.Optional[int] = pydantic.Field(
-        None, description="From ID",
+        None,
+        description="From ID",
     )
     uid_to: typing.Optional[int] = pydantic.Field(
-        None, description="To ID",
+        None,
+        description="To ID",
     )
     votes: typing.Optional[int] = pydantic.Field(
-        None, description="Votes number",
+        None,
+        description="Votes number",
     )
 
 
 class StatsCity(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
-        None, description="Visitors number",
+        None,
+        description="Visitors number",
     )
     name: typing.Optional[str] = pydantic.Field(
-        None, description="City name",
+        None,
+        description="City name",
     )
     value: typing.Optional[int] = pydantic.Field(
-        None, description="City ID",
+        None,
+        description="City ID",
     )
 
 
 class StatsCountry(pydantic.BaseModel):
     code: typing.Optional[str] = pydantic.Field(
-        None, description="Country code",
+        None,
+        description="Country code",
     )
     count: typing.Optional[int] = pydantic.Field(
-        None, description="Visitors number",
+        None,
+        description="Visitors number",
     )
     name: typing.Optional[str] = pydantic.Field(
-        None, description="Country name",
+        None,
+        description="Country name",
     )
     value: typing.Optional[int] = pydantic.Field(
-        None, description="Country ID",
+        None,
+        description="Country ID",
     )
 
 
 class StatsPeriod(pydantic.BaseModel):
     activity: typing.Optional["StatsActivity"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     period_from: typing.Optional[int] = pydantic.Field(
-        None, description="Unix timestamp",
+        None,
+        description="Unix timestamp",
     )
     period_to: typing.Optional[int] = pydantic.Field(
-        None, description="Unix timestamp",
+        None,
+        description="Unix timestamp",
     )
     reach: typing.Optional["StatsReach"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     visitors: typing.Optional["StatsViews"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class StatsSexAge(pydantic.BaseModel):
     count: typing.Optional[int] = pydantic.Field(
-        None, description="Visitors number",
+        None,
+        description="Visitors number",
     )
     value: str = pydantic.Field(
-        ..., description="Sex/age value",
+        ...,
+        description="Sex/age value",
     )
     reach: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     reach_subscribers: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     count_subscribers: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class StatsWallpostStat(pydantic.BaseModel):
     post_id: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     hide: typing.Optional[int] = pydantic.Field(
-        None, description="Hidings number",
+        None,
+        description="Hidings number",
     )
     join_group: typing.Optional[int] = pydantic.Field(
-        None, description="People have joined the group",
+        None,
+        description="People have joined the group",
     )
     links: typing.Optional[int] = pydantic.Field(
-        None, description="Link clickthrough",
+        None,
+        description="Link clickthrough",
     )
     reach_subscribers: typing.Optional[int] = pydantic.Field(
-        None, description="Subscribers reach",
+        None,
+        description="Subscribers reach",
     )
     reach_subscribers_count: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     reach_total: typing.Optional[int] = pydantic.Field(
-        None, description="Total reach",
+        None,
+        description="Total reach",
     )
     reach_total_count: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     reach_viral: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     reach_ads: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     report: typing.Optional[int] = pydantic.Field(
-        None, description="Reports number",
+        None,
+        description="Reports number",
     )
     to_group: typing.Optional[int] = pydantic.Field(
-        None, description="Clickthrough to community",
+        None,
+        description="Clickthrough to community",
     )
     unsubscribe: typing.Optional[int] = pydantic.Field(
-        None, description="Unsubscribed members",
+        None,
+        description="Unsubscribed members",
     )
     sex_age: typing.Optional[typing.List["StatsSexAge"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class StatusStatus(pydantic.BaseModel):
     text: str = pydantic.Field(
-        ..., description="Status text",
+        ...,
+        description="Status text",
     )
     audio: typing.Optional["AudioAudio"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class StorageValue(pydantic.BaseModel):
     key: str = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     value: str = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class StoriesClickableArea(pydantic.BaseModel):
     x: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     y: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class StoriesClickableSticker(pydantic.BaseModel):
     clickable_area: typing.List["StoriesClickableArea"] = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     id: int = pydantic.Field(
-        ..., description="Clickable sticker ID",
+        ...,
+        description="Clickable sticker ID",
     )
     hashtag: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     link_object: typing.Optional["BaseLink"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     mention: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     tooltip_text: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     owner_id: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     story_id: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     question: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     question_button: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     place_id: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     market_item: typing.Optional["MarketMarketItem"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     audio: typing.Optional["AudioAudio"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     audio_start_time: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     style: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     type: str = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     subtype: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     post_owner_id: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     post_id: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     poll: typing.Optional["PollsPoll"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     color: typing.Optional[str] = pydantic.Field(
-        None, description="Color, hex format",
+        None,
+        description="Color, hex format",
     )
     sticker_id: typing.Optional[int] = pydantic.Field(
-        None, description="Sticker ID",
+        None,
+        description="Sticker ID",
     )
     sticker_pack_id: typing.Optional[int] = pydantic.Field(
-        None, description="Sticker pack ID",
+        None,
+        description="Sticker pack ID",
     )
     app: typing.Optional["AppsAppMin"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     app_context: typing.Optional[str] = pydantic.Field(
-        None, description="Additional context for app sticker",
+        None,
+        description="Additional context for app sticker",
     )
     has_new_interactions: typing.Optional[bool] = pydantic.Field(
-        None, description="Whether current user has unread interaction with this app",
+        None,
+        description="Whether current user has unread interaction with this app",
     )
     is_broadcast_notify_allowed: typing.Optional[bool] = pydantic.Field(
-        None, description="Whether current user allowed broadcast notify from this app",
+        None,
+        description="Whether current user allowed broadcast notify from this app",
     )
 
 
 class StoriesFeedItem(pydantic.BaseModel):
     type: str = pydantic.Field(
-        ..., description="Type of Feed Item",
+        ...,
+        description="Type of Feed Item",
     )
     id: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     stories: typing.Optional[typing.List["StoriesStory"]] = pydantic.Field(
-        None, description="Author stories",
+        None,
+        description="Author stories",
     )
     grouped: typing.Optional[typing.List["StoriesFeedItem"]] = pydantic.Field(
         None,
         description="Grouped stories of various authors (for types community_grouped_stories/app_grouped_stories type)",
     )
     app: typing.Optional["AppsAppMin"] = pydantic.Field(
-        None, description="App, which stories has been grouped (for type app_grouped_stories)",
+        None,
+        description="App, which stories has been grouped (for type app_grouped_stories)",
     )
     promo_data: typing.Optional["StoriesPromoBlock"] = pydantic.Field(
-        None, description="Additional data for promo stories (for type promo_stories)",
+        None,
+        description="Additional data for promo stories (for type promo_stories)",
     )
     birthday_user_id: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class StoriesStatLine(pydantic.BaseModel):
     name: str = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     counter: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     is_unavailable: typing.Optional[bool] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class StoriesStoryStats(pydantic.BaseModel):
     answer: "StoriesStoryStatsStat" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     bans: "StoriesStoryStatsStat" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     open_link: "StoriesStoryStatsStat" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     replies: "StoriesStoryStatsStat" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     shares: "StoriesStoryStatsStat" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     subscribers: "StoriesStoryStatsStat" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     views: "StoriesStoryStatsStat" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     likes: "StoriesStoryStatsStat" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class StoriesViewersItem(pydantic.BaseModel):
     is_liked: bool = pydantic.Field(
-        ..., description="user has like for this object",
+        ...,
+        description="user has like for this object",
     )
     user_id: int = pydantic.Field(
-        ..., description="user id",
+        ...,
+        description="user id",
     )
     user: typing.Optional["UsersUserFull"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class UsersCareer(pydantic.BaseModel):
     city_id: typing.Optional[int] = pydantic.Field(
-        None, description="City ID",
+        None,
+        description="City ID",
     )
     city_name: typing.Optional[str] = pydantic.Field(
-        None, description="City name",
+        None,
+        description="City name",
     )
     company: typing.Optional[str] = pydantic.Field(
-        None, description="Company name",
+        None,
+        description="Company name",
     )
     country_id: typing.Optional[int] = pydantic.Field(
-        None, description="Country ID",
+        None,
+        description="Country ID",
     )
     from_: typing.Optional[int] = pydantic.Field(None, description="From year", alias="from")
     group_id: typing.Optional[int] = pydantic.Field(
-        None, description="Community ID",
+        None,
+        description="Community ID",
     )
     id: typing.Optional[int] = pydantic.Field(
-        None, description="Career ID",
+        None,
+        description="Career ID",
     )
     position: typing.Optional[str] = pydantic.Field(
-        None, description="Position",
+        None,
+        description="Position",
     )
     until: typing.Optional[int] = pydantic.Field(
-        None, description="Till year",
+        None,
+        description="Till year",
     )
 
 
 class UsersExports(pydantic.BaseModel):
     facebook: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     livejournal: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     twitter: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class UsersLastSeen(pydantic.BaseModel):
     platform: typing.Optional[int] = pydantic.Field(
-        None, description="Type of the platform that used for the last authorization",
+        None,
+        description="Type of the platform that used for the last authorization",
     )
     time: typing.Optional[int] = pydantic.Field(
-        None, description="Last visit date (in Unix time)",
+        None,
+        description="Last visit date (in Unix time)",
     )
 
 
 class UsersMilitary(pydantic.BaseModel):
     country_id: int = pydantic.Field(
-        ..., description="Country ID",
+        ...,
+        description="Country ID",
     )
     from_: typing.Optional[int] = pydantic.Field(None, description="From year", alias="from")
     id: typing.Optional[int] = pydantic.Field(
-        None, description="Military ID",
+        None,
+        description="Military ID",
     )
     unit: str = pydantic.Field(
-        ..., description="Unit name",
+        ...,
+        description="Unit name",
     )
     unit_id: int = pydantic.Field(
-        ..., description="Unit ID",
+        ...,
+        description="Unit ID",
     )
     until: typing.Optional[int] = pydantic.Field(
-        None, description="Till year",
+        None,
+        description="Till year",
     )
 
 
 class UsersOccupation(pydantic.BaseModel):
     id: typing.Optional[int] = pydantic.Field(
-        None, description="ID of school, university, company group",
+        None,
+        description="ID of school, university, company group",
     )
     name: typing.Optional[str] = pydantic.Field(
-        None, description="Name of occupation",
+        None,
+        description="Name of occupation",
     )
     type: typing.Optional[str] = pydantic.Field(
-        None, description="Type of occupation",
+        None,
+        description="Type of occupation",
     )
 
 
 class UsersOnlineInfo(pydantic.BaseModel):
     visible: bool = pydantic.Field(
-        ..., description="Whether you can see real online status of user or not",
+        ...,
+        description="Whether you can see real online status of user or not",
     )
     last_seen: typing.Optional[int] = pydantic.Field(
-        None, description="Last time we saw user being active",
+        None,
+        description="Last time we saw user being active",
     )
     is_online: typing.Optional[bool] = pydantic.Field(
-        None, description="Whether user is currently online or not",
+        None,
+        description="Whether user is currently online or not",
     )
     app_id: typing.Optional[int] = pydantic.Field(
         None,
         description="Application id from which user is currently online or was last seen online",
     )
     is_mobile: typing.Optional[bool] = pydantic.Field(
-        None, description="Is user online from desktop app or mobile app",
+        None,
+        description="Is user online from desktop app or mobile app",
     )
     status: typing.Optional[str] = pydantic.Field(
         None,
@@ -8368,1593 +10282,2062 @@ class UsersOnlineInfo(pydantic.BaseModel):
 
 class UsersRelative(pydantic.BaseModel):
     birth_date: typing.Optional[str] = pydantic.Field(
-        None, description="Date of child birthday (format dd.mm.yyyy)",
+        None,
+        description="Date of child birthday (format dd.mm.yyyy)",
     )
     id: typing.Optional[int] = pydantic.Field(
-        None, description="Relative ID",
+        None,
+        description="Relative ID",
     )
     name: typing.Optional[str] = pydantic.Field(
-        None, description="Name of relative",
+        None,
+        description="Name of relative",
     )
     type: str = pydantic.Field(
-        ..., description="Relative type",
+        ...,
+        description="Relative type",
     )
 
 
 class UsersSchool(pydantic.BaseModel):
     city: typing.Optional[int] = pydantic.Field(
-        None, description="City ID",
+        None,
+        description="City ID",
     )
     class_: typing.Optional[str] = pydantic.Field(
         None, description="School class letter", alias="class"
     )
     country: typing.Optional[int] = pydantic.Field(
-        None, description="Country ID",
+        None,
+        description="Country ID",
     )
     id: typing.Optional[str] = pydantic.Field(
-        None, description="School ID",
+        None,
+        description="School ID",
     )
     name: typing.Optional[str] = pydantic.Field(
-        None, description="School name",
+        None,
+        description="School name",
     )
     type: typing.Optional[int] = pydantic.Field(
-        None, description="School type ID",
+        None,
+        description="School type ID",
     )
     type_str: typing.Optional[str] = pydantic.Field(
-        None, description="School type name",
+        None,
+        description="School type name",
     )
     year_from: typing.Optional[int] = pydantic.Field(
-        None, description="Year the user started to study",
+        None,
+        description="Year the user started to study",
     )
     year_graduated: typing.Optional[int] = pydantic.Field(
-        None, description="Graduation year",
+        None,
+        description="Graduation year",
     )
     year_to: typing.Optional[int] = pydantic.Field(
-        None, description="Year the user finished to study",
+        None,
+        description="Year the user finished to study",
     )
     speciality: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class UsersUniversity(pydantic.BaseModel):
     chair: typing.Optional[int] = pydantic.Field(
-        None, description="Chair ID",
+        None,
+        description="Chair ID",
     )
     chair_name: typing.Optional[str] = pydantic.Field(
-        None, description="Chair name",
+        None,
+        description="Chair name",
     )
     city: typing.Optional[int] = pydantic.Field(
-        None, description="City ID",
+        None,
+        description="City ID",
     )
     country: typing.Optional[int] = pydantic.Field(
-        None, description="Country ID",
+        None,
+        description="Country ID",
     )
     education_form: typing.Optional[str] = pydantic.Field(
-        None, description="Education form",
+        None,
+        description="Education form",
     )
     education_status: typing.Optional[str] = pydantic.Field(
-        None, description="Education status",
+        None,
+        description="Education status",
     )
     faculty: typing.Optional[int] = pydantic.Field(
-        None, description="Faculty ID",
+        None,
+        description="Faculty ID",
     )
     faculty_name: typing.Optional[str] = pydantic.Field(
-        None, description="Faculty name",
+        None,
+        description="Faculty name",
     )
     graduation: typing.Optional[int] = pydantic.Field(
-        None, description="Graduation year",
+        None,
+        description="Graduation year",
     )
     id: typing.Optional[int] = pydantic.Field(
-        None, description="University ID",
+        None,
+        description="University ID",
     )
     name: typing.Optional[str] = pydantic.Field(
-        None, description="University name",
+        None,
+        description="University name",
     )
     university_group_id: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class UsersUserCounters(pydantic.BaseModel):
     albums: typing.Optional[int] = pydantic.Field(
-        None, description="Albums number",
+        None,
+        description="Albums number",
     )
     audios: typing.Optional[int] = pydantic.Field(
-        None, description="Audios number",
+        None,
+        description="Audios number",
     )
     followers: typing.Optional[int] = pydantic.Field(
-        None, description="Followers number",
+        None,
+        description="Followers number",
     )
     friends: typing.Optional[int] = pydantic.Field(
-        None, description="Friends number",
+        None,
+        description="Friends number",
     )
     gifts: typing.Optional[int] = pydantic.Field(
-        None, description="Gifts number",
+        None,
+        description="Gifts number",
     )
     groups: typing.Optional[int] = pydantic.Field(
-        None, description="Communities number",
+        None,
+        description="Communities number",
     )
     notes: typing.Optional[int] = pydantic.Field(
-        None, description="Notes number",
+        None,
+        description="Notes number",
     )
     online_friends: typing.Optional[int] = pydantic.Field(
-        None, description="Online friends number",
+        None,
+        description="Online friends number",
     )
     pages: typing.Optional[int] = pydantic.Field(
-        None, description="Public pages number",
+        None,
+        description="Public pages number",
     )
     photos: typing.Optional[int] = pydantic.Field(
-        None, description="Photos number",
+        None,
+        description="Photos number",
     )
     subscriptions: typing.Optional[int] = pydantic.Field(
-        None, description="Subscriptions number",
+        None,
+        description="Subscriptions number",
     )
     user_photos: typing.Optional[int] = pydantic.Field(
-        None, description="Number of photos with user",
+        None,
+        description="Number of photos with user",
     )
     user_videos: typing.Optional[int] = pydantic.Field(
-        None, description="Number of videos with user",
+        None,
+        description="Number of videos with user",
     )
     videos: typing.Optional[int] = pydantic.Field(
-        None, description="Videos number",
+        None,
+        description="Videos number",
     )
     new_photo_tags: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     new_recognition_tags: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     mutual_friends: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     posts: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     articles: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     wishes: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     podcasts: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     clips: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     clips_followers: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class UsersUserSettingsXtr(pydantic.BaseModel):
     connections: typing.Optional["UsersUserConnections"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     bdate: typing.Optional[str] = pydantic.Field(
-        None, description="User's date of birth",
+        None,
+        description="User's date of birth",
     )
     bdate_visibility: typing.Optional[int] = pydantic.Field(
-        None, description="Information whether user's birthdate are hidden",
+        None,
+        description="Information whether user's birthdate are hidden",
     )
     city: typing.Optional["BaseCity"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     country: typing.Optional["BaseCountry"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     first_name: typing.Optional[str] = pydantic.Field(
-        None, description="User first name",
+        None,
+        description="User first name",
     )
     home_town: str = pydantic.Field(
-        ..., description="User's hometown",
+        ...,
+        description="User's hometown",
     )
     last_name: typing.Optional[str] = pydantic.Field(
-        None, description="User last name",
+        None,
+        description="User last name",
     )
     maiden_name: typing.Optional[str] = pydantic.Field(
-        None, description="User maiden name",
+        None,
+        description="User maiden name",
     )
     name_request: typing.Optional["AccountNameRequest"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     personal: typing.Optional["UsersPersonal"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     phone: typing.Optional[str] = pydantic.Field(
-        None, description="User phone number with some hidden digits",
+        None,
+        description="User phone number with some hidden digits",
     )
     relation: typing.Optional["UsersUserRelation"] = pydantic.Field(
-        None, description="User relationship status",
+        None,
+        description="User relationship status",
     )
     relation_partner: typing.Optional["UsersUserMin"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     relation_pending: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether relation status is pending",
+        None,
+        description="Information whether relation status is pending",
     )
     relation_requests: typing.Optional[typing.List["UsersUserMin"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     screen_name: typing.Optional[str] = pydantic.Field(
-        None, description="Domain name of the user's page",
+        None,
+        description="Domain name of the user's page",
     )
     sex: typing.Optional["BaseSex"] = pydantic.Field(
-        None, description="User sex",
+        None,
+        description="User sex",
     )
     status: str = pydantic.Field(
-        ..., description="User status",
+        ...,
+        description="User status",
     )
     status_audio: typing.Optional["AudioAudio"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     interests: typing.Optional["AccountUserSettingsInterests"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     languages: typing.Optional[typing.List[str]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class UsersUsersArray(pydantic.BaseModel):
     count: int = pydantic.Field(
-        ..., description="Users number",
+        ...,
+        description="Users number",
     )
     items: typing.List[int] = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
 
 
 class UtilsDomainResolved(pydantic.BaseModel):
     object_id: typing.Optional[int] = pydantic.Field(
-        None, description="Object ID",
+        None,
+        description="Object ID",
     )
     group_id: typing.Optional[int] = pydantic.Field(
-        None, description="Group ID",
+        None,
+        description="Group ID",
     )
     type: typing.Optional["UtilsDomainResolvedType"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class UtilsLastShortenedLink(pydantic.BaseModel):
     access_key: typing.Optional[str] = pydantic.Field(
-        None, description="Access key for private stats",
+        None,
+        description="Access key for private stats",
     )
     key: typing.Optional[str] = pydantic.Field(
-        None, description="Link key (characters after vk.cc/)",
+        None,
+        description="Link key (characters after vk.cc/)",
     )
     short_url: typing.Optional[str] = pydantic.Field(
-        None, description="Short link URL",
+        None,
+        description="Short link URL",
     )
     timestamp: typing.Optional[int] = pydantic.Field(
-        None, description="Creation time in Unixtime",
+        None,
+        description="Creation time in Unixtime",
     )
     url: typing.Optional[str] = pydantic.Field(
-        None, description="Full URL",
+        None,
+        description="Full URL",
     )
     views: typing.Optional[int] = pydantic.Field(
-        None, description="Total views number",
+        None,
+        description="Total views number",
     )
 
 
 class UtilsLinkChecked(pydantic.BaseModel):
     link: typing.Optional[str] = pydantic.Field(
-        None, description="Link URL",
+        None,
+        description="Link URL",
     )
     status: typing.Optional["UtilsLinkCheckedStatus"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class UtilsLinkStats(pydantic.BaseModel):
     key: typing.Optional[str] = pydantic.Field(
-        None, description="Link key (characters after vk.cc/)",
+        None,
+        description="Link key (characters after vk.cc/)",
     )
     stats: typing.Optional[typing.List["UtilsStats"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class UtilsLinkStatsExtended(pydantic.BaseModel):
     key: typing.Optional[str] = pydantic.Field(
-        None, description="Link key (characters after vk.cc/)",
+        None,
+        description="Link key (characters after vk.cc/)",
     )
     stats: typing.Optional[typing.List["UtilsStatsExtended"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class UtilsShortLink(pydantic.BaseModel):
     access_key: typing.Optional[str] = pydantic.Field(
-        None, description="Access key for private stats",
+        None,
+        description="Access key for private stats",
     )
     key: typing.Optional[str] = pydantic.Field(
-        None, description="Link key (characters after vk.cc/)",
+        None,
+        description="Link key (characters after vk.cc/)",
     )
     short_url: typing.Optional[str] = pydantic.Field(
-        None, description="Short link URL",
+        None,
+        description="Short link URL",
     )
     url: typing.Optional[str] = pydantic.Field(
-        None, description="Full URL",
+        None,
+        description="Full URL",
     )
 
 
 class UtilsStats(pydantic.BaseModel):
     timestamp: typing.Optional[int] = pydantic.Field(
-        None, description="Start time",
+        None,
+        description="Start time",
     )
     views: typing.Optional[int] = pydantic.Field(
-        None, description="Total views number",
+        None,
+        description="Total views number",
     )
 
 
 class UtilsStatsCity(pydantic.BaseModel):
     city_id: typing.Optional[int] = pydantic.Field(
-        None, description="City ID",
+        None,
+        description="City ID",
     )
     views: typing.Optional[int] = pydantic.Field(
-        None, description="Views number",
+        None,
+        description="Views number",
     )
 
 
 class UtilsStatsCountry(pydantic.BaseModel):
     country_id: typing.Optional[int] = pydantic.Field(
-        None, description="Country ID",
+        None,
+        description="Country ID",
     )
     views: typing.Optional[int] = pydantic.Field(
-        None, description="Views number",
+        None,
+        description="Views number",
     )
 
 
 class UtilsStatsExtended(pydantic.BaseModel):
     cities: typing.Optional[typing.List["UtilsStatsCity"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     countries: typing.Optional[typing.List["UtilsStatsCountry"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     sex_age: typing.Optional[typing.List["UtilsStatsSexAge"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     timestamp: typing.Optional[int] = pydantic.Field(
-        None, description="Start time",
+        None,
+        description="Start time",
     )
     views: typing.Optional[int] = pydantic.Field(
-        None, description="Total views number",
+        None,
+        description="Total views number",
     )
 
 
 class UtilsStatsSexAge(pydantic.BaseModel):
     age_range: typing.Optional[str] = pydantic.Field(
-        None, description="Age denotation",
+        None,
+        description="Age denotation",
     )
     female: typing.Optional[int] = pydantic.Field(
-        None, description=" Views by female users",
+        None,
+        description=" Views by female users",
     )
     male: typing.Optional[int] = pydantic.Field(
-        None, description=" Views by male users",
+        None,
+        description=" Views by male users",
     )
 
 
 class VideoLiveInfo(pydantic.BaseModel):
     enabled: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     is_notifications_blocked: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class VideoLiveSettings(pydantic.BaseModel):
     can_rewind: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="If user car rewind live or not",
+        None,
+        description="If user car rewind live or not",
     )
     is_endless: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="If live is endless or not",
+        None,
+        description="If live is endless or not",
     )
     max_duration: typing.Optional[int] = pydantic.Field(
-        None, description="Max possible time for rewind",
+        None,
+        description="Max possible time for rewind",
     )
 
 
 class VideoSaveResult(pydantic.BaseModel):
     access_key: typing.Optional[str] = pydantic.Field(
-        None, description="Video access key",
+        None,
+        description="Video access key",
     )
     description: typing.Optional[str] = pydantic.Field(
-        None, description="Video description",
+        None,
+        description="Video description",
     )
     owner_id: typing.Optional[int] = pydantic.Field(
-        None, description="Video owner ID",
+        None,
+        description="Video owner ID",
     )
     title: typing.Optional[str] = pydantic.Field(
-        None, description="Video title",
+        None,
+        description="Video title",
     )
     upload_url: typing.Optional[str] = pydantic.Field(
-        None, description="URL for the video uploading",
+        None,
+        description="URL for the video uploading",
     )
     video_id: typing.Optional[int] = pydantic.Field(
-        None, description="Video ID",
+        None,
+        description="Video ID",
     )
 
 
 class VideoVideoAlbumFull(pydantic.BaseModel):
     count: int = pydantic.Field(
-        ..., description="Total number of videos in album",
+        ...,
+        description="Total number of videos in album",
     )
     id: typing.Optional[int] = pydantic.Field(
-        None, description="Album ID",
+        None,
+        description="Album ID",
     )
     image: typing.Optional[typing.List["VideoVideoImage"]] = pydantic.Field(
-        None, description="Album cover image in different sizes",
+        None,
+        description="Album cover image in different sizes",
     )
     image_blur: typing.Optional["BasePropertyExists"] = pydantic.Field(
-        None, description="Need blur album thumb or not",
+        None,
+        description="Need blur album thumb or not",
     )
     is_system: typing.Optional["BasePropertyExists"] = pydantic.Field(
-        None, description="Information whether album is system",
+        None,
+        description="Information whether album is system",
     )
     owner_id: int = pydantic.Field(
-        ..., description="Album owner's ID",
+        ...,
+        description="Album owner's ID",
     )
     title: str = pydantic.Field(
-        ..., description="Album title",
+        ...,
+        description="Album title",
     )
     updated_time: int = pydantic.Field(
-        ..., description="Date when the album has been updated last time in Unixtime",
+        ...,
+        description="Date when the album has been updated last time in Unixtime",
     )
 
 
 class VideoVideoFiles(pydantic.BaseModel):
     external: typing.Optional[str] = pydantic.Field(
-        None, description="URL of the external player",
+        None,
+        description="URL of the external player",
     )
     mp4_240: typing.Optional[str] = pydantic.Field(
-        None, description="URL of the mpeg4 file with 240p quality",
+        None,
+        description="URL of the mpeg4 file with 240p quality",
     )
     mp4_360: typing.Optional[str] = pydantic.Field(
-        None, description="URL of the mpeg4 file with 360p quality",
+        None,
+        description="URL of the mpeg4 file with 360p quality",
     )
     mp4_480: typing.Optional[str] = pydantic.Field(
-        None, description="URL of the mpeg4 file with 480p quality",
+        None,
+        description="URL of the mpeg4 file with 480p quality",
     )
     mp4_720: typing.Optional[str] = pydantic.Field(
-        None, description="URL of the mpeg4 file with 720p quality",
+        None,
+        description="URL of the mpeg4 file with 720p quality",
     )
     mp4_1080: typing.Optional[str] = pydantic.Field(
-        None, description="URL of the mpeg4 file with 1080p quality",
+        None,
+        description="URL of the mpeg4 file with 1080p quality",
     )
     flv_320: typing.Optional[str] = pydantic.Field(
-        None, description="URL of the flv file with 320p quality",
+        None,
+        description="URL of the flv file with 320p quality",
     )
 
 
 class WallCarouselBase(pydantic.BaseModel):
     carousel_offset: typing.Optional[int] = pydantic.Field(
-        None, description="Index of current carousel element",
+        None,
+        description="Index of current carousel element",
     )
 
 
 class WallCommentAttachment(pydantic.BaseModel):
     audio: typing.Optional["AudioAudio"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     doc: typing.Optional["DocsDoc"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     link: typing.Optional["BaseLink"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     market: typing.Optional["MarketMarketItem"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     market_market_album: typing.Optional["MarketMarketAlbum"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     note: typing.Optional["WallAttachedNote"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     page: typing.Optional["PagesWikipageFull"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     photo: typing.Optional["PhotosPhoto"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     sticker: typing.Optional["BaseSticker"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     type: "WallCommentAttachmentType" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     video: typing.Optional["VideoVideo"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class WallWallpostAttachment(pydantic.BaseModel):
     access_key: typing.Optional[str] = pydantic.Field(
-        None, description="Access key for the audio",
+        None,
+        description="Access key for the audio",
     )
     album: typing.Optional["PhotosPhotoAlbum"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     app: typing.Optional["WallAppPost"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     audio: typing.Optional["AudioAudio"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     doc: typing.Optional["DocsDoc"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     event: typing.Optional["EventsEventAttach"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     group: typing.Optional["GroupsGroupAttach"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     graffiti: typing.Optional["WallGraffiti"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     link: typing.Optional["BaseLink"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     market: typing.Optional["MarketMarketItem"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     market_album: typing.Optional["MarketMarketAlbum"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     note: typing.Optional["WallAttachedNote"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     page: typing.Optional["PagesWikipageFull"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     photo: typing.Optional["PhotosPhoto"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     photos_list: typing.Optional[typing.List[str]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     poll: typing.Optional["PollsPoll"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     posted_photo: typing.Optional["WallPostedPhoto"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     type: "WallWallpostAttachmentType" = pydantic.Field(
-        ..., description="",
+        ...,
+        description="",
     )
     video: typing.Optional["VideoVideo"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class WallWallpostDonut(pydantic.BaseModel):
     is_donut: bool = pydantic.Field(
-        ..., description="Post only for dons",
+        ...,
+        description="Post only for dons",
     )
     paid_duration: typing.Optional[int] = pydantic.Field(
         None,
         description="Value of this field need to pass in wall.post/edit in donut_paid_duration",
     )
     placeholder: typing.Optional["WallWallpostDonutPlaceholder"] = pydantic.Field(
-        None, description="If placeholder was respond, text and all attachments will be hidden",
+        None,
+        description="If placeholder was respond, text and all attachments will be hidden",
     )
     can_publish_free_copy: typing.Optional[bool] = pydantic.Field(
-        None, description="Says whether group admin can post free copy of this donut post",
+        None,
+        description="Says whether group admin can post free copy of this donut post",
     )
     edit_mode: typing.Optional[str] = pydantic.Field(
-        None, description="Says what user can edit in post about donut properties",
+        None,
+        description="Says what user can edit in post about donut properties",
     )
 
 
 class WallWallpostToId(pydantic.BaseModel):
     attachments: typing.Optional[typing.List["WallWallpostAttachment"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     comments: typing.Optional["BaseCommentsInfo"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     copy_owner_id: typing.Optional[int] = pydantic.Field(
-        None, description="ID of the source post owner",
+        None,
+        description="ID of the source post owner",
     )
     copy_post_id: typing.Optional[int] = pydantic.Field(
-        None, description="ID of the source post",
+        None,
+        description="ID of the source post",
     )
     date: typing.Optional[int] = pydantic.Field(
-        None, description="Date of publishing in Unixtime",
+        None,
+        description="Date of publishing in Unixtime",
     )
     from_id: typing.Optional[int] = pydantic.Field(
-        None, description="Post author ID",
+        None,
+        description="Post author ID",
     )
     geo: typing.Optional["WallGeo"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     id: typing.Optional[int] = pydantic.Field(
-        None, description="Post ID",
+        None,
+        description="Post ID",
     )
     is_favorite: typing.Optional[bool] = pydantic.Field(
-        None, description="Information whether the post in favorites list",
+        None,
+        description="Information whether the post in favorites list",
     )
     likes: typing.Optional["BaseLikesInfo"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     post_id: typing.Optional[int] = pydantic.Field(
-        None, description="wall post ID (if comment)",
+        None,
+        description="wall post ID (if comment)",
     )
     post_source: typing.Optional["WallPostSource"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     post_type: typing.Optional["WallPostType"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     reposts: typing.Optional["BaseRepostsInfo"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     signer_id: typing.Optional[int] = pydantic.Field(
-        None, description="Post signer ID",
+        None,
+        description="Post signer ID",
     )
     text: typing.Optional[str] = pydantic.Field(
-        None, description="Post text",
+        None,
+        description="Post text",
     )
     to_id: typing.Optional[int] = pydantic.Field(
-        None, description="Wall owner's ID",
+        None,
+        description="Wall owner's ID",
     )
 
 
 class WidgetsCommentRepliesItem(pydantic.BaseModel):
     cid: typing.Optional[int] = pydantic.Field(
-        None, description="Comment ID",
+        None,
+        description="Comment ID",
     )
     date: typing.Optional[int] = pydantic.Field(
-        None, description="Date when the comment has been added in Unixtime",
+        None,
+        description="Date when the comment has been added in Unixtime",
     )
     likes: typing.Optional["WidgetsWidgetLikes"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     text: typing.Optional[str] = pydantic.Field(
-        None, description="Comment text",
+        None,
+        description="Comment text",
     )
     uid: typing.Optional[int] = pydantic.Field(
-        None, description="User ID",
+        None,
+        description="User ID",
     )
     user: typing.Optional["UsersUserFull"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class WidgetsWidgetComment(pydantic.BaseModel):
     attachments: typing.Optional[typing.List["WallCommentAttachment"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     can_delete: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user can delete the comment",
+        None,
+        description="Information whether current user can delete the comment",
     )
     comments: typing.Optional["WidgetsCommentReplies"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     date: int = pydantic.Field(
-        ..., description="Date when the comment has been added in Unixtime",
+        ...,
+        description="Date when the comment has been added in Unixtime",
     )
     from_id: int = pydantic.Field(
-        ..., description="Comment author ID",
+        ...,
+        description="Comment author ID",
     )
     id: int = pydantic.Field(
-        ..., description="Comment ID",
+        ...,
+        description="Comment ID",
     )
     likes: typing.Optional["BaseLikesInfo"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     media: typing.Optional["WidgetsCommentMedia"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     post_source: typing.Optional["WallPostSource"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     post_type: int = pydantic.Field(
-        ..., description="Post type",
+        ...,
+        description="Post type",
     )
     reposts: typing.Optional["BaseRepostsInfo"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     text: str = pydantic.Field(
-        ..., description="Comment text",
+        ...,
+        description="Comment text",
     )
     to_id: int = pydantic.Field(
-        ..., description="Wall owner",
+        ...,
+        description="Wall owner",
     )
     user: typing.Optional["UsersUserFull"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class WidgetsWidgetPage(pydantic.BaseModel):
     comments: typing.Optional["BaseObjectCount"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     date: typing.Optional[int] = pydantic.Field(
-        None, description="Date when widgets on the page has been initialized firstly in Unixtime",
+        None,
+        description="Date when widgets on the page has been initialized firstly in Unixtime",
     )
     description: typing.Optional[str] = pydantic.Field(
-        None, description="Page description",
+        None,
+        description="Page description",
     )
     id: typing.Optional[int] = pydantic.Field(
-        None, description="Page ID",
+        None,
+        description="Page ID",
     )
     likes: typing.Optional["BaseObjectCount"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     page_id: typing.Optional[str] = pydantic.Field(
-        None, description="page_id parameter value",
+        None,
+        description="page_id parameter value",
     )
     photo: typing.Optional[str] = pydantic.Field(
-        None, description="URL of the preview image",
+        None,
+        description="URL of the preview image",
     )
     title: typing.Optional[str] = pydantic.Field(
-        None, description="Page title",
+        None,
+        description="Page title",
     )
     url: typing.Optional[str] = pydantic.Field(
-        None, description="Page absolute URL",
+        None,
+        description="Page absolute URL",
     )
 
 
 class UsersUser(UsersUserMin):
     sex: typing.Optional["BaseSex"] = pydantic.Field(
-        None, description="User sex",
+        None,
+        description="User sex",
     )
     screen_name: typing.Optional[str] = pydantic.Field(
-        None, description="Domain name of the user's page",
+        None,
+        description="Domain name of the user's page",
     )
     photo_50: typing.Optional[str] = pydantic.Field(
-        None, description="URL of square photo of the user with 50 pixels in width",
+        None,
+        description="URL of square photo of the user with 50 pixels in width",
     )
     photo_100: typing.Optional[str] = pydantic.Field(
-        None, description="URL of square photo of the user with 100 pixels in width",
+        None,
+        description="URL of square photo of the user with 100 pixels in width",
     )
     online_info: typing.Optional["UsersOnlineInfo"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     online: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether the user is online",
+        None,
+        description="Information whether the user is online",
     )
     online_mobile: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether the user is online in mobile site or application",
+        None,
+        description="Information whether the user is online in mobile site or application",
     )
     online_app: typing.Optional[int] = pydantic.Field(
-        None, description="Application ID",
+        None,
+        description="Application ID",
     )
     verified: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether the user is verified",
+        None,
+        description="Information whether the user is verified",
     )
     trending: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether the user has a fire pictogram.",
+        None,
+        description="Information whether the user has a fire pictogram.",
     )
     friend_status: typing.Optional["FriendsFriendStatusStatus"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     mutual: typing.Optional["FriendsRequestsMutual"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class UsersUserFull(UsersUser):
     first_name_nom: typing.Optional[str] = pydantic.Field(
-        None, description="User's first name in nominative case",
+        None,
+        description="User's first name in nominative case",
     )
     first_name_gen: typing.Optional[str] = pydantic.Field(
-        None, description="User's first name in genitive case",
+        None,
+        description="User's first name in genitive case",
     )
     first_name_dat: typing.Optional[str] = pydantic.Field(
-        None, description="User's first name in dative case",
+        None,
+        description="User's first name in dative case",
     )
     first_name_acc: typing.Optional[str] = pydantic.Field(
-        None, description="User's first name in accusative case",
+        None,
+        description="User's first name in accusative case",
     )
     first_name_ins: typing.Optional[str] = pydantic.Field(
-        None, description="User's first name in instrumental case",
+        None,
+        description="User's first name in instrumental case",
     )
     first_name_abl: typing.Optional[str] = pydantic.Field(
-        None, description="User's first name in prepositional case",
+        None,
+        description="User's first name in prepositional case",
     )
     last_name_nom: typing.Optional[str] = pydantic.Field(
-        None, description="User's last name in nominative case",
+        None,
+        description="User's last name in nominative case",
     )
     last_name_gen: typing.Optional[str] = pydantic.Field(
-        None, description="User's last name in genitive case",
+        None,
+        description="User's last name in genitive case",
     )
     last_name_dat: typing.Optional[str] = pydantic.Field(
-        None, description="User's last name in dative case",
+        None,
+        description="User's last name in dative case",
     )
     last_name_acc: typing.Optional[str] = pydantic.Field(
-        None, description="User's last name in accusative case",
+        None,
+        description="User's last name in accusative case",
     )
     last_name_ins: typing.Optional[str] = pydantic.Field(
-        None, description="User's last name in instrumental case",
+        None,
+        description="User's last name in instrumental case",
     )
     last_name_abl: typing.Optional[str] = pydantic.Field(
-        None, description="User's last name in prepositional case",
+        None,
+        description="User's last name in prepositional case",
     )
     nickname: typing.Optional[str] = pydantic.Field(
-        None, description="User nickname",
+        None,
+        description="User nickname",
     )
     maiden_name: typing.Optional[str] = pydantic.Field(
-        None, description="User maiden name",
+        None,
+        description="User maiden name",
     )
     domain: typing.Optional[str] = pydantic.Field(
-        None, description="Domain name of the user's page",
+        None,
+        description="Domain name of the user's page",
     )
     bdate: typing.Optional[str] = pydantic.Field(
-        None, description="User's date of birth",
+        None,
+        description="User's date of birth",
     )
     city: typing.Optional["BaseCity"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     country: typing.Optional["BaseCountry"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     timezone: typing.Optional[int] = pydantic.Field(
-        None, description="User's timezone",
+        None,
+        description="User's timezone",
     )
     owner_state: typing.Optional["OwnerState"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     photo_200: typing.Optional[str] = pydantic.Field(
-        None, description="URL of square photo of the user with 200 pixels in width",
+        None,
+        description="URL of square photo of the user with 200 pixels in width",
     )
     photo_max: typing.Optional[str] = pydantic.Field(
-        None, description="URL of square photo of the user with maximum width",
+        None,
+        description="URL of square photo of the user with maximum width",
     )
     photo_200_orig: typing.Optional[str] = pydantic.Field(
-        None, description="URL of user's photo with 200 pixels in width",
+        None,
+        description="URL of user's photo with 200 pixels in width",
     )
     photo_400_orig: typing.Optional[str] = pydantic.Field(
-        None, description="URL of user's photo with 400 pixels in width",
+        None,
+        description="URL of user's photo with 400 pixels in width",
     )
     photo_max_orig: typing.Optional[str] = pydantic.Field(
-        None, description="URL of user's photo of maximum size",
+        None,
+        description="URL of user's photo of maximum size",
     )
     photo_id: typing.Optional[str] = pydantic.Field(
-        None, description="ID of the user's main photo",
+        None,
+        description="ID of the user's main photo",
     )
     has_photo: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether the user has main photo",
+        None,
+        description="Information whether the user has main photo",
     )
     has_mobile: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether the user specified his phone number",
+        None,
+        description="Information whether the user specified his phone number",
     )
     is_friend: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether the user is a friend of current user",
+        None,
+        description="Information whether the user is a friend of current user",
     )
     wall_comments: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user can comment wall posts",
+        None,
+        description="Information whether current user can comment wall posts",
     )
     can_post: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user can post on the user's wall",
+        None,
+        description="Information whether current user can post on the user's wall",
     )
     can_see_all_posts: typing.Optional["BaseBoolInt"] = pydantic.Field(
         None,
         description="Information whether current user can see other users' audio on the wall",
     )
     can_see_audio: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user can see the user's audio",
+        None,
+        description="Information whether current user can see the user's audio",
     )
     type: typing.Optional["UsersUserType"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     email: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     skype: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     facebook: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     facebook_name: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     twitter: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     livejournal: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     instagram: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     test: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     video_live: typing.Optional["VideoLiveInfo"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     is_video_live_notifications_blocked: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     is_service: typing.Optional[bool] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     service_description: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     photo_rec: typing.Optional["PhotosPhotoFalseable"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     photo_medium: typing.Optional["PhotosPhotoFalseable"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     photo_medium_rec: typing.Optional["PhotosPhotoFalseable"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     photo: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     photo_big: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     photo_400: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     photo_max_size: typing.Optional["PhotosPhoto"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     language: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     stories_archive_count: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     wall_default: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     can_call: typing.Optional[bool] = pydantic.Field(
-        None, description="Information whether current user can call",
+        None,
+        description="Information whether current user can call",
     )
     can_see_wishes: typing.Optional[bool] = pydantic.Field(
-        None, description="Information whether current user can see the user's wishes",
+        None,
+        description="Information whether current user can see the user's wishes",
     )
     can_see_gifts: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user can see the user's gifts",
+        None,
+        description="Information whether current user can see the user's gifts",
     )
     interests: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     books: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     tv: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     quotes: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     about: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     games: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     movies: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     activities: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     music: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     can_write_private_message: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user can write private message",
+        None,
+        description="Information whether current user can write private message",
     )
     can_send_friend_request: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user can send a friend request",
+        None,
+        description="Information whether current user can send a friend request",
     )
     can_be_invited_group: typing.Optional[bool] = pydantic.Field(
-        None, description="Information whether current user can be invited to the community",
+        None,
+        description="Information whether current user can be invited to the community",
     )
     mobile_phone: typing.Optional[str] = pydantic.Field(
-        None, description="User's mobile phone number",
+        None,
+        description="User's mobile phone number",
     )
     home_phone: typing.Optional[str] = pydantic.Field(
-        None, description="User's additional phone number",
+        None,
+        description="User's additional phone number",
     )
     site: typing.Optional[str] = pydantic.Field(
-        None, description="User's website",
+        None,
+        description="User's website",
     )
     status_audio: typing.Optional["AudioAudio"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     status: typing.Optional[str] = pydantic.Field(
-        None, description="User's status",
+        None,
+        description="User's status",
     )
     activity: typing.Optional[str] = pydantic.Field(
-        None, description="User's status",
+        None,
+        description="User's status",
     )
     last_seen: typing.Optional["UsersLastSeen"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     exports: typing.Optional["UsersExports"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     crop_photo: typing.Optional["BaseCropPhoto"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     followers_count: typing.Optional[int] = pydantic.Field(
-        None, description="Number of user's followers",
+        None,
+        description="Number of user's followers",
     )
     video_live_level: typing.Optional[int] = pydantic.Field(
-        None, description="User level in live streams achievements",
+        None,
+        description="User level in live streams achievements",
     )
     video_live_count: typing.Optional[int] = pydantic.Field(
-        None, description="Number of user's live streams",
+        None,
+        description="Number of user's live streams",
     )
     clips_count: typing.Optional[int] = pydantic.Field(
-        None, description="Number of user's clips",
+        None,
+        description="Number of user's clips",
     )
     blacklisted: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user is in the requested user's blacklist.",
+        None,
+        description="Information whether current user is in the requested user's blacklist.",
     )
     blacklisted_by_me: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether the requested user is in current user's blacklist",
+        None,
+        description="Information whether the requested user is in current user's blacklist",
     )
     is_favorite: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether the requested user is in faves of current user",
+        None,
+        description="Information whether the requested user is in faves of current user",
     )
     is_hidden_from_feed: typing.Optional["BaseBoolInt"] = pydantic.Field(
         None,
         description="Information whether the requested user is hidden from current user's newsfeed",
     )
     common_count: typing.Optional[int] = pydantic.Field(
-        None, description="Number of common friends with current user",
+        None,
+        description="Number of common friends with current user",
     )
     occupation: typing.Optional["UsersOccupation"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     career: typing.Optional[typing.List["UsersCareer"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     military: typing.Optional[typing.List["UsersMilitary"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     university: typing.Optional[int] = pydantic.Field(
-        None, description="University ID",
+        None,
+        description="University ID",
     )
     university_name: typing.Optional[str] = pydantic.Field(
-        None, description="University name",
+        None,
+        description="University name",
     )
     university_group_id: typing.Optional[int] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     faculty: typing.Optional[int] = pydantic.Field(
-        None, description="Faculty ID",
+        None,
+        description="Faculty ID",
     )
     faculty_name: typing.Optional[str] = pydantic.Field(
-        None, description="Faculty name",
+        None,
+        description="Faculty name",
     )
     graduation: typing.Optional[int] = pydantic.Field(
-        None, description="Graduation year",
+        None,
+        description="Graduation year",
     )
     education_form: typing.Optional[str] = pydantic.Field(
-        None, description="Education form",
+        None,
+        description="Education form",
     )
     education_status: typing.Optional[str] = pydantic.Field(
-        None, description="User's education status",
+        None,
+        description="User's education status",
     )
     home_town: typing.Optional[str] = pydantic.Field(
-        None, description="User hometown",
+        None,
+        description="User hometown",
     )
     relation: typing.Optional["UsersUserRelation"] = pydantic.Field(
-        None, description="User relationship status",
+        None,
+        description="User relationship status",
     )
     relation_partner: typing.Optional["UsersUserMin"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     personal: typing.Optional["UsersPersonal"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     universities: typing.Optional[typing.List["UsersUniversity"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     schools: typing.Optional[typing.List["UsersSchool"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     relatives: typing.Optional[typing.List["UsersRelative"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     is_subscribed_podcasts: typing.Optional[bool] = pydantic.Field(
-        None, description="Information whether current user is subscribed to podcasts",
+        None,
+        description="Information whether current user is subscribed to podcasts",
     )
     can_subscribe_podcasts: typing.Optional[bool] = pydantic.Field(
-        None, description="Owner in whitelist or not",
+        None,
+        description="Owner in whitelist or not",
     )
     can_subscribe_posts: typing.Optional[bool] = pydantic.Field(
-        None, description="Can subscribe to wall",
+        None,
+        description="Can subscribe to wall",
     )
     counters: typing.Optional["UsersUserCounters"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     access_key: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     can_upload_doc: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     hash: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     has_email: typing.Optional[bool] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class UsersUserXtrType(UsersUser):
     type: typing.Optional["UsersUserType"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class AccountUserSettings(UsersUserSettingsXtr):
     photo_200: typing.Optional[str] = pydantic.Field(
-        None, description="URL of square photo of the user with 200 pixels in width",
+        None,
+        description="URL of square photo of the user with 200 pixels in width",
     )
     is_service_account: typing.Optional[bool] = pydantic.Field(
-        None, description="flag about service account",
+        None,
+        description="flag about service account",
     )
 
 
 class AdsTargSettings(AdsCriteria):
     id: typing.Optional[int] = pydantic.Field(
-        None, description="Ad ID",
+        None,
+        description="Ad ID",
     )
     campaign_id: typing.Optional[int] = pydantic.Field(
-        None, description="Campaign ID",
+        None,
+        description="Campaign ID",
     )
 
 
 class AppsApp(AppsAppMin):
     author_url: typing.Optional[str] = pydantic.Field(
-        None, description="Application author's URL",
+        None,
+        description="Application author's URL",
     )
     banner_1120: typing.Optional[str] = pydantic.Field(
-        None, description="URL of the app banner with 1120 px in width",
+        None,
+        description="URL of the app banner with 1120 px in width",
     )
     banner_560: typing.Optional[str] = pydantic.Field(
-        None, description="URL of the app banner with 560 px in width",
+        None,
+        description="URL of the app banner with 560 px in width",
     )
     icon_16: typing.Optional[str] = pydantic.Field(
-        None, description="URL of the app icon with 16 px in width",
+        None,
+        description="URL of the app icon with 16 px in width",
     )
     is_new: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Is new flag",
+        None,
+        description="Is new flag",
     )
     push_enabled: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Is push enabled",
+        None,
+        description="Is push enabled",
     )
     screen_orientation: typing.Optional[int] = pydantic.Field(
-        None, description="Screen orientation",
+        None,
+        description="Screen orientation",
     )
     friends: typing.Optional[typing.List[int]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     catalog_position: typing.Optional[int] = pydantic.Field(
-        None, description="Catalog position",
+        None,
+        description="Catalog position",
     )
     description: typing.Optional[str] = pydantic.Field(
-        None, description="Application description",
+        None,
+        description="Application description",
     )
     genre: typing.Optional[str] = pydantic.Field(
-        None, description="Genre name",
+        None,
+        description="Genre name",
     )
     genre_id: typing.Optional[int] = pydantic.Field(
-        None, description="Genre ID",
+        None,
+        description="Genre ID",
     )
     international: typing.Optional[bool] = pydantic.Field(
-        None, description="Information whether the application is multilanguage",
+        None,
+        description="Information whether the application is multilanguage",
     )
     is_in_catalog: typing.Optional[int] = pydantic.Field(
-        None, description="Information whether application is in mobile catalog",
+        None,
+        description="Information whether application is in mobile catalog",
     )
     leaderboard_type: typing.Optional["AppsAppLeaderboardType"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     members_count: typing.Optional[int] = pydantic.Field(
-        None, description="Members number",
+        None,
+        description="Members number",
     )
     platform_id: typing.Optional[str] = pydantic.Field(
-        None, description="Application ID in store",
+        None,
+        description="Application ID in store",
     )
     published_date: typing.Optional[int] = pydantic.Field(
-        None, description="Date when the application has been published in Unixtime",
+        None,
+        description="Date when the application has been published in Unixtime",
     )
     screen_name: typing.Optional[str] = pydantic.Field(
-        None, description="Screen name",
+        None,
+        description="Screen name",
     )
     section: typing.Optional[str] = pydantic.Field(
-        None, description="Application section name",
+        None,
+        description="Application section name",
     )
 
 
 class DatabaseCity(BaseObject):
     area: typing.Optional[str] = pydantic.Field(
-        None, description="Area title",
+        None,
+        description="Area title",
     )
     region: typing.Optional[str] = pydantic.Field(
-        None, description="Region title",
+        None,
+        description="Region title",
     )
     important: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether the city is included in important cities list",
+        None,
+        description="Information whether the city is included in important cities list",
     )
 
 
 class FriendsFriendExtendedStatus(FriendsFriendStatus):
     is_request_unread: typing.Optional[bool] = pydantic.Field(
-        None, description="Is friend request from other user unread",
+        None,
+        description="Is friend request from other user unread",
     )
 
 
 class FriendsUserXtrLists(UsersUserFull):
     lists: typing.Optional[typing.List[int]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class FriendsUserXtrPhone(UsersUserFull):
     phone: typing.Optional[str] = pydantic.Field(
-        None, description="User phone",
+        None,
+        description="User phone",
     )
 
 
 class GroupsGroupFull(GroupsGroup):
     market: typing.Optional["GroupsMarketInfo"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     member_status: typing.Optional["GroupsGroupFullMemberStatus"] = pydantic.Field(
-        None, description="Current user's member status",
+        None,
+        description="Current user's member status",
     )
     is_adult: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether community is adult",
+        None,
+        description="Information whether community is adult",
     )
     is_hidden_from_feed: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether community is hidden from current user's newsfeed",
+        None,
+        description="Information whether community is hidden from current user's newsfeed",
     )
     is_favorite: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether community is in faves",
+        None,
+        description="Information whether community is in faves",
     )
     is_subscribed: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user is subscribed",
+        None,
+        description="Information whether current user is subscribed",
     )
     city: typing.Optional["BaseObject"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     country: typing.Optional["BaseCountry"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     verified: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether community is verified",
+        None,
+        description="Information whether community is verified",
     )
     description: typing.Optional[str] = pydantic.Field(
-        None, description="Community description",
+        None,
+        description="Community description",
     )
     wiki_page: typing.Optional[str] = pydantic.Field(
-        None, description="Community's main wiki page title",
+        None,
+        description="Community's main wiki page title",
     )
     members_count: typing.Optional[int] = pydantic.Field(
-        None, description="Community members number",
+        None,
+        description="Community members number",
     )
     video_live_level: typing.Optional[int] = pydantic.Field(
-        None, description="Community level live streams achievements",
+        None,
+        description="Community level live streams achievements",
     )
     video_live_count: typing.Optional[int] = pydantic.Field(
-        None, description="Number of community's live streams",
+        None,
+        description="Number of community's live streams",
     )
     clips_count: typing.Optional[int] = pydantic.Field(
-        None, description="Number of community's clips",
+        None,
+        description="Number of community's clips",
     )
     counters: typing.Optional["GroupsCountersGroup"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     cover: typing.Optional["GroupsCover"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     can_post: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user can post on community's wall",
+        None,
+        description="Information whether current user can post on community's wall",
     )
     can_see_all_posts: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user can see all posts on community's wall",
+        None,
+        description="Information whether current user can see all posts on community's wall",
     )
     activity: typing.Optional[str] = pydantic.Field(
-        None, description="Type of group, start date of event or category of public page",
+        None,
+        description="Type of group, start date of event or category of public page",
     )
     fixed_post: typing.Optional[int] = pydantic.Field(
-        None, description="Fixed post ID",
+        None,
+        description="Fixed post ID",
     )
     can_create_topic: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user can create topic",
+        None,
+        description="Information whether current user can create topic",
     )
     can_upload_doc: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user can upload doc",
+        None,
+        description="Information whether current user can upload doc",
     )
     can_upload_story: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user can upload story",
+        None,
+        description="Information whether current user can upload story",
     )
     can_upload_video: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user can upload video",
+        None,
+        description="Information whether current user can upload video",
     )
     has_photo: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether community has photo",
+        None,
+        description="Information whether community has photo",
     )
     crop_photo: typing.Optional["BaseCropPhoto"] = pydantic.Field(
         None,
         description="Данные о точках, по которым вырезаны профильная и миниатюрная фотографии сообщества",
     )
     status: typing.Optional[str] = pydantic.Field(
-        None, description="Community status",
+        None,
+        description="Community status",
     )
     main_album_id: typing.Optional[int] = pydantic.Field(
-        None, description="Community's main photo album ID",
+        None,
+        description="Community's main photo album ID",
     )
     links: typing.Optional[typing.List["GroupsLinksItem"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     contacts: typing.Optional[typing.List["GroupsContactsItem"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     wall: typing.Optional[int] = pydantic.Field(
-        None, description="Information about wall status in community",
+        None,
+        description="Information about wall status in community",
     )
     site: typing.Optional[str] = pydantic.Field(
-        None, description="Community's website",
+        None,
+        description="Community's website",
     )
     main_section: typing.Optional["GroupsGroupFullMainSection"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     trending: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether the community has a fire pictogram.",
+        None,
+        description="Information whether the community has a fire pictogram.",
     )
     can_message: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user can send a message to community",
+        None,
+        description="Information whether current user can send a message to community",
     )
     is_messages_blocked: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether community can send a message to current user",
+        None,
+        description="Information whether community can send a message to current user",
     )
     can_send_notify: typing.Optional["BaseBoolInt"] = pydantic.Field(
         None,
         description="Information whether community can send notifications by phone number to current user",
     )
     online_status: typing.Optional["GroupsOnlineStatus"] = pydantic.Field(
-        None, description="Status of replies in community messages",
+        None,
+        description="Status of replies in community messages",
     )
     age_limits: typing.Optional["GroupsGroupFullAgeLimits"] = pydantic.Field(
-        None, description="Information whether age limit",
+        None,
+        description="Information whether age limit",
     )
     ban_info: typing.Optional["GroupsGroupBanInfo"] = pydantic.Field(
-        None, description="User ban info",
+        None,
+        description="User ban info",
     )
     has_market_app: typing.Optional[bool] = pydantic.Field(
-        None, description="Information whether community has installed market app",
+        None,
+        description="Information whether community has installed market app",
     )
     addresses: typing.Optional["GroupsAddressesInfo"] = pydantic.Field(
-        None, description="Info about addresses in groups",
+        None,
+        description="Info about addresses in groups",
     )
     is_subscribed_podcasts: typing.Optional[bool] = pydantic.Field(
-        None, description="Information whether current user is subscribed to podcasts",
+        None,
+        description="Information whether current user is subscribed to podcasts",
     )
     can_subscribe_podcasts: typing.Optional[bool] = pydantic.Field(
-        None, description="Owner in whitelist or not",
+        None,
+        description="Owner in whitelist or not",
     )
     can_subscribe_posts: typing.Optional[bool] = pydantic.Field(
-        None, description="Can subscribe to wall",
+        None,
+        description="Can subscribe to wall",
     )
     live_covers: typing.Optional["GroupsLiveCovers"] = pydantic.Field(
-        None, description="Live covers state",
+        None,
+        description="Live covers state",
     )
 
 
 class GroupsUserXtrRole(UsersUserFull):
     role: typing.Optional["GroupsRoleOptions"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class MarketMarketItemFull(MarketMarketItem):
     albums_ids: typing.Optional[typing.List[int]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     photos: typing.Optional[typing.List["PhotosPhoto"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     can_comment: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current use can comment the item",
+        None,
+        description="Information whether current use can comment the item",
     )
     can_repost: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current use can repost the item",
+        None,
+        description="Information whether current use can repost the item",
     )
     likes: typing.Optional["BaseLikes"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     reposts: typing.Optional["BaseRepostsInfo"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     views_count: typing.Optional[int] = pydantic.Field(
-        None, description="Views number",
+        None,
+        description="Views number",
     )
     wishlist_item_id: typing.Optional[int] = pydantic.Field(
-        None, description="Object identifier in wishlist of viewer",
+        None,
+        description="Object identifier in wishlist of viewer",
     )
     cancel_info: typing.Optional["BaseLink"] = pydantic.Field(
-        None, description="Information for cancel and revert order",
+        None,
+        description="Information for cancel and revert order",
     )
     user_agreement_info: typing.Optional[str] = pydantic.Field(
-        None, description="User agreement info",
+        None,
+        description="User agreement info",
     )
 
 
 class MessagesUserXtrInvitedBy(UsersUserXtrType):
     invited_by: typing.Optional[int] = pydantic.Field(
-        None, description="ID of the inviter",
+        None,
+        description="ID of the inviter",
     )
 
 
 class NewsfeedItemAudio(NewsfeedItemBase):
     audio: typing.Optional["NewsfeedItemAudioAudio"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     post_id: typing.Optional[int] = pydantic.Field(
-        None, description="Post ID",
+        None,
+        description="Post ID",
     )
 
 
 class NewsfeedItemDigest(NewsfeedItemBase):
     feed_id: typing.Optional[str] = pydantic.Field(
-        None, description="id of feed in digest",
+        None,
+        description="id of feed in digest",
     )
     items: typing.Optional[typing.List["WallWallpost"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     main_post_ids: typing.Optional[typing.List[str]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     template: typing.Optional[str] = pydantic.Field(
-        None, description="type of digest",
+        None,
+        description="type of digest",
     )
     header: typing.Optional["NewsfeedItemDigestHeader"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     footer: typing.Optional["NewsfeedItemDigestFooter"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     track_code: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class NewsfeedItemFriend(NewsfeedItemBase):
     friends: typing.Optional["NewsfeedItemFriendFriends"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class NewsfeedItemPhoto(NewsfeedItemBase):
     photos: typing.Optional["NewsfeedItemPhotoPhotos"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     post_id: typing.Optional[int] = pydantic.Field(
-        None, description="Post ID",
+        None,
+        description="Post ID",
     )
 
 
 class NewsfeedItemPhotoTag(NewsfeedItemBase):
     photo_tags: typing.Optional["NewsfeedItemPhotoTagPhotoTags"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     post_id: typing.Optional[int] = pydantic.Field(
-        None, description="Post ID",
+        None,
+        description="Post ID",
     )
 
 
 class NewsfeedItemPromoButton(NewsfeedItemBase):
     text: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     title: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     action: typing.Optional["NewsfeedItemPromoButtonAction"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     images: typing.Optional[typing.List["NewsfeedItemPromoButtonImage"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     track_code: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class NewsfeedItemTopic(NewsfeedItemBase):
     comments: typing.Optional["BaseCommentsInfo"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     likes: typing.Optional["BaseLikesInfo"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     post_id: typing.Optional[int] = pydantic.Field(
-        None, description="Topic post ID",
+        None,
+        description="Topic post ID",
     )
     text: typing.Optional[str] = pydantic.Field(
-        None, description="Post text",
+        None,
+        description="Post text",
     )
 
 
 class NewsfeedItemVideo(NewsfeedItemBase):
     video: typing.Optional["NewsfeedItemVideoVideo"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class NewsfeedItemWallpost(NewsfeedItemBase):
     activity: typing.Optional["NewsfeedEventActivity"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     attachments: typing.Optional[typing.List["WallWallpostAttachment"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     comments: typing.Optional["BaseCommentsInfo"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     copy_history: typing.Optional[typing.List["WallWallpost"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     feedback: typing.Optional["NewsfeedItemWallpostFeedback"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     geo: typing.Optional["BaseGeo"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     is_favorite: typing.Optional[bool] = pydantic.Field(
-        None, description="Information whether the post in favorites list",
+        None,
+        description="Information whether the post in favorites list",
     )
     likes: typing.Optional["BaseLikesInfo"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     marked_as_ads: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether the post is marked as ads",
+        None,
+        description="Information whether the post is marked as ads",
     )
     post_id: typing.Optional[int] = pydantic.Field(
-        None, description="Post ID",
+        None,
+        description="Post ID",
     )
     post_source: typing.Optional["WallPostSource"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     post_type: typing.Optional["NewsfeedItemWallpostType"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     reposts: typing.Optional["BaseRepostsInfo"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     signer_id: typing.Optional[int] = pydantic.Field(
-        None, description="Post signer ID",
+        None,
+        description="Post signer ID",
     )
     text: typing.Optional[str] = pydantic.Field(
-        None, description="Post text",
+        None,
+        description="Post text",
     )
     views: typing.Optional["WallViews"] = pydantic.Field(
-        None, description="Count of views",
+        None,
+        description="Count of views",
     )
     short_text_rate: typing.Optional[int] = pydantic.Field(
-        None, description="Preview length control parameter",
+        None,
+        description="Preview length control parameter",
     )
 
 
 class NewsfeedListFull(NewsfeedList):
     no_reposts: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether reposts hiding is enabled",
+        None,
+        description="Information whether reposts hiding is enabled",
     )
     source_ids: typing.Optional[typing.List[int]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
@@ -9974,13 +12357,16 @@ class NewsfeedNewsfeedItem(
 
 class NewsfeedNewsfeedPhoto(PhotosPhoto):
     likes: typing.Optional["BaseLikes"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     comments: typing.Optional["BaseObjectCount"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     can_repost: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user can repost the photo",
+        None,
+        description="Information whether current user can repost the photo",
     )
 
 
@@ -9993,7 +12379,8 @@ class PhotosPhotoFalseable(pydantic.BaseModel):
 
 
 class UsersSubscriptionsItem(
-    UsersUserXtrType, GroupsGroupFull,
+    UsersUserXtrType,
+    GroupsGroupFull,
 ):
     pass
 
@@ -10004,128 +12391,168 @@ class UsersUserXtrCounters(UsersUserFull):
 
 class VideoVideo(pydantic.BaseModel):
     access_key: typing.Optional[str] = pydantic.Field(
-        None, description="Video access key",
+        None,
+        description="Video access key",
     )
     adding_date: typing.Optional[int] = pydantic.Field(
-        None, description="Date when the video has been added in Unixtime",
+        None,
+        description="Date when the video has been added in Unixtime",
     )
     can_comment: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user can comment the video",
+        None,
+        description="Information whether current user can comment the video",
     )
     can_edit: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user can edit the video",
+        None,
+        description="Information whether current user can edit the video",
     )
     can_like: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user can like the video",
+        None,
+        description="Information whether current user can like the video",
     )
     can_repost: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user can repost the video",
+        None,
+        description="Information whether current user can repost the video",
     )
     can_subscribe: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user can subscribe to author of the video",
+        None,
+        description="Information whether current user can subscribe to author of the video",
     )
     can_add_to_faves: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user can add the video to favourites",
+        None,
+        description="Information whether current user can add the video to favourites",
     )
     can_add: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user can add the video",
+        None,
+        description="Information whether current user can add the video",
     )
     can_attach_link: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user can attach action button to the video",
+        None,
+        description="Information whether current user can attach action button to the video",
     )
     is_private: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="1 if video is private",
+        None,
+        description="1 if video is private",
     )
     comments: typing.Optional[int] = pydantic.Field(
-        None, description="Number of comments",
+        None,
+        description="Number of comments",
     )
     date: typing.Optional[int] = pydantic.Field(
-        None, description="Date when video has been uploaded in Unixtime",
+        None,
+        description="Date when video has been uploaded in Unixtime",
     )
     description: typing.Optional[str] = pydantic.Field(
-        None, description="Video description",
+        None,
+        description="Video description",
     )
     duration: typing.Optional[int] = pydantic.Field(
-        None, description="Video duration in seconds",
+        None,
+        description="Video duration in seconds",
     )
     image: typing.Optional[typing.List["VideoVideoImage"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     first_frame: typing.Optional[typing.List["VideoVideoImage"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     width: typing.Optional[int] = pydantic.Field(
-        None, description="Video width",
+        None,
+        description="Video width",
     )
     height: typing.Optional[int] = pydantic.Field(
-        None, description="Video height",
+        None,
+        description="Video height",
     )
     id: typing.Optional[int] = pydantic.Field(
-        None, description="Video ID",
+        None,
+        description="Video ID",
     )
     owner_id: typing.Optional[int] = pydantic.Field(
-        None, description="Video owner ID",
+        None,
+        description="Video owner ID",
     )
     user_id: typing.Optional[int] = pydantic.Field(
         None,
         description="Id of the user who uploaded the video if it was uploaded to a group by member",
     )
     title: typing.Optional[str] = pydantic.Field(
-        None, description="Video title",
+        None,
+        description="Video title",
     )
     is_favorite: typing.Optional[bool] = pydantic.Field(
-        None, description="Whether video is added to bookmarks",
+        None,
+        description="Whether video is added to bookmarks",
     )
     player: typing.Optional[str] = pydantic.Field(
-        None, description="Video embed URL",
+        None,
+        description="Video embed URL",
     )
     processing: typing.Optional["BasePropertyExists"] = pydantic.Field(
-        None, description="Returns if the video is processing",
+        None,
+        description="Returns if the video is processing",
     )
     converting: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="1 if  video is being converted",
+        None,
+        description="1 if  video is being converted",
     )
     restriction: typing.Optional["MediaRestriction"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     added: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="1 if video is added to user's albums",
+        None,
+        description="1 if video is added to user's albums",
     )
     is_subscribed: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="1 if user is subscribed to author of the video",
+        None,
+        description="1 if user is subscribed to author of the video",
     )
     track_code: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     repeat: typing.Optional["BasePropertyExists"] = pydantic.Field(
-        None, description="Information whether the video is repeated",
+        None,
+        description="Information whether the video is repeated",
     )
     type: typing.Optional[str] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     views: typing.Optional[int] = pydantic.Field(
-        None, description="Number of views",
+        None,
+        description="Number of views",
     )
     local_views: typing.Optional[int] = pydantic.Field(
-        None, description="If video is external, number of views on vk",
+        None,
+        description="If video is external, number of views on vk",
     )
     content_restricted: typing.Optional[int] = pydantic.Field(
-        None, description="Restriction code",
+        None,
+        description="Restriction code",
     )
     content_restricted_message: typing.Optional[str] = pydantic.Field(
-        None, description="Restriction text",
+        None,
+        description="Restriction text",
     )
     balance: typing.Optional[int] = pydantic.Field(
-        None, description="Live donations balance",
+        None,
+        description="Live donations balance",
     )
     live_status: typing.Optional[str] = pydantic.Field(
-        None, description="Live stream status",
+        None,
+        description="Live stream status",
     )
     live: typing.Optional["BasePropertyExists"] = pydantic.Field(
-        None, description="1 if the video is a live stream",
+        None,
+        description="1 if the video is a live stream",
     )
     upcoming: typing.Optional["BasePropertyExists"] = pydantic.Field(
-        None, description="1 if the video is an upcoming stream",
+        None,
+        description="1 if the video is an upcoming stream",
     )
     live_start_time: typing.Optional[int] = pydantic.Field(
         None,
@@ -10136,64 +12563,81 @@ class VideoVideo(pydantic.BaseModel):
         description="Whether current user is subscribed to the upcoming live stream notification (if not subscribed to the author)",
     )
     spectators: typing.Optional[int] = pydantic.Field(
-        None, description="Number of spectators of the stream",
+        None,
+        description="Number of spectators of the stream",
     )
     platform: typing.Optional[str] = pydantic.Field(
-        None, description="External platform",
+        None,
+        description="External platform",
     )
     likes: typing.Optional["BaseLikes"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     reposts: typing.Optional["BaseRepostsInfo"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class VideoVideoFull(VideoVideo):
     files: typing.Optional["VideoVideoFiles"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     live_settings: typing.Optional["VideoLiveSettings"] = pydantic.Field(
-        None, description="Settings for live stream",
+        None,
+        description="Settings for live stream",
     )
 
 
 class VideoVideoImage(BaseImage):
     with_padding: typing.Optional["BasePropertyExists"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
 
 
 class WallWallpostFull(WallWallpost):
     copy_history: typing.Optional[typing.List["WallWallpost"]] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     can_edit: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user can edit the post",
+        None,
+        description="Information whether current user can edit the post",
     )
     created_by: typing.Optional[int] = pydantic.Field(
-        None, description="Post creator ID (if post still can be edited)",
+        None,
+        description="Post creator ID (if post still can be edited)",
     )
     can_delete: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user can delete the post",
+        None,
+        description="Information whether current user can delete the post",
     )
     can_pin: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether current user can pin the post",
+        None,
+        description="Information whether current user can pin the post",
     )
     donut: typing.Optional["WallWallpostDonut"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     is_pinned: typing.Optional[int] = pydantic.Field(
-        None, description="Information whether the post is pinned",
+        None,
+        description="Information whether the post is pinned",
     )
     comments: typing.Optional["BaseCommentsInfo"] = pydantic.Field(
-        None, description="",
+        None,
+        description="",
     )
     marked_as_ads: typing.Optional["BaseBoolInt"] = pydantic.Field(
-        None, description="Information whether the post is marked as ads",
+        None,
+        description="Information whether the post is marked as ads",
     )
     short_text_rate: typing.Optional[int] = pydantic.Field(
-        None, description="Preview length control parameter",
+        None,
+        description="Preview length control parameter",
     )
 
 

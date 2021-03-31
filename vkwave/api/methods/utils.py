@@ -5,7 +5,9 @@ from ._utils import get_params
 
 class Utils(Category):
     async def check_link(
-        self, url: str, return_raw_response: bool = False,
+        self,
+        url: str,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, UtilsCheckLinkResponse]:
         """
         :param url: - Link to check (e.g., 'http://google.com').
@@ -23,7 +25,9 @@ class Utils(Category):
         return result
 
     async def delete_from_last_shortened(
-        self, key: str, return_raw_response: bool = False,
+        self,
+        key: str,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param key: - Link key (characters after vk.cc/).
@@ -97,7 +101,8 @@ class Utils(Category):
         return result
 
     async def get_server_time(
-        self, return_raw_response: bool = False,
+        self,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, UtilsGetServerTimeResponse]:
         """
         :param return_raw_response: - return result at dict
@@ -136,7 +141,9 @@ class Utils(Category):
         return result
 
     async def resolve_screen_name(
-        self, screen_name: str, return_raw_response: bool = False,
+        self,
+        screen_name: str,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, UtilsResolveScreenNameResponse]:
         """
         :param screen_name: - Screen name of the user, community (e.g., 'apiclub,' 'andrew', or 'rules_of_war'), or application.

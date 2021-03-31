@@ -5,7 +5,9 @@ from ._utils import get_params
 
 class Fave(Category):
     async def add_article(
-        self, url: str, return_raw_response: bool = False,
+        self,
+        url: str,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param url:
@@ -23,7 +25,9 @@ class Fave(Category):
         return result
 
     async def add_link(
-        self, link: str, return_raw_response: bool = False,
+        self,
+        link: str,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param link: - Link URL.
@@ -157,7 +161,10 @@ class Fave(Category):
         return result
 
     async def edit_tag(
-        self, id: int, name: str, return_raw_response: bool = False,
+        self,
+        id: int,
+        name: str,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param id:
@@ -240,7 +247,8 @@ class Fave(Category):
         return result
 
     async def get_tags(
-        self, return_raw_response: bool = False,
+        self,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, FaveGetTagsResponse]:
         """
         :param return_raw_response: - return result at dict
@@ -257,7 +265,8 @@ class Fave(Category):
         return result
 
     async def mark_seen(
-        self, return_raw_response: bool = False,
+        self,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseBoolResponse]:
         """
         :param return_raw_response: - return result at dict
@@ -274,7 +283,10 @@ class Fave(Category):
         return result
 
     async def remove_article(
-        self, owner_id: int, article_id: int, return_raw_response: bool = False,
+        self,
+        owner_id: int,
+        article_id: int,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseBoolResponse]:
         """
         :param owner_id:
@@ -337,7 +349,10 @@ class Fave(Category):
         return result
 
     async def remove_post(
-        self, owner_id: int, id: int, return_raw_response: bool = False,
+        self,
+        owner_id: int,
+        id: int,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param owner_id:
@@ -356,7 +371,10 @@ class Fave(Category):
         return result
 
     async def remove_product(
-        self, owner_id: int, id: int, return_raw_response: bool = False,
+        self,
+        owner_id: int,
+        id: int,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param owner_id:
@@ -375,7 +393,9 @@ class Fave(Category):
         return result
 
     async def remove_tag(
-        self, id: int, return_raw_response: bool = False,
+        self,
+        id: int,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param id:
@@ -393,7 +413,10 @@ class Fave(Category):
         return result
 
     async def remove_video(
-        self, owner_id: int, id: int, return_raw_response: bool = False,
+        self,
+        owner_id: int,
+        id: int,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param owner_id:
@@ -412,7 +435,9 @@ class Fave(Category):
         return result
 
     async def reorder_tags(
-        self, ids: typing.List[int], return_raw_response: bool = False,
+        self,
+        ids: typing.List[int],
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param ids:

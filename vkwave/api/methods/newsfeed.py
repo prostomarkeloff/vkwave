@@ -49,7 +49,9 @@ class Newsfeed(Category):
         return result
 
     async def delete_list(
-        self, list_id: int, return_raw_response: bool = False,
+        self,
+        list_id: int,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param list_id:

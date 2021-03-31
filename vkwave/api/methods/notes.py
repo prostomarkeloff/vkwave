@@ -59,7 +59,9 @@ class Notes(Category):
         return result
 
     async def delete(
-        self, note_id: int, return_raw_response: bool = False,
+        self,
+        note_id: int,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param note_id: - Note ID.

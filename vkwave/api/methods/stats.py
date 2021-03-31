@@ -41,7 +41,10 @@ class Stats(Category):
         return result
 
     async def get_post_reach(
-        self, owner_id: str, post_ids: typing.List[int], return_raw_response: bool = False,
+        self,
+        owner_id: str,
+        post_ids: typing.List[int],
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, StatsGetPostReachResponse]:
         """
         :param owner_id: - post owner community id. Specify with "-" sign.
@@ -60,7 +63,9 @@ class Stats(Category):
         return result
 
     async def track_visitor(
-        self, id: str, return_raw_response: bool = False,
+        self,
+        id: str,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param id:

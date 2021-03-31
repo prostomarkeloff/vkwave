@@ -102,7 +102,9 @@ class RequestContext:
             await callback(self)
 
     def set_exception_handler(
-        self, exception: typing.Type[Exception], handler: ErrorHandlerCallable,
+        self,
+        exception: typing.Type[Exception],
+        handler: ErrorHandlerCallable,
     ) -> None:
         if not self._exception_handlers.get(exception):
             raise ValueError("Unallowed exception")

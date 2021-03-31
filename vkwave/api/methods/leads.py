@@ -115,7 +115,9 @@ class Leads(Category):
         return result
 
     async def metric_hit(
-        self, data: str, return_raw_response: bool = False,
+        self,
+        data: str,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, LeadsMetricHitResponse]:
         """
         :param data: - Metric data obtained in the lead interface.

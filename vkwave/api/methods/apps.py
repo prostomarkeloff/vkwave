@@ -5,7 +5,8 @@ from ._utils import get_params
 
 class Apps(Category):
     async def delete_app_requests(
-        self, return_raw_response: bool = False,
+        self,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param return_raw_response: - return result at dict
@@ -150,7 +151,9 @@ class Apps(Category):
         return result
 
     async def get_scopes(
-        self, return_raw_response: bool = False, type: typing.Optional[str] = None,
+        self,
+        return_raw_response: bool = False,
+        type: typing.Optional[str] = None,
     ) -> typing.Union[dict, AppsGetScopesResponse]:
         """
         :param type:
@@ -168,7 +171,9 @@ class Apps(Category):
         return result
 
     async def get_score(
-        self, user_id: int, return_raw_response: bool = False,
+        self,
+        user_id: int,
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, AppsGetScoreResponse]:
         """
         :param user_id:

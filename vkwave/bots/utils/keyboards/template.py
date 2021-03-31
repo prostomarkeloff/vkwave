@@ -47,7 +47,10 @@ class Template:
         self._local_keyboard = Keyboard(one_time=True)
 
     def add_text_button(
-        self, text: str, color: ButtonColor = ButtonColor.PRIMARY, payload: dict = None,
+        self,
+        text: str,
+        color: ButtonColor = ButtonColor.PRIMARY,
+        payload: dict = None,
     ):
         self._local_keyboard.add_text_button(text=text, color=color, payload=payload)
 
@@ -72,7 +75,9 @@ class Template:
         payload: typing.Optional[typing.Dict[str, str]] = None,
     ):
         self._local_keyboard.add_callback_button(
-            text=text, color=color, payload=payload,
+            text=text,
+            color=color,
+            payload=payload,
         )
 
     @classmethod
