@@ -42,7 +42,7 @@ from vkwave.bots.addons.easy.easy_handlers import (
 )
 from vkwave.bots.core import BaseFilter
 from vkwave.bots.core.dispatching.dp.middleware.middleware import BaseMiddleware, MiddlewareResult
-from vkwave.bots.core.dispatching.filters.builtin import PayloadContainsFilter
+from vkwave.bots.core.dispatching.filters.builtin import PayloadContainsFilter, AttachmentTypeFilter
 from vkwave.bots.core.dispatching.filters.extension_filters import VBMLFilter
 from vkwave.bots.core.dispatching.router.router import BaseRouter
 from vkwave.bots.fsm.filters import StateFilter
@@ -135,6 +135,7 @@ class BaseSimpleLongPollBot:
         self.text_contains_filter = TextContainsFilter
         self.payload_contains_filter = PayloadContainsFilter
         self.text_startswith_filter = TextStartswithFilter
+        self.attachment_type_filter = AttachmentTypeFilter
         if self.bot_type is BotType.USER:
             self.from_me_filter = FromMeFilter
 

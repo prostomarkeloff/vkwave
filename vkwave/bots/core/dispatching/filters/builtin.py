@@ -9,7 +9,7 @@ from vkwave.bots.core.dispatching.events.base import BaseEvent, UserEvent
 from vkwave.bots.core.types.bot_type import BotType
 from vkwave.bots.core.types.json_types import JSONDecoder
 from vkwave.types.bot_events import BotEventType
-from vkwave.types.objects import MessagesMessageActionStatus
+from vkwave.types.objects import MessagesMessageActionStatus, MessagesMessageAttachmentType
 from vkwave.types.user_events import EventId, MessageFlag
 from .base import BaseFilter, FilterResult
 
@@ -191,10 +191,7 @@ class CommandsFilter(BaseFilter):
     """
 
     def __init__(
-        self,
-        commands: AnyText,
-        prefixes: Tuple[str, ...] = ("/", "!"),
-        ignore_case: bool = True,
+        self, commands: AnyText, prefixes: Tuple[str, ...] = ("/", "!"), ignore_case: bool = True,
     ):
         self.commands = any_text_to_list_or_tuple(commands)
         self.prefixes = prefixes
@@ -413,13 +410,36 @@ class PayloadContainsFilter(BaseFilter):
         self.key = key
         self.json_loader = json_loader
 
-    async def check(
-        self,
-        event: BaseEvent,
-    ) -> FilterResult:
+    async def check(self, event: BaseEvent,) -> FilterResult:
         current_payload = get_payload(event)
         if current_payload is None:
             return FilterResult(False)
         if not isinstance(current_payload, dict):
             current_payload = self.json_loader(current_payload)
         return FilterResult(self.key in current_payload)
+
+
+class AttachmentTypeFilter(BaseFilter):
+    """
+    Checking attachments consist of chosen type
+
+    >>> _ = AttachmentTypeFilter(attachment_type="audio")
+    >>> _ = AttachmentTypeFilter(attachment_type=MessagesMessageAttachmentType.PHOTO)
+    """
+
+    def __init__(self, attachment_type: Union[MessagesMessageAttachmentType, str]):
+        self.attachment_type = attachment_type if isinstance(attachment_type, str) else attachment_type.value
+
+    async def check(self, event: BaseEvent,) -> FilterResult:
+        is_message_event(event)
+        if not event.object.object.message.attachments:
+            return FilterResult(False)
+
+        return FilterResult(
+            all(
+                map(
+                    lambda attachment: attachment.type.value is self.attachment_type,
+                    event.object.object.message.attachments,
+                )
+            )
+        )
