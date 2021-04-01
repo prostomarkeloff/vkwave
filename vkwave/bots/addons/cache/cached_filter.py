@@ -6,17 +6,16 @@ import random
 from typing import Any
 
 
-def cached_filter(f: Any, st: AbstractExpiredStorage, ttl: int) -> BaseFilter:
-    name = f"__filter{f.__class__.__name__}{random.randint(54, 100002210)}__"
-    f = caster.cast(f)
+def cached_filter(filter_: Any, storage: AbstractExpiredStorage, ttl: int) -> BaseFilter:
+    name = f"__filter{filter_.__class__.__name__}{random.randint(54, 100002210)}__"
+    filter_ = caster.cast(filter_)
 
-    async def new_f(ev: BaseEvent):
-        if await st.contains(Key(name)):
-            r = await st.get(Key(name))
-            return r
+    async def new_filter(event: BaseEvent):
+        if await storage.contains(Key(name)):
+            return await storage.get(Key(name))
         else:
-            r = await f.check(ev)
-            await st.put(Key(name), r, ttl)
-            return r
+            result = await filter_.check(event)
+            await storage.put(Key(name), result, ttl)
+            return result
 
-    return caster.cast(new_f)
+    return caster.cast(new_filter)
