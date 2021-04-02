@@ -7,6 +7,7 @@ from vkwave.bots.core import BaseFilter
 from vkwave.bots.core.dispatching.filters.builtin import get_payload
 from vkwave.bots.core.dispatching.handler.callback import BaseCallback
 from vkwave.types.bot_events import BotEventType
+from vkwave.types.objects import MessagesMessageAttachment
 from vkwave.types.responses import BaseOkResponse, MessagesSendResponse
 from vkwave.types.user_events import EventId
 
@@ -121,10 +122,14 @@ class SimpleBotEvent(BotEvent):
 
     @property
     def payload(self) -> typing.Optional[dict]:
-        try:
-            return json.loads(get_payload(self))
-        except TypeError:
-            return None
+        current_payload = get_payload(self)
+        if current_payload is None:
+            return current_payload
+        return json.loads(current_payload)
+
+    @property
+    def attachments(self) -> typing.Optional[typing.List["MessagesMessageAttachment"]]:
+        return self.object.object.message.attachments
 
     async def answer(
         self,

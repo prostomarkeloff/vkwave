@@ -4,7 +4,7 @@ from abc import ABC
 from io import BytesIO
 from typing import BinaryIO
 
-from vkwave.bots.utils.uploaders.uploader import BaseUploader
+from vkwave.bots.utils.uploaders.uploader import BaseUploader, UploadException
 from vkwave.types.responses import DocsDocAttachmentType, DocsSaveResponseModel
 
 
@@ -19,13 +19,15 @@ class DocUploaderMixin(BaseUploader[DocsSaveResponseModel], ABC):
         self,
         upload_url: str,
         file_data: BinaryIO,
+        file_extension: str,
+        file_name: str,
         title: typing.Optional[str] = None,
         tags: typing.Optional[str] = None,
     ) -> DocsSaveResponseModel:
-        # really dirty hack
-        # but it works
+        file_name = file_name or "Document"
+        file_extension = file_extension or "jpg"
         if not hasattr(file_data, "name"):
-            setattr(file_data, "name", "Document.jpg")
+            setattr(file_data, "name", f"{file_name}.{file_extension}")
 
         upload_data = self.json_deserialize(
             await self.client.request_text(
@@ -45,35 +47,64 @@ class DocUploaderMixin(BaseUploader[DocsSaveResponseModel], ABC):
         self,
         peer_id: int,
         f: BinaryIO,
+        file_name: typing.Optional[str] = None,
+        file_extension: typing.Optional[str] = None,
         title: typing.Optional[str] = None,
         tags: typing.Optional[str] = None,
     ) -> str:
         upload_url = await self.get_server(peer_id)
-        return self.attachment_name(await self.upload(upload_url, f, title=title, tags=tags))
+        return self.attachment_name(
+            await self.upload(
+                upload_url,
+                f,
+                title=title,
+                tags=tags,
+                file_extension=file_extension,
+                file_name=file_name,
+            )
+        )
 
     async def get_attachment_from_path(
         self,
         peer_id: int,
         file_path: str,
+        file_name: typing.Optional[str] = None,
+        file_extension: typing.Optional[str] = None,
         title: typing.Optional[str] = None,
         tags: typing.Optional[str] = None,
     ) -> str:
         with open(file_path, "rb") as file_data:
-            return await self.get_attachment_from_io(peer_id, file_data, title=title, tags=tags)
+            return await self.get_attachment_from_io(
+                peer_id,
+                file_data,
+                title=title,
+                tags=tags,
+                file_extension=file_extension,
+                file_name=file_name,
+            )
 
     async def get_attachments_from_paths(
         self,
         peer_id: int,
         file_paths: typing.List[str],
+        file_names: typing.Sequence[str] = (),
+        file_extensions: typing.Sequence[str] = (),
         titles: typing.Sequence[str] = (),
         tags_list: typing.Sequence[str] = (),
     ) -> str:
         ready_attachments: typing.List[str] = []
-        for file, title, tags in itertools.zip_longest(
-            file_paths, titles, tags_list, fillvalue="Document"
+        for file, title, tags, file_extension, file_name in itertools.zip_longest(
+            file_paths, titles, tags_list, file_extensions, file_names, fillvalue="Document"
         ):
             ready_attachments.append(
-                await self.get_attachment_from_path(peer_id, file, title=title, tags=tags)
+                await self.get_attachment_from_path(
+                    peer_id,
+                    file,
+                    title=title,
+                    tags=tags,
+                    file_extension=file_extension,
+                    file_name=file_name,
+                )
             )
         return ",".join(ready_attachments)
 
@@ -81,25 +112,43 @@ class DocUploaderMixin(BaseUploader[DocsSaveResponseModel], ABC):
         self,
         peer_id: int,
         link: str,
+        file_extension: typing.Optional[str] = None,
+        file_name: typing.Optional[str] = None,
         title: typing.Optional[str] = None,
         tags: typing.Optional[str] = None,
     ) -> str:
         file_data = BytesIO(await self.client.request_data("GET", link))
-        return await self.get_attachment_from_io(peer_id, file_data, title=title, tags=tags)
+        return await self.get_attachment_from_io(
+            peer_id,
+            file_data,
+            title=title,
+            tags=tags,
+            file_extension=file_extension,
+            file_name=file_name,
+        )
 
     async def get_attachments_from_links(
         self,
         peer_id: int,
         links: typing.List[str],
+        file_extensions: typing.Sequence[str] = (),
+        file_names: typing.Sequence[str] = (),
         titles: typing.Sequence[str] = (),
         tags_list: typing.Sequence[str] = (),
     ) -> str:
         ready_attachments: typing.List[str] = []
-        for link, title, tags in itertools.zip_longest(
-            links, titles, tags_list, fillvalue="Document"
+        for link, title, tags, file_extension, file_name in itertools.zip_longest(
+            links, titles, tags_list, file_extensions, file_names, fillvalue="Document"
         ):
             ready_attachments.append(
-                await self.get_attachment_from_link(peer_id, link, title=title, tags=tags)
+                await self.get_attachment_from_link(
+                    peer_id,
+                    link,
+                    title=title,
+                    tags=tags,
+                    file_extension=file_extension,
+                    file_name=file_name,
+                )
             )
         return ",".join(ready_attachments)
 
@@ -122,6 +171,17 @@ class DocUploaderMixin(BaseUploader[DocsSaveResponseModel], ABC):
             else f"doc{d.owner_id}_{d.id}_{d.access_key}"
         )
 
+    @staticmethod
+    def handle_error(upload_data: dict):
+        err = upload_data.get("error")
+        if err == "bad_image":
+            err = (
+                "bad_image. You chose bad file extension or mismatch it."
+                " Add extension parameter - file_extension='your_file_extension'"
+            )
+        if err:
+            raise UploadException(err)
+
 
 class VoiceUploader(DocUploaderMixin):
     async def get_server(self, peer_id: int) -> str:
@@ -131,6 +191,8 @@ class VoiceUploader(DocUploaderMixin):
         self,
         upload_url: str,
         file_data: BinaryIO,
+        file_extension: typing.Optional[str] = None,
+        file_name: typing.Optional[str] = None,
         title: typing.Optional[str] = None,
         tags: typing.Optional[str] = None,
     ) -> DocsSaveResponseModel:

@@ -33,20 +33,36 @@ class BaseUploader(ABC, Generic[UploadResult]):
         pass
 
     @abstractmethod
-    async def upload(self, server_url: str, file_data: BinaryIO) -> UploadResult:
+    async def upload(
+        self, server_url: str, file_data: BinaryIO, file_extension: str, file_name: str,
+    ) -> UploadResult:
         pass
 
     @abstractmethod
     def attachment_name(self, u: UploadResult) -> str:
         pass
 
-    async def get_attachment_from_io(self, peer_id: int, f: BinaryIO) -> str:
+    async def get_attachment_from_io(
+        self,
+        peer_id: int,
+        f: BinaryIO,
+        file_extension: typing.Optional[str] = None,
+        file_name: str = None,
+    ) -> str:
         upload_url = await self.get_server(peer_id)
-        return self.attachment_name(await self.upload(upload_url, f))
+        return self.attachment_name(
+            await self.upload(upload_url, f, file_extension=file_extension, file_name=file_name)
+        )
 
-    async def get_attachment_from_path(self, peer_id: int, file_path: str) -> str:
+    async def get_attachment_from_path(
+        self,
+        peer_id: int,
+        file_path: str,
+        file_extension: typing.Optional[str] = None,
+        file_name: str = None,
+    ) -> str:
         with open(file_path, "rb") as file_data:
-            return await self.get_attachment_from_io(peer_id, file_data)
+            return await self.get_attachment_from_io(peer_id, file_data, file_name=file_name)
 
     async def get_attachments_from_paths(self, peer_id: int, file_paths: List[str]) -> str:
         ready_attachments: List[str] = []
@@ -54,17 +70,30 @@ class BaseUploader(ABC, Generic[UploadResult]):
             ready_attachments.append(await self.get_attachment_from_path(peer_id, file))
         return ",".join(ready_attachments)
 
-    async def get_attachment_from_link(self, peer_id: int, link: str) -> str:
+    async def get_attachment_from_link(
+        self,
+        peer_id: int,
+        link: str,
+        file_extension: typing.Optional[str] = None,
+        file_name: str = None,
+    ) -> str:
         file_data = BytesIO(await self.client.request_data("GET", link))
         return await self.get_attachment_from_io(peer_id, file_data)
 
-    async def get_attachments_from_links(self, peer_id: int, links: List[str]) -> str:
+    async def get_attachments_from_links(
+        self,
+        peer_id: int,
+        links: List[str],
+        file_extensions: List[str] = None,
+        file_names: List[str] = None,
+    ) -> str:
         ready_attachments: List[str] = []
         for link in links:
             ready_attachments.append(await self.get_attachment_from_link(peer_id, link))
         return ",".join(ready_attachments)
 
-    def handle_error(self, upload_data: dict):
+    @staticmethod
+    def handle_error(upload_data: dict):
         err = upload_data.get("error")
         if err:
             raise UploadException(err)

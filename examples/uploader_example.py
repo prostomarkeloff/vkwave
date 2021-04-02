@@ -36,7 +36,8 @@ async def doc_upload():
     doc = await DocUploader(api.get_context()).get_attachment_from_link(
         peer_id=123,
         link="https://user-images.githubusercontent.com/28061158/74590410-239e3300-501f-11ea-9774-27ee507a1e1e.jpg",
-        title="my document title"
+        title="my document title",
+        file_extension="jpg"
     )
     await api.get_context().messages.send(user_id=1234, attachment=doc, random_id=0)
 
