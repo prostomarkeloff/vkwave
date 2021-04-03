@@ -158,7 +158,8 @@ class APIOptionsRequestContext:
         del copied
         del new
 
-    async def api_request(self, method_name: MethodName, params: dict) -> dict:
+    async def api_request(self, method_name: Union[str, MethodName], params: dict) -> dict:
+        method_name = cast(MethodName, method_name)
         client, token = await self.api_options.get_client_and_token()
 
         params = self.api_options.update_pre_request_params(params, token)
