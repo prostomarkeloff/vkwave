@@ -15,7 +15,7 @@ def only_hi_in_text_from_pm(event: SimpleBotEvent):
 
 Так же можно использовать символы `&`, `|` или `~` между фильтрами в хендлере для "И", "ИЛИ", "НЕ" соответственно:
 
-``` python hl_lines="3-6"
+``` python hl_lines="3-4"
 # Ловит все сообщения из приватных чатов или те в которых не встречается hi
 @bot.message_handler(
         ~filters.TextFilter("hi")
