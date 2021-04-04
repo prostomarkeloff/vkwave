@@ -1,5 +1,5 @@
 # Easy bot imports
-from vkwave.bots import SimpleLongPollBot
+from vkwave.bots import SimpleLongPollUserBot
 from vkwave.api import APIOptionsRequestContext
 
 
@@ -33,7 +33,7 @@ async def captcha_handler(error: dict, api_ctx: APIOptionsRequestContext):
 
 # Easy way
 
-bot = SimpleLongPollBot(tokens="MyToken", group_id=123456789)
+bot = SimpleLongPollUserBot(tokens="MyToken")
 bot.api_session.api.default_api_options.error_dispatcher.add_handler(14, captcha_handler)
 
 
