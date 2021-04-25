@@ -59,45 +59,45 @@ markdown_extensions:
       base_path: docs
 
 nav:
-  - Главная: index.md
+  - Главная: ru/index.md
   - Начало работы:
-    - getting_started/index.md
-    - getting_started/echo.md
+    - ru/getting_started/index.md
+    - ru/getting_started/echo.md
     - Фильтры:
-      - getting_started/filters/index.md
-      - getting_started/filters/builtin.md
-      - getting_started/filters/combining.md
-      - getting_started/filters/custom.md
-    - getting_started/multitoken.md
-    - getting_started/clones.md
-    - getting_started/keyboards.md
-    - getting_started/templates.md
-    - getting_started/uploaders.md
-    - getting_started/routers.md
-    - getting_started/middleware.md
+      - ru/getting_started/filters/index.md
+      - ru/getting_started/filters/builtin.md
+      - ru/getting_started/filters/combining.md
+      - ru/getting_started/filters/custom.md
+    - ru/getting_started/multitoken.md
+    - ru/getting_started/clones.md
+    - ru/getting_started/keyboards.md
+    - ru/getting_started/templates.md
+    - ru/getting_started/uploaders.md
+    - ru/getting_started/routers.md
+    - ru/getting_started/middleware.md
   - Client:
-    - client/index.md
-    - client/context.md
-    - client/using.md
-    - client/custom.md
+    - ru/client/index.md
+    - ru/client/context.md
+    - ru/client/using.md
+    - ru/client/custom.md
   - API:
-    - api/index.md
+    - ru/api/index.md
   - Bots:
-    - bots/index.md
-    - bots/easy.md
-    - bots/usage.md
-    - bots/filters.md
-    - bots/routers.md
-    - bots/fsm.md
-    - bots/storage.md
+    - ru/bots/index.md
+    - ru/bots/easy.md
+    - ru/bots/usage.md
+    - ru/bots/filters.md
+    - ru/bots/routers.md
+    - ru/bots/fsm.md
+    - ru/bots/storage.md
     - Utils:
-        - bots/utils/index.md
-        - bots/utils/keyboard.md
-        - bots/utils/templates.md
-        - bots/utils/uploaders.md
+        - ru/bots/utils/index.md
+        - ru/bots/utils/keyboard.md
+        - ru/bots/utils/templates.md
+        - ru/bots/utils/uploaders.md
   - LongPoll:
-    - longpoll/index.md
+    - ru/longpoll/index.md
   - Types:
-    - types/index.md
+    - ru/types/index.md
   - HTTP:
-    - http/index.md
+    - ru/http/index.md
