@@ -31,6 +31,9 @@ extra:
 
 plugins:
   - search
+  - redirects:
+      redirect_maps:
+          'index.md': 'index.ru.md'
   - i18n:
       languages:
         ru: "Русский"
