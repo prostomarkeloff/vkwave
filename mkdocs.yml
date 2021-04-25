@@ -28,20 +28,15 @@ extra:
     - icon: fontawesome/brands/telegram
       link: https://t.me/vkwave
       name: 'Чат в Telegram'
-  alternate:
-    - name: English (in progress)
-      link: https://fscdev.github.io/vkwave/en
-      lang: en
-
-    - name: Русский
-      link: https://fscdev.github.io/vkwave/ru
-      lang: ru
 
 plugins:
   - search
-  - redirects:
-      redirect_maps:
-        'index.md': 'ru/index.md'
+  - i18n:
+      languages:
+        ru: "Русский"
+        en: "English"
+      default_language: 'ru'
+
 
 markdown_extensions:
   - admonition
@@ -62,45 +57,87 @@ markdown_extensions:
       base_path: docs
 
 nav:
-  - Главная: ru/index.md
+  - Главная: index.ru.md
+  - Home: index.en.md
   - Начало работы:
-    - ru/getting_started/index.md
-    - ru/getting_started/echo.md
+    - getting_started/index.ru.md
+    - getting_started/echo.ru.md
     - Фильтры:
-      - ru/getting_started/filters/index.md
-      - ru/getting_started/filters/builtin.md
-      - ru/getting_started/filters/combining.md
-      - ru/getting_started/filters/custom.md
-    - ru/getting_started/multitoken.md
-    - ru/getting_started/clones.md
-    - ru/getting_started/keyboards.md
-    - ru/getting_started/templates.md
-    - ru/getting_started/uploaders.md
-    - ru/getting_started/routers.md
-    - ru/getting_started/middleware.md
+      - getting_started/filters/index.ru.md
+      - getting_started/filters/builtin.ru.md
+      - getting_started/filters/combining.ru.md
+      - getting_started/filters/custom.ru.md
+    - getting_started/multitoken.ru.md
+    - getting_started/clones.ru.md
+    - getting_started/keyboards.ru.md
+    - getting_started/templates.ru.md
+    - getting_started/uploaders.ru.md
+    - getting_started/routers.ru.md
+    - getting_started/middleware.ru.md
+  - Getting started:
+    - getting_started/index.en.md
+    - getting_started/echo.en.md
+    - Filters:
+      - getting_started/filters/index.en.md
+      - getting_started/filters/builtin.en.md
+      - getting_started/filters/combining.en.md
+      - getting_started/filters/custom.en.md
+    - getting_started/multitoken.en.md
+    - getting_started/clones.en.md
+    - getting_started/keyboards.en.md
+    - getting_started/templates.en.md
+    - getting_started/uploaders.en.md
+    - getting_started/routers.en.md
+    - getting_started/middleware.en.md
+  - Клиент:
+    - client/index.ru.md
+    - client/context.ru.md
+    - client/using.ru.md
+    - client/custom.ru.md
   - Client:
-    - ru/client/index.md
-    - ru/client/context.md
-    - ru/client/using.md
-    - ru/client/custom.md
+    - client/index.en.md
+    - client/context.en.md
+    - client/using.en.md
+    - client/custom.en.md
   - API:
-    - ru/api/index.md
+    - api/index.ru.md
+  - API:
+    - api/index.en.md
+  - Боты:
+    - bots/index.ru.md
+    - bots/easy.ru.md
+    - bots/usage.ru.md
+    - bots/filters.ru.md
+    - bots/routers.ru.md
+    - bots/fsm.ru.md
+    - bots/storage.ru.md
+    - Утилиты:
+        - bots/utils/index.ru.md
+        - bots/utils/keyboard.ru.md
+        - bots/utils/templates.ru.md
+        - bots/utils/uploaders.ru.md
   - Bots:
-    - ru/bots/index.md
-    - ru/bots/easy.md
-    - ru/bots/usage.md
-    - ru/bots/filters.md
-    - ru/bots/routers.md
-    - ru/bots/fsm.md
-    - ru/bots/storage.md
+    - bots/index.en.md
+    - bots/easy.en.md
+    - bots/usage.en.md
+    - bots/filters.en.md
+    - bots/routers.en.md
+    - bots/fsm.en.md
+    - bots/storage.en.md
     - Utils:
-        - ru/bots/utils/index.md
-        - ru/bots/utils/keyboard.md
-        - ru/bots/utils/templates.md
-        - ru/bots/utils/uploaders.md
+        - bots/utils/index.en.md
+        - bots/utils/keyboard.en.md
+        - bots/utils/templates.en.md
+        - bots/utils/uploaders.en.md
   - LongPoll:
-    - ru/longpoll/index.md
+    - longpoll/index.ru.md
+  - LongPoll:
+    - longpoll/index.en.md
+  - Типы:
+    - types/index.ru.md
   - Types:
-    - ru/types/index.md
+    - types/index.en.md
   - HTTP:
-    - ru/http/index.md
+    - http/index.ru.md
+  - HTTP:
+    - http/index.en.md
