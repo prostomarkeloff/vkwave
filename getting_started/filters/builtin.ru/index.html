@@ -1,0 +1,1506 @@
+
+<!doctype html>
+<html lang="ru" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Документация фреймворка VKWave">
+      
+      
+      
+        <meta name="author" content="FSC Dev">
+      
+      
+      <link rel="icon" href="../../../assets/images/logo.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.3">
+    
+    
+      
+        <title>Встроенные фильтры - VKWave</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.e35208c4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ef6f36e2.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#546d78">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=:300,400,400i,700%7CFira+Code&display=fallback">
+        <style>:root{--md-text-font-family:"";--md-code-font-family:"Fira Code"}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Перейти к содержанию
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="VKWave" class="md-header__button md-logo" aria-label="VKWave" data-md-component="logo">
+      
+  <img src="../../../assets/images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            VKWave
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Встроенные фильтры
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Поиск" placeholder="Поиск" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/fscdev/vkwave/" title="Перейти к репозиторию" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    fscdev/vkwave
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="VKWave" class="md-nav__button md-logo" aria-label="VKWave" data-md-component="logo">
+      
+  <img src="../../../assets/images/logo.png" alt="logo">
+
+    </a>
+    VKWave
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/fscdev/vkwave/" title="Перейти к репозиторию" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    fscdev/vkwave
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../index.ru/" class="md-nav__link">
+        Главная
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      <label class="md-nav__link" for="__nav_2">
+        Начало работы
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Начало работы" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Начало работы
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.ru/" class="md-nav__link">
+        Введение
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../echo.ru/" class="md-nav__link">
+        Эхо-бот
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" checked>
+      
+      <label class="md-nav__link" for="__nav_2_3">
+        Фильтры
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Фильтры" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Фильтры
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.ru/" class="md-nav__link">
+        Введение
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Встроенные фильтры
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Встроенные фильтры
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#eventtypefilter" class="md-nav__link">
+    EventTypeFilter
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#textfilter" class="md-nav__link">
+    TextFilter
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#payloadfilter" class="md-nav__link">
+    PayloadFilter
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chatactionfilter" class="md-nav__link">
+    ChatActionFilter
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commandsfilter" class="md-nav__link">
+    CommandsFilter
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regexfilter" class="md-nav__link">
+    RegexFilter
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#messagefromconversationtypefilter" class="md-nav__link">
+    MessageFromConversationTypeFilter
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#frommefilter" class="md-nav__link">
+    FromMeFilter
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#messageargsfilter" class="md-nav__link">
+    MessageArgsFilter
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fwdmessagesfilter" class="md-nav__link">
+    FwdMessagesFilter
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#replymessagefilter" class="md-nav__link">
+    ReplyMessageFilter
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#textstartswithfilter" class="md-nav__link">
+    TextStartswithFilter
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#payloadcontainsfilter" class="md-nav__link">
+    PayloadContainsFilter
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../combining.ru/" class="md-nav__link">
+        Объединение фильтров
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../custom.ru/" class="md-nav__link">
+        Кастомные фильтры
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../multitoken.ru/" class="md-nav__link">
+        Мультитокен
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../clones.ru/" class="md-nav__link">
+        Боты-клоны
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../keyboards.ru/" class="md-nav__link">
+        Клавиатуры
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../templates.ru/" class="md-nav__link">
+        Шаблоны
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../uploaders.ru/" class="md-nav__link">
+        Загрузчики вложений
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../routers.ru/" class="md-nav__link">
+        Роутеры
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../middleware.ru/" class="md-nav__link">
+        Миддлварь
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Getting started
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Getting started" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Getting started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Filters
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        Клиент
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Клиент" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Клиент
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../client/index.ru/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../client/context.ru/" class="md-nav__link">
+        Контекст
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../client/using.ru/" class="md-nav__link">
+        Using
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../client/custom.ru/" class="md-nav__link">
+        Кастомные клиенты
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Client
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        API
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="API" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          API
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/index.ru/" class="md-nav__link">
+        Обзор
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        API
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      <label class="md-nav__link" for="__nav_8">
+        Боты
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Боты" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Боты
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bots/index.ru/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bots/easy.ru/" class="md-nav__link">
+        Easy bots
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bots/usage.ru/" class="md-nav__link">
+        Usage
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bots/filters.ru/" class="md-nav__link">
+        Filters
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bots/routers.ru/" class="md-nav__link">
+        Роутеры
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bots/fsm.ru/" class="md-nav__link">
+        FSM
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bots/storage.ru/" class="md-nav__link">
+        Storage
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_8" type="checkbox" id="__nav_8_8" >
+      
+      <label class="md-nav__link" for="__nav_8_8">
+        Утилиты
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Утилиты" data-md-level="2">
+        <label class="md-nav__title" for="__nav_8_8">
+          <span class="md-nav__icon md-icon"></span>
+          Утилиты
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bots/utils/index.ru/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bots/utils/keyboard.ru/" class="md-nav__link">
+        Keyboard.ru
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bots/utils/templates.ru/" class="md-nav__link">
+        Templates
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bots/utils/uploaders.ru/" class="md-nav__link">
+        Загрузчики
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      <label class="md-nav__link" for="__nav_9">
+        Bots
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Bots" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Bots
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Utils
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+      
+      <label class="md-nav__link" for="__nav_10">
+        LongPoll
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="LongPoll" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          LongPoll
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../longpoll/index.ru/" class="md-nav__link">
+        TODO
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        LongPoll
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12" type="checkbox" id="__nav_12" >
+      
+      <label class="md-nav__link" for="__nav_12">
+        Типы
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Типы" data-md-level="1">
+        <label class="md-nav__title" for="__nav_12">
+          <span class="md-nav__icon md-icon"></span>
+          Типы
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../types/index.ru/" class="md-nav__link">
+        Обзор
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Types
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14" type="checkbox" id="__nav_14" >
+      
+      <label class="md-nav__link" for="__nav_14">
+        HTTP
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="HTTP" data-md-level="1">
+        <label class="md-nav__title" for="__nav_14">
+          <span class="md-nav__icon md-icon"></span>
+          HTTP
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../http/index.ru/" class="md-nav__link">
+        TODO
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        HTTP
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#eventtypefilter" class="md-nav__link">
+    EventTypeFilter
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#textfilter" class="md-nav__link">
+    TextFilter
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#payloadfilter" class="md-nav__link">
+    PayloadFilter
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chatactionfilter" class="md-nav__link">
+    ChatActionFilter
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commandsfilter" class="md-nav__link">
+    CommandsFilter
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regexfilter" class="md-nav__link">
+    RegexFilter
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#messagefromconversationtypefilter" class="md-nav__link">
+    MessageFromConversationTypeFilter
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#frommefilter" class="md-nav__link">
+    FromMeFilter
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#messageargsfilter" class="md-nav__link">
+    MessageArgsFilter
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fwdmessagesfilter" class="md-nav__link">
+    FwdMessagesFilter
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#replymessagefilter" class="md-nav__link">
+    ReplyMessageFilter
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#textstartswithfilter" class="md-nav__link">
+    TextStartswithFilter
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#payloadcontainsfilter" class="md-nav__link">
+    PayloadContainsFilter
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/fscdev/vkwave/edit/master/docs/getting_started/filters/builtin.ru.md" title="Редактировать страницу" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <ul>
+<li class="i18n-link i18n-link-found i18n-link-en"><a href="../../../getting_started/filters/builtin.en/">English</a></li>
+</ul>
+<h1 id="_1">Встроенные фильтры<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>По умолчанию в VkWave есть несколько фильтров, которые импортируются как <code class="highlight"><span class="kn">from</span> <span class="nn">vkwave.bots.core.dispatching</span> <span class="kn">import</span> <span class="n">filters</span></code>:</p>
+<h2 id="eventtypefilter">EventTypeFilter<a class="headerlink" href="#eventtypefilter" title="Permanent link">&para;</a></h2>
+<p>Отсеивает по типу события (новое сообщение, пользователь разрешил писать ему от имени бота и пр. Полный список событий в <a href="https://vk.com/dev/groups_events">документации ВК</a>)</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Ловит все разрешения на отправку сообщений...</span>
+<span class="hll"><span class="nd">@bot</span><span class="o">.</span><span class="n">handler</span><span class="p">(</span><span class="n">filters</span><span class="o">.</span><span class="n">EventTypeFilter</span><span class="p">(</span><span class="s2">&quot;message_allow&quot;</span><span class="p">))</span>
+</span><span class="k">def</span> <span class="nf">only_allows</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">SimpleBotEvent</span><span class="p">):</span>
+    <span class="n">event</span><span class="o">.</span><span class="n">ans</span><span class="p">(</span><span class="s2">&quot;Привет!&quot;</span><span class="p">)</span>  <span class="c1"># ...и отвечает на них</span>
+</code></pre></div>
+<h2 id="textfilter">TextFilter<a class="headerlink" href="#textfilter" title="Permanent link">&para;</a></h2>
+<p>Отсеивает по тексту пришедшего сообщения</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Ловит все сообщения, в которых есть hi</span>
+<span class="hll"><span class="nd">@bot</span><span class="o">.</span><span class="n">message_handler</span><span class="p">(</span><span class="n">filters</span><span class="o">.</span><span class="n">TextFilter</span><span class="p">(</span><span class="s2">&quot;hi&quot;</span><span class="p">))</span>
+</span><span class="k">def</span> <span class="nf">only_hi_in_text</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">SimpleBotEvent</span><span class="p">):</span>
+    <span class="n">event</span><span class="o">.</span><span class="n">ans</span><span class="p">(</span><span class="s2">&quot;Привет!&quot;</span><span class="p">)</span>  <span class="c1"># ...и отвечает на них</span>
+</code></pre></div>
+<p>Можно передать список из нескольких строк, тогда обработчик сработает, когда хотя бы строка из списка встретилась в сообщении</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Ловит все сообщения, в которых есть hi или hello или привет или ку</span>
+<span class="hll"><span class="nd">@bot</span><span class="o">.</span><span class="n">message_handler</span><span class="p">(</span><span class="n">filters</span><span class="o">.</span><span class="n">TextFilter</span><span class="p">([</span><span class="s2">&quot;hi&quot;</span><span class="p">,</span> <span class="s2">&quot;hello&quot;</span><span class="p">,</span> <span class="s2">&quot;привет&quot;</span><span class="p">,</span> <span class="s2">&quot;ку&quot;</span><span class="p">]))</span>
+</span><span class="k">def</span> <span class="nf">only_greetings_in_text</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">SimpleBotEvent</span><span class="p">):</span>
+    <span class="n">event</span><span class="o">.</span><span class="n">ans</span><span class="p">(</span><span class="s2">&quot;Привет!&quot;</span><span class="p">)</span>  <span class="c1"># ...и отвечает на них</span>
+</code></pre></div>
+<h2 id="payloadfilter">PayloadFilter<a class="headerlink" href="#payloadfilter" title="Permanent link">&para;</a></h2>
+<p>Отсеивает по payload`у (полезная нагрузка) пришедшего сообщения
+(Скрытая строка, которая приходит, когда пользователь нажимает на кнопку встроенной клавиатуры. <a href="https://vk.com/dev/bots_docs_3?f=4.%2B%D0%9A%D0%BB%D0%B0%D0%B2%D0%B8%D0%B0%D1%82%D1%83%D1%80%D1%8B%2B%D0%B4%D0%BB%D1%8F%2B%D0%B1%D0%BE%D1%82%D0%BE%D0%B2">Подробнее о клавиатурах</a>)</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Ловит все сообщения, пейлоад которых равен {&quot;button&quot;: &quot;start&quot;}</span>
+<span class="hll"><span class="nd">@bot</span><span class="o">.</span><span class="n">message_handler</span><span class="p">(</span><span class="n">filters</span><span class="o">.</span><span class="n">PayloadFilter</span><span class="p">({</span><span class="s2">&quot;button&quot;</span><span class="p">:</span> <span class="s2">&quot;start&quot;</span><span class="p">}))</span>
+</span><span class="k">def</span> <span class="nf">only_start_button_pressed</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">SimpleBotEvent</span><span class="p">):</span>
+    <span class="n">event</span><span class="o">.</span><span class="n">ans</span><span class="p">(</span><span class="s2">&quot;Привет!&quot;</span><span class="p">)</span>  <span class="c1"># ...и отвечает на них</span>
+</code></pre></div>
+<h2 id="chatactionfilter">ChatActionFilter<a class="headerlink" href="#chatactionfilter" title="Permanent link">&para;</a></h2>
+<p>Отсеивает по событию в беседе (например, новый участник беседы. <a href="https://vk.com/dev/objects/message">Полный список событий беседы в описании поля action</a>)
+<div class="highlight"><pre><span></span><code><span class="c1"># Ловит все приглашения новых участников беседы</span>
+<span class="hll"><span class="nd">@bot</span><span class="o">.</span><span class="n">message_handler</span><span class="p">(</span><span class="n">filters</span><span class="o">.</span><span class="n">ChatActionFilter</span><span class="p">(</span><span class="s2">&quot;chat_invite_user&quot;</span><span class="p">))</span>
+</span><span class="k">def</span> <span class="nf">only_new_user_invited</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">SimpleBotEvent</span><span class="p">):</span>
+    <span class="n">event</span><span class="o">.</span><span class="n">ans</span><span class="p">(</span><span class="s2">&quot;Добро пожаловать!&quot;</span><span class="p">)</span>  <span class="c1"># ...и отвечает на них</span>
+</code></pre></div></p>
+<h2 id="commandsfilter">CommandsFilter<a class="headerlink" href="#commandsfilter" title="Permanent link">&para;</a></h2>
+<p>Отсеивает по наличию команд в тексте сообщения. По умолчанию командой считаются сообщения, начинающиеся с <code>!</code> или <code>/</code>, но это можно настроить, передав фильтру аргумент <code>prefixes</code> со списком или кортежем
+<div class="highlight"><pre><span></span><code><span class="c1"># Ловит все сообщения с командой `/hello` или `!hello`</span>
+<span class="hll"><span class="nd">@bot</span><span class="o">.</span><span class="n">message_handler</span><span class="p">(</span><span class="n">filters</span><span class="o">.</span><span class="n">CommandsFilter</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">))</span>
+</span><span class="k">def</span> <span class="nf">only_new_user_invited</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">SimpleBotEvent</span><span class="p">):</span>
+    <span class="n">event</span><span class="o">.</span><span class="n">ans</span><span class="p">(</span><span class="s2">&quot;Привет!&quot;</span><span class="p">)</span>  <span class="c1"># ...и отвечает на них</span>
+</code></pre></div></p>
+<h2 id="regexfilter">RegexFilter<a class="headerlink" href="#regexfilter" title="Permanent link">&para;</a></h2>
+<p>Отсеивает по тексту сообщения (с использованием регулярных выражений)
+<div class="highlight"><pre><span></span><code><span class="c1"># Ловит все сообщения со словом, первая буква которого `п`, последняя `т`</span>
+<span class="hll"><span class="nd">@bot</span><span class="o">.</span><span class="n">message_handler</span><span class="p">(</span><span class="n">filters</span><span class="o">.</span><span class="n">RegexFilter</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^п\w*т$&quot;</span><span class="p">))</span>
+</span><span class="k">def</span> <span class="nf">only_matched_by_regex</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">SimpleBotEvent</span><span class="p">):</span>
+    <span class="n">event</span><span class="o">.</span><span class="n">ans</span><span class="p">(</span><span class="s2">&quot;Сообщение соответствует регулярке!&quot;</span><span class="p">)</span>  <span class="c1"># ...и отвечает на них</span>
+</code></pre></div></p>
+<h2 id="messagefromconversationtypefilter">MessageFromConversationTypeFilter<a class="headerlink" href="#messagefromconversationtypefilter" title="Permanent link">&para;</a></h2>
+<p>Отсеивает по типу диалога, откуда пришло сообщение</p>
+<p>Доступные типы диалогов:</p>
+<table>
+<thead>
+<tr>
+<th>Личные</th>
+<th>Беседы</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>from_pm</code>, <code>from_dm</code>, <code>from_direct</code></td>
+<td><code>from_chat</code>, <code>chat</code></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="c1"># Ловит все сообщения из личных переписок бота</span>
+<span class="hll"><span class="nd">@bot</span><span class="o">.</span><span class="n">message_handler</span><span class="p">(</span><span class="n">filters</span><span class="o">.</span><span class="n">MessageFromConversationTypeFilter</span><span class="p">(</span><span class="s2">&quot;from_pm&quot;</span><span class="p">))</span>
+</span><span class="k">def</span> <span class="nf">only_private_messages</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">SimpleBotEvent</span><span class="p">):</span>
+    <span class="n">event</span><span class="o">.</span><span class="n">ans</span><span class="p">(</span><span class="s2">&quot;Новое сообщение из личного чата!&quot;</span><span class="p">)</span>  <span class="c1"># ...и отвечает на них</span>
+</code></pre></div>
+<h2 id="frommefilter">FromMeFilter<a class="headerlink" href="#frommefilter" title="Permanent link">&para;</a></h2>
+<p>Отсеивает по отправителю сообщения (бот или его собеседник). Работает только для юзерботов.
+<div class="highlight"><pre><span></span><code><span class="c1"># Ловит все сообщения от бота</span>
+<span class="hll"><span class="nd">@bot</span><span class="o">.</span><span class="n">message_handler</span><span class="p">(</span><span class="n">filters</span><span class="o">.</span><span class="n">FromMeFilter</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</span><span class="k">def</span> <span class="nf">only_by_me</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">SimpleBotEvent</span><span class="p">):</span>
+    <span class="n">event</span><span class="o">.</span><span class="n">ans</span><span class="p">(</span><span class="s2">&quot;Новое сообщение от меня&quot;</span><span class="p">)</span>  <span class="c1"># ...и отвечает на них</span>
+</code></pre></div></p>
+<h2 id="messageargsfilter">MessageArgsFilter<a class="headerlink" href="#messageargsfilter" title="Permanent link">&para;</a></h2>
+<p>Отсеивает по количеству аргументов в команде</p>
+<p>Имеет два параметра:</p>
+<table>
+<thead>
+<tr>
+<th>Параметр</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>args_count</code></td>
+<td>Количество аргументов</td>
+</tr>
+<tr>
+<td><code>command_length</code></td>
+<td>Количество слов в команде</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="c1"># Ловит все сообщения в которых есть два аргумента (например, &quot;/start arg1 arg2&quot;)</span>
+<span class="hll"><span class="nd">@bot</span><span class="o">.</span><span class="n">message_handler</span><span class="p">(</span><span class="n">filters</span><span class="o">.</span><span class="n">MessageArgsFilter</span><span class="p">(</span><span class="n">args_count</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+</span><span class="k">def</span> <span class="nf">only_with_two_args</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">SimpleBotEvent</span><span class="p">):</span>
+    <span class="n">event</span><span class="o">.</span><span class="n">ans</span><span class="p">(</span><span class="s2">&quot;В сообщении два аргумента: </span><span class="si">{0}</span><span class="s2">!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">event</span><span class="p">[</span><span class="s1">&#39;args&#39;</span><span class="p">]))</span>  <span class="c1"># ...и отвечает на них</span>
+</code></pre></div>
+<h2 id="fwdmessagesfilter">FwdMessagesFilter<a class="headerlink" href="#fwdmessagesfilter" title="Permanent link">&para;</a></h2>
+<p>Отсеивает по количеству пересланных сообщений</p>
+<p>Если число не указано, реагирует на любое количество
+<div class="highlight"><pre><span></span><code><span class="c1"># Ловит все сообщения от бота, в которых есть пересылаемые сообщения</span>
+<span class="hll"><span class="nd">@bot</span><span class="o">.</span><span class="n">message_handler</span><span class="p">(</span><span class="n">filters</span><span class="o">.</span><span class="n">FwdMessagesFilter</span><span class="p">()</span>
+</span><span class="k">def</span> <span class="nf">only_by_me</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">SimpleBotEvent</span><span class="p">):</span>
+    <span class="n">event</span><span class="o">.</span><span class="n">ans</span><span class="p">(</span><span class="s2">&quot;Переслали сообщение&quot;</span><span class="p">)</span>  <span class="c1"># ...и отвечает на них</span>
+</code></pre></div></p>
+<h2 id="replymessagefilter">ReplyMessageFilter<a class="headerlink" href="#replymessagefilter" title="Permanent link">&para;</a></h2>
+<p>Отсеивает по наличию ответа на сообщение</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Ловит все сообщения от бота, которые отвечают на сообщение</span>
+<span class="hll"><span class="nd">@bot</span><span class="o">.</span><span class="n">message_handler</span><span class="p">(</span><span class="n">filters</span><span class="o">.</span><span class="n">ReplyMessageFilter</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</span><span class="k">def</span> <span class="nf">only_by_me</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">SimpleBotEvent</span><span class="p">):</span>
+    <span class="n">event</span><span class="o">.</span><span class="n">ans</span><span class="p">(</span><span class="s2">&quot;Есть ответ на сообщение&quot;</span><span class="p">)</span>  <span class="c1"># ...и отвечает на них</span>
+</code></pre></div>
+<h2 id="textstartswithfilter">TextStartswithFilter<a class="headerlink" href="#textstartswithfilter" title="Permanent link">&para;</a></h2>
+<p>Отсеивает по тому, начинается ли текст сообщения с указанной строки (может принимать список, тогда фильтр сработает, если хотя бы одна проверка сработала)</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Ловит все сообщения, начинающиеся на &quot;приве&quot;</span>
+<span class="hll"><span class="nd">@bot</span><span class="o">.</span><span class="n">message_handler</span><span class="p">(</span><span class="n">filters</span><span class="o">.</span><span class="n">TextStartsWithFilter</span><span class="p">(</span><span class="s2">&quot;приве&quot;</span><span class="p">)</span>
+</span><span class="k">def</span> <span class="nf">only_by_me</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">SimpleBotEvent</span><span class="p">):</span>
+    <span class="n">event</span><span class="o">.</span><span class="n">ans</span><span class="p">(</span><span class="s2">&quot;Привет!&quot;</span><span class="p">)</span>  <span class="c1"># ...и отвечает на них</span>
+</code></pre></div>
+<h2 id="payloadcontainsfilter">PayloadContainsFilter<a class="headerlink" href="#payloadcontainsfilter" title="Permanent link">&para;</a></h2>
+<p>Отсеивает по наличию ключа в пейлоаде (значение при этом не проверяется)</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Ловит все сообщения, в пейлоаде которых есть ключ button</span>
+<span class="hll"><span class="nd">@bot</span><span class="o">.</span><span class="n">message_handler</span><span class="p">(</span><span class="n">filters</span><span class="o">.</span><span class="n">PayloadContainsFilter</span><span class="p">(</span><span class="s2">&quot;button&quot;</span><span class="p">)</span>
+</span><span class="k">def</span> <span class="nf">only_by_me</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">SimpleBotEvent</span><span class="p">):</span>
+    <span class="n">event</span><span class="o">.</span><span class="n">ans</span><span class="p">(</span><span class="s2">&quot;Нажата кнопка с пейлоадом button!&quot;</span><span class="p">)</span>  <span class="c1"># ...и отвечает на них</span>
+</code></pre></div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../index.ru/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Назад
+              </span>
+              Введение
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../combining.ru/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Вперед
+              </span>
+              Объединение фильтров
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            2020-2021 FSC Dev & VkWave Contributors
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+      <a href="https://t.me/vkwave" target="_blank" rel="noopener" title="Чат в Telegram" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm121.8 169.9-40.7 191.8c-3 13.6-11.1 16.9-22.4 10.5l-62-45.7-29.9 28.8c-3.3 3.3-6.1 6.1-12.5 6.1l4.4-63.1 114.9-103.8c5-4.4-1.1-6.9-7.7-2.5l-142 89.4-61.2-19.1c-13.3-4.2-13.6-13.3 2.8-19.7l239.1-92.2c11.1-4 20.8 2.7 17.2 19.5z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["instant", "tabs"], "translations": {"clipboard.copy": "\u041a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copied": "\u0421\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "search.config.lang": "ru", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "\u041f\u043e\u0438\u0441\u043a", "search.result.placeholder": "\u041d\u0430\u0447\u043d\u0438\u0442\u0435 \u043f\u0435\u0447\u0430\u0442\u0430\u0442\u044c \u0434\u043b\u044f \u043f\u043e\u0438\u0441\u043a\u0430", "search.result.none": "\u0421\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0435", "search.result.other": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e # \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../../assets/javascripts/workers/search.fe42c31b.min.js", "version": "0.2.10"}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.4ea5477f.min.js"></script>
+      
+    
+  </body>
+</html>
