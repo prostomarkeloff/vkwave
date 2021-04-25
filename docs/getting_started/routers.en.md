@@ -8,7 +8,7 @@ from vkwave.bots import DefaultRouter
 router = DefaultRouter()
 ```
 
-You can pass [filters](filters/index.md) when creating a router (add a default filters), thanks to which events will process faster.
+You can pass [filters](filters/index.en.md) when creating a router (add a default filters), thanks to which events will process faster.
 
 ``` python
 router = DefaultRouter(SomeFilter())

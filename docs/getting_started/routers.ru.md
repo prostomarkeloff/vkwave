@@ -8,7 +8,7 @@ from vkwave.bots import DefaultRouter
 router = DefaultRouter()
 ```
 
-Роутеры могут принимать на вход [фильтры](filters/index.md), благодаря которым события будут отсеиваться быстрее, не проходя сквозь все хендлеры
+Роутеры могут принимать на вход [фильтры](filters/index.ru.md), благодаря которым события будут отсеиваться быстрее, не проходя сквозь все хендлеры
 
 ``` python
 router = DefaultRouter(SomeFilter())

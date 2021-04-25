@@ -4,10 +4,10 @@
 
 ## Содержание
 
-[Эхо-бот](echo.md)  
-[Фильтры](filters/index.md)  
-[Мультитокен](multitoken.md)  
-[Боты-клоны](clones.md)  
-[Клавиатуры](keyboards.md)  
-[Шаблоны](templates.md)
-[Загрузчики вложений](uploaders.md)
+[Эхо-бот](echo.ru.md)  
+[Фильтры](filters/index.ru.md)  
+[Мультитокен](multitoken.ru.md)  
+[Боты-клоны](clones.ru.md)  
+[Клавиатуры](keyboards.ru.md)  
+[Шаблоны](templates.ru.md)
+[Загрузчики вложений](uploaders.ru.md)

@@ -4,10 +4,10 @@ Here's collected examples to help understand how to work with library
 
 ## Содержание
 
-[Echo-bot](echo.md)  
-[Filters](filters/index.md)  
-[Multitokens](multitoken.md)  
-[Clones bots](clones.md)  
-[Keyboards](keyboards.md)  
-[Templates](templates.md)
-[Attachments' uploaders](uploaders.md)
+[Echo-bot](echo.en.md)  
+[Filters](filters/index.en.md)  
+[Multitokens](multitoken.en.md)  
+[Clones bots](clones.en.md)  
+[Keyboards](keyboards.en.md)  
+[Templates](templates.en.md)
+[Attachments' uploaders](uploaders.en.md)
