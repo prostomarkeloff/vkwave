@@ -39,6 +39,9 @@ extra:
 
 plugins:
   - search
+  - redirects:
+      redirect_maps:
+        'index.md': 'ru/index.md'
 
 markdown_extensions:
   - admonition
