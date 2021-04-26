@@ -28,12 +28,19 @@ extra:
     - icon: fontawesome/brands/telegram
       link: https://t.me/vkwave
       name: 'Чат в Telegram'
+  alternate:
+    - name: По умолчанию (Русский)
+      link: ./
+      lang: ru
+    - name: Русский
+      link: ./ru/
+      lang: ru
+    - name: English
+      link: ./en/
+      lang: en
 
 plugins:
   - search
-  - redirects:
-      redirect_maps:
-          'index.md': 'index.ru.md'
   - i18n:
       languages:
         ru: "Русский"
@@ -58,77 +65,3 @@ markdown_extensions:
   - pymdownx.magiclink
   - markdown_include.include:
       base_path: docs
-
-nav:
-  - Главная: index.ru.md
-  - Home: index.en.md
-  - Начало работы:
-    - getting_started/index.ru.md
-    - getting_started/echo.ru.md
-    - Фильтры:
-      - getting_started/filters/index.ru.md
-      - getting_started/filters/builtin.ru.md
-      - getting_started/filters/combining.ru.md
-      - getting_started/filters/custom.ru.md
-    - getting_started/multitoken.ru.md
-    - getting_started/clones.ru.md
-    - getting_started/keyboards.ru.md
-    - getting_started/templates.ru.md
-    - getting_started/uploaders.ru.md
-    - getting_started/routers.ru.md
-    - getting_started/middleware.ru.md
-  - Getting started:
-    - getting_started/index.en.md
-    - getting_started/echo.en.md
-    - Filters:
-      - getting_started/filters/index.en.md
-      - getting_started/filters/builtin.en.md
-      - getting_started/filters/combining.en.md
-      - getting_started/filters/custom.en.md
-    - getting_started/multitoken.en.md
-    - getting_started/clones.en.md
-    - getting_started/keyboards.en.md
-    - getting_started/templates.en.md
-    - getting_started/uploaders.en.md
-    - getting_started/routers.en.md
-    - getting_started/middleware.en.md
-  - Клиент:
-    - client/index.ru.md
-    - client/context.ru.md
-    - client/using.ru.md
-    - client/custom.ru.md
-  - Client:
-    - client/index.en.md
-    - client/context.en.md
-    - client/using.en.md
-    - client/custom.en.md
-  - API:
-    - api/index.ru.md
-  - API:
-    - api/index.en.md
-  - Боты:
-    - bots/index.ru.md
-    - bots/easy.ru.md
-    - bots/usage.ru.md
-    - bots/routers.ru.md
-    - bots/fsm.ru.md
-    - bots/storage.ru.md
-  - Bots:
-    - bots/index.en.md
-    - bots/easy.en.md
-    - bots/usage.en.md
-    - bots/routers.en.md
-    - bots/fsm.en.md
-    - bots/storage.en.md
-  - LongPoll:
-    - longpoll/index.ru.md
-  - LongPoll:
-    - longpoll/index.en.md
-  - Типы:
-    - types/index.ru.md
-  - Types:
-    - types/index.en.md
-  - HTTP:
-    - http/index.ru.md
-  - HTTP:
-    - http/index.en.md
