@@ -1,17 +1,17 @@
-# Обзор
+# Overview
 
-VKWave API довольно удобная часть библиотеки. Скорее всего с процессе использования VKWave вы обязательно с ней столкнётесь
+VKWave API is very convinient part of the library.
 
-Она состоит из трёх частей:
+It contains three parts:
 
-* Работа с токенами (динамическое получение токенов, мультитокены, итд.)
-* Определение всех VK's API методов.
-* Обёртка над токенами и методами.
+* Working with tokens (Dynamic fetching tokens, multitokens.)
+* Defining VK's API methods.
+* Wrapper over methods and tokens.
 
 
-## Работа с токенами
+## Working with tokens
 
-Токены в VKWave представлены обычными Python классами с методом `get_token`. Он может бысть синхронным или асиннхронным
+Tokens in VKWave is regular Python classes with `get_token` method. It could be synchronous or asynchronous
 
 ```python
 from vkwave.api.token.token import UserSyncSingleToken, BotSyncSingleToken, Token
@@ -32,7 +32,7 @@ user_token.get_token()
 
 ```
 
-Вы можете создать свой собственный класс токена с нужной логикой. Создадим синхронный токен для бота.
+You can create your own class with your own logic. Let's create synchronous token.
 
 ```python
 import random
@@ -52,9 +52,9 @@ class BotSyncRandomToken(ABCBotSyncToken):
 
 ### GetTokenStrategy
 
-Реализуйте это, если вам нужен список `UserSyncSingleToken` и вам нужно доставать токен, чтобы сделать запрос в API. 
+Implement this, if you need a list of `UserSyncSingleToken` and you need make a request to API. 
 
-По умолчанию VKWave использует `RandomGetTokenStrategy`, она просто делает `random.choice(tokens)`. В примере ниже мы реализуем свою стратегию, чтобы показать, что токены можно получать и по сети.
+By default VKWave uses `RandomGetTokenStrategy`, it's simply call `random.choice(tokens)`. In the example below we will implement our own strategy, to show that we can fetch tokens by network.
 
 ```python
 from vkwave.api.token.strategy import ABCGetTokenStrategy
@@ -72,14 +72,12 @@ class ServerGetTokenStrategy(ABCGetTokenStrategy):
         return token
 ```
 
-В этом примере не создаются токены, которые мы передаём в API обёртку. Он достаёт случайный и возвращает его.
+In this example we don't create new tokens, just fetching random and returns it.
 
 ## API
 
-У нас есть 3 класса для работы с API: `API`, `APIOptions`, `APIOptionsRequestContext`.
 
-
-API это ядро. Оно содержит все токены и клиенты.
+`API` is the core class. It contains all tokens and API's methods.
 
 ```python
 from vkwave.api import API
@@ -88,17 +86,15 @@ from vkwave.client import AIOHTTPClient
 api = API(tokens=my_token, clients=AIOHTTPClient())
 ```
 
-В `APIOptions` содержатся `tokens`, `clients`, `strategy` и другие вещи, вы можете получить к ним доступ через `api.default_api_options`. Например вы можете добавить клиент, токен или обновить стратегию
+In `APIOptions` we have `tokens`, `clients`, `strategy` and other stuff, you can get access to them `api.default_api_options`. I. e. you can add client, token or change strategy.
 
 ```python
 api = API(...)
 
-api.default_api_options.add_token(tokens=[...]) # или добавить только один токен
+api.default_api_options.add_token(tokens=[...]) # or add only one token
 ```
 
-Но только с этим вы не можете сделать запрос в API.
-
-Вам нужно получить контекст!
+But to make a request to API you must get a context.
 
 ```python
 api_session = API(...)
@@ -106,30 +102,29 @@ api_session = API(...)
 api = api_session.get_context()
 ```
 
-Когда вы пишете это - вы получаете `APIOptionsRequestContext`. Он содержит все методы и собственный `APIOptions`.
-
 
 ```python
 result = await api.status.get()
 print(result.response.text)
 ```
 
-На каждый вызов API контекст получает токен, следуя стратегии. Это может быть проблемой с таким примером:
+On each API's request context gets new token, according to strategy. It could be a problem in this case:
+
 ```python
 friends = await api.friends.get()
 result = await api.messages.send(...)
 ```
 
-Потому что друзья получатся на один токен, а сообщения будут отправляться другим. Чтобы избежать этого нужно синхронизировать токены.
+You fetching friend with one token, and sending messages with other. To avoid this you need to synchronize tokens.
 
 ```python
 async with api.sync_token() as sapi:
     friends = await sapi.friends.get()
     ...
 ```
-Тут в пределах контекстного менеджера будет использоваться только один токен.
+In the context manager will be used only one token.
 
-Написать `api_session.get_context()` не единственный способ получить контекст. Вы также можете использовать `api_session.with_token` или `api_session.with_options`
+To get context you can use `api_session.with_token` or `api_session.with_options`
 
 ```python
 api = api_session.with_token(SomeToken(...))

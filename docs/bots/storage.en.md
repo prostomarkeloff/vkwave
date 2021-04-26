@@ -1,12 +1,11 @@
 # Storage
 
-Этот модуль поможет вам хранить данные внутри бота.
+This module will help you store data in bot.
 
-У вас есть выбор из трёх стандартных хранилищ:
- - dict-like хранилище
- - ttl хранилище
- - redis хранилище
- 
+You have three different storages:
+ - dict-like
+ - ttl
+ - redis
 
 ```python
 import asyncio
@@ -34,7 +33,7 @@ if __name__ == '__main__':
 
 ```
 
-Если вам нужны time-to-life ключи:
+If you need time-to-life storage:
 
 ```python
 from vkwave.bots.storage.storages import TTLStorage
@@ -53,7 +52,7 @@ async def main():
     print(await storage.contains(my_key))  # False
 ```
 
-Если вы используете Redis:
+If you wanna use Redis:
 
 ```python
 from vkwave.bots.storage.storages import RedisStorage

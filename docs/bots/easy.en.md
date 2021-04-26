@@ -1,6 +1,6 @@
 # Easy bots
 
-Обёртка над vkwave.bots для быстрого создания ботов.
+Wrapper over `vkwave.bots` to fast bots creating.
 
 ```python
 from vkwave.bots import SimpleLongPollBot
@@ -14,9 +14,9 @@ def handle(_) -> str:
 bot.run_forever()
 ```
 
-**vkwave.bots.easy** поддерживает:
+**vkwave.bots.easy** supports:
 
-- Простое создание сессий
+- Simple sessions creating
 
 
 ```python
@@ -28,7 +28,7 @@ api_session = create_api_session_aiohttp("TOKEN")
 ```
 
 
- - Пул токенов
+ - Multiple tokens
 
 ```python
 from vkwave.bots import SimpleLongPollBot
@@ -46,7 +46,7 @@ async def handle(event: bot.SimpleBotEvent):
 bot.run_forever()
 ```
 
-- ClonesBot (много ботов с одним роутером и одинаковыми хендлерами, боты-клоны)
+- Bots-clones (many bots with common handlers)
 
 ```python
 from vkwave.bots import SimpleLongPollBot, ClonesBot
@@ -69,11 +69,9 @@ clones.run_all_bots()
 
 ```
 
-Все клоны ответят "Hello world!" на "hello".
+If don't wanna use `SimpleLongPollBot`, but wanna simplify creating handlers - use `easy_handlers`
 
-Если вы не хотите использовать `SimpleLongPollBot`, но создание хендлеров хочется упростить - воспользуйтесь `easy_handlers`
-
-```python3
+```python
 from vkwave.bots import simple_bot_message_handler, SimpleBotEvent, DefaultRouter, TextFilter
 
 router = DefaultRouter()
@@ -85,6 +83,8 @@ async def easy(event: SimpleBotEvent):
 
 ```
 
-`simple_bot_message_handler` нужен только для событий связанных с сообщениями, помимо него еще есть:
- simple_bot_handler (для всех событий), simple_user_handler (аналогично для юзерботов), simple_user_message_handler.
-    
+It have several handlers:
+    - `simple_bot_message_handler` - Catches new messages in group's bot
+    - `simple_bot_handler` - Catches all events in group's bot
+    - `simple_user_message_handler` - Catches new messages in user's bot
+    - `simple_user_handler` - Catches all events in group's bot

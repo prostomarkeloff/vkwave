@@ -1,25 +1,25 @@
 # FSM
 
-Этот модуль имплементирует [Finite-state machine](https://en.wikipedia.org/wiki/Finite-state_machine) для ботов.
+This module implements [Finite-state machine](https://en.wikipedia.org/wiki/Finite-state_machine) for bots.
 
 
-FSM разделяет пользовательские состояния, состояния в чатах и состояния пользователя в чате, для выбора
-одного из них вы должны указать `for_what` аргумент в методах fsm.
+FSM splits user's states, states of chats and states of user in chat, to select one of them you must pass argument `for_what` in FSM's methods.
 
 
-Состояние для одного пользователя в личных сообщениях - `ForWhat.FOR_USER`
+State of one user in private chats - `ForWhat.FOR_USER`
 
-Для всех пользователей в чате - `ForWhat.FOR_CHAT`
+State of chat - `ForWhat.FOR_CHAT`
 
-Для одного пользователя в чате - `ForWhat.FOR_USER_IN_CHAT`
+State of one user in multi-user chats - `ForWhat.FOR_USER_IN_CHAT`
 
 
-Чтобы хендлеры без `StateFilter` могли быть выбраны корректно, нужно установить следующий стандартный фильтр.
+To choose handlers without `StateFilter` may be selected correctly, you should set default set.
+
 ```python
 router.registrar.add_default_filter(StateFilter(fsm, ..., ..., always_false=True))
 ```
 
-Пример опроса с именем и возрастом.
+Example poll with asking name and age.
 
 ```python
 from vkwave.bots import EventTypeFilter, BotEvent
@@ -36,7 +36,7 @@ class MyState:
     age = State("age")
 
 
-# начинаем интервью
+# starting poll
 @router.registrar.with_decorator(
     lambda event: event.object.object.message.text == "start",
 )
@@ -45,13 +45,13 @@ async def simple_handler(event: BotEvent):
     return "Input your name"
 
 
-#  выход из опроса (срабатывает на любой стейт `state=ANY_STATE`)
+#  exiting from poll (works on any state)
 @router.registrar.with_decorator(
     lambda event: event.object.object.message.text == "exit",
     StateFilter(fsm=fsm, state=ANY_STATE, for_what=ForWhat.FOR_USER)
 )
 async def simple_handler(event: BotEvent):
-    # Проверяем есть ли юзер в базе
+    # Check if we have the user in database
     if await fsm.get_data(event, for_what=ForWhat.FOR_USER) is not None:
         await fsm.finish(event=event, for_what=ForWhat.FOR_USER)
     return "You are quited!"
@@ -67,7 +67,7 @@ async def simple_handler(event: BotEvent):
         for_what=ForWhat.FOR_USER,
         extra_state_data={"name": event.object.object.message.text},
     )
-    # extra_state_data работает так же как fsm.add_data(..., state_data={"name": event.object.object.message.text})
+    # extra_state_data works as fsm.add_data(..., state_data={"name": event.object.object.message.text})
 
     return "Input your age"
 
@@ -85,13 +85,13 @@ async def simple_handler(event: BotEvent):
     )
     user_data = await fsm.get_data(event=event, for_what=ForWhat.FOR_USER)
  
-    # завершаем опрос и удаляем юзера
-    # `fsm.finish` делает это
+    # finish poll and delete the user
+    # `fsm.finish` will do it
     await fsm.finish(event=event, for_what=ForWhat.FOR_USER)
     return f"Your data - {user_data}"
 ```
 
-В конце опроса вы получите нечто похожее:
+You will get somthing like this:
 ```
 Your data - {'__vkwave_fsm_state__': '<vkwave.bots_fsm.fsm.State object at 0x0000021C19D61A90>', 'name': 'Nick', 'age': '46'}
 ```
