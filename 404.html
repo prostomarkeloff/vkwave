@@ -99,6 +99,38 @@
     </div>
     
     
+      <div class="md-header__option">
+        <div class="md-select">
+          
+          <button class="md-header__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24z"/></svg>
+          </button>
+          <div class="md-select__inner">
+            <ul class="md-select__list">
+              
+                <li class="md-select__item">
+                  <a href="/./" hreflang="ru" class="md-select__link">
+                    По умолчанию (Русский)
+                  </a>
+                </li>
+                
+                <li class="md-select__item">
+                  <a href="/./ru/" hreflang="ru" class="md-select__link">
+                    Русский
+                  </a>
+                </li>
+                
+                <li class="md-select__item">
+                  <a href="/./en/" hreflang="en" class="md-select__link">
+                    English
+                  </a>
+                </li>
+                
+            </ul>
+          </div>
+        </div>
+      </div>
+    
     
       <label class="md-header__button md-icon" for="__search">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
@@ -196,8 +228,8 @@
   
   
     <li class="md-nav__item">
-      <a href="/index.ru/" class="md-nav__link">
-        Главная
+      <a href="/." class="md-nav__link">
+        Home
       </a>
     </li>
   
@@ -210,10 +242,37 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        Api
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Api" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Api
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
     <li class="md-nav__item">
-      <a href="/index.en/" class="md-nav__link">
-        Home
+      <a href="/api" class="md-nav__link">
+        Обзор
       </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -232,13 +291,13 @@
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
       
       <label class="md-nav__link" for="__nav_3">
-        Начало работы
+        Bots
         <span class="md-nav__icon md-icon"></span>
       </label>
-      <nav class="md-nav" aria-label="Начало работы" data-md-level="1">
+      <nav class="md-nav" aria-label="Bots" data-md-level="1">
         <label class="md-nav__title" for="__nav_3">
           <span class="md-nav__icon md-icon"></span>
-          Начало работы
+          Bots
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -247,8 +306,8 @@
   
   
     <li class="md-nav__item">
-      <a href="/getting_started/index.ru/" class="md-nav__link">
-        Введение
+      <a href="/bots/easy" class="md-nav__link">
+        Easy bots
       </a>
     </li>
   
@@ -259,41 +318,8 @@
   
   
     <li class="md-nav__item">
-      <a href="/getting_started/echo.ru/" class="md-nav__link">
-        Эхо-бот
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
-      
-      <label class="md-nav__link" for="__nav_3_3">
-        Фильтры
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Фильтры" data-md-level="2">
-        <label class="md-nav__title" for="__nav_3_3">
-          <span class="md-nav__icon md-icon"></span>
-          Фильтры
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/getting_started/filters/index.ru/" class="md-nav__link">
-        Введение
+      <a href="/bots/fsm" class="md-nav__link">
+        FSM
       </a>
     </li>
   
@@ -304,8 +330,8 @@
   
   
     <li class="md-nav__item">
-      <a href="/getting_started/filters/builtin.ru/" class="md-nav__link">
-        Встроенные фильтры
+      <a href="/bots" class="md-nav__link">
+        Overview
       </a>
     </li>
   
@@ -316,97 +342,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/getting_started/filters/combining.ru/" class="md-nav__link">
-        Объединение фильтров
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/getting_started/filters/custom.ru/" class="md-nav__link">
-        Кастомные фильтры
-      </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/getting_started/multitoken.ru/" class="md-nav__link">
-        Мультитокен
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/getting_started/clones.ru/" class="md-nav__link">
-        Боты-клоны
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/getting_started/keyboards.ru/" class="md-nav__link">
-        Клавиатуры
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/getting_started/templates.ru/" class="md-nav__link">
-        Шаблоны
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/getting_started/uploaders.ru/" class="md-nav__link">
-        Загрузчики вложений
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/getting_started/routers.ru/" class="md-nav__link">
+      <a href="/bots/routers" class="md-nav__link">
         Роутеры
       </a>
     </li>
@@ -418,8 +354,20 @@
   
   
     <li class="md-nav__item">
-      <a href="/getting_started/middleware.ru/" class="md-nav__link">
-        Миддлварь
+      <a href="/bots/storage" class="md-nav__link">
+        Storage
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/bots/usage" class="md-nav__link">
+        Usage
       </a>
     </li>
   
@@ -445,13 +393,13 @@
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
       
       <label class="md-nav__link" for="__nav_4">
-        Getting started
+        Client
         <span class="md-nav__icon md-icon"></span>
       </label>
-      <nav class="md-nav" aria-label="Getting started" data-md-level="1">
+      <nav class="md-nav" aria-label="Client" data-md-level="1">
         <label class="md-nav__title" for="__nav_4">
           <span class="md-nav__icon md-icon"></span>
-          Getting started
+          Client
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -460,8 +408,8 @@
   
   
     <li class="md-nav__item">
-      <a href="/getting_started/index.en/" class="md-nav__link">
-        Introduction
+      <a href="/client/context" class="md-nav__link">
+        Контекст
       </a>
     </li>
   
@@ -472,41 +420,8 @@
   
   
     <li class="md-nav__item">
-      <a href="/getting_started/echo.en/" class="md-nav__link">
-        Echo-bot
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" >
-      
-      <label class="md-nav__link" for="__nav_4_3">
-        Filters
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Filters" data-md-level="2">
-        <label class="md-nav__title" for="__nav_4_3">
-          <span class="md-nav__icon md-icon"></span>
-          Filters
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/getting_started/filters/index.en/" class="md-nav__link">
-        Introduction
+      <a href="/client/custom" class="md-nav__link">
+        Кастомные клиенты
       </a>
     </li>
   
@@ -517,8 +432,8 @@
   
   
     <li class="md-nav__item">
-      <a href="/getting_started/filters/builtin.en/" class="md-nav__link">
-        Built-in filter
+      <a href="/client" class="md-nav__link">
+        Overview
       </a>
     </li>
   
@@ -529,110 +444,8 @@
   
   
     <li class="md-nav__item">
-      <a href="/getting_started/filters/combining.en/" class="md-nav__link">
-        Filters combining
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/getting_started/filters/custom.en/" class="md-nav__link">
-        Custom filters
-      </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/getting_started/multitoken.en/" class="md-nav__link">
-        Мультитокен
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/getting_started/clones.en/" class="md-nav__link">
-        Clones bots
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/getting_started/keyboards.en/" class="md-nav__link">
-        Keyboards
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/getting_started/templates.en/" class="md-nav__link">
-        Templates
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/getting_started/uploaders.en/" class="md-nav__link">
-        Attachments' uploaders
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/getting_started/routers.en/" class="md-nav__link">
-        Routers
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/getting_started/middleware.en/" class="md-nav__link">
-        Middleware
+      <a href="/client/using" class="md-nav__link">
+        Using
       </a>
     </li>
   
@@ -658,13 +471,13 @@
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
       
       <label class="md-nav__link" for="__nav_5">
-        Клиент
+        Getting started
         <span class="md-nav__icon md-icon"></span>
       </label>
-      <nav class="md-nav" aria-label="Клиент" data-md-level="1">
+      <nav class="md-nav" aria-label="Getting started" data-md-level="1">
         <label class="md-nav__title" for="__nav_5">
           <span class="md-nav__icon md-icon"></span>
-          Клиент
+          Getting started
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -673,8 +486,8 @@
   
   
     <li class="md-nav__item">
-      <a href="/client/index.ru/" class="md-nav__link">
-        Overview
+      <a href="/getting_started/clones" class="md-nav__link">
+        Боты-клоны
       </a>
     </li>
   
@@ -685,8 +498,8 @@
   
   
     <li class="md-nav__item">
-      <a href="/client/context.ru/" class="md-nav__link">
-        Контекст
+      <a href="/getting_started/echo" class="md-nav__link">
+        Эхо-бот
       </a>
     </li>
   
@@ -697,8 +510,8 @@
   
   
     <li class="md-nav__item">
-      <a href="/client/using.ru/" class="md-nav__link">
-        Using
+      <a href="/getting_started" class="md-nav__link">
+        Введение
       </a>
     </li>
   
@@ -709,9 +522,144 @@
   
   
     <li class="md-nav__item">
-      <a href="/client/custom.ru/" class="md-nav__link">
-        Кастомные клиенты
+      <a href="/getting_started/keyboards" class="md-nav__link">
+        Клавиатуры
       </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/getting_started/middleware" class="md-nav__link">
+        Миддлварь
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/getting_started/multitoken" class="md-nav__link">
+        Мультитокен
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/getting_started/routers" class="md-nav__link">
+        Роутеры
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/getting_started/templates" class="md-nav__link">
+        Шаблоны
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/getting_started/uploaders" class="md-nav__link">
+        Загрузчики вложений
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_10" type="checkbox" id="__nav_5_10" >
+      
+      <label class="md-nav__link" for="__nav_5_10">
+        Filters
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Filters" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_10">
+          <span class="md-nav__icon md-icon"></span>
+          Filters
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/getting_started/filters/builtin" class="md-nav__link">
+        Встроенные фильтры
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/getting_started/filters/combining" class="md-nav__link">
+        Объединение фильтров
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/getting_started/filters/custom" class="md-nav__link">
+        Кастомные фильтры
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/getting_started/filters" class="md-nav__link">
+        Введение
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -736,13 +684,13 @@
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
       
       <label class="md-nav__link" for="__nav_6">
-        Client
+        Http
         <span class="md-nav__icon md-icon"></span>
       </label>
-      <nav class="md-nav" aria-label="Client" data-md-level="1">
+      <nav class="md-nav" aria-label="Http" data-md-level="1">
         <label class="md-nav__title" for="__nav_6">
           <span class="md-nav__icon md-icon"></span>
-          Client
+          Http
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -751,44 +699,8 @@
   
   
     <li class="md-nav__item">
-      <a href="/client/index.en/" class="md-nav__link">
-        Overview
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/client/context.en/" class="md-nav__link">
-        Контекст
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/client/using.en/" class="md-nav__link">
-        Using
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/client/custom.en/" class="md-nav__link">
-        Кастомные клиенты
+      <a href="/http" class="md-nav__link">
+        TODO
       </a>
     </li>
   
@@ -814,13 +726,13 @@
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
       
       <label class="md-nav__link" for="__nav_7">
-        API
+        Longpoll
         <span class="md-nav__icon md-icon"></span>
       </label>
-      <nav class="md-nav" aria-label="API" data-md-level="1">
+      <nav class="md-nav" aria-label="Longpoll" data-md-level="1">
         <label class="md-nav__title" for="__nav_7">
           <span class="md-nav__icon md-icon"></span>
-          API
+          Longpoll
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -829,8 +741,8 @@
   
   
     <li class="md-nav__item">
-      <a href="/api/index.ru/" class="md-nav__link">
-        Обзор
+      <a href="/longpoll" class="md-nav__link">
+        TODO
       </a>
     </li>
   
@@ -856,557 +768,11 @@
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
       
       <label class="md-nav__link" for="__nav_8">
-        API
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="API" data-md-level="1">
-        <label class="md-nav__title" for="__nav_8">
-          <span class="md-nav__icon md-icon"></span>
-          API
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/api/index.en/" class="md-nav__link">
-        Обзор
-      </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
-      
-      <label class="md-nav__link" for="__nav_9">
-        Боты
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Боты" data-md-level="1">
-        <label class="md-nav__title" for="__nav_9">
-          <span class="md-nav__icon md-icon"></span>
-          Боты
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/bots/index.ru/" class="md-nav__link">
-        Overview
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/bots/easy.ru/" class="md-nav__link">
-        Easy bots
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/bots/usage.ru/" class="md-nav__link">
-        Usage
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/bots/filters.ru/" class="md-nav__link">
-        Filters
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/bots/routers.ru/" class="md-nav__link">
-        Роутеры
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/bots/fsm.ru/" class="md-nav__link">
-        FSM
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/bots/storage.ru/" class="md-nav__link">
-        Storage
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9_8" type="checkbox" id="__nav_9_8" >
-      
-      <label class="md-nav__link" for="__nav_9_8">
-        Утилиты
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Утилиты" data-md-level="2">
-        <label class="md-nav__title" for="__nav_9_8">
-          <span class="md-nav__icon md-icon"></span>
-          Утилиты
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/bots/utils/index.ru/" class="md-nav__link">
-        Overview
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/bots/utils/keyboard.ru/" class="md-nav__link">
-        Keyboard.ru
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/bots/utils/templates.ru/" class="md-nav__link">
-        Templates
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/bots/utils/uploaders.ru/" class="md-nav__link">
-        Загрузчики
-      </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
-      
-      <label class="md-nav__link" for="__nav_10">
-        Bots
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Bots" data-md-level="1">
-        <label class="md-nav__title" for="__nav_10">
-          <span class="md-nav__icon md-icon"></span>
-          Bots
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/bots/index.en/" class="md-nav__link">
-        Overview
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/bots/easy.en/" class="md-nav__link">
-        Easy bots
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/bots/usage.en/" class="md-nav__link">
-        Usage
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/bots/filters.en/" class="md-nav__link">
-        Filters
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/bots/routers.en/" class="md-nav__link">
-        Роутеры
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/bots/fsm.en/" class="md-nav__link">
-        FSM
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/bots/storage.en/" class="md-nav__link">
-        Storage
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10_8" type="checkbox" id="__nav_10_8" >
-      
-      <label class="md-nav__link" for="__nav_10_8">
-        Utils
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Utils" data-md-level="2">
-        <label class="md-nav__title" for="__nav_10_8">
-          <span class="md-nav__icon md-icon"></span>
-          Utils
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/bots/utils/index.en/" class="md-nav__link">
-        Overview
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/bots/utils/keyboard.en/" class="md-nav__link">
-        Keyboard.en
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/bots/utils/templates.en/" class="md-nav__link">
-        Templates
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/bots/utils/uploaders.en/" class="md-nav__link">
-        Загрузчики
-      </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" type="checkbox" id="__nav_11" >
-      
-      <label class="md-nav__link" for="__nav_11">
-        LongPoll
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="LongPoll" data-md-level="1">
-        <label class="md-nav__title" for="__nav_11">
-          <span class="md-nav__icon md-icon"></span>
-          LongPoll
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/longpoll/index.ru/" class="md-nav__link">
-        TODO
-      </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12" type="checkbox" id="__nav_12" >
-      
-      <label class="md-nav__link" for="__nav_12">
-        LongPoll
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="LongPoll" data-md-level="1">
-        <label class="md-nav__title" for="__nav_12">
-          <span class="md-nav__icon md-icon"></span>
-          LongPoll
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/longpoll/index.en/" class="md-nav__link">
-        TODO
-      </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13" type="checkbox" id="__nav_13" >
-      
-      <label class="md-nav__link" for="__nav_13">
-        Типы
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Типы" data-md-level="1">
-        <label class="md-nav__title" for="__nav_13">
-          <span class="md-nav__icon md-icon"></span>
-          Типы
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/types/index.ru/" class="md-nav__link">
-        Обзор
-      </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14" type="checkbox" id="__nav_14" >
-      
-      <label class="md-nav__link" for="__nav_14">
         Types
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="Types" data-md-level="1">
-        <label class="md-nav__title" for="__nav_14">
+        <label class="md-nav__title" for="__nav_8">
           <span class="md-nav__icon md-icon"></span>
           Types
         </label>
@@ -1417,92 +783,8 @@
   
   
     <li class="md-nav__item">
-      <a href="/types/index.en/" class="md-nav__link">
+      <a href="/types" class="md-nav__link">
         Обзор
-      </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_15" type="checkbox" id="__nav_15" >
-      
-      <label class="md-nav__link" for="__nav_15">
-        HTTP
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="HTTP" data-md-level="1">
-        <label class="md-nav__title" for="__nav_15">
-          <span class="md-nav__icon md-icon"></span>
-          HTTP
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/http/index.ru/" class="md-nav__link">
-        TODO
-      </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_16" type="checkbox" id="__nav_16" >
-      
-      <label class="md-nav__link" for="__nav_16">
-        HTTP
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="HTTP" data-md-level="1">
-        <label class="md-nav__title" for="__nav_16">
-          <span class="md-nav__icon md-icon"></span>
-          HTTP
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/http/index.en/" class="md-nav__link">
-        TODO
       </a>
     </li>
   
