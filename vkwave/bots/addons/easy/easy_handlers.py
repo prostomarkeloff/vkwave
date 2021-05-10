@@ -1,13 +1,19 @@
 import inspect
 import json
 import typing
+from typing import Dict, List, Callable
+
+from pydantic import PrivateAttr
 
 from vkwave.bots import BotType, BaseEvent, UserEvent, BotEvent, EventTypeFilter
 from vkwave.bots.core import BaseFilter
 from vkwave.bots.core.dispatching.filters.builtin import get_payload
 from vkwave.bots.core.dispatching.handler.callback import BaseCallback
 from vkwave.types.bot_events import BotEventType
-from vkwave.types.objects import MessagesMessageAttachment
+from vkwave.types.objects import (
+    MessagesMessageAttachment,
+    MessagesMessageAttachmentType,
+)
 from vkwave.types.responses import BaseOkResponse, MessagesSendResponse
 from vkwave.types.user_events import EventId
 
@@ -79,10 +85,7 @@ class SimpleUserEvent(UserEvent):
             audiomessage — пользователь записывает голосовое сообщение
         """
         return await self.api_ctx.messages.set_activity(
-            user_id=user_id,
-            type=type,
-            peer_id=self.object.object.peer_id,
-            group_id=group_id,
+            user_id=user_id, type=type, peer_id=self.object.object.peer_id, group_id=group_id,
         )
 
 
@@ -95,6 +98,52 @@ def _check_event_type(event_type: str):
         BotEventType.MESSAGE_ALLOW,
     ):
         raise RuntimeError("You cant use event.answer() with this event")
+
+
+class SimpleAttachment(MessagesMessageAttachment):
+    _event: "SimpleBotEvent" = PrivateAttr()
+    _allowed_types: List[MessagesMessageAttachmentType] = PrivateAttr()
+    _url_types: Dict[MessagesMessageAttachmentType, Callable] = PrivateAttr()
+
+    def __init__(self, attachment: MessagesMessageAttachment, event: "SimpleBotEvent"):
+        super().__init__(**attachment.dict())
+
+        self._event = event
+
+        self._allowed_types = [
+            MessagesMessageAttachmentType.AUDIO_MESSAGE,
+            MessagesMessageAttachmentType.DOC,
+            MessagesMessageAttachmentType.AUDIO,
+            MessagesMessageAttachmentType.PHOTO,
+            MessagesMessageAttachmentType.GRAFFITI,
+        ]
+
+        self._url_types = {
+            MessagesMessageAttachmentType.PHOTO: lambda _attachment: _attachment.photo.sizes[-1].url,
+            MessagesMessageAttachmentType.AUDIO_MESSAGE: lambda _attachment: _attachment.audio_message.link_ogg,
+            MessagesMessageAttachmentType.DOC: lambda _attachment: _attachment.doc.url,
+            MessagesMessageAttachmentType.AUDIO: lambda _attachment: _attachment.audio.url,
+            MessagesMessageAttachmentType.GRAFFITI: lambda _attachment: _attachment.graffiti.url,
+        }
+
+    async def download(self) -> typing.Union[typing.NoReturn, bytes]:
+        if self.type not in self._allowed_types:
+            raise RuntimeError("cannot download this attachment type")
+
+        url = self._url_types[self.type](self)
+        client, token = await self._event.api_ctx.api_options.get_client_and_token()
+        data = await client.http_client.request_data(method="GET", url=url)
+        return data
+
+
+class Attachments(list):
+    def __init__(self, event: "SimpleBotEvent"):
+        super().__init__(
+            [
+                SimpleAttachment(attachment, event=event)
+                for attachment in event.object.object.message.attachments
+            ]
+        )
 
 
 class SimpleBotEvent(BotEvent):
@@ -128,8 +177,10 @@ class SimpleBotEvent(BotEvent):
         return json.loads(current_payload)
 
     @property
-    def attachments(self) -> typing.Optional[typing.List["MessagesMessageAttachment"]]:
-        return self.object.object.message.attachments
+    def attachments(self) -> typing.Optional[typing.List[SimpleAttachment]]:
+        if self.object.object.message.attachments is None:
+            return None
+        return Attachments(event=self)
 
     async def answer(
         self,
@@ -208,9 +259,7 @@ class SimpleBotEvent(BotEvent):
 
 class SimpleBotCallback(BaseCallback):
     def __init__(
-        self,
-        func: typing.Callable[[BaseEvent], typing.Awaitable[typing.Any]],
-        bot_type: BotType,
+        self, func: typing.Callable[[BaseEvent], typing.Awaitable[typing.Any]], bot_type: BotType,
     ):
         self.bot_type = bot_type
         self.func = func

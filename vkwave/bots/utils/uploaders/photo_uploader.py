@@ -21,7 +21,10 @@ class PhotoUploader(BaseUploader[typing.List[PhotosPhoto]]):
         file_name = file_name or "Photo"
         file_extension = file_extension or "jpg"
         if not hasattr(file_data, "name"):
-            setattr(file_data, "name", f"{file_name}.{file_extension}")
+            try:
+                setattr(file_data, "name", f"{file_name}.{file_extension}")
+            except AttributeError:
+                raise RuntimeError("'bytes' object has no attribute 'name', put your bytes in BytesIO")
 
         upload_data = self.json_deserialize(
             await self.client.request_text(
