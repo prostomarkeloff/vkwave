@@ -127,6 +127,7 @@ class SimpleAttachment(MessagesMessageAttachment):
         }
 
     async def download(self) -> typing.Union[typing.NoReturn, bytes]:
+        # todo: path
         if self.type not in self._allowed_types:
             raise RuntimeError("cannot download this attachment type")
 

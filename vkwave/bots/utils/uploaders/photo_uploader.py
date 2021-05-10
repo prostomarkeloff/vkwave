@@ -33,6 +33,7 @@ class PhotoUploader(BaseUploader[typing.List[PhotosPhoto]]):
         )
 
         self.handle_error(upload_data)
+        print(upload_data)
 
         photo_sizes = (
             await self.api_context.photos.save_messages_photo(
