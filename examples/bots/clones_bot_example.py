@@ -14,6 +14,11 @@ async def simple(event: bot.SimpleBotEvent):
     await event.answer("HELLO")
 
 
+@bot.message_handler()
+async def _any(event: bot.SimpleBotEvent):
+    await event.answer("any")
+
+
 clones = ClonesBot(
     bot, SimpleLongPollBot("Bot1TOKEN", 192868628), SimpleLongPollBot("Bot2TOKEN", 172702125)
 )
@@ -27,7 +32,9 @@ async def clone_request():
 
 asyncio.get_event_loop().run_until_complete(clone_request())
 
-clones.run_all_bots()
+clones.run_all_bots(last_handler=_any)
+# В клонах хендлеры могут перемешаться, так что ставим хендлер который реагирует
+# на все подряд последним
 
 
 # or
