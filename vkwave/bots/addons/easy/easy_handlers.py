@@ -184,6 +184,7 @@ class SimpleBotEvent(BotEvent):
         super().__init__(event.object, event.api_ctx)
         self.user_data = event.user_data
         self._attachments: typing.Optional[Attachments] = None
+        self._payload: typing.Optional[dict] = None
 
     def __setitem__(self, key: typing.Any, item: typing.Any) -> None:
         self.user_data[key] = item
@@ -208,7 +209,9 @@ class SimpleBotEvent(BotEvent):
         current_payload = get_payload(self)
         if current_payload is None:
             return current_payload
-        return json.loads(current_payload)
+        if self._payload is None:
+            self._payload = json.loads(current_payload)
+        return self._payload
 
     @property
     def attachments(self) -> typing.Optional[typing.List[SimpleAttachment]]:
