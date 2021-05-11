@@ -1,5 +1,6 @@
 import inspect
 import json
+import warnings
 import typing
 from typing import Dict, List, Callable
 
@@ -16,6 +17,11 @@ from vkwave.types.objects import (
 )
 from vkwave.types.responses import BaseOkResponse, MessagesSendResponse
 from vkwave.types.user_events import EventId
+
+try:
+    import aiofile
+except ImportError:
+    aiofile = None
 
 
 class SimpleUserEvent(UserEvent):
@@ -85,7 +91,10 @@ class SimpleUserEvent(UserEvent):
             audiomessage — пользователь записывает голосовое сообщение
         """
         return await self.api_ctx.messages.set_activity(
-            user_id=user_id, type=type, peer_id=self.object.object.peer_id, group_id=group_id,
+            user_id=user_id,
+            type=type,
+            peer_id=self.object.object.peer_id,
+            group_id=group_id,
         )
 
 
@@ -102,6 +111,7 @@ def _check_event_type(event_type: str):
 
 class SimpleAttachment(MessagesMessageAttachment):
     _event: "SimpleBotEvent" = PrivateAttr()
+    _data: typing.Optional[bytes] = PrivateAttr()
     _allowed_types: List[MessagesMessageAttachmentType] = PrivateAttr()
     _url_types: Dict[MessagesMessageAttachmentType, Callable] = PrivateAttr()
 
@@ -109,6 +119,7 @@ class SimpleAttachment(MessagesMessageAttachment):
         super().__init__(**attachment.dict())
 
         self._event = event
+        self._data = None
 
         self._allowed_types = [
             MessagesMessageAttachmentType.AUDIO_MESSAGE,
@@ -119,22 +130,43 @@ class SimpleAttachment(MessagesMessageAttachment):
         ]
 
         self._url_types = {
-            MessagesMessageAttachmentType.PHOTO: lambda _attachment: _attachment.photo.sizes[-1].url,
+            MessagesMessageAttachmentType.PHOTO: lambda _attachment: _attachment.photo.sizes[
+                -1
+            ].url,
             MessagesMessageAttachmentType.AUDIO_MESSAGE: lambda _attachment: _attachment.audio_message.link_ogg,
             MessagesMessageAttachmentType.DOC: lambda _attachment: _attachment.doc.url,
             MessagesMessageAttachmentType.AUDIO: lambda _attachment: _attachment.audio.url,
             MessagesMessageAttachmentType.GRAFFITI: lambda _attachment: _attachment.graffiti.url,
         }
 
+    @property
+    def url(self) -> str:
+        return self._url_types[self.type](self)
+
     async def download(self) -> typing.Union[typing.NoReturn, bytes]:
-        # todo: path
+        if self._data is not None:
+            return self._data
         if self.type not in self._allowed_types:
             raise RuntimeError("cannot download this attachment type")
 
-        url = self._url_types[self.type](self)
+        url = self.url
         client, token = await self._event.api_ctx.api_options.get_client_and_token()
         data = await client.http_client.request_data(method="GET", url=url)
+
+        self._data = data
         return data
+
+    async def save(self, path: str):
+        attach_data = self._data
+        if attach_data is None:
+            attach_data = await self.download()
+        if aiofile is None:
+            warnings.warn("aiofile is not installed, saving synchronously")
+            with open(path, "wb") as f:
+                f.write(attach_data)
+            return
+        async with aiofile.async_open(path, "wb") as afp:
+            await afp.write(attach_data)
 
 
 class Attachments(list):
@@ -151,6 +183,7 @@ class SimpleBotEvent(BotEvent):
     def __init__(self, event: BotEvent):
         super().__init__(event.object, event.api_ctx)
         self.user_data = event.user_data
+        self._attachments: typing.Optional[Attachments] = None
 
     def __setitem__(self, key: typing.Any, item: typing.Any) -> None:
         self.user_data[key] = item
@@ -181,7 +214,9 @@ class SimpleBotEvent(BotEvent):
     def attachments(self) -> typing.Optional[typing.List[SimpleAttachment]]:
         if self.object.object.message.attachments is None:
             return None
-        return Attachments(event=self)
+        if self._attachments is None:
+            self._attachments = Attachments(event=self)
+        return self._attachments
 
     async def answer(
         self,
@@ -260,7 +295,9 @@ class SimpleBotEvent(BotEvent):
 
 class SimpleBotCallback(BaseCallback):
     def __init__(
-        self, func: typing.Callable[[BaseEvent], typing.Awaitable[typing.Any]], bot_type: BotType,
+        self,
+        func: typing.Callable[[BaseEvent], typing.Awaitable[typing.Any]],
+        bot_type: BotType,
     ):
         self.bot_type = bot_type
         self.func = func

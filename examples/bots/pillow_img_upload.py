@@ -16,6 +16,8 @@ photo_uploader = PhotoUploader(api_context=bot.api_context)
     bot.attachment_type_filter(attachment_type=MessagesMessageAttachmentType.PHOTO)
 )
 async def simple(event: bot.SimpleBotEvent):
+    print(event.attachments[0].url)
+    await event.attachments[0].save("photo.jpg")
     bytesi = BytesIO(await event.attachments[0].download())
     img = Image.open(bytesi)
     rotated: Image.Image = img.rotate(90)
