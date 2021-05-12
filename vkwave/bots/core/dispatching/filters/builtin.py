@@ -191,7 +191,10 @@ class CommandsFilter(BaseFilter):
     """
 
     def __init__(
-        self, commands: AnyText, prefixes: Tuple[str, ...] = ("/", "!"), ignore_case: bool = True,
+        self,
+        commands: AnyText,
+        prefixes: Tuple[str, ...] = ("/", "!"),
+        ignore_case: bool = True,
     ):
         self.commands = any_text_to_list_or_tuple(commands)
         self.prefixes = prefixes
@@ -410,7 +413,10 @@ class PayloadContainsFilter(BaseFilter):
         self.key = key
         self.json_loader = json_loader
 
-    async def check(self, event: BaseEvent,) -> FilterResult:
+    async def check(
+        self,
+        event: BaseEvent,
+    ) -> FilterResult:
         current_payload = get_payload(event)
         if current_payload is None:
             return FilterResult(False)
@@ -425,21 +431,29 @@ class AttachmentTypeFilter(BaseFilter):
 
     >>> _ = AttachmentTypeFilter(attachment_type="audio")
     >>> _ = AttachmentTypeFilter(attachment_type=MessagesMessageAttachmentType.PHOTO)
+    >>> _ = AttachmentTypeFilter(attachment_type=MessagesMessageAttachmentType.PHOTO, _any=True)
+            if one of attachments should be photo
     """
 
-    def __init__(self, attachment_type: Union[MessagesMessageAttachmentType, str]):
-        self.attachment_type = attachment_type if isinstance(attachment_type, str) else attachment_type.value
+    def __init__(
+        self, attachment_type: Union[MessagesMessageAttachmentType, str], _any: bool = False
+    ):
+        self.attachment_type = (
+            attachment_type if isinstance(attachment_type, str) else attachment_type.value
+        )
+        self._any = _any
 
-    async def check(self, event: BaseEvent,) -> FilterResult:
+    async def check(self, event: BaseEvent) -> FilterResult:
         is_message_event(event)
         if not event.object.object.message.attachments:
             return FilterResult(False)
 
-        return FilterResult(
-            all(
-                map(
-                    lambda attachment: attachment.type.value is self.attachment_type,
-                    event.object.object.message.attachments,
-                )
-            )
+        attachments_map = map(
+            lambda attachment: attachment.type.value is self.attachment_type,
+            event.object.object.message.attachments,
         )
+
+        if self._any:
+            return FilterResult(any(attachments_map))
+
+        return FilterResult(all(attachments_map))
