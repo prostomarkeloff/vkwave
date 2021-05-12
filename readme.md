@@ -22,15 +22,15 @@ VKWave вдохновлен многими библиотеками, в част
 
 # Установка
 
-Установить тестированную и стабильную версию с PyPi:
+С GitHub, со всеми свежими обновлениями:
+```
+pip install https://github.com/fscdev/vkwave/archive/master.zip
+```
+
+Или с PyPI (не рекомендуется, давно не обновлялась):
 
 ```
 pip install vkwave
-```
-
-Или с GitHub, со всеми свежими обновлениями.
-```
-pip install https://github.com/fscdev/vkwave/archive/master.zip
 ```
 
 # Производительность
