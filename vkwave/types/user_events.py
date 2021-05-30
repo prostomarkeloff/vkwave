@@ -350,6 +350,11 @@ _changed_unread_dialogs_count = {
     2: "count_with_notifications",
     3: "extra",
     4: "extra2",
+    5: "extra3",
+    6: "extra4",
+    7: "extra5",
+    8: "extra6",
+    # ну а че доки нет...
 }
 
 _events_dict = {
