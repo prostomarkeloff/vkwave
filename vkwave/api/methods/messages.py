@@ -82,12 +82,16 @@ class Messages(Category):
         spam: typing.Optional[BaseBoolInt] = None,
         group_id: typing.Optional[int] = None,
         delete_for_all: typing.Optional[BaseBoolInt] = None,
+        peer_id: typing.Optional[int] = None,
+        conversation_message_ids: typing.Optional[typing.List[int]] = None,
     ) -> typing.Union[dict, MessagesDeleteResponse]:
         """
         :param message_ids: - Message IDs.
         :param spam: - '1' — to mark message as spam.
         :param group_id: - Group ID (for group messages with user access token)
         :param delete_for_all: - '1' — delete message for for all.
+        :param peer_id: 
+        :params conversation_message_ids: 
         :param return_raw_response: - return result at dict
         :return:
         """
