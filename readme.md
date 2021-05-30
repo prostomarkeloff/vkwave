@@ -1,6 +1,6 @@
 ![vkwave](https://user-images.githubusercontent.com/28061158/75329873-7f738200-5891-11ea-9565-fd117ea4fc9e.jpg)
 
-> Пришло время избавиться от vk_api и vkbottle. VKWave здесь.
+> Уважаем все остальные библиотеки. VKWave здесь.
 
 # VkWave
 
