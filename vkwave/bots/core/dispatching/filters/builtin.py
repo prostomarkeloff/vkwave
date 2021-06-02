@@ -20,13 +20,15 @@ try:
 except ImportError:
     text_filter_cyth = None
 
-MessageEventUser: Tuple[int] = (
-    EventId.MESSAGE_EVENT.value + EventId.USER_TYPING_OR_MAKING_VOICE_MESSAGE.value
+MessageEventUser: Tuple[int] = EventId.MESSAGE_EVENT.value
+AdvancedMessageEventUser: Tuple[int] = (
+    MessageEventUser + EventId.USER_TYPING_OR_MAKING_VOICE_MESSAGE.value
 )
 MessageEventBot: str = "message_new"
 CallbackMessageEventBot: str = "message_event"
 InvalidEventError = ValueError(
     "Invalid event passed. Expected message event. You must add EventTypeFilter at first."
+    " Also maybe filter in need of flags, but event doesn't have it"
 )
 
 
@@ -38,12 +40,13 @@ def is_from_me(event: UserEvent) -> bool:
     return bool(event.object.object.flags[-1] & MessageFlag.OUTBOX.value)
 
 
-def is_message_event(event: BaseEvent):
+def is_message_event(event: BaseEvent, flags_needed: bool = False):
     if event.bot_type is BotType.BOT:
         if event.object.type not in [MessageEventBot, CallbackMessageEventBot]:
             raise InvalidEventError
     elif event.bot_type is BotType.USER:
-        if event.object.object.event_id not in MessageEventUser:
+        event_for_check = AdvancedMessageEventUser if not flags_needed else MessageEventUser
+        if event.object.object.event_id not in event_for_check:
             raise InvalidEventError
 
 
@@ -300,7 +303,7 @@ class FromMeFilter(BaseFilter):
         self.from_me = from_me
 
     async def check(self, event: UserEvent) -> FilterResult:
-        is_message_event(event)
+        is_message_event(event, flags_needed=True)
         if event.bot_type == BotType.BOT:
             raise RuntimeError("Сannot be used in bot")
         return FilterResult(self.from_me == is_from_me(event))
