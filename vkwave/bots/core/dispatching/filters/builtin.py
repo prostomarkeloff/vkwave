@@ -20,7 +20,9 @@ try:
 except ImportError:
     text_filter_cyth = None
 
-MessageEventUser: Tuple[int] = EventId.MESSAGE_EVENT.value
+MessageEventUser: Tuple[int] = (
+    EventId.MESSAGE_EVENT.value + EventId.USER_TYPING_OR_MAKING_VOICE_MESSAGE.value
+)
 MessageEventBot: str = "message_new"
 CallbackMessageEventBot: str = "message_event"
 InvalidEventError = ValueError(
