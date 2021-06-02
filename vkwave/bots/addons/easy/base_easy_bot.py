@@ -42,7 +42,10 @@ from vkwave.bots.addons.easy.easy_handlers import (
 )
 from vkwave.bots.core import BaseFilter
 from vkwave.bots.core.dispatching.dp.middleware.middleware import BaseMiddleware, MiddlewareResult
-from vkwave.bots.core.dispatching.filters.builtin import PayloadContainsFilter, AttachmentTypeFilter
+from vkwave.bots.core.dispatching.filters.builtin import (
+    PayloadContainsFilter,
+    AttachmentTypeFilter,
+)
 from vkwave.bots.core.dispatching.filters.extension_filters import VBMLFilter
 from vkwave.bots.core.dispatching.router.router import BaseRouter
 from vkwave.bots.fsm.filters import StateFilter
@@ -168,7 +171,12 @@ class BaseSimpleLongPollBot:
             if self.bot_type is BotType.BOT:
                 record.filters.append(EventTypeFilter(BotEventType.MESSAGE_NEW))
             else:
-                record.filters.append(EventTypeFilter(EventId.MESSAGE_EVENT.value))
+                record.filters.append(
+                    EventTypeFilter(
+                        EventId.MESSAGE_EVENT.value
+                        + EventId.USER_TYPING_OR_MAKING_VOICE_MESSAGE.value
+                    )
+                )
             record.handle(SimpleBotCallback(func, self.bot_type))
             self.router.registrar.register(record.ready())
             return func
