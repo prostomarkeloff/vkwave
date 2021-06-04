@@ -15,7 +15,7 @@ class BaseFilter(ABC):
     def __and__(self, other: "BaseFilter") -> "AndFilter":
         return AndFilter(self, other)
 
-    def __not__(self) -> "NotFilter":
+    def __invert__(self) -> "NotFilter":
         return NotFilter(self)
 
     def __or__(self, other: "BaseFilter") -> "OrFilter":

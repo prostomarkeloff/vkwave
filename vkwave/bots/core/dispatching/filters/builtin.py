@@ -145,7 +145,9 @@ class TextFilter(BaseFilter):
 class PayloadFilter(BaseFilter):
     """Filter for message payload"""
 
-    def __init__(self, payload: Optional[Dict[str, str]], json_loader: JSONDecoder = json.loads):
+    def __init__(
+        self, payload: Optional[Dict[str, str]] = None, json_loader: JSONDecoder = json.loads
+    ):
         self.json_loader = json_loader
         self.payload = payload
 
