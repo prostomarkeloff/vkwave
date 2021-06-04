@@ -8,7 +8,7 @@ from pydantic import PrivateAttr
 
 from vkwave.bots import BotType, BaseEvent, UserEvent, BotEvent, EventTypeFilter
 from vkwave.bots.core import BaseFilter
-from vkwave.bots.core.dispatching.filters.builtin import get_payload
+from vkwave.bots.core.dispatching.filters.builtin import get_payload, get_text
 from vkwave.bots.core.dispatching.handler.callback import BaseCallback
 from vkwave.types.bot_events import BotEventType
 from vkwave.types.objects import (
@@ -194,14 +194,18 @@ class SimpleBotEvent(BotEvent):
 
     @property
     def text(self) -> str:
-        return self.object.object.message.text
+        return get_text(self)
 
     @property
     def peer_id(self) -> int:
+        if self.object.type == BotEventType.MESSAGE_EVENT.value:
+            return self.object.object.peer_id
         return self.object.object.message.peer_id
 
     @property
     def from_id(self) -> int:
+        if self.object.type == BotEventType.MESSAGE_EVENT.value:
+            return self.object.object.user_id
         return self.object.object.message.from_id
 
     @property
@@ -210,7 +214,11 @@ class SimpleBotEvent(BotEvent):
         if current_payload is None:
             return current_payload
         if self._payload is None:
-            self._payload = json.loads(current_payload)
+            self._payload = (
+                json.loads(current_payload)
+                if not isinstance(current_payload, dict)
+                else current_payload
+            )
         return self._payload
 
     @property
