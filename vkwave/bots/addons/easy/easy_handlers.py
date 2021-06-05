@@ -313,12 +313,13 @@ class SimpleBotCallback(BaseCallback):
     ):
         self.bot_type = bot_type
         self.func = callback_caster.cast(func)
+
     async def execute(self, event: typing.Union[UserEvent, BotEvent]) -> typing.Any:
         if self.bot_type is BotType.BOT:
             new_event = SimpleBotEvent(event)
         else:
             new_event = SimpleUserEvent(event)
-        return await self.func.execute(event)
+        return await self.func.execute(new_event)
 
     def __repr__(self):
         return f"<SimpleBotCallback {self.func.__name__} bot_type={self.bot_type}>"
