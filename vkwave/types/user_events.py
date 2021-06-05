@@ -224,6 +224,15 @@ class ChangedChatSettingsModel(BaseUserEvent):
     object: ChangedChatSettingsEventObject = pydantic.Field(None)
 
 
+class ChangedChatSettingsUselessEventObject(pydantic.BaseModel):
+    event_id: typing.Optional[int]
+    chat_id: typing.Optional[int]
+
+
+class ChangedChatSettingsUselessModel(BaseUserEvent):
+    object: ChangedChatSettingsUselessEventObject = pydantic.Field(None)
+
+
 class TypingOrVoiceEventObject(pydantic.BaseModel):
     event_id: typing.Optional[int]
     peer_id: typing.Optional[int]
@@ -257,6 +266,7 @@ class EventId(enum.Enum):
     NEW_MENTION_IN_CHAT = 12
     DELETED_ALL_MESSAGES_IN_DIALOG = 13
     DROP_MESSAGE_CACHE = 19
+    CHANGE_CHAT_SETTINGS_USELESS = 51
     CHANGE_CHAT_SETTINGS = 52
     USER_TYPING_OR_MAKING_VOICE_MESSAGE = (63, 64)
     CHANGED_UNREAD_DIALOGS_COUNT = 80
@@ -337,6 +347,8 @@ _drop_message_cache = {
 
 _changed_chat_settings = {0: "event_id", 1: "type", 2: "peer_id", 3: "extra"}
 
+_changed_chat_settings_useless = {0: "event_id", 1: "chat_id"}
+
 _typing_or_voice = {
     0: "event_id",
     1: "peer_id",
@@ -370,6 +382,7 @@ _events_dict = {
     EventId.DELETED_ALL_MESSAGES_IN_DIALOG: _deleted_all_messages_in_chat,
     EventId.DROP_MESSAGE_CACHE: _drop_message_cache,
     EventId.CHANGE_CHAT_SETTINGS: _changed_chat_settings,
+    EventId.CHANGE_CHAT_SETTINGS_USELESS: _changed_chat_settings_useless,
     EventId.CHANGED_UNREAD_DIALOGS_COUNT: _changed_unread_dialogs_count,
     EventId.USER_TYPING_OR_MAKING_VOICE_MESSAGE: _typing_or_voice,
 }
@@ -392,6 +405,7 @@ def get_event_object(
         TypingOrVoiceModel,
         NewMentionInChatModel,
         ChangedChatSettingsModel,
+        ChangedChatSettingsUselessModel,
         ChangedUnreadDialogsCountModel,
     ]
 ]:
@@ -444,6 +458,13 @@ def get_event_object(
         for event_number, event_param in enumerate(raw_event):
             event[_events_dict[EventId.CHANGE_CHAT_SETTINGS][event_number]] = event_param
         return ChangedChatSettingsModel(object=(ChangedChatSettingsEventObject(**event)))
+    if event_type == EventId.CHANGE_CHAT_SETTINGS_USELESS.value:
+        for event_number, event_param in enumerate(raw_event):
+            event[_events_dict[EventId.CHANGE_CHAT_SETTINGS_USELESS][event_number]] = event_param
+        print(ChangedChatSettingsUselessEventObject(**event))
+        return ChangedChatSettingsUselessModel(
+            object=(ChangedChatSettingsUselessEventObject(**event))
+        )
     if event_type in EventId.USER_TYPING_OR_MAKING_VOICE_MESSAGE.value:
         for event_number, event_param in enumerate(raw_event):
             event[
