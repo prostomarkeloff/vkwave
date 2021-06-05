@@ -461,7 +461,6 @@ def get_event_object(
     if event_type == EventId.CHANGE_CHAT_SETTINGS_USELESS.value:
         for event_number, event_param in enumerate(raw_event):
             event[_events_dict[EventId.CHANGE_CHAT_SETTINGS_USELESS][event_number]] = event_param
-        print(ChangedChatSettingsUselessEventObject(**event))
         return ChangedChatSettingsUselessModel(
             object=(ChangedChatSettingsUselessEventObject(**event))
         )
