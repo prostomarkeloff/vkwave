@@ -48,8 +48,6 @@ class DefaultRouter(BaseRouter):
             h_res = await handler.process_event(event)
             if h_res is FILTERS_NOT_PASSED:
                 continue
-            handler_name = handler.callback.func.__name__
-            logger.debug(f"Event was handled by {handler_name}")
             return h_res
         return HANDLER_NOT_FOUND
 

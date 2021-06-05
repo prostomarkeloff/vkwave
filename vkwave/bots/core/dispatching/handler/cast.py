@@ -18,8 +18,9 @@ class CallbackCaster(DefaultCaster[BaseCallback]):
             cb = SyncFuncCallback(lambda event: something)
         else:
             cb = None
-
+    
         return cb
+
 
 
 caster = CallbackCaster()
