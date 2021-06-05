@@ -2,7 +2,7 @@ import inspect
 import json
 import warnings
 import typing
-from typing import Dict, List, Callable
+from typing import Dict, List, Callable, Any
 
 from pydantic import PrivateAttr
 
@@ -17,6 +17,7 @@ from vkwave.types.objects import (
 )
 from vkwave.types.responses import BaseOkResponse, MessagesSendResponse
 from vkwave.types.user_events import EventId
+from vkwave.bots.core.dispatching.handler.cast import caster as callback_caster
 
 try:
     import aiofile
@@ -307,20 +308,17 @@ class SimpleBotEvent(BotEvent):
 class SimpleBotCallback(BaseCallback):
     def __init__(
         self,
-        func: typing.Callable[[BaseEvent], typing.Awaitable[typing.Any]],
+        func: Any,
         bot_type: BotType,
     ):
         self.bot_type = bot_type
-        self.func = func
-
+        self.func = callback_caster.cast(func)
     async def execute(self, event: typing.Union[UserEvent, BotEvent]) -> typing.Any:
         if self.bot_type is BotType.BOT:
             new_event = SimpleBotEvent(event)
         else:
             new_event = SimpleUserEvent(event)
-        if inspect.iscoroutinefunction(self.func):
-            return await self.func(new_event)
-        return self.func(new_event)
+        return await self.func.execute(event)
 
     def __repr__(self):
         return f"<SimpleBotCallback {self.func.__name__} bot_type={self.bot_type}>"

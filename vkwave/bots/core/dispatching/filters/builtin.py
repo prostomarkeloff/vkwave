@@ -1,11 +1,12 @@
 import json
 import logging
 import re
+import typing
 from typing import Dict, List, Optional, Tuple, Union
 
 from typing_extensions import Literal
 
-from vkwave.bots.core.dispatching.events.base import BaseEvent, UserEvent
+from vkwave.bots.core.dispatching.events.base import BaseEvent, UserEvent, BotEvent
 from vkwave.bots.core.types.bot_type import BotType
 from vkwave.bots.core.types.json_types import JSONDecoder
 from vkwave.types.bot_events import BotEventType
@@ -324,7 +325,7 @@ class MessageArgsFilter(BaseFilter):
         self.command_length = command_length
 
     async def check(self, event: BaseEvent) -> FilterResult:
-        args = get_text(event).split()[self.command_length :]
+        args = get_text(event).split()[self.command_length:]
         event["args"] = args
         return FilterResult(len(args) == self.args_count)
 
@@ -464,3 +465,26 @@ class AttachmentTypeFilter(BaseFilter):
             return FilterResult(any(attachments_map))
 
         return FilterResult(all(attachments_map))
+
+
+class IsAdminFilter(BaseFilter):
+    def __init__(self, is_admin: bool = True):
+        self.is_admin = is_admin
+
+    async def check(self, event: BaseEvent) -> FilterResult:
+        is_message_event(event)
+        if event.bot_type is BotType.BOT:
+            peer_id = event.object.object.message.peer_id
+        else:
+            raise NotImplementedError("Currently only for bots not users")
+
+        if peer_id < 2e9:
+            raise RuntimeError("Cannot be used not in chats")
+
+        event = typing.cast(BotEvent, event)
+        res = await event.api_ctx.messages.get_conversation_members(peer_id)
+        users = res.response.items
+        for user in users:
+            if user.member_id == event.object.object.message.from_id:
+                return FilterResult(self.is_admin == user.is_admin)
+        return FilterResult(False)

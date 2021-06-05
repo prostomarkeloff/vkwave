@@ -44,7 +44,7 @@ from vkwave.bots.core import BaseFilter
 from vkwave.bots.core.dispatching.dp.middleware.middleware import BaseMiddleware, MiddlewareResult
 from vkwave.bots.core.dispatching.filters.builtin import (
     PayloadContainsFilter,
-    AttachmentTypeFilter,
+    AttachmentTypeFilter, IsAdminFilter,
 )
 from vkwave.bots.core.dispatching.filters.extension_filters import VBMLFilter
 from vkwave.bots.core.dispatching.router.router import BaseRouter
@@ -139,6 +139,7 @@ class BaseSimpleLongPollBot:
         self.payload_contains_filter = PayloadContainsFilter
         self.text_startswith_filter = TextStartswithFilter
         self.attachment_type_filter = AttachmentTypeFilter
+        self.is_admin_filter = IsAdminFilter
         if self.bot_type is BotType.USER:
             self.from_me_filter = FromMeFilter
 
