@@ -56,6 +56,7 @@ class SimpleUserEvent(UserEvent):
         disable_mentions: typing.Optional[bool] = None,
         intent: typing.Optional[str] = None,
         subscribe_id: typing.Optional[int] = None,
+        expire_ttl: typing.Optional[int] = None,
     ) -> MessagesSendResponse:
         return await self.api_ctx.messages.send(
             message=message,
@@ -64,6 +65,7 @@ class SimpleUserEvent(UserEvent):
             content_source=content_source,
             intent=intent,
             subscribe_id=subscribe_id,
+            expire_ttl=expire_ttl,
             domain=domain,
             lat=lat,
             long=long,
@@ -250,12 +252,14 @@ class SimpleBotEvent(BotEvent):
         disable_mentions: typing.Optional[bool] = None,
         intent: typing.Optional[str] = None,
         subscribe_id: typing.Optional[int] = None,
+        expire_ttl: typing.Optional[int] = None,
     ) -> MessagesSendResponse:
         _check_event_type(self.object.type)
         return await self.api_ctx.messages.send(
             forward=forward,
             intent=intent,
             subscribe_id=subscribe_id,
+            expire_ttl=expire_ttl,
             domain=domain,
             lat=lat,
             long=long,
