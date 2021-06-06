@@ -343,6 +343,7 @@ _deleted_all_messages_in_chat = {
 _drop_message_cache = {
     0: "event_id",
     1: "message_id",
+    2: "expire_time"
 }
 
 _changed_chat_settings = {0: "event_id", 1: "type", 2: "peer_id", 3: "extra"}
