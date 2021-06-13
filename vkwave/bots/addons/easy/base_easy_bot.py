@@ -175,7 +175,6 @@ class BaseSimpleLongPollBot:
                 record.filters.append(
                     EventTypeFilter(
                         EventId.MESSAGE_EVENT.value
-                        + EventId.USER_TYPING_OR_MAKING_VOICE_MESSAGE.value
                     )
                 )
             record.handle(SimpleBotCallback(func, self.bot_type))
