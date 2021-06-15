@@ -52,3 +52,10 @@ class SimpleCallbackBot(BaseSimpleLongPollBot):
     async def run(self, ignore_errors: bool = True):
         await self.dispatcher.cache_potential_tokens()
         await self.cb_extension.start()
+
+    def run_forever(
+        self, ignore_errors: bool = True, loop: typing.Optional[asyncio.AbstractEventLoop] = None
+    ):
+        loop = loop or asyncio.get_event_loop()
+        loop.create_task(self.run())
+        loop.run_forever()
