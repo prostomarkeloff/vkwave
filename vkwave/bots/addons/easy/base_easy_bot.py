@@ -204,5 +204,5 @@ class BaseSimpleLongPollBot:
         self, ignore_errors: bool = True, loop: typing.Optional[asyncio.AbstractEventLoop] = None
     ):
         loop = loop or asyncio.get_event_loop()
-        loop.create_task(self.run(ignore_errors))
+        loop.create_task(self.run())
         loop.run_forever()
