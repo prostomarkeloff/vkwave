@@ -14,7 +14,7 @@ bot = SimpleCallbackBot(
 
 @bot.message_handler(bot.text_filter("123"))
 async def simple(event: bot.SimpleBotEvent):
-    return await event.answer("HELLO")
+    await event.answer("HELLO")
 
 
 bot.run_forever()
