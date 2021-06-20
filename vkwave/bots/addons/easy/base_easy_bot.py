@@ -29,6 +29,7 @@ from vkwave.bots import (
     TextContainsFilter,
     TextFilter,
     TextStartswithFilter,
+    IsAdminFilter,
     TokenStorage,
     UserEvent,
     UserId,
@@ -44,7 +45,7 @@ from vkwave.bots.core import BaseFilter
 from vkwave.bots.core.dispatching.dp.middleware.middleware import BaseMiddleware, MiddlewareResult
 from vkwave.bots.core.dispatching.filters.builtin import (
     PayloadContainsFilter,
-    AttachmentTypeFilter, IsAdminFilter,
+    AttachmentTypeFilter,
 )
 from vkwave.bots.core.dispatching.filters.extension_filters import VBMLFilter
 from vkwave.bots.core.dispatching.router.router import BaseRouter
