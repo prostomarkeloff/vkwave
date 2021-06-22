@@ -350,12 +350,10 @@ class FwdMessagesFilter(BaseFilter):
                 raise RuntimeError("In the case of user bots we don't know how many forwards there are, so you have "
                                    "only one option: check if there are forwards or there aren't any")
             fwd_count = event.object.object.extra_message_data.get("fwd")
-            print("fwd_count before: ", fwd_count)
             if fwd_count:
                 fwd_count = 1
             else:
                 fwd_count = 0
-            print("fwd_count after: ", fwd_count)
 
         if self.fwd_count == -1 and fwd_count:
             return FilterResult(True)
