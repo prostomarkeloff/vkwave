@@ -9,6 +9,7 @@ from vkwave.api.token.token import (
     UserSyncSingleToken,
 )
 from vkwave.bots import (
+    AttachmentTypeFilter,
     BaseEvent,
     BotEvent,
     BotLongpollExtension,
@@ -21,8 +22,10 @@ from vkwave.bots import (
     FromMeFilter,
     FwdMessagesFilter,
     GroupId,
+    IsAdminFilter,
     MessageArgsFilter,
     MessageFromConversationTypeFilter,
+    PayloadContainsFilter,
     PayloadFilter,
     RegexFilter,
     ReplyMessageFilter,
@@ -124,23 +127,23 @@ class BaseSimpleLongPollBot:
         self.router = router or DefaultRouter()
         self.dispatcher.add_router(self.router)
 
-        self.text_filter = TextFilter
-        self.event_type_filter = EventTypeFilter
-        self.payload_filter = PayloadFilter
+        self.args_filter = MessageArgsFilter
+        self.attachment_type_filter = AttachmentTypeFilter
         self.chat_action_filter = ChatActionFilter
         self.command_filter = CommandsFilter
-        self.regex_filter = RegexFilter
-        self.state_filter = StateFilter
-        self.vbml_filter = VBMLFilter
-        self.reply_filter = ReplyMessageFilter
-        self.args_filter = MessageArgsFilter
-        self.fwd_filter = FwdMessagesFilter
         self.conversation_type_filter = MessageFromConversationTypeFilter
-        self.text_contains_filter = TextContainsFilter
-        self.payload_contains_filter = PayloadContainsFilter
-        self.text_startswith_filter = TextStartswithFilter
-        self.attachment_type_filter = AttachmentTypeFilter
+        self.event_type_filter = EventTypeFilter
+        self.fwd_filter = FwdMessagesFilter
         self.is_admin_filter = IsAdminFilter
+        self.payload_contains_filter = PayloadContainsFilter
+        self.payload_filter = PayloadFilter
+        self.regex_filter = RegexFilter
+        self.reply_filter = ReplyMessageFilter
+        self.state_filter = StateFilter
+        self.text_contains_filter = TextContainsFilter
+        self.text_filter = TextFilter
+        self.text_startswith_filter = TextStartswithFilter
+        self.vbml_filter = VBMLFilter
         if self.bot_type is BotType.USER:
             self.from_me_filter = FromMeFilter
 
