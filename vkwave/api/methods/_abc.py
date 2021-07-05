@@ -143,10 +143,9 @@ class APIOptionsRequestContext:
     async def handle_error(self, error: Error) -> Optional[dict]:
         dispatcher = self.api_options.error_dispatcher
         if "execute_errors" in error:
-            result = await dispatcher.process_execute_errors(error, self)
+            return await dispatcher.process_execute_errors(error, self)
         else:
-            result = await dispatcher.process_error(error, self)
-        return result
+            return await dispatcher.process_error(error, self)
 
     @asynccontextmanager
     async def sync_token(self) -> AsyncGenerator["APIOptionsRequestContext", None]:
@@ -220,8 +219,7 @@ class API:
     def with_token(self, token: AnyABCToken) -> APIOptionsRequestContext:
         copied = copy.copy(self.default_api_options)
         copied.tokens = [token]
-        new = APIOptionsRequestContext(copied)
-        return new
+        return APIOptionsRequestContext(copied)
 
     def with_options(self, options: APIOptions) -> APIOptionsRequestContext:
         return APIOptionsRequestContext(options)
