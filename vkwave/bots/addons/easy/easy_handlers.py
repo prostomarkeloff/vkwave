@@ -1,12 +1,11 @@
-import inspect
 import json
 import warnings
 import typing
-from typing import Dict, List, Callable, Any
+from typing import Dict, List, Callable, Any, Union
 
 from pydantic import PrivateAttr
 
-from vkwave.bots import BotType, BaseEvent, UserEvent, BotEvent, EventTypeFilter
+from vkwave.bots import BotType, UserEvent, BotEvent, EventTypeFilter
 from vkwave.bots.core import BaseFilter
 from vkwave.bots.core.dispatching.filters.builtin import get_payload, get_text
 from vkwave.bots.core.dispatching.handler.callback import BaseCallback
@@ -14,6 +13,7 @@ from vkwave.types.bot_events import BotEventType
 from vkwave.types.objects import (
     MessagesMessageAttachment,
     MessagesMessageAttachmentType,
+    UsersUser,
 )
 from vkwave.types.responses import BaseOkResponse, MessagesSendResponse
 from vkwave.types.user_events import EventId
@@ -35,6 +35,12 @@ class SimpleUserEvent(UserEvent):
 
     def __getitem__(self, key: typing.Any) -> typing.Any:
         return self.user_data[key]
+
+    async def get_user(self, raw_mode: bool = False, **kwargs) -> Union["UsersUser", dict]:
+        raw_user = (await self.api_ctx.api_request("users.get", {"user_ids": self.object.object.message_data.from_id if self.object.object.peer_id > 2E9 else self.object.object.peer_id, **kwargs}))[
+            "response"
+        ][0]
+        return raw_user if raw_mode else UsersUser(**raw_user)
 
     async def answer(
         self,
