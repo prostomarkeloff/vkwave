@@ -33,8 +33,7 @@ class HandlerRegistrar:
         return decorator
 
     def new(self) -> HandlerRecord:
-        record = HandlerRecord()
-        return record
+        return HandlerRecord()
 
     def register(self, handler: BaseHandler):
         for filter in handler.filter_manager.filters.copy():
