@@ -51,7 +51,7 @@ class SimpleUserEvent(UserEvent):
         return self.object.object.peer_id
 
     @property
-    def from_id(self) -> int:
+    def user_id(self) -> int:
         return self.object.object.message_data.from_id if self.object.object.peer_id > 2E9 else self.object.object.peer_id
 
     async def answer(
