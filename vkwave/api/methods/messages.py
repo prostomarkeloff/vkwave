@@ -934,7 +934,8 @@ class Messages(Category):
         disable_mentions: typing.Optional[bool] = None,
         intent: typing.Optional[str] = None,
         subscribe_id: typing.Optional[int] = None,
-        expire_ttl: typing.Optional[int] = None
+        expire_ttl: typing.Optional[int] = None,
+        silent: typing.Optional[bool] = None,
     ) -> typing.Union[dict, MessagesSendResponse]:
         """
         :param user_id: - User ID (by default — current user).
@@ -962,6 +963,7 @@ class Messages(Category):
         :param intent:
         :param subscribe_id:
         :param expire_ttl: Message deletion timer. Accepts values: 15, 60, 300, 3600, 86400
+        :param silent: Silent notification. Accepts values: True, False
         :param return_raw_response: - return result at dict
         :return:
         """

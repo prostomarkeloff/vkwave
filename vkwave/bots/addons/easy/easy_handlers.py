@@ -1,12 +1,11 @@
-import inspect
 import json
 import warnings
 import typing
-from typing import Dict, List, Callable, Any
+from typing import Dict, List, Callable, Any, Union
 
 from pydantic import PrivateAttr
 
-from vkwave.bots import BotType, BaseEvent, UserEvent, BotEvent, EventTypeFilter
+from vkwave.bots import BotType, UserEvent, BotEvent, EventTypeFilter
 from vkwave.bots.core import BaseFilter
 from vkwave.bots.core.dispatching.filters.builtin import get_payload, get_text
 from vkwave.bots.core.dispatching.handler.callback import BaseCallback
@@ -14,6 +13,7 @@ from vkwave.types.bot_events import BotEventType
 from vkwave.types.objects import (
     MessagesMessageAttachment,
     MessagesMessageAttachmentType,
+    UsersUser,
 )
 from vkwave.types.responses import BaseOkResponse, MessagesSendResponse
 from vkwave.types.user_events import EventId
@@ -76,6 +76,8 @@ class SimpleUserEvent(UserEvent):
         disable_mentions: typing.Optional[bool] = None,
         intent: typing.Optional[str] = None,
         subscribe_id: typing.Optional[int] = None,
+        expire_ttl: typing.Optional[int] = None,
+        silent: typing.Optional[bool] = None,
     ) -> MessagesSendResponse:
         return await self.api_ctx.messages.send(
             message=message,
@@ -84,6 +86,8 @@ class SimpleUserEvent(UserEvent):
             content_source=content_source,
             intent=intent,
             subscribe_id=subscribe_id,
+            expire_ttl=expire_ttl,
+            silent=silent,
             domain=domain,
             lat=lat,
             long=long,
@@ -278,12 +282,16 @@ class SimpleBotEvent(BotEvent):
         disable_mentions: typing.Optional[bool] = None,
         intent: typing.Optional[str] = None,
         subscribe_id: typing.Optional[int] = None,
+        expire_ttl: typing.Optional[int] = None,
+        silent: typing.Optional[bool] = None,
     ) -> MessagesSendResponse:
         _check_event_type(self.object.type)
         return await self.api_ctx.messages.send(
             forward=forward,
             intent=intent,
             subscribe_id=subscribe_id,
+            expire_ttl=expire_ttl,
+            silent=silent,
             domain=domain,
             lat=lat,
             long=long,
