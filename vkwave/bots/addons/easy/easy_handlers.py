@@ -36,10 +36,24 @@ class SimpleUserEvent(UserEvent):
     def __getitem__(self, key: typing.Any) -> typing.Any:
         return self.user_data[key]
 
-    async def get_user(self, raw_mode: bool = False, **kwargs) -> Union["UsersUser", dict]:
-        raw_user = (await self.api_ctx.api_request("users.get", {"user_ids": self.object.object.message_data.from_id if self.object.object.peer_id > 2E9 else self.object.object.peer_id, **kwargs}))[
-            "response"
-        ][0]
+    @property
+    def text(self) -> str:
+        return get_text(self)
+
+    @property
+    def peer_id(self) -> int:
+        return self.object.object.peer_id
+
+    @property
+    def from_id(self) -> int:
+        return self.object.object.message_data.from_id
+
+    @property
+    def user_id(self) -> int:
+        return self.from_id if self.peer_id > 2E9 else self.peer_id
+
+    async def get_user(self, raw_mode: bool = False, **kwargs) -> Union["UsersUser", dict]: # getting information about the sender
+        raw_user = (await self.api_ctx.api_request("users.get", {"user_ids": self.user_id, **kwargs}))["response"][0]
         return raw_user if raw_mode else UsersUser(**raw_user)
 
     async def answer(
@@ -239,6 +253,14 @@ class SimpleBotEvent(BotEvent):
         if self._attachments is None:
             self._attachments = Attachments(event=self)
         return self._attachments
+
+    @property
+    def user_id(self) -> int:
+        return self.from_id if self.peer_id > 2E9 else self.peer_id
+
+    async def get_user(self, raw_mode: bool = False, **kwargs) -> Union["UsersUser", dict]: # getting information about the sender
+        raw_user = (await self.api_ctx.api_request("users.get", {"user_ids": self.user_id, **kwargs}))["response"][0]
+        return raw_user if raw_mode else UsersUser(**raw_user)
 
     async def answer(
         self,
