@@ -11,15 +11,13 @@ class CallbackCaster(DefaultCaster[BaseCallback]):
     def default(self, something: Any) -> Optional[BaseCallback]:
         cb: Optional[BaseCallback]
         if iscoroutinefunction(something) or isawaitable(something):
-            cb = AsyncFuncCallback(something)
+            return AsyncFuncCallback(something)
         elif isfunction(something):
-            cb = SyncFuncCallback(something)
+            return SyncFuncCallback(something)
         elif isinstance(something, str):
-            cb = SyncFuncCallback(lambda event: something)
+            return SyncFuncCallback(lambda event: something)
         else:
-            cb = None
-    
-        return cb
+            return None
 
 
 
