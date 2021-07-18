@@ -25,7 +25,9 @@ def get_peer_from_ids(event: BaseEvent) -> typing.Tuple[int, int]:
             from_id = event.object.object.user_id
             peer_id = event.object.object.peer_id
     else:
-        from_id = peer_id = event.object.object.peer_id
+        peer_id = from_id = event.object.object.peer_id
+        if peer_id > 2e9:
+            from_id = int(event.object.object.message_data.from_id)
     return from_id, peer_id
 
 
