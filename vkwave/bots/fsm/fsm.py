@@ -1,6 +1,7 @@
 import typing
 from enum import Enum, auto
 
+from vkwave.bots import BotType
 from vkwave.bots.core.dispatching.events.base import BaseEvent
 from vkwave.bots.fsm.types import StateId
 from vkwave.bots.storage.base import AbstractStorage
@@ -15,13 +16,16 @@ class ForWhat(Enum):
 
 
 def get_peer_from_ids(event: BaseEvent) -> typing.Tuple[int, int]:
-    if event.object.object.dict().get("message") is not None:
-        from_id = event.object.object.message.from_id
-        peer_id = event.object.object.message.peer_id
+    if event.bot_type is BotType.BOT:
+        if event.object.object.dict().get("message") is not None:
+            from_id = event.object.object.message.from_id
+            peer_id = event.object.object.message.peer_id
+        else:
+            # CallbackButtonEventObject
+            from_id = event.object.object.user_id
+            peer_id = event.object.object.peer_id
     else:
-        # CallbackButtonEventObject
-        from_id = event.object.object.user_id
-        peer_id = event.object.object.peer_id
+        from_id = peer_id = event.object.object.peer_id
     return from_id, peer_id
 
 
