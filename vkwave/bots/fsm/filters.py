@@ -1,6 +1,6 @@
 from vkwave.bots.core.dispatching.events.base import BaseEvent
 from vkwave.bots.core.dispatching.filters.builtin import BaseFilter, FilterResult
-from vkwave.bots.fsm.fsm import FiniteStateMachine, ForWhat, State
+from vkwave.bots.fsm.fsm import FiniteStateMachine, ForWhat, State, get_peer_from_ids
 from vkwave.bots.storage.types import Key
 
 ANY_STATE = "__any_state__"
@@ -23,8 +23,7 @@ class StateFilter(BaseFilter):
         if self.state == ANY_STATE:
             return FilterResult(True)
         if self.always_false:
-            from_id = event.object.object.message.from_id
-            peer_id = event.object.object.message.peer_id
+            from_id, peer_id = get_peer_from_ids(event)
             template = "__vkwave_{for_what}_{peer_id}_{from_id}__"
             is_pm = from_id == peer_id
 
