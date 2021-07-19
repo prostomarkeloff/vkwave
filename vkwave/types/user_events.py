@@ -412,10 +412,10 @@ def _parse_event(
     event_model: typing.Type[RESULT_EVENT_OBJECT_TYPE],
     event_object: typing.Type[pydantic.BaseModel],
 ) -> RESULT_EVENT_OBJECT_TYPE:
-    event = {}
-
-    for event_number, event_param in enumerate(raw_event):
-        event[_events_dict[event_id][event_number]] = event_param
+    event = {
+        _events_dict[event_id][event_number]: event_param
+        for event_number, event_param in enumerate(raw_event)
+    }
     return event_model(object=event_object(**event))
 
 

@@ -88,17 +88,14 @@ class Template:
         :param json_serialize:
         :return:
         """
-        elements = []
-
-        for template in templates:
-            elements.append(
-                {
-                    "title": template.title,
-                    "description": template.description,
-                    "photo_id": template.photo_id,
-                    "action": template.action,
-                    "buttons": template._local_keyboard.buttons[0],
-                }
-            )
-
+        elements = [
+            {
+                "title": template.title,
+                "description": template.description,
+                "photo_id": template.photo_id,
+                "action": template.action,
+                "buttons": template._local_keyboard.buttons[0],
+            }
+            for template in templates
+        ]
         return json_serialize({"type": "carousel", "elements": elements})

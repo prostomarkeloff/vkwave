@@ -19,12 +19,11 @@ async def captcha_handler(error: dict, api_ctx: APIOptionsRequestContext):
     # not the greatest implementation, but you can make any
 
     method = error["error"]["request_params"][0]["value"]
-    request_params = {}
-    for param in error["error"]["request_params"]:
-        if param["key"] in ("oauth", "v", "method"):
-            continue
-        request_params[param["key"]] = param["value"]
-
+    request_params = {
+        param["key"]: param["value"]
+        for param in error["error"]["request_params"]
+        if param["key"] not in {"oauth", "v", "method"}
+    }
     key = await solve_captcha(error["error"]["captcha_img"])
 
     request_params.update({"captcha_sid": error["error"]["captcha_sid"], "captcha_key": key})
