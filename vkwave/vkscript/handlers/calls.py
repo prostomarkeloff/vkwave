@@ -24,7 +24,7 @@ def call_handler(node: ast.Call):
         attrs.append(node_.attr)
         node_ = node_.value
 
-    if node_.id.upper() == "API" and len(attrs) >= 1:
+    if node_.id.upper() == "API" and attrs:
         if node.args:
             raise TypeError("api calls does not accept positional arguments")
 
