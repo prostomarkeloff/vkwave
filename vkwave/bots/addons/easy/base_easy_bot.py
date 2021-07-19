@@ -19,6 +19,7 @@ from vkwave.bots import (
     DefaultRouter,
     Dispatcher,
     EventTypeFilter,
+    FlagFilter,
     FromMeFilter,
     FwdMessagesFilter,
     GroupId,

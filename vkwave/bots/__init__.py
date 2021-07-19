@@ -4,6 +4,7 @@ from .core.dispatching.filters import (
     ChatActionFilter,
     CommandsFilter,
     EventTypeFilter,
+    FlagFilter,
     FromMeFilter,
     FwdMessagesFilter,
     IsAdminFilter,
@@ -16,12 +17,7 @@ from .core.dispatching.filters import (
     TextContainsFilter,
     TextFilter,
     TextStartswithFilter,
-
     IsAdminFilter,
-
-
-
-
 )
 from .core.dispatching.dp.middleware.middleware import MiddlewareResult, BaseMiddleware
 from .core.dispatching.events.base import BotEvent, UserEvent, BotType, BaseEvent

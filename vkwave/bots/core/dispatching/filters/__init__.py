@@ -5,6 +5,7 @@ from .builtin import (  # noqa: F401
     CommandsFilter,
     EventTypeFilter,
     FromMeFilter,
+    FlagFilter,
     FwdMessagesFilter,
     get_text,
     IsAdminFilter,
