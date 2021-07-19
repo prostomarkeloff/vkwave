@@ -42,10 +42,7 @@ def call_handler(node: ast.Call):
         if node.keywords:
             raise NotImplementedError("keywords not allowed")
 
-        if attrs[0] in replacements:
-            func = replacements[attrs[0]]
-        else:
-            func = attrs[0]
+        func = replacements.get(attrs[0], attrs[0])
 
         return (
             f"{converter.convert_node(node_)}.{func}"
