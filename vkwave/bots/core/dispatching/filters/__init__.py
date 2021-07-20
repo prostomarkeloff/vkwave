@@ -18,5 +18,6 @@ from .builtin import (  # noqa: F401
     TextFilter,
     TextStartswithFilter,
     IsAdminFilter,
+    FlagFilter,
 )
 from .cast import caster as filter_caster  # noqa: F401
