@@ -33,6 +33,7 @@ from vkwave.bots import (
     TextFilter,
     TextStartswithFilter,
     IsAdminFilter,
+    FlagFilter,
     TokenStorage,
     UserEvent,
     UserId,

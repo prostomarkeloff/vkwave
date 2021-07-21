@@ -109,6 +109,25 @@ class EventTypeFilter(BaseFilter):
         raise NotImplementedError("There is no implementation for this type of bot")
 
 
+class FlagFilter(BaseFilter):
+    """
+    Flag filter. It supports only user events.
+
+    >>> da = FlagFilter(131200) # users' deleted_all
+    >>> @router.registrar.with_decorator(da)
+    """
+
+    def __init__(self, flag: Union[str, Tuple[int, ...], int]):
+        self.flag = flag
+
+    async def check(self, event: BaseEvent) -> FilterResult:
+        if event.bot_type is BotType.USER:
+            if isinstance(self.flag, tuple):
+                return FilterResult(event.object.object.flags in self.flag)
+            if isinstance(self.flag, int):
+                return FilterResult(event.object.object.flags == self.flag)
+        raise NotImplementedError("There is no implementation for this type of bot")
+
 AnyText = Union[Tuple[str, ...], List[str], str]
 
 

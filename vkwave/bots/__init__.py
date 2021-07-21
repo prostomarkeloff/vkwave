@@ -16,12 +16,8 @@ from .core.dispatching.filters import (
     TextContainsFilter,
     TextFilter,
     TextStartswithFilter,
-
     IsAdminFilter,
-
-
-
-
+    FlagFilter,
 )
 from .core.dispatching.dp.middleware.middleware import MiddlewareResult, BaseMiddleware
 from .core.dispatching.events.base import BotEvent, UserEvent, BotType, BaseEvent
