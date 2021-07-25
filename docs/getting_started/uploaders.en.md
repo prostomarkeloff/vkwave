@@ -1,5 +1,16 @@
 # Attachments' uploaders
 
+Each uploader implements `BaseUploader`:
+
+|          Method            |                  Description               |
+|----------------------------|--------------------------------------------|
+|`get_attachment_from_io`    | Uploads attachment from bytes              |
+|`get_attachment_from_path`  | Uploads attachment from disk               |
+|`get_attachments_from_paths`| Uploads several attachments from disk      |
+|`get_attachment_from_link`  | Uploads attachment from link               |
+|`get_attachments_from_links`| Uploads several attachments from links     |
+
+
 ## To message
 
 ### Images
