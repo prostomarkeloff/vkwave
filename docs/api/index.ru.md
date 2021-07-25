@@ -16,11 +16,11 @@ VKWave API довольно удобная часть библиотеки. Ск
 ```python
 from vkwave.api.token.token import UserSyncSingleToken, BotSyncSingleToken, Token
 
-# our tokens. we got them from VK
+# Токен, который мы получаем от ВК 
 bot_plain_token = Token("...")
 user_plain_token = Token("...")
 
-# tokens that are ready for using.
+# Токен, который уже можно использовать
 bot_token = BotSyncSingleToken(bot_plain_token)
 user_token = UserSyncSingleToken(user_plain_token)
 
@@ -135,3 +135,4 @@ async with api.sync_token() as sapi:
 api = api_session.with_token(SomeToken(...))
 api = api_session.with_options(APIOptions(...))
 ```
+
