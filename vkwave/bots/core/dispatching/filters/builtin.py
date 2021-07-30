@@ -55,17 +55,15 @@ def get_payload(event: BaseEvent) -> Optional[str]:
     is_message_event(event)
     if event.bot_type is BotType.USER:
         if (
-            event.object.object.get("message_data") is not None
+            event.object.object.dict().get("message_data") is not None
             and event.object.object.message_data.payload is not None
         ):
             return event.object.object.message_data.payload
-
-    if event.object.type == BotEventType.MESSAGE_EVENT.value:
-        return event.object.object.payload
-
-    if event.object.object.dict()["message"].get("payload") is not None:
-        return event.object.object.message.payload
-    return None
+    else:
+        if event.object.type == BotEventType.MESSAGE_EVENT.value:
+            return event.object.object.payload
+        elif event.object.object.dict()["message"].get("payload") is not None:
+            return event.object.object.message.payload
 
 
 def get_text(event: BaseEvent) -> Optional[str]:
