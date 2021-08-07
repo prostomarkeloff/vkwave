@@ -385,6 +385,7 @@ _changed_unread_dialogs_count = {
     6: "extra4",
     7: "extra5",
     8: "extra6",
+    9: "extra7",
     # ну а че доки нет...
 }
 
