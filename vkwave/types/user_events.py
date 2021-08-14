@@ -50,18 +50,24 @@ class MessageData(pydantic.BaseModel):
 
 
 class MessageFlag(enum.Enum):
-    UNREAD = 1
-    OUTBOX = 2
-    REPLIED = 2 ** 2
-    IMPORTANT = 2 ** 3
-    FROM_CHAT = 2 ** 4
-    FROM_FRIEND = 2 ** 5
-    MARKED_SPAM = 2 ** 6
-    DELETED = 2 ** 7
-    CHECKED_SPAM = 2 ** 8
-    ATTACHMENT = 2 ** 9
-    HIDDEN = 2 ** 16
-    DELETED_ALL = 2 ** 17
+    UNREAD = 1 << 0
+    OUTBOX = 1 << 1
+    REPLIED = 1 << 2
+    IMPORTANT = 1 << 3
+    FROM_CHAT = 1 << 4
+    FROM_FRIEND = 1 << 5
+    MARKED_SPAM = 1 << 6
+    DELETED = 1 << 7
+    CHECKED_SPAM = 1 << 8
+    ATTACHMENT = 1 << 9
+    AUDIO_LISTENED = 1 << 12
+    FROM_CHAT2 = 1 << 13
+    CANCEL_SPAM = 1 << 15
+    HIDDEN = 1 << 16
+    DELETED_ALL = 1 << 17
+    CHAT_IN = 1 << 19
+    SILENT = 1 << 20
+    REPLY_MSG = 1 << 21
 
 
 class MessageEventObject(pydantic.BaseModel):
