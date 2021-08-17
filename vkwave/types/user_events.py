@@ -70,6 +70,10 @@ class MessageFlag(enum.Enum):
     REPLY_MSG = 1 << 21
 
 
+def normalize_flags(flags: int) -> typing.List[typing.Union[MessageFlag, int]]:
+    return [flag for flag in MessageFlag if flags & flag.value] + [flags]
+
+
 class MessageEventObject(pydantic.BaseModel):
     event_id: typing.Optional[int]
     message_id: typing.Optional[int]
@@ -83,9 +87,7 @@ class MessageEventObject(pydantic.BaseModel):
     conversation_message_id: typing.Optional[int]
     edit_time: typing.Optional[int]
 
-    _normalize_flags = pydantic.validator("flags", allow_reuse=True)(
-        lambda flags: [flag for flag in MessageFlag if flags & flag.value] + [flags]
-    )
+    _normalize_flags = pydantic.validator("flags", allow_reuse=True)(normalize_flags)
 
 
 class MessageEventModel(BaseUserEvent):
@@ -95,9 +97,10 @@ class MessageEventModel(BaseUserEvent):
 class SetFlagsEventObject(pydantic.BaseModel):
     event_id: typing.Optional[int]
     message_id: typing.Optional[int]
-    flags: typing.Optional[int]
+    flags: typing.Optional[typing.Union[int, typing.List[MessageFlag]]]
     peer_id: typing.Optional[int]
 
+    _normalize_flags = pydantic.validator("flags", allow_reuse=True)(normalize_flags)
 
 class SetFlagsEventModel(BaseUserEvent):
     object: SetFlagsEventObject = pydantic.Field(None)
@@ -168,7 +171,9 @@ class FriendOfflineModel(BaseUserEvent):
 class SeenMentionInChatEventObject(pydantic.BaseModel):
     event_id: typing.Optional[int]
     peer_id: typing.Optional[int]
-    flags: typing.Optional[int]
+    flags: typing.Optional[typing.Union[int, typing.List[MessageFlag]]]
+
+    _normalize_flags = pydantic.validator("flags", allow_reuse=True)(normalize_flags)
 
 
 class SeenMentionInChatModel(BaseUserEvent):
@@ -178,7 +183,9 @@ class SeenMentionInChatModel(BaseUserEvent):
 class NewMentionInChatEventObject(pydantic.BaseModel):
     event_id: typing.Optional[int]
     peer_id: typing.Optional[int]
-    flags: typing.Optional[int]
+    flags: typing.Optional[typing.Union[int, typing.List[MessageFlag]]]
+
+    _normalize_flags = pydantic.validator("flags", allow_reuse=True)(normalize_flags)
 
 
 class NewMentionInChatModel(BaseUserEvent):
@@ -419,10 +426,10 @@ def _parse_event(
     event_model: typing.Type[RESULT_EVENT_OBJECT_TYPE],
     event_object: typing.Type[pydantic.BaseModel],
 ) -> RESULT_EVENT_OBJECT_TYPE:
-    event = {}
-
-    for event_number, event_param in enumerate(raw_event):
-        event[_events_dict[event_id][event_number]] = event_param
+    event = {
+        _events_dict[event_id][event_number]: event_param
+        for event_number, event_param in enumerate(raw_event)
+    }
     return event_model(object=event_object(**event))
 
 
