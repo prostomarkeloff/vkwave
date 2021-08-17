@@ -53,12 +53,11 @@ def is_message_event(event: BaseEvent, flags_needed: bool = False):
 
 def get_payload(event: BaseEvent) -> Optional[str]:
     is_message_event(event)
-    if event.bot_type is BotType.USER:
-        if (
-            event.object.object.get("message_data") is not None
-            and event.object.object.message_data.payload is not None
-        ):
-            return event.object.object.message_data.payload
+    if event.bot_type is BotType.USER and (
+        event.object.object.get("message_data") is not None
+        and event.object.object.message_data.payload is not None
+    ):
+        return event.object.object.message_data.payload
 
     if event.object.type == BotEventType.MESSAGE_EVENT.value:
         return event.object.object.payload
@@ -73,12 +72,11 @@ def get_text(event: BaseEvent) -> Optional[str]:
     if event.bot_type is BotType.USER:
         if event.object.object.dict().get("text") is None:
             return None
-        text = event.object.object.text
+        return event.object.object.text
     else:
         if event.object.object.dict().get("message") is None:
             return None
-        text = event.object.object.message.text
-    return text
+        return event.object.object.message.text
 
 
 class EventTypeFilter(BaseFilter):
@@ -115,17 +113,19 @@ class FlagFilter(BaseFilter):
 
     >>> da = FlagFilter(131200) # users' deleted_all
     >>> @router.registrar.with_decorator(da)
+
+    >>> da = FlagFilter((MessageFlag.DELETED_ALL.value, MessageFlag.DELETED.value)) # users' deleted_all
+    >>> @router.registrar.with_decorator(da)
     """
 
-    def __init__(self, flag: Union[str, Tuple[int, ...], int]):
+    def __init__(self, flag: Union[Tuple[int, ...], int]):
         self.flag = flag
-
+    
     async def check(self, event: BaseEvent) -> FilterResult:
         if event.bot_type is BotType.USER:
             if isinstance(self.flag, tuple):
-                return FilterResult(event.object.object.flags in self.flag)
-            if isinstance(self.flag, int):
-                return FilterResult(event.object.object.flags == self.flag)
+                return all(flag for flag in self.flag if event.object.object.flags[-1] & flag)
+            return FilterResult(bool(event.object.object.flags[-1] & self.flag))
         raise NotImplementedError("There is no implementation for this type of bot")
 
 AnyText = Union[Tuple[str, ...], List[str], str]
@@ -369,11 +369,7 @@ class FwdMessagesFilter(BaseFilter):
                 raise RuntimeError("In the case of user bots we don't know how many forwards there are, so you have "
                                    "only one option: check if there are forwards or there aren't any")
             fwd_count = event.object.object.extra_message_data.get("fwd")
-            if fwd_count:
-                fwd_count = 1
-            else:
-                fwd_count = 0
-
+            fwd_count = 1 if fwd_count else 0
         if self.fwd_count == -1 and fwd_count:
             return FilterResult(True)
         return FilterResult(fwd_count == self.fwd_count)
