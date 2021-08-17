@@ -8,6 +8,20 @@ from vkwave.types.user_events import (
 )
 
 
+def test_deleted_message_event():
+    event = get_event_object(
+        [
+            2,
+            666,
+            131072,
+            2000000005,
+        ]
+    )
+    assert event.object.message_id == 666
+    assert event.object.peer_id == 2000000005
+    assert event.object.flags == [MessageFlag.DELETED_ALL, 131072]
+
+
 def test_message_new_event():
     event = get_event_object(
         [

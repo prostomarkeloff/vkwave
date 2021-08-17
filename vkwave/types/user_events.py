@@ -5,6 +5,8 @@ import pydantic
 
 from .objects import MessagesKeyboard
 
+RAW_EVENT_TYPE = typing.List[typing.Union[str, typing.Any]]
+
 
 class BaseUserEvent(pydantic.BaseModel):
     object: typing.Union[
@@ -48,18 +50,28 @@ class MessageData(pydantic.BaseModel):
 
 
 class MessageFlag(enum.Enum):
-    UNREAD = 1
-    OUTBOX = 2
-    REPLIED = 2 ** 2
-    IMPORTANT = 2 ** 3
-    FROM_CHAT = 2 ** 4
-    FROM_FRIEND = 2 ** 5
-    MARKED_SPAM = 2 ** 6
-    DELETED = 2 ** 7
-    CHECKED_SPAM = 2 ** 8
-    ATTACHMENT = 2 ** 9
-    HIDDEN = 2 ** 16
-    DELETED_ALL = 2 ** 17
+    UNREAD = 1 << 0
+    OUTBOX = 1 << 1
+    REPLIED = 1 << 2
+    IMPORTANT = 1 << 3
+    FROM_CHAT = 1 << 4
+    FROM_FRIEND = 1 << 5
+    MARKED_SPAM = 1 << 6
+    DELETED = 1 << 7
+    CHECKED_SPAM = 1 << 8
+    ATTACHMENT = 1 << 9
+    AUDIO_LISTENED = 1 << 12
+    FROM_CHAT2 = 1 << 13
+    CANCEL_SPAM = 1 << 15
+    HIDDEN = 1 << 16
+    DELETED_ALL = 1 << 17
+    CHAT_IN = 1 << 19
+    SILENT = 1 << 20
+    REPLY_MSG = 1 << 21
+
+
+def normalize_flags(flags: int) -> typing.List[typing.Union[MessageFlag, int]]:
+    return [flag for flag in MessageFlag if flags & flag.value] + [flags]
 
 
 class MessageEventObject(pydantic.BaseModel):
@@ -75,9 +87,7 @@ class MessageEventObject(pydantic.BaseModel):
     conversation_message_id: typing.Optional[int]
     edit_time: typing.Optional[int]
 
-    _normalize_flags = pydantic.validator("flags", allow_reuse=True)(
-        lambda flags: [flag for flag in MessageFlag if flags & flag.value] + [flags]
-    )
+    _normalize_flags = pydantic.validator("flags", allow_reuse=True)(normalize_flags)
 
 
 class MessageEventModel(BaseUserEvent):
@@ -87,8 +97,10 @@ class MessageEventModel(BaseUserEvent):
 class SetFlagsEventObject(pydantic.BaseModel):
     event_id: typing.Optional[int]
     message_id: typing.Optional[int]
-    flags: typing.Optional[int]
+    flags: typing.Optional[typing.Union[int, typing.List[MessageFlag]]]
     peer_id: typing.Optional[int]
+
+    _normalize_flags = pydantic.validator("flags", allow_reuse=True)(normalize_flags)
 
 
 class SetFlagsEventModel(BaseUserEvent):
@@ -125,6 +137,7 @@ class PlatformEnum(int, enum.Enum):
     WINDOWS_PHONE = 5
     WINDOWS_EIGHT = 6
     OFFICIAL_VK_OR_DESKTOP = 7
+    OTHER = 8
 
 
 class FriendOnlineEventObject(pydantic.BaseModel):
@@ -159,7 +172,9 @@ class FriendOfflineModel(BaseUserEvent):
 class SeenMentionInChatEventObject(pydantic.BaseModel):
     event_id: typing.Optional[int]
     peer_id: typing.Optional[int]
-    flags: typing.Optional[int]
+    flags: typing.Optional[typing.Union[int, typing.List[MessageFlag]]]
+
+    _normalize_flags = pydantic.validator("flags", allow_reuse=True)(normalize_flags)
 
 
 class SeenMentionInChatModel(BaseUserEvent):
@@ -169,7 +184,9 @@ class SeenMentionInChatModel(BaseUserEvent):
 class NewMentionInChatEventObject(pydantic.BaseModel):
     event_id: typing.Optional[int]
     peer_id: typing.Optional[int]
-    flags: typing.Optional[int]
+    flags: typing.Optional[typing.Union[int, typing.List[MessageFlag]]]
+
+    _normalize_flags = pydantic.validator("flags", allow_reuse=True)(normalize_flags)
 
 
 class NewMentionInChatModel(BaseUserEvent):
@@ -223,6 +240,15 @@ class ChangedChatSettingsModel(BaseUserEvent):
     object: ChangedChatSettingsEventObject = pydantic.Field(None)
 
 
+class ChangedChatSettingsUselessEventObject(pydantic.BaseModel):
+    event_id: typing.Optional[int]
+    chat_id: typing.Optional[int]
+
+
+class ChangedChatSettingsUselessModel(BaseUserEvent):
+    object: ChangedChatSettingsUselessEventObject = pydantic.Field(None)
+
+
 class TypingOrVoiceEventObject(pydantic.BaseModel):
     event_id: typing.Optional[int]
     peer_id: typing.Optional[int]
@@ -245,6 +271,25 @@ class ChangedUnreadDialogsCountModel(BaseUserEvent):
     object: ChangedUnreadDialogsCountEventObject = pydantic.Field(None)
 
 
+RESULT_EVENT_OBJECT_TYPE = typing.Union[
+    MessageEventModel,
+    SetFlagsEventModel,
+    ReadIncomingMessagesModel,
+    ReadOutgoingMessagesModel,
+    FriendOnlineModel,
+    FriendOfflineModel,
+    SeenMentionInChatModel,
+    SeenMentionInChatModel,
+    DeletedAllMessagesInDialogModel,
+    DropMessageCacheModel,
+    TypingOrVoiceModel,
+    NewMentionInChatModel,
+    ChangedChatSettingsModel,
+    ChangedChatSettingsUselessModel,
+    ChangedUnreadDialogsCountModel,
+]
+
+
 class EventId(enum.Enum):
     MESSAGE_EVENT = (3, 4, 5, 18)
     SET_FLAGS = 2
@@ -256,6 +301,7 @@ class EventId(enum.Enum):
     NEW_MENTION_IN_CHAT = 12
     DELETED_ALL_MESSAGES_IN_DIALOG = 13
     DROP_MESSAGE_CACHE = 19
+    CHANGE_CHAT_SETTINGS_USELESS = 51
     CHANGE_CHAT_SETTINGS = 52
     USER_TYPING_OR_MAKING_VOICE_MESSAGE = (63, 64)
     CHANGED_UNREAD_DIALOGS_COUNT = 80
@@ -329,12 +375,11 @@ _deleted_all_messages_in_chat = {
     2: "last_message_id",
 }
 
-_drop_message_cache = {
-    0: "event_id",
-    1: "message_id",
-}
+_drop_message_cache = {0: "event_id", 1: "message_id", 2: "expire_time"}
 
 _changed_chat_settings = {0: "event_id", 1: "type", 2: "peer_id", 3: "extra"}
+
+_changed_chat_settings_useless = {0: "event_id", 1: "chat_id"}
 
 _typing_or_voice = {
     0: "event_id",
@@ -350,6 +395,12 @@ _changed_unread_dialogs_count = {
     2: "count_with_notifications",
     3: "extra",
     4: "extra2",
+    5: "extra3",
+    6: "extra4",
+    7: "extra5",
+    8: "extra6",
+    9: "extra7",
+    # ну а че доки нет...
 }
 
 _events_dict = {
@@ -364,90 +415,122 @@ _events_dict = {
     EventId.DELETED_ALL_MESSAGES_IN_DIALOG: _deleted_all_messages_in_chat,
     EventId.DROP_MESSAGE_CACHE: _drop_message_cache,
     EventId.CHANGE_CHAT_SETTINGS: _changed_chat_settings,
+    EventId.CHANGE_CHAT_SETTINGS_USELESS: _changed_chat_settings_useless,
     EventId.CHANGED_UNREAD_DIALOGS_COUNT: _changed_unread_dialogs_count,
     EventId.USER_TYPING_OR_MAKING_VOICE_MESSAGE: _typing_or_voice,
 }
 
 
-def get_event_object(
-    raw_event: typing.List[typing.Union[str, typing.Any]],
-) -> typing.Optional[
-    typing.Union[
-        MessageEventModel,
-        SetFlagsEventModel,
-        ReadIncomingMessagesModel,
-        ReadOutgoingMessagesModel,
-        FriendOnlineModel,
-        FriendOfflineModel,
-        SeenMentionInChatModel,
-        SeenMentionInChatModel,
-        DeletedAllMessagesInDialogModel,
-        DropMessageCacheModel,
-        TypingOrVoiceModel,
-        NewMentionInChatModel,
-        ChangedChatSettingsModel,
-        ChangedUnreadDialogsCountModel,
-    ]
-]:
+def _parse_event(
+    raw_event: RAW_EVENT_TYPE,
+    event_id: EventId,
+    event_model: typing.Type[RESULT_EVENT_OBJECT_TYPE],
+    event_object: typing.Type[pydantic.BaseModel],
+) -> RESULT_EVENT_OBJECT_TYPE:
     event = {}
+
+    for event_number, event_param in enumerate(raw_event):
+        event[_events_dict[event_id][event_number]] = event_param
+    return event_model(object=event_object(**event))
+
+
+_parse_event_dict = {
+    EventId.SET_FLAGS.value: lambda raw_event: _parse_event(
+        raw_event=raw_event,
+        event_id=EventId.SET_FLAGS,
+        event_model=SetFlagsEventModel,
+        event_object=SetFlagsEventObject,
+    ),
+    EventId.READ_INCOMING_MESSAGES.value: lambda raw_event: _parse_event(
+        raw_event=raw_event,
+        event_id=EventId.READ_INCOMING_MESSAGES,
+        event_model=ReadIncomingMessagesModel,
+        event_object=ReadIncomingMessagesEventObject,
+    ),
+    EventId.READ_OUTGOING_MESSAGES.value: lambda raw_event: _parse_event(
+        raw_event=raw_event,
+        event_id=EventId.READ_OUTGOING_MESSAGES,
+        event_model=ReadOutgoingMessagesModel,
+        event_object=ReadOutgoingMessagesEventObject,
+    ),
+    EventId.FRIEND_ONLINE.value: lambda raw_event: _parse_event(
+        raw_event=raw_event,
+        event_id=EventId.FRIEND_ONLINE,
+        event_model=FriendOnlineModel,
+        event_object=FriendOnlineEventObject,
+    ),
+    EventId.FRIEND_OFFLINE.value: lambda raw_event: _parse_event(
+        raw_event=raw_event,
+        event_id=EventId.FRIEND_OFFLINE,
+        event_model=FriendOfflineModel,
+        event_object=FriendOfflineEventObject,
+    ),
+    EventId.SEEN_MENTION_IN_CHAT.value: lambda raw_event: _parse_event(
+        raw_event=raw_event,
+        event_id=EventId.SEEN_MENTION_IN_CHAT,
+        event_model=SeenMentionInChatModel,
+        event_object=SeenMentionInChatEventObject,
+    ),
+    EventId.NEW_MENTION_IN_CHAT.value: lambda raw_event: _parse_event(
+        raw_event=raw_event,
+        event_id=EventId.NEW_MENTION_IN_CHAT,
+        event_model=NewMentionInChatModel,
+        event_object=NewMentionInChatEventObject,
+    ),
+    EventId.DELETED_ALL_MESSAGES_IN_DIALOG.value: lambda raw_event: _parse_event(
+        raw_event=raw_event,
+        event_id=EventId.DELETED_ALL_MESSAGES_IN_DIALOG,
+        event_model=DeletedAllMessagesInDialogModel,
+        event_object=DeletedAllMessagesInDialogEventObject,
+    ),
+    EventId.DROP_MESSAGE_CACHE.value: lambda raw_event: _parse_event(
+        raw_event=raw_event,
+        event_id=EventId.DROP_MESSAGE_CACHE,
+        event_model=DropMessageCacheModel,
+        event_object=DropMessageCacheEventObject,
+    ),
+    EventId.CHANGE_CHAT_SETTINGS.value: lambda raw_event: _parse_event(
+        raw_event=raw_event,
+        event_id=EventId.CHANGE_CHAT_SETTINGS,
+        event_model=ChangedChatSettingsModel,
+        event_object=ChangedChatSettingsEventObject,
+    ),
+    EventId.CHANGE_CHAT_SETTINGS_USELESS.value: lambda raw_event: _parse_event(
+        raw_event=raw_event,
+        event_id=EventId.CHANGE_CHAT_SETTINGS_USELESS,
+        event_model=ChangedChatSettingsUselessModel,
+        event_object=ChangedChatSettingsUselessEventObject,
+    ),
+    EventId.CHANGED_UNREAD_DIALOGS_COUNT.value: lambda raw_event: _parse_event(
+        raw_event=raw_event,
+        event_id=EventId.CHANGED_UNREAD_DIALOGS_COUNT,
+        event_model=ChangedUnreadDialogsCountModel,
+        event_object=ChangedUnreadDialogsCountEventObject,
+    ),
+}
+
+
+def get_event_object(
+    raw_event: RAW_EVENT_TYPE,
+) -> typing.Optional[RESULT_EVENT_OBJECT_TYPE]:
     event_type = raw_event[0]
 
     if event_type in EventId.MESSAGE_EVENT.value:
-        for event_number, event_param in enumerate(raw_event):
-            event[_events_dict[EventId.MESSAGE_EVENT][event_number]] = event_param
-        return MessageEventModel(object=MessageEventObject(**event))
-    if event_type == EventId.SET_FLAGS.value:
-        for event_number, event_param in enumerate(raw_event):
-            event[_events_dict[EventId.SET_FLAGS][event_number]] = event_param
-        return SetFlagsEventModel(object=(SetFlagsEventObject(**event)))
-    if event_type == EventId.READ_INCOMING_MESSAGES.value:
-        for event_number, event_param in enumerate(raw_event):
-            event[_events_dict[EventId.READ_INCOMING_MESSAGES][event_number]] = event_param
-        return ReadIncomingMessagesModel(object=(ReadIncomingMessagesEventObject(**event)))
-    if event_type == EventId.READ_OUTGOING_MESSAGES.value:
-        for event_number, event_param in enumerate(raw_event):
-            event[_events_dict[EventId.READ_OUTGOING_MESSAGES][event_number]] = event_param
-        return ReadOutgoingMessagesModel(object=(ReadOutgoingMessagesEventObject(**event)))
-    if event_type == EventId.FRIEND_ONLINE.value:
-        for event_number, event_param in enumerate(raw_event):
-            event[_events_dict[EventId.FRIEND_ONLINE][event_number]] = event_param
-        return FriendOnlineModel(object=(FriendOnlineEventObject(**event)))
-    if event_type == EventId.FRIEND_OFFLINE.value:
-        for event_number, event_param in enumerate(raw_event):
-            event[_events_dict[EventId.FRIEND_OFFLINE][event_number]] = event_param
-        return FriendOfflineModel(object=(FriendOfflineEventObject(**event)))
-    if event_type == EventId.SEEN_MENTION_IN_CHAT.value:
-        for event_number, event_param in enumerate(raw_event):
-            event[_events_dict[EventId.SEEN_MENTION_IN_CHAT][event_number]] = event_param
-        return SeenMentionInChatModel(object=(SeenMentionInChatEventObject(**event)))
-    if event_type == EventId.NEW_MENTION_IN_CHAT.value:
-        for event_number, event_param in enumerate(raw_event):
-            event[_events_dict[EventId.NEW_MENTION_IN_CHAT][event_number]] = event_param
-        return NewMentionInChatModel(object=(NewMentionInChatEventObject(**event)))
-    if event_type == EventId.DELETED_ALL_MESSAGES_IN_DIALOG.value:
-        for event_number, event_param in enumerate(raw_event):
-            event[_events_dict[EventId.DELETED_ALL_MESSAGES_IN_DIALOG][event_number]] = event_param
-        return DeletedAllMessagesInDialogModel(
-            object=(DeletedAllMessagesInDialogEventObject(**event))
+        return _parse_event(
+            raw_event=raw_event,
+            event_id=EventId.MESSAGE_EVENT,
+            event_model=MessageEventModel,
+            event_object=MessageEventObject,
         )
-    if event_type == EventId.DROP_MESSAGE_CACHE.value:
-        for event_number, event_param in enumerate(raw_event):
-            event[_events_dict[EventId.DROP_MESSAGE_CACHE][event_number]] = event_param
-        return DropMessageCacheModel(object=(DropMessageCacheEventObject(**event)))
-    if event_type == EventId.CHANGE_CHAT_SETTINGS.value:
-        for event_number, event_param in enumerate(raw_event):
-            event[_events_dict[EventId.CHANGE_CHAT_SETTINGS][event_number]] = event_param
-        return ChangedChatSettingsModel(object=(ChangedChatSettingsEventObject(**event)))
     if event_type in EventId.USER_TYPING_OR_MAKING_VOICE_MESSAGE.value:
-        for event_number, event_param in enumerate(raw_event):
-            event[
-                _events_dict[EventId.USER_TYPING_OR_MAKING_VOICE_MESSAGE][event_number]
-            ] = event_param
-        return TypingOrVoiceModel(object=(TypingOrVoiceEventObject(**event)))
-    if event_type == EventId.CHANGED_UNREAD_DIALOGS_COUNT.value:
-        for event_number, event_param in enumerate(raw_event):
-            event[_events_dict[EventId.CHANGED_UNREAD_DIALOGS_COUNT][event_number]] = event_param
-        return ChangedUnreadDialogsCountModel(
-            object=(ChangedUnreadDialogsCountEventObject(**event))
+        return _parse_event(
+            raw_event=raw_event,
+            event_id=EventId.USER_TYPING_OR_MAKING_VOICE_MESSAGE,
+            event_model=TypingOrVoiceModel,
+            event_object=TypingOrVoiceEventObject,
         )
-    return None
+
+    if event_type not in _parse_event_dict:
+        return None
+
+    return _parse_event_dict[event_type](raw_event)
