@@ -1936,6 +1936,10 @@ class AudioAudio(pydantic.BaseModel):
         None,
         description="Performer name",
     )
+    owner_id: int = pydantic.Field(
+        ...,
+        description="Owner ID"
+    )
 
 
 class BaseCity(pydantic.BaseModel):
