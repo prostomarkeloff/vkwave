@@ -1,25 +1,25 @@
-# Контекст
+# Context
 
-Когда вы вызываете `client.create_request` вы получаете контекст этого запроса.
+When you call `client.create_request` you get context of the request.
 
-Он содержит информацию о результате запроса (конечно, если вы вызываете его после `send_request`) и ошибках.
+It contains request's result
 
-## Исключения
+## Exceptions
 
-Клиенты могут вызывать исключения. Они должны описывать их в `RequestContext` для обработки хендлерами для исключений.
+Clients can raise exceptins. They should describe it in `RequestContext`, so exception handlers can handle them.
 
-Одно исключение может иметь только один хендлер.
+One exception can have only one handler.
 
 ```python
 # ...
 async def timeout_handler(ctx: RequestContext) -> None:
-    # только словарь
+    # only dict
     ctx.result.exception_data = {"data": "Exception was occurred.."}
 
 # ...
-ctx.set_exception_handler(TimeoutException, timeout_handler)  # обрабатываем ошибка таймаута
+ctx.set_exception_handler(TimeoutException, timeout_handler)  # handling timeout error
 
-await ctx.send_request() # если произойдет TimeoutException, ошибка обработается в нашем хендлере
+await ctx.send_request() # if TimeoutException occured , error will handled in our handler
 
 if ctx.result.state is ResultState.HANDLED_EXCEPTION:
     data = ctx.result.exception_data
@@ -31,4 +31,3 @@ else:
 
 print(data)
 ```
-Таким образом мы можем обрабатывать любые ошибки, в частности ошибку таймаута.
