@@ -18,7 +18,7 @@
     
     
       
-        <title>Кастомные клиенты - VKWave</title>
+        <title>Custom clients - VKWave</title>
       
     
     
@@ -67,7 +67,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#custom-clients" class="md-skip">
           Skip to content
         </a>
       
@@ -96,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Кастомные клиенты
+              Custom clients
             
           </span>
         </div>
@@ -416,7 +416,7 @@
   
     <li class="md-nav__item">
       <a href="../context" class="md-nav__link">
-        Контекст
+        Context
       </a>
     </li>
   
@@ -437,12 +437,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Кастомные клиенты
+          Custom clients
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="." class="md-nav__link md-nav__link--active">
-        Кастомные клиенты
+        Custom clients
       </a>
       
         
@@ -460,15 +460,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    Для чего?
+  <a href="#what-for" class="md-nav__link">
+    What for?
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    Пример
+  <a href="#example" class="md-nav__link">
+    Example
   </a>
   
 </li>
@@ -601,7 +601,7 @@
   
     <li class="md-nav__item">
       <a href="../../getting_started/multitoken" class="md-nav__link">
-        Мультитокен
+        Multitoken
       </a>
     </li>
   
@@ -876,15 +876,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    Для чего?
+  <a href="#what-for" class="md-nav__link">
+    What for?
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    Пример
+  <a href="#example" class="md-nav__link">
+    Example
   </a>
   
 </li>
@@ -906,15 +906,13 @@
                   </a>
                 
                 
-                <h1 id="_1">Кастомные клиенты<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<p>Использование VKWave дает хорошие возможности для кастомизации. </p>
-<p>Конечно и другие библиотеки имеют похожие фишки, но VKWave дает больший простор для действий.</p>
-<h2 id="_2">Для чего?<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>Пока мы создаем приложение у нас возникают проблемы. Лимиты в API, пожелания заказчиков и подобные.</p>
-<p>Некоторые из них вы можете решить, путем изменения <code>высокоуровневого</code> кода. VKWave представляет другой подход - вы можете контролировать <code>low-level</code> вашего приложения. И да, VKWave дает делать это простейшим путем, ваш код останется <code>high-level</code>.</p>
-<h2 id="_3">Пример<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<p>В этом примере я покажу вам как создать <code>поддельный</code> клиент. В реальность он может быть чем угодно, например, вы можете слать запросы в другой сервер.</p>
-<p><strong>Note</strong>: Тайп хинты будут опущены в данном примере.</p>
+                <h1 id="custom-clients">Custom clients<a class="headerlink" href="#custom-clients" title="Permanent link">&para;</a></h1>
+<p>Using of VKWave gives you good customization options. </p>
+<h2 id="what-for">What for?<a class="headerlink" href="#what-for" title="Permanent link">&para;</a></h2>
+<p>When we creating application, we can get a lot of problems, like API limits, customers' requests and so on. </p>
+<p>Some of them you can solve by modifying <em>high-level</em> code. VKWave gives another way to do it - you can control <em>low-level</em> of your application and your code will remain <em>high-level</em>.</p>
+<h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
+<p>How to create custom client? It can be whatever you want, i. e. it can send requests to another server.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vkwave.client.factory</span> <span class="kn">import</span> <span class="n">DefaultFactory</span><span class="p">,</span> <span class="n">AbstractFactory</span>
 
 <span class="k">async</span> <span class="k">def</span> <span class="nf">callback</span><span class="p">(</span><span class="n">method_name</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
@@ -943,7 +941,7 @@
     <span class="k">async</span> <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;closing nothing...&quot;</span><span class="p">)</span>
 </code></pre></div>
-<p>Другие части <code>vkwave core</code> будут принимать http клиент как аргумент.</p>
+<p>Other parts of <code>vkwave core</code> will get http клиент as parameter.</p>
                 
               
               
@@ -971,7 +969,7 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Контекст
+              Context
             </div>
           </div>
         </a>

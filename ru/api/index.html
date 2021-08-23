@@ -944,11 +944,11 @@
 <p>Токены в VKWave представлены обычными Python классами с методом <code>get_token</code>. Он может бысть синхронным или асиннхронным</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vkwave.api.token.token</span> <span class="kn">import</span> <span class="n">UserSyncSingleToken</span><span class="p">,</span> <span class="n">BotSyncSingleToken</span><span class="p">,</span> <span class="n">Token</span>
 
-<span class="c1"># our tokens. we got them from VK</span>
+<span class="c1"># Токен, который мы получаем от ВК </span>
 <span class="n">bot_plain_token</span> <span class="o">=</span> <span class="n">Token</span><span class="p">(</span><span class="s2">&quot;...&quot;</span><span class="p">)</span>
 <span class="n">user_plain_token</span> <span class="o">=</span> <span class="n">Token</span><span class="p">(</span><span class="s2">&quot;...&quot;</span><span class="p">)</span>
 
-<span class="c1"># tokens that are ready for using.</span>
+<span class="c1"># Токен, который уже можно использовать</span>
 <span class="n">bot_token</span> <span class="o">=</span> <span class="n">BotSyncSingleToken</span><span class="p">(</span><span class="n">bot_plain_token</span><span class="p">)</span>
 <span class="n">user_token</span> <span class="o">=</span> <span class="n">UserSyncSingleToken</span><span class="p">(</span><span class="n">user_plain_token</span><span class="p">)</span>
 

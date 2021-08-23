@@ -414,7 +414,7 @@
   
     <li class="md-nav__item">
       <a href="../../client/context" class="md-nav__link">
-        Контекст
+        Context
       </a>
     </li>
   
@@ -426,7 +426,7 @@
   
     <li class="md-nav__item">
       <a href="../../client/custom" class="md-nav__link">
-        Кастомные клиенты
+        Custom clients
       </a>
     </li>
   
@@ -554,7 +554,7 @@
   
     <li class="md-nav__item">
       <a href="../multitoken" class="md-nav__link">
-        Мультитокен
+        Multitoken
       </a>
     </li>
   
@@ -855,6 +855,16 @@
 </code></pre></div>
 <p>You can pass <a href="../filters">filters</a> when creating a router (add a default filters), thanks to which events will process faster.</p>
 <div class="highlight"><pre><span></span><code><span class="n">router</span> <span class="o">=</span> <span class="n">DefaultRouter</span><span class="p">(</span><span class="n">SomeFilter</span><span class="p">())</span>
+
+
+<span class="nd">@bots</span><span class="o">.</span><span class="n">simple_bot_message_handler</span><span class="p">(</span>
+    <span class="n">router</span><span class="p">,</span>
+    <span class="o">&lt;</span><span class="n">filters</span><span class="o">&gt;</span>
+<span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="n">ans</span><span class="p">:</span> <span class="n">bots</span><span class="o">.</span><span class="n">SimpleBotEvent</span><span class="p">):</span>
+    <span class="k">await</span> <span class="n">ans</span><span class="o">.</span><span class="n">answer</span><span class="p">(</span>
+        <span class="s2">&quot;answer&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
 </code></pre></div>
                 
               
@@ -883,7 +893,7 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Мультитокен
+              Multitoken
             </div>
           </div>
         </a>

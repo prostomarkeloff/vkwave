@@ -574,9 +574,46 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Роутеры
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="." class="md-nav__link md-nav__link--active">
         Роутеры
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    Создание
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    Использование
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -832,6 +869,28 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    Создание
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    Использование
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -849,12 +908,28 @@
                 
                 <h1 id="_1">Роутеры<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <p>Роутеры - самая важная сущность любого бота в VkWave. В роутерах содержатся хендлеры, благодаря которым и осуществляется обработка событий.</p>
+<h2 id="_2">Создание<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vkwave.bots</span> <span class="kn">import</span> <span class="n">DefaultRouter</span>
 
 <span class="n">router</span> <span class="o">=</span> <span class="n">DefaultRouter</span><span class="p">()</span>
 </code></pre></div>
 <p>Роутеры могут принимать на вход <a href="../filters">фильтры</a>, благодаря которым события будут отсеиваться быстрее, не проходя сквозь все хендлеры</p>
 <div class="highlight"><pre><span></span><code><span class="n">router</span> <span class="o">=</span> <span class="n">DefaultRouter</span><span class="p">(</span><span class="n">SomeFilter</span><span class="p">())</span>
+
+<span class="nd">@bots</span><span class="o">.</span><span class="n">simple_bot_message_handler</span><span class="p">(</span>
+    <span class="n">router</span><span class="p">,</span>
+    <span class="o">&lt;</span><span class="n">фильтры</span><span class="o">&gt;</span>
+<span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="n">ans</span><span class="p">:</span> <span class="n">bots</span><span class="o">.</span><span class="n">SimpleBotEvent</span><span class="p">):</span>
+    <span class="k">await</span> <span class="n">ans</span><span class="o">.</span><span class="n">answer</span><span class="p">(</span>
+        <span class="s2">&quot;Ответ&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+</code></pre></div>
+<h2 id="_3">Использование<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">module</span> <span class="kn">import</span> <span class="n">router</span>
+
+<span class="n">bot</span> <span class="o">=</span> <span class="n">SimpleLongPollBot</span><span class="p">(</span><span class="n">tokens</span><span class="o">=</span><span class="s2">&quot;Token&quot;</span><span class="p">,</span> <span class="n">group_id</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span>
+<span class="n">bot</span><span class="o">.</span><span class="n">dispatcher</span><span class="o">.</span><span class="n">add_router</span><span class="p">(</span><span class="n">router</span><span class="p">)</span>
 </code></pre></div>
                 
               

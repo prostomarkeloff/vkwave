@@ -414,7 +414,7 @@
   
     <li class="md-nav__item">
       <a href="../../client/context" class="md-nav__link">
-        Контекст
+        Context
       </a>
     </li>
   
@@ -426,7 +426,7 @@
   
     <li class="md-nav__item">
       <a href="../../client/custom" class="md-nav__link">
-        Кастомные клиенты
+        Custom clients
       </a>
     </li>
   
@@ -554,7 +554,7 @@
   
     <li class="md-nav__item">
       <a href="../multitoken" class="md-nav__link">
-        Мультитокен
+        Multitoken
       </a>
     </li>
   
@@ -987,6 +987,37 @@
                 
                 
                 <h1 id="attachments-uploaders">Attachments' uploaders<a class="headerlink" href="#attachments-uploaders" title="Permanent link">&para;</a></h1>
+<p>Each uploader implements <code>BaseUploader</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>get_attachment_from_io</code></td>
+<td>Uploads attachment from bytes</td>
+</tr>
+<tr>
+<td><code>get_attachment_from_path</code></td>
+<td>Uploads attachment from disk</td>
+</tr>
+<tr>
+<td><code>get_attachments_from_paths</code></td>
+<td>Uploads several attachments from disk</td>
+</tr>
+<tr>
+<td><code>get_attachment_from_link</code></td>
+<td>Uploads attachment from link</td>
+</tr>
+<tr>
+<td><code>get_attachments_from_links</code></td>
+<td>Uploads several attachments from links</td>
+</tr>
+</tbody>
+</table>
 <h2 id="to-message">To message<a class="headerlink" href="#to-message" title="Permanent link">&para;</a></h2>
 <h3 id="images">Images<a class="headerlink" href="#images" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">vkwave.api</span> <span class="kn">import</span> <span class="n">API</span>

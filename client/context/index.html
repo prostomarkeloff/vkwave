@@ -898,7 +898,7 @@
 <h2 id="_2">Исключения<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>Клиенты могут вызывать исключения. Они должны описывать их в <code>RequestContext</code> для обработки хендлерами для исключений.</p>
 <p>Одно исключение может иметь только один хендлер.</p>
-<p><div class="highlight"><pre><span></span><code><span class="c1"># ...</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># ...</span>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">timeout_handler</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">RequestContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="c1"># только словарь</span>
     <span class="n">ctx</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">exception_data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="s2">&quot;Exception was occurred..&quot;</span><span class="p">}</span>
@@ -918,7 +918,6 @@
 
 <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </code></pre></div>
-Таким образом мы можем обрабатывать любые ошибки, в частности ошибку таймаута.</p>
                 
               
               

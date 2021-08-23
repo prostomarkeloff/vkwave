@@ -18,7 +18,7 @@
     
     
       
-        <title>Контекст - VKWave</title>
+        <title>Context - VKWave</title>
       
     
     
@@ -67,7 +67,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#context" class="md-skip">
           Skip to content
         </a>
       
@@ -96,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Контекст
+              Context
             
           </span>
         </div>
@@ -425,12 +425,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Контекст
+          Context
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="." class="md-nav__link md-nav__link--active">
-        Контекст
+        Context
       </a>
       
         
@@ -448,8 +448,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    Исключения
+  <a href="#exceptions" class="md-nav__link">
+    Exceptions
   </a>
   
 </li>
@@ -468,7 +468,7 @@
   
     <li class="md-nav__item">
       <a href="../custom" class="md-nav__link">
-        Кастомные клиенты
+        Custom clients
       </a>
     </li>
   
@@ -594,7 +594,7 @@
   
     <li class="md-nav__item">
       <a href="../../getting_started/multitoken" class="md-nav__link">
-        Мультитокен
+        Multitoken
       </a>
     </li>
   
@@ -869,8 +869,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    Исключения
+  <a href="#exceptions" class="md-nav__link">
+    Exceptions
   </a>
   
 </li>
@@ -892,21 +892,21 @@
                   </a>
                 
                 
-                <h1 id="_1">Контекст<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<p>Когда вы вызываете <code>client.create_request</code> вы получаете контекст этого запроса.</p>
-<p>Он содержит информацию о результате запроса (конечно, если вы вызываете его после <code>send_request</code>) и ошибках.</p>
-<h2 id="_2">Исключения<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>Клиенты могут вызывать исключения. Они должны описывать их в <code>RequestContext</code> для обработки хендлерами для исключений.</p>
-<p>Одно исключение может иметь только один хендлер.</p>
-<p><div class="highlight"><pre><span></span><code><span class="c1"># ...</span>
+                <h1 id="context">Context<a class="headerlink" href="#context" title="Permanent link">&para;</a></h1>
+<p>When you call <code>client.create_request</code> you get context of the request.</p>
+<p>It contains request's result</p>
+<h2 id="exceptions">Exceptions<a class="headerlink" href="#exceptions" title="Permanent link">&para;</a></h2>
+<p>Clients can raise exceptins. They should describe it in <code>RequestContext</code>, so exception handlers can handle them.</p>
+<p>One exception can have only one handler.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># ...</span>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">timeout_handler</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">RequestContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="c1"># только словарь</span>
+    <span class="c1"># only dict</span>
     <span class="n">ctx</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">exception_data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="s2">&quot;Exception was occurred..&quot;</span><span class="p">}</span>
 
 <span class="c1"># ...</span>
-<span class="n">ctx</span><span class="o">.</span><span class="n">set_exception_handler</span><span class="p">(</span><span class="n">TimeoutException</span><span class="p">,</span> <span class="n">timeout_handler</span><span class="p">)</span>  <span class="c1"># обрабатываем ошибка таймаута</span>
+<span class="n">ctx</span><span class="o">.</span><span class="n">set_exception_handler</span><span class="p">(</span><span class="n">TimeoutException</span><span class="p">,</span> <span class="n">timeout_handler</span><span class="p">)</span>  <span class="c1"># handling timeout error</span>
 
-<span class="k">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">send_request</span><span class="p">()</span> <span class="c1"># если произойдет TimeoutException, ошибка обработается в нашем хендлере</span>
+<span class="k">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">send_request</span><span class="p">()</span> <span class="c1"># if TimeoutException occured , error will handled in our handler</span>
 
 <span class="k">if</span> <span class="n">ctx</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">state</span> <span class="ow">is</span> <span class="n">ResultState</span><span class="o">.</span><span class="n">HANDLED_EXCEPTION</span><span class="p">:</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">exception_data</span>
@@ -918,7 +918,6 @@
 
 <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </code></pre></div>
-Таким образом мы можем обрабатывать любые ошибки, в частности ошибку таймаута.</p>
                 
               
               
@@ -958,7 +957,7 @@
               <span class="md-footer__direction">
                 Next
               </span>
-              Кастомные клиенты
+              Custom clients
             </div>
           </div>
           <div class="md-footer__button md-icon">

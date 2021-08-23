@@ -414,7 +414,7 @@
   
     <li class="md-nav__item">
       <a href="../client/context" class="md-nav__link">
-        Контекст
+        Context
       </a>
     </li>
   
@@ -426,7 +426,7 @@
   
     <li class="md-nav__item">
       <a href="../client/custom" class="md-nav__link">
-        Кастомные клиенты
+        Custom clients
       </a>
     </li>
   
@@ -552,7 +552,7 @@
   
     <li class="md-nav__item">
       <a href="../getting_started/multitoken" class="md-nav__link">
-        Мультитокен
+        Multitoken
       </a>
     </li>
   
@@ -893,10 +893,9 @@
                 
                 
                 <h1 id="_1">Обзор<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<p>Эта часть содержит pydantic типы, основанные на официальной vk-schema.</p>
+<p>This part contains pydantic types, based on official vk-schema.</p>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
-<p>Вы можете использовать этот модуль для стандартизации ваших данных, полученных от Вконтакте. Для примера 
-вы можете сделать запрос к vk api и получить статически типизированный объект.</p>
+<p>You can use this module to normalize data got from VK and get static typed object.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">from</span> <span class="nn">vkwave.types.responses</span> <span class="kn">import</span> <span class="n">StatusGetResponse</span>
 
@@ -912,7 +911,6 @@
 <span class="n">status</span><span class="p">:</span> <span class="n">StatusGetResponse</span> <span class="o">=</span> <span class="n">get_my_status</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="s2">&quot;123&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">status</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
 </code></pre></div>
-<p>Что важнее, <code>vkwave.types</code> содержит ВСЕ части vk-schema и постоянно обновляется.</p>
                 
               
               
