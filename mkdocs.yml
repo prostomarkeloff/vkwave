@@ -46,6 +46,9 @@ plugins:
         ru: "Русский"
         en: "English"
       default_language: 'ru'
+  - mkdocstrings:
+      watch:
+        - vkwave
 
 
 markdown_extensions:
