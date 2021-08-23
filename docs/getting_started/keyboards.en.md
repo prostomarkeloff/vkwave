@@ -1,6 +1,6 @@
 # Keyboards
 
-For convinient generation of keyboards use the `Keyboard` from `vkwave.bots.utils.keyboards`
+For convinient generating of keyboards use the `Keyboard` from `vkwave.bots.utils.keyboards`
 
 ## Buttons types
 
