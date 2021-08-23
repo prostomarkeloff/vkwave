@@ -93,4 +93,9 @@ class BotEvent(Event[BaseBotEvent]):
 
     @property
     def api_ctx(self) -> APIOptionsRequestContext:
+        """Контекст API ВК. Позволяет использовать все методы API ВК от имени бота.
+
+        Returns:
+            APIOptionsRequestContext: Контекст API
+        """
         return self._api_ctx
