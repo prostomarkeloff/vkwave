@@ -9,7 +9,6 @@ on:
 jobs:
   build:
     runs-on: ${{ matrix.os }}
-    continue-on-error: true  # Временно, пока не починим MyPy
     strategy:
       max-parallel: 6
       matrix:
@@ -48,13 +47,16 @@ jobs:
           poetry run mypy vkwave
 
       - name: Run black
+        if: always()
         run: |
           poetry run black vkwave tests
 
       - name: Run Isort
+        if: always()
         run: |
           poetry run isort vkwave tests
 
       - name: Run tests
+        if: always()
         run: |
           poetry run pytest
