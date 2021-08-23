@@ -12,4 +12,14 @@ You can pass [filters](filters/index.en.md) when creating a router (add a defaul
 
 ``` python
 router = DefaultRouter(SomeFilter())
+
+
+@bots.simple_bot_message_handler(
+    router,
+    <filters>
+)
+async def handler(ans: bots.SimpleBotEvent):
+    await ans.answer(
+        "answer",
+    )
 ```
