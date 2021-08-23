@@ -2,6 +2,8 @@
 
 > VKWave is come.
 
+> Bot shouldn't be your first project. At first learn language, then do something easier.
+
 # VkWave
 
 [:russia: Русская версия](readme.md)
