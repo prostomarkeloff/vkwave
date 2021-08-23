@@ -5,6 +5,7 @@
 ## Содержание
 
 [Эхо-бот](echo.ru.md)  
+[События](events.ru.md)
 [Фильтры](filters/index.ru.md)  
 [Мультитокен](multitoken.ru.md)  
 [Боты-клоны](clones.ru.md)  
