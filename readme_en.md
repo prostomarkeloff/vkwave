@@ -4,6 +4,8 @@
 
 # VkWave
 
+[:russia: Русская версия](readme.md)
+
 VKWave is a framework to create performance and extensible projects, working with vk.com's API.
 
 VKWave inspired by: [aiogram](https://github.com/aiogram/aiogram), vk.py and so on.

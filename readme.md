@@ -4,6 +4,8 @@
 
 # VkWave
 
+[:us: English version](readme_en.md)
+
 VKWave - это фреймворк для создания производительных и лёгких в расширении проектов, взаимодействующих с API ВКонтакте.
 
 VKWave вдохновлен многими библиотеками, в частности: [aiogram](https://github.com/aiogram/aiogram), vk.py и многими другими.
