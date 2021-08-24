@@ -1,76 +1,119 @@
-# Contributor Covenant Code of Conduct
+# Кодекс Поведения участника
 
-## Our Pledge
+## Наши обязательства
 
-In the interest of fostering an open and welcoming environment, we as
-contributors and maintainers pledge to making participation in our project and
-our community a harassment-free experience for everyone, regardless of age, body
-size, disability, ethnicity, sex characteristics, gender identity and expression,
-level of experience, education, socio-economic status, nationality, personal
-appearance, race, religion, or sexual identity and orientation.
+Мы, как участники, авторы и лидеры обязуемся сделать участие в сообществе
+свободным от притеснений для всех, независимо от возраста, телосложения,
+видимых или невидимых ограничений способности, этнической принадлежности,
+половых признаков, гендерной идентичности и выражения, уровня опыта,
+образования, социо-экономического статуса, национальности, внешности,
+расы, религии, или сексуальной идентичности и ориентации.
 
-## Our Standards
+Мы обещаем действовать и взаимодействовать таким образом, чтобы вносить вклад в открытое,
+дружелюбное, многообразное, инклюзивное и здоровое сообщество.
 
-Examples of behavior that contributes to creating a positive environment
-include:
+## Наши стандарты
 
-* Using welcoming and inclusive language
-* Being respectful of differing viewpoints and experiences
-* Gracefully accepting constructive criticism
-* Focusing on what is best for the community
-* Showing empathy towards other community members
+Примеры поведения, создающие условия для благоприятных взаимоотношений включают в себя:
 
-Examples of unacceptable behavior by participants include:
+* Проявление доброты и эмпатии к другим участникам проекта
+* Уважение к чужой точке зрения и опыту
+* Конструктивная критика и принятие конструктивной критики
+* Принятие ответственности, принесение извинений тем, кто пострадал от наших ошибок
+  и извлечение уроков из опыта
+* Ориентирование на то, что лучше подходит для сообщества, а не только для нас лично
 
-* The use of sexualized language or imagery and unwelcome sexual attention or
- advances
-* Trolling, insulting/derogatory comments, and personal or political attacks
-* Public or private harassment
-* Publishing others' private information, such as a physical or electronic
- address, without explicit permission
-* Other conduct which could reasonably be considered inappropriate in a
- professional setting
+Примеры неприемлемого поведения участников включают в себя:
 
-## Our Responsibilities
+* Использование выражений или изображений сексуального характера и нежелательное сексуальное внимание или домогательство в любой форме
+* Троллинг, оскорбительные или уничижительные комментарии, переход на личности или затрагивание политических убеждений
+* Публичное или приватное домогательство
+* Публикация личной информации других лиц, например, физического или электронного адреса, без явного разрешения
+* Иное поведение, которое обоснованно считать неуместным в профессиональной обстановке
 
-Project maintainers are responsible for clarifying the standards of acceptable
-behavior and are expected to take appropriate and fair corrective action in
-response to any instances of unacceptable behavior.
+## Обязанности
 
-Project maintainers have the right and responsibility to remove, edit, or
-reject comments, commits, code, wiki edits, issues, and other contributions
-that are not aligned to this Code of Conduct, or to ban temporarily or
-permanently any contributor for other behaviors that they deem inappropriate,
-threatening, offensive, or harmful.
+Лидеры сообщества отвечают за разъяснение и применение наших стандартов приемлемого
+поведения и будут предпринимать соответствующие и честные меры по исправлению положения
+в ответ на любое поведение, которое они сочтут неприемлемым, угрожающим, оскорбительным или вредным.
 
-## Scope
+Лидеры сообщества обладают правом и обязанностью удалять, редактировать или отклонять
+комментарии, коммиты, код, изменения в вики, вопросы и другой вклад, который не совпадает
+с Кодексом Поведения, и предоставят причины принятого решения, когда сочтут нужным.
 
-This Code of Conduct applies both within project spaces and in public spaces
-when an individual is representing the project or its community. Examples of
-representing a project or community include using an official project e-mail
-address, posting via an official social media account, or acting as an appointed
-representative at an online or offline event. Representation of a project may be
-further defined and clarified by project maintainers.
+## Область применения
 
-## Enforcement
+Данный Кодекс Поведения применим во всех во всех публичных физических и цифровых пространства сообщества,
+а также когда человек официально представляет сообщество в публичных местах.
+Примеры представления проекта или сообщества включают использование официальной электронной почты,
+публикации в официальном аккаунте в социальных сетях,
+или упоминания как представителя в онлайн или оффлайн мероприятии.
 
-Instances of abusive, harassing, or otherwise unacceptable behavior may be
-reported by contacting the project team at push@fsc.dev. All
-complaints will be reviewed and investigated and will result in a response that
-is deemed necessary and appropriate to the circumstances. The project team is
-obligated to maintain confidentiality with regard to the reporter of an incident.
-Further details of specific enforcement policies may be posted separately.
+## Приведение в исполнение
 
-Project maintainers who do not follow or enforce the Code of Conduct in good
-faith may face temporary or permanent repercussions as determined by other
-members of the project's leadership.
+О случаях домогательства, а так же оскорбительного или иного другого неприемлемого
+поведения можно сообщить ответственным лидерам сообщества с помощью [dadyarri@gmail.com](mailto:dadyarri@gmail.com).
+Все жалобы будут рассмотрены и расследованы оперативно и беспристрастно.
 
-## Attribution
+Все лидеры сообщества обязаны уважать неприкосновенность частной жизни и личную
+неприкосновенность автора сообщения.
 
-This Code of Conduct is adapted from the [Contributor Covenant][homepage], version 1.4,
-available at https://www.contributor-covenant.org/version/1/4/code-of-conduct.html
+## Руководство по исполнению
+
+Лидеры сообщества будут следовать следующим Принципам Воздействия в Сообществе,
+чтобы определить последствия для тех, кого они считают виновными в нарушении данного Кодекса Поведения:
+
+### 1. Исправление
+
+**Общественное влияние**: Использование недопустимой лексики или другое поведение,
+считающиеся непрофессиональным или нежелательным в сообществе.
+
+**Последствия**: Личное, письменное предупреждение от лидеров сообщества,
+объясняющее суть нарушения и почему такое поведение
+было неуместно. Лидеры сообщества могут попросить принести публичное извинение.
+
+### 2. Предупреждение
+
+**Общественное влияние**: Нарушение в результате одного инцидента или серии действий.
+
+**Последствия**: Предупреждение о последствиях в случае продолжающегося неуместного поведения.
+На определенное время не допускается взаимодействие с людьми, вовлеченными в инцидент,
+включая незапрошенное взаимодействие
+с теми, кто обеспечивает соблюдение Кодекса. Это включает в себя избегание взаимодействия
+в публичных пространствах, а так же во внешних каналах,
+таких как социальные сети. Нарушение этих правил влечет за собой временный или вечный бан.
+
+### 3. Временный бан
+
+**Общественное влияние**: Серьёзное нарушение стандартов сообщества,
+включая продолжительное неуместное поведение.
+
+**Последствия**: Временный запрет (бан) на любое взаимодействие
+или публичное общение с сообществом на определенный период времени.
+На этот период не допускается публичное или личное взаимодействие с людьми,
+вовлеченными в инцидент, включая незапрошенное взаимодействие
+с теми, кто обеспечивает соблюдение Кодекса.
+Нарушение этих правил влечет за собой вечный бан.
+
+### 4. Вечный бан
+
+**Общественное влияние**: Демонстрация систематических нарушений стандартов сообщества,
+включая продолжающееся неуместное поведение, домогательство до отдельных лиц,
+или проявление агрессии либо пренебрежительного отношения к категориям лиц.
+
+**Последствия**: Вечный запрет на любое публичное взаимодействие с сообществом.
+
+## Атрибуция
+
+Данный Кодекс Поведения основан на [Кодекс Поведения участника][homepage],
+версии 2.0, доступной по адресу
+https://www.contributor-covenant.org/version/2/0/code_of_conduct.html.
+
+Принципы Воздействия в Сообществе были вдохновлены [Mozilla's code of conduct
+enforcement ladder](https://github.com/mozilla/diversity).
 
 [homepage]: https://www.contributor-covenant.org
 
-For answers to common questions about this code of conduct, see
-https://www.contributor-covenant.org/faq
+Ответы на общие вопросы о данном кодексе поведения ищите на странице FAQ:
+https://www.contributor-covenant.org/faq. Переводы доступны по адресу
+https://www.contributor-covenant.org/translations.
