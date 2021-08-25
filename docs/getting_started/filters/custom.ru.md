@@ -20,7 +20,7 @@ class AttachmentsFilter(base.BaseFilter):
     Проверяет наличие вложений в сообщении.
     """
 
-    def check(event: SimpleBotEvent) -> base.FilterResult:
+    async def check(self, event: SimpleBotEvent) -> base.FilterResult:
         """Метод, в котором определяется логика фильтрации.
         
         Должен возвращать FilterResult со значением True или False, от которого зависит успех фильтра.

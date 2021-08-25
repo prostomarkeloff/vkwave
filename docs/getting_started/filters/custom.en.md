@@ -20,7 +20,7 @@ class AttachmentsFilter(base.BaseFilter):
     Checks if message has an attachments.
     """
 
-    def check(event: SimpleBotEvent) -> base.FilterResult:
+    async def check(self, event: SimpleBotEvent) -> base.FilterResult:
         """Filtration logic.
         
         Must return FilterResult with True or False value, on which the success of the filter depends.
