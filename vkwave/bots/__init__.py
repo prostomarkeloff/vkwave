@@ -6,7 +6,6 @@ from .core.dispatching.filters import (
     EventTypeFilter,
     FromMeFilter,
     FwdMessagesFilter,
-    IsAdminFilter,
     MessageArgsFilter,
     MessageFromConversationTypeFilter,
     PayloadContainsFilter,

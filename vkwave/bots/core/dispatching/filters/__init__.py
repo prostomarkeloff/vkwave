@@ -7,7 +7,6 @@ from .builtin import (  # noqa: F401
     FromMeFilter,
     FwdMessagesFilter,
     get_text,
-    IsAdminFilter,
     MessageArgsFilter,
     MessageFromConversationTypeFilter,
     PayloadContainsFilter,

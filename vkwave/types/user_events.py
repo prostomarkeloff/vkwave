@@ -102,6 +102,7 @@ class SetFlagsEventObject(pydantic.BaseModel):
 
     _normalize_flags = pydantic.validator("flags", allow_reuse=True)(normalize_flags)
 
+
 class SetFlagsEventModel(BaseUserEvent):
     object: SetFlagsEventObject = pydantic.Field(None)
 

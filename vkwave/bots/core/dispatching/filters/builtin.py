@@ -120,13 +120,14 @@ class FlagFilter(BaseFilter):
 
     def __init__(self, flag: Union[Tuple[int, ...], int]):
         self.flag = flag
-    
+
     async def check(self, event: BaseEvent) -> FilterResult:
         if event.bot_type is BotType.USER:
             if isinstance(self.flag, tuple):
                 return all(flag for flag in self.flag if event.object.object.flags[-1] & flag)
             return FilterResult(bool(event.object.object.flags[-1] & self.flag))
         raise NotImplementedError("There is no implementation for this type of bot")
+
 
 AnyText = Union[Tuple[str, ...], List[str], str]
 
@@ -344,7 +345,7 @@ class MessageArgsFilter(BaseFilter):
         self.command_length = command_length
 
     async def check(self, event: BaseEvent) -> FilterResult:
-        args = get_text(event).split()[self.command_length:]
+        args = get_text(event).split()[self.command_length :]
         event["args"] = args
         return FilterResult(len(args) == self.args_count)
 
@@ -366,8 +367,10 @@ class FwdMessagesFilter(BaseFilter):
             fwd_count = len(event.object.object.message.fwd_messages or [])
         else:
             if self.fwd_count not in (0, -1):
-                raise RuntimeError("In the case of user bots we don't know how many forwards there are, so you have "
-                                   "only one option: check if there are forwards or there aren't any")
+                raise RuntimeError(
+                    "In the case of user bots we don't know how many forwards there are, so you have "
+                    "only one option: check if there are forwards or there aren't any"
+                )
             fwd_count = event.object.object.extra_message_data.get("fwd")
             fwd_count = 1 if fwd_count else 0
         if self.fwd_count == -1 and fwd_count:
