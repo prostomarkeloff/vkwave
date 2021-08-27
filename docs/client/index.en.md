@@ -1,3 +1,3 @@
 # Overview
 
-Самая низкоуровневая часть VKWave.
+Most low-level part of VKWave.

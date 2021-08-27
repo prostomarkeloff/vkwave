@@ -71,8 +71,6 @@ doc = await DocUploader(api.get_context()).get_attachment_from_link(
 await api.get_context().messages.send(user_id=1234, attachment=doc, random_id=0)
 ```
 
-!!! note
-    На данный момент загрузка документов не работает ([#112](https://github.com/fscdev/vkwave/issues/112))
 
 ## На стену
 

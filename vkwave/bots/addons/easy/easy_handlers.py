@@ -205,6 +205,7 @@ class Attachments(list):
 
 
 class SimpleBotEvent(BotEvent):
+    """Базовый класс события."""
     def __init__(self, event: BotEvent):
         super().__init__(event.object, event.api_ctx)
         self.user_data = event.user_data
@@ -219,22 +220,42 @@ class SimpleBotEvent(BotEvent):
 
     @property
     def text(self) -> str:
+        """Получает текст сообщения
+
+        Returns:
+            str: Текст
+        """
         return get_text(self)
 
     @property
     def peer_id(self) -> int:
+        """Получает идентификатор чата
+
+        Returns:
+            int: идентификатор чата
+        """
         if self.object.type == BotEventType.MESSAGE_EVENT.value:
             return self.object.object.peer_id
         return self.object.object.message.peer_id
 
     @property
     def from_id(self) -> int:
+        """Получает идентификатор отправителя
+
+        Returns:
+            int: идентификатор отправителя
+        """
         if self.object.type == BotEventType.MESSAGE_EVENT.value:
             return self.object.object.user_id
         return self.object.object.message.from_id
 
     @property
     def payload(self) -> typing.Optional[dict]:
+        """Получает payload события
+
+        Returns:
+            int: payload события
+        """
         current_payload = get_payload(self)
         if current_payload is None:
             return current_payload
@@ -248,6 +269,11 @@ class SimpleBotEvent(BotEvent):
 
     @property
     def attachments(self) -> typing.Optional[typing.List[SimpleAttachment]]:
+        """Получает список вложений
+
+        Returns:
+            typing.Optional[typing.List[SimpleAttachment]]: список вложений
+        """
         if self.object.object.message.attachments is None:
             return None
         if self._attachments is None:
@@ -256,9 +282,19 @@ class SimpleBotEvent(BotEvent):
 
     @property
     def user_id(self) -> int:
+        """Шорткат для выбора from_id или peer_id
+
+        Returns:
+            int: идентификатор пользователя
+        """
         return self.from_id if self.peer_id > 2E9 else self.peer_id
 
-    async def get_user(self, raw_mode: bool = False, **kwargs) -> Union["UsersUser", dict]: # getting information about the sender
+    async def get_user(self, raw_mode: bool = False, **kwargs) -> Union["UsersUser", dict]:
+        """Получение объекта пользователя
+
+        Returns:
+            Union["UsersUser", dict]: Объект пользователя
+        """
         raw_user = (await self.api_ctx.api_request("users.get", {"user_ids": self.user_id, **kwargs}))["response"][0]
         return raw_user if raw_mode else UsersUser(**raw_user)
 
@@ -285,6 +321,33 @@ class SimpleBotEvent(BotEvent):
         expire_ttl: typing.Optional[int] = None,
         silent: typing.Optional[bool] = None,
     ) -> MessagesSendResponse:
+        """Шорткат для отправки сообщения пользователю, от которого пришло событие.
+
+        Args:
+            message (typing.Optional[str]): Текст.
+            domain (typing.Optional[str]): Короткая ссылка пользователя.
+            lat (typing.Optional[int]): Широта.
+            long (typing.Optional[int]): Долгота.
+            attachment (typing.Optional[str]): Вложения (строка с идентификаторами, разделёнными запятой).
+            reply_to (typing.Optional[int]): Идентификатор сообщения, на которое нужно ответить.
+            forward_messages (typing.Optional[typing.List[int]]): Идентификаторы пересылаемых сообщений.
+            forward (typing.Optional[str]): JSON-объект (подробнее в [документации ВК](https://vk.com/dev/messages.send)).
+            sticker_id (typing.Optional[int]): Идентификатор прикрепляемого стикера.
+            group_id (typing.Optional[int]): Идентификатор группы.
+            keyboard (typing.Optional[str]): Клавиатура.
+            template (typing.Optional[str]): Шаблон (карусель, например).
+            payload (typing.Optional[str]): Payload.
+            content_source (typing.Optional[str]): Источник [пользовательского контента](https://vk.com/dev/bots_docs_2?f=3.3.+%D0%A1%D0%BE%D0%BE%D0%B1%D1%89%D0%B5%D0%BD%D0%B8%D1%8F+%D1%81+%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D1%81%D0%BA%D0%B8%D0%BC+%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%BD%D1%82%D0%BE%D0%BC).
+            dont_parse_links (typing.Optional[bool]): 1 &mdash; не создавать сниппет ссылки из сообщения.
+            disable_mentions (typing.Optional[bool]): 1 &mdash; отключить создание упоминаний.
+            intent (typing.Optional[str]): Строка, описывающая [интенты](https://vk.com/dev/bots_docs_4?f=7.+%D0%98%D0%BD%D1%82%D0%B5%D0%BD%D1%82%D1%8B).
+            subscribe_id (typing.Optional[int]): число, которое в будущем будет предназначено для работы с интентами.
+            expire_ttl (typing.Optional[int]): ???.
+            silent (typing.Optional[bool]): ???.
+
+        Returns:
+            MessagesSendResponse: Ответ сервера
+        """
         _check_event_type(self.object.type)
         return await self.api_ctx.messages.send(
             forward=forward,
@@ -317,10 +380,15 @@ class SimpleBotEvent(BotEvent):
         user_id: typing.Optional[int] = None,
         group_id: typing.Optional[int] = None,
     ) -> MessagesSendResponse:
-        """
-        type:
-            typing — пользователь начал набирать текст,
-            audiomessage — пользователь записывает голосовое сообщение
+        """Изменение статуса активности
+
+        Args:
+            type (typing.Optional[str], optional): Тип активности. (`typing` — пользователь начал набирать текст, `audiomessage` — пользователь записывает голосовое сообщение)
+            user_id (typing.Optional[int], optional): Идентификатор пользователя-получателя.
+            group_id (typing.Optional[int], optional): Идентификатор группы.
+
+        Returns:
+            MessagesSendResponse: Результат запроса.
         """
         _check_event_type(self.object.type)
         return await self.api_ctx.messages.set_activity(
@@ -331,6 +399,17 @@ class SimpleBotEvent(BotEvent):
         )
 
     async def callback_answer(self, event_data: typing.Dict[str, str]) -> BaseOkResponse:
+        """Ответ на нажатие callback кнопки.
+
+        Args:
+            event_data (typing.Dict[str, str]): [описание данных](https://vk.com/dev/bots_docs_5?f=4.4.%2BCallback-%D0%BA%D0%BD%D0%BE%D0%BF%D0%BA%D0%B8) для ответа на callback
+
+        Raises:
+            RuntimeError: Если вызван, когда событие не MessageEvent типа.
+
+        Returns:
+            BaseOkResponse: Результат запроса
+        """
         if self.object.type != BotEventType.MESSAGE_EVENT:
             raise RuntimeError("You cant use event.callback_answer() with this event")
         return await self.api_ctx.messages.send_message_event_answer(

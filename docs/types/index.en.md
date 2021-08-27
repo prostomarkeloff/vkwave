@@ -1,11 +1,10 @@
 # Обзор
 
-Эта часть содержит pydantic типы, основанные на официальной vk-schema.
+This part contains pydantic types, based on official vk-schema.
 
 ## Usage
 
-Вы можете использовать этот модуль для стандартизации ваших данных, полученных от Вконтакте. Для примера 
-вы можете сделать запрос к vk api и получить статически типизированный объект.
+You can use this module to normalize data got from VK and get static typed object.
 
 ```python
 import requests
@@ -24,5 +23,3 @@ status: StatusGetResponse = get_my_status(token="123")
 print(status.response.text)
 
 ```
-
-Что важнее, `vkwave.types` содержит ВСЕ части vk-schema и постоянно обновляется.

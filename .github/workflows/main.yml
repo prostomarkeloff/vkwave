@@ -19,6 +19,7 @@ jobs:
         python-version:
           - 3.7
           - 3.8
+          - 3.9
 
     steps:
       - uses: actions/checkout@master
@@ -46,13 +47,16 @@ jobs:
           poetry run mypy vkwave
 
       - name: Run black
+        if: always()
         run: |
           poetry run black vkwave tests
 
       - name: Run Isort
+        if: always()
         run: |
           poetry run isort vkwave tests
 
       - name: Run tests
+        if: always()
         run: |
           poetry run pytest
