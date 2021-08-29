@@ -9,7 +9,6 @@ from vkwave.api.token.token import (
     UserSyncSingleToken,
 )
 from vkwave.bots import (
-    AttachmentTypeFilter,
     BaseEvent,
     BotEvent,
     BotLongpollExtension,
@@ -22,10 +21,8 @@ from vkwave.bots import (
     FromMeFilter,
     FwdMessagesFilter,
     GroupId,
-    IsAdminFilter,
     MessageArgsFilter,
     MessageFromConversationTypeFilter,
-    PayloadContainsFilter,
     PayloadFilter,
     RegexFilter,
     ReplyMessageFilter,
@@ -177,11 +174,7 @@ class BaseSimpleLongPollBot:
             if self.bot_type is BotType.BOT:
                 record.filters.append(EventTypeFilter(BotEventType.MESSAGE_NEW))
             else:
-                record.filters.append(
-                    EventTypeFilter(
-                        EventId.MESSAGE_EVENT.value
-                    )
-                )
+                record.filters.append(EventTypeFilter(EventId.MESSAGE_EVENT.value))
             record.handle(SimpleBotCallback(func, self.bot_type))
             self.router.registrar.register(record.ready())
             return func

@@ -24,7 +24,9 @@ class PhotoUploader(BaseUploader[typing.List[PhotosPhoto]]):
             try:
                 setattr(file_data, "name", f"{file_name}.{file_extension}")
             except AttributeError:
-                raise RuntimeError("'bytes' object has no attribute 'name', put your bytes in BytesIO")
+                raise RuntimeError(
+                    "'bytes' object has no attribute 'name', put your bytes in BytesIO"
+                )
 
         upload_data = self.json_deserialize(
             await self.client.request_text(
@@ -36,7 +38,9 @@ class PhotoUploader(BaseUploader[typing.List[PhotosPhoto]]):
 
         photo_sizes = (
             await self.api_context.photos.save_messages_photo(
-                photo=upload_data["photo"], server=upload_data["server"], hash=upload_data["hash"],
+                photo=upload_data["photo"],
+                server=upload_data["server"],
+                hash=upload_data["hash"],
             )
         ).response
         return photo_sizes
@@ -77,7 +81,11 @@ class WallPhotoUploader(BaseUploader[typing.List[PhotosPhoto]]):
         with open(file_path, "rb") as file_data:
             return await self.get_attachment_from_io(f=file_data, group_id=group_id)
 
-    async def get_attachments_from_paths(self, file_paths: List[str], group_id: int,) -> str:
+    async def get_attachments_from_paths(
+        self,
+        file_paths: List[str],
+        group_id: int,
+    ) -> str:
         ready_attachments: List[str] = []
         for file in file_paths:
             ready_attachments.append(

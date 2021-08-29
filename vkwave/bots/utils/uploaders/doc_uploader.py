@@ -30,7 +30,9 @@ class DocUploaderMixin(BaseUploader[DocsSaveResponseModel], ABC):
             try:
                 setattr(file_data, "name", f"{file_name}.{file_extension}")
             except AttributeError:
-                raise RuntimeError("'bytes' object has no attribute 'name', put your bytes in BytesIO")
+                raise RuntimeError(
+                    "'bytes' object has no attribute 'name', put your bytes in BytesIO"
+                )
 
         upload_data = self.json_deserialize(
             await self.client.request_text(

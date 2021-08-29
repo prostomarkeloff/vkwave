@@ -34,7 +34,11 @@ class BaseUploader(ABC, Generic[UploadResult]):
 
     @abstractmethod
     async def upload(
-        self, server_url: str, file_data: BinaryIO, file_extension: str, file_name: str,
+        self,
+        server_url: str,
+        file_data: BinaryIO,
+        file_extension: str,
+        file_name: str,
     ) -> UploadResult:
         pass
 

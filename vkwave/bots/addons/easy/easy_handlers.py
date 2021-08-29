@@ -50,10 +50,14 @@ class SimpleUserEvent(UserEvent):
 
     @property
     def user_id(self) -> int:
-        return self.from_id if self.peer_id > 2E9 else self.peer_id
+        return self.from_id if self.peer_id > 2e9 else self.peer_id
 
-    async def get_user(self, raw_mode: bool = False, **kwargs) -> Union["UsersUser", dict]: # getting information about the sender
-        raw_user = (await self.api_ctx.api_request("users.get", {"user_ids": self.user_id, **kwargs}))["response"][0]
+    async def get_user(
+        self, raw_mode: bool = False, **kwargs
+    ) -> Union["UsersUser", dict]:  # getting information about the sender
+        raw_user = (
+            await self.api_ctx.api_request("users.get", {"user_ids": self.user_id, **kwargs})
+        )["response"][0]
         return raw_user if raw_mode else UsersUser(**raw_user)
 
     async def answer(
@@ -206,6 +210,7 @@ class Attachments(list):
 
 class SimpleBotEvent(BotEvent):
     """Базовый класс события."""
+
     def __init__(self, event: BotEvent):
         super().__init__(event.object, event.api_ctx)
         self.user_data = event.user_data
@@ -287,7 +292,7 @@ class SimpleBotEvent(BotEvent):
         Returns:
             int: идентификатор пользователя
         """
-        return self.from_id if self.peer_id > 2E9 else self.peer_id
+        return self.from_id if self.peer_id > 2e9 else self.peer_id
 
     async def get_user(self, raw_mode: bool = False, **kwargs) -> Union["UsersUser", dict]:
         """Получение объекта пользователя
@@ -295,7 +300,9 @@ class SimpleBotEvent(BotEvent):
         Returns:
             Union["UsersUser", dict]: Объект пользователя
         """
-        raw_user = (await self.api_ctx.api_request("users.get", {"user_ids": self.user_id, **kwargs}))["response"][0]
+        raw_user = (
+            await self.api_ctx.api_request("users.get", {"user_ids": self.user_id, **kwargs})
+        )["response"][0]
         return raw_user if raw_mode else UsersUser(**raw_user)
 
     async def answer(

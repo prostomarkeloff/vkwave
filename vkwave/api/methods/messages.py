@@ -90,8 +90,8 @@ class Messages(Category):
         :param spam: - '1' — to mark message as spam.
         :param group_id: - Group ID (for group messages with user access token)
         :param delete_for_all: - '1' — delete message for for all.
-        :param peer_id: 
-        :params conversation_message_ids: 
+        :param peer_id:
+        :params conversation_message_ids:
         :param return_raw_response: - return result at dict
         :return:
         """
