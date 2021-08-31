@@ -32,6 +32,22 @@ carousel = Template.generate_carousel(template_1, template_2)
 
 ### Отправка
 
+#### Через отдельный объект api
+
 ``` python
+api_session = API(...)
+api = api_session.get_context()
 api.messages.send(user_id=1, random_id=0, template=carousel)
+```
+
+#### Через API, встроенный в event
+
+```python
+event.api_ctx.messages.send(user_id=1, random_id=0, template=carousel)
+```
+
+#### Через answer (SimpleBot)
+
+```python
+event.answer(template=carousel)
 ```
