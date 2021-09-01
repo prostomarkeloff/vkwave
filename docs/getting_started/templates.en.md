@@ -37,17 +37,17 @@ carousel = Template.generate_carousel(template_1, template_2)
 ``` python
 api_session = API(...)
 api = api_session.get_context()
-api.messages.send(user_id=1, random_id=0, template=carousel)
+await api.messages.send(user_id=1, random_id=0, template=carousel)
 ```
 
 #### Via bundled with event API
 
 ```python
-event.api_ctx.messages.send(user_id=1, random_id=0, template=carousel)
+await event.api_ctx.messages.send(user_id=1, random_id=0, template=carousel)
 ```
 
 #### Via answer (SimpleBot)
 
 ```python
-event.answer(template=carousel)
+await event.answer(template=carousel)
 ```
