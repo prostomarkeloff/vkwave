@@ -1,4 +1,5 @@
 import asyncio
+import types
 import typing
 
 from vkwave.api import API, APIOptionsRequestContext
@@ -102,6 +103,7 @@ class BaseSimpleLongPollBot:
 
             asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
 
+        self.context = types.SimpleNamespace()
         self.group_id = group_id
         self.bot_type = bot_type
         self.api_session = create_api_session_aiohttp(tokens, bot_type)
