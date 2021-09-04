@@ -1,4 +1,5 @@
 import asyncio
+import types
 import typing
 
 from vkwave.api import API, APIOptionsRequestContext
@@ -102,6 +103,8 @@ class BaseSimpleLongPollBot:
 
             asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
 
+        self.context = types.SimpleNamespace()
+
         self.group_id = group_id
         self.bot_type = bot_type
         self.api_session = create_api_session_aiohttp(tokens, bot_type)
@@ -157,7 +160,7 @@ class BaseSimpleLongPollBot:
         def decorator(func: typing.Callable[..., typing.Any]):
             record = self.router.registrar.new()
             record.with_filters(*filters)
-            record.handle(SimpleBotCallback(func, self.bot_type))
+            record.handle(SimpleBotCallback(func, self, self.bot_type))
             self.router.registrar.register(record.ready())
             return func
 
@@ -175,7 +178,7 @@ class BaseSimpleLongPollBot:
                 record.filters.append(EventTypeFilter(BotEventType.MESSAGE_NEW))
             else:
                 record.filters.append(EventTypeFilter(EventId.MESSAGE_EVENT.value))
-            record.handle(SimpleBotCallback(func, self.bot_type))
+            record.handle(SimpleBotCallback(func, self, self.bot_type))
             self.router.registrar.register(record.ready())
             return func
 

@@ -5,7 +5,10 @@ from typing import Dict, List, Callable, Any, Union
 
 from pydantic import PrivateAttr
 
-from vkwave.bots import BotType, UserEvent, BotEvent, EventTypeFilter
+from vkwave.bots import BotType, UserEvent, BotEvent
+if typing.TYPE_CHECKING:
+    from vkwave.bots import SimpleLongPollBot, SimpleLongPollUserBot
+
 from vkwave.bots.core import BaseFilter
 from vkwave.bots.core.dispatching.filters.builtin import get_payload, get_text
 from vkwave.bots.core.dispatching.handler.callback import BaseCallback
@@ -26,8 +29,9 @@ except ImportError:
 
 
 class SimpleUserEvent(UserEvent):
-    def __init__(self, event: UserEvent):
+    def __init__(self, event: UserEvent, bot: "SimpleLongPollUserBot"):
         super().__init__(event.object, event.api_ctx)
+        self.bot = bot
         self.user_data = event.user_data
 
     def __setitem__(self, key: typing.Any, item: typing.Any) -> None:
@@ -211,8 +215,9 @@ class Attachments(list):
 class SimpleBotEvent(BotEvent):
     """Базовый класс события."""
 
-    def __init__(self, event: BotEvent):
+    def __init__(self, event: BotEvent, bot: "SimpleLongPollBot"):
         super().__init__(event.object, event.api_ctx)
+        self.bot = bot
         self.user_data = event.user_data
         self._attachments: typing.Optional[Attachments] = None
         self._payload: typing.Optional[dict] = None
@@ -431,16 +436,18 @@ class SimpleBotCallback(BaseCallback):
     def __init__(
         self,
         func: Any,
+        bot: Union["SimpleLongPollBot", "SimpleLongPollUserBot"],
         bot_type: BotType,
     ):
         self.bot_type = bot_type
+        self.bot = bot
         self.func = callback_caster.cast(func)
 
     async def execute(self, event: typing.Union[UserEvent, BotEvent]) -> typing.Any:
         if self.bot_type is BotType.BOT:
-            new_event = SimpleBotEvent(event)
+            new_event = SimpleBotEvent(event, self.bot)
         else:
-            new_event = SimpleUserEvent(event)
+            new_event = SimpleUserEvent(event, self.bot)
         return await self.func.execute(new_event)
 
     def __repr__(self):
