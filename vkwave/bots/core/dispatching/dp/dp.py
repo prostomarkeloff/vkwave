@@ -71,7 +71,7 @@ class Dispatcher:
                 if result is HANDLER_NOT_FOUND:
                     continue
                 await self.result_caster.cast(result, event)
-                logger.debug("Event was succesfully handled")
+                logger.debug("Event was successfully handled")
 
                 await self.middleware_manager.execute_post_process_event(event)
                 return ProcessingResult(True)
