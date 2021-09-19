@@ -16,7 +16,7 @@
 
 ```python
 
-from vkwave import SimpleLongPollBot, MiddlewareResult, BaseMiddleware
+from vkwave.bots import SimpleLongPollBot, MiddlewareResult, BaseMiddleware
 
 
 class UserShouldNotLoveDogs(BaseMiddleware):
@@ -36,7 +36,7 @@ class UserShouldNotLoveDogs(BaseMiddleware):
 
 ```python
 
-from vkwave import SimpleLongPollBot, MiddlewareResult
+from vkwave.bots import SimpleLongPollBot, MiddlewareResult
 
 @bot.middleware()
 async def check(event: BotEvent) -> MiddlewareResult:
