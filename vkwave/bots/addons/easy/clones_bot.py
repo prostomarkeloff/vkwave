@@ -18,7 +18,10 @@ class ClonesBot:
     ):
         self.base_bot = base_bot
         self.router = self.base_bot.router
-        self.clones: typing.Tuple[typing.Union[SimpleLongPollUserBot, SimpleLongPollBot]] = clones
+        self.clones: typing.List[typing.Union[SimpleLongPollUserBot, SimpleLongPollBot]] = list(clones)
+
+    def add_clone(self, clone: typing.Union[SimpleLongPollUserBot, SimpleLongPollBot]) -> None:
+        self.clones.append(clone)
 
     def register_clones(self, last_handler: typing.Optional[typing.Callable]):
         if last_handler is None:
