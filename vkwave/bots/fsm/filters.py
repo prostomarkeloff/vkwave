@@ -4,6 +4,7 @@ from vkwave.bots.fsm.fsm import FiniteStateMachine, ForWhat, State, get_peer_fro
 from vkwave.bots.storage.types import Key
 
 ANY_STATE = "__any_state__"
+NO_STATE = "__no_state__"
 
 
 class StateFilter(BaseFilter):
@@ -22,6 +23,10 @@ class StateFilter(BaseFilter):
     async def check(self, event: BaseEvent) -> FilterResult:
         if self.state == ANY_STATE:
             return FilterResult(True)
+        elif self.state == NO_STATE:
+            fsm_data = await self.fsm.get_data(event, for_what=self.for_what)
+            return FilterResult(fsm_data is None)
+
         if self.always_false:
             from_id, peer_id = get_peer_from_ids(event)
             template = "__vkwave_{for_what}_{peer_id}_{from_id}__"
