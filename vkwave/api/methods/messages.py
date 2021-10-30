@@ -183,6 +183,7 @@ class Messages(Category):
         keep_snippets: typing.Optional[BaseBoolInt] = None,
         group_id: typing.Optional[int] = None,
         dont_parse_links: typing.Optional[bool] = None,
+        disable_mentions: typing.Optional[bool] = None,
         message_id: typing.Optional[int] = None,
         conversation_message_id: typing.Optional[int] = None,
         template: typing.Optional[str] = None,
@@ -198,6 +199,7 @@ class Messages(Category):
         :param keep_snippets: - '1' — to keep attached snippets.
         :param group_id: - Group ID (for group messages with user access token)
         :param dont_parse_links:
+        :param disable_mentions: 
         :param message_id:
         :param conversation_message_id:
         :param template:
