@@ -1899,6 +1899,106 @@ class AppsAppMin(pydantic.BaseModel):
     )
 
 
+class AudioAds(pydantic.BaseModel):
+    content_id: typing.Optional[str] = pydantic.Field(
+        None,
+        description="",
+    )
+    duration: typing.Optional[str] = pydantic.Field(
+        None,
+        description="",
+    )
+    account_age_type: typing.Optional[str] = pydantic.Field(
+        None,
+        description="",
+    )
+    puid1: typing.Optional[str] = pydantic.Field(
+        None,
+        description="",
+    )
+    puid22: typing.Optional[str] = pydantic.Field(
+        None,
+        description="",
+    )
+
+
+class AudioAlbumThumb(pydantic.BaseModel):
+    width: int = pydantic.Field(
+        ...,
+        description="",
+    )
+    height: int = pydantic.Field(
+        ...,
+        description="",
+    )
+    photo_34: typing.Optional[str] = pydantic.Field(
+        None,
+        description="",
+    )
+    photo_68: typing.Optional[str] = pydantic.Field(
+        None,
+        description="",
+    )
+    photo_135: typing.Optional[str] = pydantic.Field(
+        None,
+        description="",
+    )
+    photo_270: typing.Optional[str] = pydantic.Field(
+        None,
+        description="",
+    )
+    photo_300: typing.Optional[str] = pydantic.Field(
+        None,
+        description="",
+    )
+    photo_600: typing.Optional[str] = pydantic.Field(
+        None,
+        description="",
+    )
+    photo_1200: typing.Optional[str] = pydantic.Field(
+        None,
+        description="",
+    )
+
+
+class AudioAlbum(pydantic.BaseModel):
+    id: int = pydantic.Field(
+        ...,
+        description="Album ID",
+    )
+    title: str = pydantic.Field(
+        ...,
+        description="Title",
+    )
+    owner_id: int = pydantic.Field(
+        ...,
+        description="Owner ID",
+    )
+    access_key: typing.Optional[str] = pydantic.Field(
+        None,
+        description="",
+    )
+    thumb: typing.Optional["AudioAlbumThumb"] = pydantic.Field(
+        None,
+        description=""
+    )
+
+
+class AudioArtist(pydantic.BaseModel):
+    name: str = pydantic.Field(
+        ...,
+        description="Artist name",
+    )
+    domain: typing.Optional[str] = pydantic.Field(
+        None,
+        description="",
+    )
+    id: typing.Optional[str] = pydantic.Field(
+        None,
+        description="",
+    )
+
+
 class AudioAudio(pydantic.BaseModel):
     artist: str = pydantic.Field(
         ...,
@@ -1914,7 +2014,12 @@ class AudioAudio(pydantic.BaseModel):
     )
     url: typing.Optional[str] = pydantic.Field(
         None,
-        description="URL of mp3 file",
+        description="""
+        URL of :
+            1) direct mp3 for old songs, old tokens (not determined exactly)
+            2) HLS playlist with link that can be transformed to direct mp3
+            3) HLS playlist with link that can not be transformed to direct mp3 (not determined exactly)
+        """,
     )
     duration: int = pydantic.Field(
         ...,
@@ -1935,6 +2040,54 @@ class AudioAudio(pydantic.BaseModel):
     performer: typing.Optional[str] = pydantic.Field(
         None,
         description="Performer name",
+    )
+    owner_id: int = pydantic.Field(
+        ...,
+        description="Owner ID",
+    )
+    access_key: typing.Optional[str] = pydantic.Field(
+        None,
+        description="",
+    )
+    is_explicit: typing.Optional[bool] = pydantic.Field(
+        None,
+        description="",
+    )
+    is_focus_track: typing.Optional[bool] = pydantic.Field(
+        None,
+        description="",
+    )
+    is_licensed: typing.Optional[bool] = pydantic.Field(
+        None,
+        description="",
+    )
+    track_code: typing.Optional[str] = pydantic.Field(
+        None,
+        description="",
+    )
+    short_videos_allowed: typing.Optional[bool] = pydantic.Field(
+        None,
+        description="",
+    )
+    stories_cover_allowed: typing.Optional[bool] = pydantic.Field(
+        None,
+        description="",
+    )
+    stories_allowed: typing.Optional[bool] = pydantic.Field(
+        None,
+        description="",
+    )
+    ads: typing.Optional["AudioAds"] = pydantic.Field(
+        None,
+        description="",
+    )
+    album: typing.Optional["AudioAlbum"] = pydantic.Field(
+        None,
+        description="",
+    )
+    main_artists: typing.Optional[typing.List["AudioArtist"]] = pydantic.Field(
+        None,
+        description="",
     )
 
 

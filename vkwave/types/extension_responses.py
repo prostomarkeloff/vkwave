@@ -29,3 +29,7 @@ class AudioGetResponseModel(pydantic.BaseModel):
 
 class AudioGetResponse(pydantic.BaseModel):
     response: AudioGetResponseModel = pydantic.Field(..., description="")
+
+
+class AudioGetByIdResponse(pydantic.BaseModel):
+    response: typing.List[AudioAudio] = pydantic.Field(..., description="")
