@@ -9,13 +9,14 @@ from vkwave.bots import BotType, UserEvent, BotEvent, EventTypeFilter
 from vkwave.bots.core import BaseFilter
 from vkwave.bots.core.dispatching.filters.builtin import get_payload, get_text
 from vkwave.bots.core.dispatching.handler.callback import BaseCallback
+from vkwave.bots.core.types.json_types import JSONEncoder
 from vkwave.types.bot_events import BotEventType
 from vkwave.types.objects import (
     MessagesMessageAttachment,
     MessagesMessageAttachmentType,
-    UsersUser,
+    UsersUser, BaseBoolInt,
 )
-from vkwave.types.responses import BaseOkResponse, MessagesSendResponse
+from vkwave.types.responses import BaseOkResponse, MessagesSendResponse, MessagesEditResponse
 from vkwave.types.user_events import EventId
 from vkwave.bots.core.dispatching.handler.cast import caster as callback_caster
 
@@ -304,6 +305,135 @@ class SimpleBotEvent(BotEvent):
             await self.api_ctx.api_request("users.get", {"user_ids": self.user_id, **kwargs})
         )["response"][0]
         return raw_user if raw_mode else UsersUser(**raw_user)
+
+    async def edit(
+        self,
+        message: typing.Optional[str] = None,
+        lat: typing.Optional[int] = None,
+        long: typing.Optional[int] = None,
+        attachment: typing.Optional[str] = None,
+        keep_forward_messages: typing.Optional[BaseBoolInt] = None,
+        keep_snippets: typing.Optional[BaseBoolInt] = None,
+        group_id: typing.Optional[int] = None,
+        dont_parse_links: typing.Optional[bool] = None,
+        disable_mentions: typing.Optional[bool] = None,
+        message_id: typing.Optional[int] = None,
+        conversation_message_id: typing.Optional[int] = None,
+        template: typing.Optional[str] = None,
+        keyboard: typing.Optional[str] = None,
+    ) -> MessagesEditResponse:
+        """Шорткат для редактирования своего сообщения.
+
+        Args:
+            message (typing.Optional[str]): Текст.
+            lat (typing.Optional[int]): Широта.
+            long (typing.Optional[int]): Долгота.
+            attachment (typing.Optional[str]): Вложения (строка с идентификаторами, разделёнными запятой).
+            keep_forward_messages (typing.Optional[BaseBoolInt]): — сохранить прикрепленные пересланные сообщения.
+            keep_snippets (typing.Optional[BaseBoolInt]): 1 — сохранить прикрепленные внешние ссылки (сниппеты).
+            group_id (typing.Optional[int]): Идентификатор группы.
+            dont_parse_links (typing.Optional[bool]): 1 — не создавать сниппет ссылки из сообщения.
+            disable_mentions (typing.Optional[bool]): 1 — отключить уведомление об упоминании в сообщении.
+            message_id (typing.Optional[int]): Идентификатор сообщения.
+            conversation_message_id (typing.Optional[int]): Идентификатор сообщения в беседе.
+            template (typing.Optional[str]): Шаблон.
+            keyboard (typing.Optional[str]): Клавиатура.
+
+        Returns:
+            MessagesEditResponse: Ответ сервера
+        """
+        _check_event_type(self.object.type)
+        return await self.api_ctx.messages.edit(
+            peer_id=self.object.object.message.peer_id,
+            message=message,
+            lat=lat,
+            long=long,
+            attachment=attachment,
+            keep_forward_messages=keep_forward_messages,
+            keep_snippets=keep_snippets,
+            group_id=group_id,
+            dont_parse_links=dont_parse_links,
+            disable_mentions=disable_mentions,
+            message_id=message_id,
+            conversation_message_id=conversation_message_id,
+            template=template,
+            keyboard=keyboard
+        )
+
+    async def reply(
+        self,
+        message: typing.Optional[str] = None,
+        domain: typing.Optional[str] = None,
+        lat: typing.Optional[int] = None,
+        long: typing.Optional[int] = None,
+        attachment: typing.Optional[str] = None,
+        sticker_id: typing.Optional[int] = None,
+        group_id: typing.Optional[int] = None,
+        keyboard: typing.Optional[str] = None,
+        template: typing.Optional[str] = None,
+        payload: typing.Optional[str] = None,
+        content_source: typing.Optional[str] = None,
+        dont_parse_links: typing.Optional[bool] = None,
+        disable_mentions: typing.Optional[bool] = None,
+        intent: typing.Optional[str] = None,
+        subscribe_id: typing.Optional[int] = None,
+        expire_ttl: typing.Optional[int] = None,
+        silent: typing.Optional[bool] = None,
+        json_serialize: JSONEncoder = json.dumps,
+    ) -> MessagesSendResponse:
+        """Шорткат для отправки ответа на сообщение пользователю, от которого пришло событие
+
+        Args:
+            message (typing.Optional[str]): Текст.
+            domain (typing.Optional[str]): Короткая ссылка пользователя.
+            lat (typing.Optional[int]): Широта.
+            long (typing.Optional[int]): Долгота.
+            attachment (typing.Optional[str]): Вложения (строка с идентификаторами, разделёнными запятой).
+            sticker_id (typing.Optional[int]): Идентификатор прикрепляемого стикера.
+            group_id (typing.Optional[int]): Идентификатор группы.
+            keyboard (typing.Optional[str]): Клавиатура.
+            template (typing.Optional[str]): Шаблон (карусель, например).
+            payload (typing.Optional[str]): Payload.
+            content_source (typing.Optional[str]): Источник [пользовательского контента](https://vk.com/dev/bots_docs_2?f=3.3.+%D0%A1%D0%BE%D0%BE%D0%B1%D1%89%D0%B5%D0%BD%D0%B8%D1%8F+%D1%81+%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D1%81%D0%BA%D0%B8%D0%BC+%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%BD%D1%82%D0%BE%D0%BC).
+            dont_parse_links (typing.Optional[bool]): 1 &mdash; не создавать сниппет ссылки из сообщения.
+            disable_mentions (typing.Optional[bool]): 1 &mdash; отключить создание упоминаний.
+            intent (typing.Optional[str]): Строка, описывающая [интенты](https://vk.com/dev/bots_docs_4?f=7.+%D0%98%D0%BD%D1%82%D0%B5%D0%BD%D1%82%D1%8B).
+            subscribe_id (typing.Optional[int]): число, которое в будущем будет предназначено для работы с интентами.
+            expire_ttl (typing.Optional[int]): ???.
+            silent (typing.Optional[bool]): ???.
+
+        Returns:
+            MessagesSendResponse - Ответ сервера
+        """
+        _check_event_type(self.object.type)
+
+        forward = {
+            "is_reply": 1,
+            "conversation_message_ids": self.object.object.message.conversation_message_id,
+            "peer_id": self.object.object.message.peer_id,
+        }
+        return await self.api_ctx.messages.send(
+            forward=json_serialize(forward),
+            intent=intent,
+            subscribe_id=subscribe_id,
+            expire_ttl=expire_ttl,
+            silent=silent,
+            domain=domain,
+            lat=lat,
+            long=long,
+            attachment=attachment,
+            sticker_id=sticker_id,
+            group_id=group_id,
+            keyboard=keyboard,
+            payload=payload,
+            dont_parse_links=dont_parse_links,
+            disable_mentions=disable_mentions,
+            peer_id=self.object.object.message.peer_id,
+            message=message,
+            random_id=0,
+            template=template,
+            content_source=content_source,
+        )
 
     async def answer(
         self,
