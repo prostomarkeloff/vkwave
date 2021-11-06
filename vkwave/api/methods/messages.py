@@ -199,7 +199,7 @@ class Messages(Category):
         :param keep_snippets: - '1' — to keep attached snippets.
         :param group_id: - Group ID (for group messages with user access token)
         :param dont_parse_links:
-        :param disable_mentions: 
+        :param disable_mentions:
         :param message_id:
         :param conversation_message_id:
         :param template:
@@ -938,7 +938,7 @@ class Messages(Category):
         subscribe_id: typing.Optional[int] = None,
         expire_ttl: typing.Optional[int] = None,
         silent: typing.Optional[bool] = None,
-    ) -> typing.Union[dict, MessagesSendResponse]:
+    ) -> typing.Union[dict, MessagesSendResponse, MessagesSendPeerIdsResponse]:
         """
         :param user_id: - User ID (by default — current user).
         :param random_id: - Unique identifier to avoid resending the message.
