@@ -1,24 +1,26 @@
 import json
-import warnings
+import random
 import typing
-from typing import Dict, List, Callable, Any, Union
+import warnings
+from typing import Any, Callable, Dict, List, Union
 
 from pydantic import PrivateAttr
 
-from vkwave.bots import BotType, UserEvent, BotEvent, EventTypeFilter
+from vkwave.bots import BotEvent, BotType, EventTypeFilter, UserEvent
 from vkwave.bots.core import BaseFilter
 from vkwave.bots.core.dispatching.filters.builtin import get_payload, get_text
 from vkwave.bots.core.dispatching.handler.callback import BaseCallback
+from vkwave.bots.core.dispatching.handler.cast import caster as callback_caster
 from vkwave.bots.core.types.json_types import JSONEncoder
 from vkwave.types.bot_events import BotEventType
 from vkwave.types.objects import (
+    BaseBoolInt,
     MessagesMessageAttachment,
     MessagesMessageAttachmentType,
-    UsersUser, BaseBoolInt,
+    UsersUser,
 )
-from vkwave.types.responses import BaseOkResponse, MessagesSendResponse, MessagesEditResponse
+from vkwave.types.responses import BaseOkResponse, MessagesEditResponse, MessagesSendResponse
 from vkwave.types.user_events import EventId
-from vkwave.bots.core.dispatching.handler.cast import caster as callback_caster
 
 try:
     import aiofile
@@ -106,8 +108,90 @@ class SimpleUserEvent(UserEvent):
             dont_parse_links=dont_parse_links,
             disable_mentions=disable_mentions,
             peer_id=self.object.object.peer_id,
-            random_id=0,
+            random_id=random.randint(-2147483648, 2147483647),
         )
+
+    async def reply(
+        self,
+        message: typing.Optional[str] = None,
+        domain: typing.Optional[str] = None,
+        lat: typing.Optional[int] = None,
+        long: typing.Optional[int] = None,
+        attachment: typing.Optional[str] = None,
+        reply_to: typing.Optional[int] = None,
+        forward_messages: typing.Optional[typing.List[int]] = None,
+        forward: typing.Optional[str] = None,
+        sticker_id: typing.Optional[int] = None,
+        group_id: typing.Optional[int] = None,
+        keyboard: typing.Optional[str] = None,
+        template: typing.Optional[str] = None,
+        payload: typing.Optional[str] = None,
+        content_source: typing.Optional[str] = None,
+        dont_parse_links: typing.Optional[bool] = None,
+        disable_mentions: typing.Optional[bool] = None,
+        intent: typing.Optional[str] = None,
+        subscribe_id: typing.Optional[int] = None,
+        expire_ttl: typing.Optional[int] = None,
+        silent: typing.Optional[bool] = None,
+    ) -> MessagesSendResponse:
+        return await self.api_ctx.messages.send(
+            message=message,
+            forward=forward,
+            template=template,
+            content_source=content_source,
+            intent=intent,
+            subscribe_id=subscribe_id,
+            expire_ttl=expire_ttl,
+            silent=silent,
+            domain=domain,
+            lat=lat,
+            long=long,
+            attachment=attachment,
+            reply_to=self.object.object.message_id,
+            forward_messages=forward_messages,
+            sticker_id=sticker_id,
+            group_id=group_id,
+            keyboard=keyboard,
+            payload=payload,
+            dont_parse_links=dont_parse_links,
+            disable_mentions=disable_mentions,
+            peer_id=self.object.object.peer_id,
+            random_id=random.randint(-2147483648, 2147483647),
+        )
+
+    async def edit(
+        self,
+        message: typing.Optional[str] = None,
+        return_raw_response: bool = False,
+        lat: typing.Optional[int] = None,
+        long: typing.Optional[int] = None,
+        attachment: typing.Optional[str] = None,
+        keep_forward_messages: typing.Optional[BaseBoolInt] = None,
+        keep_snippets: typing.Optional[BaseBoolInt] = None,
+        group_id: typing.Optional[int] = None,
+        dont_parse_links: typing.Optional[bool] = None,
+        conversation_message_id: typing.Optional[int] = None,
+        template: typing.Optional[str] = None,
+        keyboard: typing.Optional[str] = None,
+    ) -> MessagesEditResponse:
+        edit_id = await self.api_ctx.messages.edit(
+            message=message,
+            peer_id=self.object.object.peer_id,
+            return_raw_response=return_raw_response,
+            lat=lat,
+            long=long,
+            attachment=attachment,
+            keep_forward_messages=keep_forward_messages,
+            keep_snippets=keep_snippets,
+            group_id=group_id,
+            dont_parse_links=dont_parse_links,
+            message_id=self.object.object.message_id,
+            conversation_message_id=conversation_message_id,
+            template=template,
+            keyboard=keyboard,
+            
+        )
+        return edit_id.response
 
     async def set_activity(
         self,
