@@ -118,7 +118,6 @@ class SimpleUserEvent(UserEvent):
         lat: typing.Optional[int] = None,
         long: typing.Optional[int] = None,
         attachment: typing.Optional[str] = None,
-        reply_to: typing.Optional[int] = None,
         forward_messages: typing.Optional[typing.List[int]] = None,
         forward: typing.Optional[str] = None,
         sticker_id: typing.Optional[int] = None,
@@ -170,11 +169,12 @@ class SimpleUserEvent(UserEvent):
         keep_snippets: typing.Optional[BaseBoolInt] = None,
         group_id: typing.Optional[int] = None,
         dont_parse_links: typing.Optional[bool] = None,
+        message_id: typing.Optional[int] = None,
         conversation_message_id: typing.Optional[int] = None,
         template: typing.Optional[str] = None,
         keyboard: typing.Optional[str] = None,
     ) -> MessagesEditResponse:
-        edit_id = await self.api_ctx.messages.edit(
+        return await self.api_ctx.messages.edit(
             message=message,
             peer_id=self.object.object.peer_id,
             return_raw_response=return_raw_response,
@@ -185,13 +185,11 @@ class SimpleUserEvent(UserEvent):
             keep_snippets=keep_snippets,
             group_id=group_id,
             dont_parse_links=dont_parse_links,
-            message_id=self.object.object.message_id,
+            message_id=message_id or self.object.object.message_id,
             conversation_message_id=conversation_message_id,
             template=template,
             keyboard=keyboard,
-            
         )
-        return edit_id.response
 
     async def set_activity(
         self,
@@ -485,6 +483,7 @@ class SimpleBotEvent(BotEvent):
             subscribe_id (typing.Optional[int]): число, которое в будущем будет предназначено для работы с интентами.
             expire_ttl (typing.Optional[int]): ???.
             silent (typing.Optional[bool]): ???.
+            json_serialize (JSONEncoder): сериализация.
 
         Returns:
             MessagesSendResponse - Ответ сервера
