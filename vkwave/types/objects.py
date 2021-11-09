@@ -2213,11 +2213,11 @@ class BaseGeo(pydantic.BaseModel):
 
 
 class BaseGeoCoordinates(pydantic.BaseModel):
-    latitude: int = pydantic.Field(
+    latitude: float = pydantic.Field(
         ...,
         description="",
     )
-    longitude: int = pydantic.Field(
+    longitude: float = pydantic.Field(
         ...,
         description="",
     )
