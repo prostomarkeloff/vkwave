@@ -11850,7 +11850,7 @@ class NewsfeedItemDigestItem(BaseModel):
     __root__: WallWallpost
 
 
-class NewsfeedItemWallpost(WallCarouselBase, NewsfeedItemBase, WallWallpostFull):
+class NewsfeedItemWallpost(NewsfeedItemBase, WallWallpostFull):
     class Config:
         extra = Extra.forbid
 
