@@ -9,8 +9,8 @@ class Secure(Category):
         user_id: int,
         activity_id: int,
         return_raw_response: bool = False,
-        value: typing.Optional[int] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        value: Optional[int] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param user_id: - ID of a user to save the data
         :param activity_id: - there are 2 default activities: , * 1 – level. Works similar to ,, * 2 – points, saves points amount, Any other value is for saving completed missions
@@ -31,9 +31,9 @@ class Secure(Category):
     async def check_token(
         self,
         return_raw_response: bool = False,
-        token: typing.Optional[str] = None,
-        ip: typing.Optional[str] = None,
-    ) -> typing.Union[dict, SecureCheckTokenResponse]:
+        token: Optional[str] = None,
+        ip: Optional[str] = None,
+    ) -> Union[dict, SecureCheckTokenResponse]:
         """
         :param token: - client 'access_token'
         :param ip: - user 'ip address'. Note that user may access using the 'ipv6' address, in this case it is required to transmit the 'ipv6' address. If not transmitted, the address will not be checked.
@@ -53,7 +53,7 @@ class Secure(Category):
     async def get_app_balance(
         self,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, SecureGetAppBalanceResponse]:
+    ) -> Union[dict, SecureGetAppBalanceResponse]:
         """
         :param return_raw_response: - return result at dict
         :return:
@@ -71,11 +71,11 @@ class Secure(Category):
     async def get_s_m_s_history(
         self,
         return_raw_response: bool = False,
-        user_id: typing.Optional[int] = None,
-        date_from: typing.Optional[int] = None,
-        date_to: typing.Optional[int] = None,
-        limit: typing.Optional[int] = None,
-    ) -> typing.Union[dict, SecureGetSMSHistoryResponse]:
+        user_id: Optional[int] = None,
+        date_from: Optional[int] = None,
+        date_to: Optional[int] = None,
+        limit: Optional[int] = None,
+    ) -> Union[dict, SecureGetSMSHistoryResponse]:
         """
         :param user_id:
         :param date_from: - filter by start date. It is set as UNIX-time.
@@ -97,13 +97,13 @@ class Secure(Category):
     async def get_transactions_history(
         self,
         return_raw_response: bool = False,
-        type: typing.Optional[int] = None,
-        uid_from: typing.Optional[int] = None,
-        uid_to: typing.Optional[int] = None,
-        date_from: typing.Optional[int] = None,
-        date_to: typing.Optional[int] = None,
-        limit: typing.Optional[int] = None,
-    ) -> typing.Union[dict, SecureGetTransactionsHistoryResponse]:
+        type: Optional[int] = None,
+        uid_from: Optional[int] = None,
+        uid_to: Optional[int] = None,
+        date_from: Optional[int] = None,
+        date_to: Optional[int] = None,
+        limit: Optional[int] = None,
+    ) -> Union[dict, SecureGetTransactionsHistoryResponse]:
         """
         :param type:
         :param uid_from:
@@ -126,9 +126,9 @@ class Secure(Category):
 
     async def get_user_level(
         self,
-        user_ids: typing.List[int],
+        user_ids: List[int],
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, SecureGetUserLevelResponse]:
+    ) -> Union[dict, SecureGetUserLevelResponse]:
         """
         :param user_ids:
         :param return_raw_response: - return result at dict
@@ -146,10 +146,10 @@ class Secure(Category):
 
     async def give_event_sticker(
         self,
-        user_ids: typing.List[int],
+        user_ids: List[int],
         achievement_id: int,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, SecureGiveEventStickerResponse]:
+    ) -> Union[dict, SecureGiveEventStickerResponse]:
         """
         :param user_ids:
         :param achievement_id:
@@ -170,9 +170,9 @@ class Secure(Category):
         self,
         message: str,
         return_raw_response: bool = False,
-        user_ids: typing.Optional[typing.List[int]] = None,
-        user_id: typing.Optional[int] = None,
-    ) -> typing.Union[dict, SecureSendNotificationResponse]:
+        user_ids: Optional[List[int]] = None,
+        user_id: Optional[int] = None,
+    ) -> Union[dict, SecureSendNotificationResponse]:
         """
         :param user_ids:
         :param user_id:
@@ -195,7 +195,7 @@ class Secure(Category):
         user_id: int,
         message: str,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, BaseOkResponse]:
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param user_id: - ID of the user to whom SMS notification is sent. The user shall allow the application to send him/her notifications (, +1).
         :param message: - 'SMS' text to be sent in 'UTF-8' encoding. Only Latin letters and numbers are allowed. Maximum size is '160' characters.
@@ -215,11 +215,11 @@ class Secure(Category):
     async def set_counter(
         self,
         return_raw_response: bool = False,
-        counters: typing.Optional[typing.List[str]] = None,
-        user_id: typing.Optional[int] = None,
-        counter: typing.Optional[int] = None,
-        increment: typing.Optional[bool] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        counters: Optional[List[str]] = None,
+        user_id: Optional[int] = None,
+        counter: Optional[int] = None,
+        increment: Optional[bool] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param counters:
         :param user_id:

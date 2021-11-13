@@ -9,8 +9,8 @@ class Docs(Category):
         owner_id: int,
         doc_id: int,
         return_raw_response: bool = False,
-        access_key: typing.Optional[str] = None,
-    ) -> typing.Union[dict, DocsAddResponse]:
+        access_key: Optional[str] = None,
+    ) -> Union[dict, DocsAddResponse]:
         """
         :param owner_id: - ID of the user or community that owns the document. Use a negative value to designate a community ID.
         :param doc_id: - Document ID.
@@ -30,7 +30,7 @@ class Docs(Category):
 
     async def delete(
         self, owner_id: int, doc_id: int, return_raw_response: bool = False,
-    ) -> typing.Union[dict, BaseOkResponse]:
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param owner_id: - ID of the user or community that owns the document. Use a negative value to designate a community ID.
         :param doc_id: - Document ID.
@@ -52,9 +52,9 @@ class Docs(Category):
         owner_id: int,
         doc_id: int,
         return_raw_response: bool = False,
-        title: typing.Optional[str] = None,
-        tags: typing.Optional[typing.List[str]] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        title: Optional[str] = None,
+        tags: Optional[List[str]] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param owner_id: - User ID or community ID. Use a negative value to designate a community ID.
         :param doc_id: - Document ID.
@@ -76,12 +76,12 @@ class Docs(Category):
     async def get(
         self,
         return_raw_response: bool = False,
-        count: typing.Optional[int] = None,
-        offset: typing.Optional[int] = None,
-        type: typing.Optional[int] = None,
-        owner_id: typing.Optional[int] = None,
-        return_tags: typing.Optional[bool] = None,
-    ) -> typing.Union[dict, DocsGetResponse]:
+        count: Optional[int] = None,
+        offset: Optional[int] = None,
+        type: Optional[int] = None,
+        owner_id: Optional[int] = None,
+        return_tags: Optional[bool] = None,
+    ) -> Union[dict, DocsGetResponse]:
         """
         :param count: - Number of documents to return. By default, all documents.
         :param offset: - Offset needed to return a specific subset of documents.
@@ -103,10 +103,10 @@ class Docs(Category):
 
     async def get_by_id(
         self,
-        docs: typing.List[str],
+        docs: List[str],
         return_raw_response: bool = False,
-        return_tags: typing.Optional[bool] = None,
-    ) -> typing.Union[dict, DocsGetByIdResponse]:
+        return_tags: Optional[bool] = None,
+    ) -> Union[dict, DocsGetByIdResponse]:
         """
         :param docs: - Document IDs. Example: , "66748_91488,66748_91455",
         :param return_tags:
@@ -126,9 +126,9 @@ class Docs(Category):
     async def get_messages_upload_server(
         self,
         return_raw_response: bool = False,
-        type: typing.Optional[str] = None,
-        peer_id: typing.Optional[int] = None,
-    ) -> typing.Union[dict, BaseGetUploadServerResponse]:
+        type: Optional[str] = None,
+        peer_id: Optional[int] = None,
+    ) -> Union[dict, BaseGetUploadServerResponse]:
         """
         :param type: - Document type.
         :param peer_id: - Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'Chat ID', e.g. '2000000001'. For community: '- Community ID', e.g. '-12345'. "
@@ -147,7 +147,7 @@ class Docs(Category):
 
     async def get_types(
         self, owner_id: int, return_raw_response: bool = False,
-    ) -> typing.Union[dict, DocsGetTypesResponse]:
+    ) -> Union[dict, DocsGetTypesResponse]:
         """
         :param owner_id: - ID of the user or community that owns the documents. Use a negative value to designate a community ID.
         :param return_raw_response: - return result at dict
@@ -160,12 +160,11 @@ class Docs(Category):
         if return_raw_response:
             return raw_result
 
-        result = DocsGetTypesResponse(**raw_result)
-        return result
+        return DocsGetTypesResponse(**raw_result)
 
     async def get_upload_server(
-        self, return_raw_response: bool = False, group_id: typing.Optional[int] = None,
-    ) -> typing.Union[dict, DocsGetUploadServer]:
+        self, return_raw_response: bool = False, group_id: Optional[int] = None,
+    ) -> Union[dict, DocsGetUploadServerResponse]:
         """
         :param group_id: - Community ID (if the document will be uploaded to the community).
         :param return_raw_response: - return result at dict
@@ -182,8 +181,8 @@ class Docs(Category):
         return result
 
     async def get_wall_upload_server(
-        self, return_raw_response: bool = False, group_id: typing.Optional[int] = None,
-    ) -> typing.Union[dict, BaseGetUploadServerResponse]:
+        self, return_raw_response: bool = False, group_id: Optional[int] = None,
+    ) -> Union[dict, BaseGetUploadServerResponse]:
         """
         :param group_id: - Community ID (if the document will be uploaded to the community).
         :param return_raw_response: - return result at dict
@@ -203,10 +202,10 @@ class Docs(Category):
         self,
         file: str,
         return_raw_response: bool = False,
-        title: typing.Optional[str] = None,
-        tags: typing.Optional[str] = None,
-        return_tags: typing.Optional[bool] = None,
-    ) -> typing.Union[dict, DocsSaveResponse]:
+        title: Optional[str] = None,
+        tags: Optional[str] = None,
+        return_tags: Optional[bool] = None,
+    ) -> Union[dict, DocsSaveResponse]:
         """
         :param file: - This parameter is returned when the file is [vk.com/dev/upload_files_2|uploaded to the server].
         :param title: - Document title.
@@ -229,11 +228,11 @@ class Docs(Category):
         self,
         q: str,
         return_raw_response: bool = False,
-        search_own: typing.Optional[bool] = None,
-        count: typing.Optional[int] = None,
-        offset: typing.Optional[int] = None,
-        return_tags: typing.Optional[bool] = None,
-    ) -> typing.Union[dict, DocsSearchResponse]:
+        search_own: Optional[bool] = None,
+        count: Optional[int] = None,
+        offset: Optional[int] = None,
+        return_tags: Optional[bool] = None,
+    ) -> Union[dict, DocsSearchResponse]:
         """
         :param q: - Search query string.
         :param search_own:

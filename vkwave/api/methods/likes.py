@@ -9,9 +9,9 @@ class Likes(Category):
         type: str,
         item_id: int,
         return_raw_response: bool = False,
-        owner_id: typing.Optional[int] = None,
-        access_key: typing.Optional[str] = None,
-    ) -> typing.Union[dict, LikesAddResponse]:
+        owner_id: Optional[int] = None,
+        access_key: Optional[str] = None,
+    ) -> Union[dict, LikesAddResponse]:
         """
         :param type: - Object type: 'post' — post on user or community wall, 'comment' — comment on a wall post, 'photo' — photo, 'audio' — audio, 'video' — video, 'note' — note, 'photo_comment' — comment on the photo, 'video_comment' — comment on the video, 'topic_comment' — comment in the discussion, 'sitepage' — page of the site where the [vk.com/dev/Like|Like widget] is installed
         :param owner_id: - ID of the user or community that owns the object.
@@ -35,9 +35,9 @@ class Likes(Category):
         type: str,
         item_id: int,
         return_raw_response: bool = False,
-        owner_id: typing.Optional[int] = None,
-        access_key: typing.Optional[str] = None,
-    ) -> typing.Union[dict, LikesDeleteResponse]:
+        owner_id: Optional[int] = None,
+        access_key: Optional[str] = None,
+    ) -> Union[dict, LikesDeleteResponse]:
         """
         :param type: - Object type: 'post' — post on user or community wall, 'comment' — comment on a wall post, 'photo' — photo, 'audio' — audio, 'video' — video, 'note' — note, 'photo_comment' — comment on the photo, 'video_comment' — comment on the video, 'topic_comment' — comment in the discussion, 'sitepage' — page of the site where the [vk.com/dev/Like|Like widget] is installed
         :param owner_id: - ID of the user or community that owns the object.
@@ -60,16 +60,16 @@ class Likes(Category):
         self,
         type: str,
         return_raw_response: bool = False,
-        owner_id: typing.Optional[int] = None,
-        item_id: typing.Optional[int] = None,
-        page_url: typing.Optional[str] = None,
-        filter: typing.Optional[str] = None,
-        friends_only: typing.Optional[int] = None,
-        extended: typing.Optional[BaseBoolInt] = None,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-        skip_own: typing.Optional[bool] = None,
-    ) -> typing.Union[dict, LikesGetListResponse, LikesGetListExtendedResponse]:
+        owner_id: Optional[int] = None,
+        item_id: Optional[int] = None,
+        page_url: Optional[str] = None,
+        filter: Optional[str] = None,
+        friends_only: Optional[int] = None,
+        extended: Optional[BaseBoolInt] = None,
+        offset: Optional[int] = None,
+        count: Optional[int] = None,
+        skip_own: Optional[bool] = None,
+    ) -> Union[dict, LikesGetListResponse, LikesGetListExtendedResponse]:
         """
         :param type: - , Object type: 'post' — post on user or community wall, 'comment' — comment on a wall post, 'photo' — photo, 'audio' — audio, 'video' — video, 'note' — note, 'photo_comment' — comment on the photo, 'video_comment' — comment on the video, 'topic_comment' — comment in the discussion, 'sitepage' — page of the site where the [vk.com/dev/Like|Like widget] is installed
         :param owner_id: - ID of the user, community, or application that owns the object. If the 'type' parameter is set as 'sitepage', the application ID is passed as 'owner_id'. Use negative value for a community id. If the 'type' parameter is not set, the 'owner_id' is assumed to be either the current user or the same application ID as if the 'type' parameter was set to 'sitepage'.
@@ -103,9 +103,9 @@ class Likes(Category):
         type: str,
         item_id: int,
         return_raw_response: bool = False,
-        user_id: typing.Optional[int] = None,
-        owner_id: typing.Optional[int] = None,
-    ) -> typing.Union[dict, LikesIsLikedResponse]:
+        user_id: Optional[int] = None,
+        owner_id: Optional[int] = None,
+    ) -> Union[dict, LikesIsLikedResponse]:
         """
         :param user_id: - User ID.
         :param type: - Object type: 'post' — post on user or community wall, 'comment' — comment on a wall post, 'photo' — photo, 'audio' — audio, 'video' — video, 'note' — note, 'photo_comment' — comment on the photo, 'video_comment' — comment on the video, 'topic_comment' — comment in the discussion

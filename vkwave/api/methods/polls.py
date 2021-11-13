@@ -7,11 +7,11 @@ class Polls(Category):
     async def add_vote(
         self,
         poll_id: int,
-        answer_ids: typing.List[int],
+        answer_ids: List[int],
         return_raw_response: bool = False,
-        owner_id: typing.Optional[int] = None,
-        is_board: typing.Optional[bool] = None,
-    ) -> typing.Union[dict, PollsAddVoteResponse]:
+        owner_id: Optional[int] = None,
+        is_board: Optional[bool] = None,
+    ) -> Union[dict, PollsAddVoteResponse]:
         """
         :param owner_id: - ID of the user or community that owns the poll. Use a negative value to designate a community ID.
         :param poll_id: - Poll ID.
@@ -33,16 +33,16 @@ class Polls(Category):
     async def create(
         self,
         return_raw_response: bool = False,
-        question: typing.Optional[str] = None,
-        is_anonymous: typing.Optional[BaseBoolInt] = None,
-        is_multiple: typing.Optional[bool] = None,
-        end_date: typing.Optional[int] = None,
-        owner_id: typing.Optional[int] = None,
-        add_answers: typing.Optional[str] = None,
-        photo_id: typing.Optional[int] = None,
-        background_id: typing.Optional[str] = None,
-        disable_unvote: typing.Optional[bool] = None,
-    ) -> typing.Union[dict, PollsCreateResponse]:
+        question: Optional[str] = None,
+        is_anonymous: Optional[BaseBoolInt] = None,
+        is_multiple: Optional[bool] = None,
+        end_date: Optional[int] = None,
+        owner_id: Optional[int] = None,
+        add_answers: Optional[str] = None,
+        photo_id: Optional[int] = None,
+        background_id: Optional[str] = None,
+        disable_unvote: Optional[bool] = None,
+    ) -> Union[dict, PollsCreateResponse]:
         """
         :param question: - question text
         :param is_anonymous: - '1' – anonymous poll, participants list is hidden,, '0' – public poll, participants list is available,, Default value is '0'.
@@ -71,9 +71,9 @@ class Polls(Category):
         poll_id: int,
         answer_id: int,
         return_raw_response: bool = False,
-        owner_id: typing.Optional[int] = None,
-        is_board: typing.Optional[bool] = None,
-    ) -> typing.Union[dict, PollsDeleteVoteResponse]:
+        owner_id: Optional[int] = None,
+        is_board: Optional[bool] = None,
+    ) -> Union[dict, PollsDeleteVoteResponse]:
         """
         :param owner_id: - ID of the user or community that owns the poll. Use a negative value to designate a community ID.
         :param poll_id: - Poll ID.
@@ -96,15 +96,15 @@ class Polls(Category):
         self,
         poll_id: int,
         return_raw_response: bool = False,
-        owner_id: typing.Optional[int] = None,
-        question: typing.Optional[str] = None,
-        add_answers: typing.Optional[str] = None,
-        edit_answers: typing.Optional[str] = None,
-        delete_answers: typing.Optional[str] = None,
-        end_date: typing.Optional[int] = None,
-        photo_id: typing.Optional[int] = None,
-        background_id: typing.Optional[str] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        owner_id: Optional[int] = None,
+        question: Optional[str] = None,
+        add_answers: Optional[str] = None,
+        edit_answers: Optional[str] = None,
+        delete_answers: Optional[str] = None,
+        end_date: Optional[int] = None,
+        photo_id: Optional[int] = None,
+        background_id: Optional[str] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param owner_id: - poll owner id
         :param poll_id: - edited poll's id
@@ -132,13 +132,13 @@ class Polls(Category):
         self,
         poll_id: int,
         return_raw_response: bool = False,
-        owner_id: typing.Optional[int] = None,
-        is_board: typing.Optional[BaseBoolInt] = None,
-        extended: typing.Optional[BaseBoolInt] = None,
-        friends_count: typing.Optional[int] = None,
-        fields: typing.Optional[typing.List[str]] = None,
-        name_case: typing.Optional[str] = None,
-    ) -> typing.Union[dict, PollsGetByIdResponse]:
+        owner_id: Optional[int] = None,
+        is_board: Optional[BaseBoolInt] = None,
+        extended: Optional[BaseBoolInt] = None,
+        friends_count: Optional[int] = None,
+        fields: Optional[List[str]] = None,
+        name_case: Optional[str] = None,
+    ) -> Union[dict, PollsGetByIdResponse]:
         """
         :param owner_id: - ID of the user or community that owns the poll. Use a negative value to designate a community ID.
         :param is_board: - '1' – poll is in a board, '0' – poll is on a wall. '0' by default.
@@ -163,16 +163,16 @@ class Polls(Category):
     async def get_voters(
         self,
         poll_id: int,
-        answer_ids: typing.List[int],
+        answer_ids: List[int],
         return_raw_response: bool = False,
-        owner_id: typing.Optional[int] = None,
-        is_board: typing.Optional[bool] = None,
-        friends_only: typing.Optional[BaseBoolInt] = None,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-        fields: typing.Optional[typing.List[UsersFields]] = None,
-        name_case: typing.Optional[str] = None,
-    ) -> typing.Union[dict, PollsGetVotersResponse]:
+        owner_id: Optional[int] = None,
+        is_board: Optional[bool] = None,
+        friends_only: Optional[BaseBoolInt] = None,
+        offset: Optional[int] = None,
+        count: Optional[int] = None,
+        fields: Optional[List[UsersFields]] = None,
+        name_case: Optional[str] = None,
+    ) -> Union[dict, PollsGetVotersResponse]:
         """
         :param owner_id: - ID of the user or community that owns the poll. Use a negative value to designate a community ID.
         :param poll_id: - Poll ID.

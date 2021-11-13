@@ -9,9 +9,9 @@ class Notes(Category):
         title: str,
         text: str,
         return_raw_response: bool = False,
-        privacy_view: typing.Optional[typing.List[str]] = None,
-        privacy_comment: typing.Optional[typing.List[str]] = None,
-    ) -> typing.Union[dict, NotesAddResponse]:
+        privacy_view: Optional[List[str]] = None,
+        privacy_comment: Optional[List[str]] = None,
+    ) -> Union[dict, NotesAddResponse]:
         """
         :param title: - Note title.
         :param text: - Note text.
@@ -35,10 +35,10 @@ class Notes(Category):
         note_id: int,
         message: str,
         return_raw_response: bool = False,
-        owner_id: typing.Optional[int] = None,
-        reply_to: typing.Optional[int] = None,
-        guid: typing.Optional[str] = None,
-    ) -> typing.Union[dict, NotesCreateCommentResponse]:
+        owner_id: Optional[int] = None,
+        reply_to: Optional[int] = None,
+        guid: Optional[str] = None,
+    ) -> Union[dict, NotesCreateCommentResponse]:
         """
         :param note_id: - Note ID.
         :param owner_id: - Note owner ID.
@@ -62,7 +62,7 @@ class Notes(Category):
         self,
         note_id: int,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, BaseOkResponse]:
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param note_id: - Note ID.
         :param return_raw_response: - return result at dict
@@ -82,8 +82,8 @@ class Notes(Category):
         self,
         comment_id: int,
         return_raw_response: bool = False,
-        owner_id: typing.Optional[int] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        owner_id: Optional[int] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param comment_id: - Comment ID.
         :param owner_id: - Note owner ID.
@@ -106,9 +106,9 @@ class Notes(Category):
         title: str,
         text: str,
         return_raw_response: bool = False,
-        privacy_view: typing.Optional[typing.List[str]] = None,
-        privacy_comment: typing.Optional[typing.List[str]] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        privacy_view: Optional[List[str]] = None,
+        privacy_comment: Optional[List[str]] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param note_id: - Note ID.
         :param title: - Note title.
@@ -133,8 +133,8 @@ class Notes(Category):
         comment_id: int,
         message: str,
         return_raw_response: bool = False,
-        owner_id: typing.Optional[int] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        owner_id: Optional[int] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param comment_id: - Comment ID.
         :param owner_id: - Note owner ID.
@@ -155,12 +155,12 @@ class Notes(Category):
     async def get(
         self,
         return_raw_response: bool = False,
-        note_ids: typing.Optional[typing.List[int]] = None,
-        user_id: typing.Optional[int] = None,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-        sort: typing.Optional[int] = None,
-    ) -> typing.Union[dict, NotesGetResponse]:
+        note_ids: Optional[List[int]] = None,
+        user_id: Optional[int] = None,
+        offset: Optional[int] = None,
+        count: Optional[int] = None,
+        sort: Optional[int] = None,
+    ) -> Union[dict, NotesGetResponse]:
         """
         :param note_ids: - Note IDs.
         :param user_id: - Note owner ID.
@@ -184,9 +184,9 @@ class Notes(Category):
         self,
         note_id: int,
         return_raw_response: bool = False,
-        owner_id: typing.Optional[int] = None,
-        need_wiki: typing.Optional[bool] = None,
-    ) -> typing.Union[dict, NotesGetByIdResponse]:
+        owner_id: Optional[int] = None,
+        need_wiki: Optional[bool] = None,
+    ) -> Union[dict, NotesGetByIdResponse]:
         """
         :param note_id: - Note ID.
         :param owner_id: - Note owner ID.
@@ -208,11 +208,11 @@ class Notes(Category):
         self,
         note_id: int,
         return_raw_response: bool = False,
-        owner_id: typing.Optional[int] = None,
-        sort: typing.Optional[int] = None,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-    ) -> typing.Union[dict, NotesGetCommentsResponse]:
+        owner_id: Optional[int] = None,
+        sort: Optional[int] = None,
+        offset: Optional[int] = None,
+        count: Optional[int] = None,
+    ) -> Union[dict, NotesGetCommentsResponse]:
         """
         :param note_id: - Note ID.
         :param owner_id: - Note owner ID.
@@ -236,8 +236,8 @@ class Notes(Category):
         self,
         comment_id: int,
         return_raw_response: bool = False,
-        owner_id: typing.Optional[int] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        owner_id: Optional[int] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param comment_id: - Comment ID.
         :param owner_id: - Note owner ID.

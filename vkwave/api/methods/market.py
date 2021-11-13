@@ -11,17 +11,17 @@ class Market(Category):
         description: str,
         category_id: int,
         return_raw_response: bool = False,
-        price: typing.Optional[int] = None,
-        old_price: typing.Optional[int] = None,
-        deleted: typing.Optional[BaseBoolInt] = None,
-        main_photo_id: typing.Optional[int] = None,
-        photo_ids: typing.Optional[typing.List[int]] = None,
-        url: typing.Optional[str] = None,
-        dimension_width: typing.Optional[int] = None,
-        dimension_height: typing.Optional[int] = None,
-        dimension_length: typing.Optional[int] = None,
-        weight: typing.Optional[int] = None,
-    ) -> typing.Union[dict, MarketAddResponse]:
+        price: Optional[int] = None,
+        old_price: Optional[int] = None,
+        deleted: Optional[BaseBoolInt] = None,
+        main_photo_id: Optional[int] = None,
+        photo_ids: Optional[List[int]] = None,
+        url: Optional[str] = None,
+        dimension_width: Optional[int] = None,
+        dimension_height: Optional[int] = None,
+        dimension_length: Optional[int] = None,
+        weight: Optional[int] = None,
+    ) -> Union[dict, MarketAddResponse]:
         """
         :param owner_id: - ID of an item owner community.
         :param name: - Item name.
@@ -55,9 +55,9 @@ class Market(Category):
         owner_id: int,
         title: str,
         return_raw_response: bool = False,
-        photo_id: typing.Optional[int] = None,
-        main_album: typing.Optional[BaseBoolInt] = None,
-    ) -> typing.Union[dict, MarketAddAlbumResponse]:
+        photo_id: Optional[int] = None,
+        main_album: Optional[BaseBoolInt] = None,
+    ) -> Union[dict, MarketAddAlbumResponse]:
         """
         :param owner_id: - ID of an item owner community.
         :param title: - Collection title.
@@ -80,9 +80,9 @@ class Market(Category):
         self,
         owner_id: int,
         item_id: int,
-        album_ids: typing.List[int],
+        album_ids: List[int],
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, BaseOkResponse]:
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param owner_id: - ID of an item owner community.
         :param item_id: - Item ID.
@@ -105,13 +105,13 @@ class Market(Category):
         owner_id: int,
         item_id: int,
         return_raw_response: bool = False,
-        message: typing.Optional[str] = None,
-        attachments: typing.Optional[typing.List[str]] = None,
-        from_group: typing.Optional[BaseBoolInt] = None,
-        reply_to_comment: typing.Optional[int] = None,
-        sticker_id: typing.Optional[int] = None,
-        guid: typing.Optional[str] = None,
-    ) -> typing.Union[dict, MarketCreateCommentResponse]:
+        message: Optional[str] = None,
+        attachments: Optional[List[str]] = None,
+        from_group: Optional[BaseBoolInt] = None,
+        reply_to_comment: Optional[int] = None,
+        sticker_id: Optional[int] = None,
+        guid: Optional[str] = None,
+    ) -> Union[dict, MarketCreateCommentResponse]:
         """
         :param owner_id: - ID of an item owner community.
         :param item_id: - Item ID.
@@ -139,7 +139,7 @@ class Market(Category):
         owner_id: int,
         item_id: int,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, BaseOkResponse]:
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param owner_id: - ID of an item owner community.
         :param item_id: - Item ID.
@@ -161,7 +161,7 @@ class Market(Category):
         owner_id: int,
         album_id: int,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, BaseOkResponse]:
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param owner_id: - ID of an collection owner community.
         :param album_id: - Collection ID.
@@ -183,7 +183,7 @@ class Market(Category):
         owner_id: int,
         comment_id: int,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, MarketDeleteCommentResponse]:
+    ) -> Union[dict, MarketDeleteCommentResponse]:
         """
         :param owner_id: - identifier of an item owner community, "Note that community id in the 'owner_id' parameter should be negative number. For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community "
         :param comment_id: - comment id
@@ -210,10 +210,10 @@ class Market(Category):
         price: int,
         main_photo_id: int,
         return_raw_response: bool = False,
-        deleted: typing.Optional[BaseBoolInt] = None,
-        photo_ids: typing.Optional[typing.List[int]] = None,
-        url: typing.Optional[str] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        deleted: Optional[BaseBoolInt] = None,
+        photo_ids: Optional[List[int]] = None,
+        url: Optional[str] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param owner_id: - ID of an item owner community.
         :param item_id: - Item ID.
@@ -244,9 +244,9 @@ class Market(Category):
         album_id: int,
         title: str,
         return_raw_response: bool = False,
-        photo_id: typing.Optional[int] = None,
-        main_album: typing.Optional[BaseBoolInt] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        photo_id: Optional[int] = None,
+        main_album: Optional[BaseBoolInt] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param owner_id: - ID of an collection owner community.
         :param album_id: - Collection ID.
@@ -271,9 +271,9 @@ class Market(Category):
         owner_id: int,
         comment_id: int,
         return_raw_response: bool = False,
-        message: typing.Optional[str] = None,
-        attachments: typing.Optional[typing.List[str]] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        message: Optional[str] = None,
+        attachments: Optional[List[str]] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param owner_id: - ID of an item owner community.
         :param comment_id: - Comment ID.
@@ -297,9 +297,9 @@ class Market(Category):
         user_id: int,
         order_id: int,
         return_raw_response: bool = False,
-        merchant_comment: typing.Optional[str] = None,
-        status: typing.Optional[int] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        merchant_comment: Optional[str] = None,
+        status: Optional[int] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param user_id:
         :param order_id:
@@ -322,11 +322,11 @@ class Market(Category):
         self,
         owner_id: int,
         return_raw_response: bool = False,
-        album_id: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-        offset: typing.Optional[int] = None,
-        extended: typing.Optional[BaseBoolInt] = None,
-    ) -> typing.Union[dict, MarketGetResponse, MarketGetExtendedResponse]:
+        album_id: Optional[int] = None,
+        count: Optional[int] = None,
+        offset: Optional[int] = None,
+        extended: Optional[BaseBoolInt] = None,
+    ) -> Union[dict, MarketGetResponse, MarketGetExtendedResponse]:
         """
         :param owner_id: - ID of an item owner community, "Note that community id in the 'owner_id' parameter should be negative number. For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community "
         :param album_id:
@@ -353,9 +353,9 @@ class Market(Category):
     async def get_album_by_id(
         self,
         owner_id: int,
-        album_ids: typing.List[int],
+        album_ids: List[int],
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, MarketGetAlbumByIdResponse]:
+    ) -> Union[dict, MarketGetAlbumByIdResponse]:
         """
         :param owner_id: - identifier of an album owner community, "Note that community id in the 'owner_id' parameter should be negative number. For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community "
         :param album_ids: - collections identifiers to obtain data from
@@ -376,9 +376,9 @@ class Market(Category):
         self,
         owner_id: int,
         return_raw_response: bool = False,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-    ) -> typing.Union[dict, MarketGetAlbumsResponse]:
+        offset: Optional[int] = None,
+        count: Optional[int] = None,
+    ) -> Union[dict, MarketGetAlbumsResponse]:
         """
         :param owner_id: - ID of an items owner community.
         :param offset: - Offset needed to return a specific subset of results.
@@ -398,10 +398,10 @@ class Market(Category):
 
     async def get_by_id(
         self,
-        item_ids: typing.List[str],
+        item_ids: List[str],
         return_raw_response: bool = False,
-        extended: typing.Optional[BaseBoolInt] = None,
-    ) -> typing.Union[dict, MarketGetByIdResponse, MarketGetByIdExtendedResponse]:
+        extended: Optional[BaseBoolInt] = None,
+    ) -> Union[dict, MarketGetByIdResponse, MarketGetByIdExtendedResponse]:
         """
         :param item_ids: - Comma-separated ids list: {user id}_{item id}. If an item belongs to a community -{community id} is used. " 'Videos' value example: , '-4363_136089719,13245770_137352259'"
         :param extended: - '1' – to return additional fields: 'likes, can_comment, car_repost, photos'. By default: '0'.
@@ -425,9 +425,9 @@ class Market(Category):
     async def get_categories(
         self,
         return_raw_response: bool = False,
-        count: typing.Optional[int] = None,
-        offset: typing.Optional[int] = None,
-    ) -> typing.Union[dict, MarketGetCategoriesNewResponse]:
+        count: Optional[int] = None,
+        offset: Optional[int] = None,
+    ) -> Union[dict, MarketGetCategoriesNewResponse]:
         """
         :param count: - Number of results to return.
         :param offset: - Offset needed to return a specific subset of results.
@@ -449,14 +449,14 @@ class Market(Category):
         owner_id: int,
         item_id: int,
         return_raw_response: bool = False,
-        need_likes: typing.Optional[BaseBoolInt] = None,
-        start_comment_id: typing.Optional[int] = None,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-        sort: typing.Optional[str] = None,
-        extended: typing.Optional[BaseBoolInt] = None,
-        fields: typing.Optional[typing.List[UsersFields]] = None,
-    ) -> typing.Union[dict, MarketGetCommentsResponse]:
+        need_likes: Optional[BaseBoolInt] = None,
+        start_comment_id: Optional[int] = None,
+        offset: Optional[int] = None,
+        count: Optional[int] = None,
+        sort: Optional[str] = None,
+        extended: Optional[BaseBoolInt] = None,
+        fields: Optional[List[UsersFields]] = None,
+    ) -> Union[dict, MarketGetCommentsResponse]:
         """
         :param owner_id: - ID of an item owner community
         :param item_id: - Item ID.
@@ -484,9 +484,9 @@ class Market(Category):
         self,
         group_id: int,
         return_raw_response: bool = False,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-    ) -> typing.Union[dict, MarketGetGroupOrdersResponse]:
+        offset: Optional[int] = None,
+        count: Optional[int] = None,
+    ) -> Union[dict, MarketGetGroupOrdersResponse]:
         """
         :param group_id:
         :param offset:
@@ -508,9 +508,9 @@ class Market(Category):
         self,
         order_id: int,
         return_raw_response: bool = False,
-        user_id: typing.Optional[int] = None,
-        extended: typing.Optional[BaseBoolInt] = None,
-    ) -> typing.Union[dict, MarketGetOrderByIdResponse]:
+        user_id: Optional[int] = None,
+        extended: Optional[BaseBoolInt] = None,
+    ) -> Union[dict, MarketGetOrderByIdResponse]:
         """
         :param user_id:
         :param order_id:
@@ -532,9 +532,9 @@ class Market(Category):
         self,
         order_id: int,
         return_raw_response: bool = False,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-    ) -> typing.Union[dict, MarketGetOrderItemsResponse]:
+        offset: Optional[int] = None,
+        count: Optional[int] = None,
+    ) -> Union[dict, MarketGetOrderItemsResponse]:
         """
         :param order_id:
         :param offset:
@@ -555,10 +555,10 @@ class Market(Category):
     async def get_orders(
         self,
         return_raw_response: bool = False,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-        extended: typing.Optional[BaseBoolInt] = None,
-    ) -> typing.Union[dict, MarketGetOrdersResponse, MarketGetOrdersExtendedResponse]:
+        offset: Optional[int] = None,
+        count: Optional[int] = None,
+        extended: Optional[BaseBoolInt] = None,
+    ) -> Union[dict, MarketGetOrdersResponse, MarketGetOrdersExtendedResponse]:
         """
         :param offset:
         :param count:
@@ -584,9 +584,9 @@ class Market(Category):
         self,
         owner_id: int,
         item_id: int,
-        album_ids: typing.List[int],
+        album_ids: List[int],
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, BaseOkResponse]:
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param owner_id: - ID of an item owner community.
         :param item_id: - Item ID.
@@ -609,9 +609,9 @@ class Market(Category):
         owner_id: int,
         album_id: int,
         return_raw_response: bool = False,
-        before: typing.Optional[int] = None,
-        after: typing.Optional[int] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        before: Optional[int] = None,
+        after: Optional[int] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param owner_id: - ID of an item owner community.
         :param album_id: - Collection ID.
@@ -635,10 +635,10 @@ class Market(Category):
         owner_id: int,
         item_id: int,
         return_raw_response: bool = False,
-        album_id: typing.Optional[int] = None,
-        before: typing.Optional[int] = None,
-        after: typing.Optional[int] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        album_id: Optional[int] = None,
+        before: Optional[int] = None,
+        after: Optional[int] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param owner_id: - ID of an item owner community.
         :param album_id: - ID of a collection to reorder items in. Set 0 to reorder full items list.
@@ -663,8 +663,8 @@ class Market(Category):
         owner_id: int,
         item_id: int,
         return_raw_response: bool = False,
-        reason: typing.Optional[int] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        reason: Optional[int] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param owner_id: - ID of an item owner community.
         :param item_id: - Item ID.
@@ -688,7 +688,7 @@ class Market(Category):
         comment_id: int,
         reason: int,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, BaseOkResponse]:
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param owner_id: - ID of an item owner community.
         :param comment_id: - Comment ID.
@@ -711,7 +711,7 @@ class Market(Category):
         owner_id: int,
         item_id: int,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, BaseOkResponse]:
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param owner_id: - ID of an item owner community.
         :param item_id: - Deleted item ID.
@@ -733,7 +733,7 @@ class Market(Category):
         owner_id: int,
         comment_id: int,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, MarketRestoreCommentResponse]:
+    ) -> Union[dict, MarketRestoreCommentResponse]:
         """
         :param owner_id: - identifier of an item owner community, "Note that community id in the 'owner_id' parameter should be negative number. For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community "
         :param comment_id: - deleted comment id
@@ -754,17 +754,17 @@ class Market(Category):
         self,
         owner_id: int,
         return_raw_response: bool = False,
-        album_id: typing.Optional[int] = None,
-        q: typing.Optional[str] = None,
-        price_from: typing.Optional[int] = None,
-        price_to: typing.Optional[int] = None,
-        sort: typing.Optional[int] = None,
-        rev: typing.Optional[int] = None,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-        extended: typing.Optional[BaseBoolInt] = None,
-        status: typing.Optional[int] = None,
-    ) -> typing.Union[dict, MarketSearchResponse, MarketSearchExtendedResponse]:
+        album_id: Optional[int] = None,
+        q: Optional[str] = None,
+        price_from: Optional[int] = None,
+        price_to: Optional[int] = None,
+        sort: Optional[int] = None,
+        rev: Optional[int] = None,
+        offset: Optional[int] = None,
+        count: Optional[int] = None,
+        extended: Optional[BaseBoolInt] = None,
+        status: Optional[int] = None,
+    ) -> Union[dict, MarketSearchResponse, MarketSearchExtendedResponse]:
         """
         :param owner_id: - ID of an items owner community.
         :param album_id:

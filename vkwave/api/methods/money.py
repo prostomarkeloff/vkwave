@@ -14,7 +14,7 @@ class Money(Category):
         accept_card: str = "",
         currency: str = "RUB",
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, BaseOkResponse]:
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param amount:
         :param receiver_id:

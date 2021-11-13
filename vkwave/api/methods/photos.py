@@ -9,8 +9,8 @@ class Photos(Category):
         photo_id: str,
         tag_id: int,
         return_raw_response: bool = False,
-        owner_id: typing.Optional[int] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        owner_id: Optional[int] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param owner_id: - ID of the user or community that owns the photo.
         :param photo_id: - Photo ID.
@@ -33,8 +33,8 @@ class Photos(Category):
         owner_id: int,
         photo_id: int,
         return_raw_response: bool = False,
-        access_key: typing.Optional[str] = None,
-    ) -> typing.Union[dict, PhotosCopyResponse]:
+        access_key: Optional[str] = None,
+    ) -> Union[dict, PhotosCopyResponse]:
         """
         :param owner_id: - photo's owner ID
         :param photo_id: - photo ID
@@ -56,13 +56,13 @@ class Photos(Category):
         self,
         title: str,
         return_raw_response: bool = False,
-        group_id: typing.Optional[int] = None,
-        description: typing.Optional[str] = None,
-        privacy_view: typing.Optional[typing.List[str]] = None,
-        privacy_comment: typing.Optional[typing.List[str]] = None,
-        upload_by_admins_only: typing.Optional[bool] = None,
-        comments_disabled: typing.Optional[bool] = None,
-    ) -> typing.Union[dict, PhotosCreateAlbumResponse]:
+        group_id: Optional[int] = None,
+        description: Optional[str] = None,
+        privacy_view: Optional[List[str]] = None,
+        privacy_comment: Optional[List[str]] = None,
+        upload_by_admins_only: Optional[bool] = None,
+        comments_disabled: Optional[bool] = None,
+    ) -> Union[dict, PhotosCreateAlbumResponse]:
         """
         :param title: - Album title.
         :param group_id: - ID of the community in which the album will be created.
@@ -88,15 +88,15 @@ class Photos(Category):
         self,
         photo_id: int,
         return_raw_response: bool = False,
-        owner_id: typing.Optional[int] = None,
-        message: typing.Optional[str] = None,
-        attachments: typing.Optional[typing.List[str]] = None,
-        from_group: typing.Optional[BaseBoolInt] = None,
-        reply_to_comment: typing.Optional[int] = None,
-        sticker_id: typing.Optional[int] = None,
-        access_key: typing.Optional[str] = None,
-        guid: typing.Optional[str] = None,
-    ) -> typing.Union[dict, PhotosCreateCommentResponse]:
+        owner_id: Optional[int] = None,
+        message: Optional[str] = None,
+        attachments: Optional[List[str]] = None,
+        from_group: Optional[BaseBoolInt] = None,
+        reply_to_comment: Optional[int] = None,
+        sticker_id: Optional[int] = None,
+        access_key: Optional[str] = None,
+        guid: Optional[str] = None,
+    ) -> Union[dict, PhotosCreateCommentResponse]:
         """
         :param owner_id: - ID of the user or community that owns the photo.
         :param photo_id: - Photo ID.
@@ -124,8 +124,8 @@ class Photos(Category):
         self,
         photo_id: int,
         return_raw_response: bool = False,
-        owner_id: typing.Optional[int] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        owner_id: Optional[int] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param owner_id: - ID of the user or community that owns the photo.
         :param photo_id: - Photo ID.
@@ -146,8 +146,8 @@ class Photos(Category):
         self,
         album_id: int,
         return_raw_response: bool = False,
-        group_id: typing.Optional[int] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        group_id: Optional[int] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param album_id: - Album ID.
         :param group_id: - ID of the community that owns the album.
@@ -168,8 +168,8 @@ class Photos(Category):
         self,
         comment_id: int,
         return_raw_response: bool = False,
-        owner_id: typing.Optional[int] = None,
-    ) -> typing.Union[dict, PhotosDeleteCommentResponse]:
+        owner_id: Optional[int] = None,
+    ) -> Union[dict, PhotosDeleteCommentResponse]:
         """
         :param owner_id: - ID of the user or community that owns the photo.
         :param comment_id: - Comment ID.
@@ -190,14 +190,14 @@ class Photos(Category):
         self,
         photo_id: int,
         return_raw_response: bool = False,
-        owner_id: typing.Optional[int] = None,
-        caption: typing.Optional[str] = None,
-        latitude: typing.Optional[int] = None,
-        longitude: typing.Optional[int] = None,
-        place_str: typing.Optional[str] = None,
-        foursquare_id: typing.Optional[str] = None,
-        delete_place: typing.Optional[bool] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        owner_id: Optional[int] = None,
+        caption: Optional[str] = None,
+        latitude: Optional[int] = None,
+        longitude: Optional[int] = None,
+        place_str: Optional[str] = None,
+        foursquare_id: Optional[str] = None,
+        delete_place: Optional[bool] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param owner_id: - ID of the user or community that owns the photo.
         :param photo_id: - Photo ID.
@@ -224,14 +224,14 @@ class Photos(Category):
         self,
         album_id: int,
         return_raw_response: bool = False,
-        title: typing.Optional[str] = None,
-        description: typing.Optional[str] = None,
-        owner_id: typing.Optional[int] = None,
-        privacy_view: typing.Optional[typing.List[str]] = None,
-        privacy_comment: typing.Optional[typing.List[str]] = None,
-        upload_by_admins_only: typing.Optional[bool] = None,
-        comments_disabled: typing.Optional[bool] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        title: Optional[str] = None,
+        description: Optional[str] = None,
+        owner_id: Optional[int] = None,
+        privacy_view: Optional[List[str]] = None,
+        privacy_comment: Optional[List[str]] = None,
+        upload_by_admins_only: Optional[bool] = None,
+        comments_disabled: Optional[bool] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param album_id: - ID of the photo album to be edited.
         :param title: - New album title.
@@ -258,10 +258,10 @@ class Photos(Category):
         self,
         comment_id: int,
         return_raw_response: bool = False,
-        owner_id: typing.Optional[int] = None,
-        message: typing.Optional[str] = None,
-        attachments: typing.Optional[typing.List[str]] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        owner_id: Optional[int] = None,
+        message: Optional[str] = None,
+        attachments: Optional[List[str]] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param owner_id: - ID of the user or community that owns the photo.
         :param comment_id: - Comment ID.
@@ -283,17 +283,17 @@ class Photos(Category):
     async def get(
         self,
         return_raw_response: bool = False,
-        owner_id: typing.Optional[int] = None,
-        album_id: typing.Optional[str] = None,
-        photo_ids: typing.Optional[typing.List[str]] = None,
-        rev: typing.Optional[BaseBoolInt] = None,
-        extended: typing.Optional[BaseBoolInt] = None,
-        feed_type: typing.Optional[str] = None,
-        feed: typing.Optional[int] = None,
-        photo_sizes: typing.Optional[BaseBoolInt] = None,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-    ) -> typing.Union[dict, PhotosGetResponse, PhotosGetExtendedResponse]:
+        owner_id: Optional[int] = None,
+        album_id: Optional[str] = None,
+        photo_ids: Optional[List[str]] = None,
+        rev: Optional[BaseBoolInt] = None,
+        extended: Optional[BaseBoolInt] = None,
+        feed_type: Optional[str] = None,
+        feed: Optional[int] = None,
+        photo_sizes: Optional[BaseBoolInt] = None,
+        offset: Optional[int] = None,
+        count: Optional[int] = None,
+    ) -> Union[dict, PhotosGetResponse, PhotosGetExtendedResponse]:
         """
         :param owner_id: - ID of the user or community that owns the photos. Use a negative value to designate a community ID.
         :param album_id: - Photo album ID. To return information about photos from service albums, use the following string values: 'profile, wall, saved'.
@@ -325,14 +325,14 @@ class Photos(Category):
     async def get_albums(
         self,
         return_raw_response: bool = False,
-        owner_id: typing.Optional[int] = None,
-        album_ids: typing.Optional[typing.List[int]] = None,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-        need_system: typing.Optional[BaseBoolInt] = None,
-        need_covers: typing.Optional[BaseBoolInt] = None,
-        photo_sizes: typing.Optional[BaseBoolInt] = None,
-    ) -> typing.Union[dict, PhotosGetAlbumsResponse]:
+        owner_id: Optional[int] = None,
+        album_ids: Optional[List[int]] = None,
+        offset: Optional[int] = None,
+        count: Optional[int] = None,
+        need_system: Optional[BaseBoolInt] = None,
+        need_covers: Optional[BaseBoolInt] = None,
+        photo_sizes: Optional[BaseBoolInt] = None,
+    ) -> Union[dict, PhotosGetAlbumsResponse]:
         """
         :param owner_id: - ID of the user or community that owns the albums.
         :param album_ids: - Album IDs.
@@ -357,9 +357,9 @@ class Photos(Category):
     async def get_albums_count(
         self,
         return_raw_response: bool = False,
-        user_id: typing.Optional[int] = None,
-        group_id: typing.Optional[int] = None,
-    ) -> typing.Union[dict, PhotosGetAlbumsCountResponse]:
+        user_id: Optional[int] = None,
+        group_id: Optional[int] = None,
+    ) -> Union[dict, PhotosGetAlbumsCountResponse]:
         """
         :param user_id: - User ID.
         :param group_id: - Community ID.
@@ -379,15 +379,15 @@ class Photos(Category):
     async def get_all(
         self,
         return_raw_response: bool = False,
-        owner_id: typing.Optional[int] = None,
-        extended: typing.Optional[BaseBoolInt] = None,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-        photo_sizes: typing.Optional[BaseBoolInt] = None,
-        no_service_albums: typing.Optional[BaseBoolInt] = None,
-        need_hidden: typing.Optional[BaseBoolInt] = None,
-        skip_hidden: typing.Optional[BaseBoolInt] = None,
-    ) -> typing.Union[dict, PhotosGetAllResponse, PhotosGetAllExtendedResponse]:
+        owner_id: Optional[int] = None,
+        extended: Optional[BaseBoolInt] = None,
+        offset: Optional[int] = None,
+        count: Optional[int] = None,
+        photo_sizes: Optional[BaseBoolInt] = None,
+        no_service_albums: Optional[BaseBoolInt] = None,
+        need_hidden: Optional[BaseBoolInt] = None,
+        skip_hidden: Optional[BaseBoolInt] = None,
+    ) -> Union[dict, PhotosGetAllResponse, PhotosGetAllExtendedResponse]:
         """
         :param owner_id: - ID of a user or community that owns the photos. Use a negative value to designate a community ID.
         :param extended: - '1' — to return detailed information about photos
@@ -417,12 +417,12 @@ class Photos(Category):
     async def get_all_comments(
         self,
         return_raw_response: bool = False,
-        owner_id: typing.Optional[int] = None,
-        album_id: typing.Optional[int] = None,
-        need_likes: typing.Optional[BaseBoolInt] = None,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-    ) -> typing.Union[dict, PhotosGetAllCommentsResponse]:
+        owner_id: Optional[int] = None,
+        album_id: Optional[int] = None,
+        need_likes: Optional[BaseBoolInt] = None,
+        offset: Optional[int] = None,
+        count: Optional[int] = None,
+    ) -> Union[dict, PhotosGetAllCommentsResponse]:
         """
         :param owner_id: - ID of the user or community that owns the album(s).
         :param album_id: - Album ID. If the parameter is not set, comments on all of the user's albums will be returned.
@@ -444,11 +444,11 @@ class Photos(Category):
 
     async def get_by_id(
         self,
-        photos: typing.List[str],
+        photos: List[str],
         return_raw_response: bool = False,
-        extended: typing.Optional[BaseBoolInt] = None,
-        photo_sizes: typing.Optional[BaseBoolInt] = None,
-    ) -> typing.Union[dict, PhotosGetByIdResponse, PhotosGetByIdExtendedResponse]:
+        extended: Optional[BaseBoolInt] = None,
+        photo_sizes: Optional[BaseBoolInt] = None,
+    ) -> Union[dict, PhotosGetByIdResponse, PhotosGetByIdExtendedResponse]:
         """
         :param photos: - IDs separated with a comma, that are IDs of users who posted photos and IDs of photos themselves with an underscore character between such IDs. To get information about a photo in the group album, you shall specify group ID instead of user ID. Example: "1_129207899,6492_135055734, , -20629724_271945303"
         :param extended: - '1' — to return additional fields, '0' — (default)
@@ -474,10 +474,10 @@ class Photos(Category):
         self,
         chat_id: int,
         return_raw_response: bool = False,
-        crop_x: typing.Optional[int] = None,
-        crop_y: typing.Optional[int] = None,
-        crop_width: typing.Optional[int] = None,
-    ) -> typing.Union[dict, BaseGetUploadServerResponse]:
+        crop_x: Optional[int] = None,
+        crop_y: Optional[int] = None,
+        crop_width: Optional[int] = None,
+    ) -> Union[dict, BaseGetUploadServerResponse]:
         """
         :param chat_id: - ID of the chat for which you want to upload a cover photo.
         :param crop_x:
@@ -500,16 +500,16 @@ class Photos(Category):
         self,
         photo_id: int,
         return_raw_response: bool = False,
-        owner_id: typing.Optional[int] = None,
-        need_likes: typing.Optional[BaseBoolInt] = None,
-        start_comment_id: typing.Optional[int] = None,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-        sort: typing.Optional[str] = None,
-        access_key: typing.Optional[str] = None,
-        extended: typing.Optional[BaseBoolInt] = None,
-        fields: typing.Optional[typing.List[UsersFields]] = None,
-    ) -> typing.Union[dict, PhotosGetCommentsResponse, PhotosGetCommentsExtendedResponse]:
+        owner_id: Optional[int] = None,
+        need_likes: Optional[BaseBoolInt] = None,
+        start_comment_id: Optional[int] = None,
+        offset: Optional[int] = None,
+        count: Optional[int] = None,
+        sort: Optional[str] = None,
+        access_key: Optional[str] = None,
+        extended: Optional[BaseBoolInt] = None,
+        fields: Optional[List[UsersFields]] = None,
+    ) -> Union[dict, PhotosGetCommentsResponse, PhotosGetCommentsExtendedResponse]:
         """
         :param owner_id: - ID of the user or community that owns the photo.
         :param photo_id: - Photo ID.
@@ -542,7 +542,7 @@ class Photos(Category):
         self,
         group_id: int,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, BaseGetUploadServerResponse]:
+    ) -> Union[dict, BaseGetUploadServerResponse]:
         """
         :param group_id: - Community ID.
         :param return_raw_response: - return result at dict
@@ -562,11 +562,11 @@ class Photos(Category):
         self,
         group_id: int,
         return_raw_response: bool = False,
-        main_photo: typing.Optional[BaseBoolInt] = None,
-        crop_x: typing.Optional[int] = None,
-        crop_y: typing.Optional[int] = None,
-        crop_width: typing.Optional[int] = None,
-    ) -> typing.Union[dict, PhotosGetMarketUploadServerResponse]:
+        main_photo: Optional[BaseBoolInt] = None,
+        crop_x: Optional[int] = None,
+        crop_y: Optional[int] = None,
+        crop_width: Optional[int] = None,
+    ) -> Union[dict, PhotosGetMarketUploadServerResponse]:
         """
         :param group_id: - Community ID.
         :param main_photo: - '1' if you want to upload the main item photo.
@@ -589,8 +589,8 @@ class Photos(Category):
     async def get_messages_upload_server(
         self,
         return_raw_response: bool = False,
-        peer_id: typing.Optional[int] = None,
-    ) -> typing.Union[dict, PhotosGetMessagesUploadServerResponse]:
+        peer_id: Optional[int] = None,
+    ) -> Union[dict, PhotosGetMessagesUploadServerResponse]:
         """
         :param peer_id: - Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'Chat ID', e.g. '2000000001'. For community: '- Community ID', e.g. '-12345'. "
         :param return_raw_response: - return result at dict
@@ -609,9 +609,9 @@ class Photos(Category):
     async def get_new_tags(
         self,
         return_raw_response: bool = False,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-    ) -> typing.Union[dict, PhotosGetNewTagsResponse]:
+        offset: Optional[int] = None,
+        count: Optional[int] = None,
+    ) -> Union[dict, PhotosGetNewTagsResponse]:
         """
         :param offset: - Offset needed to return a specific subset of photos.
         :param count: - Number of photos to return.
@@ -632,11 +632,11 @@ class Photos(Category):
         self,
         group_id: int,
         return_raw_response: bool = False,
-        crop_x: typing.Optional[int] = None,
-        crop_y: typing.Optional[int] = None,
-        crop_x2: typing.Optional[int] = None,
-        crop_y2: typing.Optional[int] = None,
-    ) -> typing.Union[dict, BaseGetUploadServerResponse]:
+        crop_x: Optional[int] = None,
+        crop_y: Optional[int] = None,
+        crop_x2: Optional[int] = None,
+        crop_y2: Optional[int] = None,
+    ) -> Union[dict, BaseGetUploadServerResponse]:
         """
         :param group_id: - ID of community that owns the album (if the photo will be uploaded to a community album).
         :param crop_x: - X coordinate of the left-upper corner
@@ -659,8 +659,8 @@ class Photos(Category):
     async def get_owner_photo_upload_server(
         self,
         return_raw_response: bool = False,
-        owner_id: typing.Optional[int] = None,
-    ) -> typing.Union[dict, BaseGetUploadServerResponse]:
+        owner_id: Optional[int] = None,
+    ) -> Union[dict, BaseGetUploadServerResponse]:
         """
         :param owner_id: - identifier of a community or current user. "Note that community id must be negative. 'owner_id=1' – user, 'owner_id=-1' – community, "
         :param return_raw_response: - return result at dict
@@ -680,9 +680,9 @@ class Photos(Category):
         self,
         photo_id: int,
         return_raw_response: bool = False,
-        owner_id: typing.Optional[int] = None,
-        access_key: typing.Optional[str] = None,
-    ) -> typing.Union[dict, PhotosGetTagsResponse]:
+        owner_id: Optional[int] = None,
+        access_key: Optional[str] = None,
+    ) -> Union[dict, PhotosGetTagsResponse]:
         """
         :param owner_id: - ID of the user or community that owns the photo.
         :param photo_id: - Photo ID.
@@ -703,9 +703,9 @@ class Photos(Category):
     async def get_upload_server(
         self,
         return_raw_response: bool = False,
-        group_id: typing.Optional[int] = None,
-        album_id: typing.Optional[int] = None,
-    ) -> typing.Union[dict, PhotosGetUploadServerResponse]:
+        group_id: Optional[int] = None,
+        album_id: Optional[int] = None,
+    ) -> Union[dict, PhotosGetUploadServerResponse]:
         """
         :param group_id: - ID of community that owns the album (if the photo will be uploaded to a community album).
         :param album_id:
@@ -725,12 +725,12 @@ class Photos(Category):
     async def get_user_photos(
         self,
         return_raw_response: bool = False,
-        user_id: typing.Optional[int] = None,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-        extended: typing.Optional[BaseBoolInt] = None,
-        sort: typing.Optional[str] = None,
-    ) -> typing.Union[dict, PhotosGetUserPhotosResponse, PhotosGetUserPhotosExtendedResponse]:
+        user_id: Optional[int] = None,
+        offset: Optional[int] = None,
+        count: Optional[int] = None,
+        extended: Optional[BaseBoolInt] = None,
+        sort: Optional[str] = None,
+    ) -> Union[dict, PhotosGetUserPhotosResponse, PhotosGetUserPhotosExtendedResponse]:
         """
         :param user_id: - User ID.
         :param offset: - Offset needed to return a specific subset of photos. By default, '0'.
@@ -757,8 +757,8 @@ class Photos(Category):
     async def get_wall_upload_server(
         self,
         return_raw_response: bool = False,
-        group_id: typing.Optional[int] = None,
-    ) -> typing.Union[dict, PhotosGetWallUploadServerResponse]:
+        group_id: Optional[int] = None,
+    ) -> Union[dict, PhotosGetWallUploadServerResponse]:
         """
         :param group_id: - ID of community to whose wall the photo will be uploaded.
         :param return_raw_response: - return result at dict
@@ -778,9 +778,9 @@ class Photos(Category):
         self,
         photo_id: int,
         return_raw_response: bool = False,
-        owner_id: typing.Optional[int] = None,
-        album_id: typing.Optional[int] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        owner_id: Optional[int] = None,
+        album_id: Optional[int] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param owner_id: - ID of the user or community that owns the photo.
         :param photo_id: - Photo ID.
@@ -803,8 +803,8 @@ class Photos(Category):
         target_album_id: int,
         photo_id: int,
         return_raw_response: bool = False,
-        owner_id: typing.Optional[int] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        owner_id: Optional[int] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param owner_id: - ID of the user or community that owns the photo.
         :param target_album_id: - ID of the album to which the photo will be moved.
@@ -827,12 +827,12 @@ class Photos(Category):
         photo_id: int,
         user_id: int,
         return_raw_response: bool = False,
-        owner_id: typing.Optional[int] = None,
-        x: typing.Optional[int] = None,
-        y: typing.Optional[int] = None,
-        x2: typing.Optional[int] = None,
-        y2: typing.Optional[int] = None,
-    ) -> typing.Union[dict, PhotosPutTagResponse]:
+        owner_id: Optional[int] = None,
+        x: Optional[int] = None,
+        y: Optional[int] = None,
+        x2: Optional[int] = None,
+        y2: Optional[int] = None,
+    ) -> Union[dict, PhotosPutTagResponse]:
         """
         :param owner_id: - ID of the user or community that owns the photo.
         :param photo_id: - Photo ID.
@@ -859,8 +859,8 @@ class Photos(Category):
         photo_id: int,
         tag_id: int,
         return_raw_response: bool = False,
-        owner_id: typing.Optional[int] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        owner_id: Optional[int] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param owner_id: - ID of the user or community that owns the photo.
         :param photo_id: - Photo ID.
@@ -882,10 +882,10 @@ class Photos(Category):
         self,
         album_id: int,
         return_raw_response: bool = False,
-        owner_id: typing.Optional[int] = None,
-        before: typing.Optional[int] = None,
-        after: typing.Optional[int] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        owner_id: Optional[int] = None,
+        before: Optional[int] = None,
+        after: Optional[int] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param owner_id: - ID of the user or community that owns the album.
         :param album_id: - Album ID.
@@ -908,10 +908,10 @@ class Photos(Category):
         self,
         photo_id: int,
         return_raw_response: bool = False,
-        owner_id: typing.Optional[int] = None,
-        before: typing.Optional[int] = None,
-        after: typing.Optional[int] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        owner_id: Optional[int] = None,
+        before: Optional[int] = None,
+        after: Optional[int] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param owner_id: - ID of the user or community that owns the photo.
         :param photo_id: - Photo ID.
@@ -935,8 +935,8 @@ class Photos(Category):
         owner_id: int,
         photo_id: int,
         return_raw_response: bool = False,
-        reason: typing.Optional[int] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        reason: Optional[int] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param owner_id: - ID of the user or community that owns the photo.
         :param photo_id: - Photo ID.
@@ -959,8 +959,8 @@ class Photos(Category):
         owner_id: int,
         comment_id: int,
         return_raw_response: bool = False,
-        reason: typing.Optional[int] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        reason: Optional[int] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param owner_id: - ID of the user or community that owns the photo.
         :param comment_id: - ID of the comment being reported.
@@ -982,8 +982,8 @@ class Photos(Category):
         self,
         photo_id: int,
         return_raw_response: bool = False,
-        owner_id: typing.Optional[int] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        owner_id: Optional[int] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param owner_id: - ID of the user or community that owns the photo.
         :param photo_id: - Photo ID.
@@ -1004,8 +1004,8 @@ class Photos(Category):
         self,
         comment_id: int,
         return_raw_response: bool = False,
-        owner_id: typing.Optional[int] = None,
-    ) -> typing.Union[dict, PhotosRestoreCommentResponse]:
+        owner_id: Optional[int] = None,
+    ) -> Union[dict, PhotosRestoreCommentResponse]:
         """
         :param owner_id: - ID of the user or community that owns the photo.
         :param comment_id: - ID of the deleted comment.
@@ -1025,15 +1025,15 @@ class Photos(Category):
     async def save(
         self,
         return_raw_response: bool = False,
-        album_id: typing.Optional[int] = None,
-        group_id: typing.Optional[int] = None,
-        server: typing.Optional[int] = None,
-        photos_list: typing.Optional[str] = None,
-        hash: typing.Optional[str] = None,
-        latitude: typing.Optional[int] = None,
-        longitude: typing.Optional[int] = None,
-        caption: typing.Optional[str] = None,
-    ) -> typing.Union[dict, PhotosSaveResponse]:
+        album_id: Optional[int] = None,
+        group_id: Optional[int] = None,
+        server: Optional[int] = None,
+        photos_list: Optional[str] = None,
+        hash: Optional[str] = None,
+        latitude: Optional[int] = None,
+        longitude: Optional[int] = None,
+        caption: Optional[str] = None,
+    ) -> Union[dict, PhotosSaveResponse]:
         """
         :param album_id: - ID of the album to save photos to.
         :param group_id: - ID of the community to save photos to.
@@ -1063,7 +1063,7 @@ class Photos(Category):
         server: int,
         hash: str,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, PhotosSaveMarketAlbumPhotoResponse]:
+    ) -> Union[dict, PhotosSaveMarketAlbumPhotoResponse]:
         """
         :param group_id: - Community ID.
         :param photo: - Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
@@ -1088,10 +1088,10 @@ class Photos(Category):
         server: int,
         hash: str,
         return_raw_response: bool = False,
-        group_id: typing.Optional[int] = None,
-        crop_data: typing.Optional[str] = None,
-        crop_hash: typing.Optional[str] = None,
-    ) -> typing.Union[dict, PhotosSaveMarketPhotoResponse]:
+        group_id: Optional[int] = None,
+        crop_data: Optional[str] = None,
+        crop_hash: Optional[str] = None,
+    ) -> Union[dict, PhotosSaveMarketPhotoResponse]:
         """
         :param group_id: - Community ID.
         :param photo: - Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
@@ -1116,9 +1116,9 @@ class Photos(Category):
         self,
         photo: str,
         return_raw_response: bool = False,
-        server: typing.Optional[int] = None,
-        hash: typing.Optional[str] = None,
-    ) -> typing.Union[dict, PhotosSaveMessagesPhotoResponse]:
+        server: Optional[int] = None,
+        hash: Optional[str] = None,
+    ) -> Union[dict, PhotosSaveMessagesPhotoResponse]:
         """
         :param photo: - Parameter returned when the photo is [vk.com/dev/upload_files|uploaded to the server].
         :param server:
@@ -1141,7 +1141,7 @@ class Photos(Category):
         hash: str,
         photo: str,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, PhotosSaveOwnerCoverPhotoResponse]:
+    ) -> Union[dict, PhotosSaveOwnerCoverPhotoResponse]:
         """
         :param hash: - Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
         :param photo: - Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
@@ -1161,10 +1161,10 @@ class Photos(Category):
     async def save_owner_photo(
         self,
         return_raw_response: bool = False,
-        server: typing.Optional[str] = None,
-        hash: typing.Optional[str] = None,
-        photo: typing.Optional[str] = None,
-    ) -> typing.Union[dict, PhotosSaveOwnerPhotoResponse]:
+        server: Optional[str] = None,
+        hash: Optional[str] = None,
+        photo: Optional[str] = None,
+    ) -> Union[dict, PhotosSaveOwnerPhotoResponse]:
         """
         :param server: - parameter returned after [vk.com/dev/upload_files|photo upload].
         :param hash: - parameter returned after [vk.com/dev/upload_files|photo upload].
@@ -1186,14 +1186,14 @@ class Photos(Category):
         self,
         photo: str,
         return_raw_response: bool = False,
-        user_id: typing.Optional[int] = None,
-        group_id: typing.Optional[int] = None,
-        server: typing.Optional[int] = None,
-        hash: typing.Optional[str] = None,
-        latitude: typing.Optional[int] = None,
-        longitude: typing.Optional[int] = None,
-        caption: typing.Optional[str] = None,
-    ) -> typing.Union[dict, PhotosSaveWallPhotoResponse]:
+        user_id: Optional[int] = None,
+        group_id: Optional[int] = None,
+        server: Optional[int] = None,
+        hash: Optional[str] = None,
+        latitude: Optional[int] = None,
+        longitude: Optional[int] = None,
+        caption: Optional[str] = None,
+    ) -> Union[dict, PhotosSaveWallPhotoResponse]:
         """
         :param user_id: - ID of the user on whose wall the photo will be saved.
         :param group_id: - ID of community on whose wall the photo will be saved.
@@ -1219,16 +1219,16 @@ class Photos(Category):
     async def search(
         self,
         return_raw_response: bool = False,
-        q: typing.Optional[str] = None,
-        lat: typing.Optional[int] = None,
-        long: typing.Optional[int] = None,
-        start_time: typing.Optional[int] = None,
-        end_time: typing.Optional[int] = None,
-        sort: typing.Optional[int] = None,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-        radius: typing.Optional[int] = None,
-    ) -> typing.Union[dict, PhotosSearchResponse]:
+        q: Optional[str] = None,
+        lat: Optional[int] = None,
+        long: Optional[int] = None,
+        start_time: Optional[int] = None,
+        end_time: Optional[int] = None,
+        sort: Optional[int] = None,
+        offset: Optional[int] = None,
+        count: Optional[int] = None,
+        radius: Optional[int] = None,
+    ) -> Union[dict, PhotosSearchResponse]:
         """
         :param q: - Search query string.
         :param lat: - Geographical latitude, in degrees (from '-90' to '90').

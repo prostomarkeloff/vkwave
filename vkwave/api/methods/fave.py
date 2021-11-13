@@ -8,7 +8,7 @@ class Fave(Category):
         self,
         url: str,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, BaseOkResponse]:
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param url:
         :param return_raw_response: - return result at dict
@@ -28,7 +28,7 @@ class Fave(Category):
         self,
         link: str,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, BaseOkResponse]:
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param link: - Link URL.
         :param return_raw_response: - return result at dict
@@ -47,9 +47,9 @@ class Fave(Category):
     async def add_page(
         self,
         return_raw_response: bool = False,
-        user_id: typing.Optional[int] = None,
-        group_id: typing.Optional[int] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        user_id: Optional[int] = None,
+        group_id: Optional[int] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param user_id:
         :param group_id:
@@ -71,8 +71,8 @@ class Fave(Category):
         owner_id: int,
         id: int,
         return_raw_response: bool = False,
-        access_key: typing.Optional[str] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        access_key: Optional[str] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param owner_id:
         :param id:
@@ -95,8 +95,8 @@ class Fave(Category):
         owner_id: int,
         id: int,
         return_raw_response: bool = False,
-        access_key: typing.Optional[str] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        access_key: Optional[str] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param owner_id:
         :param id:
@@ -117,9 +117,9 @@ class Fave(Category):
     async def add_tag(
         self,
         return_raw_response: bool = False,
-        name: typing.Optional[str] = None,
-        position: typing.Optional[str] = None,
-    ) -> typing.Union[dict, FaveAddTagResponse]:
+        name: Optional[str] = None,
+        position: Optional[str] = None,
+    ) -> Union[dict, FaveAddTagResponse]:
         """
         :param name:
         :param position:
@@ -141,8 +141,8 @@ class Fave(Category):
         owner_id: int,
         id: int,
         return_raw_response: bool = False,
-        access_key: typing.Optional[str] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        access_key: Optional[str] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param owner_id:
         :param id:
@@ -165,7 +165,7 @@ class Fave(Category):
         id: int,
         name: str,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, BaseOkResponse]:
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param id:
         :param name:
@@ -185,14 +185,14 @@ class Fave(Category):
     async def get(
         self,
         return_raw_response: bool = False,
-        extended: typing.Optional[BaseBoolInt] = None,
-        item_type: typing.Optional[str] = None,
-        tag_id: typing.Optional[int] = None,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-        fields: typing.Optional[str] = None,
-        is_from_snackbar: typing.Optional[bool] = None,
-    ) -> typing.Union[dict, FaveGetResponse, FaveGetExtendedResponse]:
+        extended: Optional[BaseBoolInt] = None,
+        item_type: Optional[str] = None,
+        tag_id: Optional[int] = None,
+        offset: Optional[int] = None,
+        count: Optional[int] = None,
+        fields: Optional[str] = None,
+        is_from_snackbar: Optional[bool] = None,
+    ) -> Union[dict, FaveGetResponse, FaveGetExtendedResponse]:
         """
         :param extended: - '1' — to return additional 'wall', 'profiles', and 'groups' fields. By default: '0'.
         :param item_type:
@@ -221,12 +221,12 @@ class Fave(Category):
     async def get_pages(
         self,
         return_raw_response: bool = False,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-        type: typing.Optional[str] = None,
-        fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
-        tag_id: typing.Optional[int] = None,
-    ) -> typing.Union[dict, FaveGetPagesResponse]:
+        offset: Optional[int] = None,
+        count: Optional[int] = None,
+        type: Optional[str] = None,
+        fields: Optional[List[BaseUserGroupFields]] = None,
+        tag_id: Optional[int] = None,
+    ) -> Union[dict, FaveGetPagesResponse]:
         """
         :param offset:
         :param count:
@@ -249,7 +249,7 @@ class Fave(Category):
     async def get_tags(
         self,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, FaveGetTagsResponse]:
+    ) -> Union[dict, FaveGetTagsResponse]:
         """
         :param return_raw_response: - return result at dict
         :return:
@@ -267,7 +267,7 @@ class Fave(Category):
     async def mark_seen(
         self,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, BaseBoolResponse]:
+    ) -> Union[dict, BaseBoolResponse]:
         """
         :param return_raw_response: - return result at dict
         :return:
@@ -287,7 +287,7 @@ class Fave(Category):
         owner_id: int,
         article_id: int,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, BaseBoolResponse]:
+    ) -> Union[dict, BaseBoolResponse]:
         """
         :param owner_id:
         :param article_id:
@@ -307,9 +307,9 @@ class Fave(Category):
     async def remove_link(
         self,
         return_raw_response: bool = False,
-        link_id: typing.Optional[str] = None,
-        link: typing.Optional[str] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        link_id: Optional[str] = None,
+        link: Optional[str] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param link_id: - Link ID (can be obtained by [vk.com/dev/faves.getLinks|faves.getLinks] method).
         :param link: - Link URL
@@ -329,9 +329,9 @@ class Fave(Category):
     async def remove_page(
         self,
         return_raw_response: bool = False,
-        user_id: typing.Optional[int] = None,
-        group_id: typing.Optional[int] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        user_id: Optional[int] = None,
+        group_id: Optional[int] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param user_id:
         :param group_id:
@@ -353,7 +353,7 @@ class Fave(Category):
         owner_id: int,
         id: int,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, BaseOkResponse]:
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param owner_id:
         :param id:
@@ -375,7 +375,7 @@ class Fave(Category):
         owner_id: int,
         id: int,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, BaseOkResponse]:
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param owner_id:
         :param id:
@@ -396,7 +396,7 @@ class Fave(Category):
         self,
         id: int,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, BaseOkResponse]:
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param id:
         :param return_raw_response: - return result at dict
@@ -417,7 +417,7 @@ class Fave(Category):
         owner_id: int,
         id: int,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, BaseOkResponse]:
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param owner_id:
         :param id:
@@ -436,9 +436,9 @@ class Fave(Category):
 
     async def reorder_tags(
         self,
-        ids: typing.List[int],
+        ids: List[int],
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, BaseOkResponse]:
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param ids:
         :param return_raw_response: - return result at dict
@@ -457,10 +457,10 @@ class Fave(Category):
     async def set_page_tags(
         self,
         return_raw_response: bool = False,
-        user_id: typing.Optional[int] = None,
-        group_id: typing.Optional[int] = None,
-        tag_ids: typing.Optional[typing.List[int]] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        user_id: Optional[int] = None,
+        group_id: Optional[int] = None,
+        tag_ids: Optional[List[int]] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param user_id:
         :param group_id:
@@ -481,13 +481,13 @@ class Fave(Category):
     async def set_tags(
         self,
         return_raw_response: bool = False,
-        item_type: typing.Optional[str] = None,
-        item_owner_id: typing.Optional[int] = None,
-        item_id: typing.Optional[int] = None,
-        tag_ids: typing.Optional[typing.List[int]] = None,
-        link_id: typing.Optional[str] = None,
-        link_url: typing.Optional[str] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        item_type: Optional[str] = None,
+        item_owner_id: Optional[int] = None,
+        item_id: Optional[int] = None,
+        tag_ids: Optional[List[int]] = None,
+        link_id: Optional[str] = None,
+        link_url: Optional[str] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param item_type:
         :param item_owner_id:
@@ -511,9 +511,9 @@ class Fave(Category):
     async def track_page_interaction(
         self,
         return_raw_response: bool = False,
-        user_id: typing.Optional[int] = None,
-        group_id: typing.Optional[int] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        user_id: Optional[int] = None,
+        group_id: Optional[int] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param user_id:
         :param group_id:

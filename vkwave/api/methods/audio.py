@@ -13,14 +13,14 @@ class Audio(Category):
 
     async def get(
         self,
-        owner_id: typing.Optional[int] = None,
-        album_id: typing.Optional[int] = None,
-        audio_ids: typing.Optional[typing.List[int]] = None,
-        need_user: typing.Optional[int] = None,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
+        owner_id: Optional[int] = None,
+        album_id: Optional[int] = None,
+        audio_ids: Optional[List[int]] = None,
+        need_user: Optional[int] = None,
+        offset: Optional[int] = None,
+        count: Optional[int] = None,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, AudioGetResponse]:
+    ) -> Union[dict, AudioGetResponse]:
         """
         :param owner_id: - music owner
         :param album_id:
@@ -43,9 +43,9 @@ class Audio(Category):
 
     async def get_by_id(
         self,
-        audios: typing.List[str],
+        audios: List[str],
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, AudioGetByIdResponse]:
+    ) -> Union[dict, AudioGetByIdResponse]:
         """
         :param audios: - List of audios in following format: "<owner_id>_<audio_id>"
         :param return_raw_response: - return result at dict

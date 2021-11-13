@@ -7,16 +7,16 @@ class Stats(Category):
     async def get(
         self,
         return_raw_response: bool = False,
-        group_id: typing.Optional[int] = None,
-        app_id: typing.Optional[int] = None,
-        timestamp_from: typing.Optional[int] = None,
-        timestamp_to: typing.Optional[int] = None,
-        interval: typing.Optional[str] = None,
-        intervals_count: typing.Optional[int] = None,
-        filters: typing.Optional[typing.List[str]] = None,
-        stats_groups: typing.Optional[typing.List[str]] = None,
-        extended: typing.Optional[BaseBoolInt] = None,
-    ) -> typing.Union[dict, StatsGetResponse]:
+        group_id: Optional[int] = None,
+        app_id: Optional[int] = None,
+        timestamp_from: Optional[int] = None,
+        timestamp_to: Optional[int] = None,
+        interval: Optional[str] = None,
+        intervals_count: Optional[int] = None,
+        filters: Optional[List[str]] = None,
+        stats_groups: Optional[List[str]] = None,
+        extended: Optional[BaseBoolInt] = None,
+    ) -> Union[dict, StatsGetResponse]:
         """
         :param group_id: - Community ID.
         :param app_id: - Application ID.
@@ -43,9 +43,9 @@ class Stats(Category):
     async def get_post_reach(
         self,
         owner_id: str,
-        post_ids: typing.List[int],
+        post_ids: List[int],
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, StatsGetPostReachResponse]:
+    ) -> Union[dict, StatsGetPostReachResponse]:
         """
         :param owner_id: - post owner community id. Specify with "-" sign.
         :param post_ids: - wall posts id
@@ -66,7 +66,7 @@ class Stats(Category):
         self,
         id: str,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, BaseOkResponse]:
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param id:
         :param return_raw_response: - return result at dict

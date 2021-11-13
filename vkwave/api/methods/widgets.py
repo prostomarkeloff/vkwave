@@ -7,14 +7,14 @@ class Widgets(Category):
     async def get_comments(
         self,
         return_raw_response: bool = False,
-        widget_api_id: typing.Optional[int] = None,
-        url: typing.Optional[str] = None,
-        page_id: typing.Optional[str] = None,
-        order: typing.Optional[str] = None,
-        fields: typing.Optional[typing.List[UsersFields]] = None,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-    ) -> typing.Union[dict, WidgetsGetCommentsResponse]:
+        widget_api_id: Optional[int] = None,
+        url: Optional[str] = None,
+        page_id: Optional[str] = None,
+        order: Optional[str] = None,
+        fields: Optional[List[UsersFields]] = None,
+        offset: Optional[int] = None,
+        count: Optional[int] = None,
+    ) -> Union[dict, WidgetsGetCommentsResponse]:
         """
         :param widget_api_id:
         :param url:
@@ -39,12 +39,12 @@ class Widgets(Category):
     async def get_pages(
         self,
         return_raw_response: bool = False,
-        widget_api_id: typing.Optional[int] = None,
-        order: typing.Optional[str] = None,
-        period: typing.Optional[str] = None,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-    ) -> typing.Union[dict, WidgetsGetPagesResponse]:
+        widget_api_id: Optional[int] = None,
+        order: Optional[str] = None,
+        period: Optional[str] = None,
+        offset: Optional[int] = None,
+        count: Optional[int] = None,
+    ) -> Union[dict, WidgetsGetPagesResponse]:
         """
         :param widget_api_id:
         :param order:

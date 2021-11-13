@@ -11,10 +11,10 @@ class PrettyCards(Category):
         title: str,
         link: str,
         return_raw_response: bool = False,
-        price: typing.Optional[str] = None,
-        price_old: typing.Optional[str] = None,
-        button: typing.Optional[str] = None,
-    ) -> typing.Union[dict, PrettyCardsCreateResponse]:
+        price: Optional[str] = None,
+        price_old: Optional[str] = None,
+        button: Optional[str] = None,
+    ) -> Union[dict, PrettyCardsCreateResponse]:
         """
         :param owner_id:
         :param photo:
@@ -41,7 +41,7 @@ class PrettyCards(Category):
         owner_id: int,
         card_id: int,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, PrettyCardsDeleteResponse]:
+    ) -> Union[dict, PrettyCardsDeleteResponse]:
         """
         :param owner_id:
         :param card_id:
@@ -63,13 +63,13 @@ class PrettyCards(Category):
         owner_id: int,
         card_id: int,
         return_raw_response: bool = False,
-        photo: typing.Optional[str] = None,
-        title: typing.Optional[str] = None,
-        link: typing.Optional[str] = None,
-        price: typing.Optional[str] = None,
-        price_old: typing.Optional[str] = None,
-        button: typing.Optional[str] = None,
-    ) -> typing.Union[dict, PrettyCardsEditResponse]:
+        photo: Optional[str] = None,
+        title: Optional[str] = None,
+        link: Optional[str] = None,
+        price: Optional[str] = None,
+        price_old: Optional[str] = None,
+        button: Optional[str] = None,
+    ) -> Union[dict, PrettyCardsEditResponse]:
         """
         :param owner_id:
         :param card_id:
@@ -96,9 +96,9 @@ class PrettyCards(Category):
         self,
         owner_id: int,
         return_raw_response: bool = False,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-    ) -> typing.Union[dict, PrettyCardsGetResponse]:
+        offset: Optional[int] = None,
+        count: Optional[int] = None,
+    ) -> Union[dict, PrettyCardsGetResponse]:
         """
         :param owner_id:
         :param offset:
@@ -119,9 +119,9 @@ class PrettyCards(Category):
     async def cards_get_by_id(
         self,
         owner_id: int,
-        card_ids: typing.List[int],
+        card_ids: List[int],
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, PrettyCardsGetByIdResponse]:
+    ) -> Union[dict, PrettyCardsGetByIdResponse]:
         """
         :param owner_id:
         :param card_ids:
@@ -141,7 +141,7 @@ class PrettyCards(Category):
     async def cards_get_upload_u_r_l(
         self,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, PrettyCardsGetUploadURLResponse]:
+    ) -> Union[dict, PrettyCardsGetUploadURLResponse]:
         """
         :param return_raw_response: - return result at dict
         :return:

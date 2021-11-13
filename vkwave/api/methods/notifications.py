@@ -7,12 +7,12 @@ class Notifications(Category):
     async def get(
         self,
         return_raw_response: bool = False,
-        count: typing.Optional[int] = None,
-        start_from: typing.Optional[str] = None,
-        filters: typing.Optional[typing.List[str]] = None,
-        start_time: typing.Optional[int] = None,
-        end_time: typing.Optional[int] = None,
-    ) -> typing.Union[dict, NotificationsGetResponse]:
+        count: Optional[int] = None,
+        start_from: Optional[str] = None,
+        filters: Optional[List[str]] = None,
+        start_time: Optional[int] = None,
+        end_time: Optional[int] = None,
+    ) -> Union[dict, NotificationsGetResponse]:
         """
         :param count: - Number of notifications to return.
         :param start_from:
@@ -35,7 +35,7 @@ class Notifications(Category):
     async def mark_as_viewed(
         self,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, NotificationsMarkAsViewedResponse]:
+    ) -> Union[dict, NotificationsMarkAsViewedResponse]:
         """
         :param return_raw_response: - return result at dict
         :return:
@@ -52,13 +52,13 @@ class Notifications(Category):
 
     async def send_message(
         self,
-        user_ids: typing.List[int],
+        user_ids: List[int],
         message: str,
         return_raw_response: bool = False,
-        fragment: typing.Optional[str] = None,
-        group_id: typing.Optional[int] = None,
-        random_id: typing.Optional[int] = None,
-    ) -> typing.Union[dict, NotificationsSendMessageResponse]:
+        fragment: Optional[str] = None,
+        group_id: Optional[int] = None,
+        random_id: Optional[int] = None,
+    ) -> Union[dict, NotificationsSendMessageResponse]:
         """
         :param user_ids:
         :param message:

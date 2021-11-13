@@ -7,7 +7,7 @@ class Apps(Category):
     async def delete_app_requests(
         self,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, BaseOkResponse]:
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param return_raw_response: - return result at dict
         :return:
@@ -25,14 +25,14 @@ class Apps(Category):
     async def get(
         self,
         return_raw_response: bool = False,
-        app_id: typing.Optional[int] = None,
-        app_ids: typing.Optional[typing.List[str]] = None,
-        platform: typing.Optional[str] = None,
-        extended: typing.Optional[BaseBoolInt] = None,
-        return_friends: typing.Optional[bool] = None,
-        fields: typing.Optional[typing.List[UsersFields]] = None,
-        name_case: typing.Optional[str] = None,
-    ) -> typing.Union[dict, AppsGetResponse]:
+        app_id: Optional[int] = None,
+        app_ids: Optional[List[str]] = None,
+        platform: Optional[str] = None,
+        extended: Optional[BaseBoolInt] = None,
+        return_friends: Optional[bool] = None,
+        fields: Optional[List[UsersFields]] = None,
+        name_case: Optional[str] = None,
+    ) -> Union[dict, AppsGetResponse]:
         """
         :param app_id: - Application ID
         :param app_ids: - List of application ID
@@ -58,17 +58,17 @@ class Apps(Category):
         self,
         count: int,
         return_raw_response: bool = False,
-        sort: typing.Optional[str] = None,
-        offset: typing.Optional[int] = None,
-        platform: typing.Optional[str] = None,
-        extended: typing.Optional[BaseBoolInt] = None,
-        return_friends: typing.Optional[bool] = None,
-        fields: typing.Optional[typing.List[UsersFields]] = None,
-        name_case: typing.Optional[str] = None,
-        q: typing.Optional[str] = None,
-        genre_id: typing.Optional[int] = None,
-        filter: typing.Optional[str] = None,
-    ) -> typing.Union[dict, AppsGetCatalogResponse]:
+        sort: Optional[str] = None,
+        offset: Optional[int] = None,
+        platform: Optional[str] = None,
+        extended: Optional[BaseBoolInt] = None,
+        return_friends: Optional[bool] = None,
+        fields: Optional[List[UsersFields]] = None,
+        name_case: Optional[str] = None,
+        q: Optional[str] = None,
+        genre_id: Optional[int] = None,
+        filter: Optional[str] = None,
+    ) -> Union[dict, AppsGetCatalogResponse]:
         """
         :param sort: - Sort order: 'popular_today' — popular for one day (default), 'visitors' — by visitors number , 'create_date' — by creation date, 'growth_rate' — by growth rate, 'popular_week' — popular for one week
         :param offset: - Offset required to return a specific subset of apps.
@@ -97,12 +97,12 @@ class Apps(Category):
     async def get_friends_list(
         self,
         return_raw_response: bool = False,
-        extended: typing.Optional[BaseBoolInt] = None,
-        count: typing.Optional[int] = None,
-        offset: typing.Optional[int] = None,
-        type: typing.Optional[str] = None,
-        fields: typing.Optional[typing.List[UsersFields]] = None,
-    ) -> typing.Union[dict, AppsGetFriendsListResponse]:
+        extended: Optional[BaseBoolInt] = None,
+        count: Optional[int] = None,
+        offset: Optional[int] = None,
+        type: Optional[str] = None,
+        fields: Optional[List[UsersFields]] = None,
+    ) -> Union[dict, AppsGetFriendsListResponse]:
         """
         :param extended:
         :param count: - List size.
@@ -126,9 +126,9 @@ class Apps(Category):
         self,
         type: str,
         return_raw_response: bool = False,
-        global_: typing.Optional[BaseBoolInt] = None,
-        extended: typing.Optional[BaseBoolInt] = None,
-    ) -> typing.Union[dict, AppsGetLeaderboardResponse, AppsGetLeaderboardExtendedResponse]:
+        global_: Optional[BaseBoolInt] = None,
+        extended: Optional[BaseBoolInt] = None,
+    ) -> Union[dict, AppsGetLeaderboardResponse, AppsGetLeaderboardExtendedResponse]:
         """
         :param type: - Leaderboard type. Possible values: *'level' — by level,, *'points' — by mission points,, *'score' — by score ().
         :param global_: - Rating type. Possible values: *'1' — global rating among all players,, *'0' — rating among user friends.
@@ -153,8 +153,8 @@ class Apps(Category):
     async def get_scopes(
         self,
         return_raw_response: bool = False,
-        type: typing.Optional[str] = None,
-    ) -> typing.Union[dict, AppsGetScopesResponse]:
+        type: Optional[str] = None,
+    ) -> Union[dict, AppsGetScopesResponse]:
         """
         :param type:
         :param return_raw_response: - return result at dict
@@ -174,7 +174,7 @@ class Apps(Category):
         self,
         user_id: int,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, AppsGetScoreResponse]:
+    ) -> Union[dict, AppsGetScoreResponse]:
         """
         :param user_id:
         :param return_raw_response: - return result at dict
@@ -194,8 +194,8 @@ class Apps(Category):
         self,
         promo_id: int,
         return_raw_response: bool = False,
-        user_id: typing.Optional[int] = None,
-    ) -> typing.Union[dict, BaseBoolResponse]:
+        user_id: Optional[int] = None,
+    ) -> Union[dict, BaseBoolResponse]:
         """
         :param promo_id: - Id of game promo action
         :param user_id:
@@ -216,8 +216,8 @@ class Apps(Category):
         self,
         promo_id: int,
         return_raw_response: bool = False,
-        user_id: typing.Optional[int] = None,
-    ) -> typing.Union[dict, BaseBoolResponse]:
+        user_id: Optional[int] = None,
+    ) -> Union[dict, BaseBoolResponse]:
         """
         :param promo_id: - Id of game promo action
         :param user_id:
@@ -238,12 +238,12 @@ class Apps(Category):
         self,
         user_id: int,
         return_raw_response: bool = False,
-        text: typing.Optional[str] = None,
-        type: typing.Optional[str] = None,
-        name: typing.Optional[str] = None,
-        key: typing.Optional[str] = None,
-        separate: typing.Optional[bool] = None,
-    ) -> typing.Union[dict, AppsSendRequestResponse]:
+        text: Optional[str] = None,
+        type: Optional[str] = None,
+        name: Optional[str] = None,
+        key: Optional[str] = None,
+        separate: Optional[bool] = None,
+    ) -> Union[dict, AppsSendRequestResponse]:
         """
         :param user_id: - id of the user to send a request
         :param text: - request text

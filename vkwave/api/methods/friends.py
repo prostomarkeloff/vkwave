@@ -7,10 +7,10 @@ class Friends(Category):
     async def add(
         self,
         return_raw_response: bool = False,
-        user_id: typing.Optional[int] = None,
-        text: typing.Optional[str] = None,
-        follow: typing.Optional[BaseBoolInt] = None,
-    ) -> typing.Union[dict, FriendsAddResponse]:
+        user_id: Optional[int] = None,
+        text: Optional[str] = None,
+        follow: Optional[BaseBoolInt] = None,
+    ) -> Union[dict, FriendsAddResponse]:
         """
         :param user_id: - ID of the user whose friend request will be approved or to whom a friend request will be sent.
         :param text: - Text of the message (up to 500 characters) for the friend request, if any.
@@ -32,8 +32,8 @@ class Friends(Category):
         self,
         name: str,
         return_raw_response: bool = False,
-        user_ids: typing.Optional[typing.List[int]] = None,
-    ) -> typing.Union[dict, FriendsAddListResponse]:
+        user_ids: Optional[List[int]] = None,
+    ) -> Union[dict, FriendsAddListResponse]:
         """
         :param name: - Name of the friend list.
         :param user_ids: - IDs of users to be added to the friend list.
@@ -52,11 +52,11 @@ class Friends(Category):
 
     async def are_friends(
         self,
-        user_ids: typing.List[int],
+        user_ids: List[int],
         return_raw_response: bool = False,
-        need_sign: typing.Optional[BaseBoolInt] = None,
-        extended: typing.Optional[BaseBoolInt] = None,
-    ) -> typing.Union[dict, FriendsAreFriendsResponse, FriendsAreFriendsExtendedResponse]:
+        need_sign: Optional[BaseBoolInt] = None,
+        extended: Optional[BaseBoolInt] = None,
+    ) -> Union[dict, FriendsAreFriendsResponse, FriendsAreFriendsExtendedResponse]:
         """
         :param user_ids: - IDs of the users whose friendship status to check.
         :param need_sign: - '1' — to return 'sign' field. 'sign' is md5("{id}_{user_id}_{friends_status}_{application_secret}"), where id is current user ID. This field allows to check that data has not been modified by the client. By default: '0'.
@@ -81,8 +81,8 @@ class Friends(Category):
     async def delete(
         self,
         return_raw_response: bool = False,
-        user_id: typing.Optional[int] = None,
-    ) -> typing.Union[dict, FriendsDeleteResponse]:
+        user_id: Optional[int] = None,
+    ) -> Union[dict, FriendsDeleteResponse]:
         """
         :param user_id: - ID of the user whose friend request is to be declined or who is to be deleted from the current user's friend list.
         :param return_raw_response: - return result at dict
@@ -101,7 +101,7 @@ class Friends(Category):
     async def delete_all_requests(
         self,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, BaseOkResponse]:
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param return_raw_response: - return result at dict
         :return:
@@ -120,7 +120,7 @@ class Friends(Category):
         self,
         list_id: int,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, BaseOkResponse]:
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param list_id: - ID of the friend list to delete.
         :param return_raw_response: - return result at dict
@@ -140,8 +140,8 @@ class Friends(Category):
         self,
         user_id: int,
         return_raw_response: bool = False,
-        list_ids: typing.Optional[typing.List[int]] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        list_ids: Optional[List[int]] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param user_id: - ID of the user whose friend list is to be edited.
         :param list_ids: - IDs of the friend lists to which to add the user.
@@ -162,11 +162,11 @@ class Friends(Category):
         self,
         list_id: int,
         return_raw_response: bool = False,
-        name: typing.Optional[str] = None,
-        user_ids: typing.Optional[typing.List[int]] = None,
-        add_user_ids: typing.Optional[typing.List[int]] = None,
-        delete_user_ids: typing.Optional[typing.List[int]] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        name: Optional[str] = None,
+        user_ids: Optional[List[int]] = None,
+        add_user_ids: Optional[List[int]] = None,
+        delete_user_ids: Optional[List[int]] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param name: - Name of the friend list.
         :param list_id: - Friend list ID.
@@ -189,15 +189,15 @@ class Friends(Category):
     async def get(
         self,
         return_raw_response: bool = False,
-        user_id: typing.Optional[int] = None,
-        order: typing.Optional[str] = None,
-        list_id: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-        offset: typing.Optional[int] = None,
-        fields: typing.Optional[typing.List[UsersFields]] = None,
-        name_case: typing.Optional[str] = None,
-        ref: typing.Optional[str] = None,
-    ) -> typing.Union[dict, FriendsGetResponse, FriendsGetFieldsResponse]:
+        user_id: Optional[int] = None,
+        order: Optional[str] = None,
+        list_id: Optional[int] = None,
+        count: Optional[int] = None,
+        offset: Optional[int] = None,
+        fields: Optional[List[UsersFields]] = None,
+        name_case: Optional[str] = None,
+        ref: Optional[str] = None,
+    ) -> Union[dict, FriendsGetResponse, FriendsGetFieldsResponse]:
         """
         :param user_id: - User ID. By default, the current user ID.
         :param order: - Sort order: , 'name' — by name (enabled only if the 'fields' parameter is used), 'hints' — by rating, similar to how friends are sorted in My friends section, , This parameter is available only for [vk.com/dev/standalone|desktop applications].
@@ -227,7 +227,7 @@ class Friends(Category):
     async def get_app_users(
         self,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, FriendsGetAppUsersResponse]:
+    ) -> Union[dict, FriendsGetAppUsersResponse]:
         """
         :param return_raw_response: - return result at dict
         :return:
@@ -245,9 +245,9 @@ class Friends(Category):
     async def get_by_phones(
         self,
         return_raw_response: bool = False,
-        phones: typing.Optional[typing.List[str]] = None,
-        fields: typing.Optional[typing.List[UsersFields]] = None,
-    ) -> typing.Union[dict, FriendsGetByPhonesResponse]:
+        phones: Optional[List[str]] = None,
+        fields: Optional[List[UsersFields]] = None,
+    ) -> Union[dict, FriendsGetByPhonesResponse]:
         """
         :param phones: - List of phone numbers in MSISDN format (maximum 1000). Example: "+79219876543,+79111234567"
         :param fields: - Profile fields to return. Sample values: 'nickname', 'screen_name', 'sex', 'bdate' (birthdate), 'city', 'country', 'timezone', 'photo', 'photo_medium', 'photo_big', 'has_mobile', 'rate', 'contacts', 'education', 'online, counters'.
@@ -267,9 +267,9 @@ class Friends(Category):
     async def get_lists(
         self,
         return_raw_response: bool = False,
-        user_id: typing.Optional[int] = None,
-        return_system: typing.Optional[BaseBoolInt] = None,
-    ) -> typing.Union[dict, FriendsGetListsResponse]:
+        user_id: Optional[int] = None,
+        return_system: Optional[BaseBoolInt] = None,
+    ) -> Union[dict, FriendsGetListsResponse]:
         """
         :param user_id: - User ID.
         :param return_system: - '1' — to return system friend lists. By default: '0'.
@@ -289,13 +289,13 @@ class Friends(Category):
     async def get_mutual(
         self,
         return_raw_response: bool = False,
-        source_uid: typing.Optional[int] = None,
-        target_uid: typing.Optional[int] = None,
-        target_uids: typing.Optional[typing.List[int]] = None,
-        order: typing.Optional[str] = None,
-        count: typing.Optional[int] = None,
-        offset: typing.Optional[int] = None,
-    ) -> typing.Union[dict, FriendsGetMutualResponse]:
+        source_uid: Optional[int] = None,
+        target_uid: Optional[int] = None,
+        target_uids: Optional[List[int]] = None,
+        order: Optional[str] = None,
+        count: Optional[int] = None,
+        offset: Optional[int] = None,
+    ) -> Union[dict, FriendsGetMutualResponse]:
         """
         :param source_uid: - ID of the user whose friends will be checked against the friends of the user specified in 'target_uid'.
         :param target_uid: - ID of the user whose friends will be checked against the friends of the user specified in 'source_uid'.
@@ -319,13 +319,13 @@ class Friends(Category):
     async def get_online(
         self,
         return_raw_response: bool = False,
-        user_id: typing.Optional[int] = None,
-        list_id: typing.Optional[int] = None,
-        online_mobile: typing.Optional[BaseBoolInt] = None,
-        order: typing.Optional[str] = None,
-        count: typing.Optional[int] = None,
-        offset: typing.Optional[int] = None,
-    ) -> typing.Union[dict, FriendsGetOnlineResponse]:
+        user_id: Optional[int] = None,
+        list_id: Optional[int] = None,
+        online_mobile: Optional[BaseBoolInt] = None,
+        order: Optional[str] = None,
+        count: Optional[int] = None,
+        offset: Optional[int] = None,
+    ) -> Union[dict, FriendsGetOnlineResponse]:
         """
         :param user_id: - User ID.
         :param list_id: - Friend list ID. If this parameter is not set, information about all online friends is returned.
@@ -349,8 +349,8 @@ class Friends(Category):
     async def get_recent(
         self,
         return_raw_response: bool = False,
-        count: typing.Optional[int] = None,
-    ) -> typing.Union[dict, FriendsGetRecentResponse]:
+        count: Optional[int] = None,
+    ) -> Union[dict, FriendsGetRecentResponse]:
         """
         :param count: - Number of recently added friends to return.
         :param return_raw_response: - return result at dict
@@ -369,17 +369,17 @@ class Friends(Category):
     async def get_requests(
         self,
         return_raw_response: bool = False,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-        extended: typing.Optional[BaseBoolInt] = None,
-        need_mutual: typing.Optional[BaseBoolInt] = None,
-        out: typing.Optional[BaseBoolInt] = None,
-        sort: typing.Optional[int] = None,
-        need_viewed: typing.Optional[bool] = None,
-        suggested: typing.Optional[BaseBoolInt] = None,
-        ref: typing.Optional[str] = None,
-        fields: typing.Optional[typing.List[UsersFields]] = None,
-    ) -> typing.Union[dict, FriendsGetRequestsResponse, FriendsGetRequestsExtendedResponse]:
+        offset: Optional[int] = None,
+        count: Optional[int] = None,
+        extended: Optional[BaseBoolInt] = None,
+        need_mutual: Optional[BaseBoolInt] = None,
+        out: Optional[BaseBoolInt] = None,
+        sort: Optional[int] = None,
+        need_viewed: Optional[bool] = None,
+        suggested: Optional[BaseBoolInt] = None,
+        ref: Optional[str] = None,
+        fields: Optional[List[UsersFields]] = None,
+    ) -> Union[dict, FriendsGetRequestsResponse, FriendsGetRequestsExtendedResponse]:
         """
         :param offset: - Offset needed to return a specific subset of friend requests.
         :param count: - Number of friend requests to return (default 100, maximum 1000).
@@ -411,12 +411,12 @@ class Friends(Category):
     async def get_suggestions(
         self,
         return_raw_response: bool = False,
-        filter: typing.Optional[typing.List[str]] = None,
-        count: typing.Optional[int] = None,
-        offset: typing.Optional[int] = None,
-        fields: typing.Optional[typing.List[UsersFields]] = None,
-        name_case: typing.Optional[str] = None,
-    ) -> typing.Union[dict, FriendsGetSuggestionsResponse]:
+        filter: Optional[List[str]] = None,
+        count: Optional[int] = None,
+        offset: Optional[int] = None,
+        fields: Optional[List[UsersFields]] = None,
+        name_case: Optional[str] = None,
+    ) -> Union[dict, FriendsGetSuggestionsResponse]:
         """
         :param filter: - Types of potential friends to return: 'mutual' — users with many mutual friends , 'contacts' — users found with the [vk.com/dev/account.importContacts|account.importContacts] method , 'mutual_contacts' — users who imported the same contacts as the current user with the [vk.com/dev/account.importContacts|account.importContacts] method
         :param count: - Number of suggestions to return.
@@ -440,12 +440,12 @@ class Friends(Category):
         self,
         user_id: int,
         return_raw_response: bool = False,
-        q: typing.Optional[str] = None,
-        fields: typing.Optional[typing.List[UsersFields]] = None,
-        name_case: typing.Optional[str] = None,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-    ) -> typing.Union[dict, FriendsSearchResponse]:
+        q: Optional[str] = None,
+        fields: Optional[List[UsersFields]] = None,
+        name_case: Optional[str] = None,
+        offset: Optional[int] = None,
+        count: Optional[int] = None,
+    ) -> Union[dict, FriendsSearchResponse]:
         """
         :param user_id: - User ID.
         :param q: - Search query string (e.g., 'Vasya Babich').

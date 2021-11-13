@@ -7,10 +7,10 @@ class Gifts(Category):
     async def get(
         self,
         return_raw_response: bool = False,
-        user_id: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-        offset: typing.Optional[int] = None,
-    ) -> typing.Union[dict, GiftsGetResponse]:
+        user_id: Optional[int] = None,
+        count: Optional[int] = None,
+        offset: Optional[int] = None,
+    ) -> Union[dict, GiftsGetResponse]:
         """
         :param user_id: - User ID.
         :param count: - Number of gifts to return.

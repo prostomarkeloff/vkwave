@@ -7,9 +7,9 @@ class Newsfeed(Category):
     async def add_ban(
         self,
         return_raw_response: bool = False,
-        user_ids: typing.Optional[typing.List[int]] = None,
-        group_ids: typing.Optional[typing.List[int]] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        user_ids: Optional[List[int]] = None,
+        group_ids: Optional[List[int]] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param user_ids:
         :param group_ids:
@@ -29,9 +29,9 @@ class Newsfeed(Category):
     async def delete_ban(
         self,
         return_raw_response: bool = False,
-        user_ids: typing.Optional[typing.List[int]] = None,
-        group_ids: typing.Optional[typing.List[int]] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        user_ids: Optional[List[int]] = None,
+        group_ids: Optional[List[int]] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param user_ids:
         :param group_ids:
@@ -52,7 +52,7 @@ class Newsfeed(Category):
         self,
         list_id: int,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, BaseOkResponse]:
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param list_id:
         :param return_raw_response: - return result at dict
@@ -71,17 +71,17 @@ class Newsfeed(Category):
     async def get(
         self,
         return_raw_response: bool = False,
-        filters: typing.Optional[typing.List[NewsfeedFilters]] = None,
-        return_banned: typing.Optional[BaseBoolInt] = None,
-        start_time: typing.Optional[int] = None,
-        end_time: typing.Optional[int] = None,
-        max_photos: typing.Optional[int] = None,
-        source_ids: typing.Optional[str] = None,
-        start_from: typing.Optional[str] = None,
-        count: typing.Optional[int] = None,
-        fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
-        section: typing.Optional[str] = None,
-    ) -> typing.Union[dict, NewsfeedGetResponse]:
+        filters: Optional[List[NewsfeedCommentsFilters]] = None,
+        return_banned: Optional[BaseBoolInt] = None,
+        start_time: Optional[int] = None,
+        end_time: Optional[int] = None,
+        max_photos: Optional[int] = None,
+        source_ids: Optional[str] = None,
+        start_from: Optional[str] = None,
+        count: Optional[int] = None,
+        fields: Optional[List[BaseUserGroupFields]] = None,
+        section: Optional[str] = None,
+    ) -> Union[dict, NewsfeedGetResponse]:
         """
         :param filters: - Filters to apply: 'post' — new wall posts, 'photo' — new photos, 'photo_tag' — new photo tags, 'wall_photo' — new wall photos, 'friend' — new friends
         :param return_banned: - '1' — to return news items from banned sources
@@ -109,10 +109,10 @@ class Newsfeed(Category):
     async def get_banned(
         self,
         return_raw_response: bool = False,
-        extended: typing.Optional[BaseBoolInt] = None,
-        fields: typing.Optional[typing.List[UsersFields]] = None,
-        name_case: typing.Optional[str] = None,
-    ) -> typing.Union[dict, NewsfeedGetBannedResponse, NewsfeedGetBannedExtendedResponse]:
+        extended: Optional[BaseBoolInt] = None,
+        fields: Optional[List[UsersFields]] = None,
+        name_case: Optional[str] = None,
+    ) -> Union[dict, NewsfeedGetBannedResponse, NewsfeedGetBannedExtendedResponse]:
         """
         :param extended: - '1' — return extra information about users and communities
         :param fields: - Profile fields to return.
@@ -137,15 +137,15 @@ class Newsfeed(Category):
     async def get_comments(
         self,
         return_raw_response: bool = False,
-        count: typing.Optional[int] = None,
-        filters: typing.Optional[typing.List[NewsfeedCommentsFilters]] = None,
-        reposts: typing.Optional[str] = None,
-        start_time: typing.Optional[int] = None,
-        end_time: typing.Optional[int] = None,
-        last_comments_count: typing.Optional[int] = None,
-        start_from: typing.Optional[str] = None,
-        fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
-    ) -> typing.Union[dict, NewsfeedGetCommentsResponse]:
+        count: Optional[int] = None,
+        filters: Optional[List[NewsfeedCommentsFilters]] = None,
+        reposts: Optional[str] = None,
+        start_time: Optional[int] = None,
+        end_time: Optional[int] = None,
+        last_comments_count: Optional[int] = None,
+        start_from: Optional[str] = None,
+        fields: Optional[List[BaseUserGroupFields]] = None,
+    ) -> Union[dict, NewsfeedGetCommentsResponse]:
         """
         :param count: - Number of comments to return. For auto feed, you can use the 'new_offset' parameter returned by this method.
         :param filters: - Filters to apply: 'post' — new comments on wall posts, 'photo' — new comments on photos, 'video' — new comments on videos, 'topic' — new comments on discussions, 'note' — new comments on notes,
@@ -171,9 +171,9 @@ class Newsfeed(Category):
     async def get_lists(
         self,
         return_raw_response: bool = False,
-        list_ids: typing.Optional[typing.List[int]] = None,
-        extended: typing.Optional[BaseBoolInt] = None,
-    ) -> typing.Union[dict, NewsfeedGetListsResponse, NewsfeedGetListsExtendedResponse]:
+        list_ids: Optional[List[int]] = None,
+        extended: Optional[BaseBoolInt] = None,
+    ) -> Union[dict, NewsfeedGetListsResponse, NewsfeedGetListsExtendedResponse]:
         """
         :param list_ids: - numeric list identifiers.
         :param extended: - Return additional list info
@@ -197,12 +197,12 @@ class Newsfeed(Category):
     async def get_mentions(
         self,
         return_raw_response: bool = False,
-        owner_id: typing.Optional[int] = None,
-        start_time: typing.Optional[int] = None,
-        end_time: typing.Optional[int] = None,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-    ) -> typing.Union[dict, NewsfeedGetMentionsResponse]:
+        owner_id: Optional[int] = None,
+        start_time: Optional[int] = None,
+        end_time: Optional[int] = None,
+        offset: Optional[int] = None,
+        count: Optional[int] = None,
+    ) -> Union[dict, NewsfeedGetMentionsResponse]:
         """
         :param owner_id: - Owner ID.
         :param start_time: - Earliest timestamp (in Unix time) of a post to return. By default, 24 hours ago.
@@ -225,13 +225,13 @@ class Newsfeed(Category):
     async def get_recommended(
         self,
         return_raw_response: bool = False,
-        start_time: typing.Optional[int] = None,
-        end_time: typing.Optional[int] = None,
-        max_photos: typing.Optional[int] = None,
-        start_from: typing.Optional[str] = None,
-        count: typing.Optional[int] = None,
-        fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
-    ) -> typing.Union[dict, NewsfeedGetRecommendedResponse]:
+        start_time: Optional[int] = None,
+        end_time: Optional[int] = None,
+        max_photos: Optional[int] = None,
+        start_from: Optional[str] = None,
+        count: Optional[int] = None,
+        fields: Optional[List[BaseUserGroupFields]] = None,
+    ) -> Union[dict, NewsfeedGetRecommendedResponse]:
         """
         :param start_time: - Earliest timestamp (in Unix time) of a news item to return. By default, 24 hours ago.
         :param end_time: - Latest timestamp (in Unix time) of a news item to return. By default, the current time.
@@ -255,11 +255,11 @@ class Newsfeed(Category):
     async def get_suggested_sources(
         self,
         return_raw_response: bool = False,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-        shuffle: typing.Optional[bool] = None,
-        fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
-    ) -> typing.Union[dict, NewsfeedGetSuggestedSourcesResponse]:
+        offset: Optional[int] = None,
+        count: Optional[int] = None,
+        shuffle: Optional[bool] = None,
+        fields: Optional[List[BaseUserGroupFields]] = None,
+    ) -> Union[dict, NewsfeedGetSuggestedSourcesResponse]:
         """
         :param offset: - offset required to choose a particular subset of communities or users.
         :param count: - amount of communities or users to return.
@@ -282,9 +282,9 @@ class Newsfeed(Category):
         self,
         type: str,
         return_raw_response: bool = False,
-        owner_id: typing.Optional[int] = None,
-        item_id: typing.Optional[int] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        owner_id: Optional[int] = None,
+        item_id: Optional[int] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param type: - Item type. Possible values: *'wall' – post on the wall,, *'tag' – tag on a photo,, *'profilephoto' – profile photo,, *'video' – video,, *'audio' – audio.
         :param owner_id: - Item owner's identifier (user or community), "Note that community id must be negative. 'owner_id=1' – user , 'owner_id=-1' – community "
@@ -306,10 +306,10 @@ class Newsfeed(Category):
         self,
         title: str,
         return_raw_response: bool = False,
-        list_id: typing.Optional[int] = None,
-        source_ids: typing.Optional[typing.List[int]] = None,
-        no_reposts: typing.Optional[BaseBoolInt] = None,
-    ) -> typing.Union[dict, NewsfeedSaveListResponse]:
+        list_id: Optional[int] = None,
+        source_ids: Optional[List[int]] = None,
+        no_reposts: Optional[BaseBoolInt] = None,
+    ) -> Union[dict, NewsfeedSaveListResponse]:
         """
         :param list_id: - numeric list identifier (if not sent, will be set automatically).
         :param title: - list name.
@@ -331,16 +331,16 @@ class Newsfeed(Category):
     async def search(
         self,
         return_raw_response: bool = False,
-        q: typing.Optional[str] = None,
-        extended: typing.Optional[BaseBoolInt] = None,
-        count: typing.Optional[int] = None,
-        latitude: typing.Optional[int] = None,
-        longitude: typing.Optional[int] = None,
-        start_time: typing.Optional[int] = None,
-        end_time: typing.Optional[int] = None,
-        start_from: typing.Optional[str] = None,
-        fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
-    ) -> typing.Union[dict, NewsfeedSearchResponse, NewsfeedSearchExtendedResponse]:
+        q: Optional[str] = None,
+        extended: Optional[BaseBoolInt] = None,
+        count: Optional[int] = None,
+        latitude: Optional[int] = None,
+        longitude: Optional[int] = None,
+        start_time: Optional[int] = None,
+        end_time: Optional[int] = None,
+        start_from: Optional[str] = None,
+        fields: Optional[List[BaseUserGroupFields]] = None,
+    ) -> Union[dict, NewsfeedSearchResponse, NewsfeedSearchExtendedResponse]:
         """
         :param q: - Search query string (e.g., 'New Year').
         :param extended: - '1' — to return additional information about the user or community that placed the post.
@@ -374,8 +374,8 @@ class Newsfeed(Category):
         owner_id: int,
         item_id: int,
         return_raw_response: bool = False,
-        track_code: typing.Optional[str] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        track_code: Optional[str] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param type: - Item type. Possible values: *'wall' – post on the wall,, *'tag' – tag on a photo,, *'profilephoto' – profile photo,, *'video' – video,, *'audio' – audio.
         :param owner_id: - Item owner's identifier (user or community), "Note that community id must be negative. 'owner_id=1' – user , 'owner_id=-1' – community "
@@ -399,8 +399,8 @@ class Newsfeed(Category):
         type: str,
         item_id: int,
         return_raw_response: bool = False,
-        owner_id: typing.Optional[int] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        owner_id: Optional[int] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param type: - Type of object from which to unsubscribe: 'note' — note, 'photo' — photo, 'post' — post on user wall or community wall, 'topic' — topic, 'video' — video
         :param owner_id: - Object owner ID.

@@ -9,8 +9,8 @@ class Orders(Category):
         user_id: int,
         subscription_id: int,
         return_raw_response: bool = False,
-        pending_cancel: typing.Optional[bool] = None,
-    ) -> typing.Union[dict, OrdersCancelSubscriptionResponse]:
+        pending_cancel: Optional[bool] = None,
+    ) -> Union[dict, OrdersCancelSubscriptionResponse]:
         """
         :param user_id:
         :param subscription_id:
@@ -33,9 +33,9 @@ class Orders(Category):
         order_id: int,
         action: str,
         return_raw_response: bool = False,
-        app_order_id: typing.Optional[int] = None,
-        test_mode: typing.Optional[BaseBoolInt] = None,
-    ) -> typing.Union[dict, OrdersChangeStateResponse]:
+        app_order_id: Optional[int] = None,
+        test_mode: Optional[BaseBoolInt] = None,
+    ) -> Union[dict, OrdersChangeStateResponse]:
         """
         :param order_id: - order ID.
         :param action: - action to be done with the order. Available actions: *cancel — to cancel unconfirmed order. *charge — to confirm unconfirmed order. Applies only if processing of [vk.com/dev/payments_status|order_change_state] notification failed. *refund — to cancel confirmed order.
@@ -57,10 +57,10 @@ class Orders(Category):
     async def get(
         self,
         return_raw_response: bool = False,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-        test_mode: typing.Optional[BaseBoolInt] = None,
-    ) -> typing.Union[dict, OrdersGetResponse]:
+        offset: Optional[int] = None,
+        count: Optional[int] = None,
+        test_mode: Optional[BaseBoolInt] = None,
+    ) -> Union[dict, OrdersGetResponse]:
         """
         :param offset:
         :param count: - number of returned orders.
@@ -81,9 +81,9 @@ class Orders(Category):
     async def get_amount(
         self,
         user_id: int,
-        votes: typing.List[str],
+        votes: List[str],
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, OrdersGetAmountResponse]:
+    ) -> Union[dict, OrdersGetAmountResponse]:
         """
         :param user_id:
         :param votes:
@@ -103,10 +103,10 @@ class Orders(Category):
     async def get_by_id(
         self,
         return_raw_response: bool = False,
-        order_id: typing.Optional[int] = None,
-        order_ids: typing.Optional[typing.List[int]] = None,
-        test_mode: typing.Optional[BaseBoolInt] = None,
-    ) -> typing.Union[dict, OrdersGetByIdResponse]:
+        order_id: Optional[int] = None,
+        order_ids: Optional[List[int]] = None,
+        test_mode: Optional[BaseBoolInt] = None,
+    ) -> Union[dict, OrdersGetByIdResponse]:
         """
         :param order_id: - order ID.
         :param order_ids: - order IDs (when information about several orders is requested).
@@ -129,7 +129,7 @@ class Orders(Category):
         user_id: int,
         subscription_id: int,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, OrdersGetUserSubscriptionByIdResponse]:
+    ) -> Union[dict, OrdersGetUserSubscriptionByIdResponse]:
         """
         :param user_id:
         :param subscription_id:
@@ -150,7 +150,7 @@ class Orders(Category):
         self,
         user_id: int,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, OrdersGetUserSubscriptionsResponse]:
+    ) -> Union[dict, OrdersGetUserSubscriptionsResponse]:
         """
         :param user_id:
         :param return_raw_response: - return result at dict
@@ -172,7 +172,7 @@ class Orders(Category):
         subscription_id: int,
         price: int,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, OrdersUpdateSubscriptionResponse]:
+    ) -> Union[dict, OrdersUpdateSubscriptionResponse]:
         """
         :param user_id:
         :param subscription_id:

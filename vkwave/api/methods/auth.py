@@ -8,10 +8,10 @@ class Auth(Category):
         self,
         phone: str,
         return_raw_response: bool = False,
-        client_id: typing.Optional[int] = None,
-        client_secret: typing.Optional[str] = None,
-        auth_by_phone: typing.Optional[bool] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        client_id: Optional[int] = None,
+        client_secret: Optional[str] = None,
+        auth_by_phone: Optional[bool] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param phone: - Phone number.
         :param client_id: - User ID.
@@ -35,7 +35,7 @@ class Auth(Category):
         phone: str,
         last_name: str,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, AuthRestoreResponse]:
+    ) -> Union[dict, AuthRestoreResponse]:
         """
         :param phone: - User phone number.
         :param last_name: - User last name.

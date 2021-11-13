@@ -8,12 +8,12 @@ class Leads(Category):
         self,
         lead_id: int,
         return_raw_response: bool = False,
-        test_result: typing.Optional[int] = None,
-        test_mode: typing.Optional[bool] = None,
-        auto_start: typing.Optional[bool] = None,
-        age: typing.Optional[int] = None,
-        country: typing.Optional[str] = None,
-    ) -> typing.Union[dict, LeadsCheckUserResponse]:
+        test_result: Optional[int] = None,
+        test_mode: Optional[bool] = None,
+        auto_start: Optional[bool] = None,
+        age: Optional[int] = None,
+        country: Optional[str] = None,
+    ) -> Union[dict, LeadsCheckUserResponse]:
         """
         :param lead_id: - Lead ID.
         :param test_result: - Value to be return in 'result' field when test mode is used.
@@ -39,8 +39,8 @@ class Leads(Category):
         vk_sid: str,
         secret: str,
         return_raw_response: bool = False,
-        comment: typing.Optional[str] = None,
-    ) -> typing.Union[dict, LeadsCompleteResponse]:
+        comment: Optional[str] = None,
+    ) -> Union[dict, LeadsCompleteResponse]:
         """
         :param vk_sid: - Session obtained as GET parameter when session started.
         :param secret: - Secret key from the lead testing interface.
@@ -62,10 +62,10 @@ class Leads(Category):
         self,
         lead_id: int,
         return_raw_response: bool = False,
-        secret: typing.Optional[str] = None,
-        date_start: typing.Optional[str] = None,
-        date_end: typing.Optional[str] = None,
-    ) -> typing.Union[dict, LeadsGetStatsResponse]:
+        secret: Optional[str] = None,
+        date_start: Optional[str] = None,
+        date_end: Optional[str] = None,
+    ) -> Union[dict, LeadsGetStatsResponse]:
         """
         :param lead_id: - Lead ID.
         :param secret: - Secret key obtained from the lead testing interface.
@@ -89,11 +89,11 @@ class Leads(Category):
         offer_id: int,
         secret: str,
         return_raw_response: bool = False,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-        status: typing.Optional[int] = None,
-        reverse: typing.Optional[BaseBoolInt] = None,
-    ) -> typing.Union[dict, LeadsGetUsersResponse]:
+        offset: Optional[int] = None,
+        count: Optional[int] = None,
+        status: Optional[int] = None,
+        reverse: Optional[BaseBoolInt] = None,
+    ) -> Union[dict, LeadsGetUsersResponse]:
         """
         :param offer_id: - Offer ID.
         :param secret: - Secret key obtained in the lead testing interface.
@@ -118,7 +118,7 @@ class Leads(Category):
         self,
         data: str,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, LeadsMetricHitResponse]:
+    ) -> Union[dict, LeadsMetricHitResponse]:
         """
         :param data: - Metric data obtained in the lead interface.
         :param return_raw_response: - return result at dict
@@ -139,11 +139,11 @@ class Leads(Category):
         lead_id: int,
         secret: str,
         return_raw_response: bool = False,
-        uid: typing.Optional[int] = None,
-        aid: typing.Optional[int] = None,
-        test_mode: typing.Optional[bool] = None,
-        force: typing.Optional[bool] = None,
-    ) -> typing.Union[dict, LeadsStartResponse]:
+        uid: Optional[int] = None,
+        aid: Optional[int] = None,
+        test_mode: Optional[bool] = None,
+        force: Optional[bool] = None,
+    ) -> Union[dict, LeadsStartResponse]:
         """
         :param lead_id: - Lead ID.
         :param secret: - Secret key from the lead testing interface.

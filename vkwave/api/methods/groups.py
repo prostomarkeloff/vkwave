@@ -14,13 +14,13 @@ class Groups(Category):
         latitude: int,
         longitude: int,
         return_raw_response: bool = False,
-        additional_address: typing.Optional[str] = None,
-        metro_id: typing.Optional[int] = None,
-        phone: typing.Optional[str] = None,
-        work_info_status: typing.Optional[str] = None,
-        timetable: typing.Optional[str] = None,
-        is_main_address: typing.Optional[bool] = None,
-    ) -> typing.Union[dict, GroupsAddAddressResponse]:
+        additional_address: Optional[str] = None,
+        metro_id: Optional[int] = None,
+        phone: Optional[str] = None,
+        work_info_status: Optional[str] = None,
+        timetable: Optional[str] = None,
+        is_main_address: Optional[bool] = None,
+    ) -> Union[dict, GroupsAddAddressResponse]:
         """
         :param group_id:
         :param title:
@@ -54,8 +54,8 @@ class Groups(Category):
         url: str,
         title: str,
         return_raw_response: bool = False,
-        secret_key: typing.Optional[str] = None,
-    ) -> typing.Union[dict, GroupsAddCallbackServerResponse]:
+        secret_key: Optional[str] = None,
+    ) -> Union[dict, GroupsAddCallbackServerResponse]:
         """
         :param group_id:
         :param url:
@@ -79,8 +79,8 @@ class Groups(Category):
         group_id: int,
         link: str,
         return_raw_response: bool = False,
-        text: typing.Optional[str] = None,
-    ) -> typing.Union[dict, GroupsAddLinkResponse]:
+        text: Optional[str] = None,
+    ) -> Union[dict, GroupsAddLinkResponse]:
         """
         :param group_id: - Community ID.
         :param link: - Link URL.
@@ -103,7 +103,7 @@ class Groups(Category):
         group_id: int,
         user_id: int,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, BaseOkResponse]:
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param group_id: - Community ID.
         :param user_id: - User ID.
@@ -124,12 +124,12 @@ class Groups(Category):
         self,
         group_id: int,
         return_raw_response: bool = False,
-        owner_id: typing.Optional[int] = None,
-        end_date: typing.Optional[int] = None,
-        reason: typing.Optional[int] = None,
-        comment: typing.Optional[str] = None,
-        comment_visible: typing.Optional[bool] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        owner_id: Optional[int] = None,
+        end_date: Optional[int] = None,
+        reason: Optional[int] = None,
+        comment: Optional[str] = None,
+        comment_visible: Optional[bool] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param group_id:
         :param owner_id:
@@ -154,11 +154,11 @@ class Groups(Category):
         self,
         title: str,
         return_raw_response: bool = False,
-        description: typing.Optional[str] = None,
-        type: typing.Optional[str] = None,
-        public_category: typing.Optional[int] = None,
-        subtype: typing.Optional[int] = None,
-    ) -> typing.Union[dict, GroupsCreateResponse]:
+        description: Optional[str] = None,
+        type: Optional[str] = None,
+        public_category: Optional[int] = None,
+        subtype: Optional[int] = None,
+    ) -> Union[dict, GroupsCreateResponse]:
         """
         :param title: - Community title.
         :param description: - Community description (ignored for 'type' = 'public').
@@ -183,7 +183,7 @@ class Groups(Category):
         group_id: int,
         address_id: int,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, BaseOkResponse]:
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param group_id:
         :param address_id:
@@ -205,7 +205,7 @@ class Groups(Category):
         group_id: int,
         server_id: int,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, BaseOkResponse]:
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param group_id:
         :param server_id:
@@ -227,7 +227,7 @@ class Groups(Category):
         group_id: int,
         link_id: int,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, BaseOkResponse]:
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param group_id: - Community ID.
         :param link_id: - Link ID.
@@ -248,7 +248,7 @@ class Groups(Category):
         self,
         group_id: int,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, BaseOkResponse]:
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param group_id:
         :param return_raw_response: - return result at dict
@@ -268,51 +268,51 @@ class Groups(Category):
         self,
         group_id: int,
         return_raw_response: bool = False,
-        title: typing.Optional[str] = None,
-        description: typing.Optional[str] = None,
-        screen_name: typing.Optional[str] = None,
-        access: typing.Optional[int] = None,
-        website: typing.Optional[str] = None,
-        subject: typing.Optional[str] = None,
-        email: typing.Optional[str] = None,
-        phone: typing.Optional[str] = None,
-        rss: typing.Optional[str] = None,
-        event_start_date: typing.Optional[int] = None,
-        event_finish_date: typing.Optional[int] = None,
-        event_group_id: typing.Optional[int] = None,
-        public_category: typing.Optional[int] = None,
-        public_subcategory: typing.Optional[int] = None,
-        public_date: typing.Optional[str] = None,
-        wall: typing.Optional[int] = None,
-        topics: typing.Optional[int] = None,
-        photos: typing.Optional[int] = None,
-        video: typing.Optional[int] = None,
-        audio: typing.Optional[int] = None,
-        links: typing.Optional[BaseBoolInt] = None,
-        events: typing.Optional[BaseBoolInt] = None,
-        places: typing.Optional[BaseBoolInt] = None,
-        contacts: typing.Optional[BaseBoolInt] = None,
-        docs: typing.Optional[int] = None,
-        wiki: typing.Optional[int] = None,
-        messages: typing.Optional[BaseBoolInt] = None,
-        articles: typing.Optional[bool] = None,
-        addresses: typing.Optional[bool] = None,
-        age_limits: typing.Optional[int] = None,
-        market: typing.Optional[BaseBoolInt] = None,
-        market_comments: typing.Optional[BaseBoolInt] = None,
-        market_country: typing.Optional[typing.List[int]] = None,
-        market_city: typing.Optional[typing.List[int]] = None,
-        market_currency: typing.Optional[int] = None,
-        market_contact: typing.Optional[int] = None,
-        market_wiki: typing.Optional[int] = None,
-        obscene_filter: typing.Optional[BaseBoolInt] = None,
-        obscene_stopwords: typing.Optional[BaseBoolInt] = None,
-        obscene_words: typing.Optional[typing.List[str]] = None,
-        main_section: typing.Optional[int] = None,
-        secondary_section: typing.Optional[int] = None,
-        country: typing.Optional[int] = None,
-        city: typing.Optional[int] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        title: Optional[str] = None,
+        description: Optional[str] = None,
+        screen_name: Optional[str] = None,
+        access: Optional[int] = None,
+        website: Optional[str] = None,
+        subject: Optional[str] = None,
+        email: Optional[str] = None,
+        phone: Optional[str] = None,
+        rss: Optional[str] = None,
+        event_start_date: Optional[int] = None,
+        event_finish_date: Optional[int] = None,
+        event_group_id: Optional[int] = None,
+        public_category: Optional[int] = None,
+        public_subcategory: Optional[int] = None,
+        public_date: Optional[str] = None,
+        wall: Optional[int] = None,
+        topics: Optional[int] = None,
+        photos: Optional[int] = None,
+        video: Optional[int] = None,
+        audio: Optional[int] = None,
+        links: Optional[BaseBoolInt] = None,
+        events: Optional[BaseBoolInt] = None,
+        places: Optional[BaseBoolInt] = None,
+        contacts: Optional[BaseBoolInt] = None,
+        docs: Optional[int] = None,
+        wiki: Optional[int] = None,
+        messages: Optional[BaseBoolInt] = None,
+        articles: Optional[bool] = None,
+        addresses: Optional[bool] = None,
+        age_limits: Optional[int] = None,
+        market: Optional[BaseBoolInt] = None,
+        market_comments: Optional[BaseBoolInt] = None,
+        market_country: Optional[List[int]] = None,
+        market_city: Optional[List[int]] = None,
+        market_currency: Optional[int] = None,
+        market_contact: Optional[int] = None,
+        market_wiki: Optional[int] = None,
+        obscene_filter: Optional[BaseBoolInt] = None,
+        obscene_stopwords: Optional[BaseBoolInt] = None,
+        obscene_words: Optional[List[str]] = None,
+        main_section: Optional[int] = None,
+        secondary_section: Optional[int] = None,
+        country: Optional[int] = None,
+        city: Optional[int] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param group_id: - Community ID.
         :param title: - Community title.
@@ -377,19 +377,19 @@ class Groups(Category):
         group_id: int,
         address_id: int,
         return_raw_response: bool = False,
-        title: typing.Optional[str] = None,
-        address: typing.Optional[str] = None,
-        additional_address: typing.Optional[str] = None,
-        country_id: typing.Optional[int] = None,
-        city_id: typing.Optional[int] = None,
-        metro_id: typing.Optional[int] = None,
-        latitude: typing.Optional[int] = None,
-        longitude: typing.Optional[int] = None,
-        phone: typing.Optional[str] = None,
-        work_info_status: typing.Optional[str] = None,
-        timetable: typing.Optional[str] = None,
-        is_main_address: typing.Optional[bool] = None,
-    ) -> typing.Union[dict, GroupsEditAddressResponse]:
+        title: Optional[str] = None,
+        address: Optional[str] = None,
+        additional_address: Optional[str] = None,
+        country_id: Optional[int] = None,
+        city_id: Optional[int] = None,
+        metro_id: Optional[int] = None,
+        latitude: Optional[int] = None,
+        longitude: Optional[int] = None,
+        phone: Optional[str] = None,
+        work_info_status: Optional[str] = None,
+        timetable: Optional[str] = None,
+        is_main_address: Optional[bool] = None,
+    ) -> Union[dict, GroupsEditAddressResponse]:
         """
         :param group_id:
         :param address_id:
@@ -425,8 +425,8 @@ class Groups(Category):
         url: str,
         title: str,
         return_raw_response: bool = False,
-        secret_key: typing.Optional[str] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        secret_key: Optional[str] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param group_id:
         :param server_id:
@@ -451,8 +451,8 @@ class Groups(Category):
         group_id: int,
         link_id: int,
         return_raw_response: bool = False,
-        text: typing.Optional[str] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        text: Optional[str] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param group_id: - Community ID.
         :param link_id: - Link ID.
@@ -475,12 +475,12 @@ class Groups(Category):
         group_id: int,
         user_id: int,
         return_raw_response: bool = False,
-        role: typing.Optional[str] = None,
-        is_contact: typing.Optional[BaseBoolInt] = None,
-        contact_position: typing.Optional[str] = None,
-        contact_phone: typing.Optional[str] = None,
-        contact_email: typing.Optional[str] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        role: Optional[str] = None,
+        is_contact: Optional[BaseBoolInt] = None,
+        contact_position: Optional[str] = None,
+        contact_phone: Optional[str] = None,
+        contact_email: Optional[str] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param group_id: - Community ID.
         :param user_id: - User ID.
@@ -506,7 +506,7 @@ class Groups(Category):
         self,
         group_id: int,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, BaseOkResponse]:
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param group_id:
         :param return_raw_response: - return result at dict
@@ -525,13 +525,13 @@ class Groups(Category):
     async def get(
         self,
         return_raw_response: bool = False,
-        user_id: typing.Optional[int] = None,
-        extended: typing.Optional[BaseBoolInt] = None,
-        filter: typing.Optional[typing.List[GroupsFilter]] = None,
-        fields: typing.Optional[typing.List[GroupsFields]] = None,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-    ) -> typing.Union[dict, GroupsGetResponse, GroupsGetExtendedResponse]:
+        user_id: Optional[int] = None,
+        extended: Optional[BaseBoolInt] = None,
+        filter: Optional[List[GroupsFilter]] = None,
+        fields: Optional[List[GroupsFields]] = None,
+        offset: Optional[int] = None,
+        count: Optional[int] = None,
+    ) -> Union[dict, GroupsGetResponse]:
         """
         :param user_id: - User ID.
         :param extended: - '1' — to return complete information about a user's communities, '0' — to return a list of community IDs without any additional fields (default),
@@ -560,13 +560,13 @@ class Groups(Category):
         self,
         group_id: int,
         return_raw_response: bool = False,
-        address_ids: typing.Optional[typing.List[int]] = None,
-        latitude: typing.Optional[int] = None,
-        longitude: typing.Optional[int] = None,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-        fields: typing.Optional[typing.List[AddressesFields]] = None,
-    ) -> typing.Union[dict, GroupsGetAddressesResponse]:
+        address_ids: Optional[List[int]] = None,
+        latitude: Optional[int] = None,
+        longitude: Optional[int] = None,
+        offset: Optional[int] = None,
+        count: Optional[int] = None,
+        fields: Optional[List[AddressesFields]] = None,
+    ) -> Union[dict, GroupsGetAddressesResponse]:
         """
         :param group_id: - ID or screen name of the community.
         :param address_ids:
@@ -592,11 +592,11 @@ class Groups(Category):
         self,
         group_id: int,
         return_raw_response: bool = False,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-        fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
-        owner_id: typing.Optional[int] = None,
-    ) -> typing.Union[dict, GroupsGetBannedResponse]:
+        offset: Optional[int] = None,
+        count: Optional[int] = None,
+        fields: Optional[List[BaseUserGroupFields]] = None,
+        owner_id: Optional[int] = None,
+    ) -> Union[dict, GroupsGetBannedResponse]:
         """
         :param group_id: - Community ID.
         :param offset: - Offset needed to return a specific subset of users.
@@ -619,10 +619,10 @@ class Groups(Category):
     async def get_by_id(
         self,
         return_raw_response: bool = False,
-        group_ids: typing.Optional[typing.List[str]] = None,
-        group_id: typing.Optional[str] = None,
-        fields: typing.Optional[typing.List[GroupsFields]] = None,
-    ) -> typing.Union[dict, GroupsGetByIdLegacyResponse]:
+        group_ids: Optional[List[str]] = None,
+        group_id: Optional[str] = None,
+        fields: Optional[List[GroupsFields]] = None,
+    ) -> Union[dict, GroupsGetByIdObjectLegacyResponse]:
         """
         :param group_ids: - IDs or screen names of communities.
         :param group_id: - ID or screen name of the community.
@@ -644,7 +644,7 @@ class Groups(Category):
         self,
         group_id: int,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, GroupsGetCallbackConfirmationCodeResponse]:
+    ) -> Union[dict, GroupsGetCallbackConfirmationCodeResponse]:
         """
         :param group_id: - Community ID.
         :param return_raw_response: - return result at dict
@@ -664,8 +664,8 @@ class Groups(Category):
         self,
         group_id: int,
         return_raw_response: bool = False,
-        server_ids: typing.Optional[typing.List[int]] = None,
-    ) -> typing.Union[dict, GroupsGetCallbackServersResponse]:
+        server_ids: Optional[List[int]] = None,
+    ) -> Union[dict, GroupsGetCallbackServersResponse]:
         """
         :param group_id:
         :param server_ids:
@@ -686,8 +686,8 @@ class Groups(Category):
         self,
         group_id: int,
         return_raw_response: bool = False,
-        server_id: typing.Optional[int] = None,
-    ) -> typing.Union[dict, GroupsGetCallbackSettingsResponse]:
+        server_id: Optional[int] = None,
+    ) -> Union[dict, GroupsGetCallbackSettingsResponse]:
         """
         :param group_id: - Community ID.
         :param server_id: - Server ID.
@@ -707,9 +707,9 @@ class Groups(Category):
     async def get_catalog(
         self,
         return_raw_response: bool = False,
-        category_id: typing.Optional[int] = None,
-        subcategory_id: typing.Optional[int] = None,
-    ) -> typing.Union[dict, GroupsGetCatalogResponse]:
+        category_id: Optional[int] = None,
+        subcategory_id: Optional[int] = None,
+    ) -> Union[dict, GroupsGetCatalogResponse]:
         """
         :param category_id: - Category id received from [vk.com/dev/groups.getCatalogInfo|groups.getCatalogInfo].
         :param subcategory_id: - Subcategory id received from [vk.com/dev/groups.getCatalogInfo|groups.getCatalogInfo].
@@ -729,9 +729,9 @@ class Groups(Category):
     async def get_catalog_info(
         self,
         return_raw_response: bool = False,
-        extended: typing.Optional[BaseBoolInt] = None,
-        subcategories: typing.Optional[BaseBoolInt] = None,
-    ) -> typing.Union[dict, GroupsGetCatalogInfoResponse, GroupsGetCatalogInfoExtendedResponse]:
+        extended: Optional[BaseBoolInt] = None,
+        subcategories: Optional[BaseBoolInt] = None,
+    ) -> Union[dict, GroupsGetCatalogInfoResponse, GroupsGetCatalogInfoExtendedResponse]:
         """
         :param extended: - 1 – to return communities count and three communities for preview. By default: 0.
         :param subcategories: - 1 – to return subcategories info. By default: 0.
@@ -756,11 +756,11 @@ class Groups(Category):
         self,
         group_id: int,
         return_raw_response: bool = False,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-        fields: typing.Optional[typing.List[UsersFields]] = None,
-        name_case: typing.Optional[str] = None,
-    ) -> typing.Union[dict, GroupsGetInvitedUsersResponse]:
+        offset: Optional[int] = None,
+        count: Optional[int] = None,
+        fields: Optional[List[UsersFields]] = None,
+        name_case: Optional[str] = None,
+    ) -> Union[dict, GroupsGetInvitedUsersResponse]:
         """
         :param group_id: - Group ID to return invited users for.
         :param offset: - Offset needed to return a specific subset of results.
@@ -783,10 +783,10 @@ class Groups(Category):
     async def get_invites(
         self,
         return_raw_response: bool = False,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-        extended: typing.Optional[BaseBoolInt] = None,
-    ) -> typing.Union[dict, GroupsGetInvitesResponse, GroupsGetInvitesExtendedResponse]:
+        offset: Optional[int] = None,
+        count: Optional[int] = None,
+        extended: Optional[BaseBoolInt] = None,
+    ) -> Union[dict, GroupsGetInvitesResponse, GroupsGetInvitesExtendedResponse]:
         """
         :param offset: - Offset needed to return a specific subset of invitations.
         :param count: - Number of invitations to return.
@@ -812,7 +812,7 @@ class Groups(Category):
         self,
         group_id: int,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, GroupsGetLongPollServerResponse]:
+    ) -> Union[dict, GroupsGetLongPollServerResponse]:
         """
         :param group_id: - Community ID
         :param return_raw_response: - return result at dict
@@ -832,7 +832,7 @@ class Groups(Category):
         self,
         group_id: int,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, GroupsGetLongPollSettingsResponse]:
+    ) -> Union[dict, GroupsGetLongPollSettingsResponse]:
         """
         :param group_id: - Community ID.
         :param return_raw_response: - return result at dict
@@ -851,13 +851,13 @@ class Groups(Category):
     async def get_members(
         self,
         return_raw_response: bool = False,
-        group_id: typing.Optional[str] = None,
-        sort: typing.Optional[str] = None,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-        fields: typing.Optional[typing.List[UsersFields]] = None,
-        filter: typing.Optional[str] = None,
-    ) -> typing.Union[dict, GroupsGetMembersResponse, GroupsGetMembersFieldsResponse]:
+        group_id: Optional[str] = None,
+        sort: Optional[str] = None,
+        offset: Optional[int] = None,
+        count: Optional[int] = None,
+        fields: Optional[List[UsersFields]] = None,
+        filter: Optional[str] = None,
+    ) -> Union[dict, GroupsGetMembersResponse, GroupsGetMembersFieldsResponse]:
         """
         :param group_id: - ID or screen name of the community.
         :param sort: - Sort order. Available values: 'id_asc', 'id_desc', 'time_asc', 'time_desc'. 'time_asc' and 'time_desc' are availavle only if the method is called by the group's 'moderator'.
@@ -886,10 +886,10 @@ class Groups(Category):
         self,
         group_id: int,
         return_raw_response: bool = False,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-        fields: typing.Optional[typing.List[UsersFields]] = None,
-    ) -> typing.Union[dict, GroupsGetRequestsResponse, GroupsGetRequestsFieldsResponse]:
+        offset: Optional[int] = None,
+        count: Optional[int] = None,
+        fields: Optional[List[UsersFields]] = None,
+    ) -> Union[dict, GroupsGetRequestsResponse, GroupsGetRequestsFieldsResponse]:
         """
         :param group_id: - Community ID.
         :param offset: - Offset needed to return a specific subset of results.
@@ -916,7 +916,7 @@ class Groups(Category):
         self,
         group_id: int,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, GroupsGetSettingsResponse]:
+    ) -> Union[dict, GroupsGetSettingsResponse]:
         """
         :param group_id: - Community ID.
         :param return_raw_response: - return result at dict
@@ -936,7 +936,7 @@ class Groups(Category):
         self,
         group_id: int,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, GroupsGetTagListResponse]:
+    ) -> Union[dict, GroupsGetTagListResponse]:
         """
         :param group_id:
         :param return_raw_response: - return result at dict
@@ -955,7 +955,7 @@ class Groups(Category):
     async def get_token_permissions(
         self,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, GroupsGetTokenPermissionsResponse]:
+    ) -> Union[dict, GroupsGetTokenPermissionsResponse]:
         """
         :param return_raw_response: - return result at dict
         :return:
@@ -975,7 +975,7 @@ class Groups(Category):
         group_id: int,
         user_id: int,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, BaseOkResponse]:
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param group_id: - Community ID.
         :param user_id: - User ID.
@@ -996,10 +996,10 @@ class Groups(Category):
         self,
         group_id: str,
         return_raw_response: bool = False,
-        user_id: typing.Optional[int] = None,
-        user_ids: typing.Optional[typing.List[int]] = None,
-        extended: typing.Optional[BaseBoolInt] = None,
-    ) -> typing.Union[dict, GroupsIsMemberResponse, GroupsIsMemberExtendedResponse]:
+        user_id: Optional[int] = None,
+        user_ids: Optional[List[int]] = None,
+        extended: Optional[BaseBoolInt] = None,
+    ) -> Union[dict, GroupsIsMemberResponse, GroupsIsMemberExtendedResponse]:
         """
         :param group_id: - ID or screen name of the community.
         :param user_id: - User ID.
@@ -1025,9 +1025,9 @@ class Groups(Category):
     async def join(
         self,
         return_raw_response: bool = False,
-        group_id: typing.Optional[int] = None,
-        not_sure: typing.Optional[str] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        group_id: Optional[int] = None,
+        not_sure: Optional[str] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param group_id: - ID or screen name of the community.
         :param not_sure: - Optional parameter which is taken into account when 'gid' belongs to the event: '1' — Perhaps I will attend, '0' — I will be there for sure (default), ,
@@ -1048,7 +1048,7 @@ class Groups(Category):
         self,
         group_id: int,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, BaseOkResponse]:
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param group_id: - ID or screen name of the community.
         :param return_raw_response: - return result at dict
@@ -1069,7 +1069,7 @@ class Groups(Category):
         group_id: int,
         user_id: int,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, BaseOkResponse]:
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param group_id: - Community ID.
         :param user_id: - User ID.
@@ -1091,8 +1091,8 @@ class Groups(Category):
         group_id: int,
         link_id: int,
         return_raw_response: bool = False,
-        after: typing.Optional[int] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        after: Optional[int] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param group_id: - Community ID.
         :param link_id: - Link ID.
@@ -1114,15 +1114,15 @@ class Groups(Category):
         self,
         q: str,
         return_raw_response: bool = False,
-        type: typing.Optional[str] = None,
-        country_id: typing.Optional[int] = None,
-        city_id: typing.Optional[int] = None,
-        future: typing.Optional[BaseBoolInt] = None,
-        market: typing.Optional[BaseBoolInt] = None,
-        sort: typing.Optional[int] = None,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-    ) -> typing.Union[dict, GroupsSearchResponse]:
+        type: Optional[str] = None,
+        country_id: Optional[int] = None,
+        city_id: Optional[int] = None,
+        future: Optional[BaseBoolInt] = None,
+        market: Optional[BaseBoolInt] = None,
+        sort: Optional[int] = None,
+        offset: Optional[int] = None,
+        count: Optional[int] = None,
+    ) -> Union[dict, GroupsSearchResponse]:
         """
         :param q: - Search query string.
         :param type: - Community type. Possible values: 'group, page, event.'
@@ -1150,61 +1150,61 @@ class Groups(Category):
         self,
         group_id: int,
         return_raw_response: bool = False,
-        server_id: typing.Optional[int] = None,
-        api_version: typing.Optional[str] = None,
-        message_new: typing.Optional[BaseBoolInt] = None,
-        message_reply: typing.Optional[BaseBoolInt] = None,
-        message_allow: typing.Optional[BaseBoolInt] = None,
-        message_edit: typing.Optional[bool] = None,
-        message_deny: typing.Optional[BaseBoolInt] = None,
-        message_typing_state: typing.Optional[bool] = None,
-        photo_new: typing.Optional[BaseBoolInt] = None,
-        audio_new: typing.Optional[BaseBoolInt] = None,
-        video_new: typing.Optional[BaseBoolInt] = None,
-        wall_reply_new: typing.Optional[BaseBoolInt] = None,
-        wall_reply_edit: typing.Optional[BaseBoolInt] = None,
-        wall_reply_delete: typing.Optional[BaseBoolInt] = None,
-        wall_reply_restore: typing.Optional[BaseBoolInt] = None,
-        wall_post_new: typing.Optional[BaseBoolInt] = None,
-        wall_repost: typing.Optional[BaseBoolInt] = None,
-        board_post_new: typing.Optional[BaseBoolInt] = None,
-        board_post_edit: typing.Optional[BaseBoolInt] = None,
-        board_post_restore: typing.Optional[BaseBoolInt] = None,
-        board_post_delete: typing.Optional[BaseBoolInt] = None,
-        photo_comment_new: typing.Optional[BaseBoolInt] = None,
-        photo_comment_edit: typing.Optional[BaseBoolInt] = None,
-        photo_comment_delete: typing.Optional[BaseBoolInt] = None,
-        photo_comment_restore: typing.Optional[BaseBoolInt] = None,
-        video_comment_new: typing.Optional[BaseBoolInt] = None,
-        video_comment_edit: typing.Optional[BaseBoolInt] = None,
-        video_comment_delete: typing.Optional[BaseBoolInt] = None,
-        video_comment_restore: typing.Optional[BaseBoolInt] = None,
-        market_comment_new: typing.Optional[BaseBoolInt] = None,
-        market_comment_edit: typing.Optional[BaseBoolInt] = None,
-        market_comment_delete: typing.Optional[BaseBoolInt] = None,
-        market_comment_restore: typing.Optional[BaseBoolInt] = None,
-        market_order_new: typing.Optional[bool] = None,
-        market_order_edit: typing.Optional[bool] = None,
-        poll_vote_new: typing.Optional[BaseBoolInt] = None,
-        group_join: typing.Optional[BaseBoolInt] = None,
-        group_leave: typing.Optional[BaseBoolInt] = None,
-        group_change_settings: typing.Optional[bool] = None,
-        group_change_photo: typing.Optional[bool] = None,
-        group_officers_edit: typing.Optional[bool] = None,
-        user_block: typing.Optional[bool] = None,
-        user_unblock: typing.Optional[bool] = None,
-        lead_forms_new: typing.Optional[bool] = None,
-        like_add: typing.Optional[bool] = None,
-        like_remove: typing.Optional[bool] = None,
-        message_event: typing.Optional[bool] = None,
-        donut_subscription_create: typing.Optional[bool] = None,
-        donut_subscription_prolonged: typing.Optional[bool] = None,
-        donut_subscription_cancelled: typing.Optional[bool] = None,
-        donut_subscription_price_changed: typing.Optional[bool] = None,
-        donut_subscription_expired: typing.Optional[bool] = None,
-        donut_money_withdraw: typing.Optional[bool] = None,
-        donut_money_withdraw_error: typing.Optional[bool] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        server_id: Optional[int] = None,
+        api_version: Optional[str] = None,
+        message_new: Optional[BaseBoolInt] = None,
+        message_reply: Optional[BaseBoolInt] = None,
+        message_allow: Optional[BaseBoolInt] = None,
+        message_edit: Optional[bool] = None,
+        message_deny: Optional[BaseBoolInt] = None,
+        message_typing_state: Optional[bool] = None,
+        photo_new: Optional[BaseBoolInt] = None,
+        audio_new: Optional[BaseBoolInt] = None,
+        video_new: Optional[BaseBoolInt] = None,
+        wall_reply_new: Optional[BaseBoolInt] = None,
+        wall_reply_edit: Optional[BaseBoolInt] = None,
+        wall_reply_delete: Optional[BaseBoolInt] = None,
+        wall_reply_restore: Optional[BaseBoolInt] = None,
+        wall_post_new: Optional[BaseBoolInt] = None,
+        wall_repost: Optional[BaseBoolInt] = None,
+        board_post_new: Optional[BaseBoolInt] = None,
+        board_post_edit: Optional[BaseBoolInt] = None,
+        board_post_restore: Optional[BaseBoolInt] = None,
+        board_post_delete: Optional[BaseBoolInt] = None,
+        photo_comment_new: Optional[BaseBoolInt] = None,
+        photo_comment_edit: Optional[BaseBoolInt] = None,
+        photo_comment_delete: Optional[BaseBoolInt] = None,
+        photo_comment_restore: Optional[BaseBoolInt] = None,
+        video_comment_new: Optional[BaseBoolInt] = None,
+        video_comment_edit: Optional[BaseBoolInt] = None,
+        video_comment_delete: Optional[BaseBoolInt] = None,
+        video_comment_restore: Optional[BaseBoolInt] = None,
+        market_comment_new: Optional[BaseBoolInt] = None,
+        market_comment_edit: Optional[BaseBoolInt] = None,
+        market_comment_delete: Optional[BaseBoolInt] = None,
+        market_comment_restore: Optional[BaseBoolInt] = None,
+        market_order_new: Optional[bool] = None,
+        market_order_edit: Optional[bool] = None,
+        poll_vote_new: Optional[BaseBoolInt] = None,
+        group_join: Optional[BaseBoolInt] = None,
+        group_leave: Optional[BaseBoolInt] = None,
+        group_change_settings: Optional[bool] = None,
+        group_change_photo: Optional[bool] = None,
+        group_officers_edit: Optional[bool] = None,
+        user_block: Optional[bool] = None,
+        user_unblock: Optional[bool] = None,
+        lead_forms_new: Optional[bool] = None,
+        like_add: Optional[bool] = None,
+        like_remove: Optional[bool] = None,
+        message_event: Optional[bool] = None,
+        donut_subscription_create: Optional[bool] = None,
+        donut_subscription_prolonged: Optional[bool] = None,
+        donut_subscription_cancelled: Optional[bool] = None,
+        donut_subscription_price_changed: Optional[bool] = None,
+        donut_subscription_expired: Optional[bool] = None,
+        donut_money_withdraw: Optional[bool] = None,
+        donut_money_withdraw_error: Optional[bool] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param group_id: - Community ID.
         :param server_id: - Server ID.
@@ -1278,58 +1278,58 @@ class Groups(Category):
         self,
         group_id: int,
         return_raw_response: bool = False,
-        enabled: typing.Optional[BaseBoolInt] = None,
-        api_version: typing.Optional[str] = None,
-        message_new: typing.Optional[BaseBoolInt] = None,
-        message_reply: typing.Optional[BaseBoolInt] = None,
-        message_allow: typing.Optional[BaseBoolInt] = None,
-        message_deny: typing.Optional[BaseBoolInt] = None,
-        message_edit: typing.Optional[BaseBoolInt] = None,
-        message_typing_state: typing.Optional[bool] = None,
-        photo_new: typing.Optional[BaseBoolInt] = None,
-        audio_new: typing.Optional[BaseBoolInt] = None,
-        video_new: typing.Optional[BaseBoolInt] = None,
-        wall_reply_new: typing.Optional[BaseBoolInt] = None,
-        wall_reply_edit: typing.Optional[BaseBoolInt] = None,
-        wall_reply_delete: typing.Optional[BaseBoolInt] = None,
-        wall_reply_restore: typing.Optional[BaseBoolInt] = None,
-        wall_post_new: typing.Optional[BaseBoolInt] = None,
-        wall_repost: typing.Optional[BaseBoolInt] = None,
-        board_post_new: typing.Optional[BaseBoolInt] = None,
-        board_post_edit: typing.Optional[BaseBoolInt] = None,
-        board_post_restore: typing.Optional[BaseBoolInt] = None,
-        board_post_delete: typing.Optional[BaseBoolInt] = None,
-        photo_comment_new: typing.Optional[BaseBoolInt] = None,
-        photo_comment_edit: typing.Optional[BaseBoolInt] = None,
-        photo_comment_delete: typing.Optional[BaseBoolInt] = None,
-        photo_comment_restore: typing.Optional[BaseBoolInt] = None,
-        video_comment_new: typing.Optional[BaseBoolInt] = None,
-        video_comment_edit: typing.Optional[BaseBoolInt] = None,
-        video_comment_delete: typing.Optional[BaseBoolInt] = None,
-        video_comment_restore: typing.Optional[BaseBoolInt] = None,
-        market_comment_new: typing.Optional[BaseBoolInt] = None,
-        market_comment_edit: typing.Optional[BaseBoolInt] = None,
-        market_comment_delete: typing.Optional[BaseBoolInt] = None,
-        market_comment_restore: typing.Optional[BaseBoolInt] = None,
-        poll_vote_new: typing.Optional[BaseBoolInt] = None,
-        group_join: typing.Optional[BaseBoolInt] = None,
-        group_leave: typing.Optional[BaseBoolInt] = None,
-        group_change_settings: typing.Optional[bool] = None,
-        group_change_photo: typing.Optional[bool] = None,
-        group_officers_edit: typing.Optional[bool] = None,
-        user_block: typing.Optional[bool] = None,
-        user_unblock: typing.Optional[bool] = None,
-        like_add: typing.Optional[bool] = None,
-        like_remove: typing.Optional[bool] = None,
-        message_event: typing.Optional[bool] = None,
-        donut_subscription_create: typing.Optional[bool] = None,
-        donut_subscription_prolonged: typing.Optional[bool] = None,
-        donut_subscription_cancelled: typing.Optional[bool] = None,
-        donut_subscription_price_changed: typing.Optional[bool] = None,
-        donut_subscription_expired: typing.Optional[bool] = None,
-        donut_money_withdraw: typing.Optional[bool] = None,
-        donut_money_withdraw_error: typing.Optional[bool] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        enabled: Optional[BaseBoolInt] = None,
+        api_version: Optional[str] = None,
+        message_new: Optional[BaseBoolInt] = None,
+        message_reply: Optional[BaseBoolInt] = None,
+        message_allow: Optional[BaseBoolInt] = None,
+        message_deny: Optional[BaseBoolInt] = None,
+        message_edit: Optional[BaseBoolInt] = None,
+        message_typing_state: Optional[bool] = None,
+        photo_new: Optional[BaseBoolInt] = None,
+        audio_new: Optional[BaseBoolInt] = None,
+        video_new: Optional[BaseBoolInt] = None,
+        wall_reply_new: Optional[BaseBoolInt] = None,
+        wall_reply_edit: Optional[BaseBoolInt] = None,
+        wall_reply_delete: Optional[BaseBoolInt] = None,
+        wall_reply_restore: Optional[BaseBoolInt] = None,
+        wall_post_new: Optional[BaseBoolInt] = None,
+        wall_repost: Optional[BaseBoolInt] = None,
+        board_post_new: Optional[BaseBoolInt] = None,
+        board_post_edit: Optional[BaseBoolInt] = None,
+        board_post_restore: Optional[BaseBoolInt] = None,
+        board_post_delete: Optional[BaseBoolInt] = None,
+        photo_comment_new: Optional[BaseBoolInt] = None,
+        photo_comment_edit: Optional[BaseBoolInt] = None,
+        photo_comment_delete: Optional[BaseBoolInt] = None,
+        photo_comment_restore: Optional[BaseBoolInt] = None,
+        video_comment_new: Optional[BaseBoolInt] = None,
+        video_comment_edit: Optional[BaseBoolInt] = None,
+        video_comment_delete: Optional[BaseBoolInt] = None,
+        video_comment_restore: Optional[BaseBoolInt] = None,
+        market_comment_new: Optional[BaseBoolInt] = None,
+        market_comment_edit: Optional[BaseBoolInt] = None,
+        market_comment_delete: Optional[BaseBoolInt] = None,
+        market_comment_restore: Optional[BaseBoolInt] = None,
+        poll_vote_new: Optional[BaseBoolInt] = None,
+        group_join: Optional[BaseBoolInt] = None,
+        group_leave: Optional[BaseBoolInt] = None,
+        group_change_settings: Optional[bool] = None,
+        group_change_photo: Optional[bool] = None,
+        group_officers_edit: Optional[bool] = None,
+        user_block: Optional[bool] = None,
+        user_unblock: Optional[bool] = None,
+        like_add: Optional[bool] = None,
+        like_remove: Optional[bool] = None,
+        message_event: Optional[bool] = None,
+        donut_subscription_create: Optional[bool] = None,
+        donut_subscription_prolonged: Optional[bool] = None,
+        donut_subscription_cancelled: Optional[bool] = None,
+        donut_subscription_price_changed: Optional[bool] = None,
+        donut_subscription_expired: Optional[bool] = None,
+        donut_money_withdraw: Optional[bool] = None,
+        donut_money_withdraw_error: Optional[bool] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param group_id: - Community ID.
         :param enabled: - Sets whether Long Poll is enabled ('0' — disabled, '1' — enabled).
@@ -1400,11 +1400,11 @@ class Groups(Category):
         self,
         group_id: int,
         return_raw_response: bool = False,
-        messages: typing.Optional[bool] = None,
-        bots_capabilities: typing.Optional[bool] = None,
-        bots_start_button: typing.Optional[bool] = None,
-        bots_add_to_chat: typing.Optional[bool] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        messages: Optional[bool] = None,
+        bots_capabilities: Optional[bool] = None,
+        bots_start_button: Optional[bool] = None,
+        bots_add_to_chat: Optional[bool] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param group_id:
         :param messages:
@@ -1429,8 +1429,8 @@ class Groups(Category):
         group_id: int,
         user_id: int,
         return_raw_response: bool = False,
-        note: typing.Optional[str] = None,
-    ) -> typing.Union[dict, BaseBoolResponse]:
+        note: Optional[str] = None,
+    ) -> Union[dict, BaseBoolResponse]:
         """
         :param group_id:
         :param user_id:
@@ -1453,8 +1453,8 @@ class Groups(Category):
         group_id: int,
         tag_name: str,
         return_raw_response: bool = False,
-        tag_color: typing.Optional[str] = None,
-    ) -> typing.Union[dict, BaseBoolResponse]:
+        tag_color: Optional[str] = None,
+    ) -> Union[dict, BaseBoolResponse]:
         """
         :param group_id:
         :param tag_name:
@@ -1479,7 +1479,7 @@ class Groups(Category):
         user_id: int,
         act: str,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, BaseBoolResponse]:
+    ) -> Union[dict, BaseBoolResponse]:
         """
         :param group_id:
         :param tag_id:
@@ -1503,7 +1503,7 @@ class Groups(Category):
         group_id: int,
         tag_id: int,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, BaseBoolResponse]:
+    ) -> Union[dict, BaseBoolResponse]:
         """
         :param group_id:
         :param tag_id:
@@ -1526,7 +1526,7 @@ class Groups(Category):
         tag_id: int,
         tag_name: str,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, BaseBoolResponse]:
+    ) -> Union[dict, BaseBoolResponse]:
         """
         :param group_id:
         :param tag_id:
@@ -1549,7 +1549,7 @@ class Groups(Category):
         group_id: int,
         state: str,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, BaseOkResponse]:
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param group_id:
         :param state:
@@ -1570,8 +1570,8 @@ class Groups(Category):
         self,
         group_id: int,
         return_raw_response: bool = False,
-        owner_id: typing.Optional[int] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        owner_id: Optional[int] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param group_id:
         :param owner_id:

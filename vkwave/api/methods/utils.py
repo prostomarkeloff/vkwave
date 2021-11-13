@@ -8,7 +8,7 @@ class Utils(Category):
         self,
         url: str,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, UtilsCheckLinkResponse]:
+    ) -> Union[dict, UtilsCheckLinkResponse]:
         """
         :param url: - Link to check (e.g., 'http://google.com').
         :param return_raw_response: - return result at dict
@@ -28,7 +28,7 @@ class Utils(Category):
         self,
         key: str,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, BaseOkResponse]:
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param key: - Link key (characters after vk.cc/).
         :param return_raw_response: - return result at dict
@@ -47,9 +47,9 @@ class Utils(Category):
     async def get_last_shortened_links(
         self,
         return_raw_response: bool = False,
-        count: typing.Optional[int] = None,
-        offset: typing.Optional[int] = None,
-    ) -> typing.Union[dict, UtilsGetLastShortenedLinksResponse]:
+        count: Optional[int] = None,
+        offset: Optional[int] = None,
+    ) -> Union[dict, UtilsGetLastShortenedLinksResponse]:
         """
         :param count: - Number of links to return.
         :param offset: - Offset needed to return a specific subset of links.
@@ -70,12 +70,12 @@ class Utils(Category):
         self,
         key: str,
         return_raw_response: bool = False,
-        source: typing.Optional[str] = None,
-        access_key: typing.Optional[str] = None,
-        interval: typing.Optional[str] = None,
-        intervals_count: typing.Optional[int] = None,
-        extended: typing.Optional[BaseBoolInt] = None,
-    ) -> typing.Union[dict, UtilsGetLinkStatsResponse, UtilsGetLinkStatsExtendedResponse]:
+        source: Optional[str] = None,
+        access_key: Optional[str] = None,
+        interval: Optional[str] = None,
+        intervals_count: Optional[int] = None,
+        extended: Optional[BaseBoolInt] = None,
+    ) -> Union[dict, UtilsGetLinkStatsResponse, UtilsGetLinkStatsExtendedResponse]:
         """
         :param key: - Link key (characters after vk.cc/).
         :param source: - Source of scope
@@ -103,7 +103,7 @@ class Utils(Category):
     async def get_server_time(
         self,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, UtilsGetServerTimeResponse]:
+    ) -> Union[dict, UtilsGetServerTimeResponse]:
         """
         :param return_raw_response: - return result at dict
         :return:
@@ -122,8 +122,8 @@ class Utils(Category):
         self,
         url: str,
         return_raw_response: bool = False,
-        private: typing.Optional[BaseBoolInt] = None,
-    ) -> typing.Union[dict, UtilsGetShortLinkResponse]:
+        private: Optional[BaseBoolInt] = None,
+    ) -> Union[dict, UtilsGetShortLinkResponse]:
         """
         :param url: - URL to be shortened.
         :param private: - 1 — private stats, 0 — public stats.
@@ -144,7 +144,7 @@ class Utils(Category):
         self,
         screen_name: str,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, UtilsResolveScreenNameResponse]:
+    ) -> Union[dict, UtilsResolveScreenNameResponse]:
         """
         :param screen_name: - Screen name of the user, community (e.g., 'apiclub,' 'andrew', or 'rules_of_war'), or application.
         :param return_raw_response: - return result at dict

@@ -3,7 +3,7 @@ from vkwave.types.extension_objects import *
 
 
 class MessagesSendPeerIdsResponse(pydantic.BaseModel):
-    response: typing.List[MessagesSendPeerIdsData] = pydantic.Field(
+    response: List[MessagesSendPeerIdsData] = pydantic.Field(
         ...,
         description="",
     )
@@ -16,15 +16,15 @@ class ExecuteError(pydantic.BaseModel):
 
 
 class ExecuteResponse(pydantic.BaseModel):
-    response: typing.Any = pydantic.Field(..., description="")
-    execute_errors: typing.Optional[typing.List[ExecuteError]] = pydantic.Field(
+    response: Any = pydantic.Field(..., description="")
+    execute_errors: Optional[List[ExecuteError]] = pydantic.Field(
         None, description=""
     )
 
 
 class AudioGetResponseModel(pydantic.BaseModel):
     count: int = pydantic.Field(..., description="")
-    items: typing.List[AudioAudio] = pydantic.Field(..., description="")
+    items: List[AudioAudio] = pydantic.Field(..., description="")
 
 
 class AudioGetResponse(pydantic.BaseModel):
@@ -32,4 +32,4 @@ class AudioGetResponse(pydantic.BaseModel):
 
 
 class AudioGetByIdResponse(pydantic.BaseModel):
-    response: typing.List[AudioAudio] = pydantic.Field(..., description="")
+    response: List[AudioAudio] = pydantic.Field(..., description="")

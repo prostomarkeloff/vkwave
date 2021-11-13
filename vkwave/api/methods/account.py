@@ -1,14 +1,14 @@
 from vkwave.types.responses import *
 from ._category import Category
 from ._utils import get_params
-
+from typing import Optional, Union
 
 class Account(Category):
     async def ban(
         self,
         return_raw_response: bool = False,
-        owner_id: typing.Optional[int] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        owner_id: Optional[int] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param owner_id:
         :param return_raw_response: - return result at dict
@@ -21,17 +21,16 @@ class Account(Category):
         if return_raw_response:
             return raw_result
 
-        result = BaseOkResponse(**raw_result)
-        return result
+        return BaseOkResponse(**raw_result)
 
     async def change_password(
         self,
         new_password: str,
         return_raw_response: bool = False,
-        restore_sid: typing.Optional[str] = None,
-        change_password_hash: typing.Optional[str] = None,
-        old_password: typing.Optional[str] = None,
-    ) -> typing.Union[dict, AccountChangePasswordResponse]:
+        restore_sid: Optional[str] = None,
+        change_password_hash: Optional[str] = None,
+        old_password: Optional[str] = None,
+    ) -> Union[dict, AccountChangePasswordResponse]:
         """
         :param restore_sid: - Session id received after the [vk.com/dev/auth.restore|auth.restore] method is executed. (If the password is changed right after the access was restored)
         :param change_password_hash: - Hash received after a successful OAuth authorization with a code got by SMS. (If the password is changed right after the access was restored)
@@ -47,15 +46,13 @@ class Account(Category):
         if return_raw_response:
             return raw_result
 
-        result = AccountChangePasswordResponse(**raw_result)
-        return result
-
+        return AccountChangePasswordResponse(**raw_result)
     async def get_active_offers(
         self,
         return_raw_response: bool = False,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-    ) -> typing.Union[dict, AccountGetActiveOffersResponse]:
+        offset: Optional[int] = None,
+        count: Optional[int] = None,
+    ) -> Union[dict, AccountGetActiveOffersResponse]:
         """
         :param offset:
         :param count: - Number of results to return.
@@ -69,14 +66,13 @@ class Account(Category):
         if return_raw_response:
             return raw_result
 
-        result = AccountGetActiveOffersResponse(**raw_result)
-        return result
+        return AccountGetActiveOffersResponse(**raw_result)
 
     async def get_app_permissions(
         self,
         user_id: int,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, AccountGetAppPermissionsResponse]:
+    ) -> Union[dict, AccountGetAppPermissionsResponse]:
         """
         :param user_id: - User ID whose settings information shall be got. By default: current user.
         :param return_raw_response: - return result at dict
@@ -89,15 +85,14 @@ class Account(Category):
         if return_raw_response:
             return raw_result
 
-        result = AccountGetAppPermissionsResponse(**raw_result)
-        return result
+        return AccountGetAppPermissionsResponse(**raw_result)
 
     async def get_banned(
         self,
         return_raw_response: bool = False,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-    ) -> typing.Union[dict, AccountGetBannedResponse]:
+        offset: Optional[int] = None,
+        count: Optional[int] = None,
+    ) -> Union[dict, AccountGetBannedResponse]:
         """
         :param offset: - Offset needed to return a specific subset of results.
         :param count: - Number of results to return.
@@ -111,14 +106,13 @@ class Account(Category):
         if return_raw_response:
             return raw_result
 
-        result = AccountGetBannedResponse(**raw_result)
-        return result
+        return AccountGetBannedResponse(**raw_result)
 
     async def get_counters(
         self,
         return_raw_response: bool = False,
-        filter: typing.Optional[typing.List[str]] = None,
-    ) -> typing.Union[dict, AccountGetCountersResponse]:
+        filter: Optional[List[str]] = None,
+    ) -> Union[dict, AccountGetCountersResponse]:
         """
         :param filter: - Counters to be returned.
         :param return_raw_response: - return result at dict
@@ -131,14 +125,13 @@ class Account(Category):
         if return_raw_response:
             return raw_result
 
-        result = AccountGetCountersResponse(**raw_result)
-        return result
+        return AccountGetCountersResponse(**raw_result)
 
     async def get_info(
         self,
         return_raw_response: bool = False,
-        fields: typing.Optional[typing.List[str]] = None,
-    ) -> typing.Union[dict, AccountGetInfoResponse]:
+        fields: Optional[List[str]] = None,
+    ) -> Union[dict, AccountGetInfoResponse]:
         """
         :param fields: - Fields to return. Possible values: *'country' — user country,, *'https_required' — is "HTTPS only" option enabled,, *'own_posts_default' — is "Show my posts only" option is enabled,, *'no_wall_replies' — are wall replies disabled or not,, *'intro' — is intro passed by user or not,, *'lang' — user language. By default: all.
         :param return_raw_response: - return result at dict
@@ -151,13 +144,12 @@ class Account(Category):
         if return_raw_response:
             return raw_result
 
-        result = AccountGetInfoResponse(**raw_result)
-        return result
+        return AccountGetInfoResponse(**raw_result)
 
     async def get_profile_info(
         self,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, AccountGetProfileInfoResponse]:
+    ) -> Union[dict, AccountGetProfileInfoResponse]:
         """
         :param return_raw_response: - return result at dict
         :return:
@@ -169,14 +161,13 @@ class Account(Category):
         if return_raw_response:
             return raw_result
 
-        result = AccountGetProfileInfoResponse(**raw_result)
-        return result
+        return AccountGetProfileInfoResponse(**raw_result)
 
     async def get_push_settings(
         self,
         return_raw_response: bool = False,
-        device_id: typing.Optional[str] = None,
-    ) -> typing.Union[dict, AccountGetPushSettingsResponse]:
+        device_id: Optional[str] = None,
+    ) -> Union[dict, AccountGetPushSettingsResponse]:
         """
         :param device_id: - Unique device ID.
         :param return_raw_response: - return result at dict
@@ -189,20 +180,19 @@ class Account(Category):
         if return_raw_response:
             return raw_result
 
-        result = AccountGetPushSettingsResponse(**raw_result)
-        return result
+        return AccountGetPushSettingsResponse(**raw_result)
 
     async def register_device(
         self,
         token: str,
         device_id: str,
         return_raw_response: bool = False,
-        device_model: typing.Optional[str] = None,
-        device_year: typing.Optional[int] = None,
-        system_version: typing.Optional[str] = None,
-        settings: typing.Optional[str] = None,
-        sandbox: typing.Optional[bool] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        device_model: Optional[str] = None,
+        device_year: Optional[int] = None,
+        system_version: Optional[str] = None,
+        settings: Optional[str] = None,
+        sandbox: Optional[bool] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param token: - Device token used to send notifications. (for mpns, the token shall be URL for sending of notifications)
         :param device_model: - String name of device model.
@@ -221,27 +211,26 @@ class Account(Category):
         if return_raw_response:
             return raw_result
 
-        result = BaseOkResponse(**raw_result)
-        return result
+        return BaseOkResponse(**raw_result)
 
     async def save_profile_info(
         self,
         return_raw_response: bool = False,
-        first_name: typing.Optional[str] = None,
-        last_name: typing.Optional[str] = None,
-        maiden_name: typing.Optional[str] = None,
-        screen_name: typing.Optional[str] = None,
-        cancel_request_id: typing.Optional[int] = None,
-        sex: typing.Optional[int] = None,
-        relation: typing.Optional[int] = None,
-        relation_partner_id: typing.Optional[int] = None,
-        bdate: typing.Optional[str] = None,
-        bdate_visibility: typing.Optional[int] = None,
-        home_town: typing.Optional[str] = None,
-        country_id: typing.Optional[int] = None,
-        city_id: typing.Optional[int] = None,
-        status: typing.Optional[str] = None,
-    ) -> typing.Union[dict, AccountSaveProfileInfoResponse]:
+        first_name: Optional[str] = None,
+        last_name: Optional[str] = None,
+        maiden_name: Optional[str] = None,
+        screen_name: Optional[str] = None,
+        cancel_request_id: Optional[int] = None,
+        sex: Optional[int] = None,
+        relation: Optional[int] = None,
+        relation_partner_id: Optional[int] = None,
+        bdate: Optional[str] = None,
+        bdate_visibility: Optional[int] = None,
+        home_town: Optional[str] = None,
+        country_id: Optional[int] = None,
+        city_id: Optional[int] = None,
+        status: Optional[str] = None,
+    ) -> Union[dict, AccountSaveProfileInfoResponse]:
         """
         :param first_name: - User first name.
         :param last_name: - User last name.
@@ -267,15 +256,14 @@ class Account(Category):
         if return_raw_response:
             return raw_result
 
-        result = AccountSaveProfileInfoResponse(**raw_result)
-        return result
+        return AccountSaveProfileInfoResponse(**raw_result)
 
     async def set_info(
         self,
         return_raw_response: bool = False,
-        name: typing.Optional[str] = None,
-        value: typing.Optional[str] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        name: Optional[str] = None,
+        value: Optional[str] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param name: - Setting name.
         :param value: - Setting value.
@@ -289,15 +277,14 @@ class Account(Category):
         if return_raw_response:
             return raw_result
 
-        result = BaseOkResponse(**raw_result)
-        return result
+        return BaseOkResponse(**raw_result)
 
     async def set_name_in_menu(
         self,
         user_id: int,
         return_raw_response: bool = False,
-        name: typing.Optional[str] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        name: Optional[str] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param user_id: - User ID.
         :param name: - Application screen name.
@@ -311,13 +298,12 @@ class Account(Category):
         if return_raw_response:
             return raw_result
 
-        result = BaseOkResponse(**raw_result)
-        return result
+        return BaseOkResponse(**raw_result)
 
     async def set_offline(
         self,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, BaseOkResponse]:
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param return_raw_response: - return result at dict
         :return:
@@ -329,14 +315,13 @@ class Account(Category):
         if return_raw_response:
             return raw_result
 
-        result = BaseOkResponse(**raw_result)
-        return result
+        return BaseOkResponse(**raw_result)
 
     async def set_online(
         self,
         return_raw_response: bool = False,
-        voip: typing.Optional[BaseBoolInt] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        voip: Optional[BaseBoolInt] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param voip: - '1' if videocalls are available for current device.
         :param return_raw_response: - return result at dict
@@ -349,17 +334,16 @@ class Account(Category):
         if return_raw_response:
             return raw_result
 
-        result = BaseOkResponse(**raw_result)
-        return result
+        return BaseOkResponse(**raw_result)
 
     async def set_push_settings(
         self,
         device_id: str,
         return_raw_response: bool = False,
-        settings: typing.Optional[str] = None,
-        key: typing.Optional[str] = None,
-        value: typing.Optional[typing.List[str]] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        settings: Optional[str] = None,
+        key: Optional[str] = None,
+        value: Optional[List[str]] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param device_id: - Unique device ID.
         :param settings: - Push settings in a [vk.com/dev/push_settings|special format].
@@ -375,17 +359,16 @@ class Account(Category):
         if return_raw_response:
             return raw_result
 
-        result = BaseOkResponse(**raw_result)
-        return result
+        return BaseOkResponse(**raw_result)
 
     async def set_silence_mode(
         self,
         return_raw_response: bool = False,
-        device_id: typing.Optional[str] = None,
-        time: typing.Optional[int] = None,
-        peer_id: typing.Optional[int] = None,
-        sound: typing.Optional[int] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        device_id: Optional[str] = None,
+        time: Optional[int] = None,
+        peer_id: Optional[int] = None,
+        sound: Optional[int] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param device_id: - Unique device ID.
         :param time: - Time in seconds for what notifications should be disabled. '-1' to disable forever.
@@ -401,14 +384,13 @@ class Account(Category):
         if return_raw_response:
             return raw_result
 
-        result = BaseOkResponse(**raw_result)
-        return result
+        return BaseOkResponse(**raw_result)
 
     async def unban(
         self,
         return_raw_response: bool = False,
-        owner_id: typing.Optional[int] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        owner_id: Optional[int] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param owner_id:
         :param return_raw_response: - return result at dict
@@ -421,15 +403,14 @@ class Account(Category):
         if return_raw_response:
             return raw_result
 
-        result = BaseOkResponse(**raw_result)
-        return result
+        return BaseOkResponse(**raw_result)
 
     async def unregister_device(
         self,
         return_raw_response: bool = False,
-        device_id: typing.Optional[str] = None,
-        sandbox: typing.Optional[bool] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        device_id: Optional[str] = None,
+        sandbox: Optional[bool] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param device_id: - Unique device ID.
         :param sandbox:
@@ -443,5 +424,4 @@ class Account(Category):
         if return_raw_response:
             return raw_result
 
-        result = BaseOkResponse(**raw_result)
-        return result
+        return BaseOkResponse(**raw_result)

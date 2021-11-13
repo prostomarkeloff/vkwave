@@ -8,7 +8,7 @@ class Pages(Category):
         self,
         url: str,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, BaseOkResponse]:
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param url: - Address of the page where you need to refesh the cached version
         :param return_raw_response: - return result at dict
@@ -27,14 +27,14 @@ class Pages(Category):
     async def get(
         self,
         return_raw_response: bool = False,
-        owner_id: typing.Optional[int] = None,
-        page_id: typing.Optional[int] = None,
-        global_: typing.Optional[BaseBoolInt] = None,
-        site_preview: typing.Optional[BaseBoolInt] = None,
-        title: typing.Optional[str] = None,
-        need_source: typing.Optional[bool] = None,
-        need_html: typing.Optional[BaseBoolInt] = None,
-    ) -> typing.Union[dict, PagesGetResponse]:
+        owner_id: Optional[int] = None,
+        page_id: Optional[int] = None,
+        global_: Optional[BaseBoolInt] = None,
+        site_preview: Optional[BaseBoolInt] = None,
+        title: Optional[str] = None,
+        need_source: Optional[bool] = None,
+        need_html: Optional[BaseBoolInt] = None,
+    ) -> Union[dict, PagesGetResponse]:
         """
         :param owner_id: - Page owner ID.
         :param page_id: - Wiki page ID.
@@ -60,9 +60,9 @@ class Pages(Category):
         self,
         page_id: int,
         return_raw_response: bool = False,
-        group_id: typing.Optional[int] = None,
-        user_id: typing.Optional[int] = None,
-    ) -> typing.Union[dict, PagesGetHistoryResponse]:
+        group_id: Optional[int] = None,
+        user_id: Optional[int] = None,
+    ) -> Union[dict, PagesGetHistoryResponse]:
         """
         :param page_id: - Wiki page ID.
         :param group_id: - ID of the community that owns the wiki page.
@@ -83,8 +83,8 @@ class Pages(Category):
     async def get_titles(
         self,
         return_raw_response: bool = False,
-        group_id: typing.Optional[int] = None,
-    ) -> typing.Union[dict, PagesGetTitlesResponse]:
+        group_id: Optional[int] = None,
+    ) -> Union[dict, PagesGetTitlesResponse]:
         """
         :param group_id: - ID of the community that owns the wiki page.
         :param return_raw_response: - return result at dict
@@ -104,10 +104,10 @@ class Pages(Category):
         self,
         version_id: int,
         return_raw_response: bool = False,
-        group_id: typing.Optional[int] = None,
-        user_id: typing.Optional[int] = None,
-        need_html: typing.Optional[BaseBoolInt] = None,
-    ) -> typing.Union[dict, PagesGetVersionResponse]:
+        group_id: Optional[int] = None,
+        user_id: Optional[int] = None,
+        need_html: Optional[BaseBoolInt] = None,
+    ) -> Union[dict, PagesGetVersionResponse]:
         """
         :param version_id:
         :param group_id: - ID of the community that owns the wiki page.
@@ -130,8 +130,8 @@ class Pages(Category):
         self,
         text: str,
         return_raw_response: bool = False,
-        group_id: typing.Optional[int] = None,
-    ) -> typing.Union[dict, PagesParseWikiResponse]:
+        group_id: Optional[int] = None,
+    ) -> Union[dict, PagesParseWikiResponse]:
         """
         :param text: - Text of the wiki page.
         :param group_id: - ID of the group in the context of which this markup is interpreted.
@@ -151,12 +151,12 @@ class Pages(Category):
     async def save(
         self,
         return_raw_response: bool = False,
-        text: typing.Optional[str] = None,
-        page_id: typing.Optional[int] = None,
-        group_id: typing.Optional[int] = None,
-        user_id: typing.Optional[int] = None,
-        title: typing.Optional[str] = None,
-    ) -> typing.Union[dict, PagesSaveResponse]:
+        text: Optional[str] = None,
+        page_id: Optional[int] = None,
+        group_id: Optional[int] = None,
+        user_id: Optional[int] = None,
+        title: Optional[str] = None,
+    ) -> Union[dict, PagesSaveResponse]:
         """
         :param text: - Text of the wiki page in wiki-format.
         :param page_id: - Wiki page ID. The 'title' parameter can be passed instead of 'pid'.
@@ -180,11 +180,11 @@ class Pages(Category):
         self,
         page_id: int,
         return_raw_response: bool = False,
-        group_id: typing.Optional[int] = None,
-        user_id: typing.Optional[int] = None,
-        view: typing.Optional[int] = None,
-        edit: typing.Optional[int] = None,
-    ) -> typing.Union[dict, PagesSaveAccessResponse]:
+        group_id: Optional[int] = None,
+        user_id: Optional[int] = None,
+        view: Optional[int] = None,
+        edit: Optional[int] = None,
+    ) -> Union[dict, PagesSaveAccessResponse]:
         """
         :param page_id: - Wiki page ID.
         :param group_id: - ID of the community that owns the wiki page.

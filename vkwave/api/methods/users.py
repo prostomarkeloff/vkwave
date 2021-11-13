@@ -7,10 +7,10 @@ class Users(Category):
     async def get(
         self,
         return_raw_response: bool = False,
-        user_ids: typing.Optional[typing.List[str]] = None,
-        fields: typing.Optional[typing.List[UsersFields]] = None,
-        name_case: typing.Optional[str] = None,
-    ) -> typing.Union[dict, UsersGetResponse]:
+        user_ids: Optional[List[str]] = None,
+        fields: Optional[List[UsersFields]] = None,
+        name_case: Optional[str] = None,
+    ) -> Union[dict, UsersGetResponse]:
         """
         :param user_ids: - User IDs or screen names ('screen_name'). By default, current user ID.
         :param fields: - Profile fields to return. Sample values: 'nickname', 'screen_name', 'sex', 'bdate' (birthdate), 'city', 'country', 'timezone', 'photo', 'photo_medium', 'photo_big', 'has_mobile', 'contacts', 'education', 'online', 'counters', 'relation', 'last_seen', 'activity', 'can_write_private_message', 'can_see_all_posts', 'can_post', 'universities', 'can_invite_to_chats'
@@ -31,12 +31,12 @@ class Users(Category):
     async def get_followers(
         self,
         return_raw_response: bool = False,
-        user_id: typing.Optional[int] = None,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-        fields: typing.Optional[typing.List[UsersFields]] = None,
-        name_case: typing.Optional[str] = None,
-    ) -> typing.Union[dict, UsersGetFollowersResponse, UsersGetFollowersFieldsResponse]:
+        user_id: Optional[int] = None,
+        offset: Optional[int] = None,
+        count: Optional[int] = None,
+        fields: Optional[List[UsersFields]] = None,
+        name_case: Optional[str] = None,
+    ) -> Union[dict, UsersGetFollowersResponse, UsersGetFollowersFieldsResponse]:
         """
         :param user_id: - User ID.
         :param offset: - Offset needed to return a specific subset of followers.
@@ -63,12 +63,12 @@ class Users(Category):
     async def get_subscriptions(
         self,
         return_raw_response: bool = False,
-        user_id: typing.Optional[int] = None,
-        extended: typing.Optional[BaseBoolInt] = None,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-        fields: typing.Optional[typing.List[UsersFields]] = None,
-    ) -> typing.Union[dict, UsersGetSubscriptionsResponse, UsersGetSubscriptionsExtendedResponse]:
+        user_id: Optional[int] = None,
+        extended: Optional[BaseBoolInt] = None,
+        offset: Optional[int] = None,
+        count: Optional[int] = None,
+        fields: Optional[List[UsersFields]] = None,
+    ) -> Union[dict, UsersGetSubscriptionsResponse, UsersGetSubscriptionsExtendedResponse]:
         """
         :param user_id: - User ID.
         :param extended: - '1' — to return a combined list of users and communities, '0' — to return separate lists of users and communities (default)
@@ -97,8 +97,8 @@ class Users(Category):
         user_id: int,
         type: str,
         return_raw_response: bool = False,
-        comment: typing.Optional[str] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        comment: Optional[str] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param user_id: - ID of the user about whom a complaint is being made.
         :param type: - Type of complaint: 'porn' – pornography, 'spam' – spamming, 'insult' – abusive behavior, 'advertisement' – disruptive advertisements
@@ -119,39 +119,39 @@ class Users(Category):
     async def search(
         self,
         return_raw_response: bool = False,
-        q: typing.Optional[str] = None,
-        sort: typing.Optional[int] = None,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-        fields: typing.Optional[typing.List[UsersFields]] = None,
-        city: typing.Optional[int] = None,
-        country: typing.Optional[int] = None,
-        hometown: typing.Optional[str] = None,
-        university_country: typing.Optional[int] = None,
-        university: typing.Optional[int] = None,
-        university_year: typing.Optional[int] = None,
-        university_faculty: typing.Optional[int] = None,
-        university_chair: typing.Optional[int] = None,
-        sex: typing.Optional[int] = None,
-        status: typing.Optional[int] = None,
-        age_from: typing.Optional[int] = None,
-        age_to: typing.Optional[int] = None,
-        birth_day: typing.Optional[int] = None,
-        birth_month: typing.Optional[int] = None,
-        birth_year: typing.Optional[int] = None,
-        online: typing.Optional[BaseBoolInt] = None,
-        has_photo: typing.Optional[BaseBoolInt] = None,
-        school_country: typing.Optional[int] = None,
-        school_city: typing.Optional[int] = None,
-        school_class: typing.Optional[int] = None,
-        school: typing.Optional[int] = None,
-        school_year: typing.Optional[int] = None,
-        religion: typing.Optional[str] = None,
-        company: typing.Optional[str] = None,
-        position: typing.Optional[str] = None,
-        group_id: typing.Optional[int] = None,
-        from_list: typing.Optional[typing.List[str]] = None,
-    ) -> typing.Union[dict, UsersSearchResponse]:
+        q: Optional[str] = None,
+        sort: Optional[int] = None,
+        offset: Optional[int] = None,
+        count: Optional[int] = None,
+        fields: Optional[List[UsersFields]] = None,
+        city: Optional[int] = None,
+        country: Optional[int] = None,
+        hometown: Optional[str] = None,
+        university_country: Optional[int] = None,
+        university: Optional[int] = None,
+        university_year: Optional[int] = None,
+        university_faculty: Optional[int] = None,
+        university_chair: Optional[int] = None,
+        sex: Optional[int] = None,
+        status: Optional[int] = None,
+        age_from: Optional[int] = None,
+        age_to: Optional[int] = None,
+        birth_day: Optional[int] = None,
+        birth_month: Optional[int] = None,
+        birth_year: Optional[int] = None,
+        online: Optional[BaseBoolInt] = None,
+        has_photo: Optional[BaseBoolInt] = None,
+        school_country: Optional[int] = None,
+        school_city: Optional[int] = None,
+        school_class: Optional[int] = None,
+        school: Optional[int] = None,
+        school_year: Optional[int] = None,
+        religion: Optional[str] = None,
+        company: Optional[str] = None,
+        position: Optional[str] = None,
+        group_id: Optional[int] = None,
+        from_list: Optional[List[str]] = None,
+    ) -> Union[dict, UsersSearchResponse]:
         """
         :param q: - Search query string (e.g., 'Vasya Babich').
         :param sort: - Sort order: '1' — by date registered, '0' — by rating

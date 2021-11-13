@@ -8,9 +8,9 @@ class Database(Category):
         self,
         faculty_id: int,
         return_raw_response: bool = False,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-    ) -> typing.Union[dict, DatabaseGetChairsResponse]:
+        offset: Optional[int] = None,
+        count: Optional[int] = None,
+    ) -> Union[dict, DatabaseGetChairsResponse]:
         """
         :param faculty_id: - id of the faculty to get chairs from
         :param offset: - offset required to get a certain subset of chairs
@@ -32,12 +32,12 @@ class Database(Category):
         self,
         country_id: int,
         return_raw_response: bool = False,
-        region_id: typing.Optional[int] = None,
-        q: typing.Optional[str] = None,
-        need_all: typing.Optional[BaseBoolInt] = None,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-    ) -> typing.Union[dict, DatabaseGetCitiesResponse]:
+        region_id: Optional[int] = None,
+        q: Optional[str] = None,
+        need_all: Optional[BaseBoolInt] = None,
+        offset: Optional[int] = None,
+        count: Optional[int] = None,
+    ) -> Union[dict, DatabaseGetCitiesResponse]:
         """
         :param country_id: - Country ID.
         :param region_id: - Region ID.
@@ -61,8 +61,8 @@ class Database(Category):
     async def get_cities_by_id(
         self,
         return_raw_response: bool = False,
-        city_ids: typing.Optional[typing.List[int]] = None,
-    ) -> typing.Union[dict, DatabaseGetCitiesByIdResponse]:
+        city_ids: Optional[List[int]] = None,
+    ) -> Union[dict, DatabaseGetCitiesByIdResponse]:
         """
         :param city_ids: - City IDs.
         :param return_raw_response: - return result at dict
@@ -81,11 +81,11 @@ class Database(Category):
     async def get_countries(
         self,
         return_raw_response: bool = False,
-        need_all: typing.Optional[BaseBoolInt] = None,
-        code: typing.Optional[str] = None,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-    ) -> typing.Union[dict, DatabaseGetCountriesResponse]:
+        need_all: Optional[BaseBoolInt] = None,
+        code: Optional[str] = None,
+        offset: Optional[int] = None,
+        count: Optional[int] = None,
+    ) -> Union[dict, DatabaseGetCountriesResponse]:
         """
         :param need_all: - '1' — to return a full list of all countries, '0' — to return a list of countries near the current user's country (default).
         :param code: - Country codes in [vk.com/dev/country_codes|ISO 3166-1 alpha-2] standard.
@@ -107,8 +107,8 @@ class Database(Category):
     async def get_countries_by_id(
         self,
         return_raw_response: bool = False,
-        country_ids: typing.Optional[typing.List[int]] = None,
-    ) -> typing.Union[dict, DatabaseGetCountriesByIdResponse]:
+        country_ids: Optional[List[int]] = None,
+    ) -> Union[dict, DatabaseGetCountriesByIdResponse]:
         """
         :param country_ids: - Country IDs.
         :param return_raw_response: - return result at dict
@@ -128,9 +128,9 @@ class Database(Category):
         self,
         university_id: int,
         return_raw_response: bool = False,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-    ) -> typing.Union[dict, DatabaseGetFacultiesResponse]:
+        offset: Optional[int] = None,
+        count: Optional[int] = None,
+    ) -> Union[dict, DatabaseGetFacultiesResponse]:
         """
         :param university_id: - University ID.
         :param offset: - Offset needed to return a specific subset of faculties.
@@ -152,10 +152,10 @@ class Database(Category):
         self,
         city_id: int,
         return_raw_response: bool = False,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-        extended: typing.Optional[BaseBoolInt] = None,
-    ) -> typing.Union[dict, DatabaseGetMetroStationsResponse]:
+        offset: Optional[int] = None,
+        count: Optional[int] = None,
+        extended: Optional[BaseBoolInt] = None,
+    ) -> Union[dict, DatabaseGetMetroStationsResponse]:
         """
         :param city_id:
         :param offset:
@@ -177,8 +177,8 @@ class Database(Category):
     async def get_metro_stations_by_id(
         self,
         return_raw_response: bool = False,
-        station_ids: typing.Optional[typing.List[int]] = None,
-    ) -> typing.Union[dict, DatabaseGetMetroStationsByIdResponse]:
+        station_ids: Optional[List[int]] = None,
+    ) -> Union[dict, DatabaseGetMetroStationsByIdResponse]:
         """
         :param station_ids:
         :param return_raw_response: - return result at dict
@@ -198,10 +198,10 @@ class Database(Category):
         self,
         country_id: int,
         return_raw_response: bool = False,
-        q: typing.Optional[str] = None,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-    ) -> typing.Union[dict, DatabaseGetRegionsResponse]:
+        q: Optional[str] = None,
+        offset: Optional[int] = None,
+        count: Optional[int] = None,
+    ) -> Union[dict, DatabaseGetRegionsResponse]:
         """
         :param country_id: - Country ID, received in [vk.com/dev/database.getCountries|database.getCountries] method.
         :param q: - Search query.
@@ -223,8 +223,8 @@ class Database(Category):
     async def get_school_classes(
         self,
         return_raw_response: bool = False,
-        country_id: typing.Optional[int] = None,
-    ) -> typing.Union[dict, DatabaseGetSchoolClassesResponse]:
+        country_id: Optional[int] = None,
+    ) -> Union[dict, DatabaseGetSchoolClassesResponse]:
         """
         :param country_id: - Country ID.
         :param return_raw_response: - return result at dict
@@ -244,10 +244,10 @@ class Database(Category):
         self,
         city_id: int,
         return_raw_response: bool = False,
-        q: typing.Optional[str] = None,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-    ) -> typing.Union[dict, DatabaseGetSchoolsResponse]:
+        q: Optional[str] = None,
+        offset: Optional[int] = None,
+        count: Optional[int] = None,
+    ) -> Union[dict, DatabaseGetSchoolsResponse]:
         """
         :param q: - Search query.
         :param city_id: - City ID.
@@ -269,12 +269,12 @@ class Database(Category):
     async def get_universities(
         self,
         return_raw_response: bool = False,
-        q: typing.Optional[str] = None,
-        country_id: typing.Optional[int] = None,
-        city_id: typing.Optional[int] = None,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-    ) -> typing.Union[dict, DatabaseGetUniversitiesResponse]:
+        q: Optional[str] = None,
+        country_id: Optional[int] = None,
+        city_id: Optional[int] = None,
+        offset: Optional[int] = None,
+        count: Optional[int] = None,
+    ) -> Union[dict, DatabaseGetUniversitiesResponse]:
         """
         :param q: - Search query.
         :param country_id: - Country ID.

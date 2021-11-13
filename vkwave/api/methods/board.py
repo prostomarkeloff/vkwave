@@ -9,10 +9,10 @@ class Board(Category):
         group_id: int,
         title: str,
         return_raw_response: bool = False,
-        text: typing.Optional[str] = None,
-        from_group: typing.Optional[BaseBoolInt] = None,
-        attachments: typing.Optional[typing.List[str]] = None,
-    ) -> typing.Union[dict, BoardAddTopicResponse]:
+        text: Optional[str] = None,
+        from_group: Optional[BaseBoolInt] = None,
+        attachments: Optional[List[str]] = None,
+    ) -> Union[dict, BoardAddTopicResponse]:
         """
         :param group_id: - ID of the community that owns the discussion board.
         :param title: - Topic title.
@@ -37,7 +37,7 @@ class Board(Category):
         group_id: int,
         topic_id: int,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, BaseOkResponse]:
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param group_id: - ID of the community that owns the discussion board.
         :param topic_id: - Topic ID.
@@ -59,12 +59,12 @@ class Board(Category):
         group_id: int,
         topic_id: int,
         return_raw_response: bool = False,
-        message: typing.Optional[str] = None,
-        attachments: typing.Optional[typing.List[str]] = None,
-        from_group: typing.Optional[BaseBoolInt] = None,
-        sticker_id: typing.Optional[int] = None,
-        guid: typing.Optional[str] = None,
-    ) -> typing.Union[dict, BoardCreateCommentResponse]:
+        message: Optional[str] = None,
+        attachments: Optional[List[str]] = None,
+        from_group: Optional[BaseBoolInt] = None,
+        sticker_id: Optional[int] = None,
+        guid: Optional[str] = None,
+    ) -> Union[dict, BoardCreateCommentResponse]:
         """
         :param group_id: - ID of the community that owns the discussion board.
         :param topic_id: - ID of the topic to be commented on.
@@ -92,7 +92,7 @@ class Board(Category):
         topic_id: int,
         comment_id: int,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, BaseOkResponse]:
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param group_id: - ID of the community that owns the discussion board.
         :param topic_id: - Topic ID.
@@ -115,7 +115,7 @@ class Board(Category):
         group_id: int,
         topic_id: int,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, BaseOkResponse]:
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param group_id: - ID of the community that owns the discussion board.
         :param topic_id: - Topic ID.
@@ -138,9 +138,9 @@ class Board(Category):
         topic_id: int,
         comment_id: int,
         return_raw_response: bool = False,
-        message: typing.Optional[str] = None,
-        attachments: typing.Optional[typing.List[str]] = None,
-    ) -> typing.Union[dict, BaseOkResponse]:
+        message: Optional[str] = None,
+        attachments: Optional[List[str]] = None,
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param group_id: - ID of the community that owns the discussion board.
         :param topic_id: - Topic ID.
@@ -166,7 +166,7 @@ class Board(Category):
         topic_id: int,
         title: str,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, BaseOkResponse]:
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param group_id: - ID of the community that owns the discussion board.
         :param topic_id: - Topic ID.
@@ -189,7 +189,7 @@ class Board(Category):
         group_id: int,
         topic_id: int,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, BaseOkResponse]:
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param group_id: - ID of the community that owns the discussion board.
         :param topic_id: - Topic ID.
@@ -211,13 +211,13 @@ class Board(Category):
         group_id: int,
         topic_id: int,
         return_raw_response: bool = False,
-        need_likes: typing.Optional[BaseBoolInt] = None,
-        start_comment_id: typing.Optional[int] = None,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-        extended: typing.Optional[BaseBoolInt] = None,
-        sort: typing.Optional[str] = None,
-    ) -> typing.Union[dict, BoardGetCommentsResponse, BoardGetCommentsExtendedResponse]:
+        need_likes: Optional[BaseBoolInt] = None,
+        start_comment_id: Optional[int] = None,
+        offset: Optional[int] = None,
+        count: Optional[int] = None,
+        extended: Optional[BaseBoolInt] = None,
+        sort: Optional[str] = None,
+    ) -> Union[dict, BoardGetCommentsResponse, BoardGetCommentsExtendedResponse]:
         """
         :param group_id: - ID of the community that owns the discussion board.
         :param topic_id: - Topic ID.
@@ -248,14 +248,14 @@ class Board(Category):
         self,
         group_id: int,
         return_raw_response: bool = False,
-        topic_ids: typing.Optional[typing.List[int]] = None,
-        order: typing.Optional[int] = None,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-        extended: typing.Optional[BaseBoolInt] = None,
-        preview: typing.Optional[int] = None,
-        preview_length: typing.Optional[int] = None,
-    ) -> typing.Union[dict, BoardGetTopicsResponse, BoardGetTopicsExtendedResponse]:
+        topic_ids: Optional[List[int]] = None,
+        order: Optional[int] = None,
+        offset: Optional[int] = None,
+        count: Optional[int] = None,
+        extended: Optional[BaseBoolInt] = None,
+        preview: Optional[int] = None,
+        preview_length: Optional[int] = None,
+    ) -> Union[dict, BoardGetTopicsResponse, BoardGetTopicsExtendedResponse]:
         """
         :param group_id: - ID of the community that owns the discussion board.
         :param topic_ids: - IDs of topics to be returned (100 maximum). By default, all topics are returned. If this parameter is set, the 'order', 'offset', and 'count' parameters are ignored.
@@ -287,7 +287,7 @@ class Board(Category):
         group_id: int,
         topic_id: int,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, BaseOkResponse]:
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param group_id: - ID of the community that owns the discussion board.
         :param topic_id: - Topic ID.
@@ -310,7 +310,7 @@ class Board(Category):
         topic_id: int,
         comment_id: int,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, BaseOkResponse]:
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param group_id: - ID of the community that owns the discussion board.
         :param topic_id: - Topic ID.
@@ -333,7 +333,7 @@ class Board(Category):
         group_id: int,
         topic_id: int,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, BaseOkResponse]:
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param group_id: - ID of the community that owns the discussion board.
         :param topic_id: - Topic ID.
