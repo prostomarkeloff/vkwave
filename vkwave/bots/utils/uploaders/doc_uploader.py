@@ -5,10 +5,10 @@ from io import BytesIO
 from typing import BinaryIO
 
 from vkwave.bots.utils.uploaders.uploader import BaseUploader, UploadException
-from vkwave.types.responses import DocsDocAttachmentType, DocsSaveResponseModel
+from vkwave.types.responses import DocsDocAttachmentType, DocsSaveResponse
 
 
-class DocUploaderMixin(BaseUploader[DocsSaveResponseModel], ABC):
+class DocUploaderMixin(BaseUploader[DocsSaveResponse], ABC):
     async def _get_server(self, peer_id: int, doc_type: DocsDocAttachmentType) -> str:
         server_data = await self.api_context.docs.get_messages_upload_server(
             type=doc_type.value, peer_id=peer_id
@@ -23,7 +23,7 @@ class DocUploaderMixin(BaseUploader[DocsSaveResponseModel], ABC):
         file_name: str,
         title: typing.Optional[str] = None,
         tags: typing.Optional[str] = None,
-    ) -> DocsSaveResponseModel:
+    ) -> DocsSaveResponse:
         file_name = file_name or "Document"
         file_extension = file_extension or "jpg"
         if not hasattr(file_data, "name"):
@@ -157,7 +157,7 @@ class DocUploaderMixin(BaseUploader[DocsSaveResponseModel], ABC):
             )
         return ",".join(ready_attachments)
 
-    def attachment_name(self, doc: DocsSaveResponseModel) -> typing.Union[str, typing.NoReturn]:
+    def attachment_name(self, doc: DocsSaveResponse) -> typing.Union[str, typing.NoReturn]:
         if not doc.type:
             raise TypeError("Invalid document type")
 
@@ -200,7 +200,7 @@ class VoiceUploader(DocUploaderMixin):
         file_name: typing.Optional[str] = None,
         title: typing.Optional[str] = None,
         tags: typing.Optional[str] = None,
-    ) -> DocsSaveResponseModel:
+    ) -> DocsSaveResponse:
         if not hasattr(file_data, "name"):
             setattr(file_data, "name", "Document.ogg")
 

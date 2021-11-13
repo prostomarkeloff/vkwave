@@ -114,7 +114,7 @@ class APIOptionsRequestContext:
         self.friends = Friends("friends", self)
         self.gifts = Gifts("gifts", self)
         self.groups = Groups("groups", self)
-        self.leads = Leads("leads", self)
+        """ self.leads = Leads("leads", self) """
         self.likes = Likes("likes", self)
         self.market = Market("market", self)
         self.money = Money("money", self)
