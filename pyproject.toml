@@ -104,5 +104,5 @@ use_parentheses = true
 line_length = 99
 
 [build-system]
-requires = ["poetry>=0.12", "setuptools", "wheel"]
+requires = ["poetry>=0.12", "setuptools", "wheel", "jellyfish"]
 build-backend = "poetry.masonry.api"
