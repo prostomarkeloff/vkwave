@@ -18,5 +18,7 @@ from .builtin import (  # noqa: F401
     TextStartswithFilter,
     IsAdminFilter,
     FlagFilter,
+    LevenshteinFilter,
+    FromIdFilter
 )
 from .cast import caster as filter_caster  # noqa: F401
