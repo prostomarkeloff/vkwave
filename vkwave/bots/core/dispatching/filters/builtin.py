@@ -2,6 +2,7 @@ import json
 import logging
 import re
 import typing
+from jellyfish._jellyfish import levenshtein_distance
 from typing import Dict, List, Optional, Tuple, Union
 
 from typing_extensions import Literal
@@ -79,6 +80,18 @@ def get_text(event: BaseEvent) -> Optional[str]:
         return event.object.object.message.text
 
 
+def get_id(event: BaseEvent) -> Optional[int]:
+    is_message_event(event)
+    if event.bot_type is BotType.USER:
+        if event.object.object.message_data.dict().get("from_id") is None:
+            return None
+        return int(event.object.object.message_data.from_id)
+    else:
+        if event.object.object.dict().get("message") is None:
+            return None
+        return int(event.object.object.message.from_id)
+
+
 class EventTypeFilter(BaseFilter):
     """
     Event type filter. It supports both user and bot events.
@@ -130,6 +143,7 @@ class FlagFilter(BaseFilter):
 
 
 AnyText = Union[Tuple[str, ...], List[str], str]
+AnyInt = Union[Tuple[int, ...], List[int], int]
 
 
 class TextFilter(BaseFilter):
@@ -512,3 +526,39 @@ class IsAdminFilter(BaseFilter):
             if user.member_id == event.object.object.message.from_id:
                 return FilterResult(self.is_admin == user.is_admin)
         return FilterResult(False)
+
+
+class LevenshteinFilter(BaseFilter):
+    def __init__(
+            self,
+            text: AnyText,
+            mistake: int
+    ):
+        self.text = any_text_to_list_or_tuple(text)
+        self.mistake = mistake
+
+    async def check(self, event: BaseEvent) -> FilterResult:
+        text = get_text(event)
+        if text is None:
+            return FilterResult(False)
+
+        text = text.lower()
+        for t in self.text:
+            if levenshtein_distance(t, text) <= self.mistake:
+                return FilterResult(True)
+
+
+class FromIdFilter(BaseFilter):
+    def __init__(self, identifiers: AnyInt):
+        self.identifiers = identifiers
+
+    async def check(self, event: BaseEvent) -> FilterResult:
+        from_id = get_id(event)
+        if type(self.identifiers) is Union[List, Tuple]:
+            for identifier in self.identifiers:
+                if identifier == from_id:
+                    return FilterResult(True)
+        else:
+            if from_id:
+                return FilterResult(self.identifiers == from_id)
+            return FilterResult(True)
