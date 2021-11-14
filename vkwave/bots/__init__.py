@@ -18,7 +18,8 @@ from .core.dispatching.filters import (
     IsAdminFilter,
     FlagFilter,
     LevenshteinFilter,
-    FromIdFilter
+    FromIdFilter,
+    PeerIdFilter
 )
 from .core.dispatching.dp.middleware.middleware import MiddlewareResult, BaseMiddleware
 from .core.dispatching.events.base import BotEvent, UserEvent, BotType, BaseEvent
