@@ -3,7 +3,7 @@ import logging
 import re
 import typing
 from jellyfish._jellyfish import levenshtein_distance
-from typing import Dict, List, Optional, Tuple, Union
+from typing import Dict, List, Optional, Tuple, Union, Iterable
 
 from typing_extensions import Literal
 
@@ -554,11 +554,23 @@ class FromIdFilter(BaseFilter):
 
     async def check(self, event: BaseEvent) -> FilterResult:
         from_id = get_id(event)
-        if type(self.identifiers) is Union[List, Tuple]:
-            for identifier in self.identifiers:
-                if identifier == from_id:
-                    return FilterResult(True)
+        if isinstance(self.identifiers, Iterable):
+            if from_id in self.identifiers:
+                return FilterResult(True)
         else:
             if from_id:
                 return FilterResult(self.identifiers == from_id)
             return FilterResult(True)
+
+
+class PeerIdFilter(BaseFilter):
+    def __init__(self, peer_ids: AnyInt):
+        self.peer_ids = peer_ids
+
+    async def check(self, event: BaseEvent) -> FilterResult:
+        peer_id = event.object.object.peer_id
+        if event.bot_type is BotType.BOT:
+            peer_id = event.object.object.message.peer_id
+        if isinstance(self.peer_ids, Iterable):
+            return FilterResult(peer_id in self.peer_ids)
+        return FilterResult(peer_id == self.peer_ids)
