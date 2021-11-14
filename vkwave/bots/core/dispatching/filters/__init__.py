@@ -20,6 +20,7 @@ from .builtin import (  # noqa: F401
     FlagFilter,
     LevenshteinFilter,
     FromIdFilter,
-    PeerIdFilter
+    PeerIdFilter,
+    FromGroupFilter
 )
 from .cast import caster as filter_caster  # noqa: F401

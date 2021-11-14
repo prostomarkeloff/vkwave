@@ -37,6 +37,9 @@ InvalidEventError = ValueError(
 def any_text_to_list_or_tuple(t: "AnyText") -> Union[Tuple[str, ...], List[str]]:
     return (t,) if isinstance(t, str) else t
 
+def any_int_to_list_or_tuple(t: "AnyInt") -> Union[Tuple[int, ...], List[int]]:
+    return (t,) if isinstance(t, int) else t
+
 
 def is_from_me(event: UserEvent) -> bool:
     return bool(event.object.object.flags[-1] & MessageFlag.OUTBOX.value)
@@ -550,27 +553,37 @@ class LevenshteinFilter(BaseFilter):
 
 class FromIdFilter(BaseFilter):
     def __init__(self, identifiers: AnyInt):
-        self.identifiers = identifiers
+        self.identifiers = any_int_to_list_or_tuple(identifiers)
 
     async def check(self, event: BaseEvent) -> FilterResult:
         from_id = get_id(event)
-        if isinstance(self.identifiers, Iterable):
-            if from_id in self.identifiers:
-                return FilterResult(True)
-        else:
-            if from_id:
-                return FilterResult(self.identifiers == from_id)
+        if from_id in self.identifiers:
             return FilterResult(True)
+        return FilterResult(False)
 
 
 class PeerIdFilter(BaseFilter):
     def __init__(self, peer_ids: AnyInt):
-        self.peer_ids = peer_ids
+        self.peer_ids = any_int_to_list_or_tuple(peer_ids)
 
     async def check(self, event: BaseEvent) -> FilterResult:
         peer_id = event.object.object.peer_id
         if event.bot_type is BotType.BOT:
             peer_id = event.object.object.message.peer_id
-        if isinstance(self.peer_ids, Iterable):
-            return FilterResult(peer_id in self.peer_ids)
-        return FilterResult(peer_id == self.peer_ids)
+        return FilterResult(peer_id in self.peer_ids)
+
+
+class FromGroupFilter(BaseFilter):
+    def __init__(self, from_group: bool):
+        self.from_group = from_group
+
+    async def check(self, event: BaseEvent) -> FilterResult:
+        from_id = event.object.object.message_data.from_id
+        peer_id = event.object.object.peer_id
+        if event.bot_type is BotType.BOT:
+            from_id = event.object.object.from_id
+            peer_id = event.object.object.message.peer_id
+
+        if (peer_id >= 2e9 and int(from_id) < 0) or (peer_id < 0):
+            return FilterResult(self.from_group)
+        return FilterResult(not self.from_group)
