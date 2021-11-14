@@ -19,6 +19,7 @@ from .builtin import (  # noqa: F401
     IsAdminFilter,
     FlagFilter,
     LevenshteinFilter,
-    FromIdFilter
+    FromIdFilter,
+    PeerIdFilter
 )
 from .cast import caster as filter_caster  # noqa: F401

@@ -34,6 +34,7 @@ from vkwave.bots import (
     FlagFilter,
     LevenshteinFilter,
     FromIdFilter,
+    PeerIdFilter,
     TokenStorage,
     UserEvent,
     UserId,
@@ -141,6 +142,7 @@ class BaseSimpleLongPollBot:
         self.levenshtein_filter = LevenshteinFilter
         self.payload_contains_filter = PayloadContainsFilter
         self.payload_filter = PayloadFilter
+        self.peer_id_filter = PeerIdFilter
         self.regex_filter = RegexFilter
         self.reply_filter = ReplyMessageFilter
         self.state_filter = StateFilter
