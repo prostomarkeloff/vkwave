@@ -35,6 +35,7 @@ from vkwave.bots import (
     LevenshteinFilter,
     FromIdFilter,
     PeerIdFilter,
+    FromGroupFilter,
     TokenStorage,
     UserEvent,
     UserId,
@@ -138,6 +139,7 @@ class BaseSimpleLongPollBot:
         self.event_type_filter = EventTypeFilter
         self.fwd_filter = FwdMessagesFilter
         self.from_id_filter = FromIdFilter
+        self.from_group_filter = FromGroupFilter
         self.is_admin_filter = IsAdminFilter
         self.levenshtein_filter = LevenshteinFilter
         self.payload_contains_filter = PayloadContainsFilter
