@@ -2,8 +2,7 @@ import json
 import logging
 import re
 import typing
-from jellyfish._jellyfish import levenshtein_distance
-from typing import Dict, List, Optional, Tuple, Union, Iterable
+from typing import Dict, List, Optional, Tuple, Union
 
 from typing_extensions import Literal
 
@@ -140,7 +139,7 @@ class FlagFilter(BaseFilter):
     async def check(self, event: BaseEvent) -> FilterResult:
         if event.bot_type is BotType.USER:
             if isinstance(self.flag, tuple):
-                return all(flag for flag in self.flag if event.object.object.flags[-1] & flag)
+                return FilterResult(all(flag for flag in self.flag if event.object.object.flags[-1] & flag))
             return FilterResult(bool(event.object.object.flags[-1] & self.flag))
         raise NotImplementedError("There is no implementation for this type of bot")
 
@@ -540,6 +539,29 @@ class LevenshteinFilter(BaseFilter):
         self.text = any_text_to_list_or_tuple(text)
         self.mistake = mistake
 
+    @staticmethod
+    def levenshtein_distance(s1: str, s2: str):
+        if s1 == s2:
+            return 0
+        rows = len(s1) + 1
+        cols = len(s2) + 1
+
+        if not s1:
+            return cols - 1
+        if not s2:
+            return rows - 1
+
+        cur = range(cols)
+        for r in range(1, rows):
+            prev, cur = cur, [r] + [0] * (cols - 1)
+            for c in range(1, cols):
+                deletion = prev[c] + 1
+                insertion = cur[c - 1] + 1
+                edit = prev[c - 1] + (0 if s1[r - 1] == s2[c - 1] else 1)
+                cur[c] = min(edit, deletion, insertion)
+
+        return cur[-1]
+
     async def check(self, event: BaseEvent) -> FilterResult:
         text = get_text(event)
         if text is None:
@@ -547,7 +569,7 @@ class LevenshteinFilter(BaseFilter):
 
         text = text.lower()
         for t in self.text:
-            if levenshtein_distance(t, text) <= self.mistake:
+            if self.levenshtein_distance(t, text) <= self.mistake:
                 return FilterResult(True)
 
 
