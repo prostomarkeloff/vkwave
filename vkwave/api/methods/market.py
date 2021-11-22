@@ -1,5 +1,3 @@
-import typing
-
 from vkwave.types.responses import *
 from ._category import Category
 from ._utils import get_params
