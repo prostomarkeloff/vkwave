@@ -22,6 +22,7 @@ from .ads import Ads
 from .apps import Apps
 from .auth import Auth
 from .board import Board
+from .donut import Donut
 from .database import Database
 from .docs import Docs
 from .execute import Execute
@@ -107,6 +108,7 @@ class APIOptionsRequestContext:
         self.audio = Audio("audio", self)
         self.auth = Auth("auth", self)
         self.board = Board("board", self)
+        self.donut = Donut('donut', self)
         self.database = Database("database", self)
         self.docs = Docs("docs", self)
         self.execute = Execute("execute", self)
