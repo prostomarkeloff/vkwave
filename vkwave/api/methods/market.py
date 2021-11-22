@@ -1,3 +1,5 @@
+import typing
+
 from vkwave.types.responses import *
 from ._category import Category
 from ._utils import get_params
@@ -299,12 +301,30 @@ class Market(Category):
         return_raw_response: bool = False,
         merchant_comment: typing.Optional[str] = None,
         status: typing.Optional[int] = None,
+        track_number: typing.Optional[str] = None,
+        payment_status: typing.Optional[str] = None,
+        delivery_price: typing.Optional[int] = None,
+        width: typing.Optional[int] = None,
+        lenght: typing.Optional[int] = None,
+        height: typing.Optional[int] = None,
+        weight: typing.Optional[int] = None,
+        comment_for_user: typing.Optional[str] = None,
+        receipt_link: typing.Optional[str] = None
     ) -> typing.Union[dict, BaseOkResponse]:
         """
-        :param user_id:
-        :param order_id:
-        :param merchant_comment:
-        :param status:
+        :param user_id: - int (number), minimum value 1, required parameter
+        :param order_id: - positive number, required parameter
+        :param merchant_comment: - string, maximum length 800
+        :param status: - positive number
+        :param track_number: - string, maximum length 60, accessible for versions from 5.130
+        :param payment_status: - string, accessible for versions from 5.130
+        :param delivery_price: - positive number, accessible for versions from 5.130
+        :param width: - positive number, maximum value 100000, accessible for versions from 5.130
+        :param lenght: - positive number, maximum value 100000, accessible for versions from 5.130
+        :param height: - positive number, maximum value 100000, accessible for versions from 5.130
+        :param weight: - positive number, maximum value 100000000, accessible for versions from 5.13
+        :param comment_for_user: - string, maximum length 400, accessible for versions from 5.139
+        :param receipt_link: - string, maximum length 400, accessible for versions from 5.159
         :param return_raw_response: - return result at dict
         :return:
         """
