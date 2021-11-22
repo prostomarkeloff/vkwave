@@ -267,8 +267,12 @@ class TypingOrVoiceModel(BaseUserEvent):
 
 class ChangedUnreadDialogsCountEventObject(pydantic.BaseModel):
     event_id: typing.Optional[int]
-    count: typing.Optional[int]
-    count_with_notifications: typing.Optional[int]
+    unread_count: typing.Optional[int]
+    unread_unmuted_count: typing.Optional[int]
+    show_only_muted: typing.Optional[bool]
+    business_notify_unread_count: typing.Optional[int]
+    header_unread_count: typing.Optional[int]
+    header_unread_unmuted_count: typing.Optional[int]
 
 
 class ChangedUnreadDialogsCountModel(BaseUserEvent):
@@ -395,16 +399,13 @@ _typing_or_voice = {
 
 _changed_unread_dialogs_count = {
     0: "event_id",
-    1: "count",
-    2: "count_with_notifications",
-    3: "extra",
-    4: "extra2",
-    5: "extra3",
-    6: "extra4",
-    7: "extra5",
-    8: "extra6",
-    9: "extra7",
-    # ну а че доки нет...
+    1: "unread_count",
+    2: "unread_unmuted_count",
+    3: "show_only_muted",
+    4: "business_notify_unread_count",
+    5: "header_unread_count",
+    6: "header_unread_unmuted_count",
+
 }
 
 _events_dict = {
@@ -432,7 +433,7 @@ def _parse_event(
     event_object: typing.Type[pydantic.BaseModel],
 ) -> RESULT_EVENT_OBJECT_TYPE:
     event = {
-        _events_dict[event_id][event_number]: event_param
+        _events_dict.get(event_id, None).get(event_number, ""): event_param
         for event_number, event_param in enumerate(raw_event)
     }
     return event_model(object=event_object(**event))
