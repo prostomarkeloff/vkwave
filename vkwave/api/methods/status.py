@@ -23,7 +23,8 @@ class Status(Category):
         if return_raw_response:
             return raw_result
 
-        return StatusGetResponse(**raw_result)
+        result = StatusGetResponse(**raw_result)
+        return result
 
     async def set(
         self,
@@ -44,7 +45,8 @@ class Status(Category):
         if return_raw_response:
             return raw_result
 
-        return BaseOkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
+        return result
 
 
     async def set_image(
@@ -64,4 +66,5 @@ class Status(Category):
         if return_raw_response:
             return raw_result
 
-        return BaseOkResponse(**raw_result)
+        result = BaseOkResponse(**raw_result)
+        return result

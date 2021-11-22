@@ -146,6 +146,8 @@ class FriendOnlineEventObject(pydantic.BaseModel):
     platform: typing.Optional[PlatformEnum]
     timestamp: typing.Optional[int]
     app_id: typing.Optional[int]
+    is_mobile: typing.Optional[int]
+    has_invisible_mode: typing.Optional[int]
 
 
 class FriendOnlineModel(BaseUserEvent):
@@ -163,6 +165,8 @@ class FriendOfflineEventObject(pydantic.BaseModel):
     platform: typing.Optional[PlatformEnum]
     timestamp: typing.Optional[int]
     app_id: typing.Optional[int]
+    is_mobile: typing.Optional[int]
+    has_invisible_mode: typing.Optional[int]
 
 
 class FriendOfflineModel(BaseUserEvent):
@@ -343,8 +347,8 @@ _friend_online = {
     2: "platform",
     3: "timestamp",
     4: "app_id",
-    5: "unexpected",
-    6: "unexpected",
+    5: "is_mobile",
+    6: "has_invisible",
 }
 
 _friend_offline = {
@@ -353,8 +357,8 @@ _friend_offline = {
     2: "is_timeout",
     3: "timestamp",
     4: "app_id",
-    5: "unexpected",
-    6: "unexpected",
+    5: "is_mobile",
+    6: "has_invisible",
 }
 
 _seen_mention_in_chat = {
