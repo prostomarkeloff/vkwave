@@ -23,8 +23,7 @@ class Status(Category):
         if return_raw_response:
             return raw_result
 
-        result = StatusGetResponse(**raw_result)
-        return result
+        return StatusGetResponse(**raw_result)
 
     async def set(
         self,
@@ -45,5 +44,24 @@ class Status(Category):
         if return_raw_response:
             return raw_result
 
-        result = BaseOkResponse(**raw_result)
-        return result
+        return BaseOkResponse(**raw_result)
+
+
+    async def set_image(
+        self,
+        return_raw_response: bool = False,
+        status_id: typing.Optional[int] = None,
+    ) -> typing.Union[dict, BaseOkResponse]:
+        """
+        :param status: - Id of the new emoji status.
+        :param return_raw_response: - return result at dict
+        :return:
+        """
+
+        params = get_params(locals())
+
+        raw_result = await self.api_request("setImage", params)
+        if return_raw_response:
+            return raw_result
+
+        return BaseOkResponse(**raw_result)
