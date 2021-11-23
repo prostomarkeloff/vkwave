@@ -1939,6 +1939,7 @@ class GroupsLongPollEvents(BaseModel):
     class Config:
         extra = Extra.forbid
 
+    app_payload: BaseBoolInt
     audio_new: BaseBoolInt
     board_post_delete: BaseBoolInt
     board_post_edit: BaseBoolInt
@@ -1950,6 +1951,8 @@ class GroupsLongPollEvents(BaseModel):
     group_leave: BaseBoolInt
     group_officers_edit: BaseBoolInt
     lead_forms_new: Optional[BaseBoolInt] = None
+    like_add: BaseBoolInt
+    like_remove: BaseBoolInt
     market_comment_delete: BaseBoolInt
     market_comment_edit: BaseBoolInt
     market_comment_new: BaseBoolInt
@@ -1989,6 +1992,12 @@ class GroupsLongPollEvents(BaseModel):
     donut_subscription_price_changed: BaseBoolInt
     donut_money_withdraw: BaseBoolInt
     donut_money_withdraw_error: BaseBoolInt
+    vkpay_transaction: BaseBoolInt
+    message_event: BaseBoolInt
+    music_subscription_update: BaseBoolInt
+    inapp_subscription_update: BaseBoolInt
+    inapp_order_create: BaseBoolInt
+    inapp_order_refund: BaseBoolInt
 
 
 class GroupsContactsItem(BaseModel):

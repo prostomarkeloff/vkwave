@@ -29,4 +29,5 @@ async def test_users_get():
     assert request_data.response[0].first_name == "Павел"
     assert request_data.response[1].id == 2
     assert request_data.response[1].is_closed
-    assert request_data.response[1].verified == BaseBoolInt.NO
+    assert request_data.response[1].verified == BaseBoolInt.integer_0
+    # fixme

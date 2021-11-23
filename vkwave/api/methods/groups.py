@@ -552,7 +552,7 @@ class Groups(Category):
         result = (
             GroupsGetResponse(**raw_result)
             if not extended
-            else GroupsGetExtendedResponse(**raw_result)
+            else GroupsGetObjectExtendedResponse(**raw_result)
         )
         return result
 
@@ -637,7 +637,7 @@ class Groups(Category):
         if return_raw_response:
             return raw_result
 
-        result = GroupsGetByIdLegacyResponse(**raw_result)
+        result = GroupsGetByIdObjectLegacyResponse(**raw_result)
         return result
 
     async def get_callback_confirmation_code(

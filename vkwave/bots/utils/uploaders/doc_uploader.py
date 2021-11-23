@@ -5,7 +5,7 @@ from io import BytesIO
 from typing import BinaryIO
 
 from vkwave.bots.utils.uploaders.uploader import BaseUploader, UploadException
-from vkwave.types.responses import DocsDocAttachmentType, DocsSaveResponse
+from vkwave.types.responses import DocsDocAttachmentType, DocsSaveResponse, Response40
 
 
 class DocUploaderMixin(BaseUploader[DocsSaveResponse], ABC):
@@ -23,7 +23,7 @@ class DocUploaderMixin(BaseUploader[DocsSaveResponse], ABC):
         file_name: str,
         title: typing.Optional[str] = None,
         tags: typing.Optional[str] = None,
-    ) -> DocsSaveResponse:
+    ) -> Response40:  # response docs
         file_name = file_name or "Document"
         file_extension = file_extension or "jpg"
         if not hasattr(file_data, "name"):
@@ -157,15 +157,15 @@ class DocUploaderMixin(BaseUploader[DocsSaveResponse], ABC):
             )
         return ",".join(ready_attachments)
 
-    def attachment_name(self, doc: DocsSaveResponse) -> typing.Union[str, typing.NoReturn]:
+    def attachment_name(self, doc: Response40) -> typing.Union[str, typing.NoReturn]:
         if not doc.type:
             raise TypeError("Invalid document type")
 
-        if doc.type == DocsDocAttachmentType.AUDIO_MESSAGE:
+        if doc.type == DocsDocAttachmentType.audio_message:
             d = doc.audio_message
-        elif doc.type == DocsDocAttachmentType.DOC:
+        elif doc.type == DocsDocAttachmentType.doc:
             d = doc.doc
-        elif doc.type == DocsDocAttachmentType.GRAFFITI:
+        elif doc.type == DocsDocAttachmentType.graffiti:
             d = doc.graffiti
         else:
             raise TypeError("Unknown document type %s" % doc.type.value)
@@ -219,9 +219,9 @@ class VoiceUploader(DocUploaderMixin):
 
 class GraffitiUploader(DocUploaderMixin):
     async def get_server(self, peer_id: int) -> str:
-        return await self._get_server(peer_id, DocsDocAttachmentType.GRAFFITI)
+        return await self._get_server(peer_id, DocsDocAttachmentType.graffiti)
 
 
 class DocUploader(DocUploaderMixin):
     async def get_server(self, peer_id: int) -> str:
-        return await self._get_server(peer_id, DocsDocAttachmentType.DOC)
+        return await self._get_server(peer_id, DocsDocAttachmentType.doc)
