@@ -1,4 +1,3 @@
-from ctypes.wintypes import DWORD
 import json
 
 from vkwave.types.user_events import (
@@ -7,6 +6,7 @@ from vkwave.types.user_events import (
     get_event_object,
     MessageFlag,
 )
+
 
 def test_deleted_message_event():
     event = get_event_object(
@@ -31,7 +31,7 @@ def test_message_new_event():
             2000000005,
             1582466146,
             "Всем привет я тест",
-            {"from": "253866502", "mentions": [431631325], "marked_users": [[1, [431631325]]],},
+            {"from": "253866502", "mentions": [431631325], "marked_users": [[1, [431631325]]], },
             {"reply": '{"conversation_message_id":93222}', "fwd": "0_0"},
             0,
         ],
@@ -78,7 +78,7 @@ def test_message_with_keyboard():
                     "buttons": [
                         [
                             {
-                                "action": {"type": "text", "payload": "", "label": "helloworld",},
+                                "action": {"type": "text", "payload": "", "label": "helloworld", },
                                 "color": "default",
                             }
                         ]
@@ -98,6 +98,7 @@ def test_message_with_keyboard():
         MessageFlag.FROM_FRIEND,
         MessageFlag.DELETED,
         MessageFlag.ATTACHMENT,
+        MessageFlag.CANCEL_SPAM,
         MessageFlag.HIDDEN,
         490832562  # sum
     ]

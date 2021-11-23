@@ -25,7 +25,7 @@ class Storage(Category):
         if return_raw_response:
             return raw_result
 
-        result = StorageGetV5110Response(**raw_result)
+        result = StorageGetResponse(**raw_result)
         return result
 
     async def get_keys(
