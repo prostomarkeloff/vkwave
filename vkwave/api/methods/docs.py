@@ -177,7 +177,7 @@ class Docs(Category):
         if return_raw_response:
             return raw_result
 
-        result = DocsGetUploadServer(**raw_result)
+        result = DocsGetUploadServerResponse(**raw_result)
         return result
 
     async def get_wall_upload_server(

@@ -1,7 +1,7 @@
 from vkwave.types.responses import *
 from ._category import Category
 from ._utils import get_params
-from typing import Union, Optional
+
 
 class AppWidgets(Category):
     async def widgets_get_app_image_upload_server(

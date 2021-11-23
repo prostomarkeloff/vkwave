@@ -8,7 +8,7 @@ class Adsweb(Category):
         self,
         office_id: int,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, AdswebGetAdCategoriesResponse]:
+    ) -> Union[dict, AdswebGetAdCategoriesResponse]:
         """
         :param office_id:
         :param return_raw_response: - return result at dict
@@ -27,7 +27,7 @@ class Adsweb(Category):
     async def get_ad_unit_code(
         self,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, AdswebGetAdUnitCodeResponse]:
+    ) -> Union[dict, AdswebGetAdUnitCodeResponse]:
         """
         :param return_raw_response: - return result at dict
         :return:
@@ -46,12 +46,12 @@ class Adsweb(Category):
         self,
         office_id: int,
         return_raw_response: bool = False,
-        sites_ids: typing.Optional[str] = None,
-        ad_units_ids: typing.Optional[str] = None,
-        fields: typing.Optional[str] = None,
-        limit: typing.Optional[int] = None,
-        offset: typing.Optional[int] = None,
-    ) -> typing.Union[dict, AdswebGetAdUnitsResponse]:
+        sites_ids: Optional[str] = None,
+        ad_units_ids: Optional[str] = None,
+        fields: Optional[str] = None,
+        limit: Optional[int] = None,
+        offset: Optional[int] = None,
+    ) -> Union[dict, AdswebGetAdUnitsResponse]:
         """
         :param office_id:
         :param sites_ids:
@@ -76,10 +76,10 @@ class Adsweb(Category):
         self,
         office_id: int,
         return_raw_response: bool = False,
-        sites_ids: typing.Optional[str] = None,
-        limit: typing.Optional[int] = None,
-        offset: typing.Optional[int] = None,
-    ) -> typing.Union[dict, AdswebGetFraudHistoryResponse]:
+        sites_ids: Optional[str] = None,
+        limit: Optional[int] = None,
+        offset: Optional[int] = None,
+    ) -> Union[dict, AdswebGetFraudHistoryResponse]:
         """
         :param office_id:
         :param sites_ids:
@@ -102,11 +102,11 @@ class Adsweb(Category):
         self,
         office_id: int,
         return_raw_response: bool = False,
-        sites_ids: typing.Optional[str] = None,
-        fields: typing.Optional[str] = None,
-        limit: typing.Optional[int] = None,
-        offset: typing.Optional[int] = None,
-    ) -> typing.Union[dict, AdswebGetSitesResponse]:
+        sites_ids: Optional[str] = None,
+        fields: Optional[str] = None,
+        limit: Optional[int] = None,
+        offset: Optional[int] = None,
+    ) -> Union[dict, AdswebGetSitesResponse]:
         """
         :param office_id:
         :param sites_ids:
@@ -135,10 +135,10 @@ class Adsweb(Category):
         date_from: str,
         date_to: str,
         return_raw_response: bool = False,
-        fields: typing.Optional[str] = None,
-        limit: typing.Optional[int] = None,
-        page_id: typing.Optional[str] = None,
-    ) -> typing.Union[dict, AdswebGetStatisticsResponse]:
+        fields: Optional[str] = None,
+        limit: Optional[int] = None,
+        page_id: Optional[str] = None,
+    ) -> Union[dict, AdswebGetStatisticsResponse]:
         """
         :param office_id:
         :param ids_type:

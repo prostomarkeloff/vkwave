@@ -7,7 +7,7 @@ class Podcasts(Category):
     async def clear_recent_searches(
         self,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, BaseOkResponse]:
+    ) -> Union[dict, BaseOkResponse]:
         """
         :param return_raw_response: - return result at dict
         :return:
@@ -25,12 +25,11 @@ class Podcasts(Category):
     async def get_popular(
         self,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, PodcastsGetPopularResponse]:
+    ) -> Union[dict, PodcastsGetPopularResponse]:
         """
         :param return_raw_response: - return result at dict
         :return:
         """
-
         params = get_params(locals())
 
         raw_result = await self.api_request("getPopular", params)
@@ -43,7 +42,7 @@ class Podcasts(Category):
     async def get_recent_search_requests(
         self,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, PodcastsGetRecentSearchRequestsResponse]:
+    ) -> Union[dict, PodcastsGetRecentSearchRequestsResponse]:
         """
         :param return_raw_response: - return result at dict
         :return:
@@ -62,9 +61,9 @@ class Podcasts(Category):
         self,
         search_string: str,
         return_raw_response: bool = False,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-    ) -> typing.Union[dict, PodcastsSearchResponse]:
+        offset: Optional[int] = None,
+        count: Optional[int] = None,
+    ) -> Union[dict, PodcastsSearchPodcastResponse]:
         """
         :param search_string:
         :param offset:

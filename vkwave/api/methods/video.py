@@ -298,7 +298,7 @@ class Video(Category):
         result = (
             VideoGetResponse(**raw_result)
             if not extended
-            else VideoGetExtendedResponse(**raw_result)
+            else VideoSearchExtendedResponse(**raw_result)
         )
         return result
 
