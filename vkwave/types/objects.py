@@ -3278,6 +3278,9 @@ class MarketMarketItem(pydantic.BaseModel):
         None,
         description="",
     )
+    sku: typing.Optional[str] = pydantic.Field(
+        None, description="",
+    )
 
 
 class MarketPrice(pydantic.BaseModel):
@@ -7974,6 +7977,10 @@ class MarketOrder(pydantic.BaseModel):
         None,
         description="Information for cancel and revert order",
     )
+    sku: typing.Optional[str] = pydantic.Field(
+        None,
+        description="",
+    )
 
 
 class MarketOrderItem(pydantic.BaseModel):
@@ -8006,6 +8013,10 @@ class MarketOrderItem(pydantic.BaseModel):
         description="",
     )
     variants: typing.Optional[typing.List[str]] = pydantic.Field(
+        None,
+        description="",
+    )
+    sku: typing.Optional[str] = pydantic.Field(
         None,
         description="",
     )
@@ -12282,6 +12293,10 @@ class MarketMarketItemFull(MarketMarketItem):
     user_agreement_info: typing.Optional[str] = pydantic.Field(
         None,
         description="User agreement info",
+    )
+    sku: typing.Optional[str] = pydantic.Field(
+        None,
+        description="",
     )
 
 
