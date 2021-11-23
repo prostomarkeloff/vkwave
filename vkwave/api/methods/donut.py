@@ -8,10 +8,10 @@ class Donut(Category):
         self,
         owner_id: int,
         return_raw_response: bool = False,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-        fields: typing.Optional[typing.List[str]] = None,
-    ) -> typing.Union[dict, GroupsGetMembersFieldsResponse]:
+        offset: Optional[int] = None,
+        count: Optional[int] = None,
+        fields: Optional[List[str]] = None,
+    ) -> Union[dict, GroupsGetMembersFieldsResponse]:
         """
         :param owner_id:
         :param offset:
@@ -34,7 +34,7 @@ class Donut(Category):
         self,
         owner_id: int,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, DonutGetSubscriptionResponse]:
+    ) -> Union[dict, DonutGetSubscriptionResponse]:
         """
         :param owner_id:
         :param return_raw_response: - return result at dict
@@ -53,10 +53,10 @@ class Donut(Category):
     async def get_subscriptions(
         self,
         return_raw_response: bool = False,
-        fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
-        offset: typing.Optional[int] = None,
-        count: typing.Optional[int] = None,
-    ) -> typing.Union[dict, DonutGetSubscriptionsResponse]:
+        fields: Optional[List[BaseUserGroupFields]] = None,
+        offset: Optional[int] = None,
+        count: Optional[int] = None,
+    ) -> Union[dict, DonutGetSubscriptionsResponse]:
         """
         :param fields:
         :param offset:
@@ -78,7 +78,7 @@ class Donut(Category):
         self,
         owner_id: int,
         return_raw_response: bool = False,
-    ) -> typing.Union[dict, BaseBoolResponse]:
+    ) -> Union[dict, BaseBoolResponse]:
         """
         :param owner_id:
         :param return_raw_response: - return result at dict
