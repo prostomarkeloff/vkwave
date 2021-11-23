@@ -21,6 +21,7 @@ class Market(Category):
         dimension_height: typing.Optional[int] = None,
         dimension_length: typing.Optional[int] = None,
         weight: typing.Optional[int] = None,
+        sku: typing.Optional[str] = None
     ) -> typing.Union[dict, MarketAddResponse]:
         """
         :param owner_id: - ID of an item owner community.
@@ -37,6 +38,7 @@ class Market(Category):
         :param dimension_height:
         :param dimension_length:
         :param weight:
+        :param sku: - string, maximum length 50
         :param return_raw_response: - return result at dict
         :return:
         """
@@ -213,6 +215,7 @@ class Market(Category):
         deleted: typing.Optional[BaseBoolInt] = None,
         photo_ids: typing.Optional[typing.List[int]] = None,
         url: typing.Optional[str] = None,
+        sku: typing.Optional[str] = None
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param owner_id: - ID of an item owner community.
@@ -225,6 +228,7 @@ class Market(Category):
         :param main_photo_id: - Cover photo ID.
         :param photo_ids: - IDs of additional photos.
         :param url: - Url for button in market item.
+        :param sku: - string, maximum length 50
         :param return_raw_response: - return result at dict
         :return:
         """
@@ -552,11 +556,13 @@ class Market(Category):
         return_raw_response: bool = False,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
+        user_id: typing.Optional[int] = None
     ) -> typing.Union[dict, MarketGetOrderItemsResponse]:
         """
         :param order_id:
         :param offset:
         :param count:
+        :param user_id:
         :param return_raw_response: - return result at dict
         :return:
         """
