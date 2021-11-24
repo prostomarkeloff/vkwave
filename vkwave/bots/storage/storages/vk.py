@@ -39,9 +39,7 @@ class VKStorage(AbstractStorage):
         await self._put(key)
 
     async def contains(self, key: Key) -> bool:
-        if await self._get(key) == 'null':
-            return False
-        return True
+        return await self._get(key) == 'null'
 
     async def _get(self, key: Key) -> Value:
         r = await self._client.storage.get(key=key, user_id=self._user_id)
