@@ -1,10 +1,12 @@
 import enum
 import typing
 
+import logging
 import pydantic
 
 from .objects import MessagesKeyboard
 
+logger = logging.getLogger(__name__)
 RAW_EVENT_TYPE = typing.List[typing.Union[str, typing.Any]]
 
 
@@ -86,7 +88,7 @@ class MessageEventObject(pydantic.BaseModel):
     random_id: typing.Optional[int]
     conversation_message_id: typing.Optional[int]
     edit_time: typing.Optional[int]
-    extra: typing.Optional[typing.Dict]
+    unused_fields: typing.Optional[typing.List]
 
     _normalize_flags = pydantic.validator("flags", allow_reuse=True)(normalize_flags)
 
@@ -100,7 +102,7 @@ class SetFlagsEventObject(pydantic.BaseModel):
     message_id: typing.Optional[int]
     flags: typing.Optional[typing.Union[int, typing.List[MessageFlag]]]
     peer_id: typing.Optional[int]
-    extra: typing.Optional[typing.Dict]
+    unused_fields: typing.Optional[typing.List]
 
     _normalize_flags = pydantic.validator("flags", allow_reuse=True)(normalize_flags)
 
@@ -114,7 +116,7 @@ class ReadIncomingMessagesEventObject(pydantic.BaseModel):
     message_id: typing.Optional[int]
     peer_id: typing.Optional[int]
     count: typing.Optional[int]
-    extra: typing.Optional[typing.Dict]
+    unused_fields: typing.Optional[typing.List]
 
 
 class ReadIncomingMessagesModel(BaseUserEvent):
@@ -126,7 +128,7 @@ class ReadOutgoingMessagesEventObject(pydantic.BaseModel):
     message_id: typing.Optional[int]
     peer_id: typing.Optional[int]
     count: typing.Optional[int]
-    extra: typing.Optional[typing.Dict]
+    unused_fields: typing.Optional[typing.List]
 
 
 class ReadOutgoingMessagesModel(BaseUserEvent):
@@ -152,7 +154,7 @@ class FriendOnlineEventObject(pydantic.BaseModel):
     app_id: typing.Optional[int]
     is_mobile: typing.Optional[int]
     has_invisible_mode: typing.Optional[int]
-    extra: typing.Optional[typing.Dict]
+    unused_fields: typing.Optional[typing.List]
 
 
 class FriendOnlineModel(BaseUserEvent):
@@ -172,7 +174,7 @@ class FriendOfflineEventObject(pydantic.BaseModel):
     app_id: typing.Optional[int]
     is_mobile: typing.Optional[int]
     has_invisible_mode: typing.Optional[int]
-    extra: typing.Optional[typing.Dict]
+    unused_fields: typing.Optional[typing.List]
 
 
 class FriendOfflineModel(BaseUserEvent):
@@ -183,7 +185,7 @@ class SeenMentionInChatEventObject(pydantic.BaseModel):
     event_id: typing.Optional[int]
     peer_id: typing.Optional[int]
     flags: typing.Optional[typing.Union[int, typing.List[MessageFlag]]]
-    extra: typing.Optional[typing.Dict]
+    unused_fields: typing.Optional[typing.List]
 
     _normalize_flags = pydantic.validator("flags", allow_reuse=True)(normalize_flags)
 
@@ -196,7 +198,7 @@ class NewMentionInChatEventObject(pydantic.BaseModel):
     event_id: typing.Optional[int]
     peer_id: typing.Optional[int]
     flags: typing.Optional[typing.Union[int, typing.List[MessageFlag]]]
-    extra: typing.Optional[typing.Dict]
+    unused_fields: typing.Optional[typing.List]
 
     _normalize_flags = pydantic.validator("flags", allow_reuse=True)(normalize_flags)
 
@@ -209,7 +211,7 @@ class DeletedAllMessagesInDialogEventObject(pydantic.BaseModel):
     event_id: typing.Optional[int]
     peer_id: typing.Optional[int]
     last_message_id: typing.Optional[int]
-    extra: typing.Optional[typing.Dict]
+    unused_fields: typing.Optional[typing.List]
 
 
 class DeletedAllMessagesInDialogModel(BaseUserEvent):
@@ -219,7 +221,7 @@ class DeletedAllMessagesInDialogModel(BaseUserEvent):
 class DropMessageCacheEventObject(pydantic.BaseModel):
     event_id: typing.Optional[int]
     message_id: typing.Optional[int]
-    extra: typing.Optional[typing.Dict]
+    unused_fields: typing.Optional[typing.List]
 
 
 class DropMessageCacheModel(BaseUserEvent):
@@ -227,6 +229,7 @@ class DropMessageCacheModel(BaseUserEvent):
 
 
 class ChangedChatSettingsType(int, enum.Enum):
+    PHATOM_CHAT_CREATED = 0
     CHANGED_CHAT_TITLE = 1
     CHANGED_CHAT_PICTURE = 2
     NEW_ADMINISTRATOR = 3
@@ -237,6 +240,15 @@ class ChangedChatSettingsType(int, enum.Enum):
     KICK_FROM_CHAT = 8
     REMOVED_ADMINISTRATOR = 9
     SHOW_OR_REMOVED_KEYBOARD = 11
+    CHAT_INVITE = 12
+    CONVERT_CONTACT_TO_USER = 13
+    BUSINESS_NOTIFICATION = 14
+    REVOKED_INVITATION = 15
+    USER_DECLINED_INVITATION = 16
+    USER_ACCEPTED_INVITATION = 17
+    USER_INVITED = 18
+    GROUP_CALL = 19
+    CHAT_NOT_NEW = 22
 
 
 class ChangedChatSettingsEventObject(pydantic.BaseModel):
@@ -249,6 +261,8 @@ class ChangedChatSettingsEventObject(pydantic.BaseModel):
         int
     ]  # https://github.com/danyadev/longpoll-doc#%D1%81%D0%BE%D0%B1%D1%8B%D1%82%D0%B8%D0%B5-52-%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85-%D1%87%D0%B0%D1%82%D0%B0
 
+    unused_fields: typing.Optional[typing.List]
+
 
 class ChangedChatSettingsModel(BaseUserEvent):
     object: ChangedChatSettingsEventObject = pydantic.Field(None)
@@ -257,7 +271,7 @@ class ChangedChatSettingsModel(BaseUserEvent):
 class ChangedChatSettingsUselessEventObject(pydantic.BaseModel):
     event_id: typing.Optional[int]
     chat_id: typing.Optional[int]
-    extra: typing.Optional[typing.Dict]
+    unused_fields: typing.Optional[typing.List]
 
 
 class ChangedChatSettingsUselessModel(BaseUserEvent):
@@ -270,7 +284,7 @@ class TypingOrVoiceEventObject(pydantic.BaseModel):
     from_ids: typing.Optional[typing.List[int]]
     from_ids_count: typing.Optional[int]
     timestamp: typing.Optional[int]
-    extra: typing.Optional[typing.Dict]
+    unused_fields: typing.Optional[typing.List]
 
 
 class TypingOrVoiceModel(BaseUserEvent):
@@ -285,7 +299,7 @@ class ChangedUnreadDialogsCountEventObject(pydantic.BaseModel):
     business_notify_unread_count: typing.Optional[int]
     header_unread_count: typing.Optional[int]
     header_unread_unmuted_count: typing.Optional[int]
-    extra: typing.Optional[typing.Dict]
+    unused_fields: typing.Optional[typing.List]
 
 
 class ChangedUnreadDialogsCountModel(BaseUserEvent):
@@ -444,14 +458,17 @@ def _parse_event(
     event_model: typing.Type[RESULT_EVENT_OBJECT_TYPE],
     event_object: typing.Type[pydantic.BaseModel],
 ) -> RESULT_EVENT_OBJECT_TYPE:
-    event, _extra = {}, {}
+    event = {}
+    _unused_fields = []
     for event_number, event_param in enumerate(raw_event):
-        key = _events_dict[event_id].get(event_number, None)
+        key = _events_dict[event_id].get(event_number)
         if key:
             event[key] = event_param
         else:
-            _extra[event_number] = event_param
-    event["extra"] = _extra
+            _unused_fields.append(event_param)
+            logger.warn(f"New param ({event_param}) in {event_model.__name__}")
+        event["unused_fields"] = _unused_fields
+
     return event_model(object=event_object(**event))
 
 
