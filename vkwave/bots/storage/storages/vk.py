@@ -34,14 +34,18 @@ class VKStorage(AbstractStorage):
         return default
 
     async def delete(self, key: Key) -> None:
+        if not await self.contains(key):
+            raise KeyError("Storage doesn't contain this key.")
         await self._put(key)
 
     async def contains(self, key: Key) -> bool:
-        return bool(self._get(key))
+        if await self._get(key) == 'null':
+            return False
+        return True
 
     async def _get(self, key: Key) -> Value:
         r = await self._client.storage.get(key=key, user_id=self._user_id)
-        return r["response"].get("value")
+        return r.response[0].value
 
     async def _put(self, key: Key, value: Optional[Value] = None):
         await self._client.storage.set(key=key, value=self._dumper(value), user_id=self._user_id)
