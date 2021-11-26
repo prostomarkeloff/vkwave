@@ -22,6 +22,7 @@ from .ads import Ads
 from .apps import Apps
 from .auth import Auth
 from .board import Board
+from .donut import Donut
 from .database import Database
 from .docs import Docs
 from .execute import Execute
@@ -29,7 +30,7 @@ from .fave import Fave
 from .friends import Friends
 from .gifts import Gifts
 from .groups import Groups
-""" from .leads import Leads """
+from .leads import Leads
 from .likes import Likes
 from .market import Market
 from .messages import Messages
@@ -46,6 +47,7 @@ from .secure import Secure
 from .stats import Stats
 from .status import Status
 from .storage import Storage
+from .store import Store
 from .stories import Stories
 from .streaming import Streaming
 from .users import Users
@@ -107,6 +109,7 @@ class APIOptionsRequestContext:
         self.audio = Audio("audio", self)
         self.auth = Auth("auth", self)
         self.board = Board("board", self)
+        self.donut = Donut('donut', self)
         self.database = Database("database", self)
         self.docs = Docs("docs", self)
         self.execute = Execute("execute", self)
@@ -114,7 +117,7 @@ class APIOptionsRequestContext:
         self.friends = Friends("friends", self)
         self.gifts = Gifts("gifts", self)
         self.groups = Groups("groups", self)
-        """ self.leads = Leads("leads", self) """
+        self.leads = Leads("leads", self)
         self.likes = Likes("likes", self)
         self.market = Market("market", self)
         self.money = Money("money", self)
@@ -132,6 +135,7 @@ class APIOptionsRequestContext:
         self.stats = Stats("stats", self)
         self.status = Status("status", self)
         self.storage = Storage("storage", self)
+        self.store = Store("store", self)
         self.stories = Stories("stories", self)
         self.streaming = Streaming("streaming", self)
         self.users = Users("users", self)
