@@ -9470,6 +9470,110 @@ class LeadFormsForm(BaseModel):
     url: AnyUrl
 
 
+class LeadsChecked(BaseModel):
+    class Config:
+        extra = Extra.forbid
+
+    result: Optional[bool] = Field(
+        ..., description='flag about service account'
+    )
+
+
+class LeadsComplete(BaseModel):
+    class Config:
+        extra = Extra.forbid
+
+    result: Optional[bool] = Field(
+        ..., description=''
+    )
+
+
+class LeadsLead(BaseModel):
+    class Config:
+        extra = Extra.forbid
+
+    result: Optional[bool] = Field(
+        ..., description=''
+    )
+
+
+class LeadsEntry(BaseModel):
+    class Config:
+        extra = Extra.forbid
+
+    result: Optional[bool] = Field(
+        ..., description=''
+    )
+
+
+class LeadsStart(BaseModel):
+    class Config:
+        extra = Extra.forbid
+
+    result: Optional[bool] = Field(
+        ..., description=''
+    )
+
+
+class LeadsCheckUserResponse(BaseModel):
+    class Config:
+        extra = Extra.forbid
+
+    response: LeadsChecked
+
+
+class LeadsCompleteResponse(BaseModel):
+    class Config:
+        extra = Extra.forbid
+
+    response: LeadsComplete
+
+
+class LeadsGetStatsResponse(BaseModel):
+    class Config:
+        extra = Extra.forbid
+
+    response: LeadsLead
+
+
+class LeadsGetUsersResponse(BaseModel):
+    class Config:
+        extra = Extra.forbid
+
+    response: List[LeadsEntry]
+
+
+class LeadsMetricHitResponseModel(BaseModel):
+    class Config:
+        extra = Extra.forbid
+
+    result: Optional[bool] = Field(
+        None,
+        description="Information whether request has been processed successfully",
+    )
+    redirect_link: Optional[str] = Field(
+        None,
+        description="Redirect link",
+    )
+
+
+class LeadsMetricHitResponse(BaseModel):
+    class Config:
+        extra = Extra.forbid
+
+    response: "LeadsMetricHitResponseModel" = Field(
+        ...,
+        description="",
+    )
+
+
+class LeadsStartResponse(BaseModel):
+    class Config:
+        extra = Extra.forbid
+
+    response: LeadsStart
+
+
 class MarketMarketAlbum(BaseModel):
     class Config:
         extra = Extra.forbid
