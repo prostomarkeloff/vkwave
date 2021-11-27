@@ -13,6 +13,7 @@ from vkwave.api.token.token import AnyABCToken, Token
 from vkwave.client.abstract import AbstractAPIClient
 from vkwave.client.context import ResultState
 from vkwave.client.types import MethodName
+from vkwave.client import AIOHTTPClient
 from vkwave import __api_version__
 
 
@@ -202,7 +203,7 @@ class API:
     def __init__(
         self,
         tokens: TokensInput,
-        clients: ClientsInput,
+        clients: ClientsInput = AIOHTTPClient(),
         get_token_strategy: Optional[ABCGetTokenStrategy] = None,
         api_version: Optional[str] = None,
         error_dispatcher: Optional[ErrorDispatcher] = None,
