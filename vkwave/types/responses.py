@@ -9177,11 +9177,19 @@ class StoreGetFavoriteStickersResponse(BaseModel):
     response: StoreGetFavoriteStickers
 
 
+class StoreGetProducts(BaseModel):
+    class Config:
+        extra = Extra.forbid
+
+    count: conint(ge=0) = Field(..., description='Total number')
+    items: List[StoreProduct]
+
+
 class StoreGetProductsResponse(BaseModel):
     class Config:
         extra = Extra.forbid
 
-    response: List[StoreProduct]
+    response: StoreGetProducts
 
 
 class Response176(BaseModel):
