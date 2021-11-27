@@ -9162,11 +9162,19 @@ class PollsGetVotersResponse(BaseModel):
     response: List[PollsVoters]
 
 
+class StoreGetFavoriteStickers(BaseModel):
+    class Config:
+        extra = Extra.forbid
+
+    count: conint(ge=0) = Field(..., description='Total number')
+    items: List[BaseSticker]
+
+
 class StoreGetFavoriteStickersResponse(BaseModel):
     class Config:
         extra = Extra.forbid
 
-    response: List[BaseSticker]
+    response: StoreGetFavoriteStickers
 
 
 class StoreGetProductsResponse(BaseModel):
