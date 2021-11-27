@@ -435,7 +435,7 @@ def test_wall_post_new():
 
     assert event.object.from_id == -191949777
     assert event.object.attachments[0].type.value == "poll"
-    assert not event.object.attachments[0].poll.anonymous
+    assert not event.object.attachments[0].poll.anonymous.__root__
     assert event.object.attachments[0].poll.answers[0].id == 1220489985
     assert event.object.attachments[0].poll.answers[0].text == "first"
     assert event.object.attachments[0].poll.answers[1].votes == 0

@@ -7530,6 +7530,22 @@ class WallWallpost(BaseModel):
     signer_id: Optional[int] = Field(None, description='Post signer ID')
     text: Optional[str] = Field(None, description='Post text')
     views: Optional[WallViews] = Field(None, description='Count of views')
+    comments: Optional[BaseCommentsInfo] = None
+    can_edit: Optional[BaseBoolInt] = Field(
+        None, description='Information whether current user can edit the post'
+    )
+    created_by: Optional[int] = Field(
+        None, description='Post creator ID (if post still can be edited)'
+    )
+    can_delete: Optional[BaseBoolInt] = Field(
+        None, description='Information whether current user can delete the post'
+    )
+    can_pin: Optional[BaseBoolInt] = Field(
+        None, description='Information whether current user can pin the post'
+    )
+    marked_as_ads: Optional[BaseBoolInt] = Field(
+        None, description='Information whether the post is marked as ads'
+    )
 
 
 class NewsfeedItemDigestFullItem(BaseModel):
