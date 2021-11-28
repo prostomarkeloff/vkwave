@@ -203,14 +203,14 @@ class API:
     def __init__(
         self,
         tokens: TokensInput,
-        clients: ClientsInput = AIOHTTPClient(),
+        clients: Optional[ClientsInput] = None,
         get_token_strategy: Optional[ABCGetTokenStrategy] = None,
         api_version: Optional[str] = None,
         error_dispatcher: Optional[ErrorDispatcher] = None,
     ):
         self.default_api_options = APIOptions(
             tokens,
-            clients,
+            clients or AIOHTTPClient(),
             get_token_strategy or RandomGetTokenStrategy(),
             api_version or __api_version__,
             error_dispatcher or ErrorDispatcher(),
