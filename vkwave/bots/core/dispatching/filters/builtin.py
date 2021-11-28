@@ -424,7 +424,8 @@ class TextContainsFilter(BaseFilter):
         self.ignore_case = ignore_case
 
     async def check(self, event: BaseEvent) -> FilterResult:
-        if message_text := get_text(event):
+        message_text = get_text(event)
+        if message_text:
             for text in self.text:
                 r = (
                     text in message_text
