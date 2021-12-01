@@ -1075,3 +1075,26 @@ class Messages(Category):
 
         result = BaseOkResponse(**raw_result)
         return result
+
+    async def set_conversation_style(
+        self,
+        peer_id: int,
+        style: typing.Optional[str] = None,
+        return_raw_response: bool = False,
+    ) -> typing.Union[dict, BaseOkResponse]:
+        """
+        this method is hidden and may be unstable!
+
+        :param peer_id:
+        :param style: - available values: candy, crimson, custom, default, disco, emerald, lagoon, marine, midnight, retrowave, sunset, twilight, unicorn
+        :param return_raw_response: - return result at dict
+        :return:
+        """
+
+        params = get_params(locals())
+
+        raw_result = await self.api_request("setConversationStyle", params)
+        if return_raw_response:
+            return raw_result
+
+        return BaseOkResponse(**raw_result)
