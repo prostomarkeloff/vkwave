@@ -154,7 +154,6 @@ class FriendOnlineEventObject(pydantic.BaseModel):
     app_id: typing.Optional[int]
     is_mobile: typing.Optional[int]
     has_invisible_mode: typing.Optional[int]
-    unused_fields: typing.Optional[typing.List]
 
 
 class FriendOnlineModel(BaseUserEvent):
@@ -299,7 +298,9 @@ class ChangedUnreadDialogsCountEventObject(pydantic.BaseModel):
     business_notify_unread_count: typing.Optional[int]
     header_unread_count: typing.Optional[int]
     header_unread_unmuted_count: typing.Optional[int]
-    unused_fields: typing.Optional[typing.List]
+    unused_field_one: typing.Optional[int]
+    unused_field_two: typing.Optional[int]
+    unused_field_three: typing.Optional[int]
 
 
 class ChangedUnreadDialogsCountModel(BaseUserEvent):
@@ -432,6 +433,9 @@ _changed_unread_dialogs_count = {
     4: "business_notify_unread_count",
     5: "header_unread_count",
     6: "header_unread_unmuted_count",
+    7: "unused_field_one",
+    8: "unused_field_two",
+    9: "unused_field_three"
 }
 
 _events_dict = {
@@ -458,17 +462,10 @@ def _parse_event(
     event_model: typing.Type[RESULT_EVENT_OBJECT_TYPE],
     event_object: typing.Type[pydantic.BaseModel],
 ) -> RESULT_EVENT_OBJECT_TYPE:
-    event = {}
-    _unused_fields = []
-    for event_number, event_param in enumerate(raw_event):
-        key = _events_dict[event_id].get(event_number)
-        if key:
-            event[key] = event_param
-        else:
-            _unused_fields.append(event_param)
-            logger.warn(f"New param ({event_param}) in {event_model.__name__}")
-        event["unused_fields"] = _unused_fields
-
+    event = {
+        _events_dict[event_id][event_number]: event_param
+        for event_number, event_param in enumerate(raw_event)
+    }
     return event_model(object=event_object(**event))
 
 
