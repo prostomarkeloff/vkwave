@@ -136,6 +136,7 @@ class ReadOutgoingMessagesModel(BaseUserEvent):
 
 
 class PlatformEnum(int, enum.Enum):
+    OTHER = 0
     MOBILE_CLIENT = 1
     IPHONE = 2
     IPAD = 3
@@ -143,7 +144,6 @@ class PlatformEnum(int, enum.Enum):
     WINDOWS_PHONE = 5
     WINDOWS_EIGHT = 6
     OFFICIAL_VK_OR_DESKTOP = 7
-    OTHER = 8
 
 
 class FriendOnlineEventObject(pydantic.BaseModel):
