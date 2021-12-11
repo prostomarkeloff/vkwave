@@ -494,6 +494,10 @@ class AttachmentTypeFilter(BaseFilter):
 
     async def check(self, event: BaseEvent) -> FilterResult:
         is_message_event(event)
+
+        if event.bot_type == BotType.USER:
+            raise RuntimeError("Сannot be used in userbot")
+
         if not event.object.object.message.attachments:
             return FilterResult(False)
 
