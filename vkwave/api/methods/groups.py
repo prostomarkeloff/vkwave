@@ -877,7 +877,7 @@ class Groups(Category):
 
         result = (
             GroupsGetMembersResponse(**raw_result)
-            if not fields
+            if (not fields) and (not filter)
             else GroupsGetMembersFieldsResponse(**raw_result)
         )
         return result
