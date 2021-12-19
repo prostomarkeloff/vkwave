@@ -11907,6 +11907,7 @@ class UsersUserFull(UsersUser):
     )
 
 
+
 class UsersUserXtrType(UsersUser):
     type: typing.Optional["UsersUserType"] = pydantic.Field(
         None,
@@ -12246,11 +12247,8 @@ class GroupsGroupFull(GroupsGroup):
     )
 
 
-class GroupsUserXtrRole(UsersUserFull):
-    role: typing.Optional["GroupsRoleOptions"] = pydantic.Field(
-        None,
-        description="",
-    )
+class GroupsUserXtrRole(UsersUserFull, GroupsMemberRole):
+    pass
 
 
 class MarketMarketItemFull(MarketMarketItem):
