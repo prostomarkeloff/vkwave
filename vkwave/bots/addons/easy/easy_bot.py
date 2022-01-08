@@ -6,6 +6,7 @@ from vkwave.bots.core.dispatching.extensions.callback.conf import ConfirmationSt
 from vkwave.bots.core.dispatching.router.router import BaseRouter
 from vkwave.bots.addons.easy.base_easy_bot import BaseSimpleLongPollBot
 from vkwave.bots.core.types.bot_type import BotType
+from vkwave.client import AIOHTTPClient
 
 
 class SimpleLongPollBot(BaseSimpleLongPollBot):
@@ -15,9 +16,10 @@ class SimpleLongPollBot(BaseSimpleLongPollBot):
         group_id: int,
         router: typing.Optional[BaseRouter] = None,
         uvloop: bool = False,
+        client: typing.Optional[AIOHTTPClient] = None,
     ):
         super().__init__(
-            tokens, group_id=group_id, bot_type=BotType.BOT, router=router, uvloop=uvloop
+            tokens, group_id=group_id, bot_type=BotType.BOT, router=router, uvloop=uvloop, client=client
         )
 
 

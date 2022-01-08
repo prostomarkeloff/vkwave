@@ -63,8 +63,8 @@ from vkwave.types.user_events import EventId
 
 
 class _APIContextManager:
-    def __init__(self, tokens: typing.Union[str, typing.List[str]], bot_type: BotType):
-        self.client = AIOHTTPClient()
+    def __init__(self, tokens: typing.Union[str, typing.List[str]], bot_type: BotType, client: AIOHTTPClient):
+        self.client = client
         if bot_type.USER:
             self.tokens = (
                 UserSyncSingleToken(Token(tokens))
@@ -89,8 +89,8 @@ class _APIContextManager:
         await self.client.close()
 
 
-def create_api_session_aiohttp(token: str, bot_type: BotType = BotType.BOT) -> _APIContextManager:
-    return _APIContextManager(token, bot_type)
+def create_api_session_aiohttp(token: str, bot_type: BotType = BotType.BOT, client: AIOHTTPClient = AIOHTTPClient()) -> _APIContextManager:
+    return _APIContextManager(token, bot_type, client)
 
 
 class BaseSimpleLongPollBot:
@@ -100,6 +100,7 @@ class BaseSimpleLongPollBot:
         bot_type: BotType,
         router: typing.Optional[BaseRouter] = None,
         group_id: typing.Optional[int] = None,
+        client: typing.Optional[AIOHTTPClient] = None,
         uvloop: bool = False,
     ):
         if uvloop:
@@ -110,7 +111,8 @@ class BaseSimpleLongPollBot:
         self.context = types.SimpleNamespace()
         self.group_id = group_id
         self.bot_type = bot_type
-        self.api_session = create_api_session_aiohttp(tokens, bot_type)
+        self.client = client or AIOHTTPClient()
+        self.api_session = create_api_session_aiohttp(tokens, bot_type, client)
         self.api_context: APIOptionsRequestContext = self.api_session.api.get_context()
         if self.bot_type is BotType.USER:
             self.SimpleBotEvent = SimpleUserEvent
