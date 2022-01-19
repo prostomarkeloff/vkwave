@@ -20,7 +20,8 @@ from .core.dispatching.filters import (
     LevenshteinFilter,
     FromIdFilter,
     PeerIdFilter,
-    FromGroupFilter
+    FromGroupFilter,
+    StickerFilter
 )
 from .core.dispatching.dp.middleware.middleware import MiddlewareResult, BaseMiddleware
 from .core.dispatching.events.base import BotEvent, UserEvent, BotType, BaseEvent

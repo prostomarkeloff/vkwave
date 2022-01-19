@@ -21,6 +21,7 @@ from .builtin import (  # noqa: F401
     LevenshteinFilter,
     FromIdFilter,
     PeerIdFilter,
-    FromGroupFilter
+    FromGroupFilter,
+    StickerFilter
 )
 from .cast import caster as filter_caster  # noqa: F401

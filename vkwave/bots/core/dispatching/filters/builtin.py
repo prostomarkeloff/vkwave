@@ -614,3 +614,17 @@ class FromGroupFilter(BaseFilter):
         if (peer_id >= 2e9 and int(from_id) < 0) or (peer_id < 0):
             return FilterResult(self.from_group)
         return FilterResult(not self.from_group)
+
+
+class StickerFilter(BaseFilter):
+    def __init__(self, with_sticker: bool):
+        self.with_sticker = with_sticker
+
+    async def check(self, event: BaseEvent) -> FilterResult:
+        if event.bot_type is BotType.BOT:
+            attachment = event.object.object.message.attachments
+            return FilterResult(attachment and attachment[0].sticker)
+
+        else:
+            attachment = event.object.object.extra_message_data.get('attach1_type')
+            return FilterResult(attachment == 'sticker')
