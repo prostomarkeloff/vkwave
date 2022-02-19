@@ -601,7 +601,7 @@ class PeerIdFilter(BaseFilter):
 
 
 class FromGroupFilter(BaseFilter):
-    def __init__(self, from_group: bool):
+    def __init__(self, from_group: bool = False):
         self.from_group = from_group
 
     async def check(self, event: BaseEvent) -> FilterResult:
@@ -617,7 +617,7 @@ class FromGroupFilter(BaseFilter):
 
 
 class StickerFilter(BaseFilter):
-    def __init__(self, with_sticker: bool):
+    def __init__(self, with_sticker: bool = True):
         self.with_sticker = with_sticker
 
     async def check(self, event: BaseEvent) -> FilterResult:
