@@ -90,8 +90,12 @@ class _APIContextManager:
         await self.client.close()
 
 
-def create_api_session_aiohttp(token: str, bot_type: BotType = BotType.BOT, client: AIOHTTPClient = AIOHTTPClient()) -> _APIContextManager:
-    return _APIContextManager(token, bot_type, client)
+def create_api_session_aiohttp(
+    token: str,
+    bot_type: BotType = BotType.BOT,
+    client: typing.Optional[AIOHTTPClient] = None
+) -> _APIContextManager:
+    return _APIContextManager(token, bot_type, client or AIOHTTPClient())
 
 
 class BaseSimpleLongPollBot:
