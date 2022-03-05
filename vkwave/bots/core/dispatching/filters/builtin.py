@@ -623,8 +623,8 @@ class StickerFilter(BaseFilter):
     async def check(self, event: BaseEvent) -> FilterResult:
         if event.bot_type is BotType.BOT:
             attachment = event.object.object.message.attachments
-            return FilterResult(attachment and attachment[0].sticker)
+            return FilterResult((attachment and attachment[0].sticker) == self.with_sticker)
 
         else:
             attachment = event.object.object.extra_message_data.get('attach1_type')
-            return FilterResult(attachment == 'sticker')
+            return FilterResult((attachment == 'sticker') == self.with_sticker)
