@@ -226,3 +226,15 @@ class API:
 
     def with_options(self, options: APIOptions) -> APIOptionsRequestContext:
         return APIOptionsRequestContext(options)
+
+    def __enter__(self) -> None:
+        raise TypeError("Use async with instead")
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        pass
+
+    async def __aenter__(self):
+        return self
+
+    async def __aexit__(self, exc_type, exc_val, exc_tb):
+        await self.default_api_options.get_client().close()
