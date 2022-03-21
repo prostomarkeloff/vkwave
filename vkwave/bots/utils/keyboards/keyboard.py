@@ -264,6 +264,17 @@ class Keyboard:
         action = VKPayActionTransferToUser(user_id=user_id, description=description)
         return self.add_vkpay_button(hash_action=action.generate_hash(), payload=payload)
 
+    def delete_button(self, button_payload: typing.Dict[str, str]) -> None:
+        """
+        :param button_payload: payload button to be removed
+        """
+        for row in self.buttons:
+            for button in row:
+                if button_payload == button.get('action').get('payload'):
+                    row_index = self.buttons.index(row)
+                    button_index = row.index(button)
+                    del self.buttons[row_index][button_index]
+
     @classmethod
     def get_empty_keyboard(cls) -> str:
         """
