@@ -15,7 +15,7 @@ async def simple(event: bot.SimpleBotEvent):
 
 
 @bot.message_handler()
-async def _any(event: bot.SimpleBotEvent):
+async def any_(event: bot.SimpleBotEvent):
     await event.answer("any")
 
 
@@ -30,9 +30,14 @@ async def clone_request():
     print(clones.clones[0].api_context.users.get())
 
 
+def add_clone(clone):
+    # Добавляет клона в общий список
+    clones.add_clone(SimpleLongPollBot("Bot3Token", 122134648))
+
+
 asyncio.get_event_loop().run_until_complete(clone_request())
 
-clones.run_all_bots(last_handler=_any)
+clones.run_all_bots(last_handler=any_)
 # В клонах хендлеры могут перемешаться, так что ставим хендлер который реагирует
 # на все подряд последним
 
