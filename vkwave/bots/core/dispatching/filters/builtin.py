@@ -85,7 +85,7 @@ def get_text(event: BaseEvent) -> Optional[str]:
 def get_id(event: BaseEvent) -> Optional[int]:
     is_message_event(event)
     if event.bot_type is BotType.USER:
-        if event.object.object.message_data.dict().get("from_id") is None:
+        if event.object.object.dict().get('message_data').get("from_id") is None:
             return None
         return int(event.object.object.message_data.from_id)
     else:
