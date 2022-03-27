@@ -32,7 +32,7 @@ class ClonesBot:
         for clone in self.clones:
             _last_handler = None
             for handler in self.router.registrar.handlers:
-                if handler.callback.func.__name__ == last_handler.__name__:
+                if handler.callback.func.func.__name__ == last_handler.__name__:
                     _last_handler = handler
                     continue
                 clone.router.registrar.handlers.append(handler)
