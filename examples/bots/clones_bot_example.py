@@ -27,7 +27,7 @@ clones = ClonesBot(
 async def clone_request():
     # clones.clones - тупл с клонами (SimpleLongPollUserBot или SimpleLongPollBot)
     # Запрос с первого клона
-    print(clones.clones[0].api_context.users.get())
+    print(await clones.clones[0].api_context.users.get())
 
 
 def add_clone(clone):
@@ -46,3 +46,6 @@ clones.run_all_bots(last_handler=any_)
 # task_manager = TaskManager()
 # task_manager.add_task(bot.run)
 # task_manager.run()
+© 2022 GitHub, Inc.
+Terms
+Privacy
