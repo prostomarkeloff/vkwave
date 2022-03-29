@@ -618,7 +618,7 @@ class SimpleBotEvent(BotEvent):
             group_id=group_id,
         )
 
-    async def callback_answer(self, event_data: typing.Dict[str, str]) -> BaseOkResponse:
+    async def callback_answer(self, event_data: str) -> BaseOkResponse:
         """Ответ на нажатие callback кнопки.
 
         Args:
