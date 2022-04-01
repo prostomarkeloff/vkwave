@@ -12,9 +12,10 @@ from vkwave.bots.core.types.bot_type import BotType
 from vkwave.types.bot_events import get_event_object
 from vkwave.types.user_events import get_event_object as user_get_event_object
 
+from .result_caster import BaseResultCaster, ResultCaster
 from .middleware.middleware import MiddlewareManager
 from .processing_options import ProcessEventOptions
-from .result_caster import ResultCaster
+
 
 ProcessingResult = NewType("ProcessingResult", bool)
 
@@ -27,13 +28,14 @@ class Dispatcher:
         api: API,
         token_storage: Union[TokenStorage, UserTokenStorage],
         bot_type: BotType = BotType.BOT,
+        result_caster: Optional[BaseResultCaster] = None
     ):
         self.bot_type: BotType = bot_type
         self.api: API = api
         self.middleware_manager = MiddlewareManager()
         self.token_storage: Union[TokenStorage, UserTokenStorage] = token_storage
         self.routers: List[BaseRouter] = []
-        self.result_caster: ResultCaster = ResultCaster()
+        self.result_caster: BaseResultCaster = result_caster or ResultCaster()
 
     def add_router(self, router: BaseRouter):
         self.routers.append(router)
