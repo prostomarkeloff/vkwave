@@ -1,3 +1,4 @@
+from abc import ABC, abstractmethod
 import warnings
 
 from typing import Any, Awaitable, Callable, Dict, Optional, Type
@@ -7,7 +8,13 @@ from vkwave.bots.core.types.bot_type import BotType
 from vkwave.types.user_events import EventId
 
 
-class ResultCaster:
+class BaseResultCaster(ABC):
+    @abstractmethod
+    async def cast(self, result: Any, event: BaseEvent):
+        ...
+
+
+class ResultCaster(BaseResultCaster):
     def __init__(self):
         self.available: Dict[Type[Any], Callable[[Any, BaseEvent], Awaitable[None]]] = {}
 
