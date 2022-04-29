@@ -1,148 +1,251 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
     <url>
-         <loc>None</loc>
-         <lastmod>2021-08-31</lastmod>
+         <loc>.</loc>
+         <lastmod>2022-04-29</lastmod>
          <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="ru" href="ru/"/>
+         <xhtml:link rel="alternate" hreflang="en" href="en/"/>
+         
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2021-08-31</lastmod>
+         <loc>api/api/</loc>
+         <lastmod>2022-04-29</lastmod>
          <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="ru" href="ru/api/api/"/>
+         <xhtml:link rel="alternate" hreflang="en" href="en/api/api/"/>
+         
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2021-08-31</lastmod>
+         <loc>api/</loc>
+         <lastmod>2022-04-29</lastmod>
          <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="ru" href="ru/api/"/>
+         <xhtml:link rel="alternate" hreflang="en" href="en/api/"/>
+         
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2021-08-31</lastmod>
+         <loc>api/work/</loc>
+         <lastmod>2022-04-29</lastmod>
          <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="ru" href="ru/api/work/"/>
+         <xhtml:link rel="alternate" hreflang="en" href="en/api/work/"/>
+         
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2021-08-31</lastmod>
+         <loc>bots/easy/</loc>
+         <lastmod>2022-04-29</lastmod>
          <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="ru" href="ru/bots/easy/"/>
+         <xhtml:link rel="alternate" hreflang="en" href="en/bots/easy/"/>
+         
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2021-08-31</lastmod>
+         <loc>bots/fsm/</loc>
+         <lastmod>2022-04-29</lastmod>
          <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="ru" href="ru/bots/fsm/"/>
+         <xhtml:link rel="alternate" hreflang="en" href="en/bots/fsm/"/>
+         
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2021-08-31</lastmod>
+         <loc>bots/</loc>
+         <lastmod>2022-04-29</lastmod>
          <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="ru" href="ru/bots/"/>
+         <xhtml:link rel="alternate" hreflang="en" href="en/bots/"/>
+         
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2021-08-31</lastmod>
+         <loc>bots/routers/</loc>
+         <lastmod>2022-04-29</lastmod>
          <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="ru" href="ru/bots/routers/"/>
+         <xhtml:link rel="alternate" hreflang="en" href="en/bots/routers/"/>
+         
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2021-08-31</lastmod>
+         <loc>bots/storage/</loc>
+         <lastmod>2022-04-29</lastmod>
          <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="ru" href="ru/bots/storage/"/>
+         <xhtml:link rel="alternate" hreflang="en" href="en/bots/storage/"/>
+         
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2021-08-31</lastmod>
+         <loc>bots/usage/</loc>
+         <lastmod>2022-04-29</lastmod>
          <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="ru" href="ru/bots/usage/"/>
+         <xhtml:link rel="alternate" hreflang="en" href="en/bots/usage/"/>
+         
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2021-08-31</lastmod>
+         <loc>client/context/</loc>
+         <lastmod>2022-04-29</lastmod>
          <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="ru" href="ru/client/context/"/>
+         <xhtml:link rel="alternate" hreflang="en" href="en/client/context/"/>
+         
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2021-08-31</lastmod>
+         <loc>client/custom/</loc>
+         <lastmod>2022-04-29</lastmod>
          <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="ru" href="ru/client/custom/"/>
+         <xhtml:link rel="alternate" hreflang="en" href="en/client/custom/"/>
+         
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2021-08-31</lastmod>
+         <loc>client/</loc>
+         <lastmod>2022-04-29</lastmod>
          <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="ru" href="ru/client/"/>
+         <xhtml:link rel="alternate" hreflang="en" href="en/client/"/>
+         
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2021-08-31</lastmod>
+         <loc>client/using/</loc>
+         <lastmod>2022-04-29</lastmod>
          <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="ru" href="ru/client/using/"/>
+         <xhtml:link rel="alternate" hreflang="en" href="en/client/using/"/>
+         
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2021-08-31</lastmod>
+         <loc>getting_started/clones/</loc>
+         <lastmod>2022-04-29</lastmod>
          <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="ru" href="ru/getting_started/clones/"/>
+         <xhtml:link rel="alternate" hreflang="en" href="en/getting_started/clones/"/>
+         
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2021-08-31</lastmod>
+         <loc>getting_started/echo/</loc>
+         <lastmod>2022-04-29</lastmod>
          <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="ru" href="ru/getting_started/echo/"/>
+         <xhtml:link rel="alternate" hreflang="en" href="en/getting_started/echo/"/>
+         
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2021-08-31</lastmod>
+         <loc>getting_started/events/</loc>
+         <lastmod>2022-04-29</lastmod>
          <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="ru" href="ru/getting_started/events/"/>
+         <xhtml:link rel="alternate" hreflang="en" href="en/getting_started/events/"/>
+         
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2021-08-31</lastmod>
+         <loc>getting_started/</loc>
+         <lastmod>2022-04-29</lastmod>
          <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="ru" href="ru/getting_started/"/>
+         <xhtml:link rel="alternate" hreflang="en" href="en/getting_started/"/>
+         
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2021-08-31</lastmod>
+         <loc>getting_started/keyboards/</loc>
+         <lastmod>2022-04-29</lastmod>
          <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="ru" href="ru/getting_started/keyboards/"/>
+         <xhtml:link rel="alternate" hreflang="en" href="en/getting_started/keyboards/"/>
+         
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2021-08-31</lastmod>
+         <loc>getting_started/middleware/</loc>
+         <lastmod>2022-04-29</lastmod>
          <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="ru" href="ru/getting_started/middleware/"/>
+         <xhtml:link rel="alternate" hreflang="en" href="en/getting_started/middleware/"/>
+         
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2021-08-31</lastmod>
+         <loc>getting_started/multitoken/</loc>
+         <lastmod>2022-04-29</lastmod>
          <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="ru" href="ru/getting_started/multitoken/"/>
+         <xhtml:link rel="alternate" hreflang="en" href="en/getting_started/multitoken/"/>
+         
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2021-08-31</lastmod>
+         <loc>getting_started/routers/</loc>
+         <lastmod>2022-04-29</lastmod>
          <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="ru" href="ru/getting_started/routers/"/>
+         <xhtml:link rel="alternate" hreflang="en" href="en/getting_started/routers/"/>
+         
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2021-08-31</lastmod>
+         <loc>getting_started/templates/</loc>
+         <lastmod>2022-04-29</lastmod>
          <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="ru" href="ru/getting_started/templates/"/>
+         <xhtml:link rel="alternate" hreflang="en" href="en/getting_started/templates/"/>
+         
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2021-08-31</lastmod>
+         <loc>getting_started/uploaders/</loc>
+         <lastmod>2022-04-29</lastmod>
          <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="ru" href="ru/getting_started/uploaders/"/>
+         <xhtml:link rel="alternate" hreflang="en" href="en/getting_started/uploaders/"/>
+         
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2021-08-31</lastmod>
+         <loc>getting_started/filters/builtin/</loc>
+         <lastmod>2022-04-29</lastmod>
          <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="ru" href="ru/getting_started/filters/builtin/"/>
+         <xhtml:link rel="alternate" hreflang="en" href="en/getting_started/filters/builtin/"/>
+         
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2021-08-31</lastmod>
+         <loc>getting_started/filters/combining/</loc>
+         <lastmod>2022-04-29</lastmod>
          <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="ru" href="ru/getting_started/filters/combining/"/>
+         <xhtml:link rel="alternate" hreflang="en" href="en/getting_started/filters/combining/"/>
+         
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2021-08-31</lastmod>
+         <loc>getting_started/filters/custom/</loc>
+         <lastmod>2022-04-29</lastmod>
          <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="ru" href="ru/getting_started/filters/custom/"/>
+         <xhtml:link rel="alternate" hreflang="en" href="en/getting_started/filters/custom/"/>
+         
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2021-08-31</lastmod>
+         <loc>getting_started/filters/</loc>
+         <lastmod>2022-04-29</lastmod>
          <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="ru" href="ru/getting_started/filters/"/>
+         <xhtml:link rel="alternate" hreflang="en" href="en/getting_started/filters/"/>
+         
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2021-08-31</lastmod>
+         <loc>http/</loc>
+         <lastmod>2022-04-29</lastmod>
          <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="ru" href="ru/http/"/>
+         <xhtml:link rel="alternate" hreflang="en" href="en/http/"/>
+         
+    </url>
+    <url>
+         <loc>longpoll/</loc>
+         <lastmod>2022-04-29</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="ru" href="ru/longpoll/"/>
+         <xhtml:link rel="alternate" hreflang="en" href="en/longpoll/"/>
+         
+    </url>
+    <url>
+         <loc>types/</loc>
+         <lastmod>2022-04-29</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="ru" href="ru/types/"/>
+         <xhtml:link rel="alternate" hreflang="en" href="en/types/"/>
+         
     </url>
 </urlset>
