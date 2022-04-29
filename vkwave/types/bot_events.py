@@ -448,8 +448,8 @@ class GroupOfficersEdit(BaseBotEvent):
 
 
 class ChangesSettingsModel(pydantic.BaseModel):
-    old_value: int = pydantic.Field(None, description="")
-    new_value: int = pydantic.Field(None, description="")
+    old_value: typing.Union[int, str] = pydantic.Field(None, description="")
+    new_value: typing.Union[int, str] = pydantic.Field(None, description="")
 
 
 class GroupChangeSettingsObject(pydantic.BaseModel):
