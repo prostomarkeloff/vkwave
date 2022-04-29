@@ -4,7 +4,7 @@ site_author: 'FSC Dev'
 repo_name: 'fscdev/vkwave'
 repo_url: 'https://github.com/fscdev/vkwave'
 
-copyright: '2020-2021 FSC Dev & VkWave Contributors'
+copyright: '2020-2022 FSC Dev & VKWave Contributors'
 
 theme:
   name: material
@@ -23,7 +23,7 @@ theme:
     repo: fontawesome/brands/github
 
 extra:
-  version: 0.2.10
+  version: 0.2.13
   social:
     - icon: fontawesome/brands/telegram
       link: https://t.me/vkwave
