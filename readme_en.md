@@ -12,7 +12,7 @@ VKWave is a framework to create performance and extensible projects, working wit
 
 VKWave inspired by: [aiogram](https://github.com/aiogram/aiogram), vk.py and so on.
 
-**Current maintainer** of the project: [@kesha1225](https://github.com/kesha1225)
+**Current maintainer** of the project: [@KurimuzonAkuma](https://github.com/KurimuzonAkuma)
 
 [Documentation](https://fscdev.github.io/vkwave/en)
 
