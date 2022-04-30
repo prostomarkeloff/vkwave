@@ -238,6 +238,7 @@ class ChangedChatSettingsType(int, enum.Enum):
     LEAVE_FROM_CHAT = 7
     KICK_FROM_CHAT = 8
     REMOVED_ADMINISTRATOR = 9
+    CHANGED_BANNER = 10
     SHOW_OR_REMOVED_KEYBOARD = 11
     CHAT_INVITE = 12
     CONVERT_CONTACT_TO_USER = 13
@@ -248,6 +249,7 @@ class ChangedChatSettingsType(int, enum.Enum):
     USER_INVITED = 18
     GROUP_CALL = 19
     CHAT_NOT_NEW = 22
+    CHANGED_CHAT_LAYOUT = 23
 
 
 class ChangedChatSettingsEventObject(pydantic.BaseModel):
