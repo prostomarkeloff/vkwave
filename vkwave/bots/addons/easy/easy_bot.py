@@ -3,8 +3,9 @@ import typing
 from vkwave.bots import GroupId
 from vkwave.bots.core.dispatching.extensions.callback import AIOHTTPCallbackExtension
 from vkwave.bots.core.dispatching.extensions.callback.conf import ConfirmationStorage
-from vkwave.bots.core.dispatching.router.router import BaseRouter
 from vkwave.bots.addons.easy.base_easy_bot import BaseSimpleLongPollBot
+from vkwave.bots.addons.easy.easy_handlers import SimpleBotEvent
+from vkwave.bots.core.dispatching.router.router import BaseRouter
 from vkwave.bots.core.types.bot_type import BotType
 from vkwave.client import AIOHTTPClient
 
@@ -17,9 +18,12 @@ class SimpleLongPollBot(BaseSimpleLongPollBot):
         router: typing.Optional[BaseRouter] = None,
         uvloop: bool = False,
         client: typing.Optional[AIOHTTPClient] = None,
+        event: typing.Optional[typing.Type[SimpleBotEvent]] = None,
     ):
         super().__init__(
-            tokens, group_id=group_id, bot_type=BotType.BOT, router=router, uvloop=uvloop, client=client
+            tokens, group_id=group_id, bot_type=BotType.BOT,
+            router=router, uvloop=uvloop, client=client,
+            event=event or SimpleBotEvent
         )
 
 

@@ -1,8 +1,7 @@
 import json
 import random
-import typing
 import warnings
-from typing import Any, Callable, Dict, List, Union
+from typing import Any, Callable, Dict, List, Union, Type, Optional, NoReturn
 
 from pydantic import PrivateAttr
 
@@ -33,10 +32,10 @@ class SimpleUserEvent(UserEvent):
         super().__init__(event.object, event.api_ctx)
         self.user_data = event.user_data
 
-    def __setitem__(self, key: typing.Any, item: typing.Any) -> None:
+    def __setitem__(self, key: Any, item: Any) -> None:
         self.user_data[key] = item
 
-    def __getitem__(self, key: typing.Any) -> typing.Any:
+    def __getitem__(self, key: Any) -> Any:
         return self.user_data[key]
 
     @property
@@ -65,26 +64,26 @@ class SimpleUserEvent(UserEvent):
 
     async def answer(
         self,
-        message: typing.Optional[str] = None,
-        domain: typing.Optional[str] = None,
-        lat: typing.Optional[int] = None,
-        long: typing.Optional[int] = None,
-        attachment: typing.Optional[str] = None,
-        reply_to: typing.Optional[int] = None,
-        forward_messages: typing.Optional[typing.List[int]] = None,
-        forward: typing.Optional[str] = None,
-        sticker_id: typing.Optional[int] = None,
-        group_id: typing.Optional[int] = None,
-        keyboard: typing.Optional[str] = None,
-        template: typing.Optional[str] = None,
-        payload: typing.Optional[str] = None,
-        content_source: typing.Optional[str] = None,
-        dont_parse_links: typing.Optional[bool] = None,
-        disable_mentions: typing.Optional[bool] = None,
-        intent: typing.Optional[str] = None,
-        subscribe_id: typing.Optional[int] = None,
-        expire_ttl: typing.Optional[int] = None,
-        silent: typing.Optional[bool] = None,
+        message: Optional[str] = None,
+        domain: Optional[str] = None,
+        lat: Optional[int] = None,
+        long: Optional[int] = None,
+        attachment: Optional[str] = None,
+        reply_to: Optional[int] = None,
+        forward_messages: Optional[List[int]] = None,
+        forward: Optional[str] = None,
+        sticker_id: Optional[int] = None,
+        group_id: Optional[int] = None,
+        keyboard: Optional[str] = None,
+        template: Optional[str] = None,
+        payload: Optional[str] = None,
+        content_source: Optional[str] = None,
+        dont_parse_links: Optional[bool] = None,
+        disable_mentions: Optional[bool] = None,
+        intent: Optional[str] = None,
+        subscribe_id: Optional[int] = None,
+        expire_ttl: Optional[int] = None,
+        silent: Optional[bool] = None,
     ) -> MessagesSendResponse:
         return await self.api_ctx.messages.send(
             message=message,
@@ -111,27 +110,83 @@ class SimpleUserEvent(UserEvent):
             random_id=random.randint(-2147483648, 2147483647),
         )
 
+    async def long_answer(
+        self,
+        message: str,
+        domain: Optional[str] = None,
+        lat: Optional[int] = None,
+        long: Optional[int] = None,
+        attachment: Optional[str] = None,
+        reply_to: Optional[int] = None,
+        forward_messages: Optional[List[int]] = None,
+        forward: Optional[str] = None,
+        sticker_id: Optional[int] = None,
+        group_id: Optional[int] = None,
+        keyboard: Optional[str] = None,
+        template: Optional[str] = None,
+        payload: Optional[str] = None,
+        content_source: Optional[str] = None,
+        dont_parse_links: Optional[bool] = None,
+        disable_mentions: Optional[bool] = None,
+        intent: Optional[str] = None,
+        subscribe_id: Optional[int] = None,
+        expire_ttl: Optional[int] = None,
+        silent: Optional[bool] = None,
+    ) -> List[MessagesSendResponse]:
+        """
+        Shortcut for sending message > 4096 lenght
+
+        :return: Message IDs
+        """
+
+        message_ids: List[MessagesSendResponse] = []
+        for x in range(0, len(message), 4096):
+            message_id = await self.answer(
+                message=message[x:x+4096],
+                forward=forward,
+                template=template,
+                content_source=content_source,
+                intent=intent,
+                subscribe_id=subscribe_id,
+                expire_ttl=expire_ttl,
+                silent=silent,
+                domain=domain,
+                lat=lat,
+                long=long,
+                attachment=attachment,
+                reply_to=reply_to,
+                forward_messages=forward_messages,
+                sticker_id=sticker_id,
+                group_id=group_id,
+                keyboard=keyboard,
+                payload=payload,
+                dont_parse_links=dont_parse_links,
+                disable_mentions=disable_mentions,
+            )
+            message_ids.append(message_id)
+        return message_ids
+
     async def reply(
         self,
-        message: typing.Optional[str] = None,
-        domain: typing.Optional[str] = None,
-        lat: typing.Optional[int] = None,
-        long: typing.Optional[int] = None,
-        attachment: typing.Optional[str] = None,
-        forward_messages: typing.Optional[typing.List[int]] = None,
-        forward: typing.Optional[str] = None,
-        sticker_id: typing.Optional[int] = None,
-        group_id: typing.Optional[int] = None,
-        keyboard: typing.Optional[str] = None,
-        template: typing.Optional[str] = None,
-        payload: typing.Optional[str] = None,
-        content_source: typing.Optional[str] = None,
-        dont_parse_links: typing.Optional[bool] = None,
-        disable_mentions: typing.Optional[bool] = None,
-        intent: typing.Optional[str] = None,
-        subscribe_id: typing.Optional[int] = None,
-        expire_ttl: typing.Optional[int] = None,
-        silent: typing.Optional[bool] = None,
+        message: Optional[str] = None,
+        domain: Optional[str] = None,
+        lat: Optional[int] = None,
+        long: Optional[int] = None,
+        attachment: Optional[str] = None,
+        forward_messages: Optional[List[int]] = None,
+        forward: Optional[str] = None,
+        sticker_id: Optional[int] = None,
+        group_id: Optional[int] = None,
+        keyboard: Optional[str] = None,
+        template: Optional[str] = None,
+        payload: Optional[str] = None,
+        content_source: Optional[str] = None,
+        dont_parse_links: Optional[bool] = None,
+        disable_mentions: Optional[bool] = None,
+        intent: Optional[str] = None,
+        subscribe_id: Optional[int] = None,
+        expire_ttl: Optional[int] = None,
+        silent: Optional[bool] = None,
     ) -> MessagesSendResponse:
         return await self.api_ctx.messages.send(
             message=message,
@@ -160,19 +215,19 @@ class SimpleUserEvent(UserEvent):
 
     async def edit(
         self,
-        message: typing.Optional[str] = None,
+        message: Optional[str] = None,
         return_raw_response: bool = False,
-        lat: typing.Optional[int] = None,
-        long: typing.Optional[int] = None,
-        attachment: typing.Optional[str] = None,
-        keep_forward_messages: typing.Optional[BaseBoolInt] = None,
-        keep_snippets: typing.Optional[BaseBoolInt] = None,
-        group_id: typing.Optional[int] = None,
-        dont_parse_links: typing.Optional[bool] = None,
-        message_id: typing.Optional[int] = None,
-        conversation_message_id: typing.Optional[int] = None,
-        template: typing.Optional[str] = None,
-        keyboard: typing.Optional[str] = None,
+        lat: Optional[int] = None,
+        long: Optional[int] = None,
+        attachment: Optional[str] = None,
+        keep_forward_messages: Optional[BaseBoolInt] = None,
+        keep_snippets: Optional[BaseBoolInt] = None,
+        group_id: Optional[int] = None,
+        dont_parse_links: Optional[bool] = None,
+        message_id: Optional[int] = None,
+        conversation_message_id: Optional[int] = None,
+        template: Optional[str] = None,
+        keyboard: Optional[str] = None,
     ) -> MessagesEditResponse:
         return await self.api_ctx.messages.edit(
             message=message,
@@ -193,9 +248,9 @@ class SimpleUserEvent(UserEvent):
 
     async def set_activity(
         self,
-        type: typing.Optional[str] = None,
-        user_id: typing.Optional[int] = None,
-        group_id: typing.Optional[int] = None,
+        type: Optional[str] = None,
+        user_id: Optional[int] = None,
+        group_id: Optional[int] = None,
     ) -> MessagesSendResponse:
         """
         type:
@@ -223,7 +278,7 @@ def _check_event_type(event_type: str):
 
 class SimpleAttachment(MessagesMessageAttachment):
     _event: "SimpleBotEvent" = PrivateAttr()
-    _data: typing.Optional[bytes] = PrivateAttr()
+    _data: Optional[bytes] = PrivateAttr()
     _allowed_types: List[MessagesMessageAttachmentType] = PrivateAttr()
     _url_types: Dict[MessagesMessageAttachmentType, Callable] = PrivateAttr()
 
@@ -255,7 +310,7 @@ class SimpleAttachment(MessagesMessageAttachment):
     def url(self) -> str:
         return self._url_types[self.type](self)
 
-    async def download(self) -> typing.Union[typing.NoReturn, bytes]:
+    async def download(self) -> Union[NoReturn, bytes]:
         if self._data is not None:
             return self._data
         if self.type not in self._allowed_types:
@@ -297,13 +352,13 @@ class SimpleBotEvent(BotEvent):
     def __init__(self, event: BotEvent):
         super().__init__(event.object, event.api_ctx)
         self.user_data = event.user_data
-        self._attachments: typing.Optional[Attachments] = None
-        self._payload: typing.Optional[dict] = None
+        self._attachments: Optional[Attachments] = None
+        self._payload: Optional[dict] = None
 
-    def __setitem__(self, key: typing.Any, item: typing.Any) -> None:
+    def __setitem__(self, key: Any, item: Any) -> None:
         self.user_data[key] = item
 
-    def __getitem__(self, key: typing.Any) -> typing.Any:
+    def __getitem__(self, key: Any) -> Any:
         return self.user_data[key]
 
     @property
@@ -338,7 +393,7 @@ class SimpleBotEvent(BotEvent):
         return self.object.object.message.from_id
 
     @property
-    def payload(self) -> typing.Optional[dict]:
+    def payload(self) -> Optional[dict]:
         """Получает payload события
 
         Returns:
@@ -356,11 +411,11 @@ class SimpleBotEvent(BotEvent):
         return self._payload
 
     @property
-    def attachments(self) -> typing.Optional[typing.List[SimpleAttachment]]:
+    def attachments(self) -> Optional[List[SimpleAttachment]]:
         """Получает список вложений
 
         Returns:
-            typing.Optional[typing.List[SimpleAttachment]]: список вложений
+            Optional[List[SimpleAttachment]]: список вложений
         """
         if self.object.object.message.attachments is None:
             return None
@@ -390,36 +445,36 @@ class SimpleBotEvent(BotEvent):
 
     async def edit(
         self,
-        message: typing.Optional[str] = None,
-        lat: typing.Optional[int] = None,
-        long: typing.Optional[int] = None,
-        attachment: typing.Optional[str] = None,
-        keep_forward_messages: typing.Optional[BaseBoolInt] = None,
-        keep_snippets: typing.Optional[BaseBoolInt] = None,
-        group_id: typing.Optional[int] = None,
-        dont_parse_links: typing.Optional[bool] = None,
-        disable_mentions: typing.Optional[bool] = None,
-        message_id: typing.Optional[int] = None,
-        conversation_message_id: typing.Optional[int] = None,
-        template: typing.Optional[str] = None,
-        keyboard: typing.Optional[str] = None,
+        message: Optional[str] = None,
+        lat: Optional[int] = None,
+        long: Optional[int] = None,
+        attachment: Optional[str] = None,
+        keep_forward_messages: Optional[BaseBoolInt] = None,
+        keep_snippets: Optional[BaseBoolInt] = None,
+        group_id: Optional[int] = None,
+        dont_parse_links: Optional[bool] = None,
+        disable_mentions: Optional[bool] = None,
+        message_id: Optional[int] = None,
+        conversation_message_id: Optional[int] = None,
+        template: Optional[str] = None,
+        keyboard: Optional[str] = None,
     ) -> MessagesEditResponse:
         """Шорткат для редактирования своего сообщения.
 
         Args:
-            message (typing.Optional[str]): Текст.
-            lat (typing.Optional[int]): Широта.
-            long (typing.Optional[int]): Долгота.
-            attachment (typing.Optional[str]): Вложения (строка с идентификаторами, разделёнными запятой).
-            keep_forward_messages (typing.Optional[BaseBoolInt]): — сохранить прикрепленные пересланные сообщения.
-            keep_snippets (typing.Optional[BaseBoolInt]): 1 — сохранить прикрепленные внешние ссылки (сниппеты).
-            group_id (typing.Optional[int]): Идентификатор группы.
-            dont_parse_links (typing.Optional[bool]): 1 — не создавать сниппет ссылки из сообщения.
-            disable_mentions (typing.Optional[bool]): 1 — отключить уведомление об упоминании в сообщении.
-            message_id (typing.Optional[int]): Идентификатор сообщения.
-            conversation_message_id (typing.Optional[int]): Идентификатор сообщения в беседе.
-            template (typing.Optional[str]): Шаблон.
-            keyboard (typing.Optional[str]): Клавиатура.
+            message (Optional[str]): Текст.
+            lat (Optional[int]): Широта.
+            long (Optional[int]): Долгота.
+            attachment (Optional[str]): Вложения (строка с идентификаторами, разделёнными запятой).
+            keep_forward_messages (Optional[BaseBoolInt]): — сохранить прикрепленные пересланные сообщения.
+            keep_snippets (Optional[BaseBoolInt]): 1 — сохранить прикрепленные внешние ссылки (сниппеты).
+            group_id (Optional[int]): Идентификатор группы.
+            dont_parse_links (Optional[bool]): 1 — не создавать сниппет ссылки из сообщения.
+            disable_mentions (Optional[bool]): 1 — отключить уведомление об упоминании в сообщении.
+            message_id (Optional[int]): Идентификатор сообщения.
+            conversation_message_id (Optional[int]): Идентификатор сообщения в беседе.
+            template (Optional[str]): Шаблон.
+            keyboard (Optional[str]): Клавиатура.
 
         Returns:
             MessagesEditResponse: Ответ сервера
@@ -444,45 +499,45 @@ class SimpleBotEvent(BotEvent):
 
     async def reply(
         self,
-        message: typing.Optional[str] = None,
-        domain: typing.Optional[str] = None,
-        lat: typing.Optional[int] = None,
-        long: typing.Optional[int] = None,
-        attachment: typing.Optional[str] = None,
-        sticker_id: typing.Optional[int] = None,
-        group_id: typing.Optional[int] = None,
-        keyboard: typing.Optional[str] = None,
-        template: typing.Optional[str] = None,
-        payload: typing.Optional[str] = None,
-        content_source: typing.Optional[str] = None,
-        dont_parse_links: typing.Optional[bool] = None,
-        disable_mentions: typing.Optional[bool] = None,
-        intent: typing.Optional[str] = None,
-        subscribe_id: typing.Optional[int] = None,
-        expire_ttl: typing.Optional[int] = None,
-        silent: typing.Optional[bool] = None,
+        message: Optional[str] = None,
+        domain: Optional[str] = None,
+        lat: Optional[int] = None,
+        long: Optional[int] = None,
+        attachment: Optional[str] = None,
+        sticker_id: Optional[int] = None,
+        group_id: Optional[int] = None,
+        keyboard: Optional[str] = None,
+        template: Optional[str] = None,
+        payload: Optional[str] = None,
+        content_source: Optional[str] = None,
+        dont_parse_links: Optional[bool] = None,
+        disable_mentions: Optional[bool] = None,
+        intent: Optional[str] = None,
+        subscribe_id: Optional[int] = None,
+        expire_ttl: Optional[int] = None,
+        silent: Optional[bool] = None,
         json_serialize: JSONEncoder = json.dumps,
     ) -> MessagesSendResponse:
         """Шорткат для отправки ответа на сообщение пользователю, от которого пришло событие
 
         Args:
-            message (typing.Optional[str]): Текст.
-            domain (typing.Optional[str]): Короткая ссылка пользователя.
-            lat (typing.Optional[int]): Широта.
-            long (typing.Optional[int]): Долгота.
-            attachment (typing.Optional[str]): Вложения (строка с идентификаторами, разделёнными запятой).
-            sticker_id (typing.Optional[int]): Идентификатор прикрепляемого стикера.
-            group_id (typing.Optional[int]): Идентификатор группы.
-            keyboard (typing.Optional[str]): Клавиатура.
-            template (typing.Optional[str]): Шаблон (карусель, например).
-            payload (typing.Optional[str]): Payload.
-            content_source (typing.Optional[str]): Источник [пользовательского контента](https://vk.com/dev/bots_docs_2?f=3.3.+%D0%A1%D0%BE%D0%BE%D0%B1%D1%89%D0%B5%D0%BD%D0%B8%D1%8F+%D1%81+%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D1%81%D0%BA%D0%B8%D0%BC+%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%BD%D1%82%D0%BE%D0%BC).
-            dont_parse_links (typing.Optional[bool]): 1 &mdash; не создавать сниппет ссылки из сообщения.
-            disable_mentions (typing.Optional[bool]): 1 &mdash; отключить создание упоминаний.
-            intent (typing.Optional[str]): Строка, описывающая [интенты](https://vk.com/dev/bots_docs_4?f=7.+%D0%98%D0%BD%D1%82%D0%B5%D0%BD%D1%82%D1%8B).
-            subscribe_id (typing.Optional[int]): число, которое в будущем будет предназначено для работы с интентами.
-            expire_ttl (typing.Optional[int]): ???.
-            silent (typing.Optional[bool]): ???.
+            message (Optional[str]): Текст.
+            domain (Optional[str]): Короткая ссылка пользователя.
+            lat (Optional[int]): Широта.
+            long (Optional[int]): Долгота.
+            attachment (Optional[str]): Вложения (строка с идентификаторами, разделёнными запятой).
+            sticker_id (Optional[int]): Идентификатор прикрепляемого стикера.
+            group_id (Optional[int]): Идентификатор группы.
+            keyboard (Optional[str]): Клавиатура.
+            template (Optional[str]): Шаблон (карусель, например).
+            payload (Optional[str]): Payload.
+            content_source (Optional[str]): Источник [пользовательского контента](https://vk.com/dev/bots_docs_2?f=3.3.+%D0%A1%D0%BE%D0%BE%D0%B1%D1%89%D0%B5%D0%BD%D0%B8%D1%8F+%D1%81+%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D1%81%D0%BA%D0%B8%D0%BC+%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%BD%D1%82%D0%BE%D0%BC).
+            dont_parse_links (Optional[bool]): 1 &mdash; не создавать сниппет ссылки из сообщения.
+            disable_mentions (Optional[bool]): 1 &mdash; отключить создание упоминаний.
+            intent (Optional[str]): Строка, описывающая [интенты](https://vk.com/dev/bots_docs_4?f=7.+%D0%98%D0%BD%D1%82%D0%B5%D0%BD%D1%82%D1%8B).
+            subscribe_id (Optional[int]): число, которое в будущем будет предназначено для работы с интентами.
+            expire_ttl (Optional[int]): ???.
+            silent (Optional[bool]): ???.
             json_serialize (JSONEncoder): сериализация.
 
         Returns:
@@ -520,53 +575,52 @@ class SimpleBotEvent(BotEvent):
 
     async def answer(
         self,
-        message: typing.Optional[str] = None,
-        domain: typing.Optional[str] = None,
-        lat: typing.Optional[int] = None,
-        long: typing.Optional[int] = None,
-        attachment: typing.Optional[str] = None,
-        reply_to: typing.Optional[int] = None,
-        forward_messages: typing.Optional[typing.List[int]] = None,
-        forward: typing.Optional[str] = None,
-        sticker_id: typing.Optional[int] = None,
-        group_id: typing.Optional[int] = None,
-        keyboard: typing.Optional[str] = None,
-        template: typing.Optional[str] = None,
-        payload: typing.Optional[str] = None,
-        content_source: typing.Optional[str] = None,
-        dont_parse_links: typing.Optional[bool] = None,
-        disable_mentions: typing.Optional[bool] = None,
-        intent: typing.Optional[str] = None,
-        subscribe_id: typing.Optional[int] = None,
-        expire_ttl: typing.Optional[int] = None,
-        silent: typing.Optional[bool] = None,
+        message: Optional[str] = None,
+        domain: Optional[str] = None,
+        lat: Optional[int] = None,
+        long: Optional[int] = None,
+        attachment: Optional[str] = None,
+        reply_to: Optional[int] = None,
+        forward_messages: Optional[List[int]] = None,
+        forward: Optional[str] = None,
+        sticker_id: Optional[int] = None,
+        group_id: Optional[int] = None,
+        keyboard: Optional[str] = None,
+        template: Optional[str] = None,
+        payload: Optional[str] = None,
+        content_source: Optional[str] = None,
+        dont_parse_links: Optional[bool] = None,
+        disable_mentions: Optional[bool] = None,
+        intent: Optional[str] = None,
+        subscribe_id: Optional[int] = None,
+        expire_ttl: Optional[int] = None,
+        silent: Optional[bool] = None,
     ) -> MessagesSendResponse:
         """Шорткат для отправки сообщения пользователю, от которого пришло событие.
 
         Args:
-            message (typing.Optional[str]): Текст.
-            domain (typing.Optional[str]): Короткая ссылка пользователя.
-            lat (typing.Optional[int]): Широта.
-            long (typing.Optional[int]): Долгота.
-            attachment (typing.Optional[str]): Вложения (строка с идентификаторами, разделёнными запятой).
-            reply_to (typing.Optional[int]): Идентификатор сообщения, на которое нужно ответить.
-            forward_messages (typing.Optional[typing.List[int]]): Идентификаторы пересылаемых сообщений.
-            forward (typing.Optional[str]): JSON-объект (подробнее в [документации ВК](https://vk.com/dev/messages.send)).
-            sticker_id (typing.Optional[int]): Идентификатор прикрепляемого стикера.
-            group_id (typing.Optional[int]): Идентификатор группы.
-            keyboard (typing.Optional[str]): Клавиатура.
-            template (typing.Optional[str]): Шаблон (карусель, например).
-            payload (typing.Optional[str]): Payload.
-            content_source (typing.Optional[str]): Источник [пользовательского контента](https://vk.com/dev/bots_docs_2?f=3.3.+%D0%A1%D0%BE%D0%BE%D0%B1%D1%89%D0%B5%D0%BD%D0%B8%D1%8F+%D1%81+%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D1%81%D0%BA%D0%B8%D0%BC+%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%BD%D1%82%D0%BE%D0%BC).
-            dont_parse_links (typing.Optional[bool]): 1 &mdash; не создавать сниппет ссылки из сообщения.
-            disable_mentions (typing.Optional[bool]): 1 &mdash; отключить создание упоминаний.
-            intent (typing.Optional[str]): Строка, описывающая [интенты](https://vk.com/dev/bots_docs_4?f=7.+%D0%98%D0%BD%D1%82%D0%B5%D0%BD%D1%82%D1%8B).
-            subscribe_id (typing.Optional[int]): число, которое в будущем будет предназначено для работы с интентами.
-            expire_ttl (typing.Optional[int]): ???.
-            silent (typing.Optional[bool]): ???.
+            message (Optional[str]): Текст.
+            domain (Optional[str]): Короткая ссылка пользователя.
+            lat (Optional[int]): Широта.
+            long (Optional[int]): Долгота.
+            attachment (Optional[str]): Вложения (строка с идентификаторами, разделёнными запятой).
+            reply_to (Optional[int]): Идентификатор сообщения, на которое нужно ответить.
+            forward_messages (Optional[List[int]]): Идентификаторы пересылаемых сообщений.
+            forward (Optional[str]): JSON-объект (подробнее в [документации ВК](https://vk.com/dev/messages.send)).
+            sticker_id (Optional[int]): Идентификатор прикрепляемого стикера.
+            group_id (Optional[int]): Идентификатор группы.
+            keyboard (Optional[str]): Клавиатура.
+            template (Optional[str]): Шаблон (карусель, например).
+            payload (Optional[str]): Payload.
+            content_source (Optional[str]): Источник [пользовательского контента](https://vk.com/dev/bots_docs_2?f=3.3.+%D0%A1%D0%BE%D0%BE%D0%B1%D1%89%D0%B5%D0%BD%D0%B8%D1%8F+%D1%81+%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D1%81%D0%BA%D0%B8%D0%BC+%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%BD%D1%82%D0%BE%D0%BC).
+            dont_parse_links (Optional[bool]): 1 &mdash; не создавать сниппет ссылки из сообщения.
+            disable_mentions (Optional[bool]): 1 &mdash; отключить создание упоминаний.
+            intent (Optional[str]): Строка, описывающая [интенты](https://vk.com/dev/bots_docs_4?f=7.+%D0%98%D0%BD%D1%82%D0%B5%D0%BD%D1%82%D1%8B).
+            subscribe_id (Optional[int]): число, которое в будущем будет предназначено для работы с интентами.
+            expire_ttl (Optional[int]): ???.
+            silent (Optional[bool]): ???.
 
-        Returns:
-            MessagesSendResponse: Ответ сервера
+        :return: Message ID
         """
         _check_event_type(self.object.type)
         return await self.api_ctx.messages.send(
@@ -594,18 +648,76 @@ class SimpleBotEvent(BotEvent):
             content_source=content_source,
         )
 
+    async def long_answer(
+        self,
+        message: Optional[str] = None,
+        domain: Optional[str] = None,
+        lat: Optional[int] = None,
+        long: Optional[int] = None,
+        attachment: Optional[str] = None,
+        reply_to: Optional[int] = None,
+        forward_messages: Optional[List[int]] = None,
+        forward: Optional[str] = None,
+        sticker_id: Optional[int] = None,
+        group_id: Optional[int] = None,
+        keyboard: Optional[str] = None,
+        template: Optional[str] = None,
+        payload: Optional[str] = None,
+        content_source: Optional[str] = None,
+        dont_parse_links: Optional[bool] = None,
+        disable_mentions: Optional[bool] = None,
+        intent: Optional[str] = None,
+        subscribe_id: Optional[int] = None,
+        expire_ttl: Optional[int] = None,
+        silent: Optional[bool] = None,
+    ) -> List[MessagesSendResponse]:
+        """
+        Shortcut for sending messages > 4096 length
+
+        :return: Message IDs
+        """
+
+        _check_event_type(self.object.type)
+
+        message_ids: List[MessagesSendResponse] = []
+        for x in range(0, len(message), 4096):
+            message_id = await self.answer(
+                forward=forward,
+                intent=intent,
+                subscribe_id=subscribe_id,
+                expire_ttl=expire_ttl,
+                silent=silent,
+                domain=domain,
+                lat=lat,
+                long=long,
+                attachment=attachment,
+                reply_to=reply_to,
+                forward_messages=forward_messages,
+                sticker_id=sticker_id,
+                group_id=group_id,
+                keyboard=keyboard,
+                payload=payload,
+                dont_parse_links=dont_parse_links,
+                disable_mentions=disable_mentions,
+                message=message[x:x+4096],
+                template=template,
+                content_source=content_source,
+            )
+            message_ids.append(message_id)
+        return message_ids
+
     async def set_activity(
         self,
-        type: typing.Optional[str] = None,
-        user_id: typing.Optional[int] = None,
-        group_id: typing.Optional[int] = None,
+        type: Optional[str] = None,
+        user_id: Optional[int] = None,
+        group_id: Optional[int] = None,
     ) -> MessagesSendResponse:
         """Изменение статуса активности
 
         Args:
-            type (typing.Optional[str], optional): Тип активности. (`typing` — пользователь начал набирать текст, `audiomessage` — пользователь записывает голосовое сообщение)
-            user_id (typing.Optional[int], optional): Идентификатор пользователя-получателя.
-            group_id (typing.Optional[int], optional): Идентификатор группы.
+            type (Optional[str], optional): Тип активности. (`typing` — пользователь начал набирать текст, `audiomessage` — пользователь записывает голосовое сообщение)
+            user_id (Optional[int], optional): Идентификатор пользователя-получателя.
+            group_id (Optional[int], optional): Идентификатор группы.
 
         Returns:
             MessagesSendResponse: Результат запроса.
@@ -622,7 +734,7 @@ class SimpleBotEvent(BotEvent):
         """Ответ на нажатие callback кнопки.
 
         Args:
-            event_data (typing.Dict[str, str]): [описание данных](https://vk.com/dev/bots_docs_5?f=4.4.%2BCallback-%D0%BA%D0%BD%D0%BE%D0%BF%D0%BA%D0%B8) для ответа на callback
+            event_data (Dict[str, str]): [описание данных](https://vk.com/dev/bots_docs_5?f=4.4.%2BCallback-%D0%BA%D0%BD%D0%BE%D0%BF%D0%BA%D0%B8) для ответа на callback
 
         Raises:
             RuntimeError: Если вызван, когда событие не MessageEvent типа.
@@ -645,77 +757,79 @@ class SimpleBotCallback(BaseCallback):
         self,
         func: Any,
         bot_type: BotType,
+        event_type: Type[Union[SimpleUserEvent, SimpleBotEvent]]
     ):
         self.bot_type = bot_type
         self.func = callback_caster.cast(func)
+        self.event_type = event_type
 
-    async def execute(self, event: typing.Union[UserEvent, BotEvent]) -> typing.Any:
+    async def execute(self, event: Union[UserEvent, BotEvent]) -> Any:
         if self.bot_type is BotType.BOT:
-            new_event = SimpleBotEvent(event)
+            new_event = self.event_type(event)
         else:
-            new_event = SimpleUserEvent(event)
+            new_event = self.event_type(event)
         return await self.func.execute(new_event)
 
     def __repr__(self):
         return f"<SimpleBotCallback {self.func.__name__} bot_type={self.bot_type}>"
 
 
-def simple_bot_handler(router, *filters: BaseFilter):
+def simple_bot_handler(router, event: Optional[Type[SimpleBotEvent]] = None, *filters: BaseFilter):
     """
     Handler for all bot events
     """
 
-    def decorator(func: typing.Callable[..., typing.Any]):
+    def decorator(func: Callable[..., Any]):
         record = router.registrar.new()
         record.with_filters(*filters)
-        record.handle(SimpleBotCallback(func, BotType.BOT))
+        record.handle(SimpleBotCallback(func, BotType.BOT, event or SimpleBotEvent))
         router.registrar.register(record.ready())
         return func
 
     return decorator
 
 
-def simple_user_handler(router, *filters: BaseFilter):
+def simple_user_handler(router, *filters: BaseFilter, event: Optional[Type[SimpleUserEvent]] = None):
     """
     Handler for all user events
     """
 
-    def decorator(func: typing.Callable[..., typing.Any]):
+    def decorator(func: Callable[..., Any]):
         record = router.registrar.new()
         record.with_filters(*filters)
-        record.handle(SimpleBotCallback(func, BotType.USER))
+        record.handle(SimpleBotCallback(func, BotType.USER, event or SimpleUserEvent))
         router.registrar.register(record.ready())
         return func
 
     return decorator
 
 
-def simple_bot_message_handler(router, *filters: BaseFilter):
+def simple_bot_message_handler(router, *filters: BaseFilter, event: Optional[Type[SimpleBotEvent]] = None):
     """
     Handler only for message events
     """
 
-    def decorator(func: typing.Callable[..., typing.Any]):
+    def decorator(func: Callable[..., Any]):
         record = router.registrar.new()
         record.with_filters(*filters)
         record.filters.append(EventTypeFilter(BotEventType.MESSAGE_NEW))
-        record.handle(SimpleBotCallback(func, BotType.BOT))
+        record.handle(SimpleBotCallback(func, BotType.BOT, event or SimpleBotEvent))
         router.registrar.register(record.ready())
         return func
 
     return decorator
 
 
-def simple_user_message_handler(router, *filters: BaseFilter):
+def simple_user_message_handler(router, *filters: BaseFilter, event: Optional[Type[SimpleUserEvent]] = None):
     """
     Handler only for message events
     """
 
-    def decorator(func: typing.Callable[..., typing.Any]):
+    def decorator(func: Callable[..., Any]):
         record = router.registrar.new()
         record.with_filters(*filters)
         record.filters.append(EventTypeFilter(EventId.MESSAGE_EVENT.value))
-        record.handle(SimpleBotCallback(func, BotType.USER))
+        record.handle(SimpleBotCallback(func, BotType.USER, event or SimpleUserEvent))
         router.registrar.register(record.ready())
         return func
 

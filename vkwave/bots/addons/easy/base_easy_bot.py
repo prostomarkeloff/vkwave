@@ -48,19 +48,19 @@ from vkwave.bots.addons.easy.easy_handlers import (
     SimpleBotEvent,
     SimpleUserEvent,
 )
-from vkwave.bots.core import BaseFilter
 from vkwave.bots.core.dispatching.dp.middleware.middleware import BaseMiddleware, MiddlewareResult
 from vkwave.bots.core.dispatching.filters.builtin import (
     PayloadContainsFilter,
     AttachmentTypeFilter,
 )
+from vkwave.longpoll import BotLongpoll, BotLongpollData, UserLongpoll, UserLongpollData
 from vkwave.bots.core.dispatching.filters.extension_filters import VBMLFilter
 from vkwave.bots.core.dispatching.router.router import BaseRouter
 from vkwave.bots.fsm.filters import StateFilter
-from vkwave.client import AIOHTTPClient
-from vkwave.longpoll import BotLongpoll, BotLongpollData, UserLongpoll, UserLongpollData
 from vkwave.types.bot_events import BotEventType
 from vkwave.types.user_events import EventId
+from vkwave.bots.core import BaseFilter
+from vkwave.client import AIOHTTPClient
 
 
 class _APIContextManager:
@@ -107,6 +107,7 @@ class BaseSimpleLongPollBot:
         group_id: typing.Optional[int] = None,
         client: typing.Optional[AIOHTTPClient] = None,
         uvloop: bool = False,
+        event: typing.Optional[typing.Union[typing.Type[SimpleBotEvent], typing.Type[SimpleUserEvent]]] = None,
     ):
         if uvloop:
             import uvloop
@@ -131,6 +132,8 @@ class BaseSimpleLongPollBot:
             self._token_storage = TokenStorage[GroupId]()
             self.dispatcher = Dispatcher(self.api_session.api, self._token_storage)
             self._lp = BotLongpollExtension(self.dispatcher, self._lp)
+
+        self.event = event or self.SimpleBotEvent
 
         self.middleware_manager = self.dispatcher.middleware_manager  # auf
         self.add_middleware = self.middleware_manager.add_middleware
@@ -176,7 +179,7 @@ class BaseSimpleLongPollBot:
         def decorator(func: typing.Callable[..., typing.Any]):
             record = self.router.registrar.new()
             record.with_filters(*filters)
-            record.handle(SimpleBotCallback(func, self.bot_type))
+            record.handle(SimpleBotCallback(func, self.bot_type, self.event))
             self.router.registrar.register(record.ready())
             return func
 
@@ -194,7 +197,7 @@ class BaseSimpleLongPollBot:
                 record.filters.append(EventTypeFilter(BotEventType.MESSAGE_NEW))
             else:
                 record.filters.append(EventTypeFilter(EventId.MESSAGE_EVENT.value))
-            record.handle(SimpleBotCallback(func, self.bot_type))
+            record.handle(SimpleBotCallback(func, self.bot_type, self.event))
             self.router.registrar.register(record.ready())
             return func
 
