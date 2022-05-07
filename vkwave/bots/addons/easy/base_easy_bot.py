@@ -118,7 +118,7 @@ class BaseSimpleLongPollBot:
         self.group_id = group_id
         self.bot_type = bot_type
         self.client = client or AIOHTTPClient()
-        self.api_session = create_api_session_aiohttp(tokens, bot_type, client)
+        self.api_session = create_api_session_aiohttp(tokens, bot_type, self.client)
         self.api_context: APIOptionsRequestContext = self.api_session.api.get_context()
         if self.bot_type is BotType.USER:
             self.SimpleBotEvent = SimpleUserEvent
