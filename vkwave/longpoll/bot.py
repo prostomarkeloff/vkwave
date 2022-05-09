@@ -31,10 +31,8 @@ class BotLongpollData:
         code = data["failed"]
         if code == 1:
             self.ts = data["ts"]
-            return await self.get_updates(client, api)
         if code in (2, 3):
             await self.update_data(api)
-            return await self.get_updates(client, api)
         return await self.get_updates(client, api)
 
     async def get_updates(
