@@ -13,3 +13,4 @@ from .uploaders import (
     VoiceUploader,
     WallPhotoUploader,
 )
+from .auth import Auth, ClientID, ClientHash

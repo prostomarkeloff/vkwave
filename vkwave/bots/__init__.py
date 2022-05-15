@@ -60,6 +60,9 @@ from .utils import (
     CallbackAnswer,
     CallbackEventDataType,
     WallPhotoUploader,
+    Auth,
+    ClientHash,
+    ClientID
 )
 from .core.dispatching.filters.extension_filters import VBMLFilter
 from .addons.low_level_dispatching import LowLevelBot
