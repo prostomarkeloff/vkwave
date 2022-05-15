@@ -46,6 +46,3 @@ clones.run_all_bots(last_handler=any_)
 # task_manager = TaskManager()
 # task_manager.add_task(bot.run)
 # task_manager.run()
-© 2022 GitHub, Inc.
-Terms
-Privacy
