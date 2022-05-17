@@ -2,11 +2,10 @@ from typing import Union, Dict, Optional
 
 from vkwave.bots.utils.auth.types import OAuthResponse
 from vkwave.bots.utils.auth.errors import AuthError
-from vkwave.bots.utils.auth import BaseAuth
 from vkwave.http import AIOHTTPClient
 
 
-class Auth(BaseAuth):
+class Auth:
     auth_url: str = 'https://oauth.vk.com/token'
     data: Dict[str, Union[int, str]] = {
         'grant_type': 'password'
