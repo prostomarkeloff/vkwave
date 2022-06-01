@@ -31,7 +31,7 @@ from .fave import Fave
 from .friends import Friends
 from .gifts import Gifts
 from .groups import Groups
-from .leads import Leads
+from .lead_forms import LeadForms
 from .likes import Likes
 from .market import Market
 from .messages import Messages
@@ -117,7 +117,7 @@ class APIOptionsRequestContext:
         self.friends = Friends("friends", self)
         self.gifts = Gifts("gifts", self)
         self.groups = Groups("groups", self)
-        self.leads = Leads("leads", self)
+        self.lead_forms = LeadForms("leadForms", self)
         self.likes = Likes("likes", self)
         self.market = Market("market", self)
         self.money = Money("money", self)
