@@ -104,7 +104,7 @@ class Stories(Category):
         return_raw_response: bool = False,
         extended: typing.Optional[BaseBoolInt] = None,
         fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
-    ) -> typing.Union[dict, StoriesGetByIdResponse, StoriesGetByIdExtendedResponse]:
+    ) -> typing.Union[dict, StoriesGetByIdExtendedResponse]:
         """
         :param stories: - Stories IDs separated by commas. Use format {owner_id}+'_'+{story_id}, for example, 12345_54331.
         :param extended: - '1' — to return additional fields for users and communities. Default value is 0.
@@ -119,11 +119,7 @@ class Stories(Category):
         if return_raw_response:
             return raw_result
 
-        result = (
-            StoriesGetByIdResponse(**raw_result)
-            if not extended
-            else StoriesGetByIdExtendedResponse(**raw_result)
-        )
+        result = StoriesGetByIdExtendedResponse(**raw_result)
         return result
 
     async def get_photo_upload_server(

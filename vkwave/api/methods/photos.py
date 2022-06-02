@@ -293,7 +293,7 @@ class Photos(Category):
         photo_sizes: typing.Optional[BaseBoolInt] = None,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
-    ) -> typing.Union[dict, PhotosGetResponse, PhotosGetExtendedResponse]:
+    ) -> typing.Union[dict, PhotosGetResponse]:
         """
         :param owner_id: - ID of the user or community that owns the photos. Use a negative value to designate a community ID.
         :param album_id: - Photo album ID. To return information about photos from service albums, use the following string values: 'profile, wall, saved'.
@@ -315,11 +315,7 @@ class Photos(Category):
         if return_raw_response:
             return raw_result
 
-        result = (
-            PhotosGetResponse(**raw_result)
-            if not extended
-            else PhotosGetExtendedResponse(**raw_result)
-        )
+        result = PhotosGetResponse(**raw_result)
         return result
 
     async def get_albums(
@@ -448,7 +444,7 @@ class Photos(Category):
         return_raw_response: bool = False,
         extended: typing.Optional[BaseBoolInt] = None,
         photo_sizes: typing.Optional[BaseBoolInt] = None,
-    ) -> typing.Union[dict, PhotosGetByIdResponse, PhotosGetByIdExtendedResponse]:
+    ) -> typing.Union[dict, PhotosGetByIdResponse]:
         """
         :param photos: - IDs separated with a comma, that are IDs of users who posted photos and IDs of photos themselves with an underscore character between such IDs. To get information about a photo in the group album, you shall specify group ID instead of user ID. Example: "1_129207899,6492_135055734, , -20629724_271945303"
         :param extended: - '1' — to return additional fields, '0' — (default)
@@ -463,11 +459,7 @@ class Photos(Category):
         if return_raw_response:
             return raw_result
 
-        result = (
-            PhotosGetByIdResponse(**raw_result)
-            if not extended
-            else PhotosGetByIdExtendedResponse(**raw_result)
-        )
+        result = PhotosGetByIdResponse(**raw_result)
         return result
 
     async def get_chat_upload_server(
@@ -730,7 +722,7 @@ class Photos(Category):
         count: typing.Optional[int] = None,
         extended: typing.Optional[BaseBoolInt] = None,
         sort: typing.Optional[str] = None,
-    ) -> typing.Union[dict, PhotosGetUserPhotosResponse, PhotosGetUserPhotosExtendedResponse]:
+    ) -> typing.Union[dict, PhotosGetUserPhotosResponse]:
         """
         :param user_id: - User ID.
         :param offset: - Offset needed to return a specific subset of photos. By default, '0'.
@@ -747,11 +739,7 @@ class Photos(Category):
         if return_raw_response:
             return raw_result
 
-        result = (
-            PhotosGetUserPhotosResponse(**raw_result)
-            if not extended
-            else PhotosGetUserPhotosExtendedResponse(**raw_result)
-        )
+        result = PhotosGetUserPhotosResponse(**raw_result)
         return result
 
     async def get_wall_upload_server(

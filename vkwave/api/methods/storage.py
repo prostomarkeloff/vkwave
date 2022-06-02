@@ -10,7 +10,7 @@ class Storage(Category):
         key: typing.Optional[str] = None,
         keys: typing.Optional[typing.List[str]] = None,
         user_id: typing.Optional[int] = None,
-    ) -> typing.Union[dict, StorageGetV5110Response]:
+    ) -> typing.Union[dict, StorageGetResponse]:
         """
         :param key:
         :param keys:
@@ -25,7 +25,7 @@ class Storage(Category):
         if return_raw_response:
             return raw_result
 
-        result = StorageGetV5110Response(**raw_result)
+        result = StorageGetResponse(**raw_result)
         return result
 
     async def get_keys(

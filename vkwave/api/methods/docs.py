@@ -165,7 +165,7 @@ class Docs(Category):
 
     async def get_upload_server(
         self, return_raw_response: bool = False, group_id: typing.Optional[int] = None,
-    ) -> typing.Union[dict, DocsGetUploadServer]:
+    ) -> typing.Union[dict, DocsGetUploadServerResponse]:
         """
         :param group_id: - Community ID (if the document will be uploaded to the community).
         :param return_raw_response: - return result at dict
@@ -178,7 +178,7 @@ class Docs(Category):
         if return_raw_response:
             return raw_result
 
-        result = DocsGetUploadServer(**raw_result)
+        result = DocsGetUploadServerResponse(**raw_result)
         return result
 
     async def get_wall_upload_server(

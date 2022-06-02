@@ -71,7 +71,7 @@ class Newsfeed(Category):
     async def get(
         self,
         return_raw_response: bool = False,
-        filters: typing.Optional[typing.List[NewsfeedFilters]] = None,
+        filters: typing.Optional[typing.List[str]] = None,
         return_banned: typing.Optional[BaseBoolInt] = None,
         start_time: typing.Optional[int] = None,
         end_time: typing.Optional[int] = None,
@@ -81,7 +81,7 @@ class Newsfeed(Category):
         count: typing.Optional[int] = None,
         fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
         section: typing.Optional[str] = None,
-    ) -> typing.Union[dict, NewsfeedGetResponse]:
+    ) -> typing.Union[dict, NewsfeedGenericResponse]:
         """
         :param filters: - Filters to apply: 'post' — new wall posts, 'photo' — new photos, 'photo_tag' — new photo tags, 'wall_photo' — new wall photos, 'friend' — new friends
         :param return_banned: - '1' — to return news items from banned sources
@@ -103,7 +103,7 @@ class Newsfeed(Category):
         if return_raw_response:
             return raw_result
 
-        result = NewsfeedGetResponse(**raw_result)
+        result = NewsfeedGenericResponse(**raw_result)
         return result
 
     async def get_banned(
@@ -231,7 +231,7 @@ class Newsfeed(Category):
         start_from: typing.Optional[str] = None,
         count: typing.Optional[int] = None,
         fields: typing.Optional[typing.List[BaseUserGroupFields]] = None,
-    ) -> typing.Union[dict, NewsfeedGetRecommendedResponse]:
+    ) -> typing.Union[dict, NewsfeedGenericResponse]:
         """
         :param start_time: - Earliest timestamp (in Unix time) of a news item to return. By default, 24 hours ago.
         :param end_time: - Latest timestamp (in Unix time) of a news item to return. By default, the current time.
@@ -249,7 +249,7 @@ class Newsfeed(Category):
         if return_raw_response:
             return raw_result
 
-        result = NewsfeedGetRecommendedResponse(**raw_result)
+        result = NewsfeedGenericResponse(**raw_result)
         return result
 
     async def get_suggested_sources(

@@ -277,7 +277,7 @@ class Video(Category):
         count: typing.Optional[int] = None,
         offset: typing.Optional[int] = None,
         extended: typing.Optional[BaseBoolInt] = None,
-    ) -> typing.Union[dict, VideoGetResponse, VideoGetExtendedResponse]:
+    ) -> typing.Union[dict, VideoGetResponse]:
         """
         :param owner_id: - ID of the user or community that owns the video(s).
         :param videos: - Video IDs, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", Use a negative value to designate a community ID. Example: "-4363_136089719,13245770_137352259"
@@ -295,11 +295,7 @@ class Video(Category):
         if return_raw_response:
             return raw_result
 
-        result = (
-            VideoGetResponse(**raw_result)
-            if not extended
-            else VideoGetExtendedResponse(**raw_result)
-        )
+        result = VideoGetResponse(**raw_result)
         return result
 
     async def get_album_by_id(
