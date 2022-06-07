@@ -7,6 +7,7 @@ from pydantic import PrivateAttr
 
 from vkwave.bots import BotEvent, BotType, EventTypeFilter, UserEvent
 from vkwave.bots.core import BaseFilter
+from vkwave.bots.core.dispatching.router.router import BaseRouter
 from vkwave.bots.core.dispatching.filters.builtin import get_payload, get_text
 from vkwave.bots.core.dispatching.handler.callback import BaseCallback
 from vkwave.bots.core.dispatching.handler.cast import caster as callback_caster
@@ -774,7 +775,7 @@ class SimpleBotCallback(BaseCallback):
         return f"<SimpleBotCallback {self.func.__name__} bot_type={self.bot_type}>"
 
 
-def simple_bot_handler(router, event: Optional[Type[SimpleBotEvent]] = None, *filters: BaseFilter):
+def simple_bot_handler(router: BaseRouter, event: Optional[Type[SimpleBotEvent]] = None, *filters: BaseFilter):
     """
     Handler for all bot events
     """
@@ -789,7 +790,7 @@ def simple_bot_handler(router, event: Optional[Type[SimpleBotEvent]] = None, *fi
     return decorator
 
 
-def simple_user_handler(router, *filters: BaseFilter, event: Optional[Type[SimpleUserEvent]] = None):
+def simple_user_handler(router: BaseRouter, *filters: BaseFilter, event: Optional[Type[SimpleUserEvent]] = None):
     """
     Handler for all user events
     """
@@ -804,7 +805,7 @@ def simple_user_handler(router, *filters: BaseFilter, event: Optional[Type[Simpl
     return decorator
 
 
-def simple_bot_message_handler(router, *filters: BaseFilter, event: Optional[Type[SimpleBotEvent]] = None):
+def simple_bot_message_handler(router: BaseRouter, *filters: BaseFilter, event: Optional[Type[SimpleBotEvent]] = None):
     """
     Handler only for message events
     """
@@ -820,7 +821,7 @@ def simple_bot_message_handler(router, *filters: BaseFilter, event: Optional[Typ
     return decorator
 
 
-def simple_user_message_handler(router, *filters: BaseFilter, event: Optional[Type[SimpleUserEvent]] = None):
+def simple_user_message_handler(router: BaseRouter, *filters: BaseFilter, event: Optional[Type[SimpleUserEvent]] = None):
     """
     Handler only for message events
     """
