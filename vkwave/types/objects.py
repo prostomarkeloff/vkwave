@@ -379,7 +379,31 @@ AccountSubscriptions = typing.List[int]
 
 
 class UsersUserMin(BaseModel):
-    pass
+    can_access_closed: typing.Optional[bool] = None
+    deactivated: typing.Optional[str] = Field(
+        None,
+        description='Returns if a profile is deleted or blocked'
+    )
+    first_name: typing.Optional[str] = Field(
+        None,
+        description='User first name'
+    )
+    hidden: typing.Optional[int] = Field(
+        None,
+        description='Returns if a profile is hidden.'
+    )
+    id: int = Field(
+        None,
+        description='User ID'
+    )
+    is_closed: typing.Optional[bool] = Field(
+        None,
+        description=''
+    )
+    last_name: typing.Optional[str] = Field(
+        None,
+        description='User last name'
+    )
 
 
 class UsersUserSettingsXtr(BaseModel):
@@ -9339,7 +9363,190 @@ class LiveStreamStatus(enum.Enum):
 
 
 class VideoVideo(BaseModel):
-    pass
+    access_key: typing.Optional[str] = Field(
+        None,
+        description="Video access key"
+    )
+    added: typing.Optional["BaseBoolInt"] = Field(
+        None,
+        description="1 if video is added to user's albums"
+    )
+    adding_date: typing.Optional[int] = Field(
+        None,
+        description="Date when the video has been added in Unixtime"
+    )
+    balance: typing.Optional[int] = Field(
+        None,
+        description="Live donations balance"
+    )
+    can_add: typing.Optional["BaseBoolInt"] = Field(
+        None,
+        description="Information whether current user can add the video"
+    )
+    can_add_to_faves: typing.Optional["BaseBoolInt"] = Field(
+        None,
+        description="Information whether current user can add the video to favourites"
+    )
+    can_attach_link: typing.Optional["BaseBoolInt"] = Field(
+        None,
+        description="Information whether current user can attach action button to the video"
+    )
+    can_comment: typing.Optional["BaseBoolInt"] = Field(
+        None,
+        description="Information whether current user can comment the video"
+    )
+    can_edit: typing.Optional["BaseBoolInt"] = Field(
+        None,
+        description="Information whether current user can edit the video"
+    )
+    can_like: typing.Optional["BaseBoolInt"] = Field(
+        None,
+        description="Information whether current user can like the video"
+    )
+    can_repost: typing.Optional["BaseBoolInt"] = Field(
+        None,
+        description="Information whether current user can repost the video"
+    )
+    can_subscribe: typing.Optional["BaseBoolInt"] = Field(
+        None,
+        description="Information whether current user can subscribe to author of the video"
+    )
+    comments: typing.Optional[int] = Field(
+        None,
+        description="Number of comments"
+    )
+    content_restricted: typing.Optional[int] = Field(
+        None,
+        description="Restriction code"
+    )
+    content_restricted_message: typing.Optional[str] = Field(
+        None,
+        description="Restriction text"
+    )
+    converting: typing.Optional["BaseBoolInt"] = Field(
+        None,
+        description="1 if  video is being converted"
+    )
+    date: typing.Optional[int] = Field(
+        None,
+        description="Date when video has been uploaded in Unixtime"
+    )
+    description: typing.Optional[str] = Field(
+        None,
+        description="Video description"
+    )
+    duration: typing.Optional[int] = Field(
+        None,
+        description="Video duration in seconds"
+    )
+    first_frame: typing.Optional[typing.List["VideoVideoImage"]] = Field(
+        None,
+        description=""
+    )
+    height: typing.Optional[int] = Field(
+        None,
+        description="Video height"
+    )
+    id: typing.Optional[int] = Field(
+        None,
+        description="Video ID"
+    )
+    image: typing.Optional[typing.List["VideoVideoImage"]] = Field(
+        None,
+        description=""
+    )
+    is_favorite: typing.Optional[bool] = Field(
+        None,
+        description="Whether video is added to bookmarks"
+    )
+    is_private: typing.Optional["BaseBoolInt"] = Field(
+        None,
+        description="1 if video is private"
+    )
+    is_subscribed: typing.Optional["BaseBoolInt"] = Field(
+        None,
+        description="1 if user is subscribed to author of the video"
+    )
+    likes: typing.Optional["BaseLikes"] = Field(
+        None,
+        description=""
+    )
+    live: typing.Optional["BasePropertyExists"] = Field(
+        None,
+        description="1 if the video is a live stream"
+    )
+    live_notify: typing.Optional["BaseBoolInt"] = Field(
+        None,
+        description="Whether current user is subscribed to the upcoming live stream notification (if not subscribed to the author)"
+    )
+    live_start_time: typing.Optional[int] = Field(
+        None,
+        description="Date in Unixtime when the live stream is scheduled to start by the author"
+    )
+    live_status: typing.Optional["LiveStreamStatus"] = Field(
+        None,
+        description="Live stream status"
+    )
+    local_views: typing.Optional[int] = Field(
+        None,
+        description="If video is external, number of views on vk"
+    )
+    owner_id: typing.Optional[int] = Field(
+        None,
+        description="Video owner ID"
+    )
+    platform: typing.Optional[str] = Field(
+        None,
+        description="External platform"
+    )
+    player: typing.Optional[str] = Field(
+        None,
+        description="Video embed URL"
+    )
+    processing: typing.Optional["BasePropertyExists"] = Field(
+        None,
+        description="Returns if the video is processing"
+    )
+    repeat: typing.Optional["BasePropertyExists"] = Field(
+        None,
+        description="Information whether the video is repeated"
+    )
+    reposts: typing.Optional["BaseRepostsInfo"] = Field(
+        None,
+        description=""
+    )
+    spectators: typing.Optional[int] = Field(
+        None,
+        description="Number of spectators of the stream"
+    )
+    title: typing.Optional[str] = Field(
+        None,
+        description="Video title"
+    )
+    track_code: typing.Optional[str] = Field(
+        None,
+        description=""
+    )
+    type: typing.Optional["VideoVideoType"] = Field(
+        None,
+        description=""
+    )
+    upcoming: typing.Optional["BasePropertyExists"] = Field(
+        None,
+        description="1 if the video is an upcoming stream"
+    )
+    user_id: typing.Optional[int] = Field(
+        None,
+        description="ID of the user who uploaded the video if it was uploaded to a group by member"
+    )
+    views: typing.Optional[int] = Field(
+        None,
+        description="Number of views"
+    )
+    width: typing.Optional[int] = Field(
+        None,
+        description="Video width"
+    )
 
 
 class NotificationsNotificationsComment(BaseModel):
