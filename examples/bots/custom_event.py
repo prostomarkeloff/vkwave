@@ -8,6 +8,7 @@ class MyEvent(SimpleBotEvent):
 
 bot = SimpleLongPollBot(
     tokens="",
+    group_id=123,
     event=MyEvent
 )
 
