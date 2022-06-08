@@ -44,7 +44,7 @@ class AIOHTTPClient(AbstractHTTPClient):
         self.loop = loop or get_event_loop()
         self.session = session or ClientSession(
             loop=self.loop,
-            connector=aiohttp.TCPConnector(verify_ssl=verify_ssl),
+            connector=aiohttp.TCPConnector(ssl=verify_ssl),
             trust_env=trust_env,
         )
 
