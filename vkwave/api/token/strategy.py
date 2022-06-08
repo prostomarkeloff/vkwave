@@ -8,8 +8,7 @@ from vkwave.api.token.token import (
     AnyABCToken,
     GetTokenType,
     Token,
-    TokenType,
-    BotSyncSingleToken,
+    TokenType
 )
 
 
