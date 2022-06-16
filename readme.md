@@ -31,7 +31,7 @@ VKWave вдохновлен многими библиотеками, в част
 pip install https://github.com/fscdev/vkwave/archive/master.zip
 ```
 
-Или с PyPI (не рекомендуется, давно не обновлялась):
+Или с PyPI (более надежная):
 
 ```
 pip install vkwave
