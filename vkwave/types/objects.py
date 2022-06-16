@@ -1,6 +1,7 @@
 import enum
 import inspect
 import typing
+
 from pydantic import BaseModel, Field
 
 
@@ -9352,6 +9353,8 @@ class VideoVideoType(enum.Enum):
     VIDEO = "video"
     MUSIC_VIDEO = "music_video"
     MOVIE = "movie"
+    LIVE = "live"
+    SHORT_VIDEO = "SHORT_VIDEO"
 
 
 class LiveStreamStatus(enum.Enum):
