@@ -9354,7 +9354,7 @@ class VideoVideoType(enum.Enum):
     MUSIC_VIDEO = "music_video"
     MOVIE = "movie"
     LIVE = "live"
-    SHORT_VIDEO = "SHORT_VIDEO"
+    SHORT_VIDEO = "short_video"
 
 
 class LiveStreamStatus(enum.Enum):
