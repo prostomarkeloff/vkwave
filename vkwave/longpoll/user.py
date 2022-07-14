@@ -4,7 +4,7 @@ from vkwave.api.methods import APIOptionsRequestContext
 from vkwave.http import AbstractHTTPClient
 from vkwave.types.objects import GroupsLongPollServer
 
-Update = NewType("Update", dict)
+Update = NewType("Update", list)
 
 
 class UserLongpollData:
