@@ -775,7 +775,7 @@ class SimpleBotCallback(BaseCallback):
         return f"<SimpleBotCallback {self.func.__name__} bot_type={self.bot_type}>"
 
 
-def simple_bot_handler(router: BaseRouter, event: Optional[Type[SimpleBotEvent]] = None, *filters: BaseFilter):
+def simple_bot_handler(router: BaseRouter, *filters: BaseFilter, event: Optional[Type[SimpleBotEvent]] = None):
     """
     Handler for all bot events
     """
