@@ -701,6 +701,10 @@ class FaveGetPagesResponse(pydantic.BaseModel):
     response: "FaveGetPagesResponseModel" = pydantic.Field(..., description="")
 
 
+class FaveGetPostsResponse(pydantic.BaseModel):
+    response: "FaveGetPostsResponseModel" = pydantic.Field(..., description="")
+
+
 class FaveGetTagsResponse(pydantic.BaseModel):
     response: "FaveGetTagsResponseModel" = pydantic.Field(..., description="")
 
@@ -716,6 +720,11 @@ class FaveGetResponse(pydantic.BaseModel):
 class FaveGetPagesResponseModel(pydantic.BaseModel):
     count: typing.Optional[int]
     items: typing.Optional[typing.List["FavePage"]]
+
+
+class FaveGetPostsResponseModel(pydantic.BaseModel):
+    count: typing.Optional[int]
+    items: typing.Optional[typing.List["WallWallpostFull"]]
 
 
 class FaveGetTagsResponseModel(pydantic.BaseModel):
