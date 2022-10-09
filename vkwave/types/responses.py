@@ -733,7 +733,7 @@ class FaveGetPostsResponseModel(pydantic.BaseModel):
 
 class FaveGetVideosResponseModel(pydantic.BaseModel):
     count: typing.Optional[int]
-    items: typing.Optional[typing.List["VideoVideoFull"]
+    items: typing.Optional[typing.List["VideoVideoFull"]]
 
 
 class FaveGetTagsResponseModel(pydantic.BaseModel):

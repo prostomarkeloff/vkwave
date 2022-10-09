@@ -252,15 +252,13 @@ class Fave(Category):
         extended: typing.Optional[BaseBoolInt] = None,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
-      
-    ) -> typing.Union[dict, FaveGetPagesResponse]:
+    ) -> typing.Union[dict, FaveGetPostsResponse]:
         """
         This is a deprecated method, it may be removed in the future
 
         :param offset:
         :param extended: - '1' — to return additional 'wall', 'profiles', and 'groups' fields. By default: '0'.
         :param count:
-        :param type:
         :param return_raw_response: - return result at dict
         :return:
         """
@@ -280,15 +278,13 @@ class Fave(Category):
         extended: typing.Optional[BaseBoolInt] = None,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
-      
-    ) -> typing.Union[dict, FaveGetPagesResponse]:
+    ) -> typing.Union[dict, FaveGetVideosResponse]:
         """
         This is a deprecated method, it may be removed in the future
 
         :param offset:
-        :param extended: - '1' — to return additional 'wall', 'profiles', and 'groups' fields. By default: '0'.
+        :param extended: - '1' — to return additional 'profiles', and 'groups' fields. By default: '0'.
         :param count:
-        :param type:
         :param return_raw_response: - return result at dict
         :return:
         """
