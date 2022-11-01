@@ -24,7 +24,7 @@ class StateFilter(BaseFilter):
         from_id, peer_id = get_peer_from_ids(event)
         is_pm = from_id == peer_id
 
-        if self.for_what is ForWhat.FOR_USER != is_pm:
+        if (self.for_what is ForWhat.FOR_USER) != is_pm:
             return FilterResult(False)
 
         if self.state == ANY_STATE:
