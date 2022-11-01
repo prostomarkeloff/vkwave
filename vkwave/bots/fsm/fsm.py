@@ -37,19 +37,11 @@ def create_state_id(event: BaseEvent, for_what: ForWhat = ForWhat.FOR_USER_IN_CH
     template = "__vkwave_{for_what}_{peer_id}_{from_id}__"
     from_id, peer_id = get_peer_from_ids(event)
 
-    is_pm = from_id == peer_id
-    is_chat = not is_pm
     if for_what is ForWhat.FOR_CHAT:
-        if not is_chat:
-            raise ValueError("it's not a chat")
         res = template.format(for_what="chat", peer_id=peer_id, from_id=peer_id)
     elif for_what is ForWhat.FOR_USER:
-        if not is_pm:
-            raise ValueError("it's not a pm")
         res = template.format(for_what="user", peer_id=from_id, from_id=from_id)
     else:
-        if not is_chat:
-            raise ValueError("it's not a chat")
         res = template.format(for_what="userInChat", peer_id=peer_id, from_id=from_id)
 
     return StateId(res)
