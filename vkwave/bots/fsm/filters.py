@@ -21,6 +21,12 @@ class StateFilter(BaseFilter):
         self.for_what = for_what
 
     async def check(self, event: BaseEvent) -> FilterResult:
+        from_id, peer_id = get_peer_from_ids(event)
+        is_pm = from_id == peer_id
+
+        if self.for_what is ForWhat.FOR_USER != is_pm:
+            return FilterResult(False)
+
         if self.state == ANY_STATE:
             return FilterResult(True)
         elif self.state == NO_STATE:
@@ -28,9 +34,7 @@ class StateFilter(BaseFilter):
             return FilterResult(fsm_data is None)
 
         if self.always_false:
-            from_id, peer_id = get_peer_from_ids(event)
             template = "__vkwave_{for_what}_{peer_id}_{from_id}__"
-            is_pm = from_id == peer_id
 
             user_in_chat_state = template.format(
                 for_what="userInChat", peer_id=peer_id, from_id=from_id
