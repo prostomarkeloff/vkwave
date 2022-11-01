@@ -1,5 +1,5 @@
-from vkwave.types.objects import *
 from vkwave.types.extension_objects import *
+from vkwave.types.objects import *
 
 
 class MessagesSendPeerIdsResponse(pydantic.BaseModel):

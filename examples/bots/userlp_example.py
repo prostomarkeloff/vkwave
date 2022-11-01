@@ -1,20 +1,20 @@
-import logging
 import asyncio
+import logging
 
+from vkwave.api import API, BotSyncSingleToken, Token
 from vkwave.bots import (
-    UserEvent,
-    UserTokenStorage,
-    Dispatcher,
-    UserLongpollExtension,
     DefaultRouter,
+    Dispatcher,
     EventTypeFilter,
     FromMeFilter,
     TextFilter,
+    UserEvent,
     UserId,
+    UserLongpollExtension,
+    UserTokenStorage,
 )
 from vkwave.client import AIOHTTPClient
-from vkwave.api import API, BotSyncSingleToken, Token
-from vkwave.longpoll import UserLongpollData, UserLongpoll
+from vkwave.longpoll import UserLongpoll, UserLongpollData
 from vkwave.types.user_events import EventId
 
 logging.basicConfig(level=logging.DEBUG)

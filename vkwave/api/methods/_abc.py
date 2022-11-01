@@ -3,29 +3,25 @@ import random
 from contextlib import asynccontextmanager
 from typing import AsyncGenerator, List, Optional, Tuple, Union, cast
 
-from vkwave.api.methods._error import (
-    Error,
-    ErrorDispatcher,
-    UnsuccessAPIRequestException,
-)
+from vkwave import __api_version__
+from vkwave.api.methods._error import Error, ErrorDispatcher, UnsuccessAPIRequestException
 from vkwave.api.token.strategy import ABCGetTokenStrategy, RandomGetTokenStrategy
 from vkwave.api.token.token import AnyABCToken, Token
+from vkwave.client import AIOHTTPClient
 from vkwave.client.abstract import AbstractAPIClient
 from vkwave.client.context import ResultState
 from vkwave.client.types import MethodName
-from vkwave.client import AIOHTTPClient
-from vkwave import __api_version__
-
 
 from .account import Account
-from .app_widgets import AppWidgets
 from .ads import Ads
+from .app_widgets import AppWidgets
 from .apps import Apps
+from .audio import Audio
 from .auth import Auth
 from .board import Board
-from .donut import Donut
 from .database import Database
 from .docs import Docs
+from .donut import Donut
 from .execute import Execute
 from .fave import Fave
 from .friends import Friends
@@ -43,6 +39,7 @@ from .orders import Orders
 from .pages import Pages
 from .photos import Photos
 from .polls import Polls
+from .pretty_cards import PrettyCards
 from .search import Search
 from .secure import Secure
 from .stats import Stats
@@ -55,9 +52,6 @@ from .utils import Utils
 from .video import Video
 from .wall import Wall
 from .widgets import Widgets
-from .audio import Audio
-from .pretty_cards import PrettyCards
-
 
 TokensInput = Union[List[AnyABCToken], AnyABCToken]
 ClientsInput = Union[List[AbstractAPIClient], AbstractAPIClient]
@@ -109,7 +103,7 @@ class APIOptionsRequestContext:
         self.audio = Audio("audio", self)
         self.auth = Auth("auth", self)
         self.board = Board("board", self)
-        self.donut = Donut('donut', self)
+        self.donut = Donut("donut", self)
         self.database = Database("database", self)
         self.docs = Docs("docs", self)
         self.execute = Execute("execute", self)

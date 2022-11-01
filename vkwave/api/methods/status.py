@@ -1,4 +1,5 @@
 from vkwave.types.responses import *
+
 from ._category import Category
 from ._utils import get_params
 
@@ -47,7 +48,6 @@ class Status(Category):
 
         result = BaseOkResponse(**raw_result)
         return result
-
 
     async def set_image(
         self,

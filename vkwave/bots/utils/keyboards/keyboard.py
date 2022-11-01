@@ -4,13 +4,12 @@ from enum import Enum
 
 from vkwave.bots.core.types.json_types import JSONEncoder
 from vkwave.bots.utils.keyboards._types import Button
-
 from vkwave.bots.utils.keyboards._vkpayaction import (
     VKPayAction,
-    VKPayActionTransferToUser,
-    VKPayActionTransferToGroup,
-    VKPayActionPayToUser,
     VKPayActionPayToGroup,
+    VKPayActionPayToUser,
+    VKPayActionTransferToGroup,
+    VKPayActionTransferToUser,
 )
 
 
@@ -270,7 +269,7 @@ class Keyboard:
         """
         for row in self.buttons:
             for button in row:
-                if button_payload == button.get('action').get('payload'):
+                if button_payload == button.get("action").get("payload"):
                     row_index = self.buttons.index(row)
                     button_index = row.index(button)
                     del self.buttons[row_index][button_index]

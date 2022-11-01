@@ -6,12 +6,13 @@ from typing import Dict, List, Optional, Tuple, Union
 
 from typing_extensions import Literal
 
-from vkwave.bots.core.dispatching.events.base import BaseEvent, UserEvent, BotEvent
+from vkwave.bots.core.dispatching.events.base import BaseEvent, BotEvent, UserEvent
 from vkwave.bots.core.types.bot_type import BotType
 from vkwave.bots.core.types.json_types import JSONDecoder
 from vkwave.types.bot_events import BotEventType
 from vkwave.types.objects import MessagesMessageActionStatus, MessagesMessageAttachmentType
 from vkwave.types.user_events import EventId, MessageFlag
+
 from .base import BaseFilter, FilterResult
 
 logger = logging.getLogger(__name__)
@@ -35,6 +36,7 @@ InvalidEventError = ValueError(
 
 def any_text_to_list_or_tuple(t: "AnyText") -> Union[Tuple[str, ...], List[str]]:
     return (t,) if isinstance(t, str) else t
+
 
 def any_int_to_list_or_tuple(t: "AnyInt") -> Union[Tuple[int, ...], List[int]]:
     return (t,) if isinstance(t, int) else t
@@ -85,7 +87,7 @@ def get_text(event: BaseEvent) -> Optional[str]:
 def get_id(event: BaseEvent) -> Optional[int]:
     is_message_event(event)
     if event.bot_type is BotType.USER:
-        if event.object.object.dict().get('message_data').get("from_id") is None:
+        if event.object.object.dict().get("message_data").get("from_id") is None:
             return None
         return int(event.object.object.message_data.from_id)
     else:
@@ -139,7 +141,9 @@ class FlagFilter(BaseFilter):
     async def check(self, event: BaseEvent) -> FilterResult:
         if event.bot_type is BotType.USER:
             if isinstance(self.flag, tuple):
-                return FilterResult(all(flag for flag in self.flag if event.object.object.flags[-1] & flag))
+                return FilterResult(
+                    all(flag for flag in self.flag if event.object.object.flags[-1] & flag)
+                )
             return FilterResult(bool(event.object.object.flags[-1] & self.flag))
         raise NotImplementedError("There is no implementation for this type of bot")
 
@@ -536,11 +540,7 @@ class IsAdminFilter(BaseFilter):
 
 
 class LevenshteinFilter(BaseFilter):
-    def __init__(
-            self,
-            text: AnyText,
-            mistake: int
-    ):
+    def __init__(self, text: AnyText, mistake: int):
         self.text = any_text_to_list_or_tuple(text)
         self.mistake = mistake
 
@@ -626,5 +626,5 @@ class StickerFilter(BaseFilter):
             return FilterResult((attachment and attachment[0].sticker) == self.with_sticker)
 
         else:
-            attachment = event.object.object.extra_message_data.get('attach1_type')
-            return FilterResult((attachment == 'sticker') == self.with_sticker)
+            attachment = event.object.object.extra_message_data.get("attach1_type")
+            return FilterResult((attachment == "sticker") == self.with_sticker)

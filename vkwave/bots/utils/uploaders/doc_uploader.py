@@ -1,5 +1,5 @@
-import typing
 import itertools
+import typing
 from abc import ABC
 from io import BytesIO
 from typing import BinaryIO

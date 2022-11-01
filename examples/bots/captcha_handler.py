@@ -1,12 +1,14 @@
 # Easy bot imports
-from vkwave.bots import SimpleLongPollUserBot
-from vkwave.api import APIOptionsRequestContext
-
-
+from vkwave.api import API, APIOptionsRequestContext, BotSyncSingleToken, Token
+from vkwave.bots import (
+    BotLongpollExtension,
+    Dispatcher,
+    GroupId,
+    SimpleLongPollUserBot,
+    TokenStorage,
+)
 # Ordinary bot imports
 from vkwave.client import AIOHTTPClient
-from vkwave.bots import TokenStorage, Dispatcher, BotLongpollExtension, GroupId
-from vkwave.api import API, BotSyncSingleToken, Token
 from vkwave.longpoll import BotLongpoll, BotLongpollData
 
 

@@ -1,10 +1,10 @@
 import os
 
 import pytest
-
 from dotenv import load_dotenv
-from vkwave.bots.utils.uploaders import DocUploader, PhotoUploader
+
 from vkwave.bots import create_api_session_aiohttp
+from vkwave.bots.utils.uploaders import DocUploader, PhotoUploader
 
 load_dotenv()
 TOKEN = os.getenv("TOKEN")

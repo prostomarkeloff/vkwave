@@ -1,4 +1,4 @@
-from vkwave.bots import SimpleLongPollBot, Keyboard, CallbackAnswer, PayloadFilter
+from vkwave.bots import CallbackAnswer, Keyboard, PayloadFilter, SimpleLongPollBot
 from vkwave.types.bot_events import BotEventType
 
 bot = SimpleLongPollBot(tokens=["Token"], group_id=123)

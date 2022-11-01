@@ -1,6 +1,5 @@
-from abc import ABC, abstractmethod
 import warnings
-
+from abc import ABC, abstractmethod
 from typing import Any, Awaitable, Callable, Dict, Optional, Type
 
 from vkwave.bots.core.dispatching.events.base import BaseEvent

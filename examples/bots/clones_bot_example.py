@@ -3,8 +3,7 @@ create many bots with the same functionality
 """
 import asyncio
 
-from vkwave.bots import SimpleLongPollBot, TaskManager, ClonesBot
-
+from vkwave.bots import ClonesBot, SimpleLongPollBot, TaskManager
 
 bot = SimpleLongPollBot(tokens=["Bot0TOKEN"], group_id=444,)
 

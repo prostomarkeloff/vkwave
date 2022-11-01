@@ -1,4 +1,5 @@
 from vkwave.types.responses import *
+
 from ._category import Category
 from ._utils import get_params
 
@@ -20,7 +21,7 @@ class LeadForms(Category):
         pixel_code: typing.Optional[str],
         notify_admins: typing.Optional[typing.List[int]],
         notify_emails: typing.Optional[typing.List[str]],
-        return_raw_response: bool = False
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, LeadFormsCreateResponse]:
         """leadForms.create method
 
@@ -68,10 +69,7 @@ class LeadForms(Category):
         return result
 
     async def get(
-        self,
-        group_id: int,
-        form_id: int,
-        return_raw_response: bool = False
+        self, group_id: int, form_id: int, return_raw_response: bool = False
     ) -> typing.Union[dict, LeadFormsForm]:
         """leadForms.get method
 
@@ -94,7 +92,7 @@ class LeadForms(Category):
         form_id: int,
         limit: typing.Optional[int],
         next_page_token: typing.Optional[str],
-        return_raw_response: bool = False
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, LeadFormsGetLeadsResponse]:
         """leadForms.getLeads method
 
@@ -113,7 +111,9 @@ class LeadForms(Category):
         result = LeadFormsGetLeadsResponse(**raw_result)
         return result
 
-    async def get_upload_url(self, return_raw_response: bool = False) -> typing.Union[dict, LeadFormsUploadUrlResponse]:
+    async def get_upload_url(
+        self, return_raw_response: bool = False
+    ) -> typing.Union[dict, LeadFormsUploadUrlResponse]:
         """leadForms.getUploadURL method
 
         :param return_raw_response: - return result at dict
@@ -127,7 +127,9 @@ class LeadForms(Category):
         result = LeadFormsUploadUrlResponse(**raw_result)
         return result
 
-    async def list(self, group_id: int, return_raw_response: bool = False) -> typing.Union[dict, LeadFormsListResponse]:
+    async def list(
+        self, group_id: int, return_raw_response: bool = False
+    ) -> typing.Union[dict, LeadFormsListResponse]:
         """leadForms.list method
 
         :param group_id:
@@ -159,7 +161,7 @@ class LeadForms(Category):
         pixel_code: typing.Optional[str],
         notify_admins: typing.Optional[typing.List[int]],
         notify_emails: typing.Optional[typing.List[str]],
-        return_raw_response: bool = False
+        return_raw_response: bool = False,
     ) -> typing.Union[dict, LeadFormsCreateResponse]:
         """leadForms.update method
 

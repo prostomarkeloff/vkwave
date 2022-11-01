@@ -1,5 +1,5 @@
-from typing import Optional, Dict
 from abc import ABC, abstractmethod
+from typing import Dict, Optional
 
 
 class VKPayAction(ABC):

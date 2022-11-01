@@ -1,9 +1,10 @@
-from vkwave.api import API
-from vkwave.client import AIOHTTPClient
-from vkwave.api.methods import (
-    RETURN_RESULT_ERRORS,
-)  # errors when you can return result from handler
 import asyncio
+
+from vkwave.api import API
+from vkwave.api.methods import (  # errors when you can return result from handler
+    RETURN_RESULT_ERRORS,
+)
+from vkwave.client import AIOHTTPClient
 
 
 async def main():

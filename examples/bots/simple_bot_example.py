@@ -1,6 +1,5 @@
 from vkwave.bots import SimpleLongPollBot, TaskManager
 
-
 bot = SimpleLongPollBot(tokens="MyToken", group_id=123456789)
 
 # or if you want do a lot of requests without 'to many requests' errors

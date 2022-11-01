@@ -7,13 +7,13 @@ from .objects import (
     AudioAudio,
     BoardTopicComment,
     CallbackGroupJoinType,
+    LikesType,
+    MarketOrder,
     MessagesMessage,
     PhotosPhoto,
     VideoVideo,
     WallWallComment,
     WallWallpost,
-    LikesType,
-    MarketOrder,
 )
 
 

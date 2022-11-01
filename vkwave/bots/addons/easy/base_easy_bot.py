@@ -19,24 +19,24 @@ from vkwave.bots import (
     DefaultRouter,
     Dispatcher,
     EventTypeFilter,
+    FlagFilter,
+    FromGroupFilter,
+    FromIdFilter,
     FromMeFilter,
     FwdMessagesFilter,
     GroupId,
+    IsAdminFilter,
+    LevenshteinFilter,
     MessageArgsFilter,
     MessageFromConversationTypeFilter,
     PayloadFilter,
+    PeerIdFilter,
     RegexFilter,
     ReplyMessageFilter,
+    StickerFilter,
     TextContainsFilter,
     TextFilter,
     TextStartswithFilter,
-    IsAdminFilter,
-    FlagFilter,
-    LevenshteinFilter,
-    FromIdFilter,
-    PeerIdFilter,
-    FromGroupFilter,
-    StickerFilter,
     TokenStorage,
     UserEvent,
     UserId,
@@ -48,23 +48,25 @@ from vkwave.bots.addons.easy.easy_handlers import (
     SimpleBotEvent,
     SimpleUserEvent,
 )
+from vkwave.bots.core import BaseFilter
 from vkwave.bots.core.dispatching.dp.middleware.middleware import BaseMiddleware, MiddlewareResult
 from vkwave.bots.core.dispatching.filters.builtin import (
-    PayloadContainsFilter,
     AttachmentTypeFilter,
+    PayloadContainsFilter,
 )
-from vkwave.longpoll import BotLongpoll, BotLongpollData, UserLongpoll, UserLongpollData
 from vkwave.bots.core.dispatching.filters.extension_filters import VBMLFilter
 from vkwave.bots.core.dispatching.router.router import BaseRouter
 from vkwave.bots.fsm.filters import StateFilter
+from vkwave.client import AIOHTTPClient
+from vkwave.longpoll import BotLongpoll, BotLongpollData, UserLongpoll, UserLongpollData
 from vkwave.types.bot_events import BotEventType
 from vkwave.types.user_events import EventId
-from vkwave.bots.core import BaseFilter
-from vkwave.client import AIOHTTPClient
 
 
 class _APIContextManager:
-    def __init__(self, tokens: typing.Union[str, typing.List[str]], bot_type: BotType, client: AIOHTTPClient):
+    def __init__(
+        self, tokens: typing.Union[str, typing.List[str]], bot_type: BotType, client: AIOHTTPClient
+    ):
         self.client = client
         if bot_type.USER:
             self.tokens = (
@@ -91,9 +93,7 @@ class _APIContextManager:
 
 
 def create_api_session_aiohttp(
-    token: str,
-    bot_type: BotType = BotType.BOT,
-    client: typing.Optional[AIOHTTPClient] = None
+    token: str, bot_type: BotType = BotType.BOT, client: typing.Optional[AIOHTTPClient] = None
 ) -> _APIContextManager:
     return _APIContextManager(token, bot_type, client or AIOHTTPClient())
 
@@ -107,7 +107,9 @@ class BaseSimpleLongPollBot:
         group_id: typing.Optional[int] = None,
         client: typing.Optional[AIOHTTPClient] = None,
         uvloop: bool = False,
-        event: typing.Optional[typing.Union[typing.Type[SimpleBotEvent], typing.Type[SimpleUserEvent]]] = None,
+        event: typing.Optional[
+            typing.Union[typing.Type[SimpleBotEvent], typing.Type[SimpleUserEvent]]
+        ] = None,
     ):
         if uvloop:
             import uvloop

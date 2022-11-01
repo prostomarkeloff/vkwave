@@ -1,6 +1,7 @@
 import typing
 
 from vkwave.bots.core.dispatching.events.base import BaseEvent
+
 from .base import BaseFilter, FilterResult
 from .builtin import get_text
 

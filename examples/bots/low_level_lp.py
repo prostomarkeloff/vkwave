@@ -1,7 +1,6 @@
 from vkwave.bots import LowLevelBot
 from vkwave.types.bot_events import BotEventType
 
-
 bot = LowLevelBot("Token", 12345)  # Bot
 
 #  bot = LowLevelBot("Token") # User (not recommended, because events will come in strange lists)

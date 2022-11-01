@@ -1,7 +1,6 @@
 from asyncio import iscoroutinefunction
-from inspect import isawaitable, isfunction
+from inspect import isawaitable, isclass, isfunction
 from typing import Any, Optional, cast
-from inspect import isclass
 
 from vkwave.bots.core.dispatching.cast.default import DefaultCaster
 

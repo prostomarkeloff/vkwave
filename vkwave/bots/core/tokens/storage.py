@@ -1,10 +1,10 @@
-from typing import Dict, Generic, Optional, TypeVar, Union, List
+import random
+from typing import Dict, Generic, List, Optional, TypeVar, Union
 
 from vkwave.api.token.token import AnyABCToken
 
 from .strategy import ABCGetTokenStrategy, NotImplementedGetTokenStrategy
 from .types import GroupId, UserId
-import random
 
 T = TypeVar("T", GroupId, UserId)
 

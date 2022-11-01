@@ -1,6 +1,5 @@
 from vkwave.bots import SimpleLongPollBot
 
-
 bot = SimpleLongPollBot(tokens=["Token"], group_id=123)
 
 

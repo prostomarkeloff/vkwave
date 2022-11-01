@@ -1,13 +1,13 @@
-from ctypes.wintypes import DWORD
 import json
 
 from vkwave.types.user_events import (
     ChangedChatSettingsType,
+    MessageFlag,
     PlatformEnum,
     TimeoutUserEnum,
     get_event_object,
-    MessageFlag,
 )
+
 
 def test_deleted_message_event():
     event = get_event_object(
@@ -32,7 +32,11 @@ def test_message_new_event():
             2000000005,
             1582466146,
             "Всем привет я тест",
-            {"from": "253866502", "mentions": [431631325], "marked_users": [[1, [431631325]]],},
+            {
+                "from": "253866502",
+                "mentions": [431631325],
+                "marked_users": [[1, [431631325]]],
+            },
             {"reply": '{"conversation_message_id":93222}', "fwd": "0_0"},
             0,
         ],
@@ -95,7 +99,11 @@ def test_message_with_keyboard():
                     "buttons": [
                         [
                             {
-                                "action": {"type": "text", "payload": "", "label": "helloworld",},
+                                "action": {
+                                    "type": "text",
+                                    "payload": "",
+                                    "label": "helloworld",
+                                },
                                 "color": "default",
                             }
                         ]
@@ -117,7 +125,7 @@ def test_message_with_keyboard():
         MessageFlag.ATTACHMENT,
         MessageFlag.CANCEL_SPAM,
         MessageFlag.HIDDEN,
-        490832562  # sum
+        490832562,  # sum
     ]
 
     assert event.object.text == "123"
@@ -131,7 +139,7 @@ def test_changed_unread_count():
 
     assert event.object.unread_count == 10
     assert event.object.unread_unmuted_count == 0
-    assert event.object.show_only_muted == False
+    assert event.object.show_only_muted is False
     assert event.object.business_notify_unread_count == 0
     assert event.object.header_unread_count == 0
     assert event.object.header_unread_unmuted_count == 0
@@ -140,34 +148,33 @@ def test_changed_unread_count():
 def test_reset_flag_event():
     event = get_event_object([3, 3281383, 8, 2000000148])
     assert event.object.message_id == 3281383
-    assert event.object.flags == [
-        MessageFlag.IMPORTANT,
-        8
-    ]
+    assert event.object.flags == [MessageFlag.IMPORTANT, 8]
     assert event.object.peer_id == 2000000148
 
 
 def test_edit_message_event():
-    event = get_event_object([
-        5,
-        3281388,
-        8211,
-        2000000222,
-        1637748433,
-        'test edit',
-        {'from': '132583811'},
-        {},
-        1401012148,
-        4629,
-        1637748440
-    ])
+    event = get_event_object(
+        [
+            5,
+            3281388,
+            8211,
+            2000000222,
+            1637748433,
+            "test edit",
+            {"from": "132583811"},
+            {},
+            1401012148,
+            4629,
+            1637748440,
+        ]
+    )
     assert event.object.message_id == 3281388
     assert event.object.flags == [
         MessageFlag.UNREAD,
         MessageFlag.OUTBOX,
         MessageFlag.FROM_CHAT,
         MessageFlag.FROM_CHAT2,
-        8211
+        8211,
     ]
     assert event.object.peer_id == 2000000222
     assert event.object.text == "test edit"

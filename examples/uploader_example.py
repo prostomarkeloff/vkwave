@@ -1,7 +1,7 @@
 import asyncio
 
-from vkwave.api import Token, BotSyncSingleToken, API
-from vkwave.bots import PhotoUploader, WallPhotoUploader, DocUploader
+from vkwave.api import API, BotSyncSingleToken, Token
+from vkwave.bots import DocUploader, PhotoUploader, WallPhotoUploader
 from vkwave.client import AIOHTTPClient
 
 client = AIOHTTPClient()

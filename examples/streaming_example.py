@@ -1,8 +1,8 @@
 import asyncio
 
-from vkwave.streaming import StreamingClient
 from vkwave.bots import create_api_session_aiohttp
 from vkwave.http import AIOHTTPWSClient
+from vkwave.streaming import StreamingClient
 
 
 async def main():

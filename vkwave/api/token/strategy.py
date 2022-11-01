@@ -8,7 +8,7 @@ from vkwave.api.token.token import (
     AnyABCToken,
     GetTokenType,
     Token,
-    TokenType
+    TokenType,
 )
 
 

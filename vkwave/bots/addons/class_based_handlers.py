@@ -5,10 +5,11 @@ class HelloHandler(BaseHandler):
         return "Привет"
 
 """
-from abc import ABC, abstractmethod, ABCMeta
+from abc import ABC, ABCMeta, abstractmethod
 from typing import Any, Optional, Union
-from vkwave.bots.core.dispatching.handler.callback import BaseCallback
+
 from vkwave.bots.core.dispatching.events.base import BaseEvent
+from vkwave.bots.core.dispatching.handler.callback import BaseCallback
 from vkwave.bots.core.dispatching.handler.cast import caster
 
 

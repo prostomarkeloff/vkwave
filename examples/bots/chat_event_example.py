@@ -1,17 +1,17 @@
-import logging
 import asyncio
+import logging
 
+from vkwave.api import API, BotSyncSingleToken, Token
 from vkwave.bots import (
     BotEvent,
-    TokenStorage,
-    Dispatcher,
-    DefaultRouter,
-    GroupId,
     BotLongpollExtension,
     ChatActionFilter,
+    DefaultRouter,
+    Dispatcher,
+    GroupId,
+    TokenStorage,
 )
 from vkwave.client import AIOHTTPClient
-from vkwave.api import API, BotSyncSingleToken, Token
 from vkwave.longpoll import BotLongpoll, BotLongpollData
 from vkwave.types.objects import MessagesMessageActionStatus
 

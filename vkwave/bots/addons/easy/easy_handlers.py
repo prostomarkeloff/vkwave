@@ -1,16 +1,16 @@
 import json
 import random
 import warnings
-from typing import Any, Callable, Dict, List, Union, Type, Optional, NoReturn
+from typing import Any, Callable, Dict, List, NoReturn, Optional, Type, Union
 
 from pydantic import PrivateAttr
 
 from vkwave.bots import BotEvent, BotType, EventTypeFilter, UserEvent
 from vkwave.bots.core import BaseFilter
-from vkwave.bots.core.dispatching.router.router import BaseRouter
 from vkwave.bots.core.dispatching.filters.builtin import get_payload, get_text
 from vkwave.bots.core.dispatching.handler.callback import BaseCallback
 from vkwave.bots.core.dispatching.handler.cast import caster as callback_caster
+from vkwave.bots.core.dispatching.router.router import BaseRouter
 from vkwave.bots.core.types.json_types import JSONEncoder
 from vkwave.types.bot_events import BotEventType
 from vkwave.types.objects import (
@@ -143,7 +143,7 @@ class SimpleUserEvent(UserEvent):
         message_ids: List[MessagesSendResponse] = []
         for x in range(0, len(message), 4096):
             message_id = await self.answer(
-                message=message[x:x+4096],
+                message=message[x : x + 4096],
                 forward=forward,
                 template=template,
                 content_source=content_source,
@@ -495,7 +495,7 @@ class SimpleBotEvent(BotEvent):
             message_id=message_id,
             conversation_message_id=conversation_message_id,
             template=template,
-            keyboard=keyboard
+            keyboard=keyboard,
         )
 
     async def reply(
@@ -700,7 +700,7 @@ class SimpleBotEvent(BotEvent):
                 payload=payload,
                 dont_parse_links=dont_parse_links,
                 disable_mentions=disable_mentions,
-                message=message[x:x+4096],
+                message=message[x : x + 4096],
                 template=template,
                 content_source=content_source,
             )
@@ -758,7 +758,7 @@ class SimpleBotCallback(BaseCallback):
         self,
         func: Any,
         bot_type: BotType,
-        event_type: Type[Union[SimpleUserEvent, SimpleBotEvent]]
+        event_type: Type[Union[SimpleUserEvent, SimpleBotEvent]],
     ):
         self.bot_type = bot_type
         self.func = callback_caster.cast(func)
@@ -775,7 +775,9 @@ class SimpleBotCallback(BaseCallback):
         return f"<SimpleBotCallback {self.func.__name__} bot_type={self.bot_type}>"
 
 
-def simple_bot_handler(router: BaseRouter, *filters: BaseFilter, event: Optional[Type[SimpleBotEvent]] = None):
+def simple_bot_handler(
+    router: BaseRouter, *filters: BaseFilter, event: Optional[Type[SimpleBotEvent]] = None
+):
     """
     Handler for all bot events
     """
@@ -790,7 +792,9 @@ def simple_bot_handler(router: BaseRouter, *filters: BaseFilter, event: Optional
     return decorator
 
 
-def simple_user_handler(router: BaseRouter, *filters: BaseFilter, event: Optional[Type[SimpleUserEvent]] = None):
+def simple_user_handler(
+    router: BaseRouter, *filters: BaseFilter, event: Optional[Type[SimpleUserEvent]] = None
+):
     """
     Handler for all user events
     """
@@ -805,7 +809,9 @@ def simple_user_handler(router: BaseRouter, *filters: BaseFilter, event: Optiona
     return decorator
 
 
-def simple_bot_message_handler(router: BaseRouter, *filters: BaseFilter, event: Optional[Type[SimpleBotEvent]] = None):
+def simple_bot_message_handler(
+    router: BaseRouter, *filters: BaseFilter, event: Optional[Type[SimpleBotEvent]] = None
+):
     """
     Handler only for message events
     """
@@ -821,7 +827,9 @@ def simple_bot_message_handler(router: BaseRouter, *filters: BaseFilter, event: 
     return decorator
 
 
-def simple_user_message_handler(router: BaseRouter, *filters: BaseFilter, event: Optional[Type[SimpleUserEvent]] = None):
+def simple_user_message_handler(
+    router: BaseRouter, *filters: BaseFilter, event: Optional[Type[SimpleUserEvent]] = None
+):
     """
     Handler only for message events
     """

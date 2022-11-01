@@ -1,9 +1,10 @@
-from typing import Optional, Sequence, AsyncGenerator
+from typing import AsyncGenerator, Optional, Sequence
 
 from vkwave.api import APIOptionsRequestContext
 from vkwave.http import AbstractHTTPClient, AbstractWSClient
+
 from .errors import StreamingAPIError
-from .model import StreamingClientData, Rule, StreamingMessage
+from .model import Rule, StreamingClientData, StreamingMessage
 
 
 class StreamingClient:

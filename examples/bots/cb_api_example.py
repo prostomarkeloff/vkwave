@@ -1,21 +1,20 @@
-from vkwave.bots.core.dispatching.extensions.callback import AIOHTTPCallbackExtension
-import logging
 import asyncio
+import logging
 
+from vkwave.api import API, BotSyncSingleToken, Token
 from vkwave.bots import (
     BaseEvent,
-    TokenStorage,
-    Dispatcher,
-    DefaultRouter,
-    EventTypeFilter,
     CommandsFilter,
+    DefaultRouter,
+    Dispatcher,
+    EventTypeFilter,
     GroupId,
+    TokenStorage,
 )
+from vkwave.bots.core.dispatching.extensions.callback import AIOHTTPCallbackExtension
 from vkwave.bots.core.dispatching.extensions.callback.conf import ConfirmationStorage
 from vkwave.client import AIOHTTPClient
-from vkwave.api import BotSyncSingleToken, Token, API
 from vkwave.types.bot_events import BotEventType
-
 
 logging.basicConfig(level=logging.DEBUG)
 bot_token = Token("Token")

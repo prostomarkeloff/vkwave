@@ -11,11 +11,11 @@ class OAuthResponse(BaseModel):
 
 
 class ClientHash(Enum):
-    ANDROID_APP = 'hHbZxrka2uZ6jB1inYsH'
-    WINDOWS_APP = 'AlVXZFMUqyrnABp8ncuU'
-    IPHONE_APP = 'VeWdmVclDCtn6ihuP1nt'
-    KATE_MOBILE = 'hHbJug59sKJie78wjrH8'
-    VK_ME = 'qVxWRF1CwHERuIrKBnqe'
+    ANDROID_APP = "hHbZxrka2uZ6jB1inYsH"
+    WINDOWS_APP = "AlVXZFMUqyrnABp8ncuU"
+    IPHONE_APP = "VeWdmVclDCtn6ihuP1nt"
+    KATE_MOBILE = "hHbJug59sKJie78wjrH8"
+    VK_ME = "qVxWRF1CwHERuIrKBnqe"
 
 
 class ClientID(Enum):

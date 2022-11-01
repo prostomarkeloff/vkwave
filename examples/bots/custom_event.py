@@ -1,4 +1,4 @@
-from vkwave.bots import SimpleLongPollBot, SimpleBotEvent, simple_bot_message_handler
+from vkwave.bots import SimpleBotEvent, SimpleLongPollBot, simple_bot_message_handler
 
 
 class MyEvent(SimpleBotEvent):

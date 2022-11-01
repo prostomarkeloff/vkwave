@@ -1,5 +1,5 @@
 import logging
-from typing import List, NewType, Optional, cast, Union
+from typing import List, NewType, Optional, Union, cast
 
 from vkwave.api.methods import API
 from vkwave.api.token.token import AnyABCToken
@@ -12,10 +12,9 @@ from vkwave.bots.core.types.bot_type import BotType
 from vkwave.types.bot_events import get_event_object
 from vkwave.types.user_events import get_event_object as user_get_event_object
 
-from .result_caster import BaseResultCaster, ResultCaster
 from .middleware.middleware import MiddlewareManager
 from .processing_options import ProcessEventOptions
-
+from .result_caster import BaseResultCaster, ResultCaster
 
 ProcessingResult = NewType("ProcessingResult", bool)
 
@@ -28,7 +27,7 @@ class Dispatcher:
         api: API,
         token_storage: Union[TokenStorage, UserTokenStorage],
         bot_type: BotType = BotType.BOT,
-        result_caster: Optional[BaseResultCaster] = None
+        result_caster: Optional[BaseResultCaster] = None,
     ):
         self.bot_type: BotType = bot_type
         self.api: API = api

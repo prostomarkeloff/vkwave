@@ -1,8 +1,8 @@
-from asyncio import get_running_loop, sleep
-from typing import TYPE_CHECKING
-import warnings
 import logging
 import traceback
+import warnings
+from asyncio import get_running_loop, sleep
+from typing import TYPE_CHECKING
 
 from vkwave.bots.core.dispatching.dp.processing_options import ProcessEventOptions
 from vkwave.bots.core.dispatching.events.raw import ExtensionEvent

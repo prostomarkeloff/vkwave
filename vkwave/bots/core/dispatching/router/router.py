@@ -1,15 +1,14 @@
+import logging
 from abc import ABC, abstractmethod
 from typing import Any, List, Optional, Union
-import logging
 
 from vkwave.bots.core.dispatching.events.base import BaseEvent
 from vkwave.bots.core.dispatching.filters import BaseFilter
 from vkwave.bots.core.dispatching.filters.manage import FilterManager
 from vkwave.bots.core.dispatching.handler.base import FILTERS_NOT_PASSED
 
-from .registrar import HandlerRegistrar
 from ..handler.callback import BaseCallback
-
+from .registrar import HandlerRegistrar
 
 HANDLER_NOT_FOUND = object()
 logger = logging.getLogger(__name__)

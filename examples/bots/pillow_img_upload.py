@@ -2,10 +2,8 @@ from io import BytesIO
 
 from PIL import Image
 
-from vkwave.bots import (PhotoUploader,)
-from vkwave.bots import SimpleLongPollBot
+from vkwave.bots import PhotoUploader, SimpleLongPollBot
 from vkwave.types.objects import MessagesMessageAttachmentType
-
 
 bot = SimpleLongPollBot(tokens=["токен)"], group_id=123)
 

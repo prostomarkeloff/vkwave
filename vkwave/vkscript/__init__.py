@@ -4,9 +4,8 @@ import vkwave.vkscript.handlers.calls
 import vkwave.vkscript.handlers.expressions
 import vkwave.vkscript.handlers.statements
 import vkwave.vkscript.handlers.types
-from .converter import VKScriptConverter
-from .execute import Execute
-from .execute import execute
 
+from .converter import VKScriptConverter
+from .execute import Execute, execute
 
 __all__ = ("execute", "Execute", "VKScriptConverter")

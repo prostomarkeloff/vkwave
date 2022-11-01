@@ -1,7 +1,6 @@
-from vkwave.bots import EventTypeFilter, BotEvent, SimpleLongPollBot
-from vkwave.bots.fsm import FiniteStateMachine, StateFilter, ForWhat, State, ANY_STATE
+from vkwave.bots import BotEvent, EventTypeFilter, SimpleLongPollBot
+from vkwave.bots.fsm import ANY_STATE, FiniteStateMachine, ForWhat, State, StateFilter
 from vkwave.types.bot_events import BotEventType
-
 
 bot = SimpleLongPollBot("123", group_id=123)
 

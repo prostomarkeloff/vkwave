@@ -1,7 +1,5 @@
-from vkwave.bots import SimpleLongPollBot, Keyboard
-
+from vkwave.bots import Keyboard, SimpleLongPollBot
 from vkwave.types.bot_events import BotEventType
-
 
 bot = SimpleLongPollBot(
     tokens=["123"],

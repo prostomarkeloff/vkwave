@@ -1,7 +1,7 @@
 import enum
+import logging
 import typing
 
-import logging
 import pydantic
 
 from .objects import MessagesKeyboard
@@ -437,7 +437,7 @@ _changed_unread_dialogs_count = {
     6: "header_unread_unmuted_count",
     7: "unused_field_one",
     8: "unused_field_two",
-    9: "unused_field_three"
+    9: "unused_field_three",
 }
 
 _events_dict = {

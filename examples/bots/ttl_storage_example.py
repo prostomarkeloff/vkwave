@@ -1,7 +1,6 @@
 from vkwave.bots import SimpleLongPollBot, TTLStorage
 from vkwave.bots.storage.types import Key
 
-
 bot = SimpleLongPollBot(tokens="MyToken", group_id=1)
 ttl = TTLStorage(default_ttl=360)
 

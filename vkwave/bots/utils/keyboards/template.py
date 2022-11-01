@@ -2,8 +2,8 @@ import json
 import typing
 
 from vkwave.bots.core.types.json_types import JSONEncoder
-from vkwave.bots.utils.keyboards.keyboard import ButtonColor, Keyboard
 from vkwave.bots.utils.keyboards._vkpayaction import VKPayAction
+from vkwave.bots.utils.keyboards.keyboard import ButtonColor, Keyboard
 
 
 class Template:

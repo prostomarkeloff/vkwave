@@ -7,14 +7,14 @@ from udpy import AsyncUrbanClient, UrbanDefinition
 
 from vkwave.api import API, BotSyncSingleToken
 from vkwave.bots import (
-    Dispatcher,
-    EventTypeFilter,
-    TextFilter,
     BotEvent,
     BotLongpollExtension,
     DefaultRouter,
-    TokenStorage,
+    Dispatcher,
+    EventTypeFilter,
     GroupId,
+    TextFilter,
+    TokenStorage,
 )
 from vkwave.client import AIOHTTPClient
 from vkwave.longpoll import BotLongpoll, BotLongpollData

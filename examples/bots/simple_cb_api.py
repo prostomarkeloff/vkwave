@@ -1,6 +1,5 @@
 from vkwave.bots import SimpleCallbackBot
 
-
 bot = SimpleCallbackBot(
     group_id=123456,
     host="127.0.0.1",

@@ -1,4 +1,5 @@
 from vkwave.types.responses import *
+
 from ._category import Category
 from ._utils import get_params
 
@@ -21,7 +22,7 @@ class Market(Category):
         dimension_height: typing.Optional[int] = None,
         dimension_length: typing.Optional[int] = None,
         weight: typing.Optional[int] = None,
-        sku: typing.Optional[str] = None
+        sku: typing.Optional[str] = None,
     ) -> typing.Union[dict, MarketAddResponse]:
         """
         :param owner_id: - ID of an item owner community.
@@ -215,7 +216,7 @@ class Market(Category):
         deleted: typing.Optional[BaseBoolInt] = None,
         photo_ids: typing.Optional[typing.List[int]] = None,
         url: typing.Optional[str] = None,
-        sku: typing.Optional[str] = None
+        sku: typing.Optional[str] = None,
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param owner_id: - ID of an item owner community.
@@ -311,7 +312,7 @@ class Market(Category):
         height: typing.Optional[int] = None,
         weight: typing.Optional[int] = None,
         comment_for_user: typing.Optional[str] = None,
-        receipt_link: typing.Optional[str] = None
+        receipt_link: typing.Optional[str] = None,
     ) -> typing.Union[dict, BaseOkResponse]:
         """
         :param user_id: - int (number), minimum value 1, required parameter
@@ -556,7 +557,7 @@ class Market(Category):
         return_raw_response: bool = False,
         offset: typing.Optional[int] = None,
         count: typing.Optional[int] = None,
-        user_id: typing.Optional[int] = None
+        user_id: typing.Optional[int] = None,
     ) -> typing.Union[dict, MarketGetOrderItemsResponse]:
         """
         :param order_id:
