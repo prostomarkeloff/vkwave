@@ -1,7 +1,3 @@
-# IDE
-.idea/
-.vscode/
-
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -40,6 +36,8 @@ MANIFEST
 # Installer logs
 pip-log.txt
 pip-delete-this-directory.txt
+.idea
+*.iml
 
 # Unit test / coverage reports
 htmlcov/
@@ -51,7 +49,6 @@ htmlcov/
 nosetests.xml
 coverage.xml
 *.cover
-*.py,cover
 .hypothesis/
 .pytest_cache/
 
@@ -63,7 +60,6 @@ coverage.xml
 *.log
 local_settings.py
 db.sqlite3
-db.sqlite3-journal
 
 # Flask stuff:
 instance/
@@ -95,20 +91,16 @@ ipython_config.py
 #   install all needed dependencies.
 #Pipfile.lock
 
-# PEP 582; used by e.g. github.com/David-OConnor/pyflow
-__pypackages__/
-
-# Celery stuff
+# celery beat schedule file
 celerybeat-schedule
-celerybeat.pid
 
 # SageMath parsed files
 *.sage.py
-test.py
 
 # Environments
 .env
 .venv
+venv/*
 env/
 venv/
 ENV/
@@ -132,25 +124,18 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-my_tests/
-poetry.lock
 
-/reports
-/dist
-.vscode/settings.json
+# Mac OS trash
+.DS_Store
 
-# ignore cython generated
-*.c
+# Test databases
+*.db
+.db
+*.db-shm
+*.db-wal
 
+# pytest
+.pytest_cache
 
-# Added by cargo
-
-/target
-
-
-# Added by cargo
-#
-# already existing elements were commented out
-
-#/target
-Cargo.lock
+.vscode
+.vim

@@ -1,94 +1,68 @@
-base_python := python3
-py := poetry run
+# Treat these arguments not as files, but as recipes
+.PHONY: venv venv-no-dev githooks check fix publish autoflake_fix
 
-reports_dir := reports
+# Used to execute all in one shell
+.ONESHELL:
+
+# Default recipe
+DEFAULT: help
+help:
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+
+# Use poetry or activated venv
+interpreter := $(shell poetry env info --path > /dev/null 2>&1 && echo "poetry run")
 
 
-# =================================================================================================
-# Environment
-# =================================================================================================
+check-venv:
+	$(if $(interpreter),, $(error No poetry environment found, either run "make venv"))
 
-.PHONY: install
-install:
-	$(base_python) -m pip install setuptools wheel -U
-	$(base_python) -m pip install -U poetry --user
-	poetry install
+venv: ## Create virtual environment and install all dependencies
+	@python3 -m pip install poetry
+	@poetry install && \
+	echo; echo "Poetry created virtual environment and installed all dependencies"
 
-.PHONY: clean
-clean:
-	rm -rf `find . -name __pycache__`
-	rm -f `find . -type f -name '*.py[co]' `
-	rm -f `find . -type f -name '*~' `
-	rm -f `find . -type f -name '.*~' `
-	rm -rf `find . -name .pytest_cache`
-	rm -rf *.egg-info
-	rm -f .coverage
-	rm -f report.html
-	rm -f .coverage.*
-	rm -rf {build,dist,site,.cache,.mypy_cache,reports}
+venv-no-dev: ## Create virtual environment and install only prod dependencies
+	@python3 -m pip install poetry
+	@poetry install --without dev && \
+	echo; echo "Poetry created virtual environment and installed only prod dependencies"
 
-# =================================================================================================
-# Code quality
-# =================================================================================================
+githooks: check-venv  ## Install git hooks
+	@$(interpreter) pre-commit install -t=pre-commit -t=pre-push
 
-.PHONY: isort
-isort:
-	$(py) isort -rc vkwave tests
+check: check-venv ## Run tests and linters
+	@echo "flakeheaven"
+	@echo "======"
+	@$(interpreter) flakeheaven lint
+	@echo ; echo "black"
+	@echo "====="
+	@$(interpreter) black --check .
+	@echo ; echo "isort"
+	@echo "====="
+	@$(interpreter) isort --check-only .
+	@echo ; echo "mypy"
+	@echo "===="
+	@$(interpreter) mypy vkbottle
+	@echo ; echo "pytest"
+	@echo "======"
+	@$(interpreter) pytest --cov vkbottle vkbottle
 
-.PHONY: black
-black:
-	$(py) black vkwave tests
+autoflake_fix:
+	@$(interpreter) autoflake -i --remove-all-unused-imports $(filename)
 
-.PHONY: flake8
-flake8:
-	$(py) flake8 vkwave test
+fix: check-venv ## Fix code with black and autoflake
+	@echo "autoflake"
+	@echo "========="
+	@$(interpreter) autoflake -ri --remove-all-unused-imports .
+	@echo "black"
+	@echo "====="
+	@$(interpreter) black .
+	@echo ; echo "isort"
+	@echo "====="
+	@$(interpreter) isort .
 
-.PHONY: flake8-report
-flake8-report:
-	mkdir -p $(reports_dir)/flake8
-	$(py) flake8 --format=html --htmldir=$(reports_dir)/flake8 vkwave test
-
-.PHONY: mypy
-mypy:
-	$(py) mypy vkwave
-
-.PHONY: mypy-report
-mypy-report:
-	$(py) mypy vkwave --html-report $(reports_dir)/typechecking
-
-.PHONY: lint
-lint: isort black flake8 mypy
-
-# =================================================================================================
-# Tests
-# =================================================================================================
-
-.PHONY: test
-test:
-	$(py) pytest
-
-# =================================================================================================
-# Docs
-# =================================================================================================
-
-.PHONY: docs
-docs:
-	$(py) mkdocs build
-
-.PHONY: docs-serve
-docs-serve:
-	$(py) mkdocs serve
-
-.PHONY: docs-copy-reports
-docs-copy-reports:
-	mv $(reports_dir)/* site/reports
-
-# =================================================================================================
-# Project
-# =================================================================================================
-
-.PHONY: build
-build: clean mypy-report docs docs-copy-reports
-	mkdir -p site/simple
+publish: ## Publish to PyPi using PYPI_TOKEN
 	poetry build
-	mv dist site/simple/vkwave
+	@poetry config pypi-token.pypi ${PYPI_TOKEN}
+	@# "; true" is used to ignore command exit code so that rm -rf can execute anyway
+	poetry publish; true
+	rm -rf dist/

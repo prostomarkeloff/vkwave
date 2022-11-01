@@ -1,107 +1,155 @@
 [tool.poetry]
-name = "vkwave"
-version = "0.2.17"
-description = "Framework for building high-performance & easy to scale projects interacting with VK's API."
-authors = ["prostomarkeloff", "kesha1225"]
+name = "vkbottle"
+version = "4.3.12"
+description = "Homogenic! Customizable asynchronous VK API framework implementing comfort and speed"
+authors = ["timoniq"]
+maintainers = ["FeeeeK"]
 license = "MIT"
-readme = "readme.md"
-homepage = "https://github.com/fscdev/vkwave"
-repository = "https://github.com/fscdev/vkwave"
+readme = "README.md"
+homepage = "https://github.com/vkbottle/vkbottle"
+repository = "https://github.com/vkbottle/vkbottle"
 keywords = [
-        "vk",
-        "vkontakte",
-        "api",
-        "framework",
-        "wrapper",
-        "asyncio",
-        "bots"
+  "vk",
+  "vk-api",
+  "vkbottle",
+  "user-longpoll",
+  "async",
+  "asyncio",
+  "bot",
+  "longpoll-api",
+  "callback",
+  "middleware",
 ]
 classifiers = [
   "Environment :: Console",
-  "Framework :: AsyncIO",
   "Intended Audience :: Developers",
-  "Intended Audience :: System Administrators",
   "License :: OSI Approved :: MIT License",
   "Programming Language :: Python :: 3.7",
   "Programming Language :: Python :: 3.8",
-  "Topic :: Software Development :: Libraries :: Application Frameworks",
-  "Framework :: AsyncIO",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+  "Topic :: Software Development :: Quality Assurance",
   "Typing :: Typed",
 ]
-build = "build.py"
+
 
 [tool.poetry.urls]
-"Bug Tracker" = "https://github.com/fscdev/vkwave/issues"
+"Bug Tracker" = "https://github.com/vkbottle/vkbottle/issues"
+
 
 [tool.poetry.dependencies]
-python = "^3.7"
+python = "^3.7.2"
+aiohttp = "^3.8.1"
+choicelib = "^0.1.5"
+pydantic = "^1.9.1"
+vbml = "^1.1.post1"
+vkbottle-types = "^5.131.146.9"
+watchfiles = ">=0.15,<0.19"
+aiofiles = ">=0.8,<22.2"
+typing-extensions = "^4.3.0"
 
-pydantic = "^1.7"
-typing_extensions = "^3.7.4"
 
-aiohttp = { version="^3.6"}
-aioredis = { version="^1.3", optional = true }
-
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 # Lint
-lxml = "^4.5.0"
-mypy = "^0.812"
-isort = "^5.7"
-flake8 = "^3.7.9"
-flake8-docstrings = "^1.5.0"
-mypy_extensions = "^0.4.3"
-black = {version = "^20", allow-prereleases = true}
-
-# Docs
-mkdocs = "^1.1"
-mkdocs-material = "^7.0"
-mkautodoc = "^0.1.0"
-markdown-include = "^0.6.0"
-mkdocs-redirects = "^1.0.2"
-mkdocs-static-i18n = "^0.12"
-mkdocstrings = "^0.15.2"
-
+black = "^22.8.0"
+isort = "^5.10.1"
+mypy = "^0.971"
+mypy-extensions = "^0.4.3"
+# mypy stubs
+types-aiofiles = "^22.1.0"
+# flake8 and it's plugins
+flake8 = "^4.0.1"
+flakeheaven = "^3.0.0" # wrapper for flake8 with better plugin management
+flake8-bugbear = "^22.8.23"
+flake8-scream = "^0.1.0"
+flake8-logging-format = "^0.7.5"
+flake8-annotations-complexity = "^0.0.7"
+flake8-alphabetize = "^0.0.17"
+flake8-pie = "^0.16.0"
+flake8-comprehensions = "^3.10.0"
+dlint = "^0.13.0"
 # Tests
-pytest = "^6.2"
-pytest-cov = "^2.8"
-pytest-asyncio = "^0.14.0"
+pytest = "^7.1.3"
+pytest-asyncio = "^0.19.0"
+pytest-cov = "^3.0.0"
+pytest-mock = "^3.7.0"
+# Pre-commit
+autoflake = "^1.5"
+pre-commit = "^2.19.0"
+# Docs
+# Due to a conflict with flake8 (https://github.com/PyCQA/flake8/pull/1438)
+# docs dependencies are now listed in mkdocs-requirements.txt.
+# mkdocs = "^1.3.1"
+# mkdocs-material = "^8.4.3"
 
-# Tests deps
-aiohttp = "^3.6"
-aioredis = "^1.3"
-python-dotenv = "^0.15.0"
-Cython = "^0.29.21"
-Pygments = "^2.8.1"
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
 
-[tool.poetry.extras]
-storage-redis = ["aioredis"]
-all = ["aioredis"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+
+
+[tool.mypy]
+python_version = 3.8
+ignore_missing_imports = true
+warn_no_return = false
+warn_return_any = false
+warn_unused_configs = true
+
+[[tool.mypy.overrides]]
+# Ignore tests, because we can use fixtures that not quite represent a real type
+module = "tests.*"
+ignore_errors = true
+
 
 [tool.black]
 line-length = 99
-target-version = ['py37', 'py38']
-exclude = '''
-(
-    \.eggs
-  | \.git
-  | \.tox
-  | build
-  | dist
-  | venv
-  | docs
-)
-'''
+target-version = ['py37']
 
-[tool.pydocstyle]
-ignore = "D100"
 
 [tool.isort]
-multi_line_output = 3
-include_trailing_comma = true
-force_grid_wrap = 0
-use_parentheses = true
+profile = "black"
 line_length = 99
 
-[build-system]
-requires = ["poetry>=0.12", "setuptools", "wheel"]
-build-backend = "poetry.masonry.api"
+
+[tool.flakeheaven]
+max_line_length = 99
+max_annotations_complexity = 4
+exclude = [
+  ".git",
+  "build",
+  "dist",
+  "venv",
+  ".venv",
+  "docs",
+  "*.egg-info",
+  "*.md",
+]
+
+[tool.flakeheaven.plugins]
+"flake8-*" = ["+*"]
+"flake8-alphabetize-core" = [
+  "+*",
+  "-AZ100",
+  "-AZ200",
+  "-AZ300"
+]
+flake8-pie = [
+  "+*",
+  "-PIE786",
+]
+pycodestyle = [
+  "+*",
+  "-E203", # whitespace before ':' (black)
+  "-E501", # line too long
+  "-W503", # line break before binary operator (black)
+  "-W504", # line break after binary operator (black)
+]
+pylint = ["+*"]
+pyflakes = ["+*"]
+mccabe = ["+*"]
+dlint = ["+*", "-DUO102"]
