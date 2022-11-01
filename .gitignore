@@ -133,7 +133,6 @@ dmypy.json
 # Pyre type checker
 .pyre/
 my_tests/
-poetry.lock
 
 /reports
 /dist
