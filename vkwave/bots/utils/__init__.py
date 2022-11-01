@@ -14,3 +14,20 @@ from .uploaders import (
     VoiceUploader,
     WallPhotoUploader,
 )
+
+__all__ = (
+    "Auth",
+    "ClientHash",
+    "ClientID",
+    "PhotoUploader",
+    "DocUploader",
+    "VoiceUploader",
+    "WallPhotoUploader",
+    "GraffitiUploader",
+    "Template",
+    "Keyboard",
+    "ButtonColor",
+    "ButtonType",
+    "CallbackAnswer",
+    "CallbackEventDataType",
+)

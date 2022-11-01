@@ -1,6 +1,5 @@
 import typing
 from io import BytesIO
-from typing import BinaryIO, Generic, List, TypeVar
 
 from vkwave.bots.utils.uploaders.uploader import BaseUploader
 from vkwave.types.objects import PhotosPhoto
@@ -63,7 +62,7 @@ class WallPhotoUploader(BaseUploader[typing.List[PhotosPhoto]]):
 
     async def get_attachment_from_io(
         self,
-        f: BinaryIO,
+        f: typing.BinaryIO,
         group_id: typing.Optional[int] = None,
         file_extension: typing.Optional[str] = None,
         file_name: typing.Optional[str] = None,
@@ -83,10 +82,10 @@ class WallPhotoUploader(BaseUploader[typing.List[PhotosPhoto]]):
 
     async def get_attachments_from_paths(
         self,
-        file_paths: List[str],
+        file_paths: typing.List[str],
         group_id: int,
     ) -> str:
-        ready_attachments: List[str] = []
+        ready_attachments: typing.List[str] = []
         for file in file_paths:
             ready_attachments.append(
                 await self.get_attachment_from_path(group_id=group_id, file_path=file)
@@ -106,12 +105,12 @@ class WallPhotoUploader(BaseUploader[typing.List[PhotosPhoto]]):
     async def get_attachments_from_links(
         self,
         group_id: int,
-        links: List[str],
+        links: typing.List[str],
         file_extensions: typing.Optional[str] = None,
-        file_names: List[str] = None,
+        file_names: typing.List[str] = None,
     ) -> str:
         # TODO: file_extension..., file_names
-        ready_attachments: List[str] = []
+        ready_attachments: typing.List[str] = []
         for link in links:
             ready_attachments.append(
                 await self.get_attachment_from_link(group_id=group_id, link=link)

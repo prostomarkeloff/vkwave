@@ -1,3 +1,12 @@
-from .doc_uploader import DocUploader, GraffitiUploader, VoiceUploader  # noqa: F401
-from .photo_uploader import PhotoUploader, WallPhotoUploader  # noqa: F401
-from .uploader import BaseUploader  # noqa: F401
+from .doc_uploader import DocUploader, GraffitiUploader, VoiceUploader
+from .photo_uploader import PhotoUploader, WallPhotoUploader
+from .uploader import BaseUploader
+
+__all__ = (
+    "BaseUploader",
+    "PhotoUploader",
+    "WallPhotoUploader",
+    "DocUploader",
+    "GraffitiUploader",
+    "VoiceUploader",
+)

@@ -11,3 +11,18 @@ from .easy_handlers import (
 )
 from .easy_userbot import SimpleLongPollUserBot
 from .task_manager import TaskManager
+
+__all__ = (
+    "SimpleCallbackBot",
+    "SimpleLongPollBot",
+    "SimpleLongPollUserBot",
+    "ClonesBot",
+    "TaskManager",
+    "SimpleBotEvent",
+    "SimpleUserEvent",
+    "simple_bot_handler",
+    "simple_bot_message_handler",
+    "simple_user_handler",
+    "simple_user_message_handler",
+    "create_api_session_aiohttp"
+)
