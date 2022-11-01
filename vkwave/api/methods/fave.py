@@ -246,6 +246,82 @@ class Fave(Category):
         result = FaveGetPagesResponse(**raw_result)
         return result
 
+    async def get_posts(
+        self,
+        return_raw_response: bool = False,
+        extended: typing.Optional[BaseBoolInt] = None,
+        offset: typing.Optional[int] = None,
+        count: typing.Optional[int] = None,
+    ) -> typing.Union[dict, FaveGetPostsResponse]:
+        """
+        This is a deprecated method, it may be removed in the future
+
+        :param offset:
+        :param extended: - '1' — to return additional 'wall', 'profiles', and 'groups' fields. By default: '0'.
+        :param count:
+        :param return_raw_response: - return result at dict
+        :return:
+        """
+
+        params = get_params(locals())
+
+        raw_result = await self.api_request("getPosts", params)
+        if return_raw_response:
+            return raw_result
+
+        result = FaveGetPostsResponse(**raw_result)
+        return result
+
+    async def get_videos(
+        self,
+        return_raw_response: bool = False,
+        extended: typing.Optional[BaseBoolInt] = None,
+        offset: typing.Optional[int] = None,
+        count: typing.Optional[int] = None,
+    ) -> typing.Union[dict, FaveGetVideosResponse]:
+        """
+        This is a deprecated method, it may be removed in the future
+
+        :param offset:
+        :param extended: - '1' — to return additional 'profiles', and 'groups' fields. By default: '0'.
+        :param count:
+        :param return_raw_response: - return result at dict
+        :return:
+        """
+
+        params = get_params(locals())
+
+        raw_result = await self.api_request("getVideos", params)
+        if return_raw_response:
+            return raw_result
+
+        result = FaveGetVideosResponse(**raw_result)
+        return result
+
+    async def get_photos(
+        self,
+        return_raw_response: bool = False,
+        offset: typing.Optional[int] = None,
+        count: typing.Optional[int] = None,
+    ) -> typing.Union[dict, FaveGetPhotosResponse]:
+        """
+        This is a deprecated method, it may be removed in the future
+
+        :param offset:
+        :param count:
+        :param return_raw_response: - return result at dict
+        :return:
+        """
+
+        params = get_params(locals())
+
+        raw_result = await self.api_request("getPhotos", params)
+        if return_raw_response:
+            return raw_result
+
+        result = FaveGetPhotosResponse(**raw_result)
+        return result
+
     async def get_tags(
         self,
         return_raw_response: bool = False,
