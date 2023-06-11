@@ -1,5 +1,6 @@
 import asyncio
 import typing
+from collections.abc import Iterator
 
 from .easy_userbot import SimpleLongPollUserBot
 from .easy_bot import SimpleLongPollBot
@@ -19,6 +20,12 @@ class ClonesBot:
         self.base_bot = base_bot
         self.router = self.base_bot.router
         self.clones: typing.List[typing.Union[SimpleLongPollUserBot, SimpleLongPollBot]] = list(clones)
+
+    def __iter__(self) -> Iterator[typing.Union[SimpleLongPollUserBot, SimpleLongPollBot]]:
+        return iter(self.clones)
+
+    def __len__(self) -> int:
+        return len(self.clones)
 
     def add_clone(self, clone: typing.Union[SimpleLongPollUserBot, SimpleLongPollBot]) -> None:
         self.clones.append(clone)
