@@ -33,8 +33,7 @@ class Widgets(Category):
         if return_raw_response:
             return raw_result
 
-        result = WidgetsGetCommentsResponse(**raw_result)
-        return result
+        return WidgetsGetCommentsResponse(**raw_result)
 
     async def get_pages(
         self,
@@ -61,5 +60,4 @@ class Widgets(Category):
         if return_raw_response:
             return raw_result
 
-        result = WidgetsGetPagesResponse(**raw_result)
-        return result
+        return WidgetsGetPagesResponse(**raw_result)

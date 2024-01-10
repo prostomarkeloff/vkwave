@@ -33,15 +33,14 @@ class BotLongpollExtension(BaseExtension):
             warnings.warn(
                 f"LongPoll API versions less than 5.103 shall not work. \nYou are using {api_version}"
             )
-        if not ignore_errors:
-            while True:
+        while True:
+            if not ignore_errors:
                 events = await self.lp.get_updates()
                 for event in events:
                     get_running_loop().create_task(
                         self.dp.process_event(ExtensionEvent(BotType.BOT, event), options)
                     )
-        else:
-            while True:
+            else:
                 try:
                     events = await self.lp.get_updates()
                     for event in events:
@@ -51,7 +50,6 @@ class BotLongpollExtension(BaseExtension):
                 except Exception as e:
                     logger.error(f"Error in Longpoll ({e}): {traceback.format_exc()}")
                     await sleep(0.33)
-                    continue
 
     async def start(self, ignore_errors: bool = True):
         logger.info("Starting bot...")

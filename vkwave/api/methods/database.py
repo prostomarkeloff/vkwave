@@ -25,8 +25,7 @@ class Database(Category):
         if return_raw_response:
             return raw_result
 
-        result = DatabaseGetChairsResponse(**raw_result)
-        return result
+        return DatabaseGetChairsResponse(**raw_result)
 
     async def get_cities(
         self,
@@ -55,8 +54,7 @@ class Database(Category):
         if return_raw_response:
             return raw_result
 
-        result = DatabaseGetCitiesResponse(**raw_result)
-        return result
+        return DatabaseGetCitiesResponse(**raw_result)
 
     async def get_cities_by_id(
         self,
@@ -75,8 +73,7 @@ class Database(Category):
         if return_raw_response:
             return raw_result
 
-        result = DatabaseGetCitiesByIdResponse(**raw_result)
-        return result
+        return DatabaseGetCitiesByIdResponse(**raw_result)
 
     async def get_countries(
         self,
@@ -101,8 +98,7 @@ class Database(Category):
         if return_raw_response:
             return raw_result
 
-        result = DatabaseGetCountriesResponse(**raw_result)
-        return result
+        return DatabaseGetCountriesResponse(**raw_result)
 
     async def get_countries_by_id(
         self,
@@ -121,8 +117,7 @@ class Database(Category):
         if return_raw_response:
             return raw_result
 
-        result = DatabaseGetCountriesByIdResponse(**raw_result)
-        return result
+        return DatabaseGetCountriesByIdResponse(**raw_result)
 
     async def get_faculties(
         self,
@@ -145,8 +140,7 @@ class Database(Category):
         if return_raw_response:
             return raw_result
 
-        result = DatabaseGetFacultiesResponse(**raw_result)
-        return result
+        return DatabaseGetFacultiesResponse(**raw_result)
 
     async def get_metro_stations(
         self,
@@ -171,8 +165,7 @@ class Database(Category):
         if return_raw_response:
             return raw_result
 
-        result = DatabaseGetMetroStationsResponse(**raw_result)
-        return result
+        return DatabaseGetMetroStationsResponse(**raw_result)
 
     async def get_metro_stations_by_id(
         self,
@@ -191,8 +184,7 @@ class Database(Category):
         if return_raw_response:
             return raw_result
 
-        result = DatabaseGetMetroStationsByIdResponse(**raw_result)
-        return result
+        return DatabaseGetMetroStationsByIdResponse(**raw_result)
 
     async def get_regions(
         self,
@@ -217,8 +209,7 @@ class Database(Category):
         if return_raw_response:
             return raw_result
 
-        result = DatabaseGetRegionsResponse(**raw_result)
-        return result
+        return DatabaseGetRegionsResponse(**raw_result)
 
     async def get_school_classes(
         self,
@@ -237,8 +228,7 @@ class Database(Category):
         if return_raw_response:
             return raw_result
 
-        result = DatabaseGetSchoolClassesResponse(**raw_result)
-        return result
+        return DatabaseGetSchoolClassesResponse(**raw_result)
 
     async def get_schools(
         self,
@@ -263,8 +253,7 @@ class Database(Category):
         if return_raw_response:
             return raw_result
 
-        result = DatabaseGetSchoolsResponse(**raw_result)
-        return result
+        return DatabaseGetSchoolsResponse(**raw_result)
 
     async def get_universities(
         self,
@@ -291,5 +280,4 @@ class Database(Category):
         if return_raw_response:
             return raw_result
 
-        result = DatabaseGetUniversitiesResponse(**raw_result)
-        return result
+        return DatabaseGetUniversitiesResponse(**raw_result)

@@ -23,11 +23,7 @@ class Messages(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("addChatUser", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def allow_messages_from_group(
         self,
@@ -45,11 +41,7 @@ class Messages(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("allowMessagesFromGroup", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def create_chat(
         self,
@@ -72,8 +64,7 @@ class Messages(Category):
         if return_raw_response:
             return raw_result
 
-        result = MessagesCreateChatResponse(**raw_result)
-        return result
+        return MessagesCreateChatResponse(**raw_result)
 
     async def delete(
         self,
@@ -102,8 +93,7 @@ class Messages(Category):
         if return_raw_response:
             return raw_result
 
-        result = MessagesDeleteResponse(**raw_result)
-        return result
+        return MessagesDeleteResponse(**raw_result)
 
     async def delete_chat_photo(
         self,
@@ -124,8 +114,7 @@ class Messages(Category):
         if return_raw_response:
             return raw_result
 
-        result = MessagesDeleteChatPhotoResponse(**raw_result)
-        return result
+        return MessagesDeleteChatPhotoResponse(**raw_result)
 
     async def delete_conversation(
         self,
@@ -148,8 +137,7 @@ class Messages(Category):
         if return_raw_response:
             return raw_result
 
-        result = MessagesDeleteConversationResponse(**raw_result)
-        return result
+        return MessagesDeleteConversationResponse(**raw_result)
 
     async def deny_messages_from_group(
         self,
@@ -165,11 +153,7 @@ class Messages(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("denyMessagesFromGroup", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def edit(
         self,
@@ -214,8 +198,7 @@ class Messages(Category):
         if return_raw_response:
             return raw_result
 
-        result = MessagesEditResponse(**raw_result)
-        return result
+        return MessagesEditResponse(**raw_result)
 
     async def edit_chat(
         self,
@@ -233,11 +216,7 @@ class Messages(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("editChat", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def get_by_conversation_message_id(
         self,
@@ -264,8 +243,7 @@ class Messages(Category):
         if return_raw_response:
             return raw_result
 
-        result = MessagesGetByConversationMessageIdResponse(**raw_result)
-        return result
+        return MessagesGetByConversationMessageIdResponse(**raw_result)
 
     async def get_by_id(
         self,
@@ -292,12 +270,11 @@ class Messages(Category):
         if return_raw_response:
             return raw_result
 
-        result = (
+        return (
             MessagesGetByIdResponse(**raw_result)
             if not extended
             else MessagesGetByIdExtendedResponse(**raw_result)
         )
-        return result
 
     async def get_chat_preview(
         self,
@@ -320,8 +297,7 @@ class Messages(Category):
         if return_raw_response:
             return raw_result
 
-        result = MessagesGetChatPreviewResponse(**raw_result)
-        return result
+        return MessagesGetChatPreviewResponse(**raw_result)
 
     async def get_conversation_members(
         self,
@@ -344,8 +320,7 @@ class Messages(Category):
         if return_raw_response:
             return raw_result
 
-        result = MessagesGetConversationMembersResponse(**raw_result)
-        return result
+        return MessagesGetConversationMembersResponse(**raw_result)
 
     async def get_conversations(
         self,
@@ -376,8 +351,7 @@ class Messages(Category):
         if return_raw_response:
             return raw_result
 
-        result = MessagesGetConversationsResponse(**raw_result)
-        return result
+        return MessagesGetConversationsResponse(**raw_result)
 
     async def get_conversations_by_id(
         self,
@@ -406,12 +380,11 @@ class Messages(Category):
         if return_raw_response:
             return raw_result
 
-        result = (
+        return (
             MessagesGetConversationsByIdResponse(**raw_result)
             if not extended
             else MessagesGetConversationsByIdExtendedResponse(**raw_result)
         )
-        return result
 
     async def get_history(
         self,
@@ -446,8 +419,7 @@ class Messages(Category):
         if return_raw_response:
             return raw_result
 
-        result = MessagesGetHistoryResponse(**raw_result)
-        return result
+        return MessagesGetHistoryResponse(**raw_result)
 
     async def get_history_attachments(
         self,
@@ -482,8 +454,7 @@ class Messages(Category):
         if return_raw_response:
             return raw_result
 
-        result = MessagesGetHistoryAttachmentsResponse(**raw_result)
-        return result
+        return MessagesGetHistoryAttachmentsResponse(**raw_result)
 
     async def get_important_messages(
         self,
@@ -518,12 +489,11 @@ class Messages(Category):
         if return_raw_response:
             return raw_result
 
-        result = (
+        return (
             MessagesGetImportantMessagesResponse(**raw_result)
             if not extended
             else MessagesGetImportantMessagesExtendedResponse(**raw_result)
         )
-        return result
 
     async def get_invite_link(
         self,
@@ -546,8 +516,7 @@ class Messages(Category):
         if return_raw_response:
             return raw_result
 
-        result = MessagesGetInviteLinkResponse(**raw_result)
-        return result
+        return MessagesGetInviteLinkResponse(**raw_result)
 
     async def get_last_activity(
         self,
@@ -566,8 +535,7 @@ class Messages(Category):
         if return_raw_response:
             return raw_result
 
-        result = MessagesGetLastActivityResponse(**raw_result)
-        return result
+        return MessagesGetLastActivityResponse(**raw_result)
 
     async def get_long_poll_history(
         self,
@@ -608,8 +576,7 @@ class Messages(Category):
         if return_raw_response:
             return raw_result
 
-        result = MessagesGetLongPollHistoryResponse(**raw_result)
-        return result
+        return MessagesGetLongPollHistoryResponse(**raw_result)
 
     async def get_long_poll_server(
         self,
@@ -632,8 +599,7 @@ class Messages(Category):
         if return_raw_response:
             return raw_result
 
-        result = MessagesGetLongPollServerResponse(**raw_result)
-        return result
+        return MessagesGetLongPollServerResponse(**raw_result)
 
     async def is_messages_from_group_allowed(
         self,
@@ -654,8 +620,7 @@ class Messages(Category):
         if return_raw_response:
             return raw_result
 
-        result = MessagesIsMessagesFromGroupAllowedResponse(**raw_result)
-        return result
+        return MessagesIsMessagesFromGroupAllowedResponse(**raw_result)
 
     async def join_chat_by_invite_link(
         self,
@@ -674,8 +639,7 @@ class Messages(Category):
         if return_raw_response:
             return raw_result
 
-        result = MessagesJoinChatByInviteLinkResponse(**raw_result)
-        return result
+        return MessagesJoinChatByInviteLinkResponse(**raw_result)
 
     async def mark_as_answered_conversation(
         self,
@@ -695,11 +659,7 @@ class Messages(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("markAsAnsweredConversation", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def mark_as_important(
         self,
@@ -720,8 +680,7 @@ class Messages(Category):
         if return_raw_response:
             return raw_result
 
-        result = MessagesMarkAsImportantResponse(**raw_result)
-        return result
+        return MessagesMarkAsImportantResponse(**raw_result)
 
     async def mark_as_important_conversation(
         self,
@@ -741,11 +700,7 @@ class Messages(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("markAsImportantConversation", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def mark_as_read(
         self,
@@ -769,11 +724,7 @@ class Messages(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("markAsRead", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def pin(
         self,
@@ -793,11 +744,7 @@ class Messages(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("pin", params)
-        if return_raw_response:
-            return raw_result
-
-        result = MessagesPinResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else MessagesPinResponse(**raw_result)
 
     async def remove_chat_user(
         self,
@@ -817,11 +764,7 @@ class Messages(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("removeChatUser", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def restore(
         self,
@@ -839,11 +782,7 @@ class Messages(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("restore", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def search(
         self,
@@ -878,8 +817,7 @@ class Messages(Category):
         if return_raw_response:
             return raw_result
 
-        result = MessagesSearchResponse(**raw_result)
-        return result
+        return MessagesSearchResponse(**raw_result)
 
     async def search_conversations(
         self,
@@ -906,8 +844,7 @@ class Messages(Category):
         if return_raw_response:
             return raw_result
 
-        result = MessagesSearchConversationsResponse(**raw_result)
-        return result
+        return MessagesSearchConversationsResponse(**raw_result)
 
     async def send(
         self,
@@ -976,11 +913,11 @@ class Messages(Category):
         if return_raw_response:
             return raw_result
 
-        if user_ids or peer_ids:
-            result = MessagesSendPeerIdsResponse(**raw_result)
-        else:
-            result = MessagesSendResponse(**raw_result)
-        return result
+        return (
+            MessagesSendPeerIdsResponse(**raw_result)
+            if user_ids or peer_ids
+            else MessagesSendResponse(**raw_result)
+        )
 
     async def send_message_event_answer(
         self,
@@ -1002,11 +939,7 @@ class Messages(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("sendMessageEventAnswer", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def set_activity(
         self,
@@ -1028,11 +961,7 @@ class Messages(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("setActivity", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def set_chat_photo(
         self,
@@ -1051,8 +980,7 @@ class Messages(Category):
         if return_raw_response:
             return raw_result
 
-        result = MessagesSetChatPhotoResponse(**raw_result)
-        return result
+        return MessagesSetChatPhotoResponse(**raw_result)
 
     async def unpin(
         self,
@@ -1070,11 +998,7 @@ class Messages(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("unpin", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def set_conversation_style(
         self,
@@ -1094,7 +1018,4 @@ class Messages(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("setConversationStyle", params)
-        if return_raw_response:
-            return raw_result
-
-        return BaseOkResponse(**raw_result)
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)

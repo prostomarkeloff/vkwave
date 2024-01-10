@@ -36,14 +36,13 @@ class PhotoUploader(BaseUploader[typing.List[PhotosPhoto]]):
 
         self.handle_error(upload_data)
 
-        photo_sizes = (
+        return (
             await self.api_context.photos.save_messages_photo(
                 photo=upload_data["photo"],
                 server=upload_data["server"],
                 hash=upload_data["hash"],
             )
         ).response
-        return photo_sizes
 
     def attachment_name(self, photo: typing.List[PhotosPhoto]) -> str:
         p = photo[-1]
@@ -139,7 +138,7 @@ class WallPhotoUploader(BaseUploader[typing.List[PhotosPhoto]]):
 
         self.handle_error(upload_data)
 
-        photo_sizes = (
+        return (
             await self.api_context.photos.save_wall_photo(
                 photo=upload_data["photo"],
                 server=upload_data["server"],
@@ -147,7 +146,6 @@ class WallPhotoUploader(BaseUploader[typing.List[PhotosPhoto]]):
                 group_id=abs(group_id),
             )
         ).response
-        return photo_sizes
 
     def attachment_name(self, photo: typing.List[PhotosPhoto]) -> str:
         p = photo[-1]

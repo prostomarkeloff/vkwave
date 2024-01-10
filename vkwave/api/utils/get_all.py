@@ -6,15 +6,13 @@ from vkwave.vkscript import execute
 
 @execute
 def _get_all_posts_execute(api: APIOptionsRequestContext, wall_owner_id: int, _offset: int):
-    calls = 0
     all_posts = []
     offset = _offset
 
-    while calls < 25:
+    for _ in range(25):
         response = api.wall.get(owner_id=wall_owner_id, count=100, offset=offset)
         all_posts += response.items
         offset += 100
-        calls += 1
     return all_posts, offset
 
 

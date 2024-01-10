@@ -22,11 +22,7 @@ class Users(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("get", params)
-        if return_raw_response:
-            return raw_result
-
-        result = UsersGetResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else UsersGetResponse(**raw_result)
 
     async def get_followers(
         self,
@@ -53,12 +49,11 @@ class Users(Category):
         if return_raw_response:
             return raw_result
 
-        result = (
+        return (
             UsersGetFollowersResponse(**raw_result)
             if not fields
             else UsersGetFollowersFieldsResponse(**raw_result)
         )
-        return result
 
     async def get_subscriptions(
         self,
@@ -85,12 +80,11 @@ class Users(Category):
         if return_raw_response:
             return raw_result
 
-        result = (
+        return (
             UsersGetSubscriptionsResponse(**raw_result)
             if not extended
             else UsersGetSubscriptionsExtendedResponse(**raw_result)
         )
-        return result
 
     async def report(
         self,
@@ -110,11 +104,7 @@ class Users(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("report", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def search(
         self,
@@ -192,8 +182,4 @@ class Users(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("search", params)
-        if return_raw_response:
-            return raw_result
-
-        result = UsersSearchResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else UsersSearchResponse(**raw_result)

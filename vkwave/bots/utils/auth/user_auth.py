@@ -8,8 +8,7 @@ from vkwave.http import AIOHTTPClient
 
 class TwoAuth(BaseTwoAuth):
     async def get_code(self) -> int:
-        code = int(input('Input 2FA code: '))
-        return code
+        return int(input('Input 2FA code: '))
 
 
 class Auth:

@@ -31,5 +31,4 @@ class Search(Category):
         if return_raw_response:
             return raw_result
 
-        result = SearchGetHintsResponse(**raw_result)
-        return result
+        return SearchGetHintsResponse(**raw_result)

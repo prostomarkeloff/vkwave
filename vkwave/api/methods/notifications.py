@@ -29,8 +29,7 @@ class Notifications(Category):
         if return_raw_response:
             return raw_result
 
-        result = NotificationsGetResponse(**raw_result)
-        return result
+        return NotificationsGetResponse(**raw_result)
 
     async def mark_as_viewed(
         self,
@@ -47,8 +46,7 @@ class Notifications(Category):
         if return_raw_response:
             return raw_result
 
-        result = NotificationsMarkAsViewedResponse(**raw_result)
-        return result
+        return NotificationsMarkAsViewedResponse(**raw_result)
 
     async def send_message(
         self,
@@ -75,5 +73,4 @@ class Notifications(Category):
         if return_raw_response:
             return raw_result
 
-        result = NotificationsSendMessageResponse(**raw_result)
-        return result
+        return NotificationsSendMessageResponse(**raw_result)

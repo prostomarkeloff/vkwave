@@ -24,11 +24,7 @@ class Notes(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("add", params)
-        if return_raw_response:
-            return raw_result
-
-        result = NotesAddResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else NotesAddResponse(**raw_result)
 
     async def create_comment(
         self,
@@ -55,8 +51,7 @@ class Notes(Category):
         if return_raw_response:
             return raw_result
 
-        result = NotesCreateCommentResponse(**raw_result)
-        return result
+        return NotesCreateCommentResponse(**raw_result)
 
     async def delete(
         self,
@@ -72,11 +67,7 @@ class Notes(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("delete", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def delete_comment(
         self,
@@ -94,11 +85,7 @@ class Notes(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("deleteComment", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def edit(
         self,
@@ -122,11 +109,7 @@ class Notes(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("edit", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def edit_comment(
         self,
@@ -146,11 +129,7 @@ class Notes(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("editComment", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def get(
         self,
@@ -174,11 +153,7 @@ class Notes(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("get", params)
-        if return_raw_response:
-            return raw_result
-
-        result = NotesGetResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else NotesGetResponse(**raw_result)
 
     async def get_by_id(
         self,
@@ -201,8 +176,7 @@ class Notes(Category):
         if return_raw_response:
             return raw_result
 
-        result = NotesGetByIdResponse(**raw_result)
-        return result
+        return NotesGetByIdResponse(**raw_result)
 
     async def get_comments(
         self,
@@ -229,8 +203,7 @@ class Notes(Category):
         if return_raw_response:
             return raw_result
 
-        result = NotesGetCommentsResponse(**raw_result)
-        return result
+        return NotesGetCommentsResponse(**raw_result)
 
     async def restore_comment(
         self,
@@ -248,8 +221,4 @@ class Notes(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("restoreComment", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)

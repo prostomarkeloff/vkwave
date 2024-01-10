@@ -16,11 +16,7 @@ class Podcasts(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("clearRecentSearches", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def get_popular(
         self,
@@ -37,8 +33,7 @@ class Podcasts(Category):
         if return_raw_response:
             return raw_result
 
-        result = PodcastsGetPopularResponse(**raw_result)
-        return result
+        return PodcastsGetPopularResponse(**raw_result)
 
     async def get_recent_search_requests(
         self,
@@ -55,8 +50,7 @@ class Podcasts(Category):
         if return_raw_response:
             return raw_result
 
-        result = PodcastsGetRecentSearchRequestsResponse(**raw_result)
-        return result
+        return PodcastsGetRecentSearchRequestsResponse(**raw_result)
 
     async def search(
         self,
@@ -79,5 +73,4 @@ class Podcasts(Category):
         if return_raw_response:
             return raw_result
 
-        result = PodcastsSearchResponse(**raw_result)
-        return result
+        return PodcastsSearchResponse(**raw_result)

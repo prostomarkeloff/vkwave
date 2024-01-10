@@ -24,11 +24,7 @@ class Likes(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("add", params)
-        if return_raw_response:
-            return raw_result
-
-        result = LikesAddResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else LikesAddResponse(**raw_result)
 
     async def delete(
         self,
@@ -50,11 +46,7 @@ class Likes(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("delete", params)
-        if return_raw_response:
-            return raw_result
-
-        result = LikesDeleteResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else LikesDeleteResponse(**raw_result)
 
     async def get_list(
         self,
@@ -91,12 +83,11 @@ class Likes(Category):
         if return_raw_response:
             return raw_result
 
-        result = (
+        return (
             LikesGetListResponse(**raw_result)
             if not extended
             else LikesGetListExtendedResponse(**raw_result)
         )
-        return result
 
     async def is_liked(
         self,
@@ -121,5 +112,4 @@ class Likes(Category):
         if return_raw_response:
             return raw_result
 
-        result = LikesIsLikedResponse(**raw_result)
-        return result
+        return LikesIsLikedResponse(**raw_result)

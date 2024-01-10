@@ -13,9 +13,8 @@ def cached_filter(filter_: Any, storage: AbstractExpiredStorage, ttl: int) -> Ba
     async def new_filter(event: BaseEvent):
         if await storage.contains(Key(name)):
             return await storage.get(Key(name))
-        else:
-            result = await filter_.check(event)
-            await storage.put(Key(name), result, ttl)
-            return result
+        result = await filter_.check(event)
+        await storage.put(Key(name), result, ttl)
+        return result
 
     return caster.cast(new_filter)

@@ -46,8 +46,7 @@ class LeadForms(Category):
         if return_raw_response:
             return raw_result
 
-        result = LeadFormsCreateResponse(**raw_result)
-        return result
+        return LeadFormsCreateResponse(**raw_result)
 
     async def delete(
         self, group_id: int, form_id: int, return_raw_response: bool = False
@@ -64,8 +63,7 @@ class LeadForms(Category):
         if return_raw_response:
             return raw_result
 
-        result = LeadFormsDeleteResponse(**raw_result)
-        return result
+        return LeadFormsDeleteResponse(**raw_result)
 
     async def get(
         self,
@@ -82,11 +80,7 @@ class LeadForms(Category):
 
         params = get_params(locals())
         raw_result = await self.api_request("get", params)
-        if return_raw_response:
-            return raw_result
-
-        result = LeadFormsForm(**raw_result)
-        return result
+        return raw_result if return_raw_response else LeadFormsForm(**raw_result)
 
     async def get_leads(
         self,
@@ -110,8 +104,7 @@ class LeadForms(Category):
         if return_raw_response:
             return raw_result
 
-        result = LeadFormsGetLeadsResponse(**raw_result)
-        return result
+        return LeadFormsGetLeadsResponse(**raw_result)
 
     async def get_upload_url(self, return_raw_response: bool = False) -> typing.Union[dict, LeadFormsUploadUrlResponse]:
         """leadForms.getUploadURL method
@@ -124,8 +117,7 @@ class LeadForms(Category):
         if return_raw_response:
             return raw_result
 
-        result = LeadFormsUploadUrlResponse(**raw_result)
-        return result
+        return LeadFormsUploadUrlResponse(**raw_result)
 
     async def list(self, group_id: int, return_raw_response: bool = False) -> typing.Union[dict, LeadFormsListResponse]:
         """leadForms.list method
@@ -139,8 +131,7 @@ class LeadForms(Category):
         if return_raw_response:
             return raw_result
 
-        result = LeadFormsListResponse(**raw_result)
-        return result
+        return LeadFormsListResponse(**raw_result)
 
     async def update(
         self,
@@ -186,5 +177,4 @@ class LeadForms(Category):
         if return_raw_response:
             return raw_result
 
-        result = LeadFormsCreateResponse(**raw_result)
-        return result
+        return LeadFormsCreateResponse(**raw_result)

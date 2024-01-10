@@ -21,5 +21,4 @@ class DownloadedGames(Category):
         if return_raw_response:
             return raw_result
 
-        result = DownloadedGamesPaidStatusResponse(**raw_result)
-        return result
+        return DownloadedGamesPaidStatusResponse(**raw_result)

@@ -9,8 +9,4 @@ class Execute(Category):
         params.update(**kwargs)
 
         raw_result = await self.api_request("", params=params)
-        if return_raw_response:
-            return raw_result
-
-        result = ExecuteResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else ExecuteResponse(**raw_result)

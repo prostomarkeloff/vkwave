@@ -18,11 +18,7 @@ class Pages(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("clearCache", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def get(
         self,
@@ -50,11 +46,7 @@ class Pages(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("get", params)
-        if return_raw_response:
-            return raw_result
-
-        result = PagesGetResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else PagesGetResponse(**raw_result)
 
     async def get_history(
         self,
@@ -77,8 +69,7 @@ class Pages(Category):
         if return_raw_response:
             return raw_result
 
-        result = PagesGetHistoryResponse(**raw_result)
-        return result
+        return PagesGetHistoryResponse(**raw_result)
 
     async def get_titles(
         self,
@@ -97,8 +88,7 @@ class Pages(Category):
         if return_raw_response:
             return raw_result
 
-        result = PagesGetTitlesResponse(**raw_result)
-        return result
+        return PagesGetTitlesResponse(**raw_result)
 
     async def get_version(
         self,
@@ -123,8 +113,7 @@ class Pages(Category):
         if return_raw_response:
             return raw_result
 
-        result = PagesGetVersionResponse(**raw_result)
-        return result
+        return PagesGetVersionResponse(**raw_result)
 
     async def parse_wiki(
         self,
@@ -145,8 +134,7 @@ class Pages(Category):
         if return_raw_response:
             return raw_result
 
-        result = PagesParseWikiResponse(**raw_result)
-        return result
+        return PagesParseWikiResponse(**raw_result)
 
     async def save(
         self,
@@ -170,11 +158,7 @@ class Pages(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("save", params)
-        if return_raw_response:
-            return raw_result
-
-        result = PagesSaveResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else PagesSaveResponse(**raw_result)
 
     async def save_access(
         self,
@@ -201,5 +185,4 @@ class Pages(Category):
         if return_raw_response:
             return raw_result
 
-        result = PagesSaveAccessResponse(**raw_result)
-        return result
+        return PagesSaveAccessResponse(**raw_result)

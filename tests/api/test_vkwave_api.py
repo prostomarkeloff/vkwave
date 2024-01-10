@@ -18,8 +18,7 @@ async def get_api():
     bot_token = BotSyncSingleToken(token)
     vk_session = API(clients=client, tokens=bot_token,)
 
-    api = vk_session.get_context()
-    return api
+    return vk_session.get_context()
 
 
 @pytest.mark.asyncio

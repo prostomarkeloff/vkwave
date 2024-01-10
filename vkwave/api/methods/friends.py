@@ -22,11 +22,7 @@ class Friends(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("add", params)
-        if return_raw_response:
-            return raw_result
-
-        result = FriendsAddResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else FriendsAddResponse(**raw_result)
 
     async def add_list(
         self,
@@ -47,8 +43,7 @@ class Friends(Category):
         if return_raw_response:
             return raw_result
 
-        result = FriendsAddListResponse(**raw_result)
-        return result
+        return FriendsAddListResponse(**raw_result)
 
     async def are_friends(
         self,
@@ -71,12 +66,11 @@ class Friends(Category):
         if return_raw_response:
             return raw_result
 
-        result = (
+        return (
             FriendsAreFriendsResponse(**raw_result)
             if not extended
             else FriendsAreFriendsExtendedResponse(**raw_result)
         )
-        return result
 
     async def delete(
         self,
@@ -95,8 +89,7 @@ class Friends(Category):
         if return_raw_response:
             return raw_result
 
-        result = FriendsDeleteResponse(**raw_result)
-        return result
+        return FriendsDeleteResponse(**raw_result)
 
     async def delete_all_requests(
         self,
@@ -110,11 +103,7 @@ class Friends(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("deleteAllRequests", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def delete_list(
         self,
@@ -130,11 +119,7 @@ class Friends(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("deleteList", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def edit(
         self,
@@ -152,11 +137,7 @@ class Friends(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("edit", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def edit_list(
         self,
@@ -180,11 +161,7 @@ class Friends(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("editList", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def get(
         self,
@@ -217,12 +194,11 @@ class Friends(Category):
         if return_raw_response:
             return raw_result
 
-        result = (
+        return (
             FriendsGetResponse(**raw_result)
             if not fields
             else FriendsGetFieldsResponse(**raw_result)
         )
-        return result
 
     async def get_app_users(
         self,
@@ -239,8 +215,7 @@ class Friends(Category):
         if return_raw_response:
             return raw_result
 
-        result = FriendsGetAppUsersResponse(**raw_result)
-        return result
+        return FriendsGetAppUsersResponse(**raw_result)
 
     async def get_by_phones(
         self,
@@ -261,8 +236,7 @@ class Friends(Category):
         if return_raw_response:
             return raw_result
 
-        result = FriendsGetByPhonesResponse(**raw_result)
-        return result
+        return FriendsGetByPhonesResponse(**raw_result)
 
     async def get_lists(
         self,
@@ -283,8 +257,7 @@ class Friends(Category):
         if return_raw_response:
             return raw_result
 
-        result = FriendsGetListsResponse(**raw_result)
-        return result
+        return FriendsGetListsResponse(**raw_result)
 
     async def get_mutual(
         self,
@@ -313,8 +286,7 @@ class Friends(Category):
         if return_raw_response:
             return raw_result
 
-        result = FriendsGetMutualResponse(**raw_result)
-        return result
+        return FriendsGetMutualResponse(**raw_result)
 
     async def get_online(
         self,
@@ -343,8 +315,7 @@ class Friends(Category):
         if return_raw_response:
             return raw_result
 
-        result = FriendsGetOnlineResponse(**raw_result)
-        return result
+        return FriendsGetOnlineResponse(**raw_result)
 
     async def get_recent(
         self,
@@ -363,8 +334,7 @@ class Friends(Category):
         if return_raw_response:
             return raw_result
 
-        result = FriendsGetRecentResponse(**raw_result)
-        return result
+        return FriendsGetRecentResponse(**raw_result)
 
     async def get_requests(
         self,
@@ -401,12 +371,11 @@ class Friends(Category):
         if return_raw_response:
             return raw_result
 
-        result = (
+        return (
             FriendsGetRequestsResponse(**raw_result)
             if not extended
             else FriendsGetRequestsExtendedResponse(**raw_result)
         )
-        return result
 
     async def get_suggestions(
         self,
@@ -433,8 +402,7 @@ class Friends(Category):
         if return_raw_response:
             return raw_result
 
-        result = FriendsGetSuggestionsResponse(**raw_result)
-        return result
+        return FriendsGetSuggestionsResponse(**raw_result)
 
     async def search(
         self,
@@ -463,5 +431,4 @@ class Friends(Category):
         if return_raw_response:
             return raw_result
 
-        result = FriendsSearchResponse(**raw_result)
-        return result
+        return FriendsSearchResponse(**raw_result)

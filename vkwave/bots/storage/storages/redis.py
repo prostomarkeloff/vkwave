@@ -111,6 +111,4 @@ class RedisStorage(AbstractExpiredStorage):
 
     async def wait_closed(self) -> bool:
         async with self._connection_lock:
-            if self._redis:
-                return await self._redis.wait_closed()
-            return True
+            return await self._redis.wait_closed() if self._redis else True

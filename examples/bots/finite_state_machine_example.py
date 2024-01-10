@@ -51,7 +51,7 @@ async def simple_handler(event: BotEvent):
 @bot.message_handler(StateFilter(fsm=fsm, state=MyState.age, for_what=ForWhat.FOR_USER),)
 async def simple_handler(event: BotEvent):
     if not event.object.object.message.text.isdigit():
-        return f"Please, send only positive numbers!"
+        return "Please, send only positive numbers!"
     await fsm.add_data(
         event=event,
         for_what=ForWhat.FOR_USER,

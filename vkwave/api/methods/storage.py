@@ -22,11 +22,7 @@ class Storage(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("get", params)
-        if return_raw_response:
-            return raw_result
-
-        result = StorageGetResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else StorageGetResponse(**raw_result)
 
     async def get_keys(
         self,
@@ -49,8 +45,7 @@ class Storage(Category):
         if return_raw_response:
             return raw_result
 
-        result = StorageGetKeysResponse(**raw_result)
-        return result
+        return StorageGetKeysResponse(**raw_result)
 
     async def set(
         self,
@@ -70,8 +65,4 @@ class Storage(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("set", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)

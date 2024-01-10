@@ -49,7 +49,7 @@ def is_message_event(event: BaseEvent, flags_needed: bool = False):
         if event.object.type not in [MessageEventBot, CallbackMessageEventBot]:
             raise InvalidEventError
     elif event.bot_type is BotType.USER:
-        event_for_check = AdvancedMessageEventUser if not flags_needed else MessageEventUser
+        event_for_check = MessageEventUser if flags_needed else AdvancedMessageEventUser
         if event.object.object.event_id not in event_for_check:
             raise InvalidEventError
 
@@ -73,25 +73,28 @@ def get_payload(event: BaseEvent) -> Optional[str]:
 def get_text(event: BaseEvent) -> Optional[str]:
     is_message_event(event)
     if event.bot_type is BotType.USER:
-        if event.object.object.dict().get("text") is None:
-            return None
-        return event.object.object.text
-    else:
-        if event.object.object.dict().get("message") is None:
-            return None
-        return event.object.object.message.text
+        return (
+            None
+            if event.object.object.dict().get("text") is None
+            else event.object.object.text
+        )
+    if event.object.object.dict().get("message") is None:
+        return None
+    return event.object.object.message.text
 
 
 def get_id(event: BaseEvent) -> Optional[int]:
     is_message_event(event)
     if event.bot_type is BotType.USER:
-        if event.object.object.dict().get('message_data').get("from_id") is None:
-            return None
-        return int(event.object.object.message_data.from_id)
-    else:
-        if event.object.object.dict().get("message") is None:
-            return None
-        return int(event.object.object.message.from_id)
+        return (
+            None
+            if event.object.object.dict().get('message_data').get("from_id")
+            is None
+            else int(event.object.object.message_data.from_id)
+        )
+    if event.object.object.dict().get("message") is None:
+        return None
+    return int(event.object.object.message.from_id)
 
 
 class EventTypeFilter(BaseFilter):
@@ -424,8 +427,7 @@ class TextContainsFilter(BaseFilter):
         self.ignore_case = ignore_case
 
     async def check(self, event: BaseEvent) -> FilterResult:
-        message_text = get_text(event)
-        if message_text:
+        if message_text := get_text(event):
             for text in self.text:
                 r = (
                     text in message_text

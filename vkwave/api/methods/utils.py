@@ -21,8 +21,7 @@ class Utils(Category):
         if return_raw_response:
             return raw_result
 
-        result = UtilsCheckLinkResponse(**raw_result)
-        return result
+        return UtilsCheckLinkResponse(**raw_result)
 
     async def delete_from_last_shortened(
         self,
@@ -38,11 +37,7 @@ class Utils(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("deleteFromLastShortened", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def get_last_shortened_links(
         self,
@@ -63,8 +58,7 @@ class Utils(Category):
         if return_raw_response:
             return raw_result
 
-        result = UtilsGetLastShortenedLinksResponse(**raw_result)
-        return result
+        return UtilsGetLastShortenedLinksResponse(**raw_result)
 
     async def get_link_stats(
         self,
@@ -93,12 +87,11 @@ class Utils(Category):
         if return_raw_response:
             return raw_result
 
-        result = (
+        return (
             UtilsGetLinkStatsResponse(**raw_result)
             if not extended
             else UtilsGetLinkStatsExtendedResponse(**raw_result)
         )
-        return result
 
     async def get_server_time(
         self,
@@ -115,8 +108,7 @@ class Utils(Category):
         if return_raw_response:
             return raw_result
 
-        result = UtilsGetServerTimeResponse(**raw_result)
-        return result
+        return UtilsGetServerTimeResponse(**raw_result)
 
     async def get_short_link(
         self,
@@ -137,8 +129,7 @@ class Utils(Category):
         if return_raw_response:
             return raw_result
 
-        result = UtilsGetShortLinkResponse(**raw_result)
-        return result
+        return UtilsGetShortLinkResponse(**raw_result)
 
     async def resolve_screen_name(
         self,
@@ -157,5 +148,4 @@ class Utils(Category):
         if return_raw_response:
             return raw_result
 
-        result = UtilsResolveScreenNameResponse(**raw_result)
-        return result
+        return UtilsResolveScreenNameResponse(**raw_result)

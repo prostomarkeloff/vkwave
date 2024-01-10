@@ -34,11 +34,7 @@ class Stats(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("get", params)
-        if return_raw_response:
-            return raw_result
-
-        result = StatsGetResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else StatsGetResponse(**raw_result)
 
     async def get_post_reach(
         self,
@@ -59,8 +55,7 @@ class Stats(Category):
         if return_raw_response:
             return raw_result
 
-        result = StatsGetPostReachResponse(**raw_result)
-        return result
+        return StatsGetPostReachResponse(**raw_result)
 
     async def track_visitor(
         self,
@@ -76,8 +71,4 @@ class Stats(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("trackVisitor", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)

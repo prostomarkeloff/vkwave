@@ -15,7 +15,7 @@ class TokenStorage(Generic[T]):
         available: Optional[Dict[T, AnyABCToken]] = None,
         get_token_strategy: Optional[ABCGetTokenStrategy] = None,
     ):
-        self.tokens: Dict[T, AnyABCToken] = available or dict()
+        self.tokens: Dict[T, AnyABCToken] = available or {}
         self.get_token_strategy: ABCGetTokenStrategy[T] = (
             get_token_strategy or NotImplementedGetTokenStrategy[T]()
         )
@@ -27,8 +27,7 @@ class TokenStorage(Generic[T]):
         return self.tokens.get(id_to_check)
 
     async def get_token(self, id_to_check: T) -> AnyABCToken:
-        cached = self._get_cached(id_to_check)
-        if cached:
+        if cached := self._get_cached(id_to_check):
             return cached
         token = await self.get_token_strategy.get_token(id_to_check)
         self.tokens[id_to_check] = token

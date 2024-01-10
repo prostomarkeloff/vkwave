@@ -22,11 +22,7 @@ class Photos(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("confirmTag", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def copy(
         self,
@@ -46,11 +42,7 @@ class Photos(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("copy", params)
-        if return_raw_response:
-            return raw_result
-
-        result = PhotosCopyResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else PhotosCopyResponse(**raw_result)
 
     async def create_album(
         self,
@@ -81,8 +73,7 @@ class Photos(Category):
         if return_raw_response:
             return raw_result
 
-        result = PhotosCreateAlbumResponse(**raw_result)
-        return result
+        return PhotosCreateAlbumResponse(**raw_result)
 
     async def create_comment(
         self,
@@ -117,8 +108,7 @@ class Photos(Category):
         if return_raw_response:
             return raw_result
 
-        result = PhotosCreateCommentResponse(**raw_result)
-        return result
+        return PhotosCreateCommentResponse(**raw_result)
 
     async def delete(
         self,
@@ -136,11 +126,7 @@ class Photos(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("delete", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def delete_album(
         self,
@@ -158,11 +144,7 @@ class Photos(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("deleteAlbum", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def delete_comment(
         self,
@@ -183,8 +165,7 @@ class Photos(Category):
         if return_raw_response:
             return raw_result
 
-        result = PhotosDeleteCommentResponse(**raw_result)
-        return result
+        return PhotosDeleteCommentResponse(**raw_result)
 
     async def edit(
         self,
@@ -214,11 +195,7 @@ class Photos(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("edit", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def edit_album(
         self,
@@ -248,11 +225,7 @@ class Photos(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("editAlbum", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def edit_comment(
         self,
@@ -274,11 +247,7 @@ class Photos(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("editComment", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def get(
         self,
@@ -312,11 +281,7 @@ class Photos(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("get", params)
-        if return_raw_response:
-            return raw_result
-
-        result = PhotosGetResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else PhotosGetResponse(**raw_result)
 
     async def get_albums(
         self,
@@ -347,8 +312,7 @@ class Photos(Category):
         if return_raw_response:
             return raw_result
 
-        result = PhotosGetAlbumsResponse(**raw_result)
-        return result
+        return PhotosGetAlbumsResponse(**raw_result)
 
     async def get_albums_count(
         self,
@@ -369,8 +333,7 @@ class Photos(Category):
         if return_raw_response:
             return raw_result
 
-        result = PhotosGetAlbumsCountResponse(**raw_result)
-        return result
+        return PhotosGetAlbumsCountResponse(**raw_result)
 
     async def get_all(
         self,
@@ -403,12 +366,11 @@ class Photos(Category):
         if return_raw_response:
             return raw_result
 
-        result = (
+        return (
             PhotosGetAllResponse(**raw_result)
             if not extended
             else PhotosGetAllExtendedResponse(**raw_result)
         )
-        return result
 
     async def get_all_comments(
         self,
@@ -435,8 +397,7 @@ class Photos(Category):
         if return_raw_response:
             return raw_result
 
-        result = PhotosGetAllCommentsResponse(**raw_result)
-        return result
+        return PhotosGetAllCommentsResponse(**raw_result)
 
     async def get_by_id(
         self,
@@ -459,8 +420,7 @@ class Photos(Category):
         if return_raw_response:
             return raw_result
 
-        result = PhotosGetByIdResponse(**raw_result)
-        return result
+        return PhotosGetByIdResponse(**raw_result)
 
     async def get_chat_upload_server(
         self,
@@ -485,8 +445,7 @@ class Photos(Category):
         if return_raw_response:
             return raw_result
 
-        result = BaseGetUploadServerResponse(**raw_result)
-        return result
+        return BaseGetUploadServerResponse(**raw_result)
 
     async def get_comments(
         self,
@@ -523,12 +482,11 @@ class Photos(Category):
         if return_raw_response:
             return raw_result
 
-        result = (
+        return (
             PhotosGetCommentsResponse(**raw_result)
             if not extended
             else PhotosGetCommentsExtendedResponse(**raw_result)
         )
-        return result
 
     async def get_market_album_upload_server(
         self,
@@ -547,8 +505,7 @@ class Photos(Category):
         if return_raw_response:
             return raw_result
 
-        result = BaseGetUploadServerResponse(**raw_result)
-        return result
+        return BaseGetUploadServerResponse(**raw_result)
 
     async def get_market_upload_server(
         self,
@@ -575,8 +532,7 @@ class Photos(Category):
         if return_raw_response:
             return raw_result
 
-        result = PhotosGetMarketUploadServerResponse(**raw_result)
-        return result
+        return PhotosGetMarketUploadServerResponse(**raw_result)
 
     async def get_messages_upload_server(
         self,
@@ -595,8 +551,7 @@ class Photos(Category):
         if return_raw_response:
             return raw_result
 
-        result = PhotosGetMessagesUploadServerResponse(**raw_result)
-        return result
+        return PhotosGetMessagesUploadServerResponse(**raw_result)
 
     async def get_new_tags(
         self,
@@ -617,8 +572,7 @@ class Photos(Category):
         if return_raw_response:
             return raw_result
 
-        result = PhotosGetNewTagsResponse(**raw_result)
-        return result
+        return PhotosGetNewTagsResponse(**raw_result)
 
     async def get_owner_cover_photo_upload_server(
         self,
@@ -645,8 +599,7 @@ class Photos(Category):
         if return_raw_response:
             return raw_result
 
-        result = BaseGetUploadServerResponse(**raw_result)
-        return result
+        return BaseGetUploadServerResponse(**raw_result)
 
     async def get_owner_photo_upload_server(
         self,
@@ -665,8 +618,7 @@ class Photos(Category):
         if return_raw_response:
             return raw_result
 
-        result = BaseGetUploadServerResponse(**raw_result)
-        return result
+        return BaseGetUploadServerResponse(**raw_result)
 
     async def get_tags(
         self,
@@ -689,8 +641,7 @@ class Photos(Category):
         if return_raw_response:
             return raw_result
 
-        result = PhotosGetTagsResponse(**raw_result)
-        return result
+        return PhotosGetTagsResponse(**raw_result)
 
     async def get_upload_server(
         self,
@@ -711,8 +662,7 @@ class Photos(Category):
         if return_raw_response:
             return raw_result
 
-        result = PhotosGetUploadServerResponse(**raw_result)
-        return result
+        return PhotosGetUploadServerResponse(**raw_result)
 
     async def get_user_photos(
         self,
@@ -739,8 +689,7 @@ class Photos(Category):
         if return_raw_response:
             return raw_result
 
-        result = PhotosGetUserPhotosResponse(**raw_result)
-        return result
+        return PhotosGetUserPhotosResponse(**raw_result)
 
     async def get_wall_upload_server(
         self,
@@ -759,8 +708,7 @@ class Photos(Category):
         if return_raw_response:
             return raw_result
 
-        result = PhotosGetWallUploadServerResponse(**raw_result)
-        return result
+        return PhotosGetWallUploadServerResponse(**raw_result)
 
     async def make_cover(
         self,
@@ -780,11 +728,7 @@ class Photos(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("makeCover", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def move(
         self,
@@ -804,11 +748,7 @@ class Photos(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("move", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def put_tag(
         self,
@@ -839,8 +779,7 @@ class Photos(Category):
         if return_raw_response:
             return raw_result
 
-        result = PhotosPutTagResponse(**raw_result)
-        return result
+        return PhotosPutTagResponse(**raw_result)
 
     async def remove_tag(
         self,
@@ -860,11 +799,7 @@ class Photos(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("removeTag", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def reorder_albums(
         self,
@@ -886,11 +821,7 @@ class Photos(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("reorderAlbums", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def reorder_photos(
         self,
@@ -912,11 +843,7 @@ class Photos(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("reorderPhotos", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def report(
         self,
@@ -936,11 +863,7 @@ class Photos(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("report", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def report_comment(
         self,
@@ -960,11 +883,7 @@ class Photos(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("reportComment", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def restore(
         self,
@@ -982,11 +901,7 @@ class Photos(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("restore", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def restore_comment(
         self,
@@ -1007,8 +922,7 @@ class Photos(Category):
         if return_raw_response:
             return raw_result
 
-        result = PhotosRestoreCommentResponse(**raw_result)
-        return result
+        return PhotosRestoreCommentResponse(**raw_result)
 
     async def save(
         self,
@@ -1038,11 +952,7 @@ class Photos(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("save", params)
-        if return_raw_response:
-            return raw_result
-
-        result = PhotosSaveResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else PhotosSaveResponse(**raw_result)
 
     async def save_market_album_photo(
         self,
@@ -1067,8 +977,7 @@ class Photos(Category):
         if return_raw_response:
             return raw_result
 
-        result = PhotosSaveMarketAlbumPhotoResponse(**raw_result)
-        return result
+        return PhotosSaveMarketAlbumPhotoResponse(**raw_result)
 
     async def save_market_photo(
         self,
@@ -1097,8 +1006,7 @@ class Photos(Category):
         if return_raw_response:
             return raw_result
 
-        result = PhotosSaveMarketPhotoResponse(**raw_result)
-        return result
+        return PhotosSaveMarketPhotoResponse(**raw_result)
 
     async def save_messages_photo(
         self,
@@ -1121,8 +1029,7 @@ class Photos(Category):
         if return_raw_response:
             return raw_result
 
-        result = PhotosSaveMessagesPhotoResponse(**raw_result)
-        return result
+        return PhotosSaveMessagesPhotoResponse(**raw_result)
 
     async def save_owner_cover_photo(
         self,
@@ -1143,8 +1050,7 @@ class Photos(Category):
         if return_raw_response:
             return raw_result
 
-        result = PhotosSaveOwnerCoverPhotoResponse(**raw_result)
-        return result
+        return PhotosSaveOwnerCoverPhotoResponse(**raw_result)
 
     async def save_owner_photo(
         self,
@@ -1167,8 +1073,7 @@ class Photos(Category):
         if return_raw_response:
             return raw_result
 
-        result = PhotosSaveOwnerPhotoResponse(**raw_result)
-        return result
+        return PhotosSaveOwnerPhotoResponse(**raw_result)
 
     async def save_wall_photo(
         self,
@@ -1201,8 +1106,7 @@ class Photos(Category):
         if return_raw_response:
             return raw_result
 
-        result = PhotosSaveWallPhotoResponse(**raw_result)
-        return result
+        return PhotosSaveWallPhotoResponse(**raw_result)
 
     async def search(
         self,
@@ -1237,5 +1141,4 @@ class Photos(Category):
         if return_raw_response:
             return raw_result
 
-        result = PhotosSearchResponse(**raw_result)
-        return result
+        return PhotosSearchResponse(**raw_result)

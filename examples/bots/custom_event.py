@@ -15,8 +15,7 @@ bot = SimpleLongPollBot(
 
 @bot.message_handler(bot.text_filter('my_event'))
 async def handler(event: MyEvent):
-    result = event.my_custom_method()
-    return result
+    return event.my_custom_method()
 
 
 @simple_bot_message_handler(
@@ -25,8 +24,7 @@ async def handler(event: MyEvent):
     event=MyEvent
 )
 async def handler_from_router(event: MyEvent):
-    result = event.my_custom_method()
-    return result
+    return event.my_custom_method()
 
 
 bot.run_forever()

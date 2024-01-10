@@ -35,11 +35,7 @@ class Audio(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("get", params)
-        if return_raw_response:
-            return raw_result
-
-        result = AudioGetResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else AudioGetResponse(**raw_result)
 
     async def get_by_id(
         self,
@@ -58,5 +54,4 @@ class Audio(Category):
         if return_raw_response:
             return raw_result
 
-        result = AudioGetByIdResponse(**raw_result)
-        return result
+        return AudioGetByIdResponse(**raw_result)

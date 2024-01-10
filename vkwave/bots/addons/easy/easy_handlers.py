@@ -765,10 +765,7 @@ class SimpleBotCallback(BaseCallback):
         self.event_type = event_type
 
     async def execute(self, event: Union[UserEvent, BotEvent]) -> Any:
-        if self.bot_type is BotType.BOT:
-            new_event = self.event_type(event)
-        else:
-            new_event = self.event_type(event)
+        new_event = self.event_type(event)
         return await self.func.execute(new_event)
 
     def __repr__(self):

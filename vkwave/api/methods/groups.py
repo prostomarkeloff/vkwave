@@ -45,8 +45,7 @@ class Groups(Category):
         if return_raw_response:
             return raw_result
 
-        result = GroupsAddAddressResponse(**raw_result)
-        return result
+        return GroupsAddAddressResponse(**raw_result)
 
     async def add_callback_server(
         self,
@@ -71,8 +70,7 @@ class Groups(Category):
         if return_raw_response:
             return raw_result
 
-        result = GroupsAddCallbackServerResponse(**raw_result)
-        return result
+        return GroupsAddCallbackServerResponse(**raw_result)
 
     async def add_link(
         self,
@@ -95,8 +93,7 @@ class Groups(Category):
         if return_raw_response:
             return raw_result
 
-        result = GroupsAddLinkResponse(**raw_result)
-        return result
+        return GroupsAddLinkResponse(**raw_result)
 
     async def approve_request(
         self,
@@ -114,11 +111,7 @@ class Groups(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("approveRequest", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def ban(
         self,
@@ -144,11 +137,7 @@ class Groups(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("ban", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def create(
         self,
@@ -175,8 +164,7 @@ class Groups(Category):
         if return_raw_response:
             return raw_result
 
-        result = GroupsCreateResponse(**raw_result)
-        return result
+        return GroupsCreateResponse(**raw_result)
 
     async def delete_address(
         self,
@@ -194,11 +182,7 @@ class Groups(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("deleteAddress", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def delete_callback_server(
         self,
@@ -216,11 +200,7 @@ class Groups(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("deleteCallbackServer", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def delete_link(
         self,
@@ -238,11 +218,7 @@ class Groups(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("deleteLink", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def disable_online(
         self,
@@ -258,11 +234,7 @@ class Groups(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("disableOnline", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def edit(
         self,
@@ -366,11 +338,7 @@ class Groups(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("edit", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def edit_address(
         self,
@@ -415,8 +383,7 @@ class Groups(Category):
         if return_raw_response:
             return raw_result
 
-        result = GroupsEditAddressResponse(**raw_result)
-        return result
+        return GroupsEditAddressResponse(**raw_result)
 
     async def edit_callback_server(
         self,
@@ -440,11 +407,7 @@ class Groups(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("editCallbackServer", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def edit_link(
         self,
@@ -464,11 +427,7 @@ class Groups(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("editLink", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def edit_manager(
         self,
@@ -496,11 +455,7 @@ class Groups(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("editManager", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def enable_online(
         self,
@@ -516,11 +471,7 @@ class Groups(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("enableOnline", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def get(
         self,
@@ -549,12 +500,11 @@ class Groups(Category):
         if return_raw_response:
             return raw_result
 
-        result = (
+        return (
             GroupsGetResponse(**raw_result)
             if not extended
             else GroupsGetExtendedResponse(**raw_result)
         )
-        return result
 
     async def get_addresses(
         self,
@@ -585,8 +535,7 @@ class Groups(Category):
         if return_raw_response:
             return raw_result
 
-        result = GroupsGetAddressesResponse(**raw_result)
-        return result
+        return GroupsGetAddressesResponse(**raw_result)
 
     async def get_banned(
         self,
@@ -613,8 +562,7 @@ class Groups(Category):
         if return_raw_response:
             return raw_result
 
-        result = GroupsGetBannedResponse(**raw_result)
-        return result
+        return GroupsGetBannedResponse(**raw_result)
 
     async def get_by_id(
         self,
@@ -637,8 +585,7 @@ class Groups(Category):
         if return_raw_response:
             return raw_result
 
-        result = GroupsGetByIdLegacyResponse(**raw_result)
-        return result
+        return GroupsGetByIdLegacyResponse(**raw_result)
 
     async def get_callback_confirmation_code(
         self,
@@ -657,8 +604,7 @@ class Groups(Category):
         if return_raw_response:
             return raw_result
 
-        result = GroupsGetCallbackConfirmationCodeResponse(**raw_result)
-        return result
+        return GroupsGetCallbackConfirmationCodeResponse(**raw_result)
 
     async def get_callback_servers(
         self,
@@ -679,8 +625,7 @@ class Groups(Category):
         if return_raw_response:
             return raw_result
 
-        result = GroupsGetCallbackServersResponse(**raw_result)
-        return result
+        return GroupsGetCallbackServersResponse(**raw_result)
 
     async def get_callback_settings(
         self,
@@ -701,8 +646,7 @@ class Groups(Category):
         if return_raw_response:
             return raw_result
 
-        result = GroupsGetCallbackSettingsResponse(**raw_result)
-        return result
+        return GroupsGetCallbackSettingsResponse(**raw_result)
 
     async def get_catalog(
         self,
@@ -723,8 +667,7 @@ class Groups(Category):
         if return_raw_response:
             return raw_result
 
-        result = GroupsGetCatalogResponse(**raw_result)
-        return result
+        return GroupsGetCatalogResponse(**raw_result)
 
     async def get_catalog_info(
         self,
@@ -745,12 +688,11 @@ class Groups(Category):
         if return_raw_response:
             return raw_result
 
-        result = (
+        return (
             GroupsGetCatalogInfoResponse(**raw_result)
             if not extended
             else GroupsGetCatalogInfoExtendedResponse(**raw_result)
         )
-        return result
 
     async def get_invited_users(
         self,
@@ -777,8 +719,7 @@ class Groups(Category):
         if return_raw_response:
             return raw_result
 
-        result = GroupsGetInvitedUsersResponse(**raw_result)
-        return result
+        return GroupsGetInvitedUsersResponse(**raw_result)
 
     async def get_invites(
         self,
@@ -801,12 +742,11 @@ class Groups(Category):
         if return_raw_response:
             return raw_result
 
-        result = (
+        return (
             GroupsGetInvitesResponse(**raw_result)
             if not extended
             else GroupsGetInvitesExtendedResponse(**raw_result)
         )
-        return result
 
     async def get_long_poll_server(
         self,
@@ -825,8 +765,7 @@ class Groups(Category):
         if return_raw_response:
             return raw_result
 
-        result = GroupsGetLongPollServerResponse(**raw_result)
-        return result
+        return GroupsGetLongPollServerResponse(**raw_result)
 
     async def get_long_poll_settings(
         self,
@@ -845,8 +784,7 @@ class Groups(Category):
         if return_raw_response:
             return raw_result
 
-        result = GroupsGetLongPollSettingsResponse(**raw_result)
-        return result
+        return GroupsGetLongPollSettingsResponse(**raw_result)
 
     async def get_members(
         self,
@@ -875,12 +813,11 @@ class Groups(Category):
         if return_raw_response:
             return raw_result
 
-        result = (
+        return (
             GroupsGetMembersResponse(**raw_result)
             if not fields and (not filter or filter != "managers")
             else GroupsGetMembersFieldsResponse(**raw_result)
         )
-        return result
 
     async def get_requests(
         self,
@@ -905,12 +842,11 @@ class Groups(Category):
         if return_raw_response:
             return raw_result
 
-        result = (
+        return (
             GroupsGetRequestsResponse(**raw_result)
             if not fields
             else GroupsGetRequestsFieldsResponse(**raw_result)
         )
-        return result
 
     async def get_settings(
         self,
@@ -929,8 +865,7 @@ class Groups(Category):
         if return_raw_response:
             return raw_result
 
-        result = GroupsGetSettingsResponse(**raw_result)
-        return result
+        return GroupsGetSettingsResponse(**raw_result)
 
     async def get_tag_list(
         self,
@@ -949,8 +884,7 @@ class Groups(Category):
         if return_raw_response:
             return raw_result
 
-        result = GroupsGetTagListResponse(**raw_result)
-        return result
+        return GroupsGetTagListResponse(**raw_result)
 
     async def get_token_permissions(
         self,
@@ -967,8 +901,7 @@ class Groups(Category):
         if return_raw_response:
             return raw_result
 
-        result = GroupsGetTokenPermissionsResponse(**raw_result)
-        return result
+        return GroupsGetTokenPermissionsResponse(**raw_result)
 
     async def invite(
         self,
@@ -986,11 +919,7 @@ class Groups(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("invite", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def is_member(
         self,
@@ -1015,12 +944,11 @@ class Groups(Category):
         if return_raw_response:
             return raw_result
 
-        result = (
+        return (
             GroupsIsMemberResponse(**raw_result)
             if not extended
             else GroupsIsMemberExtendedResponse(**raw_result)
         )
-        return result
 
     async def join(
         self,
@@ -1038,11 +966,7 @@ class Groups(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("join", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def leave(
         self,
@@ -1058,11 +982,7 @@ class Groups(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("leave", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def remove_user(
         self,
@@ -1080,11 +1000,7 @@ class Groups(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("removeUser", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def reorder_link(
         self,
@@ -1104,11 +1020,7 @@ class Groups(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("reorderLink", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def search(
         self,
@@ -1143,8 +1055,7 @@ class Groups(Category):
         if return_raw_response:
             return raw_result
 
-        result = GroupsSearchResponse(**raw_result)
-        return result
+        return GroupsSearchResponse(**raw_result)
 
     async def set_callback_settings(
         self,
@@ -1268,11 +1179,7 @@ class Groups(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("setCallbackSettings", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def set_long_poll_settings(
         self,
@@ -1390,11 +1297,7 @@ class Groups(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("setLongPollSettings", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def set_settings(
         self,
@@ -1418,11 +1321,7 @@ class Groups(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("setSettings", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def set_user_note(
         self,
@@ -1442,11 +1341,7 @@ class Groups(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("setUserNote", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseBoolResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseBoolResponse(**raw_result)
 
     async def tag_add(
         self,
@@ -1466,11 +1361,7 @@ class Groups(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("tagAdd", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseBoolResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseBoolResponse(**raw_result)
 
     async def tag_bind(
         self,
@@ -1492,11 +1383,7 @@ class Groups(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("tagBind", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseBoolResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseBoolResponse(**raw_result)
 
     async def tag_delete(
         self,
@@ -1514,11 +1401,7 @@ class Groups(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("tagDelete", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseBoolResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseBoolResponse(**raw_result)
 
     async def tag_update(
         self,
@@ -1538,11 +1421,7 @@ class Groups(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("tagUpdate", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseBoolResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseBoolResponse(**raw_result)
 
     async def toggle_market(
         self,
@@ -1560,11 +1439,7 @@ class Groups(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("toggleMarket", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def unban(
         self,
@@ -1582,8 +1457,4 @@ class Groups(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("unban", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)

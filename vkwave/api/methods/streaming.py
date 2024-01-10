@@ -19,8 +19,7 @@ class Streaming(Category):
         if return_raw_response:
             return raw_result
 
-        result = StreamingGetServerUrlResponse(**raw_result)
-        return result
+        return StreamingGetServerUrlResponse(**raw_result)
 
     async def set_settings(
         self,
@@ -36,8 +35,4 @@ class Streaming(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("setSettings", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)

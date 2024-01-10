@@ -40,11 +40,10 @@ class HandlerRegistrar:
             if isinstance(filter, EventTypeFilter):
                 handler.filter_manager.filters.insert(0, filter)
         for dfilter in self.default_filters:
-            to_include: bool = True
-            for afilter in handler.filter_manager.filters:
-                if type(dfilter) is type(afilter):
-                    to_include = False
-                    break
+            to_include: bool = all(
+                type(dfilter) is not type(afilter)
+                for afilter in handler.filter_manager.filters
+            )
             if to_include:
                 handler.filter_manager.add_filter(dfilter)
 

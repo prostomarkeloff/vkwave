@@ -71,8 +71,7 @@ class BotLongpoll:
         self.data = bot_longpoll_data
 
     async def get_updates(self) -> List[Update]:
-        updates = await self.data.get_updates(self.client, self.api)
-        return updates
+        return await self.data.get_updates(self.client, self.api)
 
     async def event_by_event(self) -> AsyncGenerator[Update, None]:
         updates: List[Update] = []
@@ -80,5 +79,4 @@ class BotLongpoll:
             while not updates:
                 updates = await self.get_updates()
             while updates:
-                update = updates.pop()
-                yield update
+                yield updates.pop()

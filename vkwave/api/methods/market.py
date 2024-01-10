@@ -46,11 +46,7 @@ class Market(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("add", params)
-        if return_raw_response:
-            return raw_result
-
-        result = MarketAddResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else MarketAddResponse(**raw_result)
 
     async def add_album(
         self,
@@ -75,8 +71,7 @@ class Market(Category):
         if return_raw_response:
             return raw_result
 
-        result = MarketAddAlbumResponse(**raw_result)
-        return result
+        return MarketAddAlbumResponse(**raw_result)
 
     async def add_to_album(
         self,
@@ -96,11 +91,7 @@ class Market(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("addToAlbum", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def create_comment(
         self,
@@ -133,8 +124,7 @@ class Market(Category):
         if return_raw_response:
             return raw_result
 
-        result = MarketCreateCommentResponse(**raw_result)
-        return result
+        return MarketCreateCommentResponse(**raw_result)
 
     async def delete(
         self,
@@ -152,11 +142,7 @@ class Market(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("delete", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def delete_album(
         self,
@@ -174,11 +160,7 @@ class Market(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("deleteAlbum", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def delete_comment(
         self,
@@ -199,8 +181,7 @@ class Market(Category):
         if return_raw_response:
             return raw_result
 
-        result = MarketDeleteCommentResponse(**raw_result)
-        return result
+        return MarketDeleteCommentResponse(**raw_result)
 
     async def edit(
         self,
@@ -236,11 +217,7 @@ class Market(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("edit", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def edit_album(
         self,
@@ -264,11 +241,7 @@ class Market(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("editAlbum", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def edit_comment(
         self,
@@ -290,11 +263,7 @@ class Market(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("editComment", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def edit_order(
         self,
@@ -334,11 +303,7 @@ class Market(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("editOrder", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def get(
         self,
@@ -365,12 +330,11 @@ class Market(Category):
         if return_raw_response:
             return raw_result
 
-        result = (
+        return (
             MarketGetResponse(**raw_result)
             if not extended
             else MarketGetExtendedResponse(**raw_result)
         )
-        return result
 
     async def get_album_by_id(
         self,
@@ -391,8 +355,7 @@ class Market(Category):
         if return_raw_response:
             return raw_result
 
-        result = MarketGetAlbumByIdResponse(**raw_result)
-        return result
+        return MarketGetAlbumByIdResponse(**raw_result)
 
     async def get_albums(
         self,
@@ -415,8 +378,7 @@ class Market(Category):
         if return_raw_response:
             return raw_result
 
-        result = MarketGetAlbumsResponse(**raw_result)
-        return result
+        return MarketGetAlbumsResponse(**raw_result)
 
     async def get_by_id(
         self,
@@ -437,12 +399,11 @@ class Market(Category):
         if return_raw_response:
             return raw_result
 
-        result = (
+        return (
             MarketGetByIdResponse(**raw_result)
             if not extended
             else MarketGetByIdExtendedResponse(**raw_result)
         )
-        return result
 
     async def get_categories(
         self,
@@ -463,8 +424,7 @@ class Market(Category):
         if return_raw_response:
             return raw_result
 
-        result = MarketGetCategoriesNewResponse(**raw_result)
-        return result
+        return MarketGetCategoriesNewResponse(**raw_result)
 
     async def get_comments(
         self,
@@ -499,8 +459,7 @@ class Market(Category):
         if return_raw_response:
             return raw_result
 
-        result = MarketGetCommentsResponse(**raw_result)
-        return result
+        return MarketGetCommentsResponse(**raw_result)
 
     async def get_group_orders(
         self,
@@ -523,8 +482,7 @@ class Market(Category):
         if return_raw_response:
             return raw_result
 
-        result = MarketGetGroupOrdersResponse(**raw_result)
-        return result
+        return MarketGetGroupOrdersResponse(**raw_result)
 
     async def get_order_by_id(
         self,
@@ -547,8 +505,7 @@ class Market(Category):
         if return_raw_response:
             return raw_result
 
-        result = MarketGetOrderByIdResponse(**raw_result)
-        return result
+        return MarketGetOrderByIdResponse(**raw_result)
 
     async def get_order_items(
         self,
@@ -573,8 +530,7 @@ class Market(Category):
         if return_raw_response:
             return raw_result
 
-        result = MarketGetOrderItemsResponse(**raw_result)
-        return result
+        return MarketGetOrderItemsResponse(**raw_result)
 
     async def get_orders(
         self,
@@ -597,12 +553,11 @@ class Market(Category):
         if return_raw_response:
             return raw_result
 
-        result = (
+        return (
             MarketGetOrdersResponse(**raw_result)
             if not extended
             else MarketGetOrdersExtendedResponse(**raw_result)
         )
-        return result
 
     async def remove_from_album(
         self,
@@ -622,11 +577,7 @@ class Market(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("removeFromAlbum", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def reorder_albums(
         self,
@@ -648,11 +599,7 @@ class Market(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("reorderAlbums", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def reorder_items(
         self,
@@ -676,11 +623,7 @@ class Market(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("reorderItems", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def report(
         self,
@@ -700,11 +643,7 @@ class Market(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("report", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def report_comment(
         self,
@@ -724,11 +663,7 @@ class Market(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("reportComment", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def restore(
         self,
@@ -746,11 +681,7 @@ class Market(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("restore", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def restore_comment(
         self,
@@ -771,8 +702,7 @@ class Market(Category):
         if return_raw_response:
             return raw_result
 
-        result = MarketRestoreCommentResponse(**raw_result)
-        return result
+        return MarketRestoreCommentResponse(**raw_result)
 
     async def search(
         self,
@@ -811,9 +741,8 @@ class Market(Category):
         if return_raw_response:
             return raw_result
 
-        result = (
+        return (
             MarketSearchResponse(**raw_result)
             if not extended
             else MarketSearchExtendedResponse(**raw_result)
         )
-        return result
