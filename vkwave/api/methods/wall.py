@@ -18,11 +18,7 @@ class Wall(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("checkCopyrightLink", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseBoolResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseBoolResponse(**raw_result)
 
     async def close_comments(
         self,
@@ -40,11 +36,7 @@ class Wall(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("closeComments", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseBoolResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseBoolResponse(**raw_result)
 
     async def create_comment(
         self,
@@ -77,8 +69,7 @@ class Wall(Category):
         if return_raw_response:
             return raw_result
 
-        result = WallCreateCommentResponse(**raw_result)
-        return result
+        return WallCreateCommentResponse(**raw_result)
 
     async def delete(
         self,
@@ -96,11 +87,7 @@ class Wall(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("delete", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def delete_comment(
         self,
@@ -118,11 +105,7 @@ class Wall(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("deleteComment", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def edit(
         self,
@@ -172,11 +155,7 @@ class Wall(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("edit", params)
-        if return_raw_response:
-            return raw_result
-
-        result = WallEditResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else WallEditResponse(**raw_result)
 
     async def edit_ads_stealth(
         self,
@@ -214,11 +193,7 @@ class Wall(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("editAdsStealth", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def edit_comment(
         self,
@@ -240,11 +215,7 @@ class Wall(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("editComment", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def get(
         self,
@@ -275,12 +246,11 @@ class Wall(Category):
         if return_raw_response:
             return raw_result
 
-        result = (
+        return (
             WallGetResponse(**raw_result)
             if not extended
             else WallGetExtendedResponse(**raw_result)
         )
-        return result
 
     async def get_by_id(
         self,
@@ -305,12 +275,11 @@ class Wall(Category):
         if return_raw_response:
             return raw_result
 
-        result = (
+        return (
             WallGetByIdLegacyResponse(**raw_result)
             if not extended
             else WallGetByIdExtendedResponse(**raw_result)
         )
-        return result
 
     async def get_comment(
         self,
@@ -335,12 +304,11 @@ class Wall(Category):
         if return_raw_response:
             return raw_result
 
-        result = (
+        return (
             WallGetCommentResponse(**raw_result)
             if not extended
             else WallGetCommentExtendedResponse(**raw_result)
         )
-        return result
 
     async def get_comments(
         self,
@@ -381,12 +349,11 @@ class Wall(Category):
         if return_raw_response:
             return raw_result
 
-        result = (
+        return (
             WallGetCommentsResponse(**raw_result)
             if not extended
             else WallGetCommentsExtendedResponse(**raw_result)
         )
-        return result
 
     async def get_reposts(
         self,
@@ -411,8 +378,7 @@ class Wall(Category):
         if return_raw_response:
             return raw_result
 
-        result = WallGetRepostsResponse(**raw_result)
-        return result
+        return WallGetRepostsResponse(**raw_result)
 
     async def open_comments(
         self,
@@ -430,11 +396,7 @@ class Wall(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("openComments", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseBoolResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseBoolResponse(**raw_result)
 
     async def pin(
         self,
@@ -452,11 +414,7 @@ class Wall(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("pin", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def post(
         self,
@@ -506,11 +464,7 @@ class Wall(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("post", params)
-        if return_raw_response:
-            return raw_result
-
-        result = WallPostResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else WallPostResponse(**raw_result)
 
     async def post_ads_stealth(
         self,
@@ -551,8 +505,7 @@ class Wall(Category):
         if return_raw_response:
             return raw_result
 
-        result = WallPostAdsStealthResponse(**raw_result)
-        return result
+        return WallPostAdsStealthResponse(**raw_result)
 
     async def report_comment(
         self,
@@ -572,11 +525,7 @@ class Wall(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("reportComment", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def report_post(
         self,
@@ -596,11 +545,7 @@ class Wall(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("reportPost", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def repost(
         self,
@@ -624,11 +569,7 @@ class Wall(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("repost", params)
-        if return_raw_response:
-            return raw_result
-
-        result = WallRepostResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else WallRepostResponse(**raw_result)
 
     async def restore(
         self,
@@ -646,11 +587,7 @@ class Wall(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("restore", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def restore_comment(
         self,
@@ -668,11 +605,7 @@ class Wall(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("restoreComment", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def search(
         self,
@@ -705,12 +638,11 @@ class Wall(Category):
         if return_raw_response:
             return raw_result
 
-        result = (
+        return (
             WallSearchResponse(**raw_result)
             if not extended
             else WallSearchExtendedResponse(**raw_result)
         )
-        return result
 
     async def unpin(
         self,
@@ -728,8 +660,4 @@ class Wall(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("unpin", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)

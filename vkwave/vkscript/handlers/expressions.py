@@ -7,7 +7,7 @@ from ..converter import VKScriptConverter
 @VKScriptConverter.register(ast.Expr)
 def expr_handler(node: ast.Expr):
     converter = VKScriptConverter.get_current()
-    return converter.convert_node(node.value) + ";"
+    return f"{converter.convert_node(node.value)};"
 
 
 @VKScriptConverter.register(ast.Module)

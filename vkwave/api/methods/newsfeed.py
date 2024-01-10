@@ -20,11 +20,7 @@ class Newsfeed(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("addBan", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def delete_ban(
         self,
@@ -42,11 +38,7 @@ class Newsfeed(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("deleteBan", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def delete_list(
         self,
@@ -62,11 +54,7 @@ class Newsfeed(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("deleteList", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def get(
         self,
@@ -103,8 +91,7 @@ class Newsfeed(Category):
         if return_raw_response:
             return raw_result
 
-        result = NewsfeedGenericResponse(**raw_result)
-        return result
+        return NewsfeedGenericResponse(**raw_result)
 
     async def get_banned(
         self,
@@ -127,12 +114,11 @@ class Newsfeed(Category):
         if return_raw_response:
             return raw_result
 
-        result = (
+        return (
             NewsfeedGetBannedResponse(**raw_result)
             if not extended
             else NewsfeedGetBannedExtendedResponse(**raw_result)
         )
-        return result
 
     async def get_comments(
         self,
@@ -165,8 +151,7 @@ class Newsfeed(Category):
         if return_raw_response:
             return raw_result
 
-        result = NewsfeedGetCommentsResponse(**raw_result)
-        return result
+        return NewsfeedGetCommentsResponse(**raw_result)
 
     async def get_lists(
         self,
@@ -187,12 +172,11 @@ class Newsfeed(Category):
         if return_raw_response:
             return raw_result
 
-        result = (
+        return (
             NewsfeedGetListsResponse(**raw_result)
             if not extended
             else NewsfeedGetListsExtendedResponse(**raw_result)
         )
-        return result
 
     async def get_mentions(
         self,
@@ -219,8 +203,7 @@ class Newsfeed(Category):
         if return_raw_response:
             return raw_result
 
-        result = NewsfeedGetMentionsResponse(**raw_result)
-        return result
+        return NewsfeedGetMentionsResponse(**raw_result)
 
     async def get_recommended(
         self,
@@ -249,8 +232,7 @@ class Newsfeed(Category):
         if return_raw_response:
             return raw_result
 
-        result = NewsfeedGenericResponse(**raw_result)
-        return result
+        return NewsfeedGenericResponse(**raw_result)
 
     async def get_suggested_sources(
         self,
@@ -275,8 +257,7 @@ class Newsfeed(Category):
         if return_raw_response:
             return raw_result
 
-        result = NewsfeedGetSuggestedSourcesResponse(**raw_result)
-        return result
+        return NewsfeedGetSuggestedSourcesResponse(**raw_result)
 
     async def ignore_item(
         self,
@@ -296,11 +277,7 @@ class Newsfeed(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("ignoreItem", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def save_list(
         self,
@@ -325,8 +302,7 @@ class Newsfeed(Category):
         if return_raw_response:
             return raw_result
 
-        result = NewsfeedSaveListResponse(**raw_result)
-        return result
+        return NewsfeedSaveListResponse(**raw_result)
 
     async def search(
         self,
@@ -361,12 +337,11 @@ class Newsfeed(Category):
         if return_raw_response:
             return raw_result
 
-        result = (
+        return (
             NewsfeedSearchResponse(**raw_result)
             if not extended
             else NewsfeedSearchExtendedResponse(**raw_result)
         )
-        return result
 
     async def unignore_item(
         self,
@@ -388,11 +363,7 @@ class Newsfeed(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("unignoreItem", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def unsubscribe(
         self,
@@ -412,8 +383,4 @@ class Newsfeed(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("unsubscribe", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)

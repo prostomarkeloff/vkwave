@@ -21,8 +21,7 @@ class AppWidgets(Category):
         if return_raw_response:
             return raw_result
 
-        result = AppWidgetsGetAppImageUploadServerResponse(**raw_result)
-        return result
+        return AppWidgetsGetAppImageUploadServerResponse(**raw_result)
 
     async def widgets_get_app_images(
         self,
@@ -45,8 +44,7 @@ class AppWidgets(Category):
         if return_raw_response:
             return raw_result
 
-        result = AppWidgetsGetAppImagesResponse(**raw_result)
-        return result
+        return AppWidgetsGetAppImagesResponse(**raw_result)
 
     async def widgets_get_group_image_upload_server(
         self,
@@ -65,8 +63,7 @@ class AppWidgets(Category):
         if return_raw_response:
             return raw_result
 
-        result = AppWidgetsGetGroupImageUploadServerResponse(**raw_result)
-        return result
+        return AppWidgetsGetGroupImageUploadServerResponse(**raw_result)
 
     async def widgets_get_group_images(
         self,
@@ -89,8 +86,7 @@ class AppWidgets(Category):
         if return_raw_response:
             return raw_result
 
-        result = AppWidgetsGetGroupImagesResponse(**raw_result)
-        return result
+        return AppWidgetsGetGroupImagesResponse(**raw_result)
 
     async def widgets_get_images_by_id(
         self,
@@ -109,8 +105,7 @@ class AppWidgets(Category):
         if return_raw_response:
             return raw_result
 
-        result = AppWidgetsGetImagesByIdResponse(**raw_result)
-        return result
+        return AppWidgetsGetImagesByIdResponse(**raw_result)
 
     async def widgets_save_app_image(
         self,
@@ -131,8 +126,7 @@ class AppWidgets(Category):
         if return_raw_response:
             return raw_result
 
-        result = AppWidgetsSaveAppImageResponse(**raw_result)
-        return result
+        return AppWidgetsSaveAppImageResponse(**raw_result)
 
     async def widgets_save_group_image(
         self,
@@ -153,8 +147,7 @@ class AppWidgets(Category):
         if return_raw_response:
             return raw_result
 
-        result = AppWidgetsSaveGroupImageResponse(**raw_result)
-        return result
+        return AppWidgetsSaveGroupImageResponse(**raw_result)
 
     async def widgets_update(
         self,
@@ -172,8 +165,4 @@ class AppWidgets(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("update", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)

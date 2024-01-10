@@ -72,19 +72,15 @@ class ErrorDispatcher:
         return_info: ReturnInfo,
         request_context: "APIOptionsRequestContext",
     ) -> typing.Union[bool, typing.Optional[dict]]:
-        handler = self.handlers.get(code)
-        if not handler:
-            result = await self.default_error_handler(error, request_context)
-            if result is _NO_DEFAULT_HANDLER:
-                return False
-
-        else:
+        if handler := self.handlers.get(code):
             handler = typing.cast(ErrorHandlerCallable, handler)
             result = await handler(error, request_context)
 
-            if return_info is ReturnInfo.RETURN:
-                return result
-            return None
+            return result if return_info is ReturnInfo.RETURN else None
+        else:
+            result = await self.default_error_handler(error, request_context)
+            if result is _NO_DEFAULT_HANDLER:
+                return False
 
     async def process_error(
         self, error: Error, request_context: "APIOptionsRequestContext"

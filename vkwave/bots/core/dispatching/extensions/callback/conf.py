@@ -26,8 +26,7 @@ class ConfirmationStorage:
         self.confirmations[group_id] = confirmation
 
     async def get_confirmation(self, group_id: GroupId) -> str:
-        cached = self.confirmations.get(group_id)
-        if cached:
+        if cached := self.confirmations.get(group_id):
             return cached
         confirmation = await self.strategy.get_confirmation(group_id)
         self.add_confirmation(group_id, confirmation)

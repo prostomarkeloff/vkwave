@@ -35,7 +35,4 @@ class DefaultHandler(BaseHandler):
 
     async def process_event(self, event: BaseEvent) -> Any:
         f_result = await self.filter_manager.execute_filters(event)
-        if not f_result:
-            return FILTERS_NOT_PASSED
-        c_result = await self.callback.execute(event)
-        return c_result
+        return await self.callback.execute(event) if f_result else FILTERS_NOT_PASSED

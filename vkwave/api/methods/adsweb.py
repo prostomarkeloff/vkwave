@@ -21,8 +21,7 @@ class Adsweb(Category):
         if return_raw_response:
             return raw_result
 
-        result = AdswebGetAdCategoriesResponse(**raw_result)
-        return result
+        return AdswebGetAdCategoriesResponse(**raw_result)
 
     async def get_ad_unit_code(
         self,
@@ -39,8 +38,7 @@ class Adsweb(Category):
         if return_raw_response:
             return raw_result
 
-        result = AdswebGetAdUnitCodeResponse(**raw_result)
-        return result
+        return AdswebGetAdUnitCodeResponse(**raw_result)
 
     async def get_ad_units(
         self,
@@ -69,8 +67,7 @@ class Adsweb(Category):
         if return_raw_response:
             return raw_result
 
-        result = AdswebGetAdUnitsResponse(**raw_result)
-        return result
+        return AdswebGetAdUnitsResponse(**raw_result)
 
     async def get_fraud_history(
         self,
@@ -95,8 +92,7 @@ class Adsweb(Category):
         if return_raw_response:
             return raw_result
 
-        result = AdswebGetFraudHistoryResponse(**raw_result)
-        return result
+        return AdswebGetFraudHistoryResponse(**raw_result)
 
     async def get_sites(
         self,
@@ -123,8 +119,7 @@ class Adsweb(Category):
         if return_raw_response:
             return raw_result
 
-        result = AdswebGetSitesResponse(**raw_result)
-        return result
+        return AdswebGetSitesResponse(**raw_result)
 
     async def get_statistics(
         self,
@@ -159,5 +154,4 @@ class Adsweb(Category):
         if return_raw_response:
             return raw_result
 
-        result = AdswebGetStatisticsResponse(**raw_result)
-        return result
+        return AdswebGetStatisticsResponse(**raw_result)

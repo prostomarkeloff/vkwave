@@ -18,11 +18,7 @@ class Stories(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("banOwner", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def delete(
         self,
@@ -42,11 +38,7 @@ class Stories(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("delete", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def get(
         self,
@@ -69,8 +61,7 @@ class Stories(Category):
         if return_raw_response:
             return raw_result
 
-        result = StoriesGetV5113Response(**raw_result)
-        return result
+        return StoriesGetV5113Response(**raw_result)
 
     async def get_banned(
         self,
@@ -91,12 +82,11 @@ class Stories(Category):
         if return_raw_response:
             return raw_result
 
-        result = (
+        return (
             StoriesGetBannedResponse(**raw_result)
             if not extended
             else StoriesGetBannedExtendedResponse(**raw_result)
         )
-        return result
 
     async def get_by_id(
         self,
@@ -119,8 +109,7 @@ class Stories(Category):
         if return_raw_response:
             return raw_result
 
-        result = StoriesGetByIdExtendedResponse(**raw_result)
-        return result
+        return StoriesGetByIdExtendedResponse(**raw_result)
 
     async def get_photo_upload_server(
         self,
@@ -151,8 +140,7 @@ class Stories(Category):
         if return_raw_response:
             return raw_result
 
-        result = StoriesGetPhotoUploadServerResponse(**raw_result)
-        return result
+        return StoriesGetPhotoUploadServerResponse(**raw_result)
 
     async def get_replies(
         self,
@@ -179,8 +167,7 @@ class Stories(Category):
         if return_raw_response:
             return raw_result
 
-        result = StoriesGetV5113Response(**raw_result)
-        return result
+        return StoriesGetV5113Response(**raw_result)
 
     async def get_stats(
         self,
@@ -201,8 +188,7 @@ class Stories(Category):
         if return_raw_response:
             return raw_result
 
-        result = StoriesGetStatsResponse(**raw_result)
-        return result
+        return StoriesGetStatsResponse(**raw_result)
 
     async def get_video_upload_server(
         self,
@@ -233,8 +219,7 @@ class Stories(Category):
         if return_raw_response:
             return raw_result
 
-        result = StoriesGetVideoUploadServerResponse(**raw_result)
-        return result
+        return StoriesGetVideoUploadServerResponse(**raw_result)
 
     async def get_viewers(
         self,
@@ -265,12 +250,7 @@ class Stories(Category):
         if return_raw_response:
             return raw_result
 
-        result = (
-            StoriesGetViewersExtendedV5115Response(**raw_result)
-            if not extended
-            else StoriesGetViewersExtendedV5115Response(**raw_result)
-        )
-        return result
+        return StoriesGetViewersExtendedV5115Response(**raw_result)
 
     async def hide_all_replies(
         self,
@@ -288,11 +268,7 @@ class Stories(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("hideAllReplies", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def hide_reply(
         self,
@@ -310,11 +286,7 @@ class Stories(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("hideReply", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def save(
         self,
@@ -330,11 +302,7 @@ class Stories(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("save", params)
-        if return_raw_response:
-            return raw_result
-
-        result = StoriesSaveResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else StoriesSaveResponse(**raw_result)
 
     async def search(
         self,
@@ -369,8 +337,7 @@ class Stories(Category):
         if return_raw_response:
             return raw_result
 
-        result = StoriesGetV5113Response(**raw_result)
-        return result
+        return StoriesGetV5113Response(**raw_result)
 
     async def send_interaction(
         self,
@@ -394,11 +361,7 @@ class Stories(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("sendInteraction", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def unban_owner(
         self,
@@ -414,8 +377,4 @@ class Stories(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("unbanOwner", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)

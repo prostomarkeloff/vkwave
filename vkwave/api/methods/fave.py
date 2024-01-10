@@ -18,11 +18,7 @@ class Fave(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("addArticle", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def add_link(
         self,
@@ -38,11 +34,7 @@ class Fave(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("addLink", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def add_page(
         self,
@@ -60,11 +52,7 @@ class Fave(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("addPage", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def add_post(
         self,
@@ -84,11 +72,7 @@ class Fave(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("addPost", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def add_product(
         self,
@@ -108,11 +92,7 @@ class Fave(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("addProduct", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def add_tag(
         self,
@@ -130,11 +110,7 @@ class Fave(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("addTag", params)
-        if return_raw_response:
-            return raw_result
-
-        result = FaveAddTagResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else FaveAddTagResponse(**raw_result)
 
     async def add_video(
         self,
@@ -154,11 +130,7 @@ class Fave(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("addVideo", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def edit_tag(
         self,
@@ -176,11 +148,7 @@ class Fave(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("editTag", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def get(
         self,
@@ -211,12 +179,11 @@ class Fave(Category):
         if return_raw_response:
             return raw_result
 
-        result = (
+        return (
             FaveGetResponse(**raw_result)
             if not extended
             else FaveGetExtendedResponse(**raw_result)
         )
-        return result
 
     async def get_pages(
         self,
@@ -243,8 +210,7 @@ class Fave(Category):
         if return_raw_response:
             return raw_result
 
-        result = FaveGetPagesResponse(**raw_result)
-        return result
+        return FaveGetPagesResponse(**raw_result)
 
     async def get_posts(
         self,
@@ -269,8 +235,7 @@ class Fave(Category):
         if return_raw_response:
             return raw_result
 
-        result = FaveGetPostsResponse(**raw_result)
-        return result
+        return FaveGetPostsResponse(**raw_result)
 
     async def get_videos(
         self,
@@ -295,8 +260,7 @@ class Fave(Category):
         if return_raw_response:
             return raw_result
 
-        result = FaveGetVideosResponse(**raw_result)
-        return result
+        return FaveGetVideosResponse(**raw_result)
 
     async def get_photos(
         self,
@@ -319,8 +283,7 @@ class Fave(Category):
         if return_raw_response:
             return raw_result
 
-        result = FaveGetPhotosResponse(**raw_result)
-        return result
+        return FaveGetPhotosResponse(**raw_result)
 
     async def get_tags(
         self,
@@ -334,11 +297,7 @@ class Fave(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("getTags", params)
-        if return_raw_response:
-            return raw_result
-
-        result = FaveGetTagsResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else FaveGetTagsResponse(**raw_result)
 
     async def mark_seen(
         self,
@@ -352,11 +311,7 @@ class Fave(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("markSeen", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseBoolResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseBoolResponse(**raw_result)
 
     async def remove_article(
         self,
@@ -374,11 +329,7 @@ class Fave(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("removeArticle", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseBoolResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseBoolResponse(**raw_result)
 
     async def remove_link(
         self,
@@ -396,11 +347,7 @@ class Fave(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("removeLink", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def remove_page(
         self,
@@ -418,11 +365,7 @@ class Fave(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("removePage", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def remove_post(
         self,
@@ -440,11 +383,7 @@ class Fave(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("removePost", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def remove_product(
         self,
@@ -462,11 +401,7 @@ class Fave(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("removeProduct", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def remove_tag(
         self,
@@ -482,11 +417,7 @@ class Fave(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("removeTag", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def remove_video(
         self,
@@ -504,11 +435,7 @@ class Fave(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("removeVideo", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def reorder_tags(
         self,
@@ -524,11 +451,7 @@ class Fave(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("reorderTags", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def set_page_tags(
         self,
@@ -548,11 +471,7 @@ class Fave(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("setPageTags", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def set_tags(
         self,
@@ -578,11 +497,7 @@ class Fave(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("setTags", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def track_page_interaction(
         self,
@@ -600,8 +515,4 @@ class Fave(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("trackPageInteraction", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)

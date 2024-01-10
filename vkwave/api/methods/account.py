@@ -18,11 +18,7 @@ class Account(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("ban", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def change_password(
         self,
@@ -47,8 +43,7 @@ class Account(Category):
         if return_raw_response:
             return raw_result
 
-        result = AccountChangePasswordResponse(**raw_result)
-        return result
+        return AccountChangePasswordResponse(**raw_result)
 
     async def get_active_offers(
         self,
@@ -69,8 +64,7 @@ class Account(Category):
         if return_raw_response:
             return raw_result
 
-        result = AccountGetActiveOffersResponse(**raw_result)
-        return result
+        return AccountGetActiveOffersResponse(**raw_result)
 
     async def get_app_permissions(
         self,
@@ -89,8 +83,7 @@ class Account(Category):
         if return_raw_response:
             return raw_result
 
-        result = AccountGetAppPermissionsResponse(**raw_result)
-        return result
+        return AccountGetAppPermissionsResponse(**raw_result)
 
     async def get_banned(
         self,
@@ -111,8 +104,7 @@ class Account(Category):
         if return_raw_response:
             return raw_result
 
-        result = AccountGetBannedResponse(**raw_result)
-        return result
+        return AccountGetBannedResponse(**raw_result)
 
     async def get_counters(
         self,
@@ -131,8 +123,7 @@ class Account(Category):
         if return_raw_response:
             return raw_result
 
-        result = AccountGetCountersResponse(**raw_result)
-        return result
+        return AccountGetCountersResponse(**raw_result)
 
     async def get_info(
         self,
@@ -151,8 +142,7 @@ class Account(Category):
         if return_raw_response:
             return raw_result
 
-        result = AccountGetInfoResponse(**raw_result)
-        return result
+        return AccountGetInfoResponse(**raw_result)
 
     async def get_profile_info(
         self,
@@ -169,8 +159,7 @@ class Account(Category):
         if return_raw_response:
             return raw_result
 
-        result = AccountGetProfileInfoResponse(**raw_result)
-        return result
+        return AccountGetProfileInfoResponse(**raw_result)
 
     async def get_push_settings(
         self,
@@ -189,8 +178,7 @@ class Account(Category):
         if return_raw_response:
             return raw_result
 
-        result = AccountGetPushSettingsResponse(**raw_result)
-        return result
+        return AccountGetPushSettingsResponse(**raw_result)
 
     async def register_device(
         self,
@@ -218,11 +206,7 @@ class Account(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("registerDevice", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def save_profile_info(
         self,
@@ -267,8 +251,7 @@ class Account(Category):
         if return_raw_response:
             return raw_result
 
-        result = AccountSaveProfileInfoResponse(**raw_result)
-        return result
+        return AccountSaveProfileInfoResponse(**raw_result)
 
     async def set_info(
         self,
@@ -286,11 +269,7 @@ class Account(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("setInfo", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def set_name_in_menu(
         self,
@@ -308,11 +287,7 @@ class Account(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("setNameInMenu", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def set_offline(
         self,
@@ -326,11 +301,7 @@ class Account(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("setOffline", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def set_online(
         self,
@@ -346,11 +317,7 @@ class Account(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("setOnline", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def set_push_settings(
         self,
@@ -372,11 +339,7 @@ class Account(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("setPushSettings", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def set_silence_mode(
         self,
@@ -398,11 +361,7 @@ class Account(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("setSilenceMode", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def unban(
         self,
@@ -418,11 +377,7 @@ class Account(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("unban", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def unregister_device(
         self,
@@ -440,8 +395,4 @@ class Account(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("unregisterDevice", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)

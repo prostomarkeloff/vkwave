@@ -22,11 +22,7 @@ class Docs(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("add", params)
-        if return_raw_response:
-            return raw_result
-
-        result = DocsAddResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else DocsAddResponse(**raw_result)
 
     async def delete(
         self, owner_id: int, doc_id: int, return_raw_response: bool = False,
@@ -41,11 +37,7 @@ class Docs(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("delete", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def edit(
         self,
@@ -67,11 +59,7 @@ class Docs(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("edit", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def get(
         self,
@@ -95,11 +83,7 @@ class Docs(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("get", params)
-        if return_raw_response:
-            return raw_result
-
-        result = DocsGetResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else DocsGetResponse(**raw_result)
 
     async def get_by_id(
         self,
@@ -117,11 +101,7 @@ class Docs(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("getById", params)
-        if return_raw_response:
-            return raw_result
-
-        result = DocsGetByIdResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else DocsGetByIdResponse(**raw_result)
 
     async def get_messages_upload_server(
         self,
@@ -142,8 +122,7 @@ class Docs(Category):
         if return_raw_response:
             return raw_result
 
-        result = BaseGetUploadServerResponse(**raw_result)
-        return result
+        return BaseGetUploadServerResponse(**raw_result)
 
     async def get_types(
         self, owner_id: int, return_raw_response: bool = False,
@@ -160,8 +139,7 @@ class Docs(Category):
         if return_raw_response:
             return raw_result
 
-        result = DocsGetTypesResponse(**raw_result)
-        return result
+        return DocsGetTypesResponse(**raw_result)
 
     async def get_upload_server(
         self, return_raw_response: bool = False, group_id: typing.Optional[int] = None,
@@ -178,8 +156,7 @@ class Docs(Category):
         if return_raw_response:
             return raw_result
 
-        result = DocsGetUploadServerResponse(**raw_result)
-        return result
+        return DocsGetUploadServerResponse(**raw_result)
 
     async def get_wall_upload_server(
         self, return_raw_response: bool = False, group_id: typing.Optional[int] = None,
@@ -196,8 +173,7 @@ class Docs(Category):
         if return_raw_response:
             return raw_result
 
-        result = BaseGetUploadServerResponse(**raw_result)
-        return result
+        return BaseGetUploadServerResponse(**raw_result)
 
     async def save(
         self,
@@ -219,11 +195,7 @@ class Docs(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("save", params)
-        if return_raw_response:
-            return raw_result
-
-        result = DocsSaveResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else DocsSaveResponse(**raw_result)
 
     async def search(
         self,
@@ -247,8 +219,4 @@ class Docs(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("search", params)
-        if return_raw_response:
-            return raw_result
-
-        result = DocsSearchResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else DocsSearchResponse(**raw_result)

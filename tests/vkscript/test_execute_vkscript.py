@@ -31,9 +31,7 @@ def demo_assignments():
     test = tmp
     del test, tmp
 
-    # Augmented Assignments
-    test = 0
-    test += 1
+    test = 0 + 1
     test -= 1
     test /= 1
     test *= 1
@@ -49,7 +47,7 @@ def demo_assignments():
 @execute
 def demo_functions():
     test = [0, 1, 3, 4]
-    tmp = test[0:2]  # noqa
+    tmp = test[:2]
     end = test.pop()
     begin = test.shift()
     test.unshift(begin)
@@ -62,18 +60,8 @@ def demo_functions():
 
 @execute
 def demo_blocks():
-    test = []
-    i = 1
-    while i <= 10:
-        test.append(i)
-        i += 1
-
-    if len(test) == 10:
-        return "ok"
-    elif i == 1:
-        return "oops..."
-    else:
-        return "oops..."
+    test = list(range(1, 11))
+    return "ok" if len(test) == 10 else "oops..."
 
 
 def test_converter():

@@ -16,11 +16,7 @@ class Apps(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("deleteAppRequests", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def get(
         self,
@@ -48,11 +44,7 @@ class Apps(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("get", params)
-        if return_raw_response:
-            return raw_result
-
-        result = AppsGetResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else AppsGetResponse(**raw_result)
 
     async def get_catalog(
         self,
@@ -91,8 +83,7 @@ class Apps(Category):
         if return_raw_response:
             return raw_result
 
-        result = AppsGetCatalogResponse(**raw_result)
-        return result
+        return AppsGetCatalogResponse(**raw_result)
 
     async def get_friends_list(
         self,
@@ -119,8 +110,7 @@ class Apps(Category):
         if return_raw_response:
             return raw_result
 
-        result = AppsGetFriendsListResponse(**raw_result)
-        return result
+        return AppsGetFriendsListResponse(**raw_result)
 
     async def get_leaderboard(
         self,
@@ -143,12 +133,11 @@ class Apps(Category):
         if return_raw_response:
             return raw_result
 
-        result = (
+        return (
             AppsGetLeaderboardResponse(**raw_result)
             if not extended
             else AppsGetLeaderboardExtendedResponse(**raw_result)
         )
-        return result
 
     async def get_scopes(
         self,
@@ -167,8 +156,7 @@ class Apps(Category):
         if return_raw_response:
             return raw_result
 
-        result = AppsGetScopesResponse(**raw_result)
-        return result
+        return AppsGetScopesResponse(**raw_result)
 
     async def get_score(
         self,
@@ -187,8 +175,7 @@ class Apps(Category):
         if return_raw_response:
             return raw_result
 
-        result = AppsGetScoreResponse(**raw_result)
-        return result
+        return AppsGetScoreResponse(**raw_result)
 
     async def promo_has_active_gift(
         self,
@@ -206,11 +193,7 @@ class Apps(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("promoHasActiveGift", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseBoolResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseBoolResponse(**raw_result)
 
     async def promo_use_gift(
         self,
@@ -228,11 +211,7 @@ class Apps(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("promoUseGift", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseBoolResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseBoolResponse(**raw_result)
 
     async def send_request(
         self,
@@ -261,5 +240,4 @@ class Apps(Category):
         if return_raw_response:
             return raw_result
 
-        result = AppsSendRequestResponse(**raw_result)
-        return result
+        return AppsSendRequestResponse(**raw_result)

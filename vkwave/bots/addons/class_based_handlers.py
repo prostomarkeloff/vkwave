@@ -27,7 +27,7 @@ class ClassBasedHandlerCallback(BaseCallback):
 
 
 def class_based_handler_caster(x: Union[BaseHandler, Any]) -> Optional[BaseCallback]:
-    if not type(x) is ABCMeta or not issubclass(x, BaseHandler):
+    if type(x) is not ABCMeta or not issubclass(x, BaseHandler):
         return None
     return ClassBasedHandlerCallback(x())
 

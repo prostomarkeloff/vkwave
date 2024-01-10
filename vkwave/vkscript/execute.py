@@ -50,7 +50,6 @@ class Execute:
         self, api: APIOptionsRequestContext, return_raw_response: bool = False, *args, **kwargs
     ):
         code = self.build(*args, **kwargs)
-        response = await api.execute(code=code, return_raw_response=return_raw_response)
-        return response
+        return await api.execute(code=code, return_raw_response=return_raw_response)
 
     e = execute

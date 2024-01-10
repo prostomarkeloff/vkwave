@@ -43,10 +43,11 @@ class DocUploaderMixin(BaseUploader[DocsSaveResponseModel], ABC):
         # Check upload for errors
         self.handle_error(upload_data)
 
-        doc_save = (
-            await self.api_context.docs.save(file=upload_data["file"], title=title, tags=tags)
+        return (
+            await self.api_context.docs.save(
+                file=upload_data["file"], title=title, tags=tags
+            )
         ).response
-        return doc_save
 
     async def get_attachment_from_io(
         self,
@@ -168,7 +169,7 @@ class DocUploaderMixin(BaseUploader[DocsSaveResponseModel], ABC):
         elif doc.type == DocsDocAttachmentType.GRAFFITI:
             d = doc.graffiti
         else:
-            raise TypeError("Unknown document type %s" % doc.type.value)
+            raise TypeError(f"Unknown document type {doc.type.value}")
 
         return (
             f"doc{d.owner_id}_{d.id}"
@@ -211,10 +212,11 @@ class VoiceUploader(DocUploaderMixin):
         )
 
         self.handle_error(upload_data)
-        doc_save = (
-            await self.api_context.docs.save(file=upload_data["file"], title=title, tags=tags)
+        return (
+            await self.api_context.docs.save(
+                file=upload_data["file"], title=title, tags=tags
+            )
         ).response
-        return doc_save
 
 
 class GraffitiUploader(DocUploaderMixin):

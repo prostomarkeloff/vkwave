@@ -33,8 +33,7 @@ class PrettyCards(Category):
         if return_raw_response:
             return raw_result
 
-        result = PrettyCardsCreateResponse(**raw_result)
-        return result
+        return PrettyCardsCreateResponse(**raw_result)
 
     async def cards_delete(
         self,
@@ -55,8 +54,7 @@ class PrettyCards(Category):
         if return_raw_response:
             return raw_result
 
-        result = PrettyCardsDeleteResponse(**raw_result)
-        return result
+        return PrettyCardsDeleteResponse(**raw_result)
 
     async def cards_edit(
         self,
@@ -89,8 +87,7 @@ class PrettyCards(Category):
         if return_raw_response:
             return raw_result
 
-        result = PrettyCardsEditResponse(**raw_result)
-        return result
+        return PrettyCardsEditResponse(**raw_result)
 
     async def cards_get(
         self,
@@ -113,8 +110,7 @@ class PrettyCards(Category):
         if return_raw_response:
             return raw_result
 
-        result = PrettyCardsGetResponse(**raw_result)
-        return result
+        return PrettyCardsGetResponse(**raw_result)
 
     async def cards_get_by_id(
         self,
@@ -135,8 +131,7 @@ class PrettyCards(Category):
         if return_raw_response:
             return raw_result
 
-        result = PrettyCardsGetByIdResponse(**raw_result)
-        return result
+        return PrettyCardsGetByIdResponse(**raw_result)
 
     async def cards_get_upload_u_r_l(
         self,
@@ -153,5 +148,4 @@ class PrettyCards(Category):
         if return_raw_response:
             return raw_result
 
-        result = PrettyCardsGetUploadURLResponse(**raw_result)
-        return result
+        return PrettyCardsGetUploadURLResponse(**raw_result)

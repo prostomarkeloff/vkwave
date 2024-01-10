@@ -179,7 +179,7 @@ class APIOptionsRequestContext:
         if state is ResultState.HANDLED_EXCEPTION:
             exc_data = ctx.result.exception_data
             exc_data = cast(dict, exc_data)
-            if not ("error" in exc_data or "response" in exc_data):
+            if "error" not in exc_data and "response" not in exc_data:
                 raise UnsuccessAPIRequestException()
         else:
             data = ctx.result.data

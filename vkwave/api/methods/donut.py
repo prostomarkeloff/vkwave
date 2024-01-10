@@ -27,8 +27,7 @@ class Donut(Category):
         if return_raw_response:
             return raw_result
 
-        result = GroupsGetMembersFieldsResponse(**raw_result)
-        return result
+        return GroupsGetMembersFieldsResponse(**raw_result)
 
     async def get_subscription(
         self,
@@ -47,8 +46,7 @@ class Donut(Category):
         if return_raw_response:
             return raw_result
 
-        result = DonutGetSubscriptionResponse(**raw_result)
-        return result
+        return DonutGetSubscriptionResponse(**raw_result)
 
     async def get_subscriptions(
         self,
@@ -71,8 +69,7 @@ class Donut(Category):
         if return_raw_response:
             return raw_result
 
-        result = DonutGetSubscriptionsResponse(**raw_result)
-        return result
+        return DonutGetSubscriptionsResponse(**raw_result)
 
     async def is_don(
         self,
@@ -88,8 +85,4 @@ class Donut(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("isDon", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseBoolResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseBoolResponse(**raw_result)

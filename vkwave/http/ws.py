@@ -46,14 +46,12 @@ class AIOHTTPWSClient(AbstractWSClient):
     async def stream_str(self) -> AsyncGenerator[None, str]:
         async with self._ws_conn as conn:
             while True:
-                msg = await conn.receive_str()
-                yield msg
+                yield await conn.receive_str()
 
     async def stream_json(self) -> AsyncGenerator[None, dict]:
         async with self._ws_conn as conn:
             while True:
-                msg = await conn.receive_json()
-                yield msg
+                yield await conn.receive_json()
 
     async def close(self):
         if self._ws_conn and not self._ws_conn.closed:

@@ -11,8 +11,7 @@ class SomeAPIException(Exception):
 
 
 async def callback(method_name: MethodName, params: dict) -> dict:
-    raise_exception = params.pop("raise_exception")
-    if raise_exception:
+    if raise_exception := params.pop("raise_exception"):
         raise SomeAPIException()
     else:
         return params
@@ -20,6 +19,9 @@ async def callback(method_name: MethodName, params: dict) -> dict:
 
 @pytest.fixture
 def client():
+
+
+
     class TestAPIClient(AbstractAPIClient):
         def __init__(self):
             self._factory = DefaultFactory()
@@ -32,16 +34,16 @@ def client():
             self._factory = factory
 
         def create_request(self, method_name: MethodName, params: dict) -> RequestContext:
-            ctx = self.context_factory.create_context(
+            return self.context_factory.create_context(
                 exceptions={SomeAPIException: None},
                 request_callback=callback,
                 request_params=params,
                 method_name=method_name,
             )
-            return ctx
 
         async def close(self):
             pass
+
 
     return TestAPIClient()
 

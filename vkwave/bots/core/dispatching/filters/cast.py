@@ -12,17 +12,14 @@ class FilterCaster(DefaultCaster[BaseFilter]):
     def default(self, something: Any) -> Optional[BaseFilter]:
         filter: Optional[BaseFilter]
 
-        if isclass(something):
-            if issubclass(something.__class__, BaseFilter):
-                return cast(BaseFilter, something)
+        if isclass(something) and issubclass(something.__class__, BaseFilter):
+            return cast(BaseFilter, something)
         if iscoroutinefunction(something) or isawaitable(something):
-            filter = AsyncFuncFilter(something)
+            return AsyncFuncFilter(something)
         elif isfunction(something):
-            filter = SyncFuncFilter(something)
+            return SyncFuncFilter(something)
         else:
-            filter = None
-
-        return filter
+            return None
 
 
 caster = FilterCaster()

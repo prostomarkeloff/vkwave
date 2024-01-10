@@ -25,8 +25,7 @@ class Orders(Category):
         if return_raw_response:
             return raw_result
 
-        result = OrdersCancelSubscriptionResponse(**raw_result)
-        return result
+        return OrdersCancelSubscriptionResponse(**raw_result)
 
     async def change_state(
         self,
@@ -51,8 +50,7 @@ class Orders(Category):
         if return_raw_response:
             return raw_result
 
-        result = OrdersChangeStateResponse(**raw_result)
-        return result
+        return OrdersChangeStateResponse(**raw_result)
 
     async def get(
         self,
@@ -72,11 +70,7 @@ class Orders(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("get", params)
-        if return_raw_response:
-            return raw_result
-
-        result = OrdersGetResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else OrdersGetResponse(**raw_result)
 
     async def get_amount(
         self,
@@ -97,8 +91,7 @@ class Orders(Category):
         if return_raw_response:
             return raw_result
 
-        result = OrdersGetAmountResponse(**raw_result)
-        return result
+        return OrdersGetAmountResponse(**raw_result)
 
     async def get_by_id(
         self,
@@ -121,8 +114,7 @@ class Orders(Category):
         if return_raw_response:
             return raw_result
 
-        result = OrdersGetByIdResponse(**raw_result)
-        return result
+        return OrdersGetByIdResponse(**raw_result)
 
     async def get_user_subscription_by_id(
         self,
@@ -143,8 +135,7 @@ class Orders(Category):
         if return_raw_response:
             return raw_result
 
-        result = OrdersGetUserSubscriptionByIdResponse(**raw_result)
-        return result
+        return OrdersGetUserSubscriptionByIdResponse(**raw_result)
 
     async def get_user_subscriptions(
         self,
@@ -163,8 +154,7 @@ class Orders(Category):
         if return_raw_response:
             return raw_result
 
-        result = OrdersGetUserSubscriptionsResponse(**raw_result)
-        return result
+        return OrdersGetUserSubscriptionsResponse(**raw_result)
 
     async def update_subscription(
         self,
@@ -187,5 +177,4 @@ class Orders(Category):
         if return_raw_response:
             return raw_result
 
-        result = OrdersUpdateSubscriptionResponse(**raw_result)
-        return result
+        return OrdersUpdateSubscriptionResponse(**raw_result)

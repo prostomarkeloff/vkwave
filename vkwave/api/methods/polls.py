@@ -27,8 +27,7 @@ class Polls(Category):
         if return_raw_response:
             return raw_result
 
-        result = PollsAddVoteResponse(**raw_result)
-        return result
+        return PollsAddVoteResponse(**raw_result)
 
     async def create(
         self,
@@ -60,11 +59,7 @@ class Polls(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("create", params)
-        if return_raw_response:
-            return raw_result
-
-        result = PollsCreateResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else PollsCreateResponse(**raw_result)
 
     async def delete_vote(
         self,
@@ -89,8 +84,7 @@ class Polls(Category):
         if return_raw_response:
             return raw_result
 
-        result = PollsDeleteVoteResponse(**raw_result)
-        return result
+        return PollsDeleteVoteResponse(**raw_result)
 
     async def edit(
         self,
@@ -122,11 +116,7 @@ class Polls(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("edit", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def get_by_id(
         self,
@@ -157,8 +147,7 @@ class Polls(Category):
         if return_raw_response:
             return raw_result
 
-        result = PollsGetByIdResponse(**raw_result)
-        return result
+        return PollsGetByIdResponse(**raw_result)
 
     async def get_voters(
         self,
@@ -193,5 +182,4 @@ class Polls(Category):
         if return_raw_response:
             return raw_result
 
-        result = PollsGetVotersResponse(**raw_result)
-        return result
+        return PollsGetVotersResponse(**raw_result)

@@ -22,11 +22,7 @@ class Video(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("add", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def add_album(
         self,
@@ -49,8 +45,7 @@ class Video(Category):
         if return_raw_response:
             return raw_result
 
-        result = VideoAddAlbumResponse(**raw_result)
-        return result
+        return VideoAddAlbumResponse(**raw_result)
 
     async def add_to_album(
         self,
@@ -74,11 +69,7 @@ class Video(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("addToAlbum", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def create_comment(
         self,
@@ -111,8 +102,7 @@ class Video(Category):
         if return_raw_response:
             return raw_result
 
-        result = VideoCreateCommentResponse(**raw_result)
-        return result
+        return VideoCreateCommentResponse(**raw_result)
 
     async def delete(
         self,
@@ -132,11 +122,7 @@ class Video(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("delete", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def delete_album(
         self,
@@ -154,11 +140,7 @@ class Video(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("deleteAlbum", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def delete_comment(
         self,
@@ -176,11 +158,7 @@ class Video(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("deleteComment", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def edit(
         self,
@@ -210,11 +188,7 @@ class Video(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("edit", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def edit_album(
         self,
@@ -236,11 +210,7 @@ class Video(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("editAlbum", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def edit_comment(
         self,
@@ -262,11 +232,7 @@ class Video(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("editComment", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def get(
         self,
@@ -292,11 +258,7 @@ class Video(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("get", params)
-        if return_raw_response:
-            return raw_result
-
-        result = VideoGetResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else VideoGetResponse(**raw_result)
 
     async def get_album_by_id(
         self,
@@ -317,8 +279,7 @@ class Video(Category):
         if return_raw_response:
             return raw_result
 
-        result = VideoGetAlbumByIdResponse(**raw_result)
-        return result
+        return VideoGetAlbumByIdResponse(**raw_result)
 
     async def get_albums(
         self,
@@ -345,12 +306,11 @@ class Video(Category):
         if return_raw_response:
             return raw_result
 
-        result = (
+        return (
             VideoGetAlbumsResponse(**raw_result)
             if not extended
             else VideoGetAlbumsExtendedResponse(**raw_result)
         )
-        return result
 
     async def get_albums_by_video(
         self,
@@ -375,12 +335,11 @@ class Video(Category):
         if return_raw_response:
             return raw_result
 
-        result = (
+        return (
             VideoGetAlbumsByVideoResponse(**raw_result)
             if not extended
             else VideoGetAlbumsByVideoExtendedResponse(**raw_result)
         )
-        return result
 
     async def get_comments(
         self,
@@ -415,12 +374,11 @@ class Video(Category):
         if return_raw_response:
             return raw_result
 
-        result = (
+        return (
             VideoGetCommentsResponse(**raw_result)
             if not extended
             else VideoGetCommentsExtendedResponse(**raw_result)
         )
-        return result
 
     async def remove_from_album(
         self,
@@ -444,11 +402,7 @@ class Video(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("removeFromAlbum", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def reorder_albums(
         self,
@@ -470,11 +424,7 @@ class Video(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("reorderAlbums", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def reorder_videos(
         self,
@@ -504,11 +454,7 @@ class Video(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("reorderVideos", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def report(
         self,
@@ -532,11 +478,7 @@ class Video(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("report", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def report_comment(
         self,
@@ -556,11 +498,7 @@ class Video(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("reportComment", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def restore(
         self,
@@ -578,11 +516,7 @@ class Video(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("restore", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def restore_comment(
         self,
@@ -603,8 +537,7 @@ class Video(Category):
         if return_raw_response:
             return raw_result
 
-        result = VideoRestoreCommentResponse(**raw_result)
-        return result
+        return VideoRestoreCommentResponse(**raw_result)
 
     async def save(
         self,
@@ -642,11 +575,7 @@ class Video(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("save", params)
-        if return_raw_response:
-            return raw_result
-
-        result = VideoSaveResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else VideoSaveResponse(**raw_result)
 
     async def search(
         self,
@@ -685,9 +614,8 @@ class Video(Category):
         if return_raw_response:
             return raw_result
 
-        result = (
+        return (
             VideoSearchResponse(**raw_result)
             if not extended
             else VideoSearchExtendedResponse(**raw_result)
         )
-        return result

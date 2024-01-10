@@ -31,9 +31,8 @@ class CallbackView(web.View):
                 body=await self.request.app["storage"].get_confirmation(GroupId(group_id))
             )
 
-        if self.request.app["support_secret"]:
-            if not event["secret"] == self.request.app["secret"]:
-                raise web.HTTPForbidden()
+        if self.request.app["support_secret"] and event["secret"] != self.request.app["secret"]:
+            raise web.HTTPForbidden()
 
         options = ProcessEventOptions(do_not_handle=False)
         revent = ExtensionEvent(BotType.BOT, event)

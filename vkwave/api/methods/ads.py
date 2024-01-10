@@ -23,8 +23,7 @@ class Ads(Category):
         if return_raw_response:
             return raw_result
 
-        result = AdsAddOfficeUsersResponse(**raw_result)
-        return result
+        return AdsAddOfficeUsersResponse(**raw_result)
 
     async def check_link(
         self,
@@ -49,8 +48,7 @@ class Ads(Category):
         if return_raw_response:
             return raw_result
 
-        result = AdsCheckLinkResponse(**raw_result)
-        return result
+        return AdsCheckLinkResponse(**raw_result)
 
     async def create_ads(
         self,
@@ -71,8 +69,7 @@ class Ads(Category):
         if return_raw_response:
             return raw_result
 
-        result = AdsCreateAdsResponse(**raw_result)
-        return result
+        return AdsCreateAdsResponse(**raw_result)
 
     async def create_campaigns(
         self,
@@ -93,8 +90,7 @@ class Ads(Category):
         if return_raw_response:
             return raw_result
 
-        result = AdsCreateCampaignsResponse(**raw_result)
-        return result
+        return AdsCreateCampaignsResponse(**raw_result)
 
     async def create_clients(
         self,
@@ -115,8 +111,7 @@ class Ads(Category):
         if return_raw_response:
             return raw_result
 
-        result = AdsCreateClientsResponse(**raw_result)
-        return result
+        return AdsCreateClientsResponse(**raw_result)
 
     async def create_target_group(
         self,
@@ -145,8 +140,7 @@ class Ads(Category):
         if return_raw_response:
             return raw_result
 
-        result = AdsCreateTargetGroupResponse(**raw_result)
-        return result
+        return AdsCreateTargetGroupResponse(**raw_result)
 
     async def delete_ads(
         self,
@@ -167,8 +161,7 @@ class Ads(Category):
         if return_raw_response:
             return raw_result
 
-        result = AdsDeleteAdsResponse(**raw_result)
-        return result
+        return AdsDeleteAdsResponse(**raw_result)
 
     async def delete_campaigns(
         self,
@@ -189,8 +182,7 @@ class Ads(Category):
         if return_raw_response:
             return raw_result
 
-        result = AdsDeleteCampaignsResponse(**raw_result)
-        return result
+        return AdsDeleteCampaignsResponse(**raw_result)
 
     async def delete_clients(
         self,
@@ -211,8 +203,7 @@ class Ads(Category):
         if return_raw_response:
             return raw_result
 
-        result = AdsDeleteClientsResponse(**raw_result)
-        return result
+        return AdsDeleteClientsResponse(**raw_result)
 
     async def delete_target_group(
         self,
@@ -232,11 +223,7 @@ class Ads(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("deleteTargetGroup", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def get_accounts(
         self,
@@ -253,8 +240,7 @@ class Ads(Category):
         if return_raw_response:
             return raw_result
 
-        result = AdsGetAccountsResponse(**raw_result)
-        return result
+        return AdsGetAccountsResponse(**raw_result)
 
     async def get_ads(
         self,
@@ -284,11 +270,7 @@ class Ads(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("getAds", params)
-        if return_raw_response:
-            return raw_result
-
-        result = AdsGetAdsResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else AdsGetAdsResponse(**raw_result)
 
     async def get_ads_layout(
         self,
@@ -319,8 +301,7 @@ class Ads(Category):
         if return_raw_response:
             return raw_result
 
-        result = AdsGetAdsLayoutResponse(**raw_result)
-        return result
+        return AdsGetAdsLayoutResponse(**raw_result)
 
     async def get_ads_targeting(
         self,
@@ -351,8 +332,7 @@ class Ads(Category):
         if return_raw_response:
             return raw_result
 
-        result = AdsGetAdsTargetingResponse(**raw_result)
-        return result
+        return AdsGetAdsTargetingResponse(**raw_result)
 
     async def get_budget(
         self,
@@ -371,8 +351,7 @@ class Ads(Category):
         if return_raw_response:
             return raw_result
 
-        result = AdsGetBudgetResponse(**raw_result)
-        return result
+        return AdsGetBudgetResponse(**raw_result)
 
     async def get_campaigns(
         self,
@@ -399,8 +378,7 @@ class Ads(Category):
         if return_raw_response:
             return raw_result
 
-        result = AdsGetCampaignsResponse(**raw_result)
-        return result
+        return AdsGetCampaignsResponse(**raw_result)
 
     async def get_categories(
         self,
@@ -419,8 +397,7 @@ class Ads(Category):
         if return_raw_response:
             return raw_result
 
-        result = AdsGetCategoriesResponse(**raw_result)
-        return result
+        return AdsGetCategoriesResponse(**raw_result)
 
     async def get_clients(
         self,
@@ -439,8 +416,7 @@ class Ads(Category):
         if return_raw_response:
             return raw_result
 
-        result = AdsGetClientsResponse(**raw_result)
-        return result
+        return AdsGetClientsResponse(**raw_result)
 
     async def get_demographics(
         self,
@@ -469,8 +445,7 @@ class Ads(Category):
         if return_raw_response:
             return raw_result
 
-        result = AdsGetDemographicsResponse(**raw_result)
-        return result
+        return AdsGetDemographicsResponse(**raw_result)
 
     async def get_flood_stats(
         self,
@@ -489,8 +464,7 @@ class Ads(Category):
         if return_raw_response:
             return raw_result
 
-        result = AdsGetFloodStatsResponse(**raw_result)
-        return result
+        return AdsGetFloodStatsResponse(**raw_result)
 
     async def get_lookalike_requests(
         self,
@@ -519,8 +493,7 @@ class Ads(Category):
         if return_raw_response:
             return raw_result
 
-        result = AdsGetLookalikeRequestsResponse(**raw_result)
-        return result
+        return AdsGetLookalikeRequestsResponse(**raw_result)
 
     async def get_musicians(
         self,
@@ -539,8 +512,7 @@ class Ads(Category):
         if return_raw_response:
             return raw_result
 
-        result = AdsGetMusiciansResponse(**raw_result)
-        return result
+        return AdsGetMusiciansResponse(**raw_result)
 
     async def get_office_users(
         self,
@@ -559,8 +531,7 @@ class Ads(Category):
         if return_raw_response:
             return raw_result
 
-        result = AdsGetOfficeUsersResponse(**raw_result)
-        return result
+        return AdsGetOfficeUsersResponse(**raw_result)
 
     async def get_posts_reach(
         self,
@@ -583,8 +554,7 @@ class Ads(Category):
         if return_raw_response:
             return raw_result
 
-        result = AdsGetPostsReachResponse(**raw_result)
-        return result
+        return AdsGetPostsReachResponse(**raw_result)
 
     async def get_rejection_reason(
         self,
@@ -605,8 +575,7 @@ class Ads(Category):
         if return_raw_response:
             return raw_result
 
-        result = AdsGetRejectionReasonResponse(**raw_result)
-        return result
+        return AdsGetRejectionReasonResponse(**raw_result)
 
     async def get_statistics(
         self,
@@ -637,8 +606,7 @@ class Ads(Category):
         if return_raw_response:
             return raw_result
 
-        result = AdsGetStatisticsResponse(**raw_result)
-        return result
+        return AdsGetStatisticsResponse(**raw_result)
 
     async def get_suggestions(
         self,
@@ -667,8 +635,7 @@ class Ads(Category):
         if return_raw_response:
             return raw_result
 
-        result = AdsGetSuggestionsResponse(**raw_result)
-        return result
+        return AdsGetSuggestionsResponse(**raw_result)
 
     async def get_target_groups(
         self,
@@ -691,8 +658,7 @@ class Ads(Category):
         if return_raw_response:
             return raw_result
 
-        result = AdsGetTargetGroupsResponse(**raw_result)
-        return result
+        return AdsGetTargetGroupsResponse(**raw_result)
 
     async def get_targeting_stats(
         self,
@@ -733,8 +699,7 @@ class Ads(Category):
         if return_raw_response:
             return raw_result
 
-        result = AdsGetTargetingStatsResponse(**raw_result)
-        return result
+        return AdsGetTargetingStatsResponse(**raw_result)
 
     async def get_upload_u_r_l(
         self,
@@ -755,8 +720,7 @@ class Ads(Category):
         if return_raw_response:
             return raw_result
 
-        result = AdsGetUploadURLResponse(**raw_result)
-        return result
+        return AdsGetUploadURLResponse(**raw_result)
 
     async def get_video_upload_u_r_l(
         self,
@@ -773,8 +737,7 @@ class Ads(Category):
         if return_raw_response:
             return raw_result
 
-        result = AdsGetVideoUploadURLResponse(**raw_result)
-        return result
+        return AdsGetVideoUploadURLResponse(**raw_result)
 
     async def import_target_contacts(
         self,
@@ -799,8 +762,7 @@ class Ads(Category):
         if return_raw_response:
             return raw_result
 
-        result = AdsImportTargetContactsResponse(**raw_result)
-        return result
+        return AdsImportTargetContactsResponse(**raw_result)
 
     async def remove_office_users(
         self,
@@ -821,8 +783,7 @@ class Ads(Category):
         if return_raw_response:
             return raw_result
 
-        result = AdsRemoveOfficeUsersResponse(**raw_result)
-        return result
+        return AdsRemoveOfficeUsersResponse(**raw_result)
 
     async def update_ads(
         self,
@@ -843,8 +804,7 @@ class Ads(Category):
         if return_raw_response:
             return raw_result
 
-        result = AdsUpdateAdsResponse(**raw_result)
-        return result
+        return AdsUpdateAdsResponse(**raw_result)
 
     async def update_campaigns(
         self,
@@ -865,8 +825,7 @@ class Ads(Category):
         if return_raw_response:
             return raw_result
 
-        result = AdsUpdateCampaignsResponse(**raw_result)
-        return result
+        return AdsUpdateCampaignsResponse(**raw_result)
 
     async def update_clients(
         self,
@@ -887,8 +846,7 @@ class Ads(Category):
         if return_raw_response:
             return raw_result
 
-        result = AdsUpdateClientsResponse(**raw_result)
-        return result
+        return AdsUpdateClientsResponse(**raw_result)
 
     async def update_office_users(
         self,
@@ -909,8 +867,7 @@ class Ads(Category):
         if return_raw_response:
             return raw_result
 
-        result = AdsUpdateOfficeUsersResponse(**raw_result)
-        return result
+        return AdsUpdateOfficeUsersResponse(**raw_result)
 
     async def update_target_group(
         self,
@@ -940,8 +897,4 @@ class Ads(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("updateTargetGroup", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)

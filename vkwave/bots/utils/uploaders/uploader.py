@@ -98,6 +98,5 @@ class BaseUploader(ABC, Generic[UploadResult]):
 
     @staticmethod
     def handle_error(upload_data: dict):
-        err = upload_data.get("error")
-        if err:
+        if err := upload_data.get("error"):
             raise UploadException(err)

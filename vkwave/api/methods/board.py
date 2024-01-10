@@ -29,8 +29,7 @@ class Board(Category):
         if return_raw_response:
             return raw_result
 
-        result = BoardAddTopicResponse(**raw_result)
-        return result
+        return BoardAddTopicResponse(**raw_result)
 
     async def close_topic(
         self,
@@ -48,11 +47,7 @@ class Board(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("closeTopic", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def create_comment(
         self,
@@ -83,8 +78,7 @@ class Board(Category):
         if return_raw_response:
             return raw_result
 
-        result = BoardCreateCommentResponse(**raw_result)
-        return result
+        return BoardCreateCommentResponse(**raw_result)
 
     async def delete_comment(
         self,
@@ -104,11 +98,7 @@ class Board(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("deleteComment", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def delete_topic(
         self,
@@ -126,11 +116,7 @@ class Board(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("deleteTopic", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def edit_comment(
         self,
@@ -154,11 +140,7 @@ class Board(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("editComment", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def edit_topic(
         self,
@@ -178,11 +160,7 @@ class Board(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("editTopic", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def fix_topic(
         self,
@@ -200,11 +178,7 @@ class Board(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("fixTopic", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def get_comments(
         self,
@@ -237,12 +211,11 @@ class Board(Category):
         if return_raw_response:
             return raw_result
 
-        result = (
+        return (
             BoardGetCommentsResponse(**raw_result)
             if not extended
             else BoardGetCommentsExtendedResponse(**raw_result)
         )
-        return result
 
     async def get_topics(
         self,
@@ -275,12 +248,11 @@ class Board(Category):
         if return_raw_response:
             return raw_result
 
-        result = (
+        return (
             BoardGetTopicsResponse(**raw_result)
             if not extended
             else BoardGetTopicsExtendedResponse(**raw_result)
         )
-        return result
 
     async def open_topic(
         self,
@@ -298,11 +270,7 @@ class Board(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("openTopic", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def restore_comment(
         self,
@@ -322,11 +290,7 @@ class Board(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("restoreComment", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def unfix_topic(
         self,
@@ -344,8 +308,4 @@ class Board(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("unfixTopic", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)

@@ -22,11 +22,7 @@ class Secure(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("addAppEvent", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def check_token(
         self,
@@ -47,8 +43,7 @@ class Secure(Category):
         if return_raw_response:
             return raw_result
 
-        result = SecureCheckTokenResponse(**raw_result)
-        return result
+        return SecureCheckTokenResponse(**raw_result)
 
     async def get_app_balance(
         self,
@@ -65,8 +60,7 @@ class Secure(Category):
         if return_raw_response:
             return raw_result
 
-        result = SecureGetAppBalanceResponse(**raw_result)
-        return result
+        return SecureGetAppBalanceResponse(**raw_result)
 
     async def get_s_m_s_history(
         self,
@@ -91,8 +85,7 @@ class Secure(Category):
         if return_raw_response:
             return raw_result
 
-        result = SecureGetSMSHistoryResponse(**raw_result)
-        return result
+        return SecureGetSMSHistoryResponse(**raw_result)
 
     async def get_transactions_history(
         self,
@@ -121,8 +114,7 @@ class Secure(Category):
         if return_raw_response:
             return raw_result
 
-        result = SecureGetTransactionsHistoryResponse(**raw_result)
-        return result
+        return SecureGetTransactionsHistoryResponse(**raw_result)
 
     async def get_user_level(
         self,
@@ -141,8 +133,7 @@ class Secure(Category):
         if return_raw_response:
             return raw_result
 
-        result = SecureGetUserLevelResponse(**raw_result)
-        return result
+        return SecureGetUserLevelResponse(**raw_result)
 
     async def give_event_sticker(
         self,
@@ -163,8 +154,7 @@ class Secure(Category):
         if return_raw_response:
             return raw_result
 
-        result = SecureGiveEventStickerResponse(**raw_result)
-        return result
+        return SecureGiveEventStickerResponse(**raw_result)
 
     async def send_notification(
         self,
@@ -187,8 +177,7 @@ class Secure(Category):
         if return_raw_response:
             return raw_result
 
-        result = SecureSendNotificationResponse(**raw_result)
-        return result
+        return SecureSendNotificationResponse(**raw_result)
 
     async def send_s_m_s_notification(
         self,
@@ -206,11 +195,7 @@ class Secure(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("sendSMSNotification", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)
 
     async def set_counter(
         self,
@@ -232,8 +217,4 @@ class Secure(Category):
         params = get_params(locals())
 
         raw_result = await self.api_request("setCounter", params)
-        if return_raw_response:
-            return raw_result
-
-        result = BaseOkResponse(**raw_result)
-        return result
+        return raw_result if return_raw_response else BaseOkResponse(**raw_result)

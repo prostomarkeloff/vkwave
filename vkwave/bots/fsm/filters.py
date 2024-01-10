@@ -36,19 +36,17 @@ class StateFilter(BaseFilter):
         if self.always_false:
             template = "__vkwave_{for_what}_{peer_id}_{from_id}__"
 
-            user_in_chat_state = template.format(
-                for_what="userInChat", peer_id=peer_id, from_id=from_id
-            )
             if is_pm:
                 user_state = template.format(for_what="user", peer_id=from_id, from_id=from_id)
             else:
                 user_state = template.format(for_what="chat", peer_id=peer_id, from_id=peer_id)
 
+            user_in_chat_state = template.format(
+                for_what="userInChat", peer_id=peer_id, from_id=from_id
+            )
             return FilterResult(
-                not (
-                    await self.fsm.storage.contains(Key(user_in_chat_state))
-                    or await self.fsm.storage.contains(Key(user_state))
-                )
+                not await self.fsm.storage.contains(Key(user_in_chat_state))
+                and not await self.fsm.storage.contains(Key(user_state))
             )
         current_state = await self.fsm.get_data(event, for_what=self.for_what)
         return FilterResult(
