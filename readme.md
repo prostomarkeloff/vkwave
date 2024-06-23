@@ -28,7 +28,7 @@ VKWave вдохновлен многими библиотеками, в част
 
 С GitHub, со всеми свежими обновлениями:
 ```
-pip install https://github.com/fscdev/vkwave/archive/master.zip
+pip install https://github.com/prostomarkeloff/vkwave/archive/master.zip
 ```
 
 Или с PyPI (более надежная):
