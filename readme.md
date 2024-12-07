@@ -14,9 +14,9 @@ VKWave вдохновлен многими библиотеками, в част
 
 **Текущий мейнтейнер** проекта: [@KurimuzonAkuma](https://github.com/KurimuzonAkuma)
 
-[Документация](https://fscdev.github.io/vkwave/)
+[Документация]([https://fscdev.github.io/vkwave/](https://prostomarkeloff.github.io/vkwave/))
 
-[Примеры использования](https://github.com/fscdev/vkwave/tree/master/examples)
+[Примеры использования](https://github.com/prostomarkeloff/vkwave/tree/master/examples)
 
 # Почему VKWave?
 
